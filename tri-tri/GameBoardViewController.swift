@@ -343,12 +343,7 @@ class GameBoardViewController: UIViewController {
             defaults.set(1, forKey: "tritri_Theme")
         }
         else {
-            if (defaults.integer(forKey: "tritri_Theme") == 1){
-                ThemeType = 1
-            }
-            else if (defaults.integer(forKey: "tritri_Theme") == 2){
-                ThemeType = 2
-            }
+            ThemeType = defaults.integer(forKey: "tritri_Theme")
         }
         //change bg color
         if ThemeType == 1{
@@ -765,7 +760,7 @@ class GameBoardViewController: UIViewController {
         self.view.addSubview(home_button)
         self.view.addSubview(like_button)
         self.view.addSubview(restart_button)
-        //self.view.addSubview(change_theme_button)
+        self.view.addSubview(change_theme_button)
         
         //fade in
         continue_button.fadeInWithDisplacement()
@@ -7993,7 +7988,7 @@ number_of_lines_erased += 1
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
         nextViewController.final_score = MarkBoard.text!
-        nextViewController.ThemeType = 1
+        nextViewController.ThemeType = self.ThemeType
         nextViewController.modalTransitionStyle = .crossDissolve
         if (Int(MarkBoard.text!) == HighestScore){
             nextViewController.is_high_score = true
