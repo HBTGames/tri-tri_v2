@@ -216,7 +216,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1018"
             endingLineNumber = "1018"
-            landmarkName = "panGestureRecognizerAction(_:)"
+            landmarkName = "distance_generator(drag_location:triangle_location:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -630,7 +630,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "612"
             endingLineNumber = "612"
-            landmarkName = "background_music_pause()"
+            landmarkName = "background_music_continue()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -646,7 +646,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "7482"
             endingLineNumber = "7482"
-            landmarkName = "Find_Any_Available_Light_Brown_Tri(row:column:)"
+            landmarkName = "Find_Any_Available_Brown_Left_Tri(row:column:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -662,7 +662,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "7483"
             endingLineNumber = "7483"
-            landmarkName = "Find_Any_Available_Light_Brown_Tri(row:column:)"
+            landmarkName = "Find_Any_Available_Brown_Left_Tri(row:column:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
