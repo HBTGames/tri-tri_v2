@@ -216,7 +216,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1018"
             endingLineNumber = "1018"
-            landmarkName = "distance_generator(drag_location:triangle_location:)"
+            landmarkName = "panGestureRecognizerAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -630,7 +630,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "612"
             endingLineNumber = "612"
-            landmarkName = "background_music_continue()"
+            landmarkName = "background_music_pause()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -641,13 +641,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517225188.580114"
+            timestampString = "517239986.979348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "7487"
-            endingLineNumber = "7487"
-            landmarkName = "GameBoardViewController"
-            landmarkType = "3">
+            startingLineNumber = "7482"
+            endingLineNumber = "7482"
+            landmarkName = "Find_Any_Available_Light_Brown_Tri(row:column:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -657,12 +657,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517225188.580114"
+            timestampString = "517239986.979348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "7488"
-            endingLineNumber = "7488"
-            landmarkName = "Find_Any_Available_Brown_Left_Tri(row:column:)"
+            startingLineNumber = "7483"
+            endingLineNumber = "7483"
+            landmarkName = "Find_Any_Available_Light_Brown_Tri(row:column:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

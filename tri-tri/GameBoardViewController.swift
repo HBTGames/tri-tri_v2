@@ -6718,14 +6718,9 @@ number_of_lines_erased += 1
     
     func Check_And_Erase_Fix_Filled() -> Void {
         
-        do{erase_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "erase", ofType: "wav")!))
-            erase_player.prepareToPlay()
-        }
-        catch{
-            
-        }
+
         if(situation0){
-            erase_player.play()
+           // erase_player.play()
             filled[0][0] = false
             filled[0][1] = false
             filled[0][2] = false
@@ -6737,7 +6732,7 @@ number_of_lines_erased += 1
         
         //eliminate second row
         if(situation1){
-            erase_player.play()
+            //erase_player.play()
             filled[1][0] = false
             filled[1][1] = false
             filled[1][2] = false
@@ -6752,7 +6747,7 @@ number_of_lines_erased += 1
         }
         //eliminate third row
         if( situation2){
-            erase_player.play()
+            //erase_player.play()
             filled[2][0] = false
             filled[2][1] = false
             filled[2][2] = false
@@ -6769,7 +6764,7 @@ number_of_lines_erased += 1
         
         //eliminate fourth row
         if( situation3){
-            erase_player.play()
+            //erase_player.play()
             filled[3][0] = false
             filled[3][1] = false
             filled[3][2] = false
@@ -6787,7 +6782,7 @@ number_of_lines_erased += 1
         }
         //eliminate fifth row
         if( situation4){
-            erase_player.play()
+            //erase_player.play()
             filled[4][0] = false
             filled[4][1] = false
             filled[4][2] = false
@@ -6802,7 +6797,7 @@ number_of_lines_erased += 1
         }
         ////eliminate sixth row
         if( situation5){
-            erase_player.play()
+            //erase_player.play()
             filled[5][0] = false
             filled[5][1] = false
             filled[5][2] = false
@@ -6818,7 +6813,7 @@ number_of_lines_erased += 1
         
         //situation two - 右下斜
         if(situation6){
-            erase_player.play()
+            //erase_player.play()
             filled[2][0] = false
             filled[3][0] = false
             filled[3][1] = false
@@ -6833,7 +6828,7 @@ number_of_lines_erased += 1
         
         
         if(situation7){
-            erase_player.play()
+            //erase_player.play()
             filled[1][0] = false
             filled[2][1] = false
             filled[2][2] = false
@@ -6850,7 +6845,7 @@ number_of_lines_erased += 1
             
         }
         if(situation8){
-            erase_player.play()
+            //erase_player.play()
             filled[0][0] = false
             filled[1][1] = false
             filled[1][2] = false
@@ -6873,7 +6868,7 @@ number_of_lines_erased += 1
         
         
         if(situation9){
-            erase_player.play()
+            //erase_player.play()
             filled[0][1] = false
             filled[0][2] = false
             filled[1][3] = false
@@ -6893,7 +6888,7 @@ number_of_lines_erased += 1
         
         
         if(situation10){
-            erase_player.play()
+            //erase_player.play()
             
             filled[0][3] = false
             filled[0][4] = false
@@ -6909,7 +6904,7 @@ number_of_lines_erased += 1
             
         }
         if(situation11){
-            erase_player.play()
+            //erase_player.play()
             filled[0][5] = false
             filled[0][6] = false
             filled[1][7] = false
@@ -6925,7 +6920,7 @@ number_of_lines_erased += 1
         
         //situation three - 左下斜
         if(situation12){
-            erase_player.play()
+            //erase_player.play()
             filled[0][0] = false
             filled[0][1] = false
             filled[1][0] = false
@@ -6940,7 +6935,7 @@ number_of_lines_erased += 1
         
         
         if(situation13){
-            erase_player.play()
+            //erase_player.play()
             filled[0][2] = false
             filled[0][3] = false
             filled[1][2] = false
@@ -6956,7 +6951,7 @@ number_of_lines_erased += 1
         }
         
         if(situation14){
-            erase_player.play()
+            //erase_player.play()
             filled[0][4] = false
             filled[0][5] = false
             filled[1][4] = false
@@ -6973,7 +6968,7 @@ number_of_lines_erased += 1
             
         }
         if(situation15){
-            erase_player.play()
+            //erase_player.play()
             filled[0][6] = false
             filled[1][6] = false
             filled[1][7] = false
@@ -6992,7 +6987,7 @@ number_of_lines_erased += 1
         
         
         if(situation16){
-            erase_player.play()
+            //erase_player.play()
             filled[1][8] = false
             filled[2][8] = false
             filled[2][9] = false
@@ -7007,7 +7002,7 @@ number_of_lines_erased += 1
         
         
         if(situation17){
-            erase_player.play()
+            //erase_player.play()
             filled[2][10] = false
             filled[3][9] = false
             filled[3][10] = false
@@ -8091,6 +8086,13 @@ number_of_lines_erased += 1
         multiple_marker.alpha = 1
         self.view.addSubview(multiple_marker)
         if (number_of_lines_erased == 1){
+            do{erase_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "1_time_erase", ofType: "mp3")!))
+                erase_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            erase_player.play()
             multiple_marker.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
             UIView.animate(withDuration: 0.2, animations: {
                 self.multiple_marker.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
@@ -8106,6 +8108,13 @@ number_of_lines_erased += 1
                 })
             })
         } else if (number_of_lines_erased == 2){
+            do{erase_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "erase", ofType: "wav")!))
+                erase_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            erase_player.play()
             multiple_marker.textColor = .orange
             UIView.animate(withDuration: 0.2, animations: {
                 self.multiple_marker.transform = CGAffineTransform(scaleX: 3.0, y: 3.0)
@@ -8126,6 +8135,13 @@ number_of_lines_erased += 1
             })
         })
         }else {
+            do{erase_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "3_times_erase", ofType: "wav")!))
+                erase_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            erase_player.play()
             multiple_marker.textColor = .red
             UIView.animate(withDuration: 0.4, animations: {
                 self.multiple_marker.transform = CGAffineTransform(scaleX: 4.0, y: 4.0)
