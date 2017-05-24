@@ -339,8 +339,9 @@ class GameOverViewController: UIViewController {
         
         
         //add triangle text
-        let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(132), y: pause_screen_y_transform(50), width: pause_screen_x_transform(111), height: pause_screen_y_transform(29)))
-        triangle_text.image = UIImage(named: "Triangle_Text")
+        let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(40), width: pause_screen_x_transform(155), height: pause_screen_y_transform(50)))
+        triangle_text.image = UIImage(named: "day mode triangle title")
+        triangle_text.contentMode = .scaleAspectFit
         //triangle_text.sizeToFit()
         triangle_text.alpha = 0
         self.view.addSubview(triangle_text)
