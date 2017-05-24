@@ -682,34 +682,40 @@ class GameBoardViewController: UIViewController {
         day_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(145), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         day_theme_origin = day_theme_button.frame.origin
         day_theme_button.setBackgroundImage(UIImage(named:"day_theme"), for: .normal)
+        day_theme_button.alpha = 0
         self.view.addSubview(day_theme_button)
+        day_theme_button.fadeInWithDisplacement()
         
         night_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(145), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         night_theme_origin = night_theme_button.frame.origin
         night_theme_button.setBackgroundImage(UIImage(named:"night_theme"), for: .normal)
         self.view.addSubview(night_theme_button)
-        
+        night_theme_button.fadeInWithDisplacement()
         
         BW_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         BW_theme_origin = BW_theme_button.frame.origin
         BW_theme_button.setBackgroundImage(UIImage(named:"B&W_theme"), for: .normal)
         self.view.addSubview(BW_theme_button)
+        BW_theme_button.fadeInWithDisplacement()
         
         chaos_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         chaos_theme_origin = chaos_theme_button.frame.origin
         chaos_theme_button.setBackgroundImage(UIImage(named:"Chaos_theme"), for: .normal)
         self.view.addSubview(chaos_theme_button)
+        chaos_theme_button.fadeInWithDisplacement()
         
         
         school_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         school_theme_origin = school_theme_button.frame.origin
         school_theme_button.setBackgroundImage(UIImage(named:"School_Theme"), for: .normal)
         self.view.addSubview(school_theme_button)
+        school_theme_button.fadeInWithDisplacement()
         
         colors_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         colors_theme_origin = colors_theme_button.frame.origin
         colors_theme_button.setBackgroundImage(UIImage(named:"Colors_theme"), for: .normal)
         self.view.addSubview(colors_theme_button)
+        colors_theme_button.fadeInWithDisplacement()
         
         //add white to 遮挡
         let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(120)))

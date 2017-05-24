@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517295638.067013"
+            timestampString = "517296340.823074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "876"
-            endingLineNumber = "876"
-            landmarkName = "panGestureRecognizerAction(_:)"
+            startingLineNumber = "882"
+            endingLineNumber = "882"
+            landmarkName = "pause_button(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,45 +26,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517295638.067013"
+            timestampString = "517296340.823074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "831"
-            endingLineNumber = "831"
+            startingLineNumber = "837"
+            endingLineNumber = "837"
+            landmarkName = "pause_button(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tri-tri/GameBoardViewController.swift"
+            timestampString = "517296340.823074"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1467"
+            endingLineNumber = "1467"
+            landmarkName = "GameBoardViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tri-tri/GameBoardViewController.swift"
+            timestampString = "517296340.823074"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "963"
+            endingLineNumber = "963"
             landmarkName = "buttonAction(sender:)"
             landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517295638.067013"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1461"
-            endingLineNumber = "1461"
-            landmarkName = "Shape_fitting(Shape_Type:position:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517295638.067013"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "957"
-            endingLineNumber = "957"
-            landmarkName = "panGestureRecognizerAction(_:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,13 +154,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517295638.067013"
+            timestampString = "517296340.823074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1189"
-            endingLineNumber = "1189"
-            landmarkName = "GameBoardViewController"
-            landmarkType = "3">
+            startingLineNumber = "1195"
+            endingLineNumber = "1195"
+            landmarkName = "panGestureRecognizerAction(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -175,8 +175,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "665"
             endingLineNumber = "665"
-            landmarkName = "pause_button(_:)"
-            landmarkType = "7">
+            landmarkName = "GameBoardViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -191,8 +191,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "664"
             endingLineNumber = "664"
-            landmarkName = "pause_button(_:)"
-            landmarkType = "7">
+            landmarkName = "GameBoardViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517295638.067013"
+            timestampString = "517296340.823074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6848"
-            endingLineNumber = "6848"
+            startingLineNumber = "6854"
+            endingLineNumber = "6854"
             landmarkName = "Check_and_Erase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,12 +330,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517295638.067013"
+            timestampString = "517296340.823074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "897"
-            endingLineNumber = "897"
-            landmarkName = "panGestureRecognizerAction(_:)"
+            startingLineNumber = "903"
+            endingLineNumber = "903"
+            landmarkName = "pause_button(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -346,12 +346,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517295638.067013"
+            timestampString = "517296340.823074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "896"
-            endingLineNumber = "896"
-            landmarkName = "panGestureRecognizerAction(_:)"
+            startingLineNumber = "902"
+            endingLineNumber = "902"
+            landmarkName = "pause_button(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -440,13 +440,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517295638.067013"
+            timestampString = "517296340.823074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "937"
-            endingLineNumber = "937"
-            landmarkName = "panGestureRecognizerAction(_:)"
-            landmarkType = "7">
+            startingLineNumber = "943"
+            endingLineNumber = "943"
+            landmarkName = "continue_but(sender:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
