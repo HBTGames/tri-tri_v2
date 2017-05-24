@@ -1116,6 +1116,87 @@ class GameBoardViewController: UIViewController {
     @IBOutlet weak var tri_5_4: UIImageView!
     @IBOutlet weak var tri_5_5: UIImageView!
     @IBOutlet weak var tri_5_6: UIImageView!
+    
+    
+    
+    //following stores the triangle used for background
+    
+    @IBOutlet weak var tri_0_0_back: UIImageView!
+    @IBOutlet weak var tri_0_1_back: UIImageView!
+    @IBOutlet weak var tri_0_2_back: UIImageView!
+    @IBOutlet weak var tri_0_3_back: UIImageView!
+    @IBOutlet weak var tri_0_4_back: UIImageView!
+    @IBOutlet weak var tri_0_5_back: UIImageView!
+    @IBOutlet weak var tri_0_6_back: UIImageView!
+    
+    @IBOutlet weak var tri_1_0_back: UIImageView!
+    @IBOutlet weak var tri_1_1_back: UIImageView!
+    @IBOutlet weak var tri_1_2_back: UIImageView!
+    @IBOutlet weak var tri_1_3_back: UIImageView!
+    @IBOutlet weak var tri_1_4_back: UIImageView!
+    @IBOutlet weak var tri_1_5_back: UIImageView!
+    @IBOutlet weak var tri_1_6_back: UIImageView!
+    @IBOutlet weak var tri_1_7_back: UIImageView!
+    @IBOutlet weak var tri_1_8_back: UIImageView!
+    
+    @IBOutlet weak var tri_2_0_back: UIImageView!
+    @IBOutlet weak var tri_2_1_back: UIImageView!
+    @IBOutlet weak var tri_2_2_back: UIImageView!
+    @IBOutlet weak var tri_2_3_back: UIImageView!
+    @IBOutlet weak var tri_2_4_back: UIImageView!
+    @IBOutlet weak var tri_2_5_back: UIImageView!
+    @IBOutlet weak var tri_2_6_back: UIImageView!
+    @IBOutlet weak var tri_2_7_back: UIImageView!
+    @IBOutlet weak var tri_2_8_back: UIImageView!
+    @IBOutlet weak var tri_2_9_back: UIImageView!
+    @IBOutlet weak var tri_2_10_back: UIImageView!
+    
+    @IBOutlet weak var tri_3_0_back: UIImageView!
+    @IBOutlet weak var tri_3_1_back: UIImageView!
+    @IBOutlet weak var tri_3_2_back: UIImageView!
+    @IBOutlet weak var tri_3_3_back: UIImageView!
+    @IBOutlet weak var tri_3_4_back: UIImageView!
+    @IBOutlet weak var tri_3_5_back: UIImageView!
+    @IBOutlet weak var tri_3_6_back: UIImageView!
+    @IBOutlet weak var tri_3_7_back: UIImageView!
+    @IBOutlet weak var tri_3_8_back: UIImageView!
+    @IBOutlet weak var tri_3_9_back: UIImageView!
+    @IBOutlet weak var tri_3_10_back: UIImageView!
+    
+    @IBOutlet weak var tri_4_0_back: UIImageView!
+    @IBOutlet weak var tri_4_1_back: UIImageView!
+    @IBOutlet weak var tri_4_2_back: UIImageView!
+    @IBOutlet weak var tri_4_3_back: UIImageView!
+    @IBOutlet weak var tri_4_4_back: UIImageView!
+    @IBOutlet weak var tri_4_5_back: UIImageView!
+    @IBOutlet weak var tri_4_6_back: UIImageView!
+    @IBOutlet weak var tri_4_7_back: UIImageView!
+    @IBOutlet weak var tri_4_8_back: UIImageView!
+    
+    @IBOutlet weak var tri_5_0_back: UIImageView!
+    @IBOutlet weak var tri_5_1_back: UIImageView!
+    @IBOutlet weak var tri_5_2_back: UIImageView!
+    @IBOutlet weak var tri_5_3_back: UIImageView!
+    @IBOutlet weak var tri_5_4_back: UIImageView!
+    @IBOutlet weak var tri_5_5_back: UIImageView!
+    @IBOutlet weak var tri_5_6_back: UIImageView!
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
    //--------------------------------------------------------------------------------------------------------------------
     
     //2-D array saves whether each triangle is filled or not
