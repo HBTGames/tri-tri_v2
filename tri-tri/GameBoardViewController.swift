@@ -260,6 +260,7 @@ class GameBoardViewController: UIViewController {
     @IBOutlet weak var HightestScoreBoard: UILabel!
    // @IBOutlet weak var HightestScoreBoard: UITextField!
 
+    @IBOutlet weak var triangle_title: UIImageView!
     
     
     //declare an audio player
@@ -359,6 +360,7 @@ class GameBoardViewController: UIViewController {
             MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             trophy.image = UIImage(named:"trophy_new")
             pause.setImage(UIImage(named: "pause_button"), for: .normal)
+            triangle_title.image = UIImage(named:"day mode triangle title")
             
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -370,6 +372,7 @@ class GameBoardViewController: UIViewController {
             MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             trophy.image = UIImage(named:"night mode 奖杯")
             pause.setImage(UIImage(named: "night mode pause"), for: .normal)
+            triangle_title.image = UIImage(named:"night mode triangle title")
         }
         //update tris origin
 
@@ -702,6 +705,7 @@ class GameBoardViewController: UIViewController {
             self.MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"trophy_new")
             self.pause.setImage(UIImage(named: "pause_button"), for: .normal)
+            self.triangle_title.image = UIImage(named:"day mode triangle title")
         })
         
         self.view.addSubview(day_theme_button)
@@ -730,6 +734,7 @@ class GameBoardViewController: UIViewController {
             self.MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"night mode 奖杯")
             self.pause.setImage(UIImage(named: "night mode pause"), for: .normal)
+            self.triangle_title.image = UIImage(named:"night mode triangle title")
         })
         self.view.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
@@ -803,19 +808,23 @@ class GameBoardViewController: UIViewController {
         //add white to 遮挡
         let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(120)))
         white_cover.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+        white_cover.alpha = 0
         self.view.addSubview(white_cover)
+        white_cover.fadeInWithDisplacement()
         
         
         //add triangle text
         let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(132), y: pause_screen_y_transform(50), width: pause_screen_x_transform(111), height: pause_screen_y_transform(29)))
-        triangle_text.image = UIImage(named: "Triangle_Text")
+        triangle_text.image = UIImage(named: "day mode triangle title")
         //triangle_text.sizeToFit()
+        triangle_text.alpha = 0
         self.view.addSubview(triangle_text)
+        triangle_text.fadeInWithDisplacement()
         
         //add  return button
         let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(90), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         return_button.setBackgroundImage(UIImage(named:"return_button"), for: .normal)
-        self.view.addSubview(return_button)
+        
         
         return_button.whenButtonIsClicked(action: {
             self.in_theme_menu = false
@@ -825,7 +834,9 @@ class GameBoardViewController: UIViewController {
             catch{
                 
             }
+            
             self.button_player.play()
+            
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             
             self.day_theme_button.fadeOut()
@@ -851,10 +862,10 @@ class GameBoardViewController: UIViewController {
             theme_menu.removeFromSuperview()
         })
         
+        return_button.alpha = 0
+        self.view.addSubview(return_button)
         
-
-        
-    
+        return_button.fadeInWithDisplacement()
     }
 
     @IBAction func pause_button(_ sender: UIButton) {

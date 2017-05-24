@@ -333,19 +333,23 @@ class GameOverViewController: UIViewController {
         //add white to 遮挡
         let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(120)))
         white_cover.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+        white_cover.alpha = 0
         self.view.addSubview(white_cover)
+        white_cover.fadeInWithDisplacement()
         
         
         //add triangle text
         let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(132), y: pause_screen_y_transform(50), width: pause_screen_x_transform(111), height: pause_screen_y_transform(29)))
         triangle_text.image = UIImage(named: "Triangle_Text")
         //triangle_text.sizeToFit()
+        triangle_text.alpha = 0
         self.view.addSubview(triangle_text)
+        triangle_text.fadeInWithDisplacement()
         
         //add  return button
         let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(90), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         return_button.setBackgroundImage(UIImage(named:"return_button"), for: .normal)
-        self.view.addSubview(return_button)
+        
         
         return_button.whenButtonIsClicked(action: {
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -380,7 +384,9 @@ class GameOverViewController: UIViewController {
             theme_menu.removeFromSuperview()
         })
         
-        
+        return_button.alpha = 0
+        self.view.addSubview(return_button)
+        return_button.fadeInWithDisplacement()
     
     }
     

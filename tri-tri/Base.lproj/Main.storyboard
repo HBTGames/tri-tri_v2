@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -722,7 +722,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="trophy_new" translatesAutoresizingMaskIntoConstraints="NO" id="P0M-hw-129">
-                                <rect key="frame" x="123" y="86" width="43" height="31"/>
+                                <rect key="frame" x="123" y="87" width="43" height="31"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="棕色tri" translatesAutoresizingMaskIntoConstraints="NO" id="gxz-1Y-RXe">
                                 <rect key="frame" x="4" y="523" width="104" height="93"/>
@@ -771,8 +771,8 @@
                                     <constraint firstAttribute="height" constant="93" id="2uh-1S-89u"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" layoutMarginsFollowReadableWidth="YES" image="Triangle_Text" translatesAutoresizingMaskIntoConstraints="NO" id="gNR-HH-lwS">
-                                <rect key="frame" x="130" y="37" width="114" height="26"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" layoutMarginsFollowReadableWidth="YES" image="Triangle_Text" translatesAutoresizingMaskIntoConstraints="NO" id="gNR-HH-lwS">
+                                <rect key="frame" x="130" y="23" width="114" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="DFc-8u-NCX"/>
                                     <constraint firstAttribute="height" constant="26" id="d04-5O-wb6"/>
@@ -793,7 +793,7 @@
                             <constraint firstItem="kH3-5k-I6y" firstAttribute="centerX" secondItem="zhk-At-sbY" secondAttribute="centerX" constant="26" id="1Yp-Wq-9qw"/>
                             <constraint firstItem="QNS-6Y-OkM" firstAttribute="centerY" secondItem="oPY-fr-CnM" secondAttribute="centerY" id="1ql-lV-N5z"/>
                             <constraint firstItem="R9g-fj-p9q" firstAttribute="top" secondItem="QPr-PK-oJ5" secondAttribute="bottom" constant="17" id="28F-U9-lCb"/>
-                            <constraint firstItem="gNR-HH-lwS" firstAttribute="top" secondItem="QPr-PK-oJ5" secondAttribute="bottom" constant="17" id="2d0-sT-2uR"/>
+                            <constraint firstItem="gNR-HH-lwS" firstAttribute="top" secondItem="QPr-PK-oJ5" secondAttribute="bottom" constant="3" id="2d0-sT-2uR"/>
                             <constraint firstItem="qbZ-pg-UwH" firstAttribute="leading" secondItem="Q7e-Ub-uv8" secondAttribute="trailing" constant="-23" id="2hj-dO-OgV"/>
                             <constraint firstItem="WVu-JF-2JF" firstAttribute="centerY" secondItem="5Jm-JG-dUE" secondAttribute="centerY" constant="43" id="2oR-v1-eMm"/>
                             <constraint firstItem="c1t-t2-u0P" firstAttribute="centerY" secondItem="zhk-At-sbY" secondAttribute="centerY" id="2qd-pV-SHU"/>
@@ -828,7 +828,7 @@
                             <constraint firstItem="NWO-Jw-TIU" firstAttribute="centerX" secondItem="p5C-ee-UVz" secondAttribute="centerX" id="8ym-ie-Gcp"/>
                             <constraint firstItem="Jmp-g9-Cfc" firstAttribute="centerY" secondItem="hn8-pp-UXb" secondAttribute="centerY" id="94w-mY-Pna"/>
                             <constraint firstItem="hn8-pp-UXb" firstAttribute="centerY" secondItem="SyH-TJ-ItG" secondAttribute="centerY" id="96I-5z-TvP"/>
-                            <constraint firstItem="P0M-hw-129" firstAttribute="top" secondItem="gNR-HH-lwS" secondAttribute="bottom" constant="23" id="97J-bv-asd"/>
+                            <constraint firstItem="P0M-hw-129" firstAttribute="top" secondItem="gNR-HH-lwS" secondAttribute="bottom" constant="38" id="97J-bv-asd"/>
                             <constraint firstItem="7TJ-kQ-GJr" firstAttribute="centerY" secondItem="ReQ-TU-9gI" secondAttribute="centerY" id="9DH-7A-3fF"/>
                             <constraint firstItem="ygd-va-KF8" firstAttribute="centerY" secondItem="aYb-dV-99H" secondAttribute="centerY" id="9Tf-60-cfP"/>
                             <constraint firstItem="NMt-fg-ydx" firstAttribute="centerY" secondItem="v9m-r2-uGt" secondAttribute="centerY" id="9Xf-lK-5rA"/>
@@ -1144,6 +1144,7 @@
                         <outlet property="tri_5_5_back" destination="3qG-61-WrN" id="IP2-km-NaG"/>
                         <outlet property="tri_5_6" destination="MG4-lq-nuJ" id="JnB-No-DoU"/>
                         <outlet property="tri_5_6_back" destination="meA-AH-8uH" id="XCP-bQ-xr1"/>
+                        <outlet property="triangle_title" destination="gNR-HH-lwS" id="jGk-hZ-49b"/>
                         <outlet property="trophy" destination="P0M-hw-129" id="f8g-Wb-NxI"/>
                     </connections>
                 </viewController>
