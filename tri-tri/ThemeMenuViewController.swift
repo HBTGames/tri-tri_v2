@@ -87,6 +87,12 @@ class ThemeMenuViewController: UIViewController{
         }
         }else{
             if(gesture.state == .ended){
+                 day_theme_origin.y = 8 + 99
+                night_theme_origin.y = 8 + 99
+                 BW_theme_origin.y = screen_height/2 + 30.5 - BW_theme.frame.height/2
+                Chaos_theme_origin.y = BW_theme_origin.y
+                 school_theme_origin.y = screen_height - 114 - school_theme.frame.height/2
+                colors_theme_origin.y = school_theme_origin.y
                 UIView.animate(withDuration: 0.5, animations: {
                  self.day_theme.frame.origin.y = self.day_theme_origin.y
                  self.night_theme.frame.origin.y = self.night_theme_origin.y
