@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -261,9 +261,10 @@
                                     <constraint firstAttribute="height" constant="85" id="fG5-Vg-TQX"/>
                                     <constraint firstAttribute="width" constant="100" id="hwB-Vy-Pam"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="like"/>
+                                <state key="normal" image="shopping_cart" backgroundImage="like"/>
                                 <connections>
                                     <action selector="like_action:" destination="g9C-ac-axW" eventType="touchUpInside" id="ATA-Ac-KtL"/>
+                                    <action selector="theme_menu_action:" destination="g9C-ac-axW" eventType="touchUpInside" id="NB5-w4-3sK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efL-Nx-AeG">
@@ -312,13 +313,6 @@
                                     <constraint firstAttribute="width" constant="275" id="dJA-qh-nwq"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gb-IM-9wy">
-                                <rect key="frame" x="250" y="576" width="105" height="30"/>
-                                <state key="normal" title="theme/subview"/>
-                                <connections>
-                                    <action selector="theme_menu_action:" destination="g9C-ac-axW" eventType="touchUpInside" id="6Wu-Ye-fag"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration" label="gameover">
@@ -327,10 +321,8 @@
                         <constraints>
                             <constraint firstItem="ySa-fe-eSb" firstAttribute="centerX" secondItem="vUI-Sd-QIZ" secondAttribute="centerX" id="BnJ-bA-WQX"/>
                             <constraint firstItem="3GJ-KM-XwE" firstAttribute="leading" secondItem="ulY-n0-3X0" secondAttribute="trailing" constant="-17" id="CVQ-ts-i4v"/>
-                            <constraint firstItem="9AN-fU-JfU" firstAttribute="top" secondItem="4gb-IM-9wy" secondAttribute="bottom" constant="61" id="DyQ-oI-5al"/>
                             <constraint firstItem="efL-Nx-AeG" firstAttribute="leading" secondItem="J3e-WT-fYS" secondAttribute="trailing" constant="-68" id="Fie-OS-u9A"/>
                             <constraint firstItem="cor-IV-WdS" firstAttribute="centerX" secondItem="vUI-Sd-QIZ" secondAttribute="centerX" id="IsA-bg-zcd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4gb-IM-9wy" secondAttribute="trailing" constant="4" id="JDj-bj-C7f"/>
                             <constraint firstItem="ulY-n0-3X0" firstAttribute="leading" secondItem="jet-R1-2WH" secondAttribute="trailing" constant="-18" id="NDJ-3R-OrP"/>
                             <constraint firstItem="2PI-GQ-0zF" firstAttribute="leading" secondItem="ulY-n0-3X0" secondAttribute="trailing" constant="-87" id="Ntf-ed-WK5"/>
                             <constraint firstItem="efL-Nx-AeG" firstAttribute="top" secondItem="ySa-fe-eSb" secondAttribute="bottom" constant="9" id="NzT-Dy-bb9"/>
@@ -1161,7 +1153,7 @@
     <resources>
         <image name="B&amp;W_theme" width="177" height="177"/>
         <image name="Chaos_theme" width="177" height="177"/>
-        <image name="Colors_theme" width="177" height="179"/>
+        <image name="Colors_theme" width="177" height="177"/>
         <image name="GameOver" width="243" height="52"/>
         <image name="School_Theme" width="177" height="177"/>
         <image name="Triangle_Text" width="111" height="29"/>
@@ -1178,6 +1170,7 @@
         <image name="pause_button" width="47" height="47"/>
         <image name="restart_big" width="350" height="304"/>
         <image name="return_button" width="23" height="29"/>
+        <image name="shopping_cart" width="198" height="172"/>
         <image name="trophy_new" width="43" height="31"/>
         <image name="棕色tri" width="104" height="93"/>
     </resources>

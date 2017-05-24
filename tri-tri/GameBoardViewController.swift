@@ -97,6 +97,9 @@ class GameBoardViewController: UIViewController {
     var shape_type_index : Array<Int> = [0 , 0, 0]
     //indicate pause
     var paused = false
+    
+    //indicate into theme menu
+    var in_theme_menu = false
 
     var player = AVPlayer()
     
@@ -641,6 +644,125 @@ class GameBoardViewController: UIViewController {
         return CGFloat(new_y)
     }
     
+    
+    //origin
+    var day_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var night_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var BW_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var chaos_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var school_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var colors_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    
+    
+    var day_theme_origin = CGPoint(x: 0, y: 0)
+    var night_theme_origin = CGPoint(x: 0, y: 0)
+    var BW_theme_origin = CGPoint(x: 0, y: 0)
+    var chaos_theme_origin = CGPoint(x: 0, y: 0)
+    var school_theme_origin = CGPoint(x: 0, y: 0)
+    var colors_theme_origin = CGPoint(x: 0, y: 0)
+
+    func theme_menu_action() -> Void {
+        in_theme_menu = true
+        let theme_menu: UIView = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
+        theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+        theme_menu.alpha = 0
+        theme_menu.tag = 100
+        super.view.isUserInteractionEnabled = false
+        self.view.isUserInteractionEnabled = true
+        self.view.addSubview(theme_menu)
+        theme_menu.fadeIn()
+        
+        
+        
+        //add buttons
+        day_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(145), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        day_theme_origin = day_theme_button.frame.origin
+        day_theme_button.setBackgroundImage(UIImage(named:"day_theme"), for: .normal)
+        self.view.addSubview(day_theme_button)
+        
+        night_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(145), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        night_theme_origin = night_theme_button.frame.origin
+        night_theme_button.setBackgroundImage(UIImage(named:"night_theme"), for: .normal)
+        self.view.addSubview(night_theme_button)
+        
+        
+        BW_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        BW_theme_origin = BW_theme_button.frame.origin
+        BW_theme_button.setBackgroundImage(UIImage(named:"B&W_theme"), for: .normal)
+        self.view.addSubview(BW_theme_button)
+        
+        chaos_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        chaos_theme_origin = chaos_theme_button.frame.origin
+        chaos_theme_button.setBackgroundImage(UIImage(named:"Chaos_theme"), for: .normal)
+        self.view.addSubview(chaos_theme_button)
+        
+        
+        school_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        school_theme_origin = school_theme_button.frame.origin
+        school_theme_button.setBackgroundImage(UIImage(named:"School_Theme"), for: .normal)
+        self.view.addSubview(school_theme_button)
+        
+        colors_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        colors_theme_origin = colors_theme_button.frame.origin
+        colors_theme_button.setBackgroundImage(UIImage(named:"Colors_theme"), for: .normal)
+        self.view.addSubview(colors_theme_button)
+        
+        //add white to 遮挡
+        let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(120)))
+        white_cover.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+        self.view.addSubview(white_cover)
+        
+        
+        //add triangle text
+        let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(132), y: pause_screen_y_transform(50), width: pause_screen_x_transform(111), height: pause_screen_y_transform(29)))
+        triangle_text.image = UIImage(named: "Triangle_Text")
+        //triangle_text.sizeToFit()
+        self.view.addSubview(triangle_text)
+        
+        //add  return button
+        let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(90), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
+        return_button.setBackgroundImage(UIImage(named:"return_button"), for: .normal)
+        self.view.addSubview(return_button)
+        
+        return_button.whenButtonIsClicked(action: {
+            self.in_theme_menu = false
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            
+            self.day_theme_button.fadeOut()
+            self.night_theme_button.fadeOut()
+            self.BW_theme_button.fadeOut()
+            self.chaos_theme_button.fadeOut()
+            self.school_theme_button.fadeOut()
+            self.colors_theme_button.fadeOut()
+            triangle_text.fadeOut()
+            return_button.fadeOut()
+            white_cover.fadeOut()
+            theme_menu.fadeOut()
+            
+            self.day_theme_button.removeFromSuperview()
+            self.night_theme_button.removeFromSuperview()
+            self.BW_theme_button.removeFromSuperview()
+            self.chaos_theme_button.removeFromSuperview()
+            self.school_theme_button.removeFromSuperview()
+            self.colors_theme_button.removeFromSuperview()
+            triangle_text.removeFromSuperview()
+            return_button.removeFromSuperview()
+            white_cover.removeFromSuperview()
+            theme_menu.removeFromSuperview()
+        })
+        
+        
+
+        
+    
+    }
 
     @IBAction func pause_button(_ sender: UIButton) {
         do{button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -662,33 +784,37 @@ class GameBoardViewController: UIViewController {
         let continue_button = MyButton(frame: CGRect(x: pause_screen_x_transform(87.5), y: pause_screen_y_transform(283.5), width: pause_screen_x_transform(200), height: pause_screen_y_transform(170)))
         continue_button.setBackgroundImage(continue_pic, for: .normal)
         continue_button.tag = 50
-        continue_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
+        //continue_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
         
-        let home_button = MyButton(frame: CGRect(x: pause_screen_x_transform(137.5), y: pause_screen_y_transform(190), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
+        let home_button = MyButton(frame: CGRect(x: pause_screen_x_transform(52), y: pause_screen_y_transform(333.5), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
         home_button.setBackgroundImage(home_pic, for: .normal)
         home_button.tag = 51
-        home_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
+        //home_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
         
-        let like_button = MyButton(frame: CGRect(x: pause_screen_x_transform(52), y: pause_screen_y_transform(333.5), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
-        like_button.setBackgroundImage(like_pic, for: .normal)
-        like_button.tag = 52
-        like_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
+        let shopping_button = MyButton(frame: CGRect(x: pause_screen_x_transform(222.5), y: pause_screen_y_transform(333.5), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
+        shopping_button.setBackgroundImage(shopping_pic, for: .normal)
+        shopping_button.tag = 52
+        //like_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
         
-        let restart_button = MyButton(frame: CGRect(x: pause_screen_x_transform(222.5), y: pause_screen_y_transform(333.5), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
+        let restart_button = MyButton(frame: CGRect(x: pause_screen_x_transform(137.5), y: pause_screen_y_transform(190), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
+            //
         restart_button.setBackgroundImage(restart_pic, for: .normal)
         restart_button.tag = 53
-        restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
+        //restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
         
         let change_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(222.5), y: pause_screen_y_transform(570), width: pause_screen_x_transform(100), height: pause_screen_y_transform(30)))
         change_theme_button.setTitle("day/night", for: .normal)
         change_theme_button.setTitleColor(.red, for: .normal)
         change_theme_button.tag = 54
         
+        //let theme_menu_button = MyButton(frame: CG)
+    
+        
         continue_button.whenButtonIsClicked(action:{
             pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             continue_button.removeFromSuperview()
             home_button.removeFromSuperview()
-            like_button.removeFromSuperview()
+            shopping_button.removeFromSuperview()
             restart_button.removeFromSuperview()
             change_theme_button.removeFromSuperview()
             pause_screen.removeFromSuperview()
@@ -704,8 +830,7 @@ class GameBoardViewController: UIViewController {
 
         })
         
-        like_button.whenButtonIsClicked(action:{
-            print ("Thank U 4 like us!!!")
+        shopping_button.whenButtonIsClicked(action:{
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -713,6 +838,7 @@ class GameBoardViewController: UIViewController {
                 
             }
             self.button_player.play()
+            self.theme_menu_action()
 
         })
         
@@ -780,25 +906,25 @@ class GameBoardViewController: UIViewController {
         })
         continue_button.alpha = 0
         home_button.alpha = 0
-        like_button.alpha = 0
+        shopping_button.alpha = 0
         restart_button.alpha = 0
         self.view.addSubview(continue_button)
         self.view.addSubview(home_button)
-        self.view.addSubview(like_button)
+        self.view.addSubview(shopping_button)
         self.view.addSubview(restart_button)
         self.view.addSubview(change_theme_button)
         
         //fade in
         continue_button.fadeInWithDisplacement()
         home_button.fadeInWithDisplacement()
-        like_button.fadeInWithDisplacement()
+        shopping_button.fadeInWithDisplacement()
         restart_button.fadeInWithDisplacement()
         
         func continue_but(sender: UIButton!){
             pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             continue_button.removeFromSuperview()
             home_button.removeFromSuperview()
-            like_button.removeFromSuperview()
+            shopping_button.removeFromSuperview()
             restart_button.removeFromSuperview()
             paused = false
         }
@@ -808,7 +934,7 @@ class GameBoardViewController: UIViewController {
             self.present(nextViewController, animated: true, completion: nil)
             //self.timer.invalidate()
         }
-        func like_but(sender: UIButton!){
+        func shopping_button(sender: UIButton!){
             print ("Thank U 4 like us!!!")
         }
         func restart_but(sender: UIButton!){
@@ -827,7 +953,7 @@ class GameBoardViewController: UIViewController {
                 pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
                 continue_button.removeFromSuperview()
                 home_button.removeFromSuperview()
-                like_button.removeFromSuperview()
+                shopping_button.removeFromSuperview()
                 restart_button.removeFromSuperview()
                 break
             case 51:
@@ -858,7 +984,7 @@ class GameBoardViewController: UIViewController {
     
     //function in response to drag movement
     func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
-        if !paused{
+        if (!paused && !in_theme_menu){
             
         
         var actual_type_index = 0
@@ -1037,7 +1163,55 @@ class GameBoardViewController: UIViewController {
 
         }
         }
-    }
+        else if(in_theme_menu){
+            let transition0 = gesture.translation(in: day_theme_button)
+            //上1/3和下1/3的空间
+            if(day_theme_button.frame.origin.y < (pause_screen_y_transform(145)+day_theme_button.frame.height/3) && school_theme_button.frame.origin.y > pause_screen_y_transform(493+144) - school_theme_button.frame.height/3 - school_theme_button.frame.height){
+                day_theme_button.frame.origin = CGPoint(x: day_theme_origin.x, y: (day_theme_origin.y + transition0.y))
+                night_theme_button.frame.origin = CGPoint(x: night_theme_origin.x, y: (night_theme_origin.y + transition0.y))
+                BW_theme_button.frame.origin = CGPoint(x: BW_theme_origin.x, y: (BW_theme_origin.y + transition0.y))
+                chaos_theme_button.frame.origin = CGPoint(x: chaos_theme_origin.x, y: (chaos_theme_origin.y + transition0.y))
+                school_theme_button.frame.origin = CGPoint(x: school_theme_origin.x, y: (school_theme_origin.y + transition0.y))
+                colors_theme_button.frame.origin = CGPoint(x: colors_theme_origin.x, y: (colors_theme_origin.y + transition0.y))
+                if(gesture.state == .ended){
+                    day_theme_origin.y = day_theme_button.frame.origin.y
+                    night_theme_origin.y = night_theme_button.frame.origin.y
+                    BW_theme_origin.y = BW_theme_button.frame.origin.y
+                    chaos_theme_origin.y = chaos_theme_button.frame.origin.y
+                    school_theme_origin.y = school_theme_button.frame.origin.y
+                    colors_theme_origin.y = colors_theme_button.frame.origin.y
+                }
+            }else{
+                if(gesture.state == .ended){
+                    day_theme_origin.y = pause_screen_y_transform(145)
+                    night_theme_origin.y =  pause_screen_y_transform(145)
+                    BW_theme_origin.y = pause_screen_y_transform(319)
+                    chaos_theme_origin.y = pause_screen_y_transform(319)
+                    school_theme_origin.y = pause_screen_y_transform(493)
+                    colors_theme_origin.y = pause_screen_y_transform(493)
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.day_theme_button.frame.origin.y = self.day_theme_origin.y
+                        self.night_theme_button.frame.origin.y = self.night_theme_origin.y
+                        self.BW_theme_button.frame.origin.y = self.BW_theme_origin.y
+                        self.chaos_theme_button.frame.origin.y = self.chaos_theme_origin.y
+                        self.school_theme_button.frame.origin.y = self.school_theme_origin.y
+                        self.colors_theme_button.frame.origin.y = self.colors_theme_origin.y
+                        
+                    })
+                }
+            }
+            
+            
+            
+        }
+        
+  
+            
+            
+            
+            
+        }
+    
     
     //compute distance between two CGPoint (Square Form) (not using rn)
     func distance_generator( drag_location: CGPoint, triangle_location: CGPoint) -> Double {
@@ -1354,6 +1528,8 @@ class GameBoardViewController: UIViewController {
     let restart_pic = UIImage(named:"restart")
     
     let like_pic = UIImage(named:"like")
+    
+    let shopping_pic = UIImage(named:"shopping_cart")
     
     let continue_pic = UIImage(named:"continue")
     
