@@ -713,6 +713,7 @@ class GameBoardViewController: UIViewController {
             self.triangle_title.image = UIImage(named:"day mode triangle title")
             self.generator_array[5] = UIImage(named: "dark_green_tri")!
             self.change_current_shapes_according_to_theme()
+            self.change_current_board_according_to_theme()
         })
         
         self.view.addSubview(day_theme_button)
@@ -744,6 +745,7 @@ class GameBoardViewController: UIViewController {
             self.triangle_title.image = UIImage(named:"night mode triangle title")
             self.generator_array[5] = UIImage(named: "六角大王小肉")!
             self.change_current_shapes_according_to_theme()
+            self.change_current_board_according_to_theme()
         })
         self.view.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
@@ -983,44 +985,7 @@ class GameBoardViewController: UIViewController {
            // self.timer.invalidate()
         })
         
-        change_theme_button.whenButtonIsClicked(action:{
         
-            
-                if (self.ThemeType == 1){   //change to 2
-                    defaults.set(2, forKey: "tritri_Theme")
-                    self.ThemeType = 2
-                    self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
-                    self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
-                    self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
-                    self.Restore_Grey_Tris()
-                    self.change_all_back_tris_image()
-                    self.HightestScoreBoard.textColor = UIColor(red: 186.0/255, green: 179.0/255, blue: 150.0/255, alpha: 1.0)
-                    self.MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
-                    self.trophy.image = UIImage(named:"night mode 奖杯")
-                    self.pause.setImage(UIImage(named: "night mode pause"), for: .normal)
-                    
-                }else { //change to 1
-                    defaults.set(1, forKey: "tritri_Theme")
-                    self.ThemeType = 1
-                    self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
-                    self.downwards_tri = UIImage(named:"grey_tir_downwards")
-                    self.upwards_tri = UIImage(named:"grey_tri_upwards")
-                    self.Restore_Grey_Tris()
-                    self.change_all_back_tris_image()
-                    self.HightestScoreBoard.textColor = UIColor(red: 59.0/255, green: 76.0/255, blue: 65.0/255, alpha: 1.0)
-                    self.MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
-                    self.trophy.image = UIImage(named:"trophy_new")
-                    self.pause.setImage(UIImage(named: "pause_button"), for: .normal)
-                }
-            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
-                self.button_player.prepareToPlay()
-            }
-            catch{
-                
-            }
-            self.button_player.play()
-
-        })
         continue_button.alpha = 0
         home_button.alpha = 0
         shopping_button.alpha = 0
@@ -8717,6 +8682,20 @@ func randomNumber(probabilities: [Double]) -> Int {
         }
     }
 
+    func change_current_board_according_to_theme(){
+        var shape_5_color_up = UIImage()
+        var shape_5_color_down = UIImage()
+        if (ThemeType == 1){
+            shape_5_color_up = UIImage(named: "green_up")!
+            shape_5_color_down = UIImage(named: "green_down")!
+        }
+        else if (ThemeType == 2){
+            shape_5_color_up = UIImage(named: "小肉 up")!
+            shape_5_color_down = UIImage(named: "小肉 down")!
+        }
+        
+        
+    }
     
 }
 
