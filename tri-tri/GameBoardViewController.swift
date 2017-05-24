@@ -683,24 +683,66 @@ class GameBoardViewController: UIViewController {
         day_theme_origin = day_theme_button.frame.origin
         day_theme_button.setBackgroundImage(UIImage(named:"day_theme"), for: .normal)
         day_theme_button.alpha = 0
+        day_theme_button.whenButtonIsClicked(action:{
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+            self.defaults.set(1, forKey: "tritri_Theme")
+        })
+        
         self.view.addSubview(day_theme_button)
         day_theme_button.fadeInWithDisplacement()
         
         night_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(145), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         night_theme_origin = night_theme_button.frame.origin
         night_theme_button.setBackgroundImage(UIImage(named:"night_theme"), for: .normal)
+        night_theme_button.alpha = 0
+        night_theme_button.whenButtonIsClicked(action:{
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+            self.defaults.set(2, forKey: "tritri_Theme")
+        })
         self.view.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
         
         BW_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         BW_theme_origin = BW_theme_button.frame.origin
         BW_theme_button.setBackgroundImage(UIImage(named:"B&W_theme"), for: .normal)
+        BW_theme_button.alpha = 0
+        BW_theme_button.whenButtonIsClicked(action:{
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+        })
         self.view.addSubview(BW_theme_button)
         BW_theme_button.fadeInWithDisplacement()
         
         chaos_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         chaos_theme_origin = chaos_theme_button.frame.origin
         chaos_theme_button.setBackgroundImage(UIImage(named:"Chaos_theme"), for: .normal)
+        chaos_theme_button.alpha = 0
+        chaos_theme_button.whenButtonIsClicked(action:{
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+        })
         self.view.addSubview(chaos_theme_button)
         chaos_theme_button.fadeInWithDisplacement()
         
@@ -708,12 +750,33 @@ class GameBoardViewController: UIViewController {
         school_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         school_theme_origin = school_theme_button.frame.origin
         school_theme_button.setBackgroundImage(UIImage(named:"School_Theme"), for: .normal)
+        school_theme_button.alpha = 0
+        school_theme_button.whenButtonIsClicked(action:{
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+        })
         self.view.addSubview(school_theme_button)
         school_theme_button.fadeInWithDisplacement()
         
         colors_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         colors_theme_origin = colors_theme_button.frame.origin
         colors_theme_button.setBackgroundImage(UIImage(named:"Colors_theme"), for: .normal)
+        colors_theme_button.alpha = 0
+        colors_theme_button.whenButtonIsClicked(action:{
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+        })
+
         self.view.addSubview(colors_theme_button)
         colors_theme_button.fadeInWithDisplacement()
         
