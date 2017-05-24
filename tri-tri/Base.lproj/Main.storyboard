@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -102,14 +103,6 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="Colors_theme"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADR-ih-zxd">
-                                <rect key="frame" x="34" y="481" width="148.5" height="144"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="144" id="Xef-dh-xFu"/>
-                                    <constraint firstAttribute="width" constant="148.5" id="j59-OG-SPb"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="School_Theme"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byO-Zs-1va">
                                 <rect key="frame" x="34" y="292" width="148.5" height="144"/>
                                 <constraints>
@@ -127,7 +120,7 @@
                                 <state key="normal" title="Button" image="Chaos_theme"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGY-2t-eWk">
-                                <rect key="frame" x="208" y="107" width="150" height="144"/>
+                                <rect key="frame" x="216" y="107" width="150" height="144"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="144" id="0se-u3-cSu"/>
                                     <constraint firstAttribute="width" constant="150" id="pxl-DR-ELA"/>
@@ -168,20 +161,27 @@
                                     <segue destination="g9C-ac-axW" kind="show" id="CE0-c4-o5J"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADR-ih-zxd">
+                                <rect key="frame" x="34" y="481" width="148.5" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="Xef-dh-xFu"/>
+                                    <constraint firstAttribute="width" constant="148.5" id="j59-OG-SPb"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="School_Theme"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ikp-Gf-toU" firstAttribute="leading" secondItem="byO-Zs-1va" secondAttribute="trailing" constant="-8.5" id="831-Rf-Q5d"/>
+                            <constraint firstItem="Ikp-Gf-toU" firstAttribute="centerX" secondItem="byO-Zs-1va" secondAttribute="centerX" constant="79.25" id="831-Rf-Q5d"/>
                             <constraint firstItem="Ikp-Gf-toU" firstAttribute="leading" secondItem="ADR-ih-zxd" secondAttribute="trailing" constant="-8.5" id="8DV-gN-43g"/>
                             <constraint firstItem="g0x-Wl-psB" firstAttribute="top" secondItem="UHF-mt-kfK" secondAttribute="bottom" constant="8" id="Afx-bu-uBG"/>
                             <constraint firstItem="Z6y-Yr-6cd" firstAttribute="top" secondItem="tkc-0V-y28" secondAttribute="bottom" constant="17" id="CAy-Kc-5nd"/>
-                            <constraint firstItem="XGY-2t-eWk" firstAttribute="leading" secondItem="Z6y-Yr-6cd" secondAttribute="trailing" constant="-28" id="E4S-c3-giV"/>
+                            <constraint firstItem="XGY-2t-eWk" firstAttribute="centerX" secondItem="Z6y-Yr-6cd" secondAttribute="centerX" constant="104" id="E4S-c3-giV"/>
                             <constraint firstAttribute="trailing" secondItem="UHF-mt-kfK" secondAttribute="trailing" id="F4T-D7-QxR"/>
                             <constraint firstItem="Ikp-Gf-toU" firstAttribute="centerX" secondItem="AKG-P8-TXu" secondAttribute="centerX" id="GFr-RA-7UA"/>
                             <constraint firstItem="Z6y-Yr-6cd" firstAttribute="centerX" secondItem="g0x-Wl-psB" secondAttribute="centerX" constant="79.25" id="J3f-L8-WS7"/>
-                            <constraint firstItem="byO-Zs-1va" firstAttribute="top" secondItem="Ikp-Gf-toU" secondAttribute="bottom" constant="-52" id="Pwa-LV-kJj"/>
+                            <constraint firstItem="byO-Zs-1va" firstAttribute="centerY" secondItem="Ikp-Gf-toU" secondAttribute="centerY" constant="30.5" id="Pwa-LV-kJj"/>
                             <constraint firstItem="XGY-2t-eWk" firstAttribute="top" secondItem="UHF-mt-kfK" secondAttribute="bottom" constant="8" id="V7l-Hg-qf6"/>
-                            <constraint firstItem="Z6y-Yr-6cd" firstAttribute="leading" secondItem="g0x-Wl-psB" secondAttribute="trailing" constant="-44.5" id="Wwb-S4-xZ3"/>
                             <constraint firstItem="UHF-mt-kfK" firstAttribute="top" secondItem="AKG-P8-TXu" secondAttribute="top" id="Z9U-Ia-qlt"/>
                             <constraint firstItem="Z6y-Yr-6cd" firstAttribute="centerX" secondItem="AKG-P8-TXu" secondAttribute="centerX" id="a3Q-ak-h6U"/>
                             <constraint firstItem="0rA-IZ-o3n" firstAttribute="top" secondItem="tkc-0V-y28" secondAttribute="bottom" constant="46" id="bLJ-Uo-V6k"/>
@@ -193,7 +193,7 @@
                             <constraint firstItem="hdS-Ax-iOK" firstAttribute="top" secondItem="HhX-5n-jh6" secondAttribute="bottom" constant="42" id="pA0-td-ReU"/>
                             <constraint firstAttribute="trailing" secondItem="UHF-mt-kfK" secondAttribute="trailing" id="q4P-4l-s7J"/>
                             <constraint firstItem="TND-qb-WL2" firstAttribute="leading" secondItem="Ikp-Gf-toU" secondAttribute="trailing" constant="13" id="u3y-eK-gRt"/>
-                            <constraint firstItem="hdS-Ax-iOK" firstAttribute="top" secondItem="ADR-ih-zxd" secondAttribute="bottom" constant="42" id="wcx-HS-Nl7"/>
+                            <constraint firstItem="hdS-Ax-iOK" firstAttribute="top" secondItem="ADR-ih-zxd" secondAttribute="centerY" constant="114" id="wcx-HS-Nl7"/>
                             <constraint firstItem="0rA-IZ-o3n" firstAttribute="leading" secondItem="AKG-P8-TXu" secondAttribute="leadingMargin" constant="14" id="yzR-z1-bnC"/>
                         </constraints>
                     </view>
