@@ -8887,11 +8887,44 @@ func randomNumber(probabilities: [Double]) -> Int {
             shape_5_color_up = UIImage(named: "小肉 up")!
             shape_5_color_down = UIImage(named: "小肉 down")!
         }
-        
+        var i = 0
+        for row in single_tri_stored_type_index{
+            var j = 0
+            for type in row{
+                if (type == 5){
+                    if (true_if_up(i: i, j: j)){
+                        Change_Corresponding_Color_With_Image(x: i, y: j, image: shape_5_color_up)
+                    }
+                    else{
+                        Change_Corresponding_Color_With_Image(x: i, y: j, image: shape_5_color_down)
+                    }
+                }
+                j += 1
+            }
+            i += 1
+        }
         
     }
     
 }
 
-
+//return true if upward triangle
+func true_if_up(i: Int, j: Int) -> Bool{
+    if (i == 0 || i == 2 || i == 3 || i == 5){
+        if((i + j)%2 == 0){
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    else {
+        if((i + j)%2 == 1){
+            return true
+        }
+        else {
+            return false
+        }
+    }
+}
 
