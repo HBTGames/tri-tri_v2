@@ -228,9 +228,9 @@ class GameOverViewController: UIViewController {
         self.view.isUserInteractionEnabled = true
         self.view.addSubview(theme_menu)
         theme_menu.fadeIn()
-        
-        
-        
+        let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(120)))
+        let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(40), width: pause_screen_x_transform(155), height: pause_screen_y_transform(50)))
+        let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(90), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
         day_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(145), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         day_theme_origin = day_theme_button.frame.origin
@@ -251,6 +251,29 @@ class GameOverViewController: UIViewController {
             self.trophy.image = UIImage(named:"trophy_new")
             self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             self.gameover_title.image = UIImage(named:"day mode gameover title")
+            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            
+            self.day_theme_button.fadeOut()
+            self.night_theme_button.fadeOut()
+            self.BW_theme_button.fadeOut()
+            self.chaos_theme_button.fadeOut()
+            self.school_theme_button.fadeOut()
+            self.colors_theme_button.fadeOut()
+            triangle_text.fadeOut()
+            return_button.fadeOut()
+            white_cover.fadeOut()
+            theme_menu.fadeOut()
+            
+            self.day_theme_button.removeFromSuperview()
+            self.night_theme_button.removeFromSuperview()
+            self.BW_theme_button.removeFromSuperview()
+            self.chaos_theme_button.removeFromSuperview()
+            self.school_theme_button.removeFromSuperview()
+            self.colors_theme_button.removeFromSuperview()
+            triangle_text.removeFromSuperview()
+            return_button.removeFromSuperview()
+            white_cover.removeFromSuperview()
+            theme_menu.removeFromSuperview()
         })
         
         self.view.addSubview(day_theme_button)
@@ -275,6 +298,29 @@ class GameOverViewController: UIViewController {
             self.trophy.image = UIImage(named:"night mode 奖杯")
             self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             self.gameover_title.image = UIImage(named:"night mode gameover title")
+            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            
+            self.day_theme_button.fadeOut()
+            self.night_theme_button.fadeOut()
+            self.BW_theme_button.fadeOut()
+            self.chaos_theme_button.fadeOut()
+            self.school_theme_button.fadeOut()
+            self.colors_theme_button.fadeOut()
+            triangle_text.fadeOut()
+            return_button.fadeOut()
+            white_cover.fadeOut()
+            theme_menu.fadeOut()
+            
+            self.day_theme_button.removeFromSuperview()
+            self.night_theme_button.removeFromSuperview()
+            self.BW_theme_button.removeFromSuperview()
+            self.chaos_theme_button.removeFromSuperview()
+            self.school_theme_button.removeFromSuperview()
+            self.colors_theme_button.removeFromSuperview()
+            triangle_text.removeFromSuperview()
+            return_button.removeFromSuperview()
+            white_cover.removeFromSuperview()
+            theme_menu.removeFromSuperview()
         })
         self.view.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
@@ -346,7 +392,7 @@ class GameOverViewController: UIViewController {
         colors_theme_button.fadeInWithDisplacement()
         
         //add white to 遮挡
-        let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(120)))
+        
         white_cover.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
         white_cover.alpha = 0
         self.view.addSubview(white_cover)
@@ -354,7 +400,7 @@ class GameOverViewController: UIViewController {
         
         
         //add triangle text
-        let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(40), width: pause_screen_x_transform(155), height: pause_screen_y_transform(50)))
+        
         triangle_text.image = UIImage(named: "day mode triangle title")
         triangle_text.contentMode = .scaleAspectFit
         //triangle_text.sizeToFit()
@@ -363,7 +409,7 @@ class GameOverViewController: UIViewController {
         triangle_text.fadeInWithDisplacement()
         
         //add  return button
-        let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(90), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
+        
         return_button.setBackgroundImage(UIImage(named:"return_button"), for: .normal)
         
         
