@@ -16,6 +16,9 @@ class GameOverViewController: UIViewController {
 
     @IBOutlet weak var score_board: UILabel!
     
+    @IBOutlet weak var gameover_title: UIImageView!
+    
+    @IBOutlet weak var trophy: UIImageView!
     var restart_player = AVAudioPlayer()
     var button_player = AVAudioPlayer()
     @IBOutlet weak var restart_button: UIButton!
@@ -140,8 +143,14 @@ class GameOverViewController: UIViewController {
         // Do any additional setup after loading the view.
         if ThemeType == 1{
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"trophy_new")
+            self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+            self.gameover_title.image = UIImage(named:"day mode gameover title")
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"night mode 奖杯")
+            self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
+            self.gameover_title.image = UIImage(named:"night mode gameover title")
         }
         
         //add pangesture
@@ -239,6 +248,9 @@ class GameOverViewController: UIViewController {
             self.ThemeType = 1
             defaults.set(1, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"trophy_new")
+            self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+            self.gameover_title.image = UIImage(named:"day mode gameover title")
         })
         
         self.view.addSubview(day_theme_button)
@@ -260,6 +272,9 @@ class GameOverViewController: UIViewController {
             self.ThemeType = 2
             defaults.set(2, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"night mode 奖杯")
+            self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
+            self.gameover_title.image = UIImage(named:"night mode gameover title")
         })
         self.view.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()

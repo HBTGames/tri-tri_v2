@@ -306,7 +306,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="GameOver" translatesAutoresizingMaskIntoConstraints="NO" id="cor-IV-WdS">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="GameOver" translatesAutoresizingMaskIntoConstraints="NO" id="cor-IV-WdS">
                                 <rect key="frame" x="50" y="171" width="275" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="Le3-8k-Myi"/>
@@ -341,11 +341,13 @@
                     </view>
                     <connections>
                         <outlet property="High_score_marker" destination="3GJ-KM-XwE" id="bND-hJ-gaZ"/>
+                        <outlet property="gameover_title" destination="cor-IV-WdS" id="TKf-7m-V8L"/>
                         <outlet property="home_button" destination="J3e-WT-fYS" id="VHJ-dC-ziF"/>
                         <outlet property="like_button" destination="BUo-5l-JKc" id="cnd-I8-Kef"/>
                         <outlet property="restart_button" destination="efL-Nx-AeG" id="gFk-Sd-rwD"/>
                         <outlet property="score_board" destination="2PI-GQ-0zF" id="Zcu-7Y-RP4"/>
                         <outlet property="share_button" destination="ulY-n0-3X0" id="k00-xu-RYd"/>
+                        <outlet property="trophy" destination="jet-R1-2WH" id="KaY-OA-Fzp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2d-sK-tLb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -722,7 +724,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="trophy_new" translatesAutoresizingMaskIntoConstraints="NO" id="P0M-hw-129">
-                                <rect key="frame" x="123" y="87" width="43" height="31"/>
+                                <rect key="frame" x="123" y="86" width="43" height="31"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="棕色tri" translatesAutoresizingMaskIntoConstraints="NO" id="gxz-1Y-RXe">
                                 <rect key="frame" x="4" y="523" width="104" height="93"/>
@@ -828,7 +830,7 @@
                             <constraint firstItem="NWO-Jw-TIU" firstAttribute="centerX" secondItem="p5C-ee-UVz" secondAttribute="centerX" id="8ym-ie-Gcp"/>
                             <constraint firstItem="Jmp-g9-Cfc" firstAttribute="centerY" secondItem="hn8-pp-UXb" secondAttribute="centerY" id="94w-mY-Pna"/>
                             <constraint firstItem="hn8-pp-UXb" firstAttribute="centerY" secondItem="SyH-TJ-ItG" secondAttribute="centerY" id="96I-5z-TvP"/>
-                            <constraint firstItem="P0M-hw-129" firstAttribute="top" secondItem="gNR-HH-lwS" secondAttribute="bottom" constant="38" id="97J-bv-asd"/>
+                            <constraint firstItem="P0M-hw-129" firstAttribute="top" secondItem="gNR-HH-lwS" secondAttribute="bottom" constant="37" id="97J-bv-asd"/>
                             <constraint firstItem="7TJ-kQ-GJr" firstAttribute="centerY" secondItem="ReQ-TU-9gI" secondAttribute="centerY" id="9DH-7A-3fF"/>
                             <constraint firstItem="ygd-va-KF8" firstAttribute="centerY" secondItem="aYb-dV-99H" secondAttribute="centerY" id="9Tf-60-cfP"/>
                             <constraint firstItem="NMt-fg-ydx" firstAttribute="centerY" secondItem="v9m-r2-uGt" secondAttribute="centerY" id="9Xf-lK-5rA"/>
