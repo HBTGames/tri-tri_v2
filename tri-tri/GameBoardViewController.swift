@@ -7212,6 +7212,14 @@ number_of_lines_erased += 1
             filled[0][4] = false
             filled[0][5] = false
             filled[0][6] = false
+            
+            single_tri_stored_type_index[0][0] = -1
+            single_tri_stored_type_index[0][1] = -1
+            single_tri_stored_type_index[0][2] = -1
+            single_tri_stored_type_index[0][3] = -1
+            single_tri_stored_type_index[0][4] = -1
+            single_tri_stored_type_index[0][5] = -1
+            single_tri_stored_type_index[0][6] = -1
         }
         
         //eliminate second row
@@ -7226,7 +7234,15 @@ number_of_lines_erased += 1
             filled[1][6] = false
             filled[1][7] = false
             filled[1][8] = false
-
+            single_tri_stored_type_index[1][0] = -1
+            single_tri_stored_type_index[1][1] = -1
+            single_tri_stored_type_index[1][2] = -1
+            single_tri_stored_type_index[1][3] = -1
+            single_tri_stored_type_index[1][4] = -1
+            single_tri_stored_type_index[1][5] = -1
+            single_tri_stored_type_index[1][6] = -1
+            single_tri_stored_type_index[1][7] = -1
+            single_tri_stored_type_index[1][8] = -1
             
         }
         //eliminate third row
@@ -7243,7 +7259,17 @@ number_of_lines_erased += 1
             filled[2][8] = false
             filled[2][9] = false
             filled[2][10] = false
-
+            single_tri_stored_type_index[2][0] = -1
+            single_tri_stored_type_index[2][1] = -1
+            single_tri_stored_type_index[2][2] = -1
+            single_tri_stored_type_index[2][3] = -1
+            single_tri_stored_type_index[2][4] = -1
+            single_tri_stored_type_index[2][5] = -1
+            single_tri_stored_type_index[2][6] = -1
+            single_tri_stored_type_index[2][7] = -1
+            single_tri_stored_type_index[2][8] = -1
+            single_tri_stored_type_index[2][9] = -1
+            single_tri_stored_type_index[2][10] = -1
         }
         
         //eliminate fourth row
@@ -7261,7 +7287,17 @@ number_of_lines_erased += 1
             filled[3][9] = false
             filled[3][10] = false
             
-
+            single_tri_stored_type_index[3][0] = -1
+            single_tri_stored_type_index[3][1] = -1
+            single_tri_stored_type_index[3][2] = -1
+            single_tri_stored_type_index[3][3] = -1
+            single_tri_stored_type_index[3][4] = -1
+            single_tri_stored_type_index[3][5] = -1
+            single_tri_stored_type_index[3][6] = -1
+            single_tri_stored_type_index[3][7] = -1
+            single_tri_stored_type_index[3][8] = -1
+            single_tri_stored_type_index[3][9] = -1
+            single_tri_stored_type_index[3][10] = -1
             
         }
         //eliminate fifth row
@@ -7277,7 +7313,15 @@ number_of_lines_erased += 1
             filled[4][7] = false
             filled[4][8] = false
             
-   
+            single_tri_stored_type_index[4][0] = -1
+            single_tri_stored_type_index[4][1] = -1
+            single_tri_stored_type_index[4][2] = -1
+            single_tri_stored_type_index[4][3] = -1
+            single_tri_stored_type_index[4][4] = -1
+            single_tri_stored_type_index[4][5] = -1
+            single_tri_stored_type_index[4][6] = -1
+            single_tri_stored_type_index[4][7] = -1
+            single_tri_stored_type_index[4][8] = -1
         }
         ////eliminate sixth row
         if( situation5){
@@ -7290,7 +7334,13 @@ number_of_lines_erased += 1
             filled[5][5] = false
             filled[5][6] = false
             
-
+            single_tri_stored_type_index[5][0] = -1
+            single_tri_stored_type_index[5][1] = -1
+            single_tri_stored_type_index[5][2] = -1
+            single_tri_stored_type_index[5][3] = -1
+            single_tri_stored_type_index[5][4] = -1
+            single_tri_stored_type_index[5][5] = -1
+            single_tri_stored_type_index[5][6] = -1
             
         }
         
@@ -7306,7 +7356,13 @@ number_of_lines_erased += 1
             filled[5][0] = false
             filled[5][1] = false
             
-
+            single_tri_stored_type_index[2][0] = -1
+            single_tri_stored_type_index[3][0] = -1
+            single_tri_stored_type_index[3][1] = -1
+            single_tri_stored_type_index[4][0] = -1
+            single_tri_stored_type_index[4][1] = -1
+            single_tri_stored_type_index[5][0] = -1
+            single_tri_stored_type_index[5][1] = -1
             
         }
         
@@ -7323,8 +7379,15 @@ number_of_lines_erased += 1
             filled[5][2] = false
             filled[5][3] = false
             
-            
-            
+            single_tri_stored_type_index[1][0] = -1
+            single_tri_stored_type_index[2][1] = -1
+            single_tri_stored_type_index[2][2] = -1
+            single_tri_stored_type_index[3][2] = -1
+            single_tri_stored_type_index[3][3] = -1
+            single_tri_stored_type_index[4][2] = -1
+            single_tri_stored_type_index[4][3] = -1
+            single_tri_stored_type_index[5][2] = -1
+            single_tri_stored_type_index[5][3] = -1
             
             
         }
@@ -7343,8 +7406,17 @@ number_of_lines_erased += 1
             filled[5][5] = false
 
             
-            
-            
+            single_tri_stored_type_index[0][0] = -1
+            single_tri_stored_type_index[1][1] = -1
+            single_tri_stored_type_index[1][2] = -1
+            single_tri_stored_type_index[2][3] = -1
+            single_tri_stored_type_index[2][4] = -1
+            single_tri_stored_type_index[3][4] = -1
+            single_tri_stored_type_index[3][5] = -1
+            single_tri_stored_type_index[4][4] = -1
+            single_tri_stored_type_index[4][5] = -1
+            single_tri_stored_type_index[5][4] = -1
+            single_tri_stored_type_index[5][5] = -1
             
         }
         
@@ -7365,7 +7437,17 @@ number_of_lines_erased += 1
             filled[4][7] = false
             filled[5][6] = false
             
-
+            single_tri_stored_type_index[0][1] = -1
+            single_tri_stored_type_index[0][2] = -1
+            single_tri_stored_type_index[1][3] = -1
+            single_tri_stored_type_index[1][4] = -1
+            single_tri_stored_type_index[2][5] = -1
+            single_tri_stored_type_index[2][6] = -1
+            single_tri_stored_type_index[3][6] = -1
+            single_tri_stored_type_index[3][7] = -1
+            single_tri_stored_type_index[4][6] = -1
+            single_tri_stored_type_index[4][7] = -1
+            single_tri_stored_type_index[5][6] = -1
             
             
         }
@@ -7384,7 +7466,15 @@ number_of_lines_erased += 1
             filled[3][9] = false
             filled[4][8] = false
             
-
+            single_tri_stored_type_index[0][3] = -1
+            single_tri_stored_type_index[0][4] = -1
+            single_tri_stored_type_index[1][5] = -1
+            single_tri_stored_type_index[1][6] = -1
+            single_tri_stored_type_index[2][7] = -1
+            single_tri_stored_type_index[2][8] = -1
+            single_tri_stored_type_index[3][8] = -1
+            single_tri_stored_type_index[3][9] = -1
+            single_tri_stored_type_index[4][8] = -1
             
         }
         if(situation11){
@@ -7396,7 +7486,13 @@ number_of_lines_erased += 1
             filled[2][9] = false
             filled[2][10] = false
             filled[3][10] = false
-
+            single_tri_stored_type_index[0][5] = -1
+            single_tri_stored_type_index[0][6] = -1
+            single_tri_stored_type_index[1][7] = -1
+            single_tri_stored_type_index[1][8] = -1
+            single_tri_stored_type_index[2][9] = -1
+            single_tri_stored_type_index[2][10] = -1
+            single_tri_stored_type_index[3][10] = -1
             
             
         }
@@ -7412,7 +7508,13 @@ number_of_lines_erased += 1
             filled[2][0] = false
             filled[2][1] = false
             filled[3][0] = false
-
+            single_tri_stored_type_index[0][0] = -1
+            single_tri_stored_type_index[0][1] = -1
+            single_tri_stored_type_index[1][0] = -1
+            single_tri_stored_type_index[1][1] = -1
+            single_tri_stored_type_index[2][0] = -1
+            single_tri_stored_type_index[2][1] = -1
+            single_tri_stored_type_index[3][0] = -1
             
             
         }
@@ -7429,8 +7531,15 @@ number_of_lines_erased += 1
             filled[3][1] = false
             filled[3][2] = false
             filled[4][0] = false
-
-            
+            single_tri_stored_type_index[0][2] = -1
+            single_tri_stored_type_index[0][3] = -1
+            single_tri_stored_type_index[1][2] = -1
+            single_tri_stored_type_index[1][3] = -1
+            single_tri_stored_type_index[2][2] = -1
+            single_tri_stored_type_index[2][3] = -1
+            single_tri_stored_type_index[3][1] = -1
+            single_tri_stored_type_index[3][2] = -1
+            single_tri_stored_type_index[4][0] = -1
             
         }
         
@@ -7448,8 +7557,17 @@ number_of_lines_erased += 1
             filled[4][2] = false
             filled[5][0] = false
             
-
-            
+            single_tri_stored_type_index[0][4] = -1
+            single_tri_stored_type_index[0][5] = -1
+            single_tri_stored_type_index[1][4] = -1
+            single_tri_stored_type_index[1][5] = -1
+            single_tri_stored_type_index[2][4] = -1
+            single_tri_stored_type_index[2][5] = -1
+            single_tri_stored_type_index[3][3] = -1
+            single_tri_stored_type_index[3][4] = -1
+            single_tri_stored_type_index[4][1] = -1
+            single_tri_stored_type_index[4][2] = -1
+            single_tri_stored_type_index[5][0] = -1
         }
         if(situation15){
             //erase_player.play()
@@ -7465,7 +7583,17 @@ number_of_lines_erased += 1
             filled[5][1] = false
             filled[5][2] = false
 
-            
+            single_tri_stored_type_index[0][6] = -1
+            single_tri_stored_type_index[1][6] = -1
+            single_tri_stored_type_index[1][7] = -1
+            single_tri_stored_type_index[2][6] = -1
+            single_tri_stored_type_index[2][7] = -1
+            single_tri_stored_type_index[3][5] = -1
+            single_tri_stored_type_index[3][6] = -1
+            single_tri_stored_type_index[4][3] = -1
+            single_tri_stored_type_index[4][4] = -1
+            single_tri_stored_type_index[5][1] = -1
+            single_tri_stored_type_index[5][2] = -1
         }
         
         
@@ -7481,7 +7609,15 @@ number_of_lines_erased += 1
             filled[4][6] = false
             filled[5][3] = false
             filled[5][4] = false
-
+            single_tri_stored_type_index[1][8] = -1
+            single_tri_stored_type_index[2][8] = -1
+            single_tri_stored_type_index[2][9] = -1
+            single_tri_stored_type_index[3][7] = -1
+            single_tri_stored_type_index[3][8] = -1
+            single_tri_stored_type_index[4][5] = -1
+            single_tri_stored_type_index[4][6] = -1
+            single_tri_stored_type_index[5][3] = -1
+            single_tri_stored_type_index[5][4] = -1
         }
         
         
@@ -7494,6 +7630,13 @@ number_of_lines_erased += 1
             filled[4][8] = false
             filled[5][5] = false
             filled[5][6] = false
+            single_tri_stored_type_index[2][10] = -1
+            single_tri_stored_type_index[3][9] = -1
+            single_tri_stored_type_index[3][10] = -1
+            single_tri_stored_type_index[4][7] = -1
+            single_tri_stored_type_index[4][8] = -1
+            single_tri_stored_type_index[5][5] = -1
+            single_tri_stored_type_index[5][6] = -1
         }
 
         
