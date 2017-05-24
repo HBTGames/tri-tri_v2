@@ -73,7 +73,7 @@ var defaults = UserDefaults.standard
 
 class GameBoardViewController: UIViewController {
 //constraints
-    
+    var pause_screen = UIView()
     
     @IBOutlet weak var center: UILabel!
     @IBOutlet weak var green_drag_tri_x_constraint: NSLayoutConstraint!
@@ -715,7 +715,7 @@ class GameBoardViewController: UIViewController {
             self.generator_array[5] = UIImage(named: "dark_green_tri")!
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
-            
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.in_theme_menu = false
             
@@ -772,7 +772,7 @@ class GameBoardViewController: UIViewController {
             self.generator_array[5] = UIImage(named: "六角大王小肉")!
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
-            
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.in_theme_menu = false
             
@@ -939,14 +939,19 @@ class GameBoardViewController: UIViewController {
             
         }
         button_player.play()
-        let pause_screen: UIView = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
-        pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
-        pause_screen.alpha = 0
-        pause_screen.tag = 100
+        self.pause_screen = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
+        if (ThemeType == 1){
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
+        } else if (ThemeType == 2){
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
+        }
+        
+        self.pause_screen.alpha = 0
+        self.pause_screen.tag = 100
         super.view.isUserInteractionEnabled = false
         self.view.isUserInteractionEnabled = true
         self.view.addSubview(pause_screen)
-        pause_screen.fadeIn()
+        self.pause_screen.fadeIn()
         paused = true
         let continue_button = MyButton(frame: CGRect(x: pause_screen_x_transform(87.5), y: pause_screen_y_transform(283.5), width: pause_screen_x_transform(200), height: pause_screen_y_transform(170)))
         continue_button.setBackgroundImage(continue_pic, for: .normal)
@@ -978,13 +983,13 @@ class GameBoardViewController: UIViewController {
     
         
         continue_button.whenButtonIsClicked(action:{
-            pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             continue_button.removeFromSuperview()
             home_button.removeFromSuperview()
             shopping_button.removeFromSuperview()
             restart_button.removeFromSuperview()
             change_theme_button.removeFromSuperview()
-            pause_screen.removeFromSuperview()
+            self.pause_screen.removeFromSuperview()
             self.paused = false
             //self.audioPlayer.play()
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
