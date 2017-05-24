@@ -912,6 +912,33 @@ class GameBoardViewController: UIViewController {
             }
             self.button_player.play()
             self.theme_menu_action()
+            self.ThemeType = self.defaults.integer(forKey: "tritri_Theme")
+            if (self.ThemeType == 1){   //theme 1 day mode
+                self.defaults.set(1, forKey: "tritri_Theme")
+                self.ThemeType = 1
+                self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
+                self.downwards_tri = UIImage(named:"grey_tir_downwards")
+                self.upwards_tri = UIImage(named:"grey_tri_upwards")
+                self.Restore_Grey_Tris()
+                self.change_all_back_tris_image()
+                self.HightestScoreBoard.textColor = UIColor(red: 59.0/255, green: 76.0/255, blue: 65.0/255, alpha: 1.0)
+                self.MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+                self.trophy.image = UIImage(named:"trophy_new")
+                self.pause.setImage(UIImage(named: "pause_button"), for: .normal)
+            }else {                     //theme 2 night mode
+                self.defaults.set(2, forKey: "tritri_Theme")
+                self.ThemeType = 2
+                self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
+                self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
+                self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
+                self.Restore_Grey_Tris()
+                self.change_all_back_tris_image()
+                self.HightestScoreBoard.textColor = UIColor(red: 186.0/255, green: 179.0/255, blue: 150.0/255, alpha: 1.0)
+                self.MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
+                self.trophy.image = UIImage(named:"night mode 奖杯")
+                self.pause.setImage(UIImage(named: "night mode pause"), for: .normal)
+                
+            }
 
         })
         
