@@ -392,8 +392,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
             endingLineNumber = "90"
-            landmarkName = "test_gameover(_:)"
-            landmarkType = "7">
+            landmarkName = "GameBoardViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -408,7 +408,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "834"
             endingLineNumber = "834"
-            landmarkName = "pause_button(_:)"
+            landmarkName = "theme_menu_action()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -646,7 +646,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "7658"
             endingLineNumber = "7658"
-            landmarkName = "Find_Any_Available_Green_Tri(row:column:)"
+            landmarkName = "Check_for_Gameover()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -662,7 +662,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "7659"
             endingLineNumber = "7659"
-            landmarkName = "Find_Any_Available_Green_Tri(row:column:)"
+            landmarkName = "Check_for_Gameover()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

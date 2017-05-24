@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -41,37 +41,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="full_blank_menu" translatesAutoresizingMaskIntoConstraints="NO" id="FIx-b2-SRf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="menu_element" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-8Y-sX3">
-                                <rect key="frame" x="43" y="222" width="289" height="223"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0l-5k-R9J">
-                                <rect key="frame" x="100" y="185" width="175" height="147"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABN-yi-CDb">
+                                <rect key="frame" x="68" y="200" width="238" height="202"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="147" id="jFs-py-jVw"/>
-                                    <constraint firstAttribute="width" constant="175" id="jkD-ba-VsH"/>
+                                    <constraint firstAttribute="width" constant="238" id="BU1-Rs-J88"/>
+                                    <constraint firstAttribute="height" constant="202" id="jUk-eK-pFY"/>
                                 </constraints>
-                                <state key="normal" image="menu_button"/>
+                                <state key="normal" title="Button" image="continue"/>
                                 <connections>
-                                    <action selector="start_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EHy-NO-1vG"/>
-                                    <segue destination="qxD-t8-ioY" kind="presentation" modalTransitionStyle="crossDissolve" id="S5F-ry-3uu"/>
+                                    <action selector="start_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RYd-UB-vdh"/>
+                                    <segue destination="qxD-t8-ioY" kind="show" id="Hkt-ax-Thn"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5u-Zg-LxX">
+                                <rect key="frame" x="203" y="261" width="165" height="141"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="165" id="ghD-Kl-dKc"/>
+                                    <constraint firstAttribute="height" constant="141" id="nFp-pR-rVi"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="shopping_cart"/>
+                                <connections>
+                                    <action selector="theme_menu_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h1A-Tx-Jy0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="          " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WV0-1i-7h0">
+                                <rect key="frame" x="165" y="323" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFh-NN-dAa">
+                                <rect key="frame" x="7.5" y="261" width="165" height="141"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="141" id="T4s-Pc-PyG"/>
+                                    <constraint firstAttribute="width" constant="165" id="cha-Th-VqS"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="day mode like"/>
+                            </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="day mode triangle title" translatesAutoresizingMaskIntoConstraints="NO" id="j52-sZ-nKU">
+                                <rect key="frame" x="7.5" y="90" width="360" height="82"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="FIx-b2-SRf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4mq-6m-Ao4"/>
-                            <constraint firstItem="cx9-8Y-sX3" firstAttribute="centerY" secondItem="FIx-b2-SRf" secondAttribute="centerY" id="DQ5-ni-yyJ"/>
-                            <constraint firstItem="FIx-b2-SRf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HSH-oQ-70x"/>
-                            <constraint firstItem="cx9-8Y-sX3" firstAttribute="top" secondItem="H0l-5k-R9J" secondAttribute="bottom" constant="-110" id="OXi-A7-4gV"/>
-                            <constraint firstItem="H0l-5k-R9J" firstAttribute="centerX" secondItem="FIx-b2-SRf" secondAttribute="centerX" id="SUe-g5-w1P"/>
-                            <constraint firstAttribute="trailing" secondItem="FIx-b2-SRf" secondAttribute="trailing" id="UMM-cV-CzF"/>
-                            <constraint firstItem="cx9-8Y-sX3" firstAttribute="centerX" secondItem="FIx-b2-SRf" secondAttribute="centerX" id="bA2-G0-Vl2"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FIx-b2-SRf" secondAttribute="bottom" id="wIZ-jU-8k1"/>
+                            <constraint firstItem="WV0-1i-7h0" firstAttribute="top" secondItem="PFh-NN-dAa" secondAttribute="bottom" constant="-79" id="12K-Vs-Q7T"/>
+                            <constraint firstItem="j52-sZ-nKU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3wN-yx-Wh0"/>
+                            <constraint firstItem="WV0-1i-7h0" firstAttribute="top" secondItem="ABN-yi-CDb" secondAttribute="bottom" constant="-79" id="75w-Xw-avz"/>
+                            <constraint firstItem="L5u-Zg-LxX" firstAttribute="centerX" secondItem="WV0-1i-7h0" secondAttribute="centerX" constant="98" id="83m-Bc-9ZQ"/>
+                            <constraint firstItem="WV0-1i-7h0" firstAttribute="centerX" secondItem="PFh-NN-dAa" secondAttribute="centerX" constant="98" id="DVq-gz-buJ"/>
+                            <constraint firstItem="WV0-1i-7h0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="H1h-XA-I3E"/>
+                            <constraint firstItem="WV0-1i-7h0" firstAttribute="top" secondItem="L5u-Zg-LxX" secondAttribute="bottom" constant="-79" id="q2o-i0-LmP"/>
+                            <constraint firstItem="ABN-yi-CDb" firstAttribute="top" secondItem="j52-sZ-nKU" secondAttribute="bottom" constant="28" id="qE0-26-eXh"/>
+                            <constraint firstItem="ABN-yi-CDb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s8E-i6-t4q"/>
+                            <constraint firstItem="WV0-1i-7h0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tjP-mq-X7y"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="like_button" destination="PFh-NN-dAa" id="Fc8-Ys-Kas"/>
+                        <outlet property="shopping_cart" destination="L5u-Zg-LxX" id="kqg-hZ-5f9"/>
+                        <outlet property="triangle_title" destination="j52-sZ-nKU" id="46J-XK-yDg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -1162,15 +1191,15 @@
         <image name="GameOver" width="243" height="52"/>
         <image name="School_Theme" width="177" height="177"/>
         <image name="Triangle_Text" width="111" height="29"/>
+        <image name="continue" width="350" height="304"/>
+        <image name="day mode like" width="198" height="172"/>
+        <image name="day mode triangle title" width="360" height="82"/>
         <image name="day_theme" width="177" height="177"/>
-        <image name="full_blank_menu" width="375" height="667"/>
         <image name="grey_tir_downwards" width="49" height="43"/>
         <image name="grey_tri_upwards" width="49" height="43"/>
         <image name="home" width="198" height="172"/>
         <image name="like" width="198" height="172"/>
         <image name="link" width="198" height="172"/>
-        <image name="menu_button" width="230" height="199"/>
-        <image name="menu_element" width="289" height="223"/>
         <image name="night_theme" width="177" height="177"/>
         <image name="pause_button" width="47" height="47"/>
         <image name="restart_big" width="350" height="304"/>
@@ -1180,7 +1209,7 @@
         <image name="棕色tri" width="104" height="93"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jOH-pV-lXR"/>
+        <segue reference="Hkt-ax-Thn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

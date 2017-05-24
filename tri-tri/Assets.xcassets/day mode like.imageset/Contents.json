@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "day mode like.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "night mode triangle title.jpg",
       "scale" : "2x"
     },
     {
