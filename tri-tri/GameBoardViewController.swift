@@ -357,6 +357,8 @@ class GameBoardViewController: UIViewController {
             change_all_back_tris_image()
             HightestScoreBoard.textColor = UIColor(red: 59.0/255, green: 76.0/255, blue: 65.0/255, alpha: 1.0)
             MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+            trophy.image = UIImage(named:"trophy_new")
+            pause.setImage(UIImage(named: "pause_button"), for: .normal)
             
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -366,6 +368,8 @@ class GameBoardViewController: UIViewController {
             change_all_back_tris_image()
             HightestScoreBoard.textColor = UIColor(red: 186.0/255, green: 179.0/255, blue: 150.0/255, alpha: 1.0)
             MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
+            trophy.image = UIImage(named:"night mode 奖杯")
+            pause.setImage(UIImage(named: "night mode pause"), for: .normal)
         }
         //update tris origin
 
@@ -883,6 +887,8 @@ class GameBoardViewController: UIViewController {
                     self.change_all_back_tris_image()
                     self.HightestScoreBoard.textColor = UIColor(red: 186.0/255, green: 179.0/255, blue: 150.0/255, alpha: 1.0)
                     self.MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
+                    self.trophy.image = UIImage(named:"night mode 奖杯")
+                    self.pause.setImage(UIImage(named: "night mode pause"), for: .normal)
                     
                 }else { //change to 1
                     self.defaults.set(1, forKey: "tritri_Theme")
@@ -894,6 +900,8 @@ class GameBoardViewController: UIViewController {
                     self.change_all_back_tris_image()
                     self.HightestScoreBoard.textColor = UIColor(red: 59.0/255, green: 76.0/255, blue: 65.0/255, alpha: 1.0)
                     self.MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+                    self.trophy.image = UIImage(named:"trophy_new")
+                    self.pause.setImage(UIImage(named: "pause_button"), for: .normal)
                 }
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
@@ -981,6 +989,8 @@ class GameBoardViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var pause: UIButton!
+    @IBOutlet weak var trophy: UIImageView!
     
     //function in response to drag movement
     func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
