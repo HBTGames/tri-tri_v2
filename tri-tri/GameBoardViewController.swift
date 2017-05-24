@@ -361,6 +361,7 @@ class GameBoardViewController: UIViewController {
             trophy.image = UIImage(named:"trophy_new")
             pause.setImage(UIImage(named: "pause_button"), for: .normal)
             triangle_title.image = UIImage(named:"day mode triangle title")
+            generator_array[5] = UIImage(named: "dark_green_tri")!
             
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -373,6 +374,7 @@ class GameBoardViewController: UIViewController {
             trophy.image = UIImage(named:"night mode 奖杯")
             pause.setImage(UIImage(named: "night mode pause"), for: .normal)
             triangle_title.image = UIImage(named:"night mode triangle title")
+            generator_array[5] = UIImage(named: "六角大王小肉")!
         }
         //update tris origin
 
@@ -706,6 +708,7 @@ class GameBoardViewController: UIViewController {
             self.trophy.image = UIImage(named:"trophy_new")
             self.pause.setImage(UIImage(named: "pause_button"), for: .normal)
             self.triangle_title.image = UIImage(named:"day mode triangle title")
+            self.generator_array[5] = UIImage(named: "dark_green_tri")!
         })
         
         self.view.addSubview(day_theme_button)
@@ -735,6 +738,7 @@ class GameBoardViewController: UIViewController {
             self.trophy.image = UIImage(named:"night mode 奖杯")
             self.pause.setImage(UIImage(named: "night mode pause"), for: .normal)
             self.triangle_title.image = UIImage(named:"night mode triangle title")
+            self.generator_array[5] = UIImage(named: "六角大王小肉")!
         })
         self.view.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
