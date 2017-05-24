@@ -717,6 +717,7 @@ class GameBoardViewController: UIViewController {
             self.change_current_board_according_to_theme()
             
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.in_theme_menu = false
             
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
@@ -773,6 +774,7 @@ class GameBoardViewController: UIViewController {
             self.change_current_board_according_to_theme()
             
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.in_theme_menu = false
             
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
