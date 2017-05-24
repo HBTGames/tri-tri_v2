@@ -128,7 +128,7 @@
                                 <state key="normal" title="Button" image="Chaos_theme"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGY-2t-eWk">
-                                <rect key="frame" x="216" y="107" width="150" height="144"/>
+                                <rect key="frame" x="216.5" y="107" width="150" height="144"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="144" id="0se-u3-cSu"/>
                                     <constraint firstAttribute="width" constant="150" id="pxl-DR-ELA"/>
@@ -155,13 +155,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Triangle_Text" translatesAutoresizingMaskIntoConstraints="NO" id="Z6y-Yr-6cd">
-                                <rect key="frame" x="138" y="37" width="98" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="98" id="C0X-BI-beD"/>
-                                    <constraint firstAttribute="height" constant="26" id="Xff-Yw-ECk"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rA-IZ-o3n">
                                 <rect key="frame" x="30" y="66" width="23" height="29"/>
                                 <state key="normal" image="return_button"/>
@@ -169,13 +162,20 @@
                                     <segue destination="g9C-ac-axW" kind="show" id="CE0-c4-o5J"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Triangle_Text" translatesAutoresizingMaskIntoConstraints="NO" id="Z6y-Yr-6cd">
+                                <rect key="frame" x="122" y="36" width="131" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="131" id="C0X-BI-beD"/>
+                                    <constraint firstAttribute="height" constant="26" id="Xff-Yw-ECk"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ikp-Gf-toU" firstAttribute="centerX" secondItem="byO-Zs-1va" secondAttribute="centerX" constant="79.25" id="831-Rf-Q5d"/>
                             <constraint firstItem="Ikp-Gf-toU" firstAttribute="leading" secondItem="ADR-ih-zxd" secondAttribute="trailing" constant="-8.5" id="8DV-gN-43g"/>
                             <constraint firstItem="g0x-Wl-psB" firstAttribute="top" secondItem="UHF-mt-kfK" secondAttribute="bottom" constant="8" id="Afx-bu-uBG"/>
-                            <constraint firstItem="Z6y-Yr-6cd" firstAttribute="top" secondItem="tkc-0V-y28" secondAttribute="bottom" constant="17" id="CAy-Kc-5nd"/>
+                            <constraint firstItem="Z6y-Yr-6cd" firstAttribute="top" secondItem="tkc-0V-y28" secondAttribute="bottom" constant="16" id="CAy-Kc-5nd"/>
                             <constraint firstItem="XGY-2t-eWk" firstAttribute="centerX" secondItem="Z6y-Yr-6cd" secondAttribute="centerX" constant="104" id="E4S-c3-giV"/>
                             <constraint firstAttribute="trailing" secondItem="UHF-mt-kfK" secondAttribute="trailing" id="F4T-D7-QxR"/>
                             <constraint firstItem="Ikp-Gf-toU" firstAttribute="centerX" secondItem="AKG-P8-TXu" secondAttribute="centerX" id="GFr-RA-7UA"/>
@@ -312,11 +312,11 @@
                                     <constraint firstAttribute="width" constant="275" id="dJA-qh-nwq"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJQ-T8-SDk">
-                                <rect key="frame" x="280" y="594" width="44" height="30"/>
-                                <state key="normal" title="theme"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gb-IM-9wy">
+                                <rect key="frame" x="250" y="576" width="105" height="30"/>
+                                <state key="normal" title="theme/subview"/>
                                 <connections>
-                                    <segue destination="6gw-yc-WjL" kind="show" id="GW1-vu-093"/>
+                                    <action selector="theme_menu_action:" destination="g9C-ac-axW" eventType="touchUpInside" id="6Wu-Ye-fag"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -327,16 +327,16 @@
                         <constraints>
                             <constraint firstItem="ySa-fe-eSb" firstAttribute="centerX" secondItem="vUI-Sd-QIZ" secondAttribute="centerX" id="BnJ-bA-WQX"/>
                             <constraint firstItem="3GJ-KM-XwE" firstAttribute="leading" secondItem="ulY-n0-3X0" secondAttribute="trailing" constant="-17" id="CVQ-ts-i4v"/>
-                            <constraint firstItem="vJQ-T8-SDk" firstAttribute="top" secondItem="efL-Nx-AeG" secondAttribute="bottom" constant="71" id="FhF-5a-kAh"/>
+                            <constraint firstItem="9AN-fU-JfU" firstAttribute="top" secondItem="4gb-IM-9wy" secondAttribute="bottom" constant="61" id="DyQ-oI-5al"/>
                             <constraint firstItem="efL-Nx-AeG" firstAttribute="leading" secondItem="J3e-WT-fYS" secondAttribute="trailing" constant="-68" id="Fie-OS-u9A"/>
                             <constraint firstItem="cor-IV-WdS" firstAttribute="centerX" secondItem="vUI-Sd-QIZ" secondAttribute="centerX" id="IsA-bg-zcd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4gb-IM-9wy" secondAttribute="trailing" constant="4" id="JDj-bj-C7f"/>
                             <constraint firstItem="ulY-n0-3X0" firstAttribute="leading" secondItem="jet-R1-2WH" secondAttribute="trailing" constant="-18" id="NDJ-3R-OrP"/>
                             <constraint firstItem="2PI-GQ-0zF" firstAttribute="leading" secondItem="ulY-n0-3X0" secondAttribute="trailing" constant="-87" id="Ntf-ed-WK5"/>
                             <constraint firstItem="efL-Nx-AeG" firstAttribute="top" secondItem="ySa-fe-eSb" secondAttribute="bottom" constant="9" id="NzT-Dy-bb9"/>
                             <constraint firstItem="BUo-5l-JKc" firstAttribute="leading" secondItem="efL-Nx-AeG" secondAttribute="trailing" constant="-67" id="UOR-9e-vby"/>
                             <constraint firstItem="ySa-fe-eSb" firstAttribute="top" secondItem="2PI-GQ-0zF" secondAttribute="bottom" constant="40.5" id="Uu9-V6-M3G"/>
                             <constraint firstItem="BUo-5l-JKc" firstAttribute="top" secondItem="efL-Nx-AeG" secondAttribute="bottom" constant="-116" id="aeQ-7b-ZlV"/>
-                            <constraint firstItem="vJQ-T8-SDk" firstAttribute="leading" secondItem="efL-Nx-AeG" secondAttribute="trailing" constant="-7" id="as6-5S-zfD"/>
                             <constraint firstItem="jet-R1-2WH" firstAttribute="top" secondItem="cor-IV-WdS" secondAttribute="bottom" constant="-2" id="bvC-MH-8lp"/>
                             <constraint firstItem="efL-Nx-AeG" firstAttribute="top" secondItem="ulY-n0-3X0" secondAttribute="bottom" constant="8" id="crd-GS-rde"/>
                             <constraint firstItem="ulY-n0-3X0" firstAttribute="centerX" secondItem="ySa-fe-eSb" secondAttribute="centerX" id="lIb-9W-Pq5"/>
@@ -744,13 +744,6 @@
                                     <constraint firstAttribute="height" constant="93" id="Hg6-9j-zwO"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Triangle_Text" translatesAutoresizingMaskIntoConstraints="NO" id="gNR-HH-lwS">
-                                <rect key="frame" x="139" y="37" width="98" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="98" id="DFc-8u-NCX"/>
-                                    <constraint firstAttribute="height" constant="26" id="d04-5O-wb6"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0H-mS-pgO">
                                 <rect key="frame" x="310" y="73" width="49" height="57"/>
                                 <constraints>
@@ -784,6 +777,13 @@
                                 <rect key="frame" x="140" y="523" width="104" height="93"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="93" id="2uh-1S-89u"/>
+                                </constraints>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" layoutMarginsFollowReadableWidth="YES" image="Triangle_Text" translatesAutoresizingMaskIntoConstraints="NO" id="gNR-HH-lwS">
+                                <rect key="frame" x="130" y="37" width="114" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="DFc-8u-NCX"/>
+                                    <constraint firstAttribute="height" constant="26" id="d04-5O-wb6"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -1159,13 +1159,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="B&amp;W_theme" width="178" height="177"/>
-        <image name="Chaos_theme" width="146" height="145"/>
+        <image name="B&amp;W_theme" width="177" height="177"/>
+        <image name="Chaos_theme" width="177" height="177"/>
         <image name="Colors_theme" width="177" height="179"/>
         <image name="GameOver" width="243" height="52"/>
-        <image name="School_Theme" width="178" height="177"/>
-        <image name="Triangle_Text" width="98" height="26"/>
-        <image name="day_theme" width="198" height="192"/>
+        <image name="School_Theme" width="177" height="177"/>
+        <image name="Triangle_Text" width="111" height="29"/>
+        <image name="day_theme" width="177" height="177"/>
         <image name="full_blank_menu" width="375" height="667"/>
         <image name="grey_tir_downwards" width="49" height="43"/>
         <image name="grey_tri_upwards" width="49" height="43"/>
@@ -1174,7 +1174,7 @@
         <image name="link" width="198" height="172"/>
         <image name="menu_button" width="230" height="199"/>
         <image name="menu_element" width="289" height="223"/>
-        <image name="night_theme" width="184" height="184"/>
+        <image name="night_theme" width="177" height="177"/>
         <image name="pause_button" width="47" height="47"/>
         <image name="restart_big" width="350" height="304"/>
         <image name="return_button" width="23" height="29"/>

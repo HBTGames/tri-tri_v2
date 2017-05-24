@@ -24,6 +24,7 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var like_button: UIButton!
     
     @IBOutlet weak var share_button: UIButton!
+
     @IBAction func Share_Button_Action(_ sender: UIButton) {
         
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -142,6 +143,10 @@ class GameOverViewController: UIViewController {
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
         }
+        
+        //add pangesture
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
+        self.view.addGestureRecognizer(panGestureRecognizer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -190,5 +195,177 @@ class GameOverViewController: UIViewController {
         self.button_player.play()
     }
     
+    //origin
+    var day_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var night_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var BW_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var chaos_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var school_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var colors_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    
+    
+    var day_theme_origin = CGPoint(x: 0, y: 0)
+    var night_theme_origin = CGPoint(x: 0, y: 0)
+    var BW_theme_origin = CGPoint(x: 0, y: 0)
+    var chaos_theme_origin = CGPoint(x: 0, y: 0)
+    var school_theme_origin = CGPoint(x: 0, y: 0)
+    var colors_theme_origin = CGPoint(x: 0, y: 0)
+    @IBAction func theme_menu_action(_ sender: UIButton) {
+        let theme_menu: UIView = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
+        theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+        theme_menu.alpha = 0
+        theme_menu.tag = 100
+        super.view.isUserInteractionEnabled = false
+        self.view.isUserInteractionEnabled = true
+        self.view.addSubview(theme_menu)
+        theme_menu.fadeIn()
+     
+        
+        
+        //add buttons
+         day_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(145), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        day_theme_origin = day_theme_button.frame.origin
+        day_theme_button.setBackgroundImage(UIImage(named:"day_theme"), for: .normal)
+        self.view.addSubview(day_theme_button)
+        
+         night_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(145), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        night_theme_origin = night_theme_button.frame.origin
+        night_theme_button.setBackgroundImage(UIImage(named:"night_theme"), for: .normal)
+        self.view.addSubview(night_theme_button)
+        
+        
+        BW_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        BW_theme_origin = BW_theme_button.frame.origin
+        BW_theme_button.setBackgroundImage(UIImage(named:"B&W_theme"), for: .normal)
+        self.view.addSubview(BW_theme_button)
+        
+        chaos_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        chaos_theme_origin = chaos_theme_button.frame.origin
+        chaos_theme_button.setBackgroundImage(UIImage(named:"Chaos_theme"), for: .normal)
+        self.view.addSubview(chaos_theme_button)
+        
+        
+        school_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        school_theme_origin = school_theme_button.frame.origin
+        school_theme_button.setBackgroundImage(UIImage(named:"School_Theme"), for: .normal)
+        self.view.addSubview(school_theme_button)
+        
+        colors_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        colors_theme_origin = colors_theme_button.frame.origin
+        colors_theme_button.setBackgroundImage(UIImage(named:"Colors_theme"), for: .normal)
+        self.view.addSubview(colors_theme_button)
+   
+    //add white to 遮挡
+       let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(120)))
+        white_cover.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+        self.view.addSubview(white_cover)
+        
+        
+        //add triangle text
+        let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(132), y: pause_screen_y_transform(50), width: pause_screen_x_transform(111), height: pause_screen_y_transform(29)))
+        triangle_text.image = UIImage(named: "Triangle_Text")
+        //triangle_text.sizeToFit()
+        self.view.addSubview(triangle_text)
+        
+        //add  return button
+        let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(90), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
+        return_button.setBackgroundImage(UIImage(named:"return_button"), for: .normal)
+        self.view.addSubview(return_button)
 
+        return_button.whenButtonIsClicked(action: {
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            
+            self.day_theme_button.fadeOut()
+            self.night_theme_button.fadeOut()
+            self.BW_theme_button.fadeOut()
+            self.chaos_theme_button.fadeOut()
+            self.school_theme_button.fadeOut()
+            self.colors_theme_button.fadeOut()
+            triangle_text.fadeOut()
+            return_button.fadeOut()
+            white_cover.fadeOut()
+            theme_menu.fadeOut()
+            
+            self.day_theme_button.removeFromSuperview()
+            self.night_theme_button.removeFromSuperview()
+            self.BW_theme_button.removeFromSuperview()
+            self.chaos_theme_button.removeFromSuperview()
+            self.school_theme_button.removeFromSuperview()
+            self.colors_theme_button.removeFromSuperview()
+            triangle_text.removeFromSuperview()
+            return_button.removeFromSuperview()
+            white_cover.removeFromSuperview()
+            theme_menu.removeFromSuperview()
+        })
+        
+        
+    
+    }
+    
+    
+    
+    func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
+        let transition0 = gesture.translation(in: day_theme_button)
+        //上1/3和下1/3的空间
+        if(day_theme_button.frame.origin.y < (pause_screen_y_transform(145)+day_theme_button.frame.height/3) && school_theme_button.frame.origin.y > pause_screen_y_transform(493+144) - school_theme_button.frame.height/3 - school_theme_button.frame.height){
+            day_theme_button.frame.origin = CGPoint(x: day_theme_origin.x, y: (day_theme_origin.y + transition0.y))
+            night_theme_button.frame.origin = CGPoint(x: night_theme_origin.x, y: (night_theme_origin.y + transition0.y))
+            BW_theme_button.frame.origin = CGPoint(x: BW_theme_origin.x, y: (BW_theme_origin.y + transition0.y))
+            chaos_theme_button.frame.origin = CGPoint(x: chaos_theme_origin.x, y: (chaos_theme_origin.y + transition0.y))
+            school_theme_button.frame.origin = CGPoint(x: school_theme_origin.x, y: (school_theme_origin.y + transition0.y))
+            colors_theme_button.frame.origin = CGPoint(x: colors_theme_origin.x, y: (colors_theme_origin.y + transition0.y))
+            if(gesture.state == .ended){
+                day_theme_origin.y = day_theme_button.frame.origin.y
+                night_theme_origin.y = night_theme_button.frame.origin.y
+                BW_theme_origin.y = BW_theme_button.frame.origin.y
+                chaos_theme_origin.y = chaos_theme_button.frame.origin.y
+                school_theme_origin.y = school_theme_button.frame.origin.y
+                colors_theme_origin.y = colors_theme_button.frame.origin.y
+            }
+        }else{
+            if(gesture.state == .ended){
+                day_theme_origin.y = pause_screen_y_transform(145)
+                night_theme_origin.y =  pause_screen_y_transform(145)
+                BW_theme_origin.y = pause_screen_y_transform(319)
+                chaos_theme_origin.y = pause_screen_y_transform(319)
+                school_theme_origin.y = pause_screen_y_transform(493)
+                colors_theme_origin.y = pause_screen_y_transform(493)
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.day_theme_button.frame.origin.y = self.day_theme_origin.y
+                    self.night_theme_button.frame.origin.y = self.night_theme_origin.y
+                    self.BW_theme_button.frame.origin.y = self.BW_theme_origin.y
+                    self.chaos_theme_button.frame.origin.y = self.chaos_theme_origin.y
+                    self.school_theme_button.frame.origin.y = self.school_theme_origin.y
+                    self.colors_theme_button.frame.origin.y = self.colors_theme_origin.y
+                    
+                })
+            }
+        }
+        
+        
+        
+    }
+
+}
+
+
+
+class MyButton: UIButton {
+    var action: (()->())?
+    
+    func whenButtonIsClicked(action: @escaping ()->()) {
+        self.action = action
+        self.addTarget(self, action: #selector(MyButton.clicked), for: .touchUpInside)
+    }
+    
+    func clicked() {
+        action?()
+    }
 }
