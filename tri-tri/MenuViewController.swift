@@ -21,6 +21,20 @@ class MenuViewController: UIViewController {
         //add pangesture
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
         self.view.addGestureRecognizer(panGestureRecognizer)
+        var HighestScore = 0
+        // Do any additional setup after loading the view.
+        if(defaults.value(forKey: "tritri_HighestScore") != nil ){
+            HighestScore = defaults.value(forKey: "tritri_HighestScore") as! NSInteger
+            print("Highest Score is \(HighestScore)")
+        }else{
+            defaults.set(0, forKey: "tritri_HighestScore")
+            HighestScore = 0
+        }
+        highest_score.text = String(HighestScore)
+        
+        
+        
+        
         if (defaults.value(forKey: "tritri_Theme") == nil){
             ThemeType = 1
             defaults.set(1, forKey: "tritri_Theme")
@@ -29,16 +43,24 @@ class MenuViewController: UIViewController {
             ThemeType = defaults.integer(forKey: "tritri_Theme")
         }
         if(ThemeType == 1){
+            trophy.image = UIImage(named:"trophy_new")
             view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
             triangle_title.image = UIImage(named: "day mode triangle title")
             like_button.setBackgroundImage(UIImage(named: "day mode like"), for: .normal)
+            highest_score.textColor = UIColor(red: 112.0/255, green: 160.0/255, blue: 115.0/255, alpha: 1)
            
         }else if(ThemeType == 2){
+            trophy.image = UIImage(named:"night mode 奖杯")
             view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             triangle_title.image = UIImage(named:"night mode triangle title")
             like_button.setBackgroundImage(UIImage(named: "night mode like button"), for: .normal)
+             highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
         }
-        // Do any additional setup after loading the view.
+      
+    
+    
+    
+    
     }
 
     @IBOutlet weak var like_button: UIButton!
@@ -131,8 +153,10 @@ class MenuViewController: UIViewController {
             self.ThemeType = 1
             self.defaults.set(1, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"trophy_new")
             self.triangle_title.image = UIImage(named: "day mode triangle title")
             self.like_button.setBackgroundImage(UIImage(named: "day mode like"), for: .normal)
+            self.highest_score.textColor = UIColor(red: 112.0/255, green: 160.0/255, blue: 115.0/255, alpha: 1)
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -155,10 +179,12 @@ class MenuViewController: UIViewController {
             self.button_player.play()
             
             self.ThemeType = 2
+            self.trophy.image = UIImage(named:"night mode 奖杯")
             self.like_button.setBackgroundImage(UIImage(named: "night mode like button"), for: .normal)
             self.defaults.set(2, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             self.triangle_title.image = UIImage(named:"night mode triangle title")
+            self.highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
             
            // self.trophy.image = UIImage(named:"night mode 奖杯")
            // self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
@@ -338,7 +364,9 @@ class MenuViewController: UIViewController {
         
     }
         
+    @IBOutlet weak var trophy: UIImageView!
         
+    @IBOutlet weak var highest_score: UILabel!
         
     }
     
