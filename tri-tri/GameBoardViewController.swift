@@ -352,12 +352,17 @@ class GameBoardViewController: UIViewController {
             upwards_tri = UIImage(named:"grey_tri_upwards")
             Restore_Grey_Tris()
             change_all_back_tris_image()
+            HightestScoreBoard.textColor = UIColor(red: 59.0/255, green: 76.0/255, blue: 65.0/255, alpha: 1.0)
+            MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+            
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             downwards_tri = UIImage(named:"bgtri_downward_night_mode")
             upwards_tri = UIImage(named:"bgtri_upward_night_mode")
             Restore_Grey_Tris()
             change_all_back_tris_image()
+            HightestScoreBoard.textColor = UIColor(red: 186.0/255, green: 179.0/255, blue: 150.0/255, alpha: 1.0)
+            MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
         }
         //update tris origin
 
@@ -742,7 +747,7 @@ class GameBoardViewController: UIViewController {
         change_theme_button.whenButtonIsClicked(action:{
         
             
-                if (self.ThemeType == 1){
+                if (self.ThemeType == 1){   //change to 2
                     self.defaults.set(2, forKey: "tritri_Theme")
                     self.ThemeType = 2
                     self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -750,7 +755,10 @@ class GameBoardViewController: UIViewController {
                     self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
                     self.Restore_Grey_Tris()
                     self.change_all_back_tris_image()
-                }else {
+                    self.HightestScoreBoard.textColor = UIColor(red: 186.0/255, green: 179.0/255, blue: 150.0/255, alpha: 1.0)
+                    self.MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
+                    
+                }else { //change to 1
                     self.defaults.set(1, forKey: "tritri_Theme")
                     self.ThemeType = 1
                     self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
@@ -758,6 +766,8 @@ class GameBoardViewController: UIViewController {
                     self.upwards_tri = UIImage(named:"grey_tri_upwards")
                     self.Restore_Grey_Tris()
                     self.change_all_back_tris_image()
+                    self.HightestScoreBoard.textColor = UIColor(red: 59.0/255, green: 76.0/255, blue: 65.0/255, alpha: 1.0)
+                    self.MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
                 }
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
