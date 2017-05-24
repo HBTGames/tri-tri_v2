@@ -348,8 +348,16 @@ class GameBoardViewController: UIViewController {
         //change bg color
         if ThemeType == 1{
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
+            downwards_tri = UIImage(named:"grey_tir_downwards")
+            upwards_tri = UIImage(named:"grey_tri_upwards")
+            Restore_Grey_Tris()
+            change_all_back_tris_image()
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
+            downwards_tri = UIImage(named:"bgtri_downward_night_mode")
+            upwards_tri = UIImage(named:"bgtri_upward_night_mode")
+            Restore_Grey_Tris()
+            change_all_back_tris_image()
         }
         //update tris origin
 
@@ -738,10 +746,18 @@ class GameBoardViewController: UIViewController {
                     self.defaults.set(2, forKey: "tritri_Theme")
                     self.ThemeType = 2
                     self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
+                    self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
+                    self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
+                    self.Restore_Grey_Tris()
+                    self.change_all_back_tris_image()
                 }else {
                     self.defaults.set(1, forKey: "tritri_Theme")
                     self.ThemeType = 1
                     self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
+                    self.downwards_tri = UIImage(named:"grey_tir_downwards")
+                    self.upwards_tri = UIImage(named:"grey_tri_upwards")
+                    self.Restore_Grey_Tris()
+                    self.change_all_back_tris_image()
                 }
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
@@ -1026,6 +1042,67 @@ class GameBoardViewController: UIViewController {
         
     }
     
+    func change_all_back_tris_image() -> Void{
+        tri_0_0_back.image = upwards_tri
+        tri_0_1_back.image = downwards_tri
+        tri_0_2_back.image = upwards_tri
+        tri_0_3_back.image = downwards_tri
+        tri_0_4_back.image = upwards_tri
+        tri_0_5_back.image = downwards_tri
+        tri_0_6_back.image = upwards_tri
+        
+        tri_1_0_back.image = upwards_tri
+        tri_1_1_back.image = downwards_tri
+        tri_1_2_back.image = upwards_tri
+        tri_1_3_back.image = downwards_tri
+        tri_1_4_back.image = upwards_tri
+        tri_1_5_back.image = downwards_tri
+        tri_1_6_back.image = upwards_tri
+        tri_1_7_back.image = downwards_tri
+        tri_1_8_back.image = upwards_tri
+        
+        tri_2_0_back.image = upwards_tri
+        tri_2_1_back.image = downwards_tri
+        tri_2_2_back.image = upwards_tri
+        tri_2_3_back.image = downwards_tri
+        tri_2_4_back.image = upwards_tri
+        tri_2_5_back.image = downwards_tri
+        tri_2_6_back.image = upwards_tri
+        tri_2_7_back.image = downwards_tri
+        tri_2_8_back.image = upwards_tri
+        tri_2_9_back.image = downwards_tri
+        tri_2_10_back.image = upwards_tri
+        
+        tri_3_0_back.image = downwards_tri
+        tri_3_1_back.image = upwards_tri
+        tri_3_2_back.image = downwards_tri
+        tri_3_3_back.image = upwards_tri
+        tri_3_4_back.image = downwards_tri
+        tri_3_5_back.image = upwards_tri
+        tri_3_6_back.image = downwards_tri
+        tri_3_7_back.image = upwards_tri
+        tri_3_8_back.image = downwards_tri
+        tri_3_9_back.image = upwards_tri
+        tri_3_10_back.image = downwards_tri
+        
+        tri_4_0_back.image = downwards_tri
+        tri_4_1_back.image = upwards_tri
+        tri_4_2_back.image = downwards_tri
+        tri_4_3_back.image = upwards_tri
+        tri_4_4_back.image = downwards_tri
+        tri_4_5_back.image = upwards_tri
+        tri_4_6_back.image = downwards_tri
+        tri_4_7_back.image = upwards_tri
+        tri_4_8_back.image = downwards_tri
+        
+        tri_5_0_back.image = downwards_tri
+        tri_5_1_back.image = upwards_tri
+        tri_5_2_back.image = downwards_tri
+        tri_5_3_back.image = upwards_tri
+        tri_5_4_back.image = downwards_tri
+        tri_5_5_back.image = upwards_tri
+        tri_5_6_back.image = downwards_tri
+    }
     
     
     //--------------------------------------------------------------------------------------------------------------------
@@ -1145,7 +1222,10 @@ class GameBoardViewController: UIViewController {
     @IBOutlet weak var tri_2_3_back: UIImageView!
     @IBOutlet weak var tri_2_4_back: UIImageView!
     @IBOutlet weak var tri_2_5_back: UIImageView!
+    
     @IBOutlet weak var tri_2_6_back: UIImageView!
+    
+    
     @IBOutlet weak var tri_2_7_back: UIImageView!
     @IBOutlet weak var tri_2_8_back: UIImageView!
     @IBOutlet weak var tri_2_9_back: UIImageView!
@@ -1217,10 +1297,10 @@ class GameBoardViewController: UIViewController {
 //set two default grey triangle
     
 //downwards triangle
-    let downwards_tri = UIImage(named:"grey_tir_downwards")
+    var downwards_tri = UIImage(named:"grey_tir_downwards")
     
 //upwards triangle
-    let upwards_tri = UIImage(named:"grey_tri_upwards")
+    var upwards_tri = UIImage(named:"grey_tri_upwards")
 
 //green tri elements
     let super_light_green_down = UIImage(named:"super_light_green_down")

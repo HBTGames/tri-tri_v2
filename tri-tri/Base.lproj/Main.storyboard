@@ -1084,13 +1084,13 @@
                         <outlet property="tri_2_2" destination="RME-qP-jaD" id="HDe-sP-vPy"/>
                         <outlet property="tri_2_2_back" destination="xz8-Zy-UIq" id="9AV-f0-cVH"/>
                         <outlet property="tri_2_3" destination="g43-w7-Sep" id="0tx-0h-K6L"/>
-                        <outlet property="tri_2_3_back" destination="jN8-zK-JTe" id="CPA-OV-TSa"/>
+                        <outlet property="tri_2_3_back" destination="Jmp-g9-Cfc" id="5t6-Pd-jue"/>
                         <outlet property="tri_2_4" destination="Mtl-uT-XTg" id="Maa-xW-tkF"/>
-                        <outlet property="tri_2_4_back" destination="Jmp-g9-Cfc" id="6Ie-qX-XoX"/>
+                        <outlet property="tri_2_4_back" destination="hn8-pp-UXb" id="qg9-p0-hLd"/>
                         <outlet property="tri_2_5" destination="8ge-wk-X7a" id="FoP-Lh-ggH"/>
-                        <outlet property="tri_2_5_back" destination="hn8-pp-UXb" id="Hvy-CR-twv"/>
+                        <outlet property="tri_2_5_back" destination="SyH-TJ-ItG" id="Gbi-5P-iDf"/>
                         <outlet property="tri_2_6" destination="thp-0o-J8d" id="wmz-p7-VHt"/>
-                        <outlet property="tri_2_6_back" destination="SyH-TJ-ItG" id="5wq-5f-tzy"/>
+                        <outlet property="tri_2_6_back" destination="jN8-zK-JTe" id="XUn-h4-hnx"/>
                         <outlet property="tri_2_7" destination="9FO-74-hD5" id="CBQ-jW-6Zl"/>
                         <outlet property="tri_2_7_back" destination="IaM-H9-kTB" id="0YB-DS-xl0"/>
                         <outlet property="tri_2_8" destination="I1I-YV-uJO" id="X6V-2r-H54"/>
