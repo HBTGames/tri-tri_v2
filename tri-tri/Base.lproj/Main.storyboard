@@ -88,6 +88,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ikp-Gf-toU">
+                                <rect key="frame" x="174" y="323" width="27" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HhX-5n-jh6">
+                                <rect key="frame" x="216" y="481" width="148.5" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="148.5" id="3ba-Td-MQV"/>
+                                    <constraint firstAttribute="height" constant="144" id="y9J-uH-ovJ"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Colors_theme"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADR-ih-zxd">
+                                <rect key="frame" x="34" y="481" width="148.5" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="Xef-dh-xFu"/>
+                                    <constraint firstAttribute="width" constant="148.5" id="j59-OG-SPb"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="School_Theme"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byO-Zs-1va">
+                                <rect key="frame" x="34" y="292" width="148.5" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="148.5" id="E8B-Gu-WUS"/>
+                                    <constraint firstAttribute="height" constant="144" id="S3d-XR-uo6"/>
+                                </constraints>
+                                <state key="normal" title="   " image="B&amp;W_theme"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TND-qb-WL2">
+                                <rect key="frame" x="214" y="292" width="151" height="145"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="151" id="MV6-ud-H8I"/>
+                                    <constraint firstAttribute="height" constant="145" id="avZ-cx-MRa"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Chaos_theme"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGY-2t-eWk">
                                 <rect key="frame" x="208" y="107" width="150" height="144"/>
                                 <constraints>
@@ -126,33 +164,15 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rA-IZ-o3n">
                                 <rect key="frame" x="30" y="66" width="23" height="29"/>
                                 <state key="normal" image="return_button"/>
+                                <connections>
+                                    <segue destination="g9C-ac-axW" kind="show" id="CE0-c4-o5J"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byO-Zs-1va">
-                                <rect key="frame" x="34" y="292" width="148.5" height="144"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="148.5" id="E8B-Gu-WUS"/>
-                                    <constraint firstAttribute="height" constant="144" id="S3d-XR-uo6"/>
-                                </constraints>
-                                <state key="normal" title="   " image="B&amp;W_theme"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TND-qb-WL2">
-                                <rect key="frame" x="214" y="292" width="151" height="145"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="151" id="MV6-ud-H8I"/>
-                                    <constraint firstAttribute="height" constant="145" id="avZ-cx-MRa"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="Chaos_theme"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ikp-Gf-toU">
-                                <rect key="frame" x="174" y="323" width="27" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ikp-Gf-toU" firstAttribute="leading" secondItem="byO-Zs-1va" secondAttribute="trailing" constant="-8.5" id="831-Rf-Q5d"/>
+                            <constraint firstItem="Ikp-Gf-toU" firstAttribute="leading" secondItem="ADR-ih-zxd" secondAttribute="trailing" constant="-8.5" id="8DV-gN-43g"/>
                             <constraint firstItem="g0x-Wl-psB" firstAttribute="top" secondItem="UHF-mt-kfK" secondAttribute="bottom" constant="8" id="Afx-bu-uBG"/>
                             <constraint firstItem="Z6y-Yr-6cd" firstAttribute="top" secondItem="tkc-0V-y28" secondAttribute="bottom" constant="17" id="CAy-Kc-5nd"/>
                             <constraint firstItem="XGY-2t-eWk" firstAttribute="leading" secondItem="Z6y-Yr-6cd" secondAttribute="trailing" constant="-28" id="E4S-c3-giV"/>
@@ -166,11 +186,14 @@
                             <constraint firstItem="Z6y-Yr-6cd" firstAttribute="centerX" secondItem="AKG-P8-TXu" secondAttribute="centerX" id="a3Q-ak-h6U"/>
                             <constraint firstItem="0rA-IZ-o3n" firstAttribute="top" secondItem="tkc-0V-y28" secondAttribute="bottom" constant="46" id="bLJ-Uo-V6k"/>
                             <constraint firstItem="TND-qb-WL2" firstAttribute="top" secondItem="Ikp-Gf-toU" secondAttribute="bottom" constant="-52" id="dDa-MB-ubu"/>
+                            <constraint firstItem="HhX-5n-jh6" firstAttribute="leading" secondItem="Ikp-Gf-toU" secondAttribute="trailing" constant="15" id="dKQ-Ye-kDT"/>
                             <constraint firstItem="UHF-mt-kfK" firstAttribute="leading" secondItem="AKG-P8-TXu" secondAttribute="leading" id="gFF-ny-hf5"/>
                             <constraint firstItem="UHF-mt-kfK" firstAttribute="leading" secondItem="AKG-P8-TXu" secondAttribute="leading" id="gvK-EQ-exh"/>
                             <constraint firstItem="Ikp-Gf-toU" firstAttribute="centerY" secondItem="AKG-P8-TXu" secondAttribute="centerY" id="jLm-Jy-bQu"/>
+                            <constraint firstItem="hdS-Ax-iOK" firstAttribute="top" secondItem="HhX-5n-jh6" secondAttribute="bottom" constant="42" id="pA0-td-ReU"/>
                             <constraint firstAttribute="trailing" secondItem="UHF-mt-kfK" secondAttribute="trailing" id="q4P-4l-s7J"/>
                             <constraint firstItem="TND-qb-WL2" firstAttribute="leading" secondItem="Ikp-Gf-toU" secondAttribute="trailing" constant="13" id="u3y-eK-gRt"/>
+                            <constraint firstItem="hdS-Ax-iOK" firstAttribute="top" secondItem="ADR-ih-zxd" secondAttribute="bottom" constant="42" id="wcx-HS-Nl7"/>
                             <constraint firstItem="0rA-IZ-o3n" firstAttribute="leading" secondItem="AKG-P8-TXu" secondAttribute="leadingMargin" constant="14" id="yzR-z1-bnC"/>
                         </constraints>
                     </view>
@@ -179,10 +202,12 @@
                         <outlet property="BW_theme_y_constraint" destination="Pwa-LV-kJj" id="o4O-rg-Hhe"/>
                         <outlet property="Chaos_theme" destination="TND-qb-WL2" id="nRm-JE-eFB"/>
                         <outlet property="Chaos_theme_y_constraint" destination="dDa-MB-ubu" id="E3F-ji-tFd"/>
+                        <outlet property="colors_theme" destination="HhX-5n-jh6" id="2nb-N4-fvG"/>
                         <outlet property="day_theme" destination="g0x-Wl-psB" id="WvZ-6J-IP9"/>
                         <outlet property="day_theme_y_constraint" destination="Afx-bu-uBG" id="D6f-YK-kGJ"/>
                         <outlet property="night_theme" destination="XGY-2t-eWk" id="J27-Tm-dLo"/>
                         <outlet property="night_theme_y_constraint" destination="V7l-Hg-qf6" id="Dv7-s5-Kb2"/>
+                        <outlet property="school_theme" destination="ADR-ih-zxd" id="lac-rE-ezR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BrS-Dl-5BN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1082,7 +1107,9 @@
     <resources>
         <image name="B&amp;W_theme" width="178" height="177"/>
         <image name="Chaos_theme" width="146" height="145"/>
+        <image name="Colors_theme" width="177" height="179"/>
         <image name="GameOver" width="243" height="52"/>
+        <image name="School_Theme" width="178" height="177"/>
         <image name="Triangle_Text" width="98" height="26"/>
         <image name="day_theme" width="198" height="192"/>
         <image name="full_blank_menu" width="375" height="667"/>
