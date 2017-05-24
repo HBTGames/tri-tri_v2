@@ -1494,6 +1494,9 @@ class GameBoardViewController: UIViewController {
     //2-D array saves whether each triangle is filled or not
     var filled: Array<Array<Bool>> = [[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]]
     
+    //store the current block type of any single tri
+    //-1 imply that the tri is not occupied
+    var single_tri_stored_type_index: Array<Array<Int>> = [[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]]
 
     //2-D array saves corresponding location
     var tri_location: Array<Array<CGPoint>> = [
@@ -1615,7 +1618,9 @@ class GameBoardViewController: UIViewController {
                                 filled[i][j] = true
                                 filled[i][j-1] = true
                                 filled[i][j+1] = true
-                               
+                                single_tri_stored_type_index[i][j] = 0
+                                single_tri_stored_type_index[i][j-1] = 0
+                                single_tri_stored_type_index[i][j+1] = 0
                                 
                                 return true
                             }
@@ -1636,7 +1641,9 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j] = true
                                     filled[i][j-1] = true
                                     filled[i][j+1] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 0
+                                    single_tri_stored_type_index[i][j-1] = 0
+                                    single_tri_stored_type_index[i][j+1] = 0
                                    
                                     return true
                                 }
@@ -1666,7 +1673,8 @@ class GameBoardViewController: UIViewController {
                                     Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: orange_down)
                                     filled[i+1][j+1] = true
                                     filled[i][j] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 1
+                                    single_tri_stored_type_index[i+1][j+1] = 1
                                     
                                     return true
                                 }
@@ -1685,7 +1693,8 @@ class GameBoardViewController: UIViewController {
                                     Change_Corresponding_Color_With_Image(x:i+1, y:j, image: orange_down)
                                     filled[i][j] = true
                                     filled[i+1][j] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 1
+                                    single_tri_stored_type_index[i+1][j] = 1
                                 
 
                                     return true
@@ -1706,7 +1715,8 @@ class GameBoardViewController: UIViewController {
                                     Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: orange_down)
                                     filled[i][j] = true
                                     filled[i+1][j-1] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 1
+                                    single_tri_stored_type_index[i+1][j-1] = 1
                                  
 
                                     return true
@@ -1741,6 +1751,9 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j+1] = true
                                     filled[i-1][j] = true
                                    
+                                    single_tri_stored_type_index[i][j] = 2
+                                    single_tri_stored_type_index[i][j+1] = 2
+                                    single_tri_stored_type_index[i-1][j] = 2
                                     return true
                                 }
                                 return false
@@ -1760,7 +1773,9 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i-1][j+1] = true
-                                   
+                                    single_tri_stored_type_index[i][j] = 2
+                                    single_tri_stored_type_index[i][j+1] = 2
+                                    single_tri_stored_type_index[i-1][j+1] = 2
                                     return true
                                 }
                                 return false
@@ -1781,7 +1796,9 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i-1][j+2] = true
-                              
+                                    single_tri_stored_type_index[i][j] = 2
+                                    single_tri_stored_type_index[i][j+1] = 2
+                                    single_tri_stored_type_index[i-1][j+2] = 2
                                     
                                     return true
                                 }
@@ -1816,7 +1833,9 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i][j-1] = true
-                                 
+                                    single_tri_stored_type_index[i][j] = 3
+                                    single_tri_stored_type_index[i][j+1] = 3
+                                    single_tri_stored_type_index[i][j-1] = 3
                                     return true
                                 }
                                 return false
@@ -1835,7 +1854,9 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i][j-1] = true
-                            
+                                    single_tri_stored_type_index[i][j] = 3
+                                    single_tri_stored_type_index[i][j+1] = 3
+                                    single_tri_stored_type_index[i][j-1] = 3
                                     return true
                                 }
                                 return false
@@ -1867,7 +1888,8 @@ class GameBoardViewController: UIViewController {
                                     
                                     filled[i][j] = true
                                     filled[i][j+1] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 4
+                                    single_tri_stored_type_index[i][j+1] = 4
                                     return true
                                 }
                                 return false
@@ -1884,7 +1906,8 @@ class GameBoardViewController: UIViewController {
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: super_light_green_up)
                                     filled[i][j] = true
                                     filled[i][j+1] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 4
+                                    single_tri_stored_type_index[i][j+1] = 4
                                     return true
                                 }
                                 return false
@@ -1931,7 +1954,11 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j-1] = true
                                     filled[i-1][j] = true
                                     filled[i-1][j-2] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 5
+                                    single_tri_stored_type_index[i][j+1] = 5
+                                    single_tri_stored_type_index[i][j-1] = 5
+                                    single_tri_stored_type_index[i-1][j] = 5
+                                    single_tri_stored_type_index[i-1][j-2] = 5
                                     return true
                                 }
                                 return false
@@ -1966,7 +1993,11 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j-1] = true
                                     filled[i-1][j-1] = true
                                     filled[i-1][j+1] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 5
+                                    single_tri_stored_type_index[i][j+1] = 5
+                                    single_tri_stored_type_index[i][j-1] = 5
+                                    single_tri_stored_type_index[i-1][j-1] = 5
+                                    single_tri_stored_type_index[i-1][j+1] = 5
                                     return true
                                 }
                                 return false
@@ -2002,6 +2033,11 @@ class GameBoardViewController: UIViewController {
                                     filled[i-1][j] = true
                                     filled[i-1][j+2] = true
                                     
+                                    single_tri_stored_type_index[i][j] = 5
+                                    single_tri_stored_type_index[i][j+1] = 5
+                                    single_tri_stored_type_index[i][j-1] = 5
+                                    single_tri_stored_type_index[i-1][j] = 5
+                                    single_tri_stored_type_index[i-1][j+2] = 5
                                     return true
                                 }
                                 return false
@@ -2033,7 +2069,9 @@ class GameBoardViewController: UIViewController {
                                     
                                     filled[i][j] = true
                                     filled[i][j+1] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 6
+                                    single_tri_stored_type_index[i][j+1] = 6
+
                                     return true
                                 }
                                 return false
@@ -2050,7 +2088,8 @@ class GameBoardViewController: UIViewController {
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: pink_down)
                                     filled[i][j] = true
                                     filled[i][j+1] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 6
+                                    single_tri_stored_type_index[i][j+1] = 6
                                     return true
                                 }
                                 return false
@@ -2081,7 +2120,7 @@ class GameBoardViewController: UIViewController {
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: pur_up)
                                     
                                     filled[i][j] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 7
                                     return true
                                 }
                                 return false
@@ -2096,7 +2135,7 @@ class GameBoardViewController: UIViewController {
                                     auto_make_transparent()
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: pur_up)
                                     filled[i][j] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 7
                                     return true
                                 }
                                 return false
@@ -2126,7 +2165,7 @@ class GameBoardViewController: UIViewController {
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: pur_down)
                                     
                                     filled[i][j] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 8
                                     return true
                                 }
                                 return false
@@ -2141,7 +2180,7 @@ class GameBoardViewController: UIViewController {
                                     auto_make_transparent()
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: pur_down)
                                     filled[i][j] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 8
                                     return true
                                 }
                                 return false
@@ -2175,7 +2214,9 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i+1][j+1] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 9
+                                    single_tri_stored_type_index[i][j+1] = 9
+                                    single_tri_stored_type_index[i+1][j+1] = 9
                                     return true
                                 }
                                 return false
@@ -2195,7 +2236,9 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i+1][j] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 9
+                                    single_tri_stored_type_index[i][j+1] = 9
+                                    single_tri_stored_type_index[i+1][j] = 9
                                     return true
                                 }
                                 return false
@@ -2216,7 +2259,9 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i+1][j-1] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 9
+                                    single_tri_stored_type_index[i][j+1] = 9
+                                    single_tri_stored_type_index[i+1][j-1] = 9
                                     
                                     return true
                                 }
@@ -2251,7 +2296,9 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j] = true
                                     filled[i][j-1] = true
                                     filled[i+1][j+1] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 10
+                                    single_tri_stored_type_index[i][j-1] = 10
+                                    single_tri_stored_type_index[i+1][j+1] = 10
                                     return true
                                 }
                                 return false
@@ -2271,7 +2318,9 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j] = true
                                     filled[i][j-1] = true
                                     filled[i+1][j] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 10
+                                    single_tri_stored_type_index[i][j-1] = 10
+                                    single_tri_stored_type_index[i+1][j] = 10
                                     return true
                                 }
                                 return false
@@ -2292,7 +2341,9 @@ class GameBoardViewController: UIViewController {
                                     filled[i][j] = true
                                     filled[i][j-1] = true
                                     filled[i+1][j-1] = true
-                                    
+                                    single_tri_stored_type_index[i][j] = 10
+                                    single_tri_stored_type_index[i][j-1] = 10
+                                    single_tri_stored_type_index[i+1][j-1] = 10
                                     
                                     return true
                                 }
