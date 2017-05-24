@@ -180,9 +180,9 @@ class GameBoardViewController: UIViewController {
 //--------------------------------------------------------------------------------------------------------------------------
 //draggable element three drag triangles implementation
     
-    @IBOutlet weak var green_drag_tri: UIImageView!
-    @IBOutlet weak var light_brown_drag_tri: UIImageView!
-    @IBOutlet weak var orange_drag_tri: UIImageView!
+    @IBOutlet weak var green_drag_tri: UIImageView!//first
+    @IBOutlet weak var light_brown_drag_tri: UIImageView!//third
+    @IBOutlet weak var orange_drag_tri: UIImageView!//second
     //the index of position which is being dragged
     var position_in_use: Int = 3
     //0 for green_drag_tri 1 for orange_drag_tri 2 for light_brown_tri
@@ -376,6 +376,9 @@ class GameBoardViewController: UIViewController {
             triangle_title.image = UIImage(named:"night mode triangle title")
             generator_array[5] = UIImage(named: "六角大王小肉")!
         }
+        change_current_shapes_according_to_theme()
+        
+        
         //update tris origin
 
         //center.frame.height
@@ -709,6 +712,7 @@ class GameBoardViewController: UIViewController {
             self.pause.setImage(UIImage(named: "pause_button"), for: .normal)
             self.triangle_title.image = UIImage(named:"day mode triangle title")
             self.generator_array[5] = UIImage(named: "dark_green_tri")!
+            self.change_current_shapes_according_to_theme()
         })
         
         self.view.addSubview(day_theme_button)
@@ -739,6 +743,7 @@ class GameBoardViewController: UIViewController {
             self.pause.setImage(UIImage(named: "night mode pause"), for: .normal)
             self.triangle_title.image = UIImage(named:"night mode triangle title")
             self.generator_array[5] = UIImage(named: "六角大王小肉")!
+            self.change_current_shapes_according_to_theme()
         })
         self.view.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
@@ -893,23 +898,23 @@ class GameBoardViewController: UIViewController {
         let continue_button = MyButton(frame: CGRect(x: pause_screen_x_transform(87.5), y: pause_screen_y_transform(283.5), width: pause_screen_x_transform(200), height: pause_screen_y_transform(170)))
         continue_button.setBackgroundImage(continue_pic, for: .normal)
         continue_button.tag = 50
-        //continue_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
+        continue_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
         
         let home_button = MyButton(frame: CGRect(x: pause_screen_x_transform(52), y: pause_screen_y_transform(333.5), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
         home_button.setBackgroundImage(home_pic, for: .normal)
         home_button.tag = 51
-        //home_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
+        home_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
         
         let shopping_button = MyButton(frame: CGRect(x: pause_screen_x_transform(222.5), y: pause_screen_y_transform(333.5), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
         shopping_button.setBackgroundImage(shopping_pic, for: .normal)
         shopping_button.tag = 52
-        //like_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
+        shopping_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
         
         let restart_button = MyButton(frame: CGRect(x: pause_screen_x_transform(137.5), y: pause_screen_y_transform(190), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
             //
         restart_button.setBackgroundImage(restart_pic, for: .normal)
         restart_button.tag = 53
-        //restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
+        restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
         
         let change_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(222.5), y: pause_screen_y_transform(570), width: pause_screen_x_transform(100), height: pause_screen_y_transform(30)))
         change_theme_button.setTitle("day/night", for: .normal)
@@ -1024,7 +1029,7 @@ class GameBoardViewController: UIViewController {
         self.view.addSubview(home_button)
         self.view.addSubview(shopping_button)
         self.view.addSubview(restart_button)
-        self.view.addSubview(change_theme_button)
+        //self.view.addSubview(change_theme_button)
         
         //fade in
         continue_button.fadeInWithDisplacement()
@@ -8628,7 +8633,26 @@ func randomNumber(probabilities: [Double]) -> Int {
         
     }
     
-        
+    func change_current_shapes_according_to_theme(){
+        if (ThemeType == 1){
+            if (shape_type_index[0] == 5){
+                green_drag_tri.image = UIImage(named:"dark_green_tri")
+            } else if (shape_type_index[1] == 5){
+                orange_drag_tri.image = UIImage(named:"dark_green_tri")
+            } else if (shape_type_index[2] == 5){
+                light_brown_drag_tri.image = UIImage(named:"dark_green_tri")
+            }
+        }
+        else if (ThemeType == 2){
+            if (shape_type_index[0] == 5){
+                green_drag_tri.image = UIImage(named:"六角大王小肉")
+            } else if (shape_type_index[1] == 5){
+                orange_drag_tri.image = UIImage(named:"六角大王小肉")
+            } else if (shape_type_index[2] == 5){
+                light_brown_drag_tri.image = UIImage(named:"六角大王小肉")
+            }
+        }
+    }
 
     
 }
