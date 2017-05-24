@@ -68,6 +68,8 @@ extension UIButton {
     }
 }
 
+var defaults = UserDefaults.standard
+
 
 class GameBoardViewController: UIViewController {
 //constraints
@@ -249,8 +251,6 @@ class GameBoardViewController: UIViewController {
         //self.timer.invalidate()
   
     }
-    
-    var defaults = UserDefaults.standard
     
     //--------------------------------------------------------------------------------------------------------------------------
     //initialize an array for random generator
@@ -691,7 +691,7 @@ class GameBoardViewController: UIViewController {
                 
             }
             self.button_player.play()
-            self.defaults.set(1, forKey: "tritri_Theme")
+            defaults.set(1, forKey: "tritri_Theme")
             self.ThemeType = 1
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
             self.downwards_tri = UIImage(named:"grey_tir_downwards")
@@ -719,7 +719,7 @@ class GameBoardViewController: UIViewController {
                 
             }
             self.button_player.play()
-            self.defaults.set(2, forKey: "tritri_Theme")
+            defaults.set(2, forKey: "tritri_Theme")
             self.ThemeType = 2
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
@@ -966,7 +966,7 @@ class GameBoardViewController: UIViewController {
         
             
                 if (self.ThemeType == 1){   //change to 2
-                    self.defaults.set(2, forKey: "tritri_Theme")
+                    defaults.set(2, forKey: "tritri_Theme")
                     self.ThemeType = 2
                     self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
                     self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
@@ -979,7 +979,7 @@ class GameBoardViewController: UIViewController {
                     self.pause.setImage(UIImage(named: "night mode pause"), for: .normal)
                     
                 }else { //change to 1
-                    self.defaults.set(1, forKey: "tritri_Theme")
+                    defaults.set(1, forKey: "tritri_Theme")
                     self.ThemeType = 1
                     self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
                     self.downwards_tri = UIImage(named:"grey_tir_downwards")
