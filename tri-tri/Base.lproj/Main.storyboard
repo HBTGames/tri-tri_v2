@@ -89,6 +89,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADR-ih-zxd">
+                                <rect key="frame" x="34" y="481" width="148.5" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="Xef-dh-xFu"/>
+                                    <constraint firstAttribute="width" constant="148.5" id="j59-OG-SPb"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="School_Theme"/>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ikp-Gf-toU">
                                 <rect key="frame" x="174" y="323" width="27" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -160,14 +168,6 @@
                                 <connections>
                                     <segue destination="g9C-ac-axW" kind="show" id="CE0-c4-o5J"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADR-ih-zxd">
-                                <rect key="frame" x="34" y="481" width="148.5" height="144"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="144" id="Xef-dh-xFu"/>
-                                    <constraint firstAttribute="width" constant="148.5" id="j59-OG-SPb"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="School_Theme"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
