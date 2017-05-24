@@ -1584,6 +1584,12 @@ class GameBoardViewController: UIViewController {
     
     let pur_down = UIImage(named:"purple_downwards")
     
+//小肉 elements
+    
+    let meat_up = UIImage(named:"小肉 up")
+    
+    let meat_down = UIImage(named:"小肉 down")
+    
 //pause icons
     
     let home_pic = UIImage(named:"home")
@@ -1940,11 +1946,20 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1] && !filled[i-1][j] && !filled[i-1][j-2]){//check available
                                     
                                     auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: dark_green_up)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j+1, image: dark_green_down)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j-1, image: dark_green_down)
-                                    Change_Corresponding_Color_With_Image(x:i-1, y:j, image: dark_green_up)
-                                    Change_Corresponding_Color_With_Image(x:i-1, y:j-2, image: dark_green_up)
+                                    if (ThemeType == 1){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j-2, image: dark_green_up)
+                                    } else if(ThemeType == 2){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: meat_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j, image: meat_up)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j-2, image: meat_up)
+                                    }
+                                    
                                     
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -1965,11 +1980,21 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1] && !filled[i-1][j-1] && !filled[i-1][j+1]){//check available
                                     
                                     auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: dark_green_up)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j+1, image: dark_green_down)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j-1, image: dark_green_down)
-                                    Change_Corresponding_Color_With_Image(x:i-1, y:j+1, image: dark_green_up)
-                                    Change_Corresponding_Color_With_Image(x:i-1, y:j-1, image: dark_green_up)
+                                    if (ThemeType == 1){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+1, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j-1, image: dark_green_up)
+                                    } else if (ThemeType == 2){
+                                        
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: meat_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+1, image: meat_up)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j-1, image: meat_up)
+                                    }
+                                    
                                     
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -1991,11 +2016,20 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1] && !filled[i-1][j] && !filled[i-1][j+2]){//check available
                                     
                                     auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: dark_green_up)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j+1, image: dark_green_down)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j-1, image: dark_green_down)
-                                    Change_Corresponding_Color_With_Image(x:i-1, y:j+2, image: dark_green_up)
-                                    Change_Corresponding_Color_With_Image(x:i-1, y:j, image: dark_green_up)
+                                    if (ThemeType == 1){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+2, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j, image: dark_green_up)
+                                    } else if (ThemeType == 2){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: meat_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+2, image: meat_up)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j, image: meat_up)
+                                    }
+                                    
                                     
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2594,11 +2628,20 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1] && !filled[i-1][j] && !filled[i-1][j-2]){//check available
                                     
                                     auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: dark_green_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: dark_green_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: dark_green_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: dark_green_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-2, image: dark_green_up)
+                                    if (ThemeType == 1){
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-2, image: dark_green_up)
+                                    } else if (ThemeType == 2){
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: meat_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: meat_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-2, image: meat_up)
+                                    }
+                                    
                                     
                                     
                                     
@@ -2615,11 +2658,22 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1] && !filled[i-1][j-1] && !filled[i-1][j+1]){//check available
                                     
                                     auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: dark_green_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: dark_green_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: dark_green_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+1, image: dark_green_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-1, image: dark_green_up)
+                                    if (ThemeType == 1){
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+1, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-1, image: dark_green_up)
+                                        
+                                    }else if (ThemeType == 2){
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: meat_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+1, image: meat_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-1, image: meat_up)
+                                        
+                                    }
+                                   
                                     
                                     return true
                                 }
@@ -2635,11 +2689,20 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1] && !filled[i-1][j] && !filled[i-1][j+2]){//check available
                                     
                                     auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: dark_green_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: dark_green_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: dark_green_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+2, image: dark_green_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: dark_green_up)
+                                    if (ThemeType == 1){
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+2, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: dark_green_up)
+                                    } else if (ThemeType == 2){
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image:meat_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+2, image: meat_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: meat_up)
+                                    }
+                                    
                                     
                                     return true
                                 }
