@@ -12,6 +12,8 @@ import AVKit
 import AVFoundation
 
 class GameOverViewController: UIViewController {
+    let home_pic = UIImage(named:"home")
+    let night_home_pic = UIImage(named:"night mode home")
     @IBOutlet weak var High_score_marker: UILabel!
 
     @IBOutlet weak var score_board: UILabel!
@@ -126,6 +128,11 @@ class GameOverViewController: UIViewController {
         screen_width = view.frame.width
         screen_height = view.frame.height
         restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
+        if (ThemeType == 1){
+            home_button.setBackgroundImage(home_pic, for: .normal)
+        } else if (ThemeType == 2){
+            home_button.setBackgroundImage(night_home_pic, for: .normal)
+        }
         home_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
         like_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
         share_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
@@ -251,6 +258,7 @@ class GameOverViewController: UIViewController {
             self.trophy.image = UIImage(named:"trophy_new")
             self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             self.gameover_title.image = UIImage(named:"day mode gameover title")
+            self.home_button.setBackgroundImage(self.home_pic, for: .normal)
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             
             self.day_theme_button.fadeOut()
@@ -263,6 +271,8 @@ class GameOverViewController: UIViewController {
             return_button.fadeOut()
             white_cover.fadeOut()
             theme_menu.fadeOut()
+            
+            
             
             self.day_theme_button.removeFromSuperview()
             self.night_theme_button.removeFromSuperview()
@@ -298,6 +308,7 @@ class GameOverViewController: UIViewController {
             self.trophy.image = UIImage(named:"night mode 奖杯")
             self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             self.gameover_title.image = UIImage(named:"night mode gameover title")
+            self.home_button.setBackgroundImage(self.night_home_pic, for: .normal)
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             
             self.day_theme_button.fadeOut()

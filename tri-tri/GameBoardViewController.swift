@@ -132,6 +132,7 @@ class GameBoardViewController: UIViewController {
         }
     }
     
+    var home_button = MyButton()
     
     let default_erase_situation_0 = [[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6]]
     let default_erase_situation_1 = [[1,0],[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[1,7],[1,8]]
@@ -712,12 +713,17 @@ class GameBoardViewController: UIViewController {
             self.trophy.image = UIImage(named:"trophy_new")
             self.pause.setImage(UIImage(named: "pause_button"), for: .normal)
             self.triangle_title.image = UIImage(named:"day mode triangle title")
+            self.home_button.setBackgroundImage(self.home_pic, for: .normal)
             self.generator_array[5] = UIImage(named: "dark_green_tri")!
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.in_theme_menu = false
+            
+            
+
+            
             
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
@@ -769,6 +775,10 @@ class GameBoardViewController: UIViewController {
             self.trophy.image = UIImage(named:"night mode 奖杯")
             self.pause.setImage(UIImage(named: "night mode pause"), for: .normal)
             self.triangle_title.image = UIImage(named:"night mode triangle title")
+            
+            self.home_button.setBackgroundImage(self.night_home_pic, for: .normal)
+           
+
             self.generator_array[5] = UIImage(named: "六角大王小肉")!
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
@@ -958,10 +968,15 @@ class GameBoardViewController: UIViewController {
         continue_button.tag = 50
         continue_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
         
-        let home_button = MyButton(frame: CGRect(x: pause_screen_x_transform(52), y: pause_screen_y_transform(333.5), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
-        home_button.setBackgroundImage(home_pic, for: .normal)
-        home_button.tag = 51
-        home_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
+        self.home_button = MyButton(frame: CGRect(x: pause_screen_x_transform(52), y: pause_screen_y_transform(333.5), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
+        if (ThemeType == 1){
+            self.home_button.setBackgroundImage(home_pic, for: .normal)
+        }
+        else if (ThemeType == 2){
+            self.home_button.setBackgroundImage(night_home_pic, for: .normal)
+        }
+        self.home_button.tag = 51
+        self.home_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
         
         let shopping_button = MyButton(frame: CGRect(x: pause_screen_x_transform(222.5), y: pause_screen_y_transform(333.5), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
         shopping_button.setBackgroundImage(shopping_pic, for: .normal)
@@ -985,7 +1000,7 @@ class GameBoardViewController: UIViewController {
         continue_button.whenButtonIsClicked(action:{
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             continue_button.removeFromSuperview()
-            home_button.removeFromSuperview()
+            self.home_button.removeFromSuperview()
             shopping_button.removeFromSuperview()
             restart_button.removeFromSuperview()
             change_theme_button.removeFromSuperview()
@@ -1025,7 +1040,7 @@ class GameBoardViewController: UIViewController {
 
         })
         
-        home_button.whenButtonIsClicked(action:{
+        self.home_button.whenButtonIsClicked(action:{
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
             nextViewController.modalTransitionStyle = .crossDissolve
@@ -1043,7 +1058,7 @@ class GameBoardViewController: UIViewController {
         
         
         continue_button.alpha = 0
-        home_button.alpha = 0
+        self.home_button.alpha = 0
         shopping_button.alpha = 0
         restart_button.alpha = 0
         self.view.addSubview(continue_button)
@@ -1625,6 +1640,8 @@ class GameBoardViewController: UIViewController {
     let shopping_pic = UIImage(named:"shopping_cart")
     
     let continue_pic = UIImage(named:"continue")
+    
+    let night_home_pic = UIImage(named:"night mode home")
     
 //--------------------------------------------------------------------------------------------------------------------
 
