@@ -692,6 +692,16 @@ class GameBoardViewController: UIViewController {
             }
             self.button_player.play()
             self.defaults.set(1, forKey: "tritri_Theme")
+            self.ThemeType = 1
+            self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
+            self.downwards_tri = UIImage(named:"grey_tir_downwards")
+            self.upwards_tri = UIImage(named:"grey_tri_upwards")
+            self.Restore_Grey_Tris()
+            self.change_all_back_tris_image()
+            self.HightestScoreBoard.textColor = UIColor(red: 59.0/255, green: 76.0/255, blue: 65.0/255, alpha: 1.0)
+            self.MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"trophy_new")
+            self.pause.setImage(UIImage(named: "pause_button"), for: .normal)
         })
         
         self.view.addSubview(day_theme_button)
@@ -710,6 +720,16 @@ class GameBoardViewController: UIViewController {
             }
             self.button_player.play()
             self.defaults.set(2, forKey: "tritri_Theme")
+            self.ThemeType = 2
+            self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
+            self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
+            self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
+            self.Restore_Grey_Tris()
+            self.change_all_back_tris_image()
+            self.HightestScoreBoard.textColor = UIColor(red: 186.0/255, green: 179.0/255, blue: 150.0/255, alpha: 1.0)
+            self.MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"night mode 奖杯")
+            self.pause.setImage(UIImage(named: "night mode pause"), for: .normal)
         })
         self.view.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
@@ -912,34 +932,6 @@ class GameBoardViewController: UIViewController {
             }
             self.button_player.play()
             self.theme_menu_action()
-            self.ThemeType = self.defaults.integer(forKey: "tritri_Theme")
-            if (self.ThemeType == 1){   //theme 1 day mode
-                self.defaults.set(1, forKey: "tritri_Theme")
-                self.ThemeType = 1
-                self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
-                self.downwards_tri = UIImage(named:"grey_tir_downwards")
-                self.upwards_tri = UIImage(named:"grey_tri_upwards")
-                self.Restore_Grey_Tris()
-                self.change_all_back_tris_image()
-                self.HightestScoreBoard.textColor = UIColor(red: 59.0/255, green: 76.0/255, blue: 65.0/255, alpha: 1.0)
-                self.MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
-                self.trophy.image = UIImage(named:"trophy_new")
-                self.pause.setImage(UIImage(named: "pause_button"), for: .normal)
-            }else {                     //theme 2 night mode
-                self.defaults.set(2, forKey: "tritri_Theme")
-                self.ThemeType = 2
-                self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
-                self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
-                self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
-                self.Restore_Grey_Tris()
-                self.change_all_back_tris_image()
-                self.HightestScoreBoard.textColor = UIColor(red: 186.0/255, green: 179.0/255, blue: 150.0/255, alpha: 1.0)
-                self.MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
-                self.trophy.image = UIImage(named:"night mode 奖杯")
-                self.pause.setImage(UIImage(named: "night mode pause"), for: .normal)
-                
-            }
-
         })
         
         restart_button.whenButtonIsClicked(action:{
@@ -1024,64 +1016,8 @@ class GameBoardViewController: UIViewController {
         shopping_button.fadeInWithDisplacement()
         restart_button.fadeInWithDisplacement()
         
-        func continue_but(sender: UIButton!){
-            pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
-            continue_button.removeFromSuperview()
-            home_button.removeFromSuperview()
-            shopping_button.removeFromSuperview()
-            restart_button.removeFromSuperview()
-            paused = false
-        }
-        func home_but(sender: UIButton!){
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-            self.present(nextViewController, animated: true, completion: nil)
-            //self.timer.invalidate()
-        }
-        func shopping_button(sender: UIButton!){
-            print ("Thank U 4 like us!!!")
-        }
-        func restart_but(sender: UIButton!){
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameBoardViewController") as! GameBoardViewController
-            self.present(nextViewController, animated: true, completion: nil)
-            //self.timer.invalidate()
-        }
-
         
         
-        func buttonAction(sender: UIButton!) {
-            print("Button tapped")
-            switch (sender.tag){
-            case 50: //continue
-                pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
-                continue_button.removeFromSuperview()
-                home_button.removeFromSuperview()
-                shopping_button.removeFromSuperview()
-                restart_button.removeFromSuperview()
-                break
-            case 51:
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-                self.present(nextViewController, animated: true, completion: nil)
-                //self.timer.invalidate()
-                break
-            case 52:
-                break
-                
-            case 53:
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameBoardViewController") as! GameBoardViewController
-                self.present(nextViewController, animated: true, completion: nil)
-                //self.timer.invalidate()
-                break
-            default:
-                let haha = 1
-                break
-                
-            }
-        }
-
         
     }
     
