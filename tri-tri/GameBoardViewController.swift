@@ -339,10 +339,18 @@ class GameBoardViewController: UIViewController {
         }
         HightestScoreBoard.text = String(HighestScore)
         
+        
+        
+        
+        
         //---------------------------------------------------------------------------
-        //var to decide night mode\
+        //var to decide various theme type
         //1: day mode
         //2: night mode
+        //3: B&W mode
+        //4: chaos mode
+        //5: school mode
+        //6: color mode
         if (defaults.value(forKey: "tritri_Theme") == nil){
             ThemeType = 1
             defaults.set(1, forKey: "tritri_Theme")
@@ -362,7 +370,6 @@ class GameBoardViewController: UIViewController {
             trophy.image = UIImage(named:"trophy_new")
             pause.setImage(UIImage(named: "pause_button"), for: .normal)
             triangle_title.image = UIImage(named:"day mode triangle title")
-            generator_array[5] = UIImage(named: "dark_green_tri")!
             
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -375,7 +382,7 @@ class GameBoardViewController: UIViewController {
             trophy.image = UIImage(named:"night mode 奖杯")
             pause.setImage(UIImage(named: "night mode pause"), for: .normal)
             triangle_title.image = UIImage(named:"night mode triangle title")
-            generator_array[5] = UIImage(named: "六角大王小肉")!
+            
         }else if ThemeType == 3{
             self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
             downwards_tri = UIImage(named:"BW_white_tri_downwards")
@@ -388,8 +395,8 @@ class GameBoardViewController: UIViewController {
             pause.setImage(UIImage(named: "BW_pause"), for: .normal)
             triangle_title.image = UIImage(named: "day mode triangle title")
             
-            
         }
+        change_shape_in_generate_array()
         change_current_shapes_according_to_theme()
         
         
@@ -727,10 +734,10 @@ class GameBoardViewController: UIViewController {
             self.pause.setImage(UIImage(named: "pause_button"), for: .normal)
             self.triangle_title.image = UIImage(named:"day mode triangle title")
             self.home_button.setBackgroundImage(self.home_pic, for: .normal)
-            self.generator_array[5] = UIImage(named: "dark_green_tri")!
             self.continue_button.setBackgroundImage(self.continue_pic, for: .normal)
             self.restart_button.setBackgroundImage(self.restart_pic, for: .normal)
             self.shopping_button.setBackgroundImage(self.shopping_pic, for: .normal)
+            self.change_shape_in_generate_array()
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
@@ -797,7 +804,7 @@ class GameBoardViewController: UIViewController {
             self.restart_button.setBackgroundImage(self.restart_pic, for: .normal)
             self.shopping_button.setBackgroundImage(self.shopping_pic, for: .normal)
 
-            self.generator_array[5] = UIImage(named: "六角大王小肉")!
+            self.change_shape_in_generate_array()
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
@@ -9012,28 +9019,28 @@ func randomNumber(probabilities: [Double]) -> Int {
     }
 
     func change_current_board_according_to_theme(){
-        var shape_5_color_up = UIImage()
-        var shape_5_color_down = UIImage()
-        if (ThemeType == 1){
-            shape_5_color_up = UIImage(named: "green_up")!
-            shape_5_color_down = UIImage(named: "green_down")!
-        }
-        else if (ThemeType == 2){
-            shape_5_color_up = UIImage(named: "小肉 up")!
-            shape_5_color_down = UIImage(named: "小肉 down")!
+        //default set as themetype 1
+        var shape_color_up = [UIImage(named:"super_light_green_up")!,UIImage(named:"pink_upwards")!,UIImage(named:"light_brown_up")!,UIImage(named:"light_brown_up")!,UIImage(named:"super_light_green_up")!,UIImage(named:"green_up")!,UIImage(named:"pink_upwards")!,UIImage(named:"purple_upwards")!,UIImage(named:"purple_upwards")!, UIImage(named:"light_brown_up")!, UIImage(named: "light_brown_up")!]
+        var shape_color_down = [UIImage(named:"super_light_green_down")!,UIImage(named:"pink_downwards")!,UIImage(named:"light_brown_down")!,UIImage(named:"light_brown_down")!,UIImage(named:"super_light_green_down")!,UIImage(named:"green_down")!,UIImage(named:"pink_downwards")!,UIImage(named:"purple_downwards")!,UIImage(named:"purple_downwards")!, UIImage(named:"light_brown_down")!, UIImage(named: "light_brown_down")!]
+        //if Themetype == 1 doesnt change
+        if (ThemeType == 2){
+            shape_color_up[5] = UIImage(named: "小肉 up")!
+            shape_color_down[5] = UIImage(named: "小肉 down")!
         }
         var i = 0
         for row in single_tri_stored_type_index{
             var j = 0
             for type in row{
-                if (type == 5){
-                    if (true_if_up(i: i, j: j)){
-                        Change_Corresponding_Color_With_Image(x: i, y: j, image: shape_5_color_up)
-                    }
-                    else{
-                        Change_Corresponding_Color_With_Image(x: i, y: j, image: shape_5_color_down)
-                    }
+                if (type == -1){
+                    //doesnot change
                 }
+                else if (true_if_up(i: i, j: j)){
+                    Change_Corresponding_Color_With_Image(x: i, y: j, image: shape_color_up[type])
+                }
+                else{
+                    Change_Corresponding_Color_With_Image(x: i, y: j, image: shape_color_down[type])
+                }
+                
                 j += 1
             }
             i += 1
@@ -9041,25 +9048,59 @@ func randomNumber(probabilities: [Double]) -> Int {
         
     }
     
+    
+    //return true if upward triangle
+    func true_if_up(i: Int, j: Int) -> Bool{
+        if (i == 0 || i == 2 || i == 3 || i == 5){
+            if((i + j)%2 == 0){
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        else {
+            if((i + j)%2 == 1){
+                return true
+            }
+            else {
+                return false
+            }
+        }
+    }
+    
+    func change_shape_in_generate_array() -> Void{
+        if (ThemeType == 1){
+            generator_array = [UIImage(named:"绿色tri.png")!,UIImage(named:"橙色tri.png")!,UIImage(named:"棕色tri.png")!,UIImage(named:"brown_downwards.png")!,UIImage(named:"brown_left_direction.png")!,UIImage(named:"dark_green_tri.png")!,UIImage(named:"pink_right_direction.png")!,UIImage(named:"purple_upwards_as_shape.png")!,UIImage(named:"purple_downwards_as_shape")!, UIImage(named:"brown_left_downwards.png")!, UIImage(named: "brown_right_downwards.png")!]
+            
+        } else if (ThemeType == 2){
+            generator_array = [UIImage(named:"绿色tri.png")!,UIImage(named:"橙色tri.png")!,UIImage(named:"棕色tri.png")!,UIImage(named:"brown_downwards.png")!,UIImage(named:"brown_left_direction.png")!,UIImage(named:"六角大王小肉")!,UIImage(named:"pink_right_direction.png")!,UIImage(named:"purple_upwards_as_shape.png")!,UIImage(named:"purple_downwards_as_shape")!, UIImage(named:"brown_left_downwards.png")!, UIImage(named: "brown_right_downwards.png")!]
+        }
+    }
+    
+    
+    
 }
 
-//return true if upward triangle
-func true_if_up(i: Int, j: Int) -> Bool{
-    if (i == 0 || i == 2 || i == 3 || i == 5){
-        if((i + j)%2 == 0){
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    else {
-        if((i + j)%2 == 1){
-            return true
-        }
-        else {
-            return false
-        }
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
