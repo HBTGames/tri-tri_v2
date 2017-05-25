@@ -395,6 +395,17 @@ class GameBoardViewController: UIViewController {
             pause.setImage(UIImage(named: "BW_pause"), for: .normal)
             triangle_title.image = UIImage(named: "day mode triangle title")
             
+        }else if ThemeType == 4{
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
+            self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
+            self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
+            self.Restore_Grey_Tris()
+            self.change_all_back_tris_image()
+            self.HightestScoreBoard.textColor = UIColor(red: 236.0/255, green: 232.0/255, blue: 187.0/255, alpha: 1.0)
+            self.MarkBoard.textColor = UIColor(red: 254.0/255, green: 254.0/255, blue: 254.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"chaos_j_icon")
+            self.pause.setImage(UIImage(named: "chaos_pause_button"), for: .normal)
+            self.triangle_title.image = UIImage(named:"night mode triangle title")
         }
         change_shape_in_generate_array()
         change_current_shapes_according_to_theme()
@@ -922,6 +933,62 @@ class GameBoardViewController: UIViewController {
                 
             }
             self.button_player.play()
+            defaults.set(4, forKey: "tritri_Theme")
+            self.ThemeType = 4
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
+            
+            
+            self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
+            self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
+            self.Restore_Grey_Tris()
+            self.change_all_back_tris_image()
+            self.HightestScoreBoard.textColor = UIColor(red: 236.0/255, green: 232.0/255, blue: 187.0/255, alpha: 1.0)
+            self.MarkBoard.textColor = UIColor(red: 254.0/255, green: 254.0/255, blue: 254.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"chaos_j_icon")
+            self.pause.setImage(UIImage(named: "chaos_pause_button"), for: .normal)
+            self.triangle_title.image = UIImage(named:"night mode triangle title")
+            
+            self.home_button.setBackgroundImage(self.chaos_home_pic, for: .normal)
+            self.continue_button.setBackgroundImage(self.chaos_continue_pic, for: .normal)
+            self.restart_button.setBackgroundImage(self.chaos_restart_small_pic, for: .normal)
+            self.shopping_button.setBackgroundImage(self.chaos_shopping_pic, for: .normal)
+            
+            self.change_shape_in_generate_array()
+            //self.change_current_shapes_according_to_theme()
+            //self.change_current_board_according_to_theme()
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
+            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.in_theme_menu = false
+            self.day_theme_button.fadeOut()
+            self.night_theme_button.fadeOut()
+            self.BW_theme_button.fadeOut()
+            self.chaos_theme_button.fadeOut()
+            self.school_theme_button.fadeOut()
+            self.colors_theme_button.fadeOut()
+            triangle_text.fadeOut()
+            return_button.fadeOut()
+            white_cover.fadeOut()
+            theme_menu.fadeOut()
+            
+            self.day_theme_button.removeFromSuperview()
+            self.night_theme_button.removeFromSuperview()
+            self.BW_theme_button.removeFromSuperview()
+            self.chaos_theme_button.removeFromSuperview()
+            self.school_theme_button.removeFromSuperview()
+            self.colors_theme_button.removeFromSuperview()
+            triangle_text.removeFromSuperview()
+            return_button.removeFromSuperview()
+            white_cover.removeFromSuperview()
+            theme_menu.removeFromSuperview()
+            
+            
+            
+            
+            
+            
+            
+            
+            
         })
         self.view.addSubview(chaos_theme_button)
         chaos_theme_button.fadeInWithDisplacement()
@@ -1027,6 +1094,12 @@ class GameBoardViewController: UIViewController {
     var continue_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var shopping_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var restart_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    
+    
+    
+    
+    
+    
     @IBAction func pause_button(_ sender: UIButton) {
         do{button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             button_player.prepareToPlay()
@@ -1042,6 +1115,8 @@ class GameBoardViewController: UIViewController {
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
         } else if (ThemeType == 3){
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
+        } else if (ThemeType == 4){
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
         }
         
         self.pause_screen.alpha = 0
@@ -1056,6 +1131,8 @@ class GameBoardViewController: UIViewController {
         continue_button.setBackgroundImage(continue_pic, for: .normal)
         }else if (ThemeType == 3){
         continue_button.setBackgroundImage(BW_continue_pic, for: .normal)
+        }else if (ThemeType == 4){
+        continue_button.setBackgroundImage(chaos_continue_pic, for: .normal)
         }
         continue_button.tag = 50
         continue_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
@@ -1068,6 +1145,8 @@ class GameBoardViewController: UIViewController {
             self.home_button.setBackgroundImage(night_home_pic, for: .normal)
         }else if(ThemeType == 3){
             self.home_button.setBackgroundImage(BW_home_pic, for: .normal)
+        }else if(ThemeType == 4){
+            self.home_button.setBackgroundImage(chaos_home_pic, for: .normal)
         }
         self.home_button.tag = 51
         self.home_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
@@ -1077,6 +1156,8 @@ class GameBoardViewController: UIViewController {
         shopping_button.setBackgroundImage(shopping_pic, for: .normal)
         }else if(ThemeType == 3){
             shopping_button.setBackgroundImage(BW_shopping_pic, for: .normal)
+        }else if(ThemeType == 4){
+            shopping_button.setBackgroundImage(chaos_shopping_pic, for: .normal)
         }
         shopping_button.tag = 52
         shopping_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
@@ -1088,6 +1169,9 @@ class GameBoardViewController: UIViewController {
         }
         else if(ThemeType == 3){
             restart_button.setBackgroundImage(BW_restart_pic, for: .normal)
+        }
+        else if(ThemeType == 4){
+            restart_button.setBackgroundImage(chaos_restart_small_pic, for: .normal)
         }
         restart_button.tag = 53
         restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
@@ -1760,6 +1844,17 @@ class GameBoardViewController: UIViewController {
     
     let BW_like_pic = UIImage(named:"BW_like")
     
+    let chaos_home_pic = UIImage(named:"chaos_home_icon")
+    
+    let chaos_continue_pic = UIImage(named:"chaos_start_icon")
+    
+    let chaos_shopping_pic = UIImage(named:"chaos_theme_button")
+    
+    let chaos_restart_small_pic = UIImage(named:"chaos_restart_small")
+    
+    let chaos_restart_big_pic = UIImage(named:"chaos_restart_big")
+    
+    let chaos_like_pic = UIImage(named:"chaos_like_icon")
 //--------------------------------------------------------------------------------------------------------------------
 
     

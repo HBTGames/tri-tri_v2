@@ -67,6 +67,14 @@ class MenuViewController: UIViewController {
             highest_score.textColor =  UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
             self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             continue_button.setImage(UIImage(named:"BW_continue"), for: .normal)
+        }else if(ThemeType == 4){
+            triangle_title.image = UIImage(named: "night mode triangle title")
+            like_button.setBackgroundImage(UIImage(named: "chaos_like_icon"), for: .normal)
+            shopping_cart.setImage(UIImage(named:"chaos_theme_button"), for: .normal)
+            trophy.image = UIImage(named:"chaos_j_icon")
+            highest_score.textColor = UIColor(red: 236.0/255, green: 232.0/255, blue: 187.0/255, alpha: 1.0)
+            view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
+            continue_button.setImage(UIImage(named:"chaos_start_icon"), for: .normal)
         }
       
     
@@ -328,6 +336,49 @@ class MenuViewController: UIViewController {
                 
             }
             self.button_player.play()
+            self.ThemeType = 4
+            self.defaults.set(4, forKey:"tritri_Theme")
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
+            self.trophy.image = UIImage(named:"chaos_j_icon")
+            self.triangle_title.image = UIImage(named: "night mode triangle title")
+            self.like_button.setBackgroundImage(UIImage(named: "chaos_like_icon"), for: .normal)
+            self.highest_score.textColor = UIColor(red: 236.0/255, green: 232.0/255, blue: 187.0/255, alpha: 1.0)
+            self.shopping_cart.setImage(UIImage(named:"chaos_theme_button"), for: .normal)
+            self.continue_button.setImage(UIImage(named:"chaos_start_icon"), for: .normal)
+            //self.trophy.image = UIImage(named:"trophy_new")
+            //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+            // self.gameover_title.image = UIImage(named:"day mode gameover title")
+            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            
+            
+           
+            
+            
+            
+            
+            self.day_theme_button.fadeOut()
+            self.night_theme_button.fadeOut()
+            self.BW_theme_button.fadeOut()
+            self.chaos_theme_button.fadeOut()
+            self.school_theme_button.fadeOut()
+            self.colors_theme_button.fadeOut()
+            triangle_text.fadeOut()
+            return_button.fadeOut()
+            white_cover.fadeOut()
+            theme_menu.fadeOut()
+            
+            self.day_theme_button.removeFromSuperview()
+            self.night_theme_button.removeFromSuperview()
+            self.BW_theme_button.removeFromSuperview()
+            self.chaos_theme_button.removeFromSuperview()
+            self.school_theme_button.removeFromSuperview()
+            self.colors_theme_button.removeFromSuperview()
+            triangle_text.removeFromSuperview()
+            return_button.removeFromSuperview()
+            white_cover.removeFromSuperview()
+            theme_menu.removeFromSuperview()
+            
+            
         })
         self.view.addSubview(chaos_theme_button)
         chaos_theme_button.fadeInWithDisplacement()
