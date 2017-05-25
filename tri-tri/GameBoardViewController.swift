@@ -370,7 +370,6 @@ class GameBoardViewController: UIViewController {
             trophy.image = UIImage(named:"trophy_new")
             pause.setImage(UIImage(named: "pause_button"), for: .normal)
             triangle_title.image = UIImage(named:"day mode triangle title")
-            change_shape_in_generate_array()
             
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -383,10 +382,7 @@ class GameBoardViewController: UIViewController {
             trophy.image = UIImage(named:"night mode 奖杯")
             pause.setImage(UIImage(named: "night mode pause"), for: .normal)
             triangle_title.image = UIImage(named:"night mode triangle title")
-<<<<<<< HEAD
-            change_shape_in_generate_array()
-=======
-            generator_array[5] = UIImage(named: "六角大王小肉")!
+            
         }else if ThemeType == 3{
             self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
             HightestScoreBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
@@ -397,9 +393,8 @@ class GameBoardViewController: UIViewController {
             pause.setImage(UIImage(named: "BW_pause"), for: .normal)
             triangle_title.image = UIImage(named: "day mode triangle title")
             
-            
->>>>>>> origin/master
         }
+        change_shape_in_generate_array()
         change_current_shapes_according_to_theme()
         
         
