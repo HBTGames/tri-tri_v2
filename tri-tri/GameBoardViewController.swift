@@ -376,6 +376,17 @@ class GameBoardViewController: UIViewController {
             pause.setImage(UIImage(named: "night mode pause"), for: .normal)
             triangle_title.image = UIImage(named:"night mode triangle title")
             generator_array[5] = UIImage(named: "六角大王小肉")!
+        }else if ThemeType == 3{
+            self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
+            HightestScoreBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
+            MarkBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
+            
+            Restore_Grey_Tris()
+            trophy.image = UIImage(named: "BW_trophy")
+            pause.setImage(UIImage(named: "BW_pause"), for: .normal)
+            triangle_title.image = UIImage(named: "day mode triangle title")
+            
+            
         }
         change_current_shapes_according_to_theme()
         
@@ -777,7 +788,7 @@ class GameBoardViewController: UIViewController {
             self.triangle_title.image = UIImage(named:"night mode triangle title")
             
             self.home_button.setBackgroundImage(self.night_home_pic, for: .normal)
-           
+            
 
             self.generator_array[5] = UIImage(named: "六角大王小肉")!
             self.change_current_shapes_according_to_theme()
@@ -823,6 +834,19 @@ class GameBoardViewController: UIViewController {
                 
             }
             self.button_player.play()
+            defaults.set(2, forKey: "tritri_Theme")
+            self.ThemeType = 2
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         })
         self.view.addSubview(BW_theme_button)
         BW_theme_button.fadeInWithDisplacement()
@@ -954,6 +978,8 @@ class GameBoardViewController: UIViewController {
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
         } else if (ThemeType == 2){
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
+        } else if (ThemeType == 3){
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
         }
         
         self.pause_screen.alpha = 0
@@ -964,7 +990,11 @@ class GameBoardViewController: UIViewController {
         self.pause_screen.fadeIn()
         paused = true
         let continue_button = MyButton(frame: CGRect(x: pause_screen_x_transform(87.5), y: pause_screen_y_transform(283.5), width: pause_screen_x_transform(200), height: pause_screen_y_transform(170)))
+        if(ThemeType == 1 || ThemeType == 2){
         continue_button.setBackgroundImage(continue_pic, for: .normal)
+        }else if (ThemeType == 3){
+        continue_button.setBackgroundImage(BW_continue_pic, for: .normal)
+        }
         continue_button.tag = 50
         continue_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
         
@@ -974,18 +1004,29 @@ class GameBoardViewController: UIViewController {
         }
         else if (ThemeType == 2){
             self.home_button.setBackgroundImage(night_home_pic, for: .normal)
+        }else if(ThemeType == 3){
+            self.home_button.setBackgroundImage(BW_home_pic, for: .normal)
         }
         self.home_button.tag = 51
         self.home_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
         
         let shopping_button = MyButton(frame: CGRect(x: pause_screen_x_transform(222.5), y: pause_screen_y_transform(333.5), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
+        if(ThemeType == 1 || ThemeType == 2){
         shopping_button.setBackgroundImage(shopping_pic, for: .normal)
+        }else if(ThemeType == 3){
+            shopping_button.setBackgroundImage(BW_shopping_pic, for: .normal)
+        }
         shopping_button.tag = 52
         shopping_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
         
         let restart_button = MyButton(frame: CGRect(x: pause_screen_x_transform(137.5), y: pause_screen_y_transform(190), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
             //
+        if(ThemeType == 1 || ThemeType == 2){
         restart_button.setBackgroundImage(restart_pic, for: .normal)
+        }
+        else if(ThemeType == 3){
+            restart_button.setBackgroundImage(BW_restart_pic, for: .normal)
+        }
         restart_button.tag = 53
         restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
         
@@ -1642,6 +1683,16 @@ class GameBoardViewController: UIViewController {
     let continue_pic = UIImage(named:"continue")
     
     let night_home_pic = UIImage(named:"night mode home")
+    
+    let BW_home_pic = UIImage(named:"BW_home")
+    
+    let BW_continue_pic = UIImage(named:"BW_continue")
+    
+    let BW_shopping_pic = UIImage(named:"BW_shopping")
+    
+    let BW_restart_pic = UIImage(named:"BW_restart")
+    
+    let BW_like_pic = UIImage(named:"BW_like")
     
 //--------------------------------------------------------------------------------------------------------------------
 
