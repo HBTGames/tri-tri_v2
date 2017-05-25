@@ -9040,24 +9040,20 @@ func randomNumber(probabilities: [Double]) -> Int {
     }
     
     func change_current_shapes_according_to_theme(){
-        if (ThemeType == 1){
-            if (shape_type_index[0] == 5 && exist1 == true){
-                green_drag_tri.image = UIImage(named:"dark_green_tri")
-            } else if (shape_type_index[1] == 5 && exist2 == true){
-                orange_drag_tri.image = UIImage(named:"dark_green_tri")
-            } else if (shape_type_index[2] == 5 && exist3 == true){
-                light_brown_drag_tri.image = UIImage(named:"dark_green_tri")
-            }
+        let left_shape_index = shape_type_index[0]
+        let mid_shape_index = shape_type_index[1]
+        let right_shape_index = shape_type_index[2]
+        if (exist1 == true){
+            green_drag_tri.image = generator_array[left_shape_index]
         }
-        else if (ThemeType == 2){
-            if (shape_type_index[0] == 5 && exist1 == true){
-                green_drag_tri.image = UIImage(named:"六角大王小肉")
-            } else if (shape_type_index[1] == 5 && exist2 == true){
-                orange_drag_tri.image = UIImage(named:"六角大王小肉")
-            } else if (shape_type_index[2] == 5 && exist3 == true){
-                light_brown_drag_tri.image = UIImage(named:"六角大王小肉")
-            }
+        if (exist2 == true){
+            orange_drag_tri.image = generator_array[mid_shape_index]
         }
+        if (exist3 == true){
+            light_brown_drag_tri.image = generator_array[right_shape_index]
+        }
+        
+        
     }
 
     func change_current_board_according_to_theme(){
