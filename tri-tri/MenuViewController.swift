@@ -76,7 +76,7 @@ class MenuViewController: UIViewController {
             view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
             continue_button.setImage(UIImage(named:"chaos_start_icon"), for: .normal)
         }else if(ThemeType == 5){
-            triangle_title.image = UIImage(named: "night mode triangle title")
+            triangle_title.image = UIImage(named: "school_triangle_title")
             like_button.setBackgroundImage(UIImage(named: "school_like-icon"), for: .normal)
             shopping_cart.setImage(UIImage(named:"school_theme-button"), for: .normal)
             trophy.image = UIImage(named:"school_j-icon")
@@ -419,7 +419,7 @@ class MenuViewController: UIViewController {
             self.defaults.set(5, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
             self.trophy.image = UIImage(named:"school_j-icon")
-            self.triangle_title.image = UIImage(named: "night mode triangle title")
+            self.triangle_title.image = UIImage(named: "school_triangle_title")
             self.like_button.setBackgroundImage(UIImage(named: "school_like-icon"), for: .normal)
             self.highest_score.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
             self.shopping_cart.setImage(UIImage(named:"school_theme-button"), for: .normal)
@@ -531,7 +531,6 @@ class MenuViewController: UIViewController {
         //add triangle text
         
         triangle_text.image = UIImage(named: "day mode triangle title")
-        triangle_text.contentMode = .scaleAspectFit
         //triangle_text.sizeToFit()
         triangle_text.alpha = 0
         self.view.addSubview(triangle_text)

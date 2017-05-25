@@ -417,7 +417,7 @@ class GameBoardViewController: UIViewController {
             self.MarkBoard.textColor = UIColor(red: 113.0/255, green: 105.0/255, blue: 183.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"school_j-icon")
             self.pause.setImage(UIImage(named: "school_pause-button"), for: .normal)
-            self.triangle_title.image = UIImage(named:"night mode triangle title")
+            self.triangle_title.image = UIImage(named:"school_triangle_title")
         }
         change_shape_in_generate_array()
         change_current_shapes_according_to_theme()
@@ -1031,7 +1031,7 @@ class GameBoardViewController: UIViewController {
             self.MarkBoard.textColor = UIColor(red: 113.0/255, green: 105.0/255, blue: 183.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"school_j-icon")
             self.pause.setImage(UIImage(named: "school_pause-button"), for: .normal)
-            self.triangle_title.image = UIImage(named:"night mode triangle title")
+            self.triangle_title.image = UIImage(named:"school_triangle_title")
             
             self.home_button.setBackgroundImage(self.school_home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.school_continue_pic, for: .normal)
