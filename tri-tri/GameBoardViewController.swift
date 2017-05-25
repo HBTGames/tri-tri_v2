@@ -384,7 +384,7 @@ class GameBoardViewController: UIViewController {
             triangle_title.image = UIImage(named:"night mode triangle title")
             
         }else if ThemeType == 3{
-            self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             downwards_tri = UIImage(named:"BW_white_tri_downwards")
             upwards_tri = UIImage(named:"BW_white_tri_upwards")
             Restore_Grey_Tris()
@@ -850,7 +850,7 @@ class GameBoardViewController: UIViewController {
             self.button_player.play()
             defaults.set(3, forKey: "tritri_Theme")
             self.ThemeType = 3
-            self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             self.downwards_tri = UIImage(named:"BW_white_tri_downwards")
             self.upwards_tri = UIImage(named:"BW_white_tri_upwards")
             self.Restore_Grey_Tris()

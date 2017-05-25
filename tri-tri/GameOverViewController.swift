@@ -169,7 +169,7 @@ class GameOverViewController: UIViewController {
             self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
             self.share_button.setImage(UIImage(named:"link"), for: .normal)
         }else if ThemeType == 3{
-            self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             self.trophy.image = UIImage(named: "BW_trophy")
             self.score_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -376,7 +376,7 @@ class GameOverViewController: UIViewController {
             self.button_player.play()
             self.ThemeType = 3
             defaults.set(3, forKey:"tritri_Theme")
-            self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             self.trophy.image = UIImage(named:"BW_trophy")
             self.gameover_title.image = UIImage(named: "day mode triangle title")
             self.score_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)

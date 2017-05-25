@@ -65,7 +65,7 @@ class MenuViewController: UIViewController {
             shopping_cart.setImage(UIImage(named:"BW_shopping"), for: .normal)
             trophy.image = UIImage(named:"BW_trophy")
             highest_score.textColor =  UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
-            view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1)
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             continue_button.setImage(UIImage(named:"BW_continue"), for: .normal)
         }
       
@@ -269,7 +269,7 @@ class MenuViewController: UIViewController {
             self.button_player.play()
             self.ThemeType = 3
             self.defaults.set(3, forKey:"tritri_Theme")
-            self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
+           self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             self.trophy.image = UIImage(named:"BW_trophy")
             self.triangle_title.image = UIImage(named: "day mode triangle title")
             self.like_button.setBackgroundImage(UIImage(named: "BW_like"), for: .normal)
