@@ -49,13 +49,16 @@ class MenuViewController: UIViewController {
             triangle_title.image = UIImage(named: "day mode triangle title")
             like_button.setBackgroundImage(UIImage(named: "day mode like"), for: .normal)
             highest_score.textColor = UIColor(red: 112.0/255, green: 160.0/255, blue: 115.0/255, alpha: 1)
-           
+            shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
+            continue_button.setImage(UIImage(named:"continue"), for: .normal)
         }else if(ThemeType == 2){
             trophy.image = UIImage(named:"night mode 奖杯")
             view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             triangle_title.image = UIImage(named:"night mode triangle title")
             like_button.setBackgroundImage(UIImage(named: "night mode like button"), for: .normal)
              highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
+            shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
+            continue_button.setImage(UIImage(named:"continue"), for: .normal)
         }else if(ThemeType == 3){
             triangle_title.image = UIImage(named: "day mode triangle title")
             like_button.setBackgroundImage(UIImage(named: "BW_like"), for: .normal)
@@ -166,6 +169,8 @@ class MenuViewController: UIViewController {
             self.triangle_title.image = UIImage(named: "day mode triangle title")
             self.like_button.setBackgroundImage(UIImage(named: "day mode like"), for: .normal)
             self.highest_score.textColor = UIColor(red: 112.0/255, green: 160.0/255, blue: 115.0/255, alpha: 1)
+            self.continue_button.setImage(UIImage(named:"continue"), for: .normal)
+            self.shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -217,7 +222,9 @@ class MenuViewController: UIViewController {
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             self.triangle_title.image = UIImage(named:"night mode triangle title")
             self.highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
-            
+            self.continue_button.setImage(UIImage(named:"continue"), for: .normal)
+            self.shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
+
            // self.trophy.image = UIImage(named:"night mode 奖杯")
            // self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"night mode gameover title")
@@ -261,7 +268,7 @@ class MenuViewController: UIViewController {
             }
             self.button_player.play()
             self.ThemeType = 3
-            self.defaults.set(1, forKey:"tritri_Theme")
+            self.defaults.set(3, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"BW_trophy")
             self.triangle_title.image = UIImage(named: "day mode triangle title")
