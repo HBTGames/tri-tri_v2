@@ -1041,7 +1041,7 @@ class GameBoardViewController: UIViewController {
             self.change_shape_in_generate_array()
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
-            self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255/255.0), green:CGFloat(255/255.0), blue:CGFloat(255/255.0), alpha:CGFloat(0.8))
             
             
             
@@ -9696,15 +9696,15 @@ func randomNumber(probabilities: [Double]) -> Int {
         }else if(ThemeType == 5){
             shape_color_up[0] = UIImage(named: "school_up")!
             shape_color_up[1] = UIImage(named: "school_up")!
-            shape_color_up[2] = UIImage(named: "school_up_right")!
-            shape_color_up[3] = UIImage(named: "school_up_right")!
+            shape_color_up[2] = UIImage(named: "school_up-right")!
+            shape_color_up[3] = UIImage(named: "school_up-right")!
             shape_color_up[4] = UIImage(named: "school_up")!
-            shape_color_up[5] = UIImage(named: "school_up_left")!
+            shape_color_up[5] = UIImage(named: "school_up-left")!
             shape_color_up[6] = UIImage(named: "school_up")!
             shape_color_up[7] = UIImage(named: "school_up")!
             shape_color_up[8] = UIImage(named: "school_up")!
-            shape_color_up[9] = UIImage(named: "school_up_right")!
-            shape_color_up[10] = UIImage(named: "school_up_right")!
+            shape_color_up[9] = UIImage(named: "school_up-right")!
+            shape_color_up[10] = UIImage(named: "school_up-right")!
             
             
             shape_color_down[0] = UIImage(named: "school_down")!
