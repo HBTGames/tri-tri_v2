@@ -850,7 +850,49 @@ class GameBoardViewController: UIViewController {
             self.button_player.play()
             defaults.set(3, forKey: "tritri_Theme")
             self.ThemeType = 3
+            self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
+            self.downwards_tri = UIImage(named:"BW_white_tri_downwards")
+            self.upwards_tri = UIImage(named:"BW_white_tri_upwards")
+            self.Restore_Grey_Tris()
+            self.change_all_back_tris_image()
+            self.HightestScoreBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
+            self.MarkBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"BW_trophy")
+            self.pause.setImage(UIImage(named: "BW_pause"), for: .normal)
+            self.triangle_title.image = UIImage(named:"day mode triangle title")
             
+            self.home_button.setBackgroundImage(self.BW_home_pic, for: .normal)
+            self.continue_button.setBackgroundImage(self.BW_continue_pic, for: .normal)
+            self.restart_button.setBackgroundImage(self.BW_restart_pic, for: .normal)
+            self.shopping_button.setBackgroundImage(self.BW_shopping_pic, for: .normal)
+
+            self.change_shape_in_generate_array()
+            //self.change_current_shapes_according_to_theme()
+            //self.change_current_board_according_to_theme()
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
+            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.in_theme_menu = false
+            self.day_theme_button.fadeOut()
+            self.night_theme_button.fadeOut()
+            self.BW_theme_button.fadeOut()
+            self.chaos_theme_button.fadeOut()
+            self.school_theme_button.fadeOut()
+            self.colors_theme_button.fadeOut()
+            triangle_text.fadeOut()
+            return_button.fadeOut()
+            white_cover.fadeOut()
+            theme_menu.fadeOut()
+            
+            self.day_theme_button.removeFromSuperview()
+            self.night_theme_button.removeFromSuperview()
+            self.BW_theme_button.removeFromSuperview()
+            self.chaos_theme_button.removeFromSuperview()
+            self.school_theme_button.removeFromSuperview()
+            self.colors_theme_button.removeFromSuperview()
+            triangle_text.removeFromSuperview()
+            return_button.removeFromSuperview()
+            white_cover.removeFromSuperview()
+            theme_menu.removeFromSuperview()
             
             
             
@@ -9075,6 +9117,8 @@ func randomNumber(probabilities: [Double]) -> Int {
             
         } else if (ThemeType == 2){
             generator_array = [UIImage(named:"绿色tri.png")!,UIImage(named:"橙色tri.png")!,UIImage(named:"棕色tri.png")!,UIImage(named:"brown_downwards.png")!,UIImage(named:"brown_left_direction.png")!,UIImage(named:"六角大王小肉")!,UIImage(named:"pink_right_direction.png")!,UIImage(named:"purple_upwards_as_shape.png")!,UIImage(named:"purple_downwards_as_shape")!, UIImage(named:"brown_left_downwards.png")!, UIImage(named: "brown_right_downwards.png")!]
+        } else if(ThemeType == 3){
+            generator_array = [UIImage(named:"BW_shape_0")!,UIImage(named:"BW_shape_1")!,UIImage(named:"BW_shape_2")!,UIImage(named:"BW_shape_3")!,UIImage(named:"BW_shape_4")!,UIImage(named:"BW_shape_5")!,UIImage(named:"BW_shape_6")!,UIImage(named:"BW_shape_7")!,UIImage(named:"BW_shape_8")!, UIImage(named:"BW_shape_9")!, UIImage(named: "BW_shape_10")!]
         }
     }
     
