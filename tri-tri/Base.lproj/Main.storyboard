@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -110,6 +110,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="continue_button" destination="ABN-yi-CDb" id="JyS-hV-8Wy"/>
                         <outlet property="highest_score" destination="jVy-u3-4Z8" id="cFj-tW-Ygh"/>
                         <outlet property="like_button" destination="PFh-NN-dAa" id="Fc8-Ys-Kas"/>
                         <outlet property="shopping_cart" destination="L5u-Zg-LxX" id="kqg-hZ-5f9"/>
@@ -1224,7 +1225,7 @@
         <image name="棕色tri" width="104" height="93"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jOH-pV-lXR"/>
+        <segue reference="Hkt-ax-Thn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

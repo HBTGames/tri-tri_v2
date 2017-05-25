@@ -280,8 +280,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1652"
             endingLineNumber = "1652"
-            landmarkName = "Shape_fitting(Shape_Type:position:)"
-            landmarkType = "7">
+            landmarkName = "GameBoardViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -424,7 +424,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4258"
             endingLineNumber = "4258"
-            landmarkName = "Duplicate_Tri_Animate(i:j:)"
+            landmarkName = "auto_random_generator()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -646,7 +646,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "7658"
             endingLineNumber = "7658"
-            landmarkName = "Check_for_Gameover()"
+            landmarkName = "Check_And_Erase_Fix_Filled()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -662,7 +662,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "7659"
             endingLineNumber = "7659"
-            landmarkName = "Check_for_Gameover()"
+            landmarkName = "Check_And_Erase_Fix_Filled()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
