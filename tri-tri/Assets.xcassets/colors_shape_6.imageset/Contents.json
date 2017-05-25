@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "colors_shape_6.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "colors_pause-button.png",
       "scale" : "2x"
     },
     {

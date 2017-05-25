@@ -406,6 +406,20 @@ class GameBoardViewController: UIViewController {
             self.trophy.image = UIImage(named:"chaos_j_icon")
             self.pause.setImage(UIImage(named: "chaos_pause_button"), for: .normal)
             self.triangle_title.image = UIImage(named:"night mode triangle title")
+        }else if ThemeType == 6{
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
+            self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
+            self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
+            self.Restore_Grey_Tris()
+            self.change_all_back_tris_image()
+            self.HightestScoreBoard.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.0)
+            self.MarkBoard.textColor = UIColor(red: 251.0/255, green: 250.0/255, blue: 249.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"colors_j-icon")
+            self.pause.setImage(UIImage(named: "colors_pause-button"), for: .normal)
+            self.triangle_title.image = UIImage(named:"night mode triangle title")
+            
+            
+            
         }
         change_shape_in_generate_array()
         change_current_shapes_according_to_theme()
@@ -1022,6 +1036,61 @@ class GameBoardViewController: UIViewController {
                 
             }
             self.button_player.play()
+            defaults.set(6, forKey: "tritri_Theme")
+            self.ThemeType = 6
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named:"colors_background")!)
+            self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
+            self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
+            self.Restore_Grey_Tris()
+            self.change_all_back_tris_image()
+            self.HightestScoreBoard.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.0)
+            self.MarkBoard.textColor = UIColor(red: 251.0/255, green: 250.0/255, blue: 249.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"colors_j-icon")
+            self.pause.setImage(UIImage(named: "colors_pause-button"), for: .normal)
+            self.triangle_title.image = UIImage(named:"night mode triangle title")
+            
+            self.home_button.setBackgroundImage(self.colors_home_pic, for: .normal)
+            self.continue_button.setBackgroundImage(self.colors_continue_pic, for: .normal)
+            self.restart_button.setBackgroundImage(self.colors_restart_small_pic, for: .normal)
+            self.shopping_button.setBackgroundImage(self.colors_shopping_pic, for: .normal)
+            
+            self.change_shape_in_generate_array()
+            self.change_current_shapes_according_to_theme()
+            self.change_current_board_according_to_theme()
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
+            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.in_theme_menu = false
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
+            self.day_theme_button.fadeOut()
+            self.night_theme_button.fadeOut()
+            self.BW_theme_button.fadeOut()
+            self.chaos_theme_button.fadeOut()
+            self.school_theme_button.fadeOut()
+            self.colors_theme_button.fadeOut()
+            triangle_text.fadeOut()
+            return_button.fadeOut()
+            white_cover.fadeOut()
+            theme_menu.fadeOut()
+            
+            self.day_theme_button.removeFromSuperview()
+            self.night_theme_button.removeFromSuperview()
+            self.BW_theme_button.removeFromSuperview()
+            self.chaos_theme_button.removeFromSuperview()
+            self.school_theme_button.removeFromSuperview()
+            self.colors_theme_button.removeFromSuperview()
+            triangle_text.removeFromSuperview()
+            return_button.removeFromSuperview()
+            white_cover.removeFromSuperview()
+            theme_menu.removeFromSuperview()
+            
+            
+            
+            
+            
+            
+            
+            
+            
         })
 
         self.view.addSubview(colors_theme_button)
@@ -1117,6 +1186,8 @@ class GameBoardViewController: UIViewController {
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
         } else if (ThemeType == 4){
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
+        } else if (ThemeType == 6){
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
         }
         
         self.pause_screen.alpha = 0
@@ -1133,6 +1204,8 @@ class GameBoardViewController: UIViewController {
         continue_button.setBackgroundImage(BW_continue_pic, for: .normal)
         }else if (ThemeType == 4){
         continue_button.setBackgroundImage(chaos_continue_pic, for: .normal)
+        }else if (ThemeType == 6){
+          continue_button.setBackgroundImage(colors_continue_pic, for: .normal)
         }
         continue_button.tag = 50
         continue_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
@@ -1147,6 +1220,8 @@ class GameBoardViewController: UIViewController {
             self.home_button.setBackgroundImage(BW_home_pic, for: .normal)
         }else if(ThemeType == 4){
             self.home_button.setBackgroundImage(chaos_home_pic, for: .normal)
+        }else if (ThemeType == 6){
+            self.home_button.setBackgroundImage(colors_home_pic, for: .normal)
         }
         self.home_button.tag = 51
         self.home_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
@@ -1158,6 +1233,8 @@ class GameBoardViewController: UIViewController {
             shopping_button.setBackgroundImage(BW_shopping_pic, for: .normal)
         }else if(ThemeType == 4){
             shopping_button.setBackgroundImage(chaos_shopping_pic, for: .normal)
+        }else if (ThemeType == 6){
+            shopping_button.setBackgroundImage(colors_shopping_pic, for: .normal)
         }
         shopping_button.tag = 52
         shopping_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
@@ -1172,6 +1249,8 @@ class GameBoardViewController: UIViewController {
         }
         else if(ThemeType == 4){
             restart_button.setBackgroundImage(chaos_restart_small_pic, for: .normal)
+        }else if (ThemeType == 6){
+            restart_button.setBackgroundImage(colors_restart_small_pic, for: .normal)
         }
         restart_button.tag = 53
         restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
@@ -1829,6 +1908,16 @@ class GameBoardViewController: UIViewController {
     let chaos_up_5 = UIImage(named:"chaos_up_right")
     let chaos_down = UIImage(named:"chaos_down")
     
+//colors elements
+    let colors_green_up = UIImage(named:"colors_green_up")
+    let colors_green_down = UIImage(named:"colors_green_down")
+    let colors_blue_up = UIImage(named: "colors_blue_up")
+    let colors_blue_down = UIImage(named: "colors_blue_down")
+    let colors_gold_up = UIImage(named: "colors_gold_up")
+    let colors_gold_down = UIImage(named: "colors_gold_down")
+    let colors_pink_up = UIImage(named: "colors_pink_up")
+    let colors_pink_down = UIImage(named: "colors_pink_down")
+    
     
 //pause icons
     
@@ -1865,6 +1954,18 @@ class GameBoardViewController: UIViewController {
     let chaos_restart_big_pic = UIImage(named:"chaos_restart_big")
     
     let chaos_like_pic = UIImage(named:"chaos_like_icon")
+    
+    let colors_home_pic = UIImage(named:"colors_home-icon")
+    
+    let colors_continue_pic = UIImage(named:"colors_start")
+    
+    let colors_shopping_pic = UIImage(named:"colors_theme-button")
+    
+    let colors_restart_small_pic = UIImage(named:"colors_restart")
+    
+    let colors_restart_big_pic = UIImage(named:"colors_restart-big")
+    
+    let colors_like_pic = UIImage(named:"colors_like-icon")
 //--------------------------------------------------------------------------------------------------------------------
 
     
@@ -1920,6 +2021,10 @@ class GameBoardViewController: UIViewController {
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_down)
                                     Change_Corresponding_Color_With_Image(x:i, y:j-1, image: chaos_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_up)
+                                }else if(ThemeType == 6){
+                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_green_down)
+                                    Change_Corresponding_Color_With_Image(x:i, y:j-1, image: colors_green_up)
+                                    Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_green_up)
                                 }
                                 
                                 filled[i][j] = true
@@ -1956,6 +2061,10 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j-1, image: chaos_up)
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_up)
                                         
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_green_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: colors_green_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_green_up)
                                     }
                                     filled[i][j] = true
                                     filled[i][j-1] = true
@@ -1997,6 +2106,9 @@ class GameBoardViewController: UIViewController {
                                     }else if(ThemeType == 4){
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up)
                                         Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: chaos_down)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_green_up)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: colors_green_down)
                                     }
                                     filled[i+1][j+1] = true
                                     filled[i][j] = true
@@ -2027,6 +2139,10 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up)
                                         Change_Corresponding_Color_With_Image(x:i+1, y:j, image: chaos_down)
                                         
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_green_up)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j, image: colors_green_down)
+  
                                     }
                                     filled[i][j] = true
                                     filled[i+1][j] = true
@@ -2057,7 +2173,11 @@ class GameBoardViewController: UIViewController {
                                     }else if(ThemeType == 4){
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up)
                                         Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: chaos_down)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_green_up)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: colors_green_down)
                                     }
+                        
                                     
                                     filled[i][j] = true
                                     filled[i+1][j-1] = true
@@ -2101,6 +2221,10 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up_5)
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j, image: chaos_up_5)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_gold_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_gold_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j, image: colors_gold_up)
                                     }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2134,6 +2258,11 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up_5)
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j+1, image: chaos_up_5)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_gold_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_gold_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+1, image: colors_gold_up)
+                                        
                                     }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2169,6 +2298,12 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j+2, image: chaos_up_5)
                                         
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_gold_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_gold_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+2, image: colors_gold_up)
+                                        
+ 
                                     }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2215,6 +2350,11 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j-1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up_right)
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_down)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: colors_green_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_green_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_green_down)
+
                                     }
                                     
                                     filled[i][j] = true
@@ -2247,6 +2387,11 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j-1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up_right)
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_down)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: colors_green_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_green_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_green_down)
+ 
                                     }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2289,6 +2434,10 @@ class GameBoardViewController: UIViewController {
                                     }else if(ThemeType == 4){
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_up_3)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_blue_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_blue_up)
+
                                     }
                                     
                                     filled[i][j] = true
@@ -2318,6 +2467,10 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_up_3)
                                         
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_blue_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_blue_up)
+
                                     }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2373,6 +2526,12 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j-1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j, image: chaos_up_right)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j-2, image: chaos_up_right)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_blue_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_blue_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: colors_blue_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j, image: colors_blue_up)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j-2, image: colors_blue_up)
                                     }
                                     
                                     
@@ -2426,6 +2585,12 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j+1, image: chaos_up_right)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j-1, image: chaos_up_right)
                                         
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_blue_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_blue_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: colors_blue_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+1, image: colors_blue_up)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j-1, image: colors_blue_up)
                                     }
                                     
                                     
@@ -2477,6 +2642,12 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j-1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j+2, image: chaos_up_right)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j, image: chaos_down)
+                                    } else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_blue_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_blue_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: colors_blue_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+2, image: colors_blue_up)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j, image: colors_blue_up)
                                     }
                                     
                                     
@@ -2526,6 +2697,10 @@ class GameBoardViewController: UIViewController {
                                     }else if(ThemeType == 4){
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up)
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_down)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_blue_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_blue_down)
+ 
                                     }
                                     
                                     filled[i][j] = true
@@ -2554,6 +2729,10 @@ class GameBoardViewController: UIViewController {
                                     }else if(ThemeType == 4){
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up)
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_down)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_blue_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_blue_down)
+ 
                                     }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2594,6 +2773,8 @@ class GameBoardViewController: UIViewController {
                                     }else if(ThemeType == 4){
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up)
                                         
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_pink_up)
                                     }
                                     
                                     filled[i][j] = true
@@ -2618,6 +2799,8 @@ class GameBoardViewController: UIViewController {
                                     }else if(ThemeType == 4){
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up)
                                         
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_pink_up)
                                     }
                                     filled[i][j] = true
                                     single_tri_stored_type_index[i][j] = 7
@@ -2653,6 +2836,9 @@ class GameBoardViewController: UIViewController {
                                      Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_down)
                                     }else if(ThemeType == 4){
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_down)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_pink_down)
+
                                     }
                                     
                                     filled[i][j] = true
@@ -2677,6 +2863,8 @@ class GameBoardViewController: UIViewController {
                                     }else if(ThemeType == 4){
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_down)
                                         
+                                    }else if(ThemeType == 6){
+                                          Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_pink_down)
                                     }
                                     filled[i][j] = true
                                     single_tri_stored_type_index[i][j] = 8
@@ -2718,6 +2906,11 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up_right)
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: chaos_down)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_gold_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_gold_down)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: colors_gold_down)
+
                                     }
                                     
                                     filled[i][j] = true
@@ -2753,6 +2946,11 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i+1, y:j, image: chaos_down)
                                         
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_gold_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_gold_down)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j, image: colors_gold_down)
+
                                     }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2786,6 +2984,11 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up_right)
                                         Change_Corresponding_Color_With_Image(x:i, y:j+1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: chaos_down)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_gold_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: colors_gold_down)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: colors_gold_down)
+
                                     }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2832,6 +3035,11 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up_5)
                                         Change_Corresponding_Color_With_Image(x:i, y:j-1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: chaos_down)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_gold_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: colors_gold_down)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: colors_gold_down)
+
                                     }
                                     
                                     filled[i][j] = true
@@ -2867,6 +3075,10 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j-1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i+1, y:j, image: chaos_down)
                                         
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_gold_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: colors_gold_down)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j, image: colors_gold_down)
                                     }
                                     
                                     filled[i][j] = true
@@ -2901,6 +3113,10 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: chaos_up_5)
                                         Change_Corresponding_Color_With_Image(x:i, y:j-1, image: chaos_down)
                                         Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: chaos_down)
+                                    }else if(ThemeType == 6){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: colors_gold_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: colors_gold_down)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: colors_gold_down)
                                     }
                                     filled[i][j] = true
                                     filled[i][j-1] = true
@@ -9494,6 +9710,31 @@ func randomNumber(probabilities: [Double]) -> Int {
             shape_color_down[8] = UIImage(named: "chaos_down")!
             shape_color_down[9] = UIImage(named: "chaos_down")!
             shape_color_down[10] = UIImage(named: "chaos_down")!
+        }else if(ThemeType == 6){
+            shape_color_up[0] = UIImage(named: "colors_green_up")!
+            shape_color_up[1] = UIImage(named: "colors_green_up")!
+            shape_color_up[2] = UIImage(named: "colors_gold_up")!
+            shape_color_up[3] = UIImage(named: "colors_green_up")!
+            shape_color_up[4] = UIImage(named: "colors_blue_up")!
+            shape_color_up[5] = UIImage(named: "colors_blue_up")!
+            shape_color_up[6] = UIImage(named: "colors_blue_up")!
+            shape_color_up[7] = UIImage(named: "colors_pink_up")!
+            shape_color_up[8] = UIImage(named: "colors_pink_up")!
+            shape_color_up[9] = UIImage(named: "colors_gold_up")!
+            shape_color_up[10] = UIImage(named: "colors_gold_up")!
+            
+            
+            shape_color_down[0] = UIImage(named: "colors_green_down")!
+            shape_color_down[1] = UIImage(named: "colors_green_down")!
+            shape_color_down[2] = UIImage(named: "colors_gold_down")!
+            shape_color_down[3] = UIImage(named: "colors_green_down")!
+            shape_color_down[4] = UIImage(named: "colors_blue_down")!
+            shape_color_down[5] = UIImage(named: "colors_blue_down")!
+            shape_color_down[6] = UIImage(named: "colors_blue_down")!
+            shape_color_down[7] = UIImage(named: "colors_pink_down")!
+            shape_color_down[8] = UIImage(named: "colors_pink_down")!
+            shape_color_down[9] = UIImage(named: "colors_gold_down")!
+            shape_color_down[10] = UIImage(named: "colors_gold_down")!
         }
         var i = 0
         for row in single_tri_stored_type_index{
@@ -9547,6 +9788,8 @@ func randomNumber(probabilities: [Double]) -> Int {
             generator_array = [UIImage(named:"BW_shape_0")!,UIImage(named:"BW_shape_1")!,UIImage(named:"BW_shape_2")!,UIImage(named:"BW_shape_3")!,UIImage(named:"BW_shape_4")!,UIImage(named:"BW_shape_5")!,UIImage(named:"BW_shape_6")!,UIImage(named:"BW_shape_7")!,UIImage(named:"BW_shape_8")!, UIImage(named:"BW_shape_9")!, UIImage(named: "BW_shape_10")!]
         } else if(ThemeType == 4){
             generator_array = [UIImage(named:"chaos_shape_0")!,UIImage(named:"chaos_shape_1")!,UIImage(named:"chaos_shape_2")!,UIImage(named:"chaos_shape_3")!,UIImage(named:"chaos_shape_4")!,UIImage(named:"chaos_shape_5")!,UIImage(named:"chaos_shape_6")!,UIImage(named:"chaos_shape_7")!,UIImage(named:"chaos_shape_8")!, UIImage(named:"chaos_shape_9")!, UIImage(named: "chaos_shape_10")!]
+        } else if(ThemeType == 6){
+            generator_array = [UIImage(named:"colors_shape_0")!,UIImage(named:"colors_shape_1")!,UIImage(named:"colors_shape_2")!,UIImage(named:"colors_shape_3")!,UIImage(named:"colors_shape_4")!,UIImage(named:"colors_shape_5")!,UIImage(named:"colors_shape_6")!,UIImage(named:"colors_shape_7")!,UIImage(named:"colors_shape_8")!, UIImage(named:"colors_shape_9")!, UIImage(named: "colors_shape_10")!]
         }
     }
     
