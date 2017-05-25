@@ -378,10 +378,12 @@ class GameBoardViewController: UIViewController {
             generator_array[5] = UIImage(named: "六角大王小肉")!
         }else if ThemeType == 3{
             self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
+            downwards_tri = UIImage(named:"BW_white_tri_downwards")
+            upwards_tri = UIImage(named:"BW_white_tri_upwards")
+            Restore_Grey_Tris()
+            change_all_back_tris_image()
             HightestScoreBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             MarkBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
-            
-            Restore_Grey_Tris()
             trophy.image = UIImage(named: "BW_trophy")
             pause.setImage(UIImage(named: "BW_pause"), for: .normal)
             triangle_title.image = UIImage(named: "day mode triangle title")
@@ -726,6 +728,9 @@ class GameBoardViewController: UIViewController {
             self.triangle_title.image = UIImage(named:"day mode triangle title")
             self.home_button.setBackgroundImage(self.home_pic, for: .normal)
             self.generator_array[5] = UIImage(named: "dark_green_tri")!
+            self.continue_button.setBackgroundImage(self.continue_pic, for: .normal)
+            self.restart_button.setBackgroundImage(self.restart_pic, for: .normal)
+            self.shopping_button.setBackgroundImage(self.shopping_pic, for: .normal)
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
@@ -788,7 +793,9 @@ class GameBoardViewController: UIViewController {
             self.triangle_title.image = UIImage(named:"night mode triangle title")
             
             self.home_button.setBackgroundImage(self.night_home_pic, for: .normal)
-            
+            self.continue_button.setBackgroundImage(self.continue_pic, for: .normal)
+            self.restart_button.setBackgroundImage(self.restart_pic, for: .normal)
+            self.shopping_button.setBackgroundImage(self.shopping_pic, for: .normal)
 
             self.generator_array[5] = UIImage(named: "六角大王小肉")!
             self.change_current_shapes_according_to_theme()
@@ -834,8 +841,9 @@ class GameBoardViewController: UIViewController {
                 
             }
             self.button_player.play()
-            defaults.set(2, forKey: "tritri_Theme")
-            self.ThemeType = 2
+            defaults.set(3, forKey: "tritri_Theme")
+            self.ThemeType = 3
+            
             
             
             
@@ -965,6 +973,9 @@ class GameBoardViewController: UIViewController {
         return_button.fadeInWithDisplacement()
     }
 
+    var continue_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var shopping_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var restart_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     @IBAction func pause_button(_ sender: UIButton) {
         do{button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             button_player.prepareToPlay()
@@ -989,7 +1000,7 @@ class GameBoardViewController: UIViewController {
         self.view.addSubview(pause_screen)
         self.pause_screen.fadeIn()
         paused = true
-        let continue_button = MyButton(frame: CGRect(x: pause_screen_x_transform(87.5), y: pause_screen_y_transform(283.5), width: pause_screen_x_transform(200), height: pause_screen_y_transform(170)))
+         continue_button = MyButton(frame: CGRect(x: pause_screen_x_transform(87.5), y: pause_screen_y_transform(283.5), width: pause_screen_x_transform(200), height: pause_screen_y_transform(170)))
         if(ThemeType == 1 || ThemeType == 2){
         continue_button.setBackgroundImage(continue_pic, for: .normal)
         }else if (ThemeType == 3){
@@ -1010,7 +1021,7 @@ class GameBoardViewController: UIViewController {
         self.home_button.tag = 51
         self.home_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
         
-        let shopping_button = MyButton(frame: CGRect(x: pause_screen_x_transform(222.5), y: pause_screen_y_transform(333.5), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
+         shopping_button = MyButton(frame: CGRect(x: pause_screen_x_transform(222.5), y: pause_screen_y_transform(333.5), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
         if(ThemeType == 1 || ThemeType == 2){
         shopping_button.setBackgroundImage(shopping_pic, for: .normal)
         }else if(ThemeType == 3){
@@ -1019,7 +1030,7 @@ class GameBoardViewController: UIViewController {
         shopping_button.tag = 52
         shopping_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
         
-        let restart_button = MyButton(frame: CGRect(x: pause_screen_x_transform(137.5), y: pause_screen_y_transform(190), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
+         restart_button = MyButton(frame: CGRect(x: pause_screen_x_transform(137.5), y: pause_screen_y_transform(190), width: pause_screen_x_transform(100), height: pause_screen_y_transform(85)))
             //
         if(ThemeType == 1 || ThemeType == 2){
         restart_button.setBackgroundImage(restart_pic, for: .normal)
@@ -1040,10 +1051,10 @@ class GameBoardViewController: UIViewController {
         
         continue_button.whenButtonIsClicked(action:{
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
-            continue_button.removeFromSuperview()
+            self.continue_button.removeFromSuperview()
             self.home_button.removeFromSuperview()
-            shopping_button.removeFromSuperview()
-            restart_button.removeFromSuperview()
+            self.shopping_button.removeFromSuperview()
+            self.restart_button.removeFromSuperview()
             change_theme_button.removeFromSuperview()
             self.pause_screen.removeFromSuperview()
             self.paused = false
