@@ -16,6 +16,7 @@ class GameOverViewController: UIViewController {
     let night_home_pic = UIImage(named:"night mode home")
     let BW_home_pic = UIImage(named:"BW_home")
     let chaos_home_pic = UIImage(named:"chaos_home_icon")
+    let school_home_pic = UIImage(named:"school_home-icon")
     let colors_home_pic = UIImage(named:"colors_home-icon")
     @IBOutlet weak var High_score_marker: UILabel!
 
@@ -140,6 +141,8 @@ class GameOverViewController: UIViewController {
             home_button.setBackgroundImage(BW_home_pic, for: .normal)
         } else if(ThemeType == 4){
             home_button.setBackgroundImage(chaos_home_pic, for: .normal)
+        } else if(ThemeType == 5){
+            home_button.setBackgroundImage(school_home_pic, for: .normal)
         } else if(ThemeType == 6){
             home_button.setBackgroundImage(colors_home_pic, for: .normal)
         }
@@ -194,7 +197,19 @@ class GameOverViewController: UIViewController {
             self.share_button.setImage(UIImage(named:"chaos_share_icon"), for: .normal)
             //self.home_button.setImage(UIImage(named:"BW_home"), for: .normal)
             
-        }else if ThemeType == 6{
+        }
+        else if ThemeType == 5{
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
+            self.trophy.image = UIImage(named: "school_j-icon")
+            self.score_board.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
+            self.gameover_title.image = UIImage(named:"night mode gameover title")
+            self.restart_button.setImage(UIImage(named:"school_restart-big"), for: .normal)
+            self.shopping_button.setImage(UIImage(named:"school_theme-button"), for: .normal)
+            self.share_button.setImage(UIImage(named:"school_share-icon"), for: .normal)
+            //self.home_button.setImage(UIImage(named:"BW_home"), for: .normal)
+            
+        }
+        else if ThemeType == 6{
            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
             self.trophy.image = UIImage(named: "colors_j-icon")
             self.score_board.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.0)
@@ -466,7 +481,7 @@ class GameOverViewController: UIViewController {
             defaults.set(4, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
             self.trophy.image = UIImage(named:"chaos_j_icon")
-            self.gameover_title.image = UIImage(named: "night mode triangle title")
+            self.gameover_title.image = UIImage(named: "night mode gameover title")
             self.score_board.textColor = UIColor(red: 236.0/255, green: 232.0/255, blue: 187.0/255, alpha: 1.0)
             self.restart_button.setImage(UIImage(named:"chaos_restart_big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"chaos_theme_button"), for: .normal)
@@ -517,6 +532,41 @@ class GameOverViewController: UIViewController {
                 
             }
             self.button_player.play()
+            self.ThemeType = 5
+            defaults.set(5, forKey:"tritri_Theme")
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
+            self.trophy.image = UIImage(named:"school_j-icon")
+            self.gameover_title.image = UIImage(named: "night mode gameover title")
+            self.score_board.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
+            self.restart_button.setImage(UIImage(named:"school_restart-big"), for: .normal)
+            self.shopping_button.setImage(UIImage(named:"school_theme-button"), for: .normal)
+            self.share_button.setImage(UIImage(named:"school_share-icon"), for: .normal)
+            self.home_button.setBackgroundImage(self.school_home_pic, for: .normal)
+            
+            
+            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            
+            self.day_theme_button.fadeOut()
+            self.night_theme_button.fadeOut()
+            self.BW_theme_button.fadeOut()
+            self.chaos_theme_button.fadeOut()
+            self.school_theme_button.fadeOut()
+            self.colors_theme_button.fadeOut()
+            triangle_text.fadeOut()
+            return_button.fadeOut()
+            white_cover.fadeOut()
+            theme_menu.fadeOut()
+            
+            self.day_theme_button.removeFromSuperview()
+            self.night_theme_button.removeFromSuperview()
+            self.BW_theme_button.removeFromSuperview()
+            self.chaos_theme_button.removeFromSuperview()
+            self.school_theme_button.removeFromSuperview()
+            self.colors_theme_button.removeFromSuperview()
+            triangle_text.removeFromSuperview()
+            return_button.removeFromSuperview()
+            white_cover.removeFromSuperview()
+            theme_menu.removeFromSuperview()
         })
         self.view.addSubview(school_theme_button)
         school_theme_button.fadeInWithDisplacement()
