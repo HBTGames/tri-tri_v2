@@ -9008,28 +9008,28 @@ func randomNumber(probabilities: [Double]) -> Int {
     }
 
     func change_current_board_according_to_theme(){
-        var shape_5_color_up = UIImage()
-        var shape_5_color_down = UIImage()
-        if (ThemeType == 1){
-            shape_5_color_up = UIImage(named: "green_up")!
-            shape_5_color_down = UIImage(named: "green_down")!
-        }
-        else if (ThemeType == 2){
-            shape_5_color_up = UIImage(named: "小肉 up")!
-            shape_5_color_down = UIImage(named: "小肉 down")!
+        //default set as themetype 1
+        var shape_color_up = [UIImage(named:"super_light_green_up")!,UIImage(named:"pink_upwards")!,UIImage(named:"light_brown_up")!,UIImage(named:"light_brown_up")!,UIImage(named:"super_light_green_up")!,UIImage(named:"green_up")!,UIImage(named:"pink_upwards")!,UIImage(named:"purple_upwards")!,UIImage(named:"purple_upwards")!, UIImage(named:"light_brown_up")!, UIImage(named: "light_brown_up")!]
+        var shape_color_down = [UIImage(named:"super_light_green_down")!,UIImage(named:"pink_downwards")!,UIImage(named:"light_brown_down")!,UIImage(named:"light_brown_down")!,UIImage(named:"super_light_green_down")!,UIImage(named:"green_down")!,UIImage(named:"pink_downwards")!,UIImage(named:"purple_downwards")!,UIImage(named:"purple_downwards")!, UIImage(named:"light_brown_down")!, UIImage(named: "light_brown_down")!]
+        //if Themetype == 1 doesnt change
+        if (ThemeType == 2){
+            shape_color_up[5] = UIImage(named: "小肉 up")!
+            shape_color_down[5] = UIImage(named: "小肉 down")!
         }
         var i = 0
         for row in single_tri_stored_type_index{
             var j = 0
             for type in row{
-                if (type == 5){
-                    if (true_if_up(i: i, j: j)){
-                        Change_Corresponding_Color_With_Image(x: i, y: j, image: shape_5_color_up)
-                    }
-                    else{
-                        Change_Corresponding_Color_With_Image(x: i, y: j, image: shape_5_color_down)
-                    }
+                if (type == -1){
+                    //doesnot change
                 }
+                else if (true_if_up(i: i, j: j)){
+                    Change_Corresponding_Color_With_Image(x: i, y: j, image: shape_color_up[type])
+                }
+                else{
+                    Change_Corresponding_Color_With_Image(x: i, y: j, image: shape_color_down[type])
+                }
+                
                 j += 1
             }
             i += 1
