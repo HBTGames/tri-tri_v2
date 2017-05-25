@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1636"
             endingLineNumber = "1636"
-            landmarkName = "change_all_back_tris_image()"
+            landmarkName = "panGestureRecognizerAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -63,8 +63,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1160"
             endingLineNumber = "1160"
-            landmarkName = "GameBoardViewController"
-            landmarkType = "3">
+            landmarkName = "theme_menu_action()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -159,7 +159,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1364"
             endingLineNumber = "1364"
-            landmarkName = "panGestureRecognizerAction(_:)"
+            landmarkName = "pause_button(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -175,7 +175,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "688"
             endingLineNumber = "688"
-            landmarkName = "didReceiveMemoryWarning()"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -191,7 +191,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "687"
             endingLineNumber = "687"
-            landmarkName = "didReceiveMemoryWarning()"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -429,8 +429,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1721"
             endingLineNumber = "1721"
-            landmarkName = "GameBoardViewController"
-            landmarkType = "3">
+            landmarkName = "change_all_back_tris_image()"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -571,7 +571,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "9506"
             endingLineNumber = "9506"
-            landmarkName = "modify_counter_after_erase(before:after:)"
+            landmarkName = "Find_Any_Available_Brown_Left_Downwards_Tri(row:column:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
