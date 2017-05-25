@@ -14,6 +14,7 @@ import AVFoundation
 class GameOverViewController: UIViewController {
     let home_pic = UIImage(named:"home")
     let night_home_pic = UIImage(named:"night mode home")
+    let BW_home_pic = UIImage(named:"BW_home")
     @IBOutlet weak var High_score_marker: UILabel!
 
     @IBOutlet weak var score_board: UILabel!
@@ -26,7 +27,8 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var restart_button: UIButton!
     @IBOutlet weak var home_button: UIButton!
     
-    @IBOutlet weak var like_button: UIButton!
+   
+    @IBOutlet weak var shopping_button: UIButton!
     
     @IBOutlet weak var share_button: UIButton!
 
@@ -132,9 +134,11 @@ class GameOverViewController: UIViewController {
             home_button.setBackgroundImage(home_pic, for: .normal)
         } else if (ThemeType == 2){
             home_button.setBackgroundImage(night_home_pic, for: .normal)
+        } else if(ThemeType == 3){
+            home_button.setBackgroundImage(BW_home_pic, for: .normal)
         }
         home_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
-        like_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
+        shopping_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
         share_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
         score_board.text = final_score
         do{restart_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "restart_soundeffect", ofType: "wav")!))
@@ -153,11 +157,27 @@ class GameOverViewController: UIViewController {
             self.trophy.image = UIImage(named:"trophy_new")
             self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             self.gameover_title.image = UIImage(named:"day mode gameover title")
+            self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
+            self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
+            self.share_button.setImage(UIImage(named:"link"), for: .normal)
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"night mode 奖杯")
             self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             self.gameover_title.image = UIImage(named:"night mode gameover title")
+            self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
+            self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
+            self.share_button.setImage(UIImage(named:"link"), for: .normal)
+        }else if ThemeType == 3{
+            self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named: "BW_trophy")
+            self.score_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
+            self.gameover_title.image = UIImage(named:"day mode gameover title")
+            self.restart_button.setImage(UIImage(named:"BW_restart_version2"), for: .normal)
+            self.shopping_button.setImage(UIImage(named:"BW_shopping"), for: .normal)
+            self.share_button.setImage(UIImage(named:"BW_share"), for: .normal)
+            //self.home_button.setImage(UIImage(named:"BW_home"), for: .normal)
+            
         }
         
         //add pangesture
@@ -259,6 +279,9 @@ class GameOverViewController: UIViewController {
             self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             self.gameover_title.image = UIImage(named:"day mode gameover title")
             self.home_button.setBackgroundImage(self.home_pic, for: .normal)
+            self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
+            self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
+            self.share_button.setImage(UIImage(named:"link"), for: .normal)
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             
             self.day_theme_button.fadeOut()
@@ -309,6 +332,9 @@ class GameOverViewController: UIViewController {
             self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             self.gameover_title.image = UIImage(named:"night mode gameover title")
             self.home_button.setBackgroundImage(self.night_home_pic, for: .normal)
+            self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
+            self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
+            self.share_button.setImage(UIImage(named:"link"), for: .normal)
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             
             self.day_theme_button.fadeOut()
@@ -348,6 +374,51 @@ class GameOverViewController: UIViewController {
                 
             }
             self.button_player.play()
+            self.ThemeType = 3
+            defaults.set(3, forKey:"tritri_Theme")
+            self.view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
+            self.trophy.image = UIImage(named:"BW_trophy")
+            self.gameover_title.image = UIImage(named: "day mode triangle title")
+            self.score_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
+            self.shopping_button.setImage(UIImage(named:"BW_shopping"), for: .normal)
+            self.restart_button.setImage(UIImage(named:"BW_restart_version2"), for: .normal)
+            self.share_button.setImage(UIImage(named:"BW_share"), for: .normal)
+            self.home_button.setImage(UIImage(named:"BW_home"), for: .normal)
+
+            //self.trophy.image = UIImage(named:"trophy_new")
+            //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+            // self.gameover_title.image = UIImage(named:"day mode gameover title")
+            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            
+            self.day_theme_button.fadeOut()
+            self.night_theme_button.fadeOut()
+            self.BW_theme_button.fadeOut()
+            self.chaos_theme_button.fadeOut()
+            self.school_theme_button.fadeOut()
+            self.colors_theme_button.fadeOut()
+            triangle_text.fadeOut()
+            return_button.fadeOut()
+            white_cover.fadeOut()
+            theme_menu.fadeOut()
+            
+            self.day_theme_button.removeFromSuperview()
+            self.night_theme_button.removeFromSuperview()
+            self.BW_theme_button.removeFromSuperview()
+            self.chaos_theme_button.removeFromSuperview()
+            self.school_theme_button.removeFromSuperview()
+            self.colors_theme_button.removeFromSuperview()
+            triangle_text.removeFromSuperview()
+            return_button.removeFromSuperview()
+            white_cover.removeFromSuperview()
+            theme_menu.removeFromSuperview()
+            
+
+            
+            
+            
+            
+            
+            
         })
         self.view.addSubview(BW_theme_button)
         BW_theme_button.fadeInWithDisplacement()
