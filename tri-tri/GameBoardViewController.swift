@@ -4247,9 +4247,9 @@ class GameBoardViewController: UIViewController {
             })
         }else if(x == 2 && y == 3) {
             tri_2_3.image = image
-            tri_2_2.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            tri_2_3.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
             UIView.animate(withDuration: 0.2, animations: {
-                self.tri_2_2.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+                self.tri_2_3.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
             })
         }else if(x == 2 && y == 4) {
             tri_2_4.image = image
