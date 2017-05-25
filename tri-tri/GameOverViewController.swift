@@ -16,6 +16,7 @@ class GameOverViewController: UIViewController {
     let night_home_pic = UIImage(named:"night mode home")
     let BW_home_pic = UIImage(named:"BW_home")
     let chaos_home_pic = UIImage(named:"chaos_home_icon")
+    let colors_home_pic = UIImage(named:"colors_home-icon")
     @IBOutlet weak var High_score_marker: UILabel!
 
     @IBOutlet weak var score_board: UILabel!
@@ -139,6 +140,8 @@ class GameOverViewController: UIViewController {
             home_button.setBackgroundImage(BW_home_pic, for: .normal)
         } else if(ThemeType == 4){
             home_button.setBackgroundImage(chaos_home_pic, for: .normal)
+        } else if(ThemeType == 6){
+            home_button.setBackgroundImage(colors_home_pic, for: .normal)
         }
         home_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
         shopping_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
@@ -191,7 +194,17 @@ class GameOverViewController: UIViewController {
             self.share_button.setImage(UIImage(named:"chaos_share_icon"), for: .normal)
             //self.home_button.setImage(UIImage(named:"BW_home"), for: .normal)
             
+        }else if ThemeType == 6{
+           self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
+            self.trophy.image = UIImage(named: "colors_j-icon")
+            self.score_board.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.0)
+            self.gameover_title.image = UIImage(named:"night mode gameover title")
+            self.restart_button.setImage(UIImage(named:"colors_restart-big"), for: .normal)
+            self.shopping_button.setImage(UIImage(named:"colors_theme-button"), for: .normal)
+            self.share_button.setImage(UIImage(named:"colors_share-icon"), for: .normal)
+            
         }
+        
         
         //add pangesture
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
@@ -520,6 +533,48 @@ class GameOverViewController: UIViewController {
                 
             }
             self.button_player.play()
+            self.ThemeType = 6
+            defaults.set(6, forKey:"tritri_Theme")
+            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
+            self.trophy.image = UIImage(named:"colors_j-icon")
+            self.gameover_title.image = UIImage(named: "night mode triangle title")
+            self.score_board.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.00)
+            self.restart_button.setImage(UIImage(named:"colors_restart-big"), for: .normal)
+            self.shopping_button.setImage(UIImage(named:"colors_theme-button"), for: .normal)
+            self.share_button.setImage(UIImage(named:"colors_share-icon"), for: .normal)
+            self.home_button.setBackgroundImage(self.colors_home_pic, for: .normal)
+            
+            //self.trophy.image = UIImage(named:"trophy_new")
+            //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+            // self.gameover_title.image = UIImage(named:"day mode gameover title")
+            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            
+            self.day_theme_button.fadeOut()
+            self.night_theme_button.fadeOut()
+            self.BW_theme_button.fadeOut()
+            self.chaos_theme_button.fadeOut()
+            self.school_theme_button.fadeOut()
+            self.colors_theme_button.fadeOut()
+            triangle_text.fadeOut()
+            return_button.fadeOut()
+            white_cover.fadeOut()
+            theme_menu.fadeOut()
+            
+            self.day_theme_button.removeFromSuperview()
+            self.night_theme_button.removeFromSuperview()
+            self.BW_theme_button.removeFromSuperview()
+            self.chaos_theme_button.removeFromSuperview()
+            self.school_theme_button.removeFromSuperview()
+            self.colors_theme_button.removeFromSuperview()
+            triangle_text.removeFromSuperview()
+            return_button.removeFromSuperview()
+            white_cover.removeFromSuperview()
+            theme_menu.removeFromSuperview()
+            
+            
+            
+            
+            
         })
         
         self.view.addSubview(colors_theme_button)
