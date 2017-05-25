@@ -867,7 +867,7 @@ class GameBoardViewController: UIViewController {
             self.shopping_button.setBackgroundImage(self.BW_shopping_pic, for: .normal)
 
             self.change_shape_in_generate_array()
-            //self.change_current_shapes_according_to_theme()
+            self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
@@ -1730,6 +1730,10 @@ class GameBoardViewController: UIViewController {
     
     let meat_down = UIImage(named:"小肉 down")
     
+//black elements
+    let BW_black_up = UIImage(named:"BW_black_tri_up")
+    let BW_black_down = UIImage(named:"BW_black_tri_down")
+    
 //pause icons
     
     let home_pic = UIImage(named:"home")
@@ -1796,9 +1800,17 @@ class GameBoardViewController: UIViewController {
                                 
                                 //green_drag_tri.image = UIImage(named:"绿色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                 auto_make_transparent()
+                                if(ThemeType == 1 || ThemeType == 2){
                                 Change_Corresponding_Color_With_Image(x:i, y:j, image: super_light_green_down)
                                 Change_Corresponding_Color_With_Image(x:i, y:j-1, image: super_light_green_up)
                                 Change_Corresponding_Color_With_Image(x:i, y:j+1, image: super_light_green_up)
+                                }else if(ThemeType == 3){
+                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_down)
+                                    Change_Corresponding_Color_With_Image(x:i, y:j-1, image: BW_black_up)
+                                    Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_up)
+   
+                                }
+                                
                                 filled[i][j] = true
                                 filled[i][j-1] = true
                                 filled[i][j+1] = true
@@ -1819,9 +1831,16 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j-1] && !filled[i][j+1]){
                                     //green_drag_tri.image = UIImage(named:"绿色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: super_light_green_down)
                                     Change_Corresponding_Color_With_Image(x:i, y:j-1, image: super_light_green_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: super_light_green_up)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_up)
+   
+                                    }
                                     filled[i][j] = true
                                     filled[i][j-1] = true
                                     filled[i][j+1] = true
@@ -1853,8 +1872,13 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i+1][j+1]){//check available
                                     //orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: orange_up)
                                     Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: orange_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: BW_black_down)
+                                    }
                                     filled[i+1][j+1] = true
                                     filled[i][j] = true
                                     single_tri_stored_type_index[i][j] = 1
@@ -1873,8 +1897,14 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i+1][j]){//check available
                                     //orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: orange_up)
                                     Change_Corresponding_Color_With_Image(x:i+1, y:j, image: orange_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j, image: BW_black_down)
+  
+                                    }
                                     filled[i][j] = true
                                     filled[i+1][j] = true
                                     single_tri_stored_type_index[i][j] = 1
@@ -1895,8 +1925,14 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i+1][j-1]){
                                     //orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: orange_up)
                                     Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: orange_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: BW_black_down)
+                                    }
+                                    
                                     filled[i][j] = true
                                     filled[i+1][j-1] = true
                                     single_tri_stored_type_index[i][j] = 1
@@ -1927,10 +1963,15 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i-1][j]){//check available
                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
                                     Change_Corresponding_Color_With_Image(x:i-1, y:j, image: light_brown_up)
-                                    
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j, image: BW_black_up)
+                                    }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i-1][j] = true
@@ -1951,9 +1992,15 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i-1][j+1]){//check available
                                    // light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
-                                    Change_Corresponding_Color_With_Image(x:i-1, y:j+1, image: light_brown_up)
+                                    if(ThemeType == 1 || ThemeType == 2){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+1, image: light_brown_up)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+1, image: BW_black_up)
+                                    }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i-1][j+1] = true
@@ -1974,9 +2021,16 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i-1][j+2]){
                                     //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
                                     Change_Corresponding_Color_With_Image(x:i-1, y:j+2, image: light_brown_up)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+2, image: BW_black_up)
+
+                                    }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i-1][j+2] = true
@@ -2010,9 +2064,15 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1]){//check available
                                     
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j-1, image: light_brown_down)
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                    }
                                     
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2032,9 +2092,15 @@ class GameBoardViewController: UIViewController {
                                 position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1]){//check available
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j-1, image: light_brown_down)
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                    }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i][j-1] = true
@@ -2067,8 +2133,13 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1]){//check available
                                     
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: super_light_green_down)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: super_light_green_up)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_up)
+                                    }
                                     
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2086,8 +2157,14 @@ class GameBoardViewController: UIViewController {
                                 position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
                                 if (!filled[i][j] && !filled[i][j+1]){//check available
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: super_light_green_down)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: super_light_green_up)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_up)
+    
+                                    }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     single_tri_stored_type_index[i][j] = 4
@@ -2130,6 +2207,12 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j-1, image: meat_down)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j, image: meat_up)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j-2, image: meat_up)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j-2, image: BW_black_up)
                                     }
                                     
                                     
@@ -2169,6 +2252,13 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j-1, image: meat_down)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j+1, image: meat_up)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j-1, image: meat_up)
+                                    } else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+1, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j-1, image: BW_black_up)
+
                                     }
                                     
                                     
@@ -2208,6 +2298,12 @@ class GameBoardViewController: UIViewController {
                                         Change_Corresponding_Color_With_Image(x:i, y:j-1, image: meat_down)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j+2, image: meat_up)
                                         Change_Corresponding_Color_With_Image(x:i-1, y:j, image: meat_up)
+                                    } else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j+2, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i-1, y:j, image: BW_black_up)
                                     }
                                     
                                     
@@ -2248,8 +2344,13 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1]){//check available
                                     
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: pink_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: pink_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                    }
                                     
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2268,8 +2369,13 @@ class GameBoardViewController: UIViewController {
                                 position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
                                 if (!filled[i][j] && !filled[i][j+1]){//check available
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: pink_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: pink_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                    }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     single_tri_stored_type_index[i][j] = 6
@@ -2301,7 +2407,12 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j]){//check available
                                     
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: pur_up)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+    
+                                    }
                                     
                                     filled[i][j] = true
                                     single_tri_stored_type_index[i][j] = 7
@@ -2317,7 +2428,12 @@ class GameBoardViewController: UIViewController {
                                 position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
                                 if (!filled[i][j]){//check available
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: pur_up)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+   
+                                    }
                                     filled[i][j] = true
                                     single_tri_stored_type_index[i][j] = 7
                                     return true
@@ -2346,7 +2462,11 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j]){//check available
                                     
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: pur_down)
+                                    }else if(ThemeType == 3){
+                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_down)
+                                    }
                                     
                                     filled[i][j] = true
                                     single_tri_stored_type_index[i][j] = 8
@@ -2362,7 +2482,12 @@ class GameBoardViewController: UIViewController {
                                 position.y + 24 <= triangle_location.y + 20 && position.y + 24 >= triangle_location.y - 20){//check location
                                 if (!filled[i][j]){//check available
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: pur_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_down)
+    
+                                    }
                                     filled[i][j] = true
                                     single_tri_stored_type_index[i][j] = 8
                                     return true
@@ -2391,9 +2516,15 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i+1][j+1]){//check available
                                     //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
                                     Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: light_brown_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: BW_black_down)
+                                    }
                                     
                                     filled[i][j] = true
                                     filled[i][j+1] = true
@@ -2414,9 +2545,16 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i+1][j]){//check available
                                     // light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
                                     Change_Corresponding_Color_With_Image(x:i+1, y:j, image: light_brown_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j, image: BW_black_down)
+
+                                    }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i+1][j] = true
@@ -2437,9 +2575,15 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j+1] && !filled[i+1][j-1]){
                                     //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
                                     Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: light_brown_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j+1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: BW_black_down)
+                                    }
                                     filled[i][j] = true
                                     filled[i][j+1] = true
                                     filled[i+1][j-1] = true
@@ -2473,9 +2617,15 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j-1] && !filled[i+1][j+1]){//check available
                                     //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j-1, image: light_brown_down)
                                     Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: light_brown_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: BW_black_down)
+                                    }
                                     
                                     filled[i][j] = true
                                     filled[i][j-1] = true
@@ -2496,9 +2646,17 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j-1] && !filled[i+1][j]){//check available
                                     // light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j-1, image: light_brown_down)
                                     Change_Corresponding_Color_With_Image(x:i+1, y:j, image: light_brown_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j, image: BW_black_down)
+
+                                    }
+                                    
                                     filled[i][j] = true
                                     filled[i][j-1] = true
                                     filled[i+1][j] = true
@@ -2519,9 +2677,15 @@ class GameBoardViewController: UIViewController {
                                 if (!filled[i][j] && !filled[i][j-1] && !filled[i+1][j-1]){
                                     //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
+                                    if(ThemeType == 1 || ThemeType == 2){
                                     Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
                                     Change_Corresponding_Color_With_Image(x:i, y:j-1, image: light_brown_down)
                                     Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: light_brown_down)
+                                    }else if(ThemeType == 3){
+                                        Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
+                                        Change_Corresponding_Color_With_Image(x:i, y:j-1, image: BW_black_down)
+                                        Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: BW_black_down)
+                                    }
                                     filled[i][j] = true
                                     filled[i][j-1] = true
                                     filled[i+1][j-1] = true
