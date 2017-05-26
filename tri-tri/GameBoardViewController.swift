@@ -398,11 +398,13 @@ class GameBoardViewController: UIViewController {
             trophy.image = UIImage(named:"night mode 奖杯")
             pause.setImage(UIImage(named: "night mode pause"), for: .normal)
             triangle_title.image = UIImage(named:"night mode triangle title")
+            starBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             
         }else if ThemeType == 3{
             self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             downwards_tri = UIImage(named:"BW_white_tri_downwards")
             upwards_tri = UIImage(named:"BW_white_tri_upwards")
+            star_counter.image = UIImage(named:"BW_mode_star")
             Restore_Grey_Tris()
             change_all_back_tris_image()
             HightestScoreBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
@@ -410,6 +412,7 @@ class GameBoardViewController: UIViewController {
             trophy.image = UIImage(named: "BW_trophy")
             pause.setImage(UIImage(named: "BW_pause"), for: .normal)
             triangle_title.image = UIImage(named: "day mode triangle title")
+             starBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             
         }else if ThemeType == 4{
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
@@ -426,6 +429,8 @@ class GameBoardViewController: UIViewController {
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
             self.downwards_tri = UIImage(named:"grey_tir_downwards")
             self.upwards_tri = UIImage(named:"grey_tri_upwards")
+            star_counter.image = UIImage(named:"school_mode_star")
+
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
             self.HightestScoreBoard.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
@@ -436,10 +441,13 @@ class GameBoardViewController: UIViewController {
             self.triangle_title.image = UIImage(named:"school_triangle_title")
 
             self.triangle_title.image = UIImage(named:"night mode triangle title")
+             starBoard.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
         }else if ThemeType == 6{
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
             self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
             self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
+            star_counter.image = UIImage(named:"colors_mode_star")
+
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
             self.HightestScoreBoard.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.0)
@@ -447,7 +455,7 @@ class GameBoardViewController: UIViewController {
             self.trophy.image = UIImage(named:"colors_j-icon")
             self.pause.setImage(UIImage(named: "colors_pause-button"), for: .normal)
             self.triangle_title.image = UIImage(named:"night mode triangle title")
-
+            self.starBoard.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
         }
         change_shape_in_generate_array()
         change_current_shapes_according_to_theme()
@@ -798,7 +806,7 @@ class GameBoardViewController: UIViewController {
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.in_theme_menu = false
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
-            
+             self.starBoard.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
 
             
             
@@ -866,7 +874,7 @@ class GameBoardViewController: UIViewController {
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.in_theme_menu = false
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
-
+            self.starBoard.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
             self.BW_theme_button.fadeOut()
@@ -916,7 +924,7 @@ class GameBoardViewController: UIViewController {
             self.trophy.image = UIImage(named:"BW_trophy")
             self.pause.setImage(UIImage(named: "BW_pause"), for: .normal)
             self.triangle_title.image = UIImage(named:"day mode triangle title")
-            
+            self.star_counter.image = UIImage(named:"BW_mode_star")
             self.home_button.setBackgroundImage(self.BW_home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.BW_continue_pic, for: .normal)
             self.restart_button.setBackgroundImage(self.BW_restart_pic, for: .normal)
@@ -929,6 +937,7 @@ class GameBoardViewController: UIViewController {
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.in_theme_menu = false
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
+            self.starBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
             self.BW_theme_button.fadeOut()
@@ -1064,7 +1073,7 @@ class GameBoardViewController: UIViewController {
             self.trophy.image = UIImage(named:"school_j-icon")
             self.pause.setImage(UIImage(named: "school_pause-button"), for: .normal)
             self.triangle_title.image = UIImage(named:"school_triangle_title")
-            
+            self.star_counter.image = UIImage(named:"school_mode_star")
             self.home_button.setBackgroundImage(self.school_home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.school_continue_pic, for: .normal)
             self.restart_button.setBackgroundImage(self.school_restart_small_pic, for: .normal)
@@ -1077,7 +1086,7 @@ class GameBoardViewController: UIViewController {
             
             
             
-            
+            self.starBoard.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.in_theme_menu = false
             self.day_theme_button.fadeOut()
@@ -1129,7 +1138,7 @@ class GameBoardViewController: UIViewController {
             self.trophy.image = UIImage(named:"colors_j-icon")
             self.pause.setImage(UIImage(named: "colors_pause-button"), for: .normal)
             self.triangle_title.image = UIImage(named:"night mode triangle title")
-            
+            self.star_counter.image = UIImage(named:"colors_mode_star")
             self.home_button.setBackgroundImage(self.colors_home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.colors_continue_pic, for: .normal)
             self.restart_button.setBackgroundImage(self.colors_restart_small_pic, for: .normal)
@@ -1142,6 +1151,7 @@ class GameBoardViewController: UIViewController {
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.in_theme_menu = false
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
+            self.starBoard.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
             self.BW_theme_button.fadeOut()
