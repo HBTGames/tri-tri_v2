@@ -350,6 +350,7 @@ class MenuViewController: UIViewController {
             self.continue_button.setImage(UIImage(named:"BW_continue"), for: .normal)
             self.star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             self.star_counter.image = UIImage(named:"BW_mode_star")
+            self.theme_star_counter.image = UIImage(named:"BW_mode_star")
             self.theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
           
             //self.trophy.image = UIImage(named:"trophy_new")
