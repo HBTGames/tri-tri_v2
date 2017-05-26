@@ -825,6 +825,13 @@
                                     <constraint firstAttribute="height" constant="26" id="d04-5O-wb6"/>
                                 </constraints>
                             </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="day_mode_star" translatesAutoresizingMaskIntoConstraints="NO" id="z4m-dG-Hks">
+                                <rect key="frame" x="20" y="41" width="29" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="BEE-vc-eSy"/>
+                                    <constraint firstAttribute="width" constant="29" id="i7I-0E-BuK"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -920,6 +927,7 @@
                             <constraint firstItem="SyH-TJ-ItG" firstAttribute="centerX" secondItem="p5C-ee-UVz" secondAttribute="centerX" id="LVg-fa-Wxq"/>
                             <constraint firstItem="GbU-lZ-2xu" firstAttribute="centerX" secondItem="7zY-oP-7UZ" secondAttribute="centerX" constant="26" id="LrI-nx-Kgo"/>
                             <constraint firstItem="SyH-TJ-ItG" firstAttribute="centerY" secondItem="WVu-JF-2JF" secondAttribute="centerY" constant="43" id="Lxp-Iy-1ah"/>
+                            <constraint firstItem="z4m-dG-Hks" firstAttribute="leading" secondItem="p5C-ee-UVz" secondAttribute="leadingMargin" constant="4" id="Mc4-zP-Mqu"/>
                             <constraint firstItem="dIF-Q9-bIA" firstAttribute="centerY" secondItem="iVW-8Y-4MB" secondAttribute="centerY" id="Mcx-dn-8pj"/>
                             <constraint firstItem="meA-AH-8uH" firstAttribute="leading" secondItem="3qG-61-WrN" secondAttribute="trailing" constant="-23" id="N3X-xf-EI9"/>
                             <constraint firstItem="ZUX-Q3-LZs" firstAttribute="centerY" secondItem="7TJ-kQ-GJr" secondAttribute="centerY" id="NA0-Ff-0Gk"/>
@@ -992,6 +1000,7 @@
                             <constraint firstItem="1hx-0h-XJ9" firstAttribute="centerY" secondItem="dIF-Q9-bIA" secondAttribute="centerY" id="dBM-4k-gck"/>
                             <constraint firstItem="oYp-Ma-39B" firstAttribute="centerY" secondItem="ygd-va-KF8" secondAttribute="centerY" id="dXR-TN-GqE"/>
                             <constraint firstItem="s7b-kk-HJh" firstAttribute="centerY" secondItem="Ve0-fZ-HmX" secondAttribute="centerY" id="dyr-vX-7lV"/>
+                            <constraint firstItem="R9g-fj-p9q" firstAttribute="top" secondItem="z4m-dG-Hks" secondAttribute="bottom" constant="-38" id="eUk-qU-6ll"/>
                             <constraint firstItem="P0M-hw-129" firstAttribute="leading" secondItem="R9g-fj-p9q" secondAttribute="trailing" constant="-66" id="ebK-0O-y9x"/>
                             <constraint firstItem="zhk-At-sbY" firstAttribute="centerY" secondItem="kH3-5k-I6y" secondAttribute="centerY" id="ed2-aZ-zS2"/>
                             <constraint firstItem="cZI-pJ-gFx" firstAttribute="centerY" secondItem="Hto-lh-OHx" secondAttribute="centerY" id="eeD-ct-eSA"/>
@@ -1210,6 +1219,7 @@
         <image name="continue" width="350" height="304"/>
         <image name="day mode like" width="198" height="172"/>
         <image name="day mode triangle title" width="360" height="82"/>
+        <image name="day_mode_star" width="29" height="34"/>
         <image name="day_theme" width="177" height="177"/>
         <image name="grey_tir_downwards" width="49" height="43"/>
         <image name="grey_tri_upwards" width="49" height="43"/>
@@ -1225,7 +1235,7 @@
         <image name="棕色tri" width="104" height="93"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hkt-ax-Thn"/>
+        <segue reference="jOH-pV-lXR"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
