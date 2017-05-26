@@ -75,6 +75,10 @@ class GameBoardViewController: UIViewController {
 //constraints
     var pause_screen = UIView()
     
+    @IBOutlet weak var starBoard: UILabel!
+    var star_score = 0
+    
+    
     @IBOutlet weak var center: UILabel!
     @IBOutlet weak var green_drag_tri_x_constraint: NSLayoutConstraint!
     
@@ -340,6 +344,13 @@ class GameBoardViewController: UIViewController {
         }
         HightestScoreBoard.text = String(HighestScore)
         
+        if(defaults.value(forKey: "tritri_star_score") != nil ){
+            star_score = defaults.value(forKey: "tritri_star_score") as! NSInteger
+        }else{
+            defaults.set(0, forKey: "tritri_star_score")
+            star_score = 0
+        }
+        starBoard.text = String(star_score)
         
         
         
@@ -372,6 +383,8 @@ class GameBoardViewController: UIViewController {
             trophy.image = UIImage(named:"trophy_new")
             pause.setImage(UIImage(named: "pause_button"), for: .normal)
             triangle_title.image = UIImage(named:"day mode triangle title")
+            starBoard.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
+            
             
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -1506,10 +1519,16 @@ class GameBoardViewController: UIViewController {
                 }
                 fit_in_player.play()
                 let cond_before_erase = filled
+                last_score = score
                 modify_counter(before: cond_before_insert, after: cond_before_erase)
+                current_score = score
+                star_score_increment()
                 Check_and_Erase()
                 let cond_after_erase = filled
+                last_score = score
                 modify_counter_after_erase(before: cond_before_erase, after: cond_after_erase)
+                current_score = score
+                star_score_increment()
                //if the triangles are fit
                 if (position_in_use == 0){
                     green_drag_tri.frame.origin = green_drag_origin
@@ -9693,6 +9712,8 @@ number_of_lines_erased += 1
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     var score = 0
+    var last_score = 0
+    var current_score = 0
     func modify_counter(before: Array<Array<Bool>>, after: Array<Array<Bool>>) -> Void{
         cur_shape_tri = []
         var current_str = MarkBoard.text!
@@ -9733,6 +9754,7 @@ number_of_lines_erased += 1
             
         }
         
+    
     }
     func modify_counter_after_erase(before: Array<Array<Bool>>, after: Array<Array<Bool>>) -> Void{
         if  number_of_lines_erased  == 0{
@@ -10096,6 +10118,15 @@ func randomNumber(probabilities: [Double]) -> Int {
     }
     
     
+    
+    func star_score_increment() -> Void {
+    let current_times = Int(current_score / 20)
+    let last_times = Int(last_score / 20 )
+    star_score += (current_times - last_times)
+    starBoard.text = String(star_score)
+    defaults.set(star_score, forKey: "tritri_star_score")
+    defaults.synchronize()
+    }
     
 }
 
