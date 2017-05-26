@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00B30D3C3C9B83F7F1855572 /* Pods_tri_tri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EE653BEA0021E2F147D2C3 /* Pods_tri_tri.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		04E48D1F1EC0704000823F45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48D1E1EC0704000823F45 /* AppDelegate.swift */; };
 		04E48D211EC0704000823F45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48D201EC0704000823F45 /* ViewController.swift */; };
 		04E48D291EC0704000823F45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E48D271EC0704000823F45 /* LaunchScreen.storyboard */; };
@@ -34,6 +35,8 @@
 		56C3F4291ED279D200DE21BD /* erase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F4281ED279D200DE21BD /* erase.wav */; };
 		56C3F42B1ED27B1A00DE21BD /* general_button.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F42A1ED27B1A00DE21BD /* general_button.wav */; };
 		56C3F42D1ED27CC400DE21BD /* opening.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F42C1ED27CC400DE21BD /* opening.wav */; };
+		B7476A082D7B9720D6CAA215 /* Pods_tri_triUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FF444272BCFA86D0D6EEBF /* Pods_tri_triUITests.framework */; };
+		EA0889133B078E2736D5E47B /* Pods_tri_triTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CE8A342F12D783B129AFA0 /* Pods_tri_triTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,7 @@
 		04E48D3E1EC0704000823F45 /* tri_triUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tri_triUITests.swift; sourceTree = "<group>"; };
 		04E48D401EC0704000823F45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04E48D4E1EC075FA00823F45 /* 540654.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 540654.jpg; path = pictures/540654.jpg; sourceTree = "<group>"; };
+		1852D7B9B7A02524B0A27FFE /* Pods-tri-triTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tri-triTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tri-triTests/Pods-tri-triTests.release.xcconfig"; sourceTree = "<group>"; };
 		5620A3891ECAB8930035E099 /* background_music_tony.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = background_music_tony.m4a; sourceTree = "<group>"; };
 		5620A38B1ECAFFD70035E099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		563230E71EC8A9F600EA49D9 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +91,14 @@
 		56C3F4281ED279D200DE21BD /* erase.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = erase.wav; sourceTree = "<group>"; };
 		56C3F42A1ED27B1A00DE21BD /* general_button.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = general_button.wav; sourceTree = "<group>"; };
 		56C3F42C1ED27CC400DE21BD /* opening.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = opening.wav; sourceTree = "<group>"; };
+		6E3662C80E04A565E7C9DB9B /* Pods-tri-triUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tri-triUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tri-triUITests/Pods-tri-triUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		71EE653BEA0021E2F147D2C3 /* Pods_tri_tri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tri_tri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75CE8A342F12D783B129AFA0 /* Pods_tri_triTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tri_triTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B997E0BF00DF8C8C70C48F1 /* Pods-tri-tri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tri-tri.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tri-tri/Pods-tri-tri.debug.xcconfig"; sourceTree = "<group>"; };
+		C4D328F883E9EE5D9C7D76C0 /* Pods-tri-tri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tri-tri.release.xcconfig"; path = "Pods/Target Support Files/Pods-tri-tri/Pods-tri-tri.release.xcconfig"; sourceTree = "<group>"; };
+		D7FF444272BCFA86D0D6EEBF /* Pods_tri_triUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tri_triUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE30398A83143146D2F7714F /* Pods-tri-triUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tri-triUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tri-triUITests/Pods-tri-triUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DE9E305261359B5B24D10932 /* Pods-tri-triTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tri-triTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tri-triTests/Pods-tri-triTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00B30D3C3C9B83F7F1855572 /* Pods_tri_tri.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA0889133B078E2736D5E47B /* Pods_tri_triTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7476A082D7B9720D6CAA215 /* Pods_tri_triUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +136,8 @@
 				04E48D321EC0704000823F45 /* tri-triTests */,
 				04E48D3D1EC0704000823F45 /* tri-triUITests */,
 				04E48D1C1EC0704000823F45 /* Products */,
+				B33272D627B638C9910C63B1 /* Pods */,
+				9BC16BF4EA8777728F8FB0F4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,6 +218,29 @@
 			name = Music;
 			sourceTree = "<group>";
 		};
+		9BC16BF4EA8777728F8FB0F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				71EE653BEA0021E2F147D2C3 /* Pods_tri_tri.framework */,
+				75CE8A342F12D783B129AFA0 /* Pods_tri_triTests.framework */,
+				D7FF444272BCFA86D0D6EEBF /* Pods_tri_triUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B33272D627B638C9910C63B1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7B997E0BF00DF8C8C70C48F1 /* Pods-tri-tri.debug.xcconfig */,
+				C4D328F883E9EE5D9C7D76C0 /* Pods-tri-tri.release.xcconfig */,
+				DE9E305261359B5B24D10932 /* Pods-tri-triTests.debug.xcconfig */,
+				1852D7B9B7A02524B0A27FFE /* Pods-tri-triTests.release.xcconfig */,
+				6E3662C80E04A565E7C9DB9B /* Pods-tri-triUITests.debug.xcconfig */,
+				DE30398A83143146D2F7714F /* Pods-tri-triUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,9 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04E48D431EC0704000823F45 /* Build configuration list for PBXNativeTarget "tri-tri" */;
 			buildPhases = (
+				8FF5840670CFE0677D87697C /* [CP] Check Pods Manifest.lock */,
 				04E48D171EC0704000823F45 /* Sources */,
 				04E48D181EC0704000823F45 /* Frameworks */,
 				04E48D191EC0704000823F45 /* Resources */,
+				33AA83596B9882C82082D458 /* [CP] Embed Pods Frameworks */,
+				FEEE6B6844A20A29789F89C3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -225,9 +268,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04E48D461EC0704000823F45 /* Build configuration list for PBXNativeTarget "tri-triTests" */;
 			buildPhases = (
+				3ABD0D9752328286F7C82007 /* [CP] Check Pods Manifest.lock */,
 				04E48D2B1EC0704000823F45 /* Sources */,
 				04E48D2C1EC0704000823F45 /* Frameworks */,
 				04E48D2D1EC0704000823F45 /* Resources */,
+				AA2899FEFF5AE89A92EED005 /* [CP] Embed Pods Frameworks */,
+				65C27E490DC68F44C6276DEB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -243,9 +289,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04E48D491EC0704000823F45 /* Build configuration list for PBXNativeTarget "tri-triUITests" */;
 			buildPhases = (
+				15B820AA53F50DD5DD609DE8 /* [CP] Check Pods Manifest.lock */,
 				04E48D361EC0704000823F45 /* Sources */,
 				04E48D371EC0704000823F45 /* Frameworks */,
 				04E48D381EC0704000823F45 /* Resources */,
+				042EA8B441E15A0D47C237BA /* [CP] Embed Pods Frameworks */,
+				EC0D47AA7E574CDFB612E794 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -349,6 +398,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		042EA8B441E15A0D47C237BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tri-triUITests/Pods-tri-triUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		15B820AA53F50DD5DD609DE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		33AA83596B9882C82082D458 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tri-tri/Pods-tri-tri-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3ABD0D9752328286F7C82007 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		65C27E490DC68F44C6276DEB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tri-triTests/Pods-tri-triTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FF5840670CFE0677D87697C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AA2899FEFF5AE89A92EED005 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tri-triTests/Pods-tri-triTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC0D47AA7E574CDFB612E794 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tri-triUITests/Pods-tri-triUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEEE6B6844A20A29789F89C3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tri-tri/Pods-tri-tri-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		04E48D171EC0704000823F45 /* Sources */ = {
@@ -514,9 +701,11 @@
 		};
 		04E48D441EC0704000823F45 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B997E0BF00DF8C8C70C48F1 /* Pods-tri-tri.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S7E56ARGQ8;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "tri-tri/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "HBTGames.tri-tri";
@@ -527,9 +716,11 @@
 		};
 		04E48D451EC0704000823F45 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4D328F883E9EE5D9C7D76C0 /* Pods-tri-tri.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S7E56ARGQ8;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "tri-tri/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "HBTGames.tri-tri";
@@ -540,6 +731,7 @@
 		};
 		04E48D471EC0704000823F45 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE9E305261359B5B24D10932 /* Pods-tri-triTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -554,6 +746,7 @@
 		};
 		04E48D481EC0704000823F45 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1852D7B9B7A02524B0A27FFE /* Pods-tri-triTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -568,6 +761,7 @@
 		};
 		04E48D4A1EC0704000823F45 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E3662C80E04A565E7C9DB9B /* Pods-tri-triUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "tri-triUITests/Info.plist";
@@ -581,6 +775,7 @@
 		};
 		04E48D4B1EC0704000823F45 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE30398A83143146D2F7714F /* Pods-tri-triUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "tri-triUITests/Info.plist";

@@ -193,6 +193,7 @@ class MenuViewController: UIViewController {
     @IBAction func theme_menu_action(_ sender: UIButton) {
         let theme_menu: UIView = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
         theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+ 
         theme_menu.alpha = 0
         theme_menu.tag = 100
         super.view.isUserInteractionEnabled = false
