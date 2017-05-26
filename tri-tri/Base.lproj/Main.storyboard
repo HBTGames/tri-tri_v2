@@ -1092,6 +1092,7 @@
                         <outlet property="orange_drag_tri_x_constraint" destination="GYe-Bd-k4d" id="cTp-T4-fd3"/>
                         <outlet property="orange_drag_tri_y_constraint" destination="fCQ-YC-taK" id="j9q-Gn-2TH"/>
                         <outlet property="pause" destination="x0H-mS-pgO" id="3ug-f2-hkG"/>
+                        <outlet property="star_counter" destination="z4m-dG-Hks" id="l2a-Lh-eKm"/>
                         <outlet property="tri_0_0" destination="oLJ-AF-fNV" id="Cdz-uw-kuB"/>
                         <outlet property="tri_0_0_back" destination="CKy-kf-ekX" id="Q0E-qd-ddo"/>
                         <outlet property="tri_0_1" destination="xNY-Aq-UaX" id="0A4-qp-toR"/>

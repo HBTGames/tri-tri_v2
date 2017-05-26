@@ -78,6 +78,7 @@ class GameBoardViewController: UIViewController {
     @IBOutlet weak var center: UILabel!
     @IBOutlet weak var green_drag_tri_x_constraint: NSLayoutConstraint!
     
+    @IBOutlet weak var star_counter: UIImageView!
     
     @IBOutlet weak var green_drag_tri_y_constraint: NSLayoutConstraint!
     
@@ -363,6 +364,7 @@ class GameBoardViewController: UIViewController {
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
             downwards_tri = UIImage(named:"grey_tir_downwards")
             upwards_tri = UIImage(named:"grey_tri_upwards")
+            star_counter.image = UIImage(named:"day_mode_star")
             Restore_Grey_Tris()
             change_all_back_tris_image()
             HightestScoreBoard.textColor = UIColor(red: 59.0/255, green: 76.0/255, blue: 65.0/255, alpha: 1.0)
@@ -375,6 +377,7 @@ class GameBoardViewController: UIViewController {
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             downwards_tri = UIImage(named:"bgtri_downward_night_mode")
             upwards_tri = UIImage(named:"bgtri_upward_night_mode")
+            star_counter.image = UIImage(named:"night_mode_star")
             Restore_Grey_Tris()
             change_all_back_tris_image()
             HightestScoreBoard.textColor = UIColor(red: 186.0/255, green: 179.0/255, blue: 150.0/255, alpha: 1.0)
@@ -763,6 +766,7 @@ class GameBoardViewController: UIViewController {
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
             self.downwards_tri = UIImage(named:"grey_tir_downwards")
             self.upwards_tri = UIImage(named:"grey_tri_upwards")
+            self.star_counter.image = UIImage(named:"day_mode_star")
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
             self.HightestScoreBoard.textColor = UIColor(red: 59.0/255, green: 76.0/255, blue: 65.0/255, alpha: 1.0)
@@ -828,6 +832,7 @@ class GameBoardViewController: UIViewController {
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
             self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
+            self.star_counter.image = UIImage(named:"night_mode_star")
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
             self.HightestScoreBoard.textColor = UIColor(red: 186.0/255, green: 179.0/255, blue: 150.0/255, alpha: 1.0)
