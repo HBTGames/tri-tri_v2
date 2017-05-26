@@ -12,9 +12,13 @@ import AVFoundation
 class MenuViewController: UIViewController {
     var defaults = UserDefaults.standard
 
+    @IBOutlet weak var star_counter: UIImageView!
+    
+    @IBOutlet weak var star_board: UILabel!
     @IBOutlet weak var continue_button: UIButton!
     var button_player = AVAudioPlayer()
     var opening_player = AVAudioPlayer()
+    var star_score = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         screen_width = view.frame.width
@@ -32,7 +36,13 @@ class MenuViewController: UIViewController {
             HighestScore = 0
         }
         highest_score.text = String(HighestScore)
-        
+        if(defaults.value(forKey: "tritri_star_score") != nil ){
+            star_score = defaults.value(forKey: "tritri_star_score") as! NSInteger
+        }else{
+            defaults.set(0, forKey: "tritri_star_score")
+            star_score = 0
+        }
+        star_board.text = String(star_score)
         
         
         
@@ -51,6 +61,8 @@ class MenuViewController: UIViewController {
             highest_score.textColor = UIColor(red: 112.0/255, green: 160.0/255, blue: 115.0/255, alpha: 1)
             shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
             continue_button.setImage(UIImage(named:"continue"), for: .normal)
+            star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
+            star_counter.image = UIImage(named:"day_mode_star")
         }else if(ThemeType == 2){
             trophy.image = UIImage(named:"night mode 奖杯")
             view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -59,6 +71,9 @@ class MenuViewController: UIViewController {
              highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
             shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
             continue_button.setImage(UIImage(named:"continue"), for: .normal)
+            star_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
+            star_counter.image = UIImage(named:"night_mode_star")
+
         }else if(ThemeType == 3){
             triangle_title.image = UIImage(named: "day mode triangle title")
             like_button.setBackgroundImage(UIImage(named: "BW_like"), for: .normal)
@@ -67,6 +82,9 @@ class MenuViewController: UIViewController {
             highest_score.textColor =  UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
             self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             continue_button.setImage(UIImage(named:"BW_continue"), for: .normal)
+            star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
+            star_counter.image = UIImage(named:"BW_mode_star")
+
         }else if(ThemeType == 4){
             triangle_title.image = UIImage(named: "night mode triangle title")
             like_button.setBackgroundImage(UIImage(named: "chaos_like_icon"), for: .normal)
@@ -83,6 +101,10 @@ class MenuViewController: UIViewController {
             highest_score.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
             view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
             continue_button.setImage(UIImage(named:"school_start-icon"), for: .normal)
+            star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
+            star_counter.image = UIImage(named:"school_mode_star")
+            
+
         }
         else if(ThemeType == 6){
             triangle_title.image = UIImage(named:"night mode triangle title")
@@ -92,6 +114,10 @@ class MenuViewController: UIViewController {
             highest_score.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.0)
             continue_button.setImage(UIImage(named:"colors_start"), for: .normal)
             view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
+            star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
+            star_counter.image = UIImage(named:"colors_mode_star")
+            
+
 
             
         }
@@ -198,6 +224,8 @@ class MenuViewController: UIViewController {
             self.highest_score.textColor = UIColor(red: 112.0/255, green: 160.0/255, blue: 115.0/255, alpha: 1)
             self.continue_button.setImage(UIImage(named:"continue"), for: .normal)
             self.shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
+            self.star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
+            self.star_counter.image = UIImage(named:"day_mode_star")
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -251,6 +279,9 @@ class MenuViewController: UIViewController {
             self.highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
             self.continue_button.setImage(UIImage(named:"continue"), for: .normal)
             self.shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
+            self.star_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
+            self.star_counter.image = UIImage(named:"night_mode_star")
+
 
            // self.trophy.image = UIImage(named:"night mode 奖杯")
            // self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
@@ -303,6 +334,8 @@ class MenuViewController: UIViewController {
             self.highest_score.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
             self.shopping_cart.setImage(UIImage(named:"BW_shopping"), for: .normal)
             self.continue_button.setImage(UIImage(named:"BW_continue"), for: .normal)
+            self.star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
+            self.star_counter.image = UIImage(named:"BW_mode_star")
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -424,6 +457,8 @@ class MenuViewController: UIViewController {
             self.highest_score.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
             self.shopping_cart.setImage(UIImage(named:"school_theme-button"), for: .normal)
             self.continue_button.setImage(UIImage(named:"school_start-icon"), for: .normal)
+            self.star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
+            self.star_counter.image = UIImage(named:"school_mode_star")
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -479,6 +514,9 @@ class MenuViewController: UIViewController {
             self.highest_score.textColor = UIColor(red: 236.0/255, green: 232.0/255, blue: 187.0/255, alpha: 1.0)
             self.shopping_cart.setImage(UIImage(named:"colors_theme-button"), for: .normal)
             self.continue_button.setImage(UIImage(named:"colors_start"), for: .normal)
+            self.star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
+            self.star_counter.image = UIImage(named:"colors_mode_star")
+
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")

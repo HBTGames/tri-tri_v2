@@ -90,6 +90,18 @@
                                     <action selector="theme_menu_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h1A-Tx-Jy0"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="day_mode_star" translatesAutoresizingMaskIntoConstraints="NO" id="s2T-Fz-kax">
+                                <rect key="frame" x="139" y="374" width="97" height="41"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCj-NR-SnI">
+                                <rect key="frame" x="189" y="383" width="42" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="5ja-3I-iOU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -102,10 +114,14 @@
                             <constraint firstItem="WV0-1i-7h0" firstAttribute="centerX" secondItem="PFh-NN-dAa" secondAttribute="centerX" constant="84.5" id="DVq-gz-buJ"/>
                             <constraint firstItem="WV0-1i-7h0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="H1h-XA-I3E"/>
                             <constraint firstItem="FcQ-gF-imE" firstAttribute="top" secondItem="WV0-1i-7h0" secondAttribute="bottom" constant="79" id="LEg-eg-Zhy"/>
+                            <constraint firstItem="s2T-Fz-kax" firstAttribute="top" secondItem="tCj-NR-SnI" secondAttribute="bottom" constant="-29" id="U2V-8i-LwN"/>
+                            <constraint firstItem="FcQ-gF-imE" firstAttribute="top" secondItem="s2T-Fz-kax" secondAttribute="bottom" constant="8" id="aB7-7y-9ov"/>
+                            <constraint firstItem="tCj-NR-SnI" firstAttribute="leading" secondItem="s2T-Fz-kax" secondAttribute="trailing" constant="-47" id="heD-2h-OqW"/>
                             <constraint firstItem="jVy-u3-4Z8" firstAttribute="leading" secondItem="WV0-1i-7h0" secondAttribute="trailing" constant="-11" id="i2p-eH-ot4"/>
                             <constraint firstItem="WV0-1i-7h0" firstAttribute="top" secondItem="L5u-Zg-LxX" secondAttribute="bottom" constant="-29" id="q2o-i0-LmP"/>
                             <constraint firstItem="ABN-yi-CDb" firstAttribute="top" secondItem="j52-sZ-nKU" secondAttribute="bottom" constant="33" id="qE0-26-eXh"/>
                             <constraint firstItem="ABN-yi-CDb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s8E-i6-t4q"/>
+                            <constraint firstItem="s2T-Fz-kax" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t9q-pj-izz"/>
                             <constraint firstItem="WV0-1i-7h0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tjP-mq-X7y"/>
                         </constraints>
                     </view>
@@ -114,6 +130,8 @@
                         <outlet property="highest_score" destination="jVy-u3-4Z8" id="cFj-tW-Ygh"/>
                         <outlet property="like_button" destination="PFh-NN-dAa" id="Fc8-Ys-Kas"/>
                         <outlet property="shopping_cart" destination="L5u-Zg-LxX" id="kqg-hZ-5f9"/>
+                        <outlet property="star_board" destination="tCj-NR-SnI" id="0EN-fO-kW6"/>
+                        <outlet property="star_counter" destination="s2T-Fz-kax" id="WVr-cD-Mqa"/>
                         <outlet property="triangle_title" destination="j52-sZ-nKU" id="46J-XK-yDg"/>
                         <outlet property="trophy" destination="FcQ-gF-imE" id="lYb-T0-owx"/>
                     </connections>
@@ -1244,7 +1262,7 @@
         <image name="棕色tri" width="104" height="93"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jOH-pV-lXR"/>
+        <segue reference="Hkt-ax-Thn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
