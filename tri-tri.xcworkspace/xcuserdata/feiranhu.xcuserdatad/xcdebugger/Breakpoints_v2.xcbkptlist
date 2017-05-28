@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517660999.092736"
+            timestampString = "517675968.231344"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "10231"
-            endingLineNumber = "10231"
-            landmarkName = "star_animation()"
+            startingLineNumber = "10241"
+            endingLineNumber = "10241"
+            landmarkName = "Duplicate_Tri_Animate(i:j:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

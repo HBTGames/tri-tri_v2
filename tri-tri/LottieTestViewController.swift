@@ -17,15 +17,16 @@ class LottieTestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     self.view.backgroundColor = .black
-        if let animationView = LOTAnimationView(name: "tst") {
-            animationView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+     
+            let animationView = LOTAnimationView(name: "start")!
+            animationView.frame = CGRect(x: 0, y: 0, width: 400, height: 700)
             animationView.center = self.view.center
             animationView.contentMode = .scaleAspectFill
             animationView.loopAnimation = true
             view.addSubview(animationView)
             
             animationView.play()
+            /**
             let square = UIView()
             square.frame = CGRect(x: 55, y: 300, width: 20, height: 20)
             square.backgroundColor = UIColor.red
@@ -57,10 +58,11 @@ class LottieTestViewController: UIViewController {
             // we add the animation to the squares 'layer' property
             square.layer.add(anim, forKey: "animate position along path")
             self.view.addSubview(square)
+      **/
         }
         
         
-    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

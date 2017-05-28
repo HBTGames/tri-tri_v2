@@ -9290,7 +9290,17 @@ number_of_lines_erased += 1
     
     func star_animation() -> Void {
         moving_star = UIImageView(frame: CGRect(x: screen_width/2, y: screen_height/2, width: pause_screen_x_transform(29), height: pause_screen_y_transform(34)))
+        if(ThemeType == 1){
         moving_star.image = UIImage(named:"day_mode_moving_star")
+        }else if(ThemeType == 2){
+        moving_star.image = UIImage(named:"night_mode_moving_star")
+        }else if(ThemeType == 3){
+        moving_star.image = UIImage(named:"BW_mode_moving_star")
+        }else if(ThemeType == 5){
+        moving_star.image = UIImage(named:"school_mode_moving_star")
+        }else if(ThemeType == 6){
+        moving_star.image = UIImage(named:"colors_mode_moving_star")
+        }
         moving_star.transform = CGAffineTransform(scaleX: CGFloat(3), y: CGFloat(3))
         let animation = CAKeyframeAnimation(keyPath: "position")
         animation.path = customPath().cgPath

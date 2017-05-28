@@ -216,7 +216,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1393"
             endingLineNumber = "1393"
-            landmarkName = "pause_button(_:)"
+            landmarkName = "theme_menu_action()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -232,7 +232,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1388"
             endingLineNumber = "1388"
-            landmarkName = "pause_button(_:)"
+            landmarkName = "theme_menu_action()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -248,7 +248,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1674"
             endingLineNumber = "1674"
-            landmarkName = "panGestureRecognizerAction(_:)"
+            landmarkName = "theme_menu_action()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -264,22 +264,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "558"
             endingLineNumber = "558"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517483409.432375"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1915"
-            endingLineNumber = "1915"
             landmarkName = "GameBoardViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -294,9 +278,25 @@
             timestampString = "517483409.432375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1915"
+            endingLineNumber = "1915"
+            landmarkName = "pause_button(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tri-tri/GameBoardViewController.swift"
+            timestampString = "517483409.432375"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "6172"
             endingLineNumber = "6172"
-            landmarkName = "Check_and_Erase_Create_Array()"
+            landmarkName = "Check_and_Erase()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -312,7 +312,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "6776"
             endingLineNumber = "6776"
-            landmarkName = "reorder(loc:index:)"
+            landmarkName = "Check_and_Erase()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -328,7 +328,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "6774"
             endingLineNumber = "6774"
-            landmarkName = "reorder(loc:index:)"
+            landmarkName = "Check_and_Erase()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -408,7 +408,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "946"
             endingLineNumber = "946"
-            landmarkName = "theme_menu_action()"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -424,7 +424,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4796"
             endingLineNumber = "4796"
-            landmarkName = "Change_Corresponding_Color_With_Image(x:y:image:)"
+            landmarkName = "Check_and_Erase_Create_Array()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -472,7 +472,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "6578"
             endingLineNumber = "6578"
-            landmarkName = "get_center_tri(index:)"
+            landmarkName = "Check_and_Erase()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -504,8 +504,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
             endingLineNumber = "22"
-            landmarkName = "fadeInWithDisplacement(withDuration:)"
-            landmarkType = "7">
+            landmarkName = "UIView"
+            landmarkType = "4">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -582,7 +582,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
             endingLineNumber = "21"
-            landmarkName = "fadeInWithDisplacement(withDuration:)"
+            landmarkName = "fadeIn(withDuration:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -630,8 +630,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "656"
             endingLineNumber = "656"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "GameBoardViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -646,7 +646,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "8196"
             endingLineNumber = "8196"
-            landmarkName = "Check_and_Erase()"
+            landmarkName = "Find_Any_Available_Orange_Tri(row:column:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -662,7 +662,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "8197"
             endingLineNumber = "8197"
-            landmarkName = "Check_and_Erase()"
+            landmarkName = "Find_Any_Available_Orange_Tri(row:column:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -673,12 +673,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517483409.432375"
+            timestampString = "517675968.231344"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "9585"
-            endingLineNumber = "9585"
-            landmarkName = "Find_Any_Available_Brown_Left_Downwards_Tri(row:column:)"
+            startingLineNumber = "9595"
+            endingLineNumber = "9595"
+            landmarkName = "Shape_fitting_When_Dragging(Shape_Type:position:)"
             landmarkType = "7">
             <Locations>
                <Location
