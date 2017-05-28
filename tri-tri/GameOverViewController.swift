@@ -439,7 +439,7 @@ class GameOverViewController: UIViewController {
             self.shopping_button.setImage(UIImage(named:"BW_shopping"), for: .normal)
             self.restart_button.setImage(UIImage(named:"BW_restart_version2"), for: .normal)
             self.share_button.setImage(UIImage(named:"BW_share"), for: .normal)
-            self.home_button.setImage(UIImage(named:"BW_home"), for: .normal)
+            self.home_button.setBackgroundImage(self.BW_home_pic, for: .normal)
             self.theme_star_counter.image = UIImage(named:"BW_mode_star")
             self.theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             //self.trophy.image = UIImage(named:"trophy_new")
