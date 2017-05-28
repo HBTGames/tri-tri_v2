@@ -62,12 +62,8 @@
 
 /* Begin PBXFileReference section */
 		042D870A1ED8707D007A329C /* LottieTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieTestViewController.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		042D870C1ED870FB007A329C /* servishero_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = servishero_loading.json; path = "tri-tri/servishero_loading.json"; sourceTree = "<group>"; };
-=======
 		042D870C1ED870FB007A329C /* servishero_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servishero_loading.json; sourceTree = "<group>"; };
 		042D87141ED99CC0007A329C /* tst.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tst.json; sourceTree = "<group>"; };
->>>>>>> origin/master
 		04E48D1B1EC0704000823F45 /* tri-tri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tri-tri.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E48D1E1EC0704000823F45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E48D201EC0704000823F45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -171,11 +167,8 @@
 				566A590C1EC944650056D665 /* Launch Animation */,
 				56A61C851EC5D68100A29B6F /* Music */,
 				04E48D4E1EC075FA00823F45 /* 540654.jpg */,
-<<<<<<< HEAD
-=======
 				042D87141ED99CC0007A329C /* tst.json */,
 				042D870C1ED870FB007A329C /* servishero_loading.json */,
->>>>>>> origin/master
 				04E48D1E1EC0704000823F45 /* AppDelegate.swift */,
 				04E48D201EC0704000823F45 /* ViewController.swift */,
 				564542D01EC95C2300BFBD0C /* MenuViewController.swift */,
@@ -222,7 +215,6 @@
 		566E64D51EDADC750034B1AA /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				042D870C1ED870FB007A329C /* servishero_loading.json */,
 				566E64D61EDADC810034B1AA /* star_appear_ani.json */,
 			);
 			name = Animation;

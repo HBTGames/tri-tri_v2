@@ -16,13 +16,9 @@ class LottieTestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
         
-        if let animationView = LOTAnimationView(name: "star_appear_ani") {
-=======
-        self.view.backgroundColor = .black
+     self.view.backgroundColor = .black
         if let animationView = LOTAnimationView(name: "tst") {
->>>>>>> origin/master
             animationView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             animationView.center = self.view.center
             animationView.contentMode = .scaleAspectFill
@@ -65,7 +61,7 @@ class LottieTestViewController: UIViewController {
         
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
