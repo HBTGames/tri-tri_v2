@@ -10,6 +10,7 @@
 		00B30D3C3C9B83F7F1855572 /* Pods_tri_tri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EE653BEA0021E2F147D2C3 /* Pods_tri_tri.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		042D870B1ED8707D007A329C /* LottieTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D870A1ED8707D007A329C /* LottieTestViewController.swift */; };
 		042D870D1ED870FB007A329C /* servishero_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 042D870C1ED870FB007A329C /* servishero_loading.json */; };
+		042D87151ED99CC0007A329C /* tst.json in Resources */ = {isa = PBXBuildFile; fileRef = 042D87141ED99CC0007A329C /* tst.json */; };
 		04E48D1F1EC0704000823F45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48D1E1EC0704000823F45 /* AppDelegate.swift */; };
 		04E48D211EC0704000823F45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48D201EC0704000823F45 /* ViewController.swift */; };
 		04E48D291EC0704000823F45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E48D271EC0704000823F45 /* LaunchScreen.storyboard */; };
@@ -61,7 +62,12 @@
 
 /* Begin PBXFileReference section */
 		042D870A1ED8707D007A329C /* LottieTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieTestViewController.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		042D870C1ED870FB007A329C /* servishero_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = servishero_loading.json; path = "tri-tri/servishero_loading.json"; sourceTree = "<group>"; };
+=======
+		042D870C1ED870FB007A329C /* servishero_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servishero_loading.json; sourceTree = "<group>"; };
+		042D87141ED99CC0007A329C /* tst.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tst.json; sourceTree = "<group>"; };
+>>>>>>> origin/master
 		04E48D1B1EC0704000823F45 /* tri-tri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tri-tri.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E48D1E1EC0704000823F45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E48D201EC0704000823F45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -165,15 +171,20 @@
 				566A590C1EC944650056D665 /* Launch Animation */,
 				56A61C851EC5D68100A29B6F /* Music */,
 				04E48D4E1EC075FA00823F45 /* 540654.jpg */,
+<<<<<<< HEAD
+=======
+				042D87141ED99CC0007A329C /* tst.json */,
+				042D870C1ED870FB007A329C /* servishero_loading.json */,
+>>>>>>> origin/master
 				04E48D1E1EC0704000823F45 /* AppDelegate.swift */,
 				04E48D201EC0704000823F45 /* ViewController.swift */,
+				564542D01EC95C2300BFBD0C /* MenuViewController.swift */,
 				56BEBEA51EC3254E008BBD04 /* GameBoardViewController.swift */,
 				563230E71EC8A9F600EA49D9 /* GameOverViewController.swift */,
 				04E48D271EC0704000823F45 /* LaunchScreen.storyboard */,
 				5644A5F41EC42905000066D6 /* Main.storyboard */,
 				042D870A1ED8707D007A329C /* LottieTestViewController.swift */,
 				566A59091EC942DD0056D665 /* LaunchViewController.swift */,
-				564542D01EC95C2300BFBD0C /* MenuViewController.swift */,
 				563E7F651ED47D5A008F33C1 /* ThemeMenuViewController.swift */,
 				56BEBEA71EC32C25008BBD04 /* UIImageTintExtension.swift */,
 				5644A5F21EC428FC000066D6 /* Base.lproj */,
@@ -389,6 +400,7 @@
 				56C3F4291ED279D200DE21BD /* erase.wav in Resources */,
 				563E7F641ED474DA008F33C1 /* 3_times_erase.wav in Resources */,
 				56C3F42D1ED27CC400DE21BD /* opening.wav in Resources */,
+				042D87151ED99CC0007A329C /* tst.json in Resources */,
 				564542CF1EC9591A00BFBD0C /* anim.mp4 in Resources */,
 				04E48D291EC0704000823F45 /* LaunchScreen.storyboard in Resources */,
 				5644A5F61EC42905000066D6 /* Main.storyboard in Resources */,

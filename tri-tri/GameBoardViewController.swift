@@ -433,7 +433,7 @@ class GameBoardViewController: UIViewController {
 
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
-            self.HightestScoreBoard.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
+            self.HightestScoreBoard.textColor = UIColor(red: 34.0/255, green: 61.0/255, blue: 128.0/255, alpha: 1.0)
             self.MarkBoard.textColor = UIColor(red: 113.0/255, green: 105.0/255, blue: 183.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"school_j-icon")
             self.pause.setImage(UIImage(named: "school_pause-button"), for: .normal)
@@ -450,7 +450,7 @@ class GameBoardViewController: UIViewController {
 
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
-            self.HightestScoreBoard.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.0)
+            self.HightestScoreBoard.textColor = UIColor(red: 255.0/255, green: 195.0/255, blue: 1.0/255, alpha: 1.0)
             self.MarkBoard.textColor = UIColor(red: 251.0/255, green: 250.0/255, blue: 249.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"colors_j-icon")
             self.pause.setImage(UIImage(named: "colors_pause-button"), for: .normal)
@@ -1157,7 +1157,7 @@ class GameBoardViewController: UIViewController {
             self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
-            self.HightestScoreBoard.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.0)
+            self.HightestScoreBoard.textColor = UIColor(red: 34.0/255, green: 61.0/255, blue: 128.0/255, alpha: 1.0)
             self.MarkBoard.textColor = UIColor(red: 251.0/255, green: 250.0/255, blue: 249.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"colors_j-icon")
             self.pause.setImage(UIImage(named: "colors_pause-button"), for: .normal)
@@ -9860,7 +9860,7 @@ number_of_lines_erased += 1
         current_str = String(current_int)
         MarkBoard.text = current_str
         //add animation
-        multiple_marker.frame = CGRect(x: 90, y: 90, width: 30, height: 21)
+        multiple_marker.frame = CGRect(x: MarkBoard.frame.minX + 80, y: MarkBoard.frame.midY, width: 30, height: 21)
         multiple_marker.text = "x\(number_of_lines_erased)"
         multiple_marker.alpha = 1
         self.view.addSubview(multiple_marker)
