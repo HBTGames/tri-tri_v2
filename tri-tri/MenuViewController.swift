@@ -36,7 +36,6 @@ class MenuViewController: UIViewController {
             HighestScore = 0
         }
         highest_score.text = String(HighestScore)
-        highest_score.text = "1234"
         if(defaults.value(forKey: "tritri_star_score") != nil ){
             star_score = defaults.value(forKey: "tritri_star_score") as! NSInteger
         }else{
