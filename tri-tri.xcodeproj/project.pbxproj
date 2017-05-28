@@ -30,6 +30,7 @@
 		564542D11EC95C2300BFBD0C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564542D01EC95C2300BFBD0C /* MenuViewController.swift */; };
 		564542D31EC9A17100BFBD0C /* Fit_In.aif in Resources */ = {isa = PBXBuildFile; fileRef = 564542D21EC9A0E900BFBD0C /* Fit_In.aif */; };
 		566A590A1EC942DD0056D665 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A59091EC942DD0056D665 /* LaunchViewController.swift */; };
+		566E64D71EDADC810034B1AA /* star_appear_ani.json in Resources */ = {isa = PBXBuildFile; fileRef = 566E64D61EDADC810034B1AA /* star_appear_ani.json */; };
 		56A61C841EC5D30500A29B6F /* GameBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEBEA51EC3254E008BBD04 /* GameBoardViewController.swift */; };
 		56A61C8B1EC5DA2400A29B6F /* background music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56A61C8A1EC5DA2400A29B6F /* background music.mp3 */; };
 		56BEBEA81EC32C25008BBD04 /* UIImageTintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEBEA71EC32C25008BBD04 /* UIImageTintExtension.swift */; };
@@ -60,7 +61,7 @@
 
 /* Begin PBXFileReference section */
 		042D870A1ED8707D007A329C /* LottieTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieTestViewController.swift; sourceTree = "<group>"; };
-		042D870C1ED870FB007A329C /* servishero_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servishero_loading.json; sourceTree = "<group>"; };
+		042D870C1ED870FB007A329C /* servishero_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = servishero_loading.json; path = "tri-tri/servishero_loading.json"; sourceTree = "<group>"; };
 		04E48D1B1EC0704000823F45 /* tri-tri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tri-tri.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E48D1E1EC0704000823F45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E48D201EC0704000823F45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +89,7 @@
 		564542D01EC95C2300BFBD0C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		564542D21EC9A0E900BFBD0C /* Fit_In.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fit_In.aif; sourceTree = "<group>"; };
 		566A59091EC942DD0056D665 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		566E64D61EDADC810034B1AA /* star_appear_ani.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star_appear_ani.json; sourceTree = "<group>"; };
 		56A61C8A1EC5DA2400A29B6F /* background music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "background music.mp3"; sourceTree = "<group>"; };
 		56BEBEA51EC3254E008BBD04 /* GameBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoardViewController.swift; sourceTree = "<group>"; };
 		56BEBEA71EC32C25008BBD04 /* UIImageTintExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageTintExtension.swift; sourceTree = "<group>"; };
@@ -158,11 +160,11 @@
 		04E48D1D1EC0704000823F45 /* tri-tri */ = {
 			isa = PBXGroup;
 			children = (
+				566E64D51EDADC750034B1AA /* Animation */,
 				5620A38B1ECAFFD70035E099 /* Assets.xcassets */,
 				566A590C1EC944650056D665 /* Launch Animation */,
 				56A61C851EC5D68100A29B6F /* Music */,
 				04E48D4E1EC075FA00823F45 /* 540654.jpg */,
-				042D870C1ED870FB007A329C /* servishero_loading.json */,
 				04E48D1E1EC0704000823F45 /* AppDelegate.swift */,
 				04E48D201EC0704000823F45 /* ViewController.swift */,
 				56BEBEA51EC3254E008BBD04 /* GameBoardViewController.swift */,
@@ -204,6 +206,16 @@
 				564542CE1EC958AA00BFBD0C /* anim.mp4 */,
 			);
 			name = "Launch Animation";
+			sourceTree = "<group>";
+		};
+		566E64D51EDADC750034B1AA /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				042D870C1ED870FB007A329C /* servishero_loading.json */,
+				566E64D61EDADC810034B1AA /* star_appear_ani.json */,
+			);
+			name = Animation;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		56A61C851EC5D68100A29B6F /* Music */ = {
@@ -384,6 +396,7 @@
 				04E48D4F1EC075FA00823F45 /* 540654.jpg in Resources */,
 				563E7F621ED47352008F33C1 /* 1_time_erase.mp3 in Resources */,
 				56A61C8B1EC5DA2400A29B6F /* background music.mp3 in Resources */,
+				566E64D71EDADC810034B1AA /* star_appear_ani.json in Resources */,
 				5620A38C1ECAFFD70035E099 /* Assets.xcassets in Resources */,
 				042D870D1ED870FB007A329C /* servishero_loading.json in Resources */,
 				5644A5F31EC428FC000066D6 /* Base.lproj in Resources */,

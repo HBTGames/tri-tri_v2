@@ -10206,10 +10206,45 @@ func randomNumber(probabilities: [Double]) -> Int {
     starBoard.text = String(star_score)
     defaults.set(star_score, forKey: "tritri_star_score")
     defaults.synchronize()
+        if((current_times - last_times) != 0){
+            star_animation()
+        }
     }
     
-}
+    var moving_star = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    
+    func star_animation() -> Void {
+        moving_star = UIImageView(frame: CGRect(x: screen_width/2, y: screen_height/2, width: pause_screen_x_transform(29), height: pause_screen_y_transform(34)))
+        moving_star.image = UIImage(named:"day_mode_moving_star")
+        moving_star.transform = CGAffineTransform(scaleX: CGFloat(3), y: CGFloat(3))
+        let animation = CAKeyframeAnimation(keyPath: "position")
+        animation.path = customPath().cgPath
+        animation.duration = 1
+        animation.fillMode = kCAFillModeForwards
+        animation.isRemovedOnCompletion = false
+        moving_star.layer.add(animation, forKey: nil)
+        self.view.addSubview(moving_star)
+        UIView.animate(withDuration: 1.3, animations: {
+            self.moving_star.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
 
+        }, completion: {
+            (finished) -> Void in
+            self.moving_star.removeFromSuperview()
+        })
+        
+    
+    }
+       
+    func customPath() -> UIBezierPath {
+    let path = UIBezierPath()
+        path.move(to: CGPoint(x: screen_width/2 , y: screen_height/2))
+        let endPoint = CGPoint(x: star_counter.frame.origin.x + CGFloat(28), y:  star_counter.frame.origin.y + CGFloat(20))
+        let cp1 = CGPoint(x: 100, y: 300)
+        let cp2 = CGPoint(x: 100, y: 300)
+        path.addCurve(to: endPoint, controlPoint1: cp1, controlPoint2: cp2)
+        return path
+    }
+}
 
 
 
