@@ -11,6 +11,8 @@ import AVFoundation
 import AVKit
 import UserNotifications
 
+
+
 public extension UIView {
     func fadeIn(withDuration duration: TimeInterval = 0.5) {
         UIView.animate(withDuration: duration, animations: {
@@ -68,17 +70,357 @@ extension UIButton {
     }
 }
 
+//user defaults values
 var defaults = UserDefaults.standard
 
 
 class GameBoardViewController: UIViewController {
-//constraints
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //index
+    //variables:
+    //1. paused screen itself and buttons on it
+    //2. theme screen itself and buttons on it (with ThemeType itself)
+    //3. all about scores and stars and titles (top of view)
+    //4. all about the game board itself (middle of view)
+    //5. all about three shapes in the bottom and drag shape procedure (bottom of view)
+    //6. constraints and screen indexes
+    //7. variables about shape fitting and line erasing
+    //8. all the images that will be used as variables
+    //9. boolean values indicate condition
+    //10. all the audio players
+    //
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //functions:
+    //touches begin & end
+    //functions about music
+    //view did load
+    //modify position according to iphone generation functions
+    //theme button
+    //pause button
+    //UIPanGestureRecognizer
+    //functions concerning shape fitting and the consequence           (shape fitting
+    //functions that changes image of board grey tris                  (change board tri image
+    //functions to check and erase lines on current board              (check and erase
+    //functions about random regeneration                              (random generation
+    //function to check for/jump to gameover                           (check for/jump to gameover
+    //sup functions used by check for regenerate and check for gameover
+    //modify counter functions (before erased and after)
+    //functions that decide probability for each shapes generated
+    //changes made after themes changed
+    //functions about jump star animations (check and jump)
+    //test functions
+    //never used functions
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //1.
+    //all about paused screens
     var pause_screen = UIView()
+    
+    //pause view home button
+    var home_button = MyButton()
+    
+    //pause view other buttons
+    var continue_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var shopping_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var restart_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    
+    
+    
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //2.
+    //record theme type for now
+    //start from 1
+    var ThemeType = 1
+    
+    //all about theme choosing screens
+    //origin
+    var day_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var night_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var BW_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var chaos_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var school_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var colors_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var theme_star_counter = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var theme_star_board = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    
+    var day_theme_origin = CGPoint(x: 0, y: 0)
+    var night_theme_origin = CGPoint(x: 0, y: 0)
+    var BW_theme_origin = CGPoint(x: 0, y: 0)
+    var chaos_theme_origin = CGPoint(x: 0, y: 0)
+    var school_theme_origin = CGPoint(x: 0, y: 0)
+    var colors_theme_origin = CGPoint(x: 0, y: 0)
+    
+    
+    
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //3.
+    //all about scores and stars and titles (top of view)
+    //variables about starboard
+    @IBOutlet weak var triangle_title: UIImageView!
     
     @IBOutlet weak var starBoard: UILabel!
     var star_score = 0
     
+    //record highest score
+    @IBOutlet weak var HightestScoreBoard: UILabel!
+    var HighestScore = 0
     
+    //outlet connection variable for MarkBoard (top left)
+    @IBOutlet weak var MarkBoard: UILabel!
+    var score = 0
+    var last_score = 0
+    var current_score = 0
+    
+    //multiple_marker x1 x2 x3 animation position
+    var multiple_marker = UILabel(frame: CGRect(x: 90, y: 90, width: 200, height: 21))
+    
+    //pause button outlet
+    @IBOutlet weak var pause: UIButton!
+    
+    //trophy image outlet
+    @IBOutlet weak var trophy: UIImageView!
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //4.
+    //all about the game board itself (middle of view)
+    //tri image
+    //tri backimage
+    //all the array variables that record certain property of each tris
+    //outlet connection variable for each triangle in gameboard
+    //name follows protocol:
+    //  "tri_(row)_(column)"
+    @IBOutlet weak var tri_0_0: UIImageView!
+    @IBOutlet weak var tri_0_1: UIImageView!
+    @IBOutlet weak var tri_0_2: UIImageView!
+    @IBOutlet weak var tri_0_3: UIImageView!
+    @IBOutlet weak var tri_0_4: UIImageView!
+    @IBOutlet weak var tri_0_5: UIImageView!
+    @IBOutlet weak var tri_0_6: UIImageView!
+    @IBOutlet weak var tri_1_0: UIImageView!
+    @IBOutlet weak var tri_1_1: UIImageView!
+    @IBOutlet weak var tri_1_2: UIImageView!
+    @IBOutlet weak var tri_1_3: UIImageView!
+    @IBOutlet weak var tri_1_4: UIImageView!
+    @IBOutlet weak var tri_1_5: UIImageView!
+    @IBOutlet weak var tri_1_6: UIImageView!
+    @IBOutlet weak var tri_1_7: UIImageView!
+    @IBOutlet weak var tri_1_8: UIImageView!
+    @IBOutlet weak var tri_2_0: UIImageView!
+    @IBOutlet weak var tri_2_1: UIImageView!
+    @IBOutlet weak var tri_2_2: UIImageView!
+    @IBOutlet weak var tri_2_3: UIImageView!
+    @IBOutlet weak var tri_2_4: UIImageView!
+    @IBOutlet weak var tri_2_5: UIImageView!
+    @IBOutlet weak var tri_2_6: UIImageView!
+    @IBOutlet weak var tri_2_7: UIImageView!
+    @IBOutlet weak var tri_2_8: UIImageView!
+    @IBOutlet weak var tri_2_9: UIImageView!
+    @IBOutlet weak var tri_2_10: UIImageView!
+    @IBOutlet weak var tri_3_0: UIImageView!
+    @IBOutlet weak var tri_3_1: UIImageView!
+    @IBOutlet weak var tri_3_2: UIImageView!
+    @IBOutlet weak var tri_3_3: UIImageView!
+    @IBOutlet weak var tri_3_4: UIImageView!
+    @IBOutlet weak var tri_3_5: UIImageView!
+    @IBOutlet weak var tri_3_6: UIImageView!
+    @IBOutlet weak var tri_3_7: UIImageView!
+    @IBOutlet weak var tri_3_8: UIImageView!
+    @IBOutlet weak var tri_3_9: UIImageView!
+    @IBOutlet weak var tri_3_10: UIImageView!
+    @IBOutlet weak var tri_4_0: UIImageView!
+    @IBOutlet weak var tri_4_1: UIImageView!
+    @IBOutlet weak var tri_4_2: UIImageView!
+    @IBOutlet weak var tri_4_3: UIImageView!
+    @IBOutlet weak var tri_4_4: UIImageView!
+    @IBOutlet weak var tri_4_5: UIImageView!
+    @IBOutlet weak var tri_4_6: UIImageView!
+    @IBOutlet weak var tri_4_7: UIImageView!
+    @IBOutlet weak var tri_4_8: UIImageView!
+    @IBOutlet weak var tri_5_0: UIImageView!
+    @IBOutlet weak var tri_5_1: UIImageView!
+    @IBOutlet weak var tri_5_2: UIImageView!
+    @IBOutlet weak var tri_5_3: UIImageView!
+    @IBOutlet weak var tri_5_4: UIImageView!
+    @IBOutlet weak var tri_5_5: UIImageView!
+    @IBOutlet weak var tri_5_6: UIImageView!
+    
+    
+    
+    //following stores the triangle used for background
+    
+    @IBOutlet weak var tri_0_0_back: UIImageView!
+    @IBOutlet weak var tri_0_1_back: UIImageView!
+    @IBOutlet weak var tri_0_2_back: UIImageView!
+    @IBOutlet weak var tri_0_3_back: UIImageView!
+    @IBOutlet weak var tri_0_4_back: UIImageView!
+    @IBOutlet weak var tri_0_5_back: UIImageView!
+    @IBOutlet weak var tri_0_6_back: UIImageView!
+    
+    @IBOutlet weak var tri_1_0_back: UIImageView!
+    @IBOutlet weak var tri_1_1_back: UIImageView!
+    @IBOutlet weak var tri_1_2_back: UIImageView!
+    @IBOutlet weak var tri_1_3_back: UIImageView!
+    @IBOutlet weak var tri_1_4_back: UIImageView!
+    @IBOutlet weak var tri_1_5_back: UIImageView!
+    @IBOutlet weak var tri_1_6_back: UIImageView!
+    @IBOutlet weak var tri_1_7_back: UIImageView!
+    @IBOutlet weak var tri_1_8_back: UIImageView!
+    
+    @IBOutlet weak var tri_2_0_back: UIImageView!
+    @IBOutlet weak var tri_2_1_back: UIImageView!
+    @IBOutlet weak var tri_2_2_back: UIImageView!
+    @IBOutlet weak var tri_2_3_back: UIImageView!
+    @IBOutlet weak var tri_2_4_back: UIImageView!
+    @IBOutlet weak var tri_2_5_back: UIImageView!
+    
+    @IBOutlet weak var tri_2_6_back: UIImageView!
+    
+    
+    @IBOutlet weak var tri_2_7_back: UIImageView!
+    @IBOutlet weak var tri_2_8_back: UIImageView!
+    @IBOutlet weak var tri_2_9_back: UIImageView!
+    @IBOutlet weak var tri_2_10_back: UIImageView!
+    
+    @IBOutlet weak var tri_3_0_back: UIImageView!
+    @IBOutlet weak var tri_3_1_back: UIImageView!
+    @IBOutlet weak var tri_3_2_back: UIImageView!
+    @IBOutlet weak var tri_3_3_back: UIImageView!
+    @IBOutlet weak var tri_3_4_back: UIImageView!
+    @IBOutlet weak var tri_3_5_back: UIImageView!
+    @IBOutlet weak var tri_3_6_back: UIImageView!
+    @IBOutlet weak var tri_3_7_back: UIImageView!
+    @IBOutlet weak var tri_3_8_back: UIImageView!
+    @IBOutlet weak var tri_3_9_back: UIImageView!
+    @IBOutlet weak var tri_3_10_back: UIImageView!
+    
+    @IBOutlet weak var tri_4_0_back: UIImageView!
+    @IBOutlet weak var tri_4_1_back: UIImageView!
+    @IBOutlet weak var tri_4_2_back: UIImageView!
+    @IBOutlet weak var tri_4_3_back: UIImageView!
+    @IBOutlet weak var tri_4_4_back: UIImageView!
+    @IBOutlet weak var tri_4_5_back: UIImageView!
+    @IBOutlet weak var tri_4_6_back: UIImageView!
+    @IBOutlet weak var tri_4_7_back: UIImageView!
+    @IBOutlet weak var tri_4_8_back: UIImageView!
+    
+    @IBOutlet weak var tri_5_0_back: UIImageView!
+    @IBOutlet weak var tri_5_1_back: UIImageView!
+    @IBOutlet weak var tri_5_2_back: UIImageView!
+    @IBOutlet weak var tri_5_3_back: UIImageView!
+    @IBOutlet weak var tri_5_4_back: UIImageView!
+    @IBOutlet weak var tri_5_5_back: UIImageView!
+    @IBOutlet weak var tri_5_6_back: UIImageView!
+    
+    //2-D array saves whether each triangle is filled or not
+    var filled: Array<Array<Bool>> = [[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]]
+    
+    //store the current block type of any single tri
+    //-1 imply that the tri is not occupied
+    var single_tri_stored_type_index: Array<Array<Int>> = [[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]]
+    
+    //2-D array saves corresponding location
+    var tri_location: Array<Array<CGPoint>> = [
+        [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )],
+        [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )],
+        [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )],
+        [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )],
+        [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )],
+        [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )]]
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //5.
+    //all about three shapes in the bottom and drag shape procedure
+    //draggable element three drag triangles implementation
+    
+    @IBOutlet weak var green_drag_tri: UIImageView!//first
+    @IBOutlet weak var light_brown_drag_tri: UIImageView!//third
+    @IBOutlet weak var orange_drag_tri: UIImageView!//second
+    
+    
+    //color to make used shapes transparent
+    //alpha = 0
+    let tri_color_5 = UIColor(red:CGFloat(111/255.0), green:CGFloat(151/255.0), blue:CGFloat(91/255.0), alpha:CGFloat(0))
+
+    
+    //the index of position which is being dragged
+    var position_in_use: Int = 3
+    
+    //previous_drag_fit_UIImage_index never used
+    //keep for future use
+    var previous_drag_fit_UIImage_index : Int = 3
+    
+    //exist variables indicate whether each shape still exist on the board
+    var exist1 = true
+    var exist2 = true
+    var exist3 = true
+    
+    //original location (origin and original recs) of three shapes
+    var green_drag_origin = CGPoint(x: 0, y:0 )
+    var orange_drag_origin = CGPoint(x: 0, y:0 )
+    var light_brown_drag_origin = CGPoint(x:0 , y:0)
+    var green_drag_tri_orig_rec = CGRect(origin:  CGPoint(x: 0, y:0 ) , size: CGSize(width: 0 , height: 0))
+    var orange_drag_tri_orig_rec = CGRect(origin:  CGPoint(x: 0, y:0 ) , size: CGSize(width: 0 , height: 0))
+    var light_brown_drag_tri_orig_rec = CGRect(origin:  CGPoint(x: 0, y:0 ) , size: CGSize(width: 0 , height: 0))
+    
+    //array of image stored for shape 0 to shape 10
+    //used for random generation
+    var generator_array : Array<UIImage> = [UIImage(named:"绿色tri.png")!,UIImage(named:"橙色tri.png")!,UIImage(named:"棕色tri.png")!,UIImage(named:"brown_downwards.png")!,UIImage(named:"brown_left_direction.png")!,UIImage(named:"dark_green_tri.png")!,UIImage(named:"pink_right_direction.png")!,UIImage(named:"purple_upwards_as_shape.png")!,UIImage(named:"purple_downwards_as_shape")!, UIImage(named:"brown_left_downwards.png")!, UIImage(named: "brown_right_downwards.png")!]
+    
+    //adding one method by overriding touchesBegan function to get initial touch location
+    var initialTouchLocation: CGPoint!
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //6.
+    //constraints and screen indexes
     @IBOutlet weak var center: UILabel!
     @IBOutlet weak var green_drag_tri_x_constraint: NSLayoutConstraint!
     
@@ -93,52 +435,30 @@ class GameBoardViewController: UIViewController {
     @IBOutlet weak var light_brown_drag_tri_x_constraint: NSLayoutConstraint!
     
     @IBOutlet weak var light_brown_drag_tri_y_constraint: NSLayoutConstraint!
-//create an array to store shape_index for each UIImageView
-    @IBAction func test_gameover(_ sender: Any) {
-        Jump_to_Game_Over()
-    }
-// each int inside array reprensents shape index
-//every shape is the same name as they are in Assets.xcassets file
-//shape index 0: 绿色tri  index 1: 橙色tri index 2: 棕色tri index 3:brown_downwards 4:brown_left_direction 5:dark_green_tri 6:pink_right_direction 7 purple upwards  8 purple downwards 9 brown_left_downwards 10 brown_right_downwards
+    
+    // screen width
+    var screen_width : CGFloat = 0
+    var screen_height : CGFloat = 0
+    
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //7.
+    //variables about shape fitting and line erasing
+    //create an array to store shape_index for each UIImageView
+    // each int inside array reprensents shape index
+    //every shape is the same name as they are in Assets.xcassets file
+    //shape index 0: 绿色tri  index 1: 橙色tri index 2: 棕色tri index 3:brown_downwards 4:brown_left_direction 5:dark_green_tri 6:pink_right_direction 7 purple upwards  8 purple downwards 9 brown_left_downwards 10 brown_right_downwards
 
     var shape_type_index : Array<Int> = [0 , 0, 0]
-    //indicate pause
-    var paused = false
-    
-    //indicate into theme menu
-    var in_theme_menu = false
-
-    var player = AVPlayer()
-    
-    //record highest score
-    var HighestScore = 0
-    
-    //record theme type for now
-    //start from 1
-    var ThemeType = 1
     
     //store lines erased
     var number_of_lines_erased = 0
     
-    
-    var multiple_marker = UILabel(frame: CGRect(x: 90, y: 90, width: 200, height: 21))
-    
-    
-    class MyButton: UIButton {
-        var action: (()->())?
-        
-        func whenButtonIsClicked(action: @escaping ()->()) {
-            self.action = action
-            self.addTarget(self, action: #selector(MyButton.clicked), for: .touchUpInside)
-        }
-        
-        func clicked() {
-            action?()
-        }
-    }
-    
-    var home_button = MyButton()
-    
+    //default conditions (order) for a line to erase itself
     let default_erase_situation_0 = [[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6]]
     let default_erase_situation_1 = [[1,0],[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[1,7],[1,8]]
     let default_erase_situation_2 = [[2,0],[2,1],[2,2],[2,3],[2,4],[2,5],[2,6],[2,7],[2,8],[2,9],[2,10]]
@@ -160,7 +480,7 @@ class GameBoardViewController: UIViewController {
     let default_erase_situation_16 = [[1,8],[2,9],[2,8],[3,8],[3,7],[4,6],[4,5],[5,4],[5,3]]
     let default_erase_situation_17 = [[2,10],[3,10],[3,9],[4,8],[4,7],[5,6],[5,5]]
     
-    
+    //the actual condition (order) for a line to erase itself
     var erase_situation_0 : Array<Array<Int>> = []
     var erase_situation_1 : Array<Array<Int>> = []
     var erase_situation_2 : Array<Array<Int>> = []
@@ -182,35 +502,230 @@ class GameBoardViewController: UIViewController {
     var erase_situation_16 : Array<Array<Int>> = []
     var erase_situation_17 : Array<Array<Int>> = []
     
+    //positions that the current fit tri occupies
     var cur_shape_tri : Array<Array<Int>> = []
-//--------------------------------------------------------------------------------------------------------------------------
-//draggable element three drag triangles implementation
     
-    @IBOutlet weak var green_drag_tri: UIImageView!//first
-    @IBOutlet weak var light_brown_drag_tri: UIImageView!//third
-    @IBOutlet weak var orange_drag_tri: UIImageView!//second
-    //the index of position which is being dragged
-    var position_in_use: Int = 3
-    //0 for green_drag_tri 1 for orange_drag_tri 2 for light_brown_tri
-    var previous_drag_fit_UIImage_index : Int = 3
-    var exist1 = true
-    var exist2 = true
-    var exist3 = true
-    //original location of drag_image (only declaration here
-    var green_drag_origin = CGPoint(x: 0, y:0 )
-    var orange_drag_origin = CGPoint(x: 0, y:0 )
-    var light_brown_drag_origin = CGPoint(x:0 , y:0)
-    var green_drag_tri_orig_rec = CGRect(origin:  CGPoint(x: 0, y:0 ) , size: CGSize(width: 0 , height: 0))
-    var orange_drag_tri_orig_rec = CGRect(origin:  CGPoint(x: 0, y:0 ) , size: CGSize(width: 0 , height: 0))
-    var light_brown_drag_tri_orig_rec = CGRect(origin:  CGPoint(x: 0, y:0 ) , size: CGSize(width: 0 , height: 0))
-    //adding one method by overriding touchesBegan function to get initial touch location
-    var initialTouchLocation: CGPoint!
-  
-    //shape index refers to different shape type (FOR NOW)
-    var Shape_Index_1 = 0   //0 green
-    var Shape_Index_2 = 1   //1 orange
-    var Shape_Index_3 = 2   //2 LIGHT BROWN
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //8.
+    //all the images that will be used as variables
+    //downwards triangle
+    var downwards_tri = UIImage(named:"grey_tir_downwards")
+    
+    //upwards triangle
+    var upwards_tri = UIImage(named:"grey_tri_upwards")
+    
+    //green tri elements
+    let super_light_green_down = UIImage(named:"super_light_green_down")
+    
+    let super_light_green_up = UIImage(named:"super_light_green_up")
+    
+    //orange tri elements
+    
+    let orange_down = UIImage(named:"orange_downwards")
+    
+    let orange_up = UIImage(named:"orange_up")
+    
+    //light brown elements
+    
+    let light_brown_up = UIImage(named:"light_brown_up")
+    
+    let light_brown_down = UIImage(named:"light_brown_down")
+    
+    //dark green elements
+    
+    let dark_green_up = UIImage(named:"green_up")
+    
+    let dark_green_down = UIImage(named:"green_down")
+    
+    //pink elements
+    
+    let pink_up = UIImage(named:"pink_upwards")
+    
+    let pink_down = UIImage(named:"pink_downwards")
+    
+    //purple elements
+    
+    let pur_up = UIImage(named:"purple_upwards")
+    
+    let pur_down = UIImage(named:"purple_downwards")
+    
+    //小肉 elements
+    
+    let meat_up = UIImage(named:"小肉 up")
+    
+    let meat_down = UIImage(named:"小肉 down")
+    
+    //black elements
+    let BW_black_up = UIImage(named:"BW_black_tri_up")
+    let BW_black_down = UIImage(named:"BW_black_tri_down")
+    
+    //chaos elements
+    let chaos_up = UIImage(named:"chaos_up")
+    let chaos_up_left = UIImage(named:"chaos_up_left")
+    let chaos_up_right = UIImage(named:"chaos_up_right")
+    let chaos_up_3 = UIImage(named:"chaos_up")
+    let chaos_up_4 = UIImage(named:"chaos_up_left")
+    let chaos_up_5 = UIImage(named:"chaos_up_right")
+    let chaos_down = UIImage(named:"chaos_down")
+    
+    
+    //colors elements
+    let colors_green_up = UIImage(named:"colors_green_up")
+    let colors_green_down = UIImage(named:"colors_green_down")
+    let colors_blue_up = UIImage(named: "colors_blue_up")
+    let colors_blue_down = UIImage(named: "colors_blue_down")
+    let colors_gold_up = UIImage(named: "colors_gold_up")
+    let colors_gold_down = UIImage(named: "colors_gold_down")
+    let colors_pink_up = UIImage(named: "colors_pink_up")
+    let colors_pink_down = UIImage(named: "colors_pink_down")
+    
+    
+    
+    //school elements
+    let school_up = UIImage(named:"school_up")
+    let school_up_left = UIImage(named:"school_up-left")
+    let school_up_right = UIImage(named:"school_up-right")
+    let school_down = UIImage(named:"school_down")
+    
+   
+    //icons used in pause screen
+    //day
+    let home_pic = UIImage(named:"home")
+    let restart_pic = UIImage(named:"restart")
+    let like_pic = UIImage(named:"like")
+    let shopping_pic = UIImage(named:"shopping_cart")
+    let continue_pic = UIImage(named:"continue")
+    
+    //night
+    let night_home_pic = UIImage(named:"night mode home")
+    
+    //B&W
+    let BW_home_pic = UIImage(named:"BW_home")
+    let BW_continue_pic = UIImage(named:"BW_continue")
+    let BW_shopping_pic = UIImage(named:"BW_shopping")
+    let BW_restart_pic = UIImage(named:"BW_restart")
+    let BW_like_pic = UIImage(named:"BW_like")
+    
+    //chaos
+    let chaos_home_pic = UIImage(named:"chaos_home_icon")
+    let chaos_continue_pic = UIImage(named:"chaos_start_icon")
+    let chaos_shopping_pic = UIImage(named:"chaos_theme_button")
+    let chaos_restart_small_pic = UIImage(named:"chaos_restart_small")
+    let chaos_restart_big_pic = UIImage(named:"chaos_restart_big")
+    let chaos_like_pic = UIImage(named:"chaos_like_icon")
+    
+    //colors
+    let colors_home_pic = UIImage(named:"colors_home-icon")
+    let colors_continue_pic = UIImage(named:"colors_start")
+    let colors_shopping_pic = UIImage(named:"colors_theme-button")
+    let colors_restart_small_pic = UIImage(named:"colors_restart")
+    let colors_restart_big_pic = UIImage(named:"colors_restart-big")
+    let colors_like_pic = UIImage(named:"colors_like-icon")
+    
+    //school
+    let school_home_pic = UIImage(named:"school_home-icon")
+    let school_continue_pic = UIImage(named:"school_start-icon")
+    let school_shopping_pic = UIImage(named:"school_theme-button")
+    let school_restart_small_pic = UIImage(named:"school_restart_small")
+    let school_restart_big_pic = UIImage(named:"school_restart_big")
+    let school_like_pic = UIImage(named:"school_like-icon")
+    
+    
+
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //9.
+    //boolean values indicate condition
+    //indicate pause
+    var paused = false
+    
+    //indicate into theme menu
+    var in_theme_menu = false
+
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //10.
+    //all the audio players
+    var player = AVPlayer()
+    
+    //declare different types of audio player
+    var fit_in_player = AVAudioPlayer()
+    var audioPlayer = AVAudioPlayer()
+    var timer = Timer()
+    var restart_player = AVAudioPlayer()
+    var erase_player = AVAudioPlayer()
+    var button_player = AVAudioPlayer()
+    var not_fit_player = AVAudioPlayer()
+    var game_over_player = AVAudioPlayer()
+
+    
+    
+    
+    class MyButton: UIButton {
+        var action: (()->())?
+        
+        func whenButtonIsClicked(action: @escaping ()->()) {
+            self.action = action
+            self.addTarget(self, action: #selector(MyButton.clicked), for: .touchUpInside)
+        }
+        
+        func clicked() {
+            action?()
+        }
+    }
+    
+
+    
+
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //start of all the functions
+    //start of all the functions
+    //start of all the functions
+    //start of all the functions
+    //start of all the functions
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         initialTouchLocation = touches.first!.location(in: view)
@@ -252,37 +767,36 @@ class GameBoardViewController: UIViewController {
     
     
     
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //function about music
+    func background_music_pause () {
+        audioPlayer.pause()
+        //timer.invalidate()
+    }
+    
+    func background_music_continue() {
+        //audioPlayer.play()
+        //timer.fire()
+    }
+    
+    
     @IBAction func stop_music_when_pause(_ sender: UIButton) {
         //self.audioPlayer.stop()
         //self.timer.invalidate()
-  
     }
     
-    //--------------------------------------------------------------------------------------------------------------------------
-    //initialize an array for random generator
-    var generator_array : Array<UIImage> = [UIImage(named:"绿色tri.png")!,UIImage(named:"橙色tri.png")!,UIImage(named:"棕色tri.png")!,UIImage(named:"brown_downwards.png")!,UIImage(named:"brown_left_direction.png")!,UIImage(named:"dark_green_tri.png")!,UIImage(named:"pink_right_direction.png")!,UIImage(named:"purple_upwards_as_shape.png")!,UIImage(named:"purple_downwards_as_shape")!, UIImage(named:"brown_left_downwards.png")!, UIImage(named: "brown_right_downwards.png")!]
-    
-    //--------------------------------------------------------------------------------------------------------------------------
-    @IBOutlet weak var HightestScoreBoard: UILabel!
-   // @IBOutlet weak var HightestScoreBoard: UITextField!
 
-    @IBOutlet weak var triangle_title: UIImageView!
+
     
     
-    //declare an audio player
-    var fit_in_player = AVAudioPlayer()
-    var audioPlayer = AVAudioPlayer()
-    var timer = Timer()
-   // screen width
-    var screen_width : CGFloat = 0
-    var screen_height : CGFloat = 0
     
-    //audio players
-    var restart_player = AVAudioPlayer()
-    var erase_player = AVAudioPlayer()
-    var button_player = AVAudioPlayer()
-    var not_fit_player = AVAudioPlayer()
-    var game_over_player = AVAudioPlayer()
+    
+   
+    
+    
     override func viewDidLoad() {
        // print("Green tri x constraint is\(green_drag_tri_x_constraint.constant), y is \(green_drag_tri_y_constraint.constant)")
         //let screen_Rect = UIScreen.main.bounds
@@ -712,20 +1226,17 @@ class GameBoardViewController: UIViewController {
         
     }
     
-    func background_music_pause () {
-        audioPlayer.pause()
-        //timer.invalidate()
-    }
     
-    func background_music_continue() {
-        //audioPlayer.play()
-        //timer.fire()
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    
+    
+    //modify position according to iphone generation functions
     func pause_screen_x_transform(_ x: Double) -> CGFloat {
       let const = x/Double(375)
       let new_x = Double(screen_width)*const
@@ -737,25 +1248,27 @@ class GameBoardViewController: UIViewController {
         let new_y = Double(screen_height)*const
         return CGFloat(new_y)
     }
-    
-    
-    //origin
-    var day_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var night_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var BW_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var chaos_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var school_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var colors_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var theme_star_counter = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var theme_star_board = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    
-    var day_theme_origin = CGPoint(x: 0, y: 0)
-    var night_theme_origin = CGPoint(x: 0, y: 0)
-    var BW_theme_origin = CGPoint(x: 0, y: 0)
-    var chaos_theme_origin = CGPoint(x: 0, y: 0)
-    var school_theme_origin = CGPoint(x: 0, y: 0)
-    var colors_theme_origin = CGPoint(x: 0, y: 0)
 
+    func coordiante_transform (point_in_ip7: CGPoint) -> CGPoint {
+        //ip7: width 375 height:667
+        let x_proportion_const = Double(point_in_ip7.x)/Double(375)
+        let y_proportion_const = Double(point_in_ip7.y)/Double(667)
+        let new_CGPoint = CGPoint(x: CGFloat(Double(screen_width) * x_proportion_const), y: CGFloat(Double(screen_height)*y_proportion_const))
+        return new_CGPoint
+        
+    }
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
     func theme_menu_action() -> Void {
         in_theme_menu = true
         let theme_menu: UIView = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
@@ -1321,9 +1834,7 @@ class GameBoardViewController: UIViewController {
         return_button.fadeInWithDisplacement()
     }
 
-    var continue_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var shopping_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var restart_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    
     
     
     
@@ -1515,9 +2026,12 @@ class GameBoardViewController: UIViewController {
         
     }
     
-    @IBOutlet weak var pause: UIButton!
-    @IBOutlet weak var trophy: UIImageView!
     
+    
+    
+    
+    
+    //
     //function in response to drag movement
     func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
         if (!paused && !in_theme_menu){
@@ -1755,443 +2269,20 @@ class GameBoardViewController: UIViewController {
         }
     
     
-    //compute distance between two CGPoint (Square Form) (not using rn)
-    func distance_generator( drag_location: CGPoint, triangle_location: CGPoint) -> Double {
-        let temp_distance = (drag_location.x-triangle_location.x)*(drag_location.x-triangle_location.x)+(drag_location.y-triangle_location.y)*(drag_location.y-triangle_location.y)
-        return Double(temp_distance)
-    }
-    //--------------------------------------------------------------------------------------------------------------------
-    //pause button activate
-    
-    @IBAction func pauseButton(_ sender: UIButton) {
-        
-        
-    }
-    
-    func change_all_back_tris_image() -> Void{
-        tri_0_0_back.image = upwards_tri
-        tri_0_1_back.image = downwards_tri
-        tri_0_2_back.image = upwards_tri
-        tri_0_3_back.image = downwards_tri
-        tri_0_4_back.image = upwards_tri
-        tri_0_5_back.image = downwards_tri
-        tri_0_6_back.image = upwards_tri
-        
-        tri_1_0_back.image = upwards_tri
-        tri_1_1_back.image = downwards_tri
-        tri_1_2_back.image = upwards_tri
-        tri_1_3_back.image = downwards_tri
-        tri_1_4_back.image = upwards_tri
-        tri_1_5_back.image = downwards_tri
-        tri_1_6_back.image = upwards_tri
-        tri_1_7_back.image = downwards_tri
-        tri_1_8_back.image = upwards_tri
-        
-        tri_2_0_back.image = upwards_tri
-        tri_2_1_back.image = downwards_tri
-        tri_2_2_back.image = upwards_tri
-        tri_2_3_back.image = downwards_tri
-        tri_2_4_back.image = upwards_tri
-        tri_2_5_back.image = downwards_tri
-        tri_2_6_back.image = upwards_tri
-        tri_2_7_back.image = downwards_tri
-        tri_2_8_back.image = upwards_tri
-        tri_2_9_back.image = downwards_tri
-        tri_2_10_back.image = upwards_tri
-        
-        tri_3_0_back.image = downwards_tri
-        tri_3_1_back.image = upwards_tri
-        tri_3_2_back.image = downwards_tri
-        tri_3_3_back.image = upwards_tri
-        tri_3_4_back.image = downwards_tri
-        tri_3_5_back.image = upwards_tri
-        tri_3_6_back.image = downwards_tri
-        tri_3_7_back.image = upwards_tri
-        tri_3_8_back.image = downwards_tri
-        tri_3_9_back.image = upwards_tri
-        tri_3_10_back.image = downwards_tri
-        
-        tri_4_0_back.image = downwards_tri
-        tri_4_1_back.image = upwards_tri
-        tri_4_2_back.image = downwards_tri
-        tri_4_3_back.image = upwards_tri
-        tri_4_4_back.image = downwards_tri
-        tri_4_5_back.image = upwards_tri
-        tri_4_6_back.image = downwards_tri
-        tri_4_7_back.image = upwards_tri
-        tri_4_8_back.image = downwards_tri
-        
-        tri_5_0_back.image = downwards_tri
-        tri_5_1_back.image = upwards_tri
-        tri_5_2_back.image = downwards_tri
-        tri_5_3_back.image = upwards_tri
-        tri_5_4_back.image = downwards_tri
-        tri_5_5_back.image = upwards_tri
-        tri_5_6_back.image = downwards_tri
-    }
-    
-    
-    //--------------------------------------------------------------------------------------------------------------------
-    //construct a list of colors that will be implemented in gameboard
-    
-    //color No.0 is 绿色tri (st 0)
-    let tri_color_0 = UIColor(red:CGFloat(113/255.0), green:CGFloat(148/255.0), blue:CGFloat(92/255.0), alpha:CGFloat(1))
-    
-    //color No.1 is 橙色tri (st 1)
-    let tri_color_1 = UIColor(red:CGFloat(223/255.0), green:CGFloat(110/255.0), blue:CGFloat(67/255.0), alpha:CGFloat(1))
-    
-    //color No.2 is 棕色tri (st 2 3 4)
-    let tri_color_2 = UIColor(red:CGFloat(213/255.0), green:CGFloat(193/255.0), blue:CGFloat(151/255.0), alpha:CGFloat(1))
-    
-    //color No.3 is dark green (st 5)
-    let tri_color_3 = UIColor(red:CGFloat(27/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
-    
-    //color No.4 is not yet used
-     let tri_color_4 = UIColor(red:CGFloat(111/255.0), green:CGFloat(151/255.0), blue:CGFloat(91/255.0), alpha:CGFloat(1))
-    
-    //color No.5 is trans
-    let tri_color_5 = UIColor(red:CGFloat(111/255.0), green:CGFloat(151/255.0), blue:CGFloat(91/255.0), alpha:CGFloat(0))
-    
-    
-    //--------------------------------------------------------------------------------------------------------------------
-    
-    
-    
-    
-    
-    
-    
-    //--------------------------------------------------------------------------------------------------------------------
-    //outlet connection variable for each triangle in gameboard
-    //name follows protocol:
-    //  "tri_(row)_(column)"
-    @IBOutlet weak var tri_0_0: UIImageView!
-    @IBOutlet weak var tri_0_1: UIImageView!
-    @IBOutlet weak var tri_0_2: UIImageView!
-    @IBOutlet weak var tri_0_3: UIImageView!
-    @IBOutlet weak var tri_0_4: UIImageView!
-    @IBOutlet weak var tri_0_5: UIImageView!
-    @IBOutlet weak var tri_0_6: UIImageView!
-    @IBOutlet weak var tri_1_0: UIImageView!
-    @IBOutlet weak var tri_1_1: UIImageView!
-    @IBOutlet weak var tri_1_2: UIImageView!
-    @IBOutlet weak var tri_1_3: UIImageView!
-    @IBOutlet weak var tri_1_4: UIImageView!
-    @IBOutlet weak var tri_1_5: UIImageView!
-    @IBOutlet weak var tri_1_6: UIImageView!
-    @IBOutlet weak var tri_1_7: UIImageView!
-    @IBOutlet weak var tri_1_8: UIImageView!
-    @IBOutlet weak var tri_2_0: UIImageView!
-    @IBOutlet weak var tri_2_1: UIImageView!
-    @IBOutlet weak var tri_2_2: UIImageView!
-    @IBOutlet weak var tri_2_3: UIImageView!
-    @IBOutlet weak var tri_2_4: UIImageView!
-    @IBOutlet weak var tri_2_5: UIImageView!
-    @IBOutlet weak var tri_2_6: UIImageView!
-    @IBOutlet weak var tri_2_7: UIImageView!
-    @IBOutlet weak var tri_2_8: UIImageView!
-    @IBOutlet weak var tri_2_9: UIImageView!
-    @IBOutlet weak var tri_2_10: UIImageView!
-    @IBOutlet weak var tri_3_0: UIImageView!
-    @IBOutlet weak var tri_3_1: UIImageView!
-    @IBOutlet weak var tri_3_2: UIImageView!
-    @IBOutlet weak var tri_3_3: UIImageView!
-    @IBOutlet weak var tri_3_4: UIImageView!
-    @IBOutlet weak var tri_3_5: UIImageView!
-    @IBOutlet weak var tri_3_6: UIImageView!
-    @IBOutlet weak var tri_3_7: UIImageView!
-    @IBOutlet weak var tri_3_8: UIImageView!
-    @IBOutlet weak var tri_3_9: UIImageView!
-    @IBOutlet weak var tri_3_10: UIImageView!
-    @IBOutlet weak var tri_4_0: UIImageView!
-    @IBOutlet weak var tri_4_1: UIImageView!
-    @IBOutlet weak var tri_4_2: UIImageView!
-    @IBOutlet weak var tri_4_3: UIImageView!
-    @IBOutlet weak var tri_4_4: UIImageView!
-    @IBOutlet weak var tri_4_5: UIImageView!
-    @IBOutlet weak var tri_4_6: UIImageView!
-    @IBOutlet weak var tri_4_7: UIImageView!
-    @IBOutlet weak var tri_4_8: UIImageView!
-    @IBOutlet weak var tri_5_0: UIImageView!
-    @IBOutlet weak var tri_5_1: UIImageView!
-    @IBOutlet weak var tri_5_2: UIImageView!
-    @IBOutlet weak var tri_5_3: UIImageView!
-    @IBOutlet weak var tri_5_4: UIImageView!
-    @IBOutlet weak var tri_5_5: UIImageView!
-    @IBOutlet weak var tri_5_6: UIImageView!
-    
-    
-    
-    //following stores the triangle used for background
-    
-    @IBOutlet weak var tri_0_0_back: UIImageView!
-    @IBOutlet weak var tri_0_1_back: UIImageView!
-    @IBOutlet weak var tri_0_2_back: UIImageView!
-    @IBOutlet weak var tri_0_3_back: UIImageView!
-    @IBOutlet weak var tri_0_4_back: UIImageView!
-    @IBOutlet weak var tri_0_5_back: UIImageView!
-    @IBOutlet weak var tri_0_6_back: UIImageView!
-    
-    @IBOutlet weak var tri_1_0_back: UIImageView!
-    @IBOutlet weak var tri_1_1_back: UIImageView!
-    @IBOutlet weak var tri_1_2_back: UIImageView!
-    @IBOutlet weak var tri_1_3_back: UIImageView!
-    @IBOutlet weak var tri_1_4_back: UIImageView!
-    @IBOutlet weak var tri_1_5_back: UIImageView!
-    @IBOutlet weak var tri_1_6_back: UIImageView!
-    @IBOutlet weak var tri_1_7_back: UIImageView!
-    @IBOutlet weak var tri_1_8_back: UIImageView!
-    
-    @IBOutlet weak var tri_2_0_back: UIImageView!
-    @IBOutlet weak var tri_2_1_back: UIImageView!
-    @IBOutlet weak var tri_2_2_back: UIImageView!
-    @IBOutlet weak var tri_2_3_back: UIImageView!
-    @IBOutlet weak var tri_2_4_back: UIImageView!
-    @IBOutlet weak var tri_2_5_back: UIImageView!
-    
-    @IBOutlet weak var tri_2_6_back: UIImageView!
-    
-    
-    @IBOutlet weak var tri_2_7_back: UIImageView!
-    @IBOutlet weak var tri_2_8_back: UIImageView!
-    @IBOutlet weak var tri_2_9_back: UIImageView!
-    @IBOutlet weak var tri_2_10_back: UIImageView!
-    
-    @IBOutlet weak var tri_3_0_back: UIImageView!
-    @IBOutlet weak var tri_3_1_back: UIImageView!
-    @IBOutlet weak var tri_3_2_back: UIImageView!
-    @IBOutlet weak var tri_3_3_back: UIImageView!
-    @IBOutlet weak var tri_3_4_back: UIImageView!
-    @IBOutlet weak var tri_3_5_back: UIImageView!
-    @IBOutlet weak var tri_3_6_back: UIImageView!
-    @IBOutlet weak var tri_3_7_back: UIImageView!
-    @IBOutlet weak var tri_3_8_back: UIImageView!
-    @IBOutlet weak var tri_3_9_back: UIImageView!
-    @IBOutlet weak var tri_3_10_back: UIImageView!
-    
-    @IBOutlet weak var tri_4_0_back: UIImageView!
-    @IBOutlet weak var tri_4_1_back: UIImageView!
-    @IBOutlet weak var tri_4_2_back: UIImageView!
-    @IBOutlet weak var tri_4_3_back: UIImageView!
-    @IBOutlet weak var tri_4_4_back: UIImageView!
-    @IBOutlet weak var tri_4_5_back: UIImageView!
-    @IBOutlet weak var tri_4_6_back: UIImageView!
-    @IBOutlet weak var tri_4_7_back: UIImageView!
-    @IBOutlet weak var tri_4_8_back: UIImageView!
-    
-    @IBOutlet weak var tri_5_0_back: UIImageView!
-    @IBOutlet weak var tri_5_1_back: UIImageView!
-    @IBOutlet weak var tri_5_2_back: UIImageView!
-    @IBOutlet weak var tri_5_3_back: UIImageView!
-    @IBOutlet weak var tri_5_4_back: UIImageView!
-    @IBOutlet weak var tri_5_5_back: UIImageView!
-    @IBOutlet weak var tri_5_6_back: UIImageView!
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   //--------------------------------------------------------------------------------------------------------------------
-    
-    //2-D array saves whether each triangle is filled or not
-    var filled: Array<Array<Bool>> = [[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]]
-    
-    //store the current block type of any single tri
-    //-1 imply that the tri is not occupied
-    var single_tri_stored_type_index: Array<Array<Int>> = [[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]]
 
-    //2-D array saves corresponding location
-    var tri_location: Array<Array<CGPoint>> = [
-        [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )],
-        [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )],
-        [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )],
-        [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )],
-        [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )],
-        [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )]]
     
     
-//--------------------------------------------------------------------------------------------------------------------
-//set two default grey triangle
-    
-//downwards triangle
-    var downwards_tri = UIImage(named:"grey_tir_downwards")
-    
-//upwards triangle
-    var upwards_tri = UIImage(named:"grey_tri_upwards")
-
-//green tri elements
-    let super_light_green_down = UIImage(named:"super_light_green_down")
-    
-    let super_light_green_up = UIImage(named:"super_light_green_up")
-    
-//orange tri elements
-    
-    let orange_down = UIImage(named:"orange_downwards")
-    
-    let orange_up = UIImage(named:"orange_up")
-    
-//light brown elements
-    
-    let light_brown_up = UIImage(named:"light_brown_up")
-    
-    let light_brown_down = UIImage(named:"light_brown_down")
-    
-//dark green elements
-    
-    let dark_green_up = UIImage(named:"green_up")
-    
-    let dark_green_down = UIImage(named:"green_down")
-    
-//pink elements
-    
-    let pink_up = UIImage(named:"pink_upwards")
-    
-    let pink_down = UIImage(named:"pink_downwards")
-    
-//purple elements
-    
-    let pur_up = UIImage(named:"purple_upwards")
-    
-    let pur_down = UIImage(named:"purple_downwards")
-    
-//小肉 elements
-    
-    let meat_up = UIImage(named:"小肉 up")
-    
-    let meat_down = UIImage(named:"小肉 down")
-    
-//black elements
-    let BW_black_up = UIImage(named:"BW_black_tri_up")
-    let BW_black_down = UIImage(named:"BW_black_tri_down")
-    
-//chaos elements
-    let chaos_up = UIImage(named:"chaos_up")
-    let chaos_up_left = UIImage(named:"chaos_up_left")
-    let chaos_up_right = UIImage(named:"chaos_up_right")
-    let chaos_up_3 = UIImage(named:"chaos_up")
-    let chaos_up_4 = UIImage(named:"chaos_up_left")
-    let chaos_up_5 = UIImage(named:"chaos_up_right")
-    let chaos_down = UIImage(named:"chaos_down")
-    
-
-//colors elements
-    let colors_green_up = UIImage(named:"colors_green_up")
-    let colors_green_down = UIImage(named:"colors_green_down")
-    let colors_blue_up = UIImage(named: "colors_blue_up")
-    let colors_blue_down = UIImage(named: "colors_blue_down")
-    let colors_gold_up = UIImage(named: "colors_gold_up")
-    let colors_gold_down = UIImage(named: "colors_gold_down")
-    let colors_pink_up = UIImage(named: "colors_pink_up")
-    let colors_pink_down = UIImage(named: "colors_pink_down")
-    
-    
-
-//school elements
-    let school_up = UIImage(named:"school_up")
-    let school_up_left = UIImage(named:"school_up-left")
-    let school_up_right = UIImage(named:"school_up-right")
-    let school_down = UIImage(named:"school_down")
-
-//pause icons
-    
-    let home_pic = UIImage(named:"home")
-    
-    let restart_pic = UIImage(named:"restart")
-    
-    let like_pic = UIImage(named:"like")
-    
-    let shopping_pic = UIImage(named:"shopping_cart")
-    
-    let continue_pic = UIImage(named:"continue")
-    
-    let night_home_pic = UIImage(named:"night mode home")
-    
-    let BW_home_pic = UIImage(named:"BW_home")
-    
-    let BW_continue_pic = UIImage(named:"BW_continue")
-    
-    let BW_shopping_pic = UIImage(named:"BW_shopping")
-    
-    let BW_restart_pic = UIImage(named:"BW_restart")
-    
-    let BW_like_pic = UIImage(named:"BW_like")
-    
-    let chaos_home_pic = UIImage(named:"chaos_home_icon")
-    
-    let chaos_continue_pic = UIImage(named:"chaos_start_icon")
-    
-    let chaos_shopping_pic = UIImage(named:"chaos_theme_button")
-    
-    let chaos_restart_small_pic = UIImage(named:"chaos_restart_small")
-    
-    let chaos_restart_big_pic = UIImage(named:"chaos_restart_big")
-    
-    let chaos_like_pic = UIImage(named:"chaos_like_icon")
-    
-
-    let colors_home_pic = UIImage(named:"colors_home-icon")
-    
-    let colors_continue_pic = UIImage(named:"colors_start")
-    
-    let colors_shopping_pic = UIImage(named:"colors_theme-button")
-    
-    let colors_restart_small_pic = UIImage(named:"colors_restart")
-    
-    let colors_restart_big_pic = UIImage(named:"colors_restart-big")
-    
-    let colors_like_pic = UIImage(named:"colors_like-icon")
-
-    let school_home_pic = UIImage(named:"school_home-icon")
-    
-    let school_continue_pic = UIImage(named:"school_start-icon")
-    
-    let school_shopping_pic = UIImage(named:"school_theme-button")
-    
-    let school_restart_small_pic = UIImage(named:"school_restart_small")
-    
-    let school_restart_big_pic = UIImage(named:"school_restart_big")
-    
-    let school_like_pic = UIImage(named:"school_like-icon")
-
-//--------------------------------------------------------------------------------------------------------------------
 
     
     
     
     
-    
-    
-    //outlet connection variable for MarkBoard (top left)
-    @IBOutlet weak var MarkBoard: UILabel!
-    
-
-    
-    func auto_make_transparent() -> Void {
-        
-        if(position_in_use == 0){
-            green_drag_tri.image = UIImage(named:"绿色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-        }else if(position_in_use == 1){
-           orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-        }else if(position_in_use == 2){
-             light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-        }
-
-    }
-    
-    
-    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //functions concerning shape fitting and the consequence
     func Shape_fitting(Shape_Type: Int, position: CGPoint) -> Bool {
         if (Shape_Type == 0){
             var i = 0
@@ -3512,855 +3603,100 @@ class GameBoardViewController: UIViewController {
     }
     
     
-    func Shape_fitting_When_Dragging(Shape_Type: Int, position: CGPoint) -> Bool {
-        if (Shape_Type == 0){
-            
-            var i = 0
-            for triangles_location in tri_location{
-                var j = 0
-                for triangle_location in triangles_location{
-                    if (i == 0 || i == 1 || i == 2){//upper half
-                        if (j%2 == 1){//only downward
-                            if (position.x + 25 <= triangle_location.x + 20 && position.x + 25 >= triangle_location.x - 20 &&
-                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j-1] && !filled[i][j+1]){//check available
-                                    //green_drag_tri.image = UIImage(named:"绿色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: super_light_green_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: super_light_green_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: super_light_green_up)
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    } else if (i == 3 || i == 4 || i == 5){
-                        if (j%2 == 0 && j != 0 && j != tri_location[i].count - 1){//lower half&&not edge
-                            if (position.x + 25 <= triangle_location.x + 20 && position.x + 25 >= triangle_location.x - 20 &&
-                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){
-                                if (!filled[i][j] && !filled[i][j-1] && !filled[i][j+1]){
-                                    //green_drag_tri.image = UIImage(named:"绿色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: super_light_green_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: super_light_green_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: super_light_green_up)
-            
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    j += 1
-                }
-                i += 1
-            }
-        } else if (Shape_Type == 1){
-            var i = 0
-            for triangles_location in tri_location{
-                var j = 0
-                
-                for triangle_location in triangles_location{
-                    if (i == 0 || i == 1){//upper half row 0 1
-                        if (j%2 == 0){//only upward
-                            if (position.x + 25 <= triangle_location.x + 20 && position.x + 25 >= triangle_location.x - 20 &&
-                                position.y + 4 <= triangle_location.y + 20 && position.y + 4 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i+1][j+1]){//check available
-                                    //orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: orange_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i+1, y:j+1, image: orange_down)
-                           
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }else if (i == 2){//upper half row 2
-                        if (j%2 == 0){//only upward
-                            if (position.x + 25 <= triangle_location.x + 20 && position.x + 25 >= triangle_location.x - 20 &&
-                                position.y + 4 <= triangle_location.y + 20 && position.y + 4 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i+1][j]){//check available
-                                    //orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: orange_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i+1, y:j, image: orange_down)
-                              
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    else if (i == 3 || i == 4){
-                        if (j%2 == 1){//lower half
-                            if (position.x + 25 <= triangle_location.x + 20 && position.x + 25 >= triangle_location.x - 20 &&
-                                position.y + 4 <= triangle_location.y + 20 && position.y + 4 >= triangle_location.y - 20){
-                                if (!filled[i][j] && !filled[i+1][j-1]){
-                                    //orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: orange_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i+1, y:j-1, image: orange_down)
-                                 
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    j += 1
-                }
-                i += 1
-            }
-        } else if (Shape_Type == 2) {    //Shape_Type == 2
-            var i = 0
-            for triangles_location in tri_location{
-                var j = 0
-                
-                for triangle_location in triangles_location{
-                    if (i == 1 || i == 2){//upper half row 1 2
-                        if (j%2 == 0 && j != tri_location[i].count - 1){//only upward
-                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
-                                position.y + 48 <= triangle_location.y + 20 && position.y + 48 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1] && !filled[i-1][j]){//check available
-                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: light_brown_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: light_brown_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: light_brown_up)
-                                  
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }else if (i == 3){//lower half row 3
-                        if (j%2 == 1){//only upward
-                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
-                                position.y + 48 <= triangle_location.y + 20 && position.y + 48 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1] && !filled[i-1][j+1]){//check available
-                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: light_brown_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: light_brown_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+1, image: light_brown_up)
-                                   
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    else if (i == 4 || i == 5){
-                        if (j%2 == 1){//lower half
-                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
-                                position.y + 48 <= triangle_location.y + 20 && position.y + 48 >= triangle_location.y - 20){
-                                if (!filled[i][j] && !filled[i][j+1] && !filled[i-1][j+2]){
-                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: light_brown_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: light_brown_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+2, image: light_brown_up)
-                                  
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    j += 1
-                }
-                i += 1
-            }
-            
+    
+    func auto_make_transparent() -> Void {
+        
+        if(position_in_use == 0){
+            green_drag_tri.image = UIImage(named:"绿色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+        }else if(position_in_use == 1){
+            orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+        }else if(position_in_use == 2){
+            light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
         }
-        else if (Shape_Type == 3) {    //Shape_Type == 3
-            var i = 0
-            for triangles_location in tri_location{
-                var j = 0
-                
-                for triangle_location in triangles_location{
-                    if (i == 0||i == 1 || i == 2){//upper half row 1 2
-                        if (j%2 == 0 && j != tri_location[i].count - 1 && j != 0){//only upward
-                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 25 >= triangle_location.x - 20 &&
-                                position.y + 27 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1]){//check available
-                                    
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: light_brown_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: light_brown_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: light_brown_down)
-                                    
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }else if (i == 3 || i == 4 || i == 5){//lower half
-                        if (j%2 == 1){//only upward
-                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
-                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1]){//check available
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: light_brown_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: light_brown_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: light_brown_down)
-                                    
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    j += 1
-                }
-                i += 1
-            }
-            
-        }
-        else if (Shape_Type == 4) {    //Shape_Type == 4
-            var i = 0
-            for triangles_location in tri_location{
-                var j = 0
-                
-                for triangle_location in triangles_location{
-                    if (i == 0||i == 1 || i == 2){//upper half
-                        if (j%2 == 1){//only upward
-                            if (position.x + 15.5 <= triangle_location.x + 20 && position.x + 15.5 >= triangle_location.x - 20 &&
-                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1]){//check available
-                                    
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: super_light_green_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: super_light_green_up)
-                                    
-                                    
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }else if (i == 3 || i == 4 || i == 5){//lower half
-                        if (j%2 == 0 && j != tri_location[i].count - 1){//only downward
-                            if (position.x + 15.5 <= triangle_location.x + 20 && position.x + 15.5 >= triangle_location.x - 20 &&
-                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1]){//check available
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: super_light_green_down)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: super_light_green_up)
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    j += 1
-                }
-                i += 1
-            }
-            
-        }
-        else if (Shape_Type == 5) {    //Shape_Type == 5
-            var i = 0
-            for triangles_location in tri_location{
-                var j = 0
-                
-                for triangle_location in triangles_location{
-                    if (i == 1 || i == 2){//upper half row 1 2
-                        if (j%2 == 0 && j != 0 && j != tri_location[i].count - 1){//only upward
-                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
-                                position.y + 46 <= triangle_location.y + 20 && position.y + 46 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1] && !filled[i-1][j] && !filled[i-1][j-2]){//check available
-                                    
-                                    auto_make_transparent()
-                                    if (ThemeType == 1){
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: dark_green_up)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: dark_green_down)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: dark_green_down)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: dark_green_up)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-2, image: dark_green_up)
-                                    } else if (ThemeType == 2){
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: meat_up)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: meat_down)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: meat_down)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: meat_up)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-2, image: meat_up)
-                                    }
-                                    
-                                    
-                                    
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }else if (i == 3){//lower half row 3
-                        if (j%2 == 1){//only upward
-                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
-                                position.y + 46 <= triangle_location.y + 20 && position.y + 46 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1] && !filled[i-1][j-1] && !filled[i-1][j+1]){//check available
-                                    
-                                    auto_make_transparent()
-                                    if (ThemeType == 1){
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: dark_green_up)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: dark_green_down)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: dark_green_down)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+1, image: dark_green_up)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-1, image: dark_green_up)
-                                        
-                                    }else if (ThemeType == 2){
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: meat_up)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: meat_down)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: meat_down)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+1, image: meat_up)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-1, image: meat_up)
-                                        
-                                    }
-                                   
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    else if (i == 4 || i == 5){//lower half row 4 5
-                        if (j%2 == 1){//only upward
-                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
-                                position.y + 46 <= triangle_location.y + 20 && position.y + 46 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1] && !filled[i-1][j] && !filled[i-1][j+2]){//check available
-                                    
-                                    auto_make_transparent()
-                                    if (ThemeType == 1){
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: dark_green_up)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: dark_green_down)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: dark_green_down)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+2, image: dark_green_up)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: dark_green_up)
-                                    } else if (ThemeType == 2){
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image:meat_up)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: meat_down)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: meat_down)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+2, image: meat_up)
-                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: meat_up)
-                                    }
-                                    
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    j += 1
-                }
-                i += 1
-            }
-            
-        }
-        else if (Shape_Type == 6) {    //Shape_Type == 6 pink right direction
-            var i = 0
-            for triangles_location in tri_location{
-                var j = 0
-                
-                for triangle_location in triangles_location{
-                    if (i == 0||i == 1 || i == 2){//upper half
-                        if (j%2 == 0 && j != tri_location[i].count - 1){//only upward not last one
-                            if (position.x + 15 <= triangle_location.x + 20 && position.x + 15 >= triangle_location.x - 20 &&
-                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1]){//check available
-                                    
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: pink_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: pink_down)
-                                    
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }else if (i == 3 || i == 4 || i == 5){//lower half
-                        if (j%2 == 1){//only upward
-                            if (position.x + 15 <= triangle_location.x + 20 && position.x + 15 >= triangle_location.x - 20 &&
-                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1]){//check available
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: pink_up)
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: pink_down)
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    j += 1
-                }
-                i += 1
-            }
-            
-        }
-        else if (Shape_Type == 7) {    //Shape_Type == 7 purple single up
-            var i = 0
-            for triangles_location in tri_location{
-                var j = 0
-                
-                for triangle_location in triangles_location{
-                    if (i == 0||i == 1 || i == 2){//upper half
-                        if (j%2 == 0){//only upward
-                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
-                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j]){//check available
-                                    
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: pur_up)
-                                    
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }else if (i == 3 || i == 4 || i == 5){//lower half
-                        if (j%2 == 1){//only upward
-                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
-                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j]){//check available
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: pur_up)
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    j += 1
-                }
-                i += 1
-            }
-            
-        }
-        else if (Shape_Type == 8) {    //Shape_Type == 8 purple single down
-            var i = 0
-            for triangles_location in tri_location{
-                var j = 0
-                
-                for triangle_location in triangles_location{
-                    if (i == 0||i == 1 || i == 2){//upper half
-                        if (j%2 == 1){//only downward
-                            if (position.x + 28 <= triangle_location.x + 20 && position.x + 28 >= triangle_location.x - 20 &&
-                                position.y + 24 <= triangle_location.y + 20 && position.y + 24 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j]){//check available
-                                    
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: pur_down)
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }else if (i == 3 || i == 4 || i == 5){//lower half
-                        if (j%2 == 0){//only downward
-                            if (position.x + 28 <= triangle_location.x + 20 && position.x + 28 >= triangle_location.x - 20 &&
-                                position.y + 24 <= triangle_location.y + 20 && position.y + 24 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j]){//check available
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: pur_down)
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    j += 1
-                }
-                i += 1
-            }
-            
-        }
-        else if (Shape_Type == 9) {    //Shape_Type == 9 brown left downwards
-            var i = 0
-            for triangles_location in tri_location{
-                var j = 0
-                
-                for triangle_location in triangles_location{
-                    if (i == 0 || i == 1){//upper half row 0 1
-                        if (j%2 == 0 && j != tri_location[i].count - 1){//only upward
-                            if (position.x + 3 <= triangle_location.x + 20 && position.x + 3 >= triangle_location.x - 20 &&
-                                position.y + 3.5 <= triangle_location.y + 20 && position.y + 3.5 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1] && !filled[i+1][j+1]){//check available
-                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
-                                    Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: light_brown_down)
-                                    
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }else if (i == 2){//lower half row 2
-                        if (j%2 == 0){//only upward
-                            if (position.x + 3 <= triangle_location.x + 20 && position.x + 3 >= triangle_location.x - 20 &&
-                                position.y + 3.5 <= triangle_location.y + 20 && position.y + 3.5 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j+1] && !filled[i+1][j]){//check available
-                                    // light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
-                                    Change_Corresponding_Color_With_Image(x:i+1, y:j, image: light_brown_down)
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    else if (i == 3 || i == 4){
-                        if (j%2 == 1){//lower half row 3 4
-                            if (position.x + 3 <= triangle_location.x + 20 && position.x + 3 >= triangle_location.x - 20 &&
-                                position.y + 3.5 <= triangle_location.y + 20 && position.y + 3.5 >= triangle_location.y - 20){
-                                if (!filled[i][j] && !filled[i][j+1] && !filled[i+1][j-1]){
-                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
-                                    Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: light_brown_down)
-                                    
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    j += 1
-                }
-                i += 1
-            }
-            
-        }
-        else if (Shape_Type == 10) {    //Shape_Type == 10 brown right downwards
-            var i = 0
-            for triangles_location in tri_location{
-                var j = 0
-                
-                for triangle_location in triangles_location{
-                    if (i == 0 || i == 1){//upper half row 0 1
-                        if (j%2 == 0 && j != 0){//only upward
-                            if (position.x + 52 <= triangle_location.x + 20 && position.x + 52 >= triangle_location.x - 20 &&
-                                position.y + 3 <= triangle_location.y + 20 && position.y + 3 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j-1] && !filled[i+1][j+1]){//check available
-                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j-1, image: light_brown_down)
-                                    Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: light_brown_down)
-                                    
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }else if (i == 2){//upper half row 2
-                        if (j%2 == 0 && j != 0){//only upward
-                            if (position.x + 52 <= triangle_location.x + 20 && position.x + 52 >= triangle_location.x - 20 &&
-                                position.y + 3 <= triangle_location.y + 20 && position.y + 3 >= triangle_location.y - 20){//check location
-                                if (!filled[i][j] && !filled[i][j-1] && !filled[i+1][j]){//check available
-                                    // light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j-1, image: light_brown_down)
-                                    Change_Corresponding_Color_With_Image(x:i+1, y:j, image: light_brown_down)
-                                    
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    else if (i == 3 || i == 4){
-                        if (j%2 == 1){//lower half row 3, 4
-                            if (position.x + 52 <= triangle_location.x + 20 && position.x + 52 >= triangle_location.x - 20 &&
-                                position.y + 3 <= triangle_location.y + 20 && position.y + 3 >= triangle_location.y - 20){
-                                if (!filled[i][j] && !filled[i][j-1] && !filled[i+1][j-1]){
-                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
-                                    auto_make_transparent()
-                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
-                                    Change_Corresponding_Color_With_Image(x:i, y:j-1, image: light_brown_down)
-                                    Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: light_brown_down)
-                                    
-                                    
-                                    
-                                    return true
-                                }
-                                return false
-                            }
-                        }
-                        
-                    }
-                    j += 1
-                }
-                i += 1
-            }
-            
-        }
-        return false
+        
     }
+    
+    
+    
+    
 
     
     
     
-    func Change_Corresponding_Color(x:Int, y:Int, color: UIColor) -> (){
-        //row NO 0
-        if (x == 0 && y == 0){
-            tri_0_0.image = tri_0_0.image!.withRenderingMode(.alwaysTemplate)
-            tri_0_0.tintColor = color
-        }else if(x == 0 && y == 1) {
-            tri_0_1.image = tri_0_1.image!.withRenderingMode(.alwaysTemplate)
-            tri_0_1.tintColor = color
-        }else if (x == 0 && y == 2){
-            tri_0_2.image = tri_0_2.image!.withRenderingMode(.alwaysTemplate)
-            tri_0_2.tintColor = color
-        }else if(x == 0 && y == 3) {
-            tri_0_3.image = tri_0_3.image!.withRenderingMode(.alwaysTemplate)
-            tri_0_3.tintColor = color
-        }else if (x == 0 && y == 4){
-            tri_0_4.image = tri_0_4.image!.withRenderingMode(.alwaysTemplate)
-            tri_0_4.tintColor = color
-        }else if(x == 0 && y == 5) {
-            tri_0_5.image = tri_0_5.image!.withRenderingMode(.alwaysTemplate)
-            tri_0_5.tintColor = color
-        }else if (x == 0 && y == 6){
-            tri_0_6.image = tri_0_6.image!.withRenderingMode(.alwaysTemplate)
-            tri_0_6.tintColor = color
-        }
-        //row NO 1
-        else if (x == 1 && y == 0){
-            tri_1_0.image = tri_1_0.image!.withRenderingMode(.alwaysTemplate)
-            tri_1_0.tintColor = color
-        }else if(x == 1 && y == 1) {
-            tri_1_1.image = tri_1_1.image!.withRenderingMode(.alwaysTemplate)
-            tri_1_1.tintColor = color
-        }else if (x == 1 && y == 2){
-            tri_1_2.image = tri_1_2.image!.withRenderingMode(.alwaysTemplate)
-            tri_1_2.tintColor = color
-        }else if(x == 1 && y == 3) {
-            tri_1_3.image = tri_1_3.image!.withRenderingMode(.alwaysTemplate)
-            tri_1_3.tintColor = color
-        }else if (x == 1 && y == 4){
-            tri_1_4.image = tri_1_4.image!.withRenderingMode(.alwaysTemplate)
-            tri_1_4.tintColor = color
-        }else if(x == 1 && y == 5) {
-            tri_1_5.image = tri_1_5.image!.withRenderingMode(.alwaysTemplate)
-            tri_1_5.tintColor = color
-        }else if (x == 1 && y == 6){
-            tri_1_6.image = tri_1_6.image!.withRenderingMode(.alwaysTemplate)
-            tri_1_6.tintColor = color
-        }else if(x == 1 && y == 7) {
-            tri_1_7.image = tri_1_7.image!.withRenderingMode(.alwaysTemplate)
-            tri_1_7.tintColor = color
-        }else if (x == 1 && y == 8){
-            tri_1_8.image = tri_1_8.image!.withRenderingMode(.alwaysTemplate)
-            tri_1_8.tintColor = color
-        }
-        //row NO 2
-        else if(x == 2 && y == 0) {
-            tri_2_0.image = tri_2_0.image!.withRenderingMode(.alwaysTemplate)
-            tri_2_0.tintColor = color
-        }else if(x == 2 && y == 1) {
-            tri_2_1.image = tri_2_1.image!.withRenderingMode(.alwaysTemplate)
-            tri_2_1.tintColor = color
-        }else if(x == 2 && y == 2) {
-            tri_2_2.image = tri_2_2.image!.withRenderingMode(.alwaysTemplate)
-            tri_2_2.tintColor = color
-        }else if(x == 2 && y == 3) {
-            tri_2_3.image = tri_2_3.image!.withRenderingMode(.alwaysTemplate)
-            tri_2_3.tintColor = color
-        }else if(x == 2 && y == 4) {
-            tri_2_4.image = tri_2_4.image!.withRenderingMode(.alwaysTemplate)
-            tri_2_4.tintColor = color
-        }else if(x == 2 && y == 5) {
-            tri_2_5.image = tri_2_5.image!.withRenderingMode(.alwaysTemplate)
-            tri_2_5.tintColor = color
-        }else if(x == 2 && y == 6) {
-            tri_2_6.image = tri_2_6.image!.withRenderingMode(.alwaysTemplate)
-            tri_2_6.tintColor = color
-        }else if(x == 2 && y == 7) {
-            tri_2_7.image = tri_2_7.image!.withRenderingMode(.alwaysTemplate)
-            tri_2_7.tintColor = color
-        }else if(x == 2 && y == 8) {
-            tri_2_8.image = tri_2_8.image!.withRenderingMode(.alwaysTemplate)
-            tri_2_8.tintColor = color
-        }else if(x == 2 && y == 9) {
-            tri_2_9.image = tri_2_9.image!.withRenderingMode(.alwaysTemplate)
-            tri_2_9.tintColor = color
-        }else if(x == 2 && y == 10) {
-            tri_2_10.image = tri_2_10.image!.withRenderingMode(.alwaysTemplate)
-            tri_2_10.tintColor = color
-        }
-        //row NO 3
-        else if(x == 3 && y == 0) {
-            tri_3_0.image = tri_3_0.image!.withRenderingMode(.alwaysTemplate)
-            tri_3_0.tintColor = color
-        }else if(x == 3 && y == 1) {
-            tri_3_1.image = tri_3_1.image!.withRenderingMode(.alwaysTemplate)
-            tri_3_1.tintColor = color
-        }else if(x == 3 && y == 2) {
-            tri_3_2.image = tri_3_2.image!.withRenderingMode(.alwaysTemplate)
-            tri_3_2.tintColor = color
-        }else if(x == 3 && y == 3) {
-            tri_3_3.image = tri_3_3.image!.withRenderingMode(.alwaysTemplate)
-            tri_3_3.tintColor = color
-        }else if(x == 3 && y == 4) {
-            tri_3_4.image = tri_3_4.image!.withRenderingMode(.alwaysTemplate)
-            tri_3_4.tintColor = color
-        }else if(x == 3 && y == 5) {
-            tri_3_5.image = tri_3_5.image!.withRenderingMode(.alwaysTemplate)
-            tri_3_5.tintColor = color
-        }else if(x == 3 && y == 6) {
-            tri_3_6.image = tri_3_6.image!.withRenderingMode(.alwaysTemplate)
-            tri_3_6.tintColor = color
-        }else if(x == 3 && y == 7) {
-            tri_3_7.image = tri_3_7.image!.withRenderingMode(.alwaysTemplate)
-            tri_3_7.tintColor = color
-        }else if(x == 3 && y == 8) {
-            tri_3_8.image = tri_3_8.image!.withRenderingMode(.alwaysTemplate)
-            tri_3_8.tintColor = color
-        }else if(x == 3 && y == 9) {
-            tri_3_9.image = tri_3_9.image!.withRenderingMode(.alwaysTemplate)
-            tri_3_9.tintColor = color
-        }else if(x == 3 && y == 10) {
-            tri_3_10.image = tri_3_10.image!.withRenderingMode(.alwaysTemplate)
-            tri_3_10.tintColor = color
-        }
-        //row NO 4
-        else if (x == 4 && y == 0){
-            tri_4_0.image = tri_4_0.image!.withRenderingMode(.alwaysTemplate)
-            tri_4_0.tintColor = color
-        }else if(x == 4 && y == 1) {
-            tri_4_1.image = tri_4_1.image!.withRenderingMode(.alwaysTemplate)
-            tri_4_1.tintColor = color
-        }else if (x == 4 && y == 2){
-            tri_4_2.image = tri_4_2.image!.withRenderingMode(.alwaysTemplate)
-            tri_4_2.tintColor = color
-        }else if(x == 4 && y == 3) {
-            tri_4_3.image = tri_4_3.image!.withRenderingMode(.alwaysTemplate)
-            tri_4_3.tintColor = color
-        }else if (x == 4 && y == 4){
-            tri_4_4.image = tri_4_4.image!.withRenderingMode(.alwaysTemplate)
-            tri_4_4.tintColor = color
-        }else if(x == 4 && y == 5) {
-            tri_4_5.image = tri_4_5.image!.withRenderingMode(.alwaysTemplate)
-            tri_4_5.tintColor = color
-        }else if (x == 4 && y == 6){
-            tri_4_6.image = tri_4_6.image!.withRenderingMode(.alwaysTemplate)
-            tri_4_6.tintColor = color
-        }else if(x == 4 && y == 7) {
-            tri_4_7.image = tri_4_7.image!.withRenderingMode(.alwaysTemplate)
-            tri_4_7.tintColor = color
-        }else if (x == 4 && y == 8){
-            tri_4_8.image = tri_4_8.image!.withRenderingMode(.alwaysTemplate)
-            tri_4_8.tintColor = color
-        }
-        //row NO 5
-        else if (x == 5 && y == 0){
-            tri_5_0.image = tri_5_0.image!.withRenderingMode(.alwaysTemplate)
-            tri_5_0.tintColor = color
-        }else if(x == 5 && y == 1) {
-            tri_5_1.image = tri_5_1.image!.withRenderingMode(.alwaysTemplate)
-            tri_5_1.tintColor = color
-        }else if (x == 5 && y == 2){
-            tri_5_2.image = tri_5_2.image!.withRenderingMode(.alwaysTemplate)
-            tri_5_2.tintColor = color
-        }else if(x == 5 && y == 3) {
-            tri_5_3.image = tri_5_3.image!.withRenderingMode(.alwaysTemplate)
-            tri_5_3.tintColor = color
-        }else if (x == 5 && y == 4){
-            tri_5_4.image = tri_5_4.image!.withRenderingMode(.alwaysTemplate)
-            tri_5_4.tintColor = color
-        }else if(x == 5 && y == 5) {
-            tri_5_5.image = tri_5_5.image!.withRenderingMode(.alwaysTemplate)
-            tri_5_5.tintColor = color
-        }else if (x == 5 && y == 6){
-            tri_5_6.image = tri_5_6.image!.withRenderingMode(.alwaysTemplate)
-            tri_5_6.tintColor = color
-        }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //functions that changes image of board grey tris
+    func change_all_back_tris_image() -> Void{
+        tri_0_0_back.image = upwards_tri
+        tri_0_1_back.image = downwards_tri
+        tri_0_2_back.image = upwards_tri
+        tri_0_3_back.image = downwards_tri
+        tri_0_4_back.image = upwards_tri
+        tri_0_5_back.image = downwards_tri
+        tri_0_6_back.image = upwards_tri
+        
+        tri_1_0_back.image = upwards_tri
+        tri_1_1_back.image = downwards_tri
+        tri_1_2_back.image = upwards_tri
+        tri_1_3_back.image = downwards_tri
+        tri_1_4_back.image = upwards_tri
+        tri_1_5_back.image = downwards_tri
+        tri_1_6_back.image = upwards_tri
+        tri_1_7_back.image = downwards_tri
+        tri_1_8_back.image = upwards_tri
+        
+        tri_2_0_back.image = upwards_tri
+        tri_2_1_back.image = downwards_tri
+        tri_2_2_back.image = upwards_tri
+        tri_2_3_back.image = downwards_tri
+        tri_2_4_back.image = upwards_tri
+        tri_2_5_back.image = downwards_tri
+        tri_2_6_back.image = upwards_tri
+        tri_2_7_back.image = downwards_tri
+        tri_2_8_back.image = upwards_tri
+        tri_2_9_back.image = downwards_tri
+        tri_2_10_back.image = upwards_tri
+        
+        tri_3_0_back.image = downwards_tri
+        tri_3_1_back.image = upwards_tri
+        tri_3_2_back.image = downwards_tri
+        tri_3_3_back.image = upwards_tri
+        tri_3_4_back.image = downwards_tri
+        tri_3_5_back.image = upwards_tri
+        tri_3_6_back.image = downwards_tri
+        tri_3_7_back.image = upwards_tri
+        tri_3_8_back.image = downwards_tri
+        tri_3_9_back.image = upwards_tri
+        tri_3_10_back.image = downwards_tri
+        
+        tri_4_0_back.image = downwards_tri
+        tri_4_1_back.image = upwards_tri
+        tri_4_2_back.image = downwards_tri
+        tri_4_3_back.image = upwards_tri
+        tri_4_4_back.image = downwards_tri
+        tri_4_5_back.image = upwards_tri
+        tri_4_6_back.image = downwards_tri
+        tri_4_7_back.image = upwards_tri
+        tri_4_8_back.image = downwards_tri
+        
+        tri_5_0_back.image = downwards_tri
+        tri_5_1_back.image = upwards_tri
+        tri_5_2_back.image = downwards_tri
+        tri_5_3_back.image = upwards_tri
+        tri_5_4_back.image = downwards_tri
+        tri_5_5_back.image = upwards_tri
+        tri_5_6_back.image = downwards_tri
+    }
 
-
-        return
-    }
-    
-    @IBAction func random_generator(_ sender: UIButton) {
-        auto_random_generator()
-    }
-    
-    
-    func force_recenter_drag_tris ( tri: UIImageView, tri_img: UIImage!) -> Void{
-        switch tri_img {
-        case UIImage(named:"绿色tri.png")!:
-            if(tri == green_drag_tri){
-                tri.frame.origin = green_drag_origin
-            }else if(tri == orange_drag_tri){
-                tri.frame.origin = CGPoint(x:orange_drag_origin.x-CGFloat(30), y:orange_drag_origin.y + CGFloat(17))
-            }else if(tri == light_brown_drag_tri){
-                tri.frame.origin = CGPoint(x:light_brown_drag_origin.x, y:light_brown_drag_origin.y + CGFloat(10))
-            }
-       // case UIImage(nm)
-        default:
-            if(tri == green_drag_tri){
-            tri.frame.origin = green_drag_origin
-            }else if(tri == orange_drag_tri){
-                tri.frame.origin = orange_drag_origin
-            }else if(tri == light_brown_drag_tri){
-          
-                
-                tri.frame.origin = light_brown_drag_origin
-            }
-        }
-    }
     
     func Restore_A_Grey_Tri(i: Int, j: Int) ->Void {
         //row NO 0
@@ -4707,6 +4043,187 @@ class GameBoardViewController: UIViewController {
             tri_5_6.image = downwards_tri
         }
 
+    }
+    
+    //change image by tint it to pure color
+    func Change_Corresponding_Color(x:Int, y:Int, color: UIColor) -> (){
+        //row NO 0
+        if (x == 0 && y == 0){
+            tri_0_0.image = tri_0_0.image!.withRenderingMode(.alwaysTemplate)
+            tri_0_0.tintColor = color
+        }else if(x == 0 && y == 1) {
+            tri_0_1.image = tri_0_1.image!.withRenderingMode(.alwaysTemplate)
+            tri_0_1.tintColor = color
+        }else if (x == 0 && y == 2){
+            tri_0_2.image = tri_0_2.image!.withRenderingMode(.alwaysTemplate)
+            tri_0_2.tintColor = color
+        }else if(x == 0 && y == 3) {
+            tri_0_3.image = tri_0_3.image!.withRenderingMode(.alwaysTemplate)
+            tri_0_3.tintColor = color
+        }else if (x == 0 && y == 4){
+            tri_0_4.image = tri_0_4.image!.withRenderingMode(.alwaysTemplate)
+            tri_0_4.tintColor = color
+        }else if(x == 0 && y == 5) {
+            tri_0_5.image = tri_0_5.image!.withRenderingMode(.alwaysTemplate)
+            tri_0_5.tintColor = color
+        }else if (x == 0 && y == 6){
+            tri_0_6.image = tri_0_6.image!.withRenderingMode(.alwaysTemplate)
+            tri_0_6.tintColor = color
+        }
+            //row NO 1
+        else if (x == 1 && y == 0){
+            tri_1_0.image = tri_1_0.image!.withRenderingMode(.alwaysTemplate)
+            tri_1_0.tintColor = color
+        }else if(x == 1 && y == 1) {
+            tri_1_1.image = tri_1_1.image!.withRenderingMode(.alwaysTemplate)
+            tri_1_1.tintColor = color
+        }else if (x == 1 && y == 2){
+            tri_1_2.image = tri_1_2.image!.withRenderingMode(.alwaysTemplate)
+            tri_1_2.tintColor = color
+        }else if(x == 1 && y == 3) {
+            tri_1_3.image = tri_1_3.image!.withRenderingMode(.alwaysTemplate)
+            tri_1_3.tintColor = color
+        }else if (x == 1 && y == 4){
+            tri_1_4.image = tri_1_4.image!.withRenderingMode(.alwaysTemplate)
+            tri_1_4.tintColor = color
+        }else if(x == 1 && y == 5) {
+            tri_1_5.image = tri_1_5.image!.withRenderingMode(.alwaysTemplate)
+            tri_1_5.tintColor = color
+        }else if (x == 1 && y == 6){
+            tri_1_6.image = tri_1_6.image!.withRenderingMode(.alwaysTemplate)
+            tri_1_6.tintColor = color
+        }else if(x == 1 && y == 7) {
+            tri_1_7.image = tri_1_7.image!.withRenderingMode(.alwaysTemplate)
+            tri_1_7.tintColor = color
+        }else if (x == 1 && y == 8){
+            tri_1_8.image = tri_1_8.image!.withRenderingMode(.alwaysTemplate)
+            tri_1_8.tintColor = color
+        }
+            //row NO 2
+        else if(x == 2 && y == 0) {
+            tri_2_0.image = tri_2_0.image!.withRenderingMode(.alwaysTemplate)
+            tri_2_0.tintColor = color
+        }else if(x == 2 && y == 1) {
+            tri_2_1.image = tri_2_1.image!.withRenderingMode(.alwaysTemplate)
+            tri_2_1.tintColor = color
+        }else if(x == 2 && y == 2) {
+            tri_2_2.image = tri_2_2.image!.withRenderingMode(.alwaysTemplate)
+            tri_2_2.tintColor = color
+        }else if(x == 2 && y == 3) {
+            tri_2_3.image = tri_2_3.image!.withRenderingMode(.alwaysTemplate)
+            tri_2_3.tintColor = color
+        }else if(x == 2 && y == 4) {
+            tri_2_4.image = tri_2_4.image!.withRenderingMode(.alwaysTemplate)
+            tri_2_4.tintColor = color
+        }else if(x == 2 && y == 5) {
+            tri_2_5.image = tri_2_5.image!.withRenderingMode(.alwaysTemplate)
+            tri_2_5.tintColor = color
+        }else if(x == 2 && y == 6) {
+            tri_2_6.image = tri_2_6.image!.withRenderingMode(.alwaysTemplate)
+            tri_2_6.tintColor = color
+        }else if(x == 2 && y == 7) {
+            tri_2_7.image = tri_2_7.image!.withRenderingMode(.alwaysTemplate)
+            tri_2_7.tintColor = color
+        }else if(x == 2 && y == 8) {
+            tri_2_8.image = tri_2_8.image!.withRenderingMode(.alwaysTemplate)
+            tri_2_8.tintColor = color
+        }else if(x == 2 && y == 9) {
+            tri_2_9.image = tri_2_9.image!.withRenderingMode(.alwaysTemplate)
+            tri_2_9.tintColor = color
+        }else if(x == 2 && y == 10) {
+            tri_2_10.image = tri_2_10.image!.withRenderingMode(.alwaysTemplate)
+            tri_2_10.tintColor = color
+        }
+            //row NO 3
+        else if(x == 3 && y == 0) {
+            tri_3_0.image = tri_3_0.image!.withRenderingMode(.alwaysTemplate)
+            tri_3_0.tintColor = color
+        }else if(x == 3 && y == 1) {
+            tri_3_1.image = tri_3_1.image!.withRenderingMode(.alwaysTemplate)
+            tri_3_1.tintColor = color
+        }else if(x == 3 && y == 2) {
+            tri_3_2.image = tri_3_2.image!.withRenderingMode(.alwaysTemplate)
+            tri_3_2.tintColor = color
+        }else if(x == 3 && y == 3) {
+            tri_3_3.image = tri_3_3.image!.withRenderingMode(.alwaysTemplate)
+            tri_3_3.tintColor = color
+        }else if(x == 3 && y == 4) {
+            tri_3_4.image = tri_3_4.image!.withRenderingMode(.alwaysTemplate)
+            tri_3_4.tintColor = color
+        }else if(x == 3 && y == 5) {
+            tri_3_5.image = tri_3_5.image!.withRenderingMode(.alwaysTemplate)
+            tri_3_5.tintColor = color
+        }else if(x == 3 && y == 6) {
+            tri_3_6.image = tri_3_6.image!.withRenderingMode(.alwaysTemplate)
+            tri_3_6.tintColor = color
+        }else if(x == 3 && y == 7) {
+            tri_3_7.image = tri_3_7.image!.withRenderingMode(.alwaysTemplate)
+            tri_3_7.tintColor = color
+        }else if(x == 3 && y == 8) {
+            tri_3_8.image = tri_3_8.image!.withRenderingMode(.alwaysTemplate)
+            tri_3_8.tintColor = color
+        }else if(x == 3 && y == 9) {
+            tri_3_9.image = tri_3_9.image!.withRenderingMode(.alwaysTemplate)
+            tri_3_9.tintColor = color
+        }else if(x == 3 && y == 10) {
+            tri_3_10.image = tri_3_10.image!.withRenderingMode(.alwaysTemplate)
+            tri_3_10.tintColor = color
+        }
+            //row NO 4
+        else if (x == 4 && y == 0){
+            tri_4_0.image = tri_4_0.image!.withRenderingMode(.alwaysTemplate)
+            tri_4_0.tintColor = color
+        }else if(x == 4 && y == 1) {
+            tri_4_1.image = tri_4_1.image!.withRenderingMode(.alwaysTemplate)
+            tri_4_1.tintColor = color
+        }else if (x == 4 && y == 2){
+            tri_4_2.image = tri_4_2.image!.withRenderingMode(.alwaysTemplate)
+            tri_4_2.tintColor = color
+        }else if(x == 4 && y == 3) {
+            tri_4_3.image = tri_4_3.image!.withRenderingMode(.alwaysTemplate)
+            tri_4_3.tintColor = color
+        }else if (x == 4 && y == 4){
+            tri_4_4.image = tri_4_4.image!.withRenderingMode(.alwaysTemplate)
+            tri_4_4.tintColor = color
+        }else if(x == 4 && y == 5) {
+            tri_4_5.image = tri_4_5.image!.withRenderingMode(.alwaysTemplate)
+            tri_4_5.tintColor = color
+        }else if (x == 4 && y == 6){
+            tri_4_6.image = tri_4_6.image!.withRenderingMode(.alwaysTemplate)
+            tri_4_6.tintColor = color
+        }else if(x == 4 && y == 7) {
+            tri_4_7.image = tri_4_7.image!.withRenderingMode(.alwaysTemplate)
+            tri_4_7.tintColor = color
+        }else if (x == 4 && y == 8){
+            tri_4_8.image = tri_4_8.image!.withRenderingMode(.alwaysTemplate)
+            tri_4_8.tintColor = color
+        }
+            //row NO 5
+        else if (x == 5 && y == 0){
+            tri_5_0.image = tri_5_0.image!.withRenderingMode(.alwaysTemplate)
+            tri_5_0.tintColor = color
+        }else if(x == 5 && y == 1) {
+            tri_5_1.image = tri_5_1.image!.withRenderingMode(.alwaysTemplate)
+            tri_5_1.tintColor = color
+        }else if (x == 5 && y == 2){
+            tri_5_2.image = tri_5_2.image!.withRenderingMode(.alwaysTemplate)
+            tri_5_2.tintColor = color
+        }else if(x == 5 && y == 3) {
+            tri_5_3.image = tri_5_3.image!.withRenderingMode(.alwaysTemplate)
+            tri_5_3.tintColor = color
+        }else if (x == 5 && y == 4){
+            tri_5_4.image = tri_5_4.image!.withRenderingMode(.alwaysTemplate)
+            tri_5_4.tintColor = color
+        }else if(x == 5 && y == 5) {
+            tri_5_5.image = tri_5_5.image!.withRenderingMode(.alwaysTemplate)
+            tri_5_5.tintColor = color
+        }else if (x == 5 && y == 6){
+            tri_5_6.image = tri_5_6.image!.withRenderingMode(.alwaysTemplate)
+            tri_5_6.tintColor = color
+        }
+        
+        
+        return
     }
     
     //change color with image
@@ -5195,718 +4712,16 @@ class GameBoardViewController: UIViewController {
     }
 
     
-    func Eligible_to_Generate () -> Bool {
-        if(!exist1 && !exist2 && !exist3){
-            exist1 = true
-            exist2 = true
-            exist3 = true
-            return true
-        }else{
-            return false
-        }
-            }
     
     
-    func generate_a_non_dark_green_dri_random() -> Int {
-       var randomIx = 5
-        while(randomIx == 5){
-            randomIx = Int(arc4random_uniform(UInt32(generator_array.count)))
-        }
-       
-        return randomIx
-        
-    }
     
-    func generate_a_non_green_or_brown_downwards_tri_random() -> Int {
-      var randomIx = 0
-        while(randomIx == 0 || randomIx == 3){
-            randomIx = Int(arc4random_uniform(UInt32(generator_array.count)))
-
-        }
-        return randomIx
-    }
     
-    func generate_a_non_green_or_brown_downwards_tri_random_or_dark_tri() -> Int {
-     var randomIx = 0
-        while(randomIx == 5 || randomIx == 0 || randomIx == 3){
-            randomIx = Int(arc4random_uniform(UInt32(generator_array.count)))
-        }
-        
-        return randomIx
-    }
     
-    //auto generate three tris when previous are all fit in
-      func auto_random_generator() -> Void {
-        var number_of_dark_tri = 0
-        Check_for_Placable_Shape_And_Generate()
-       var position_index = 0
-        var end_loop = false
-        var random_shape_index = 0
-        while(!end_loop){
-            position_index = Int(arc4random_uniform(UInt32(3)))
-            random_shape_index = randomShape_for_Difficulty_Level ()
-            //need rewrite later
-            if(shape_placable_array[random_shape_index]){
-                end_loop = true
-            }
-        }
-        if(random_shape_index == 5){
-            number_of_dark_tri += 1
-        }
-        var randomIndex = 0
-        green_drag_tri.alpha = 0
-        orange_drag_tri.alpha = 0
-        light_brown_drag_tri.alpha = 0
-        if(position_index == 0){
-            green_drag_tri.image = generator_array[random_shape_index]
-            green_drag_tri.sizeToFit()
-            green_drag_tri_orig_rec = green_drag_tri.frame
-            shape_type_index[0] = random_shape_index
-            
-            randomIndex = randomShape_for_Difficulty_Level ()
-            if(random_shape_index == 0 || random_shape_index == 3){
-                randomIndex = generate_a_non_green_or_brown_downwards_tri_random()
-            }
-
-            //Int(arc4random_uniform(UInt32(generator_array.count)))
-            if(randomIndex == 5){
-                number_of_dark_tri += 1
-            }
-            orange_drag_tri.image = generator_array[randomIndex]
-            orange_drag_tri.sizeToFit()
-            orange_drag_tri_orig_rec = orange_drag_tri.frame
-            shape_type_index[1] = randomIndex
-            
-            //force_recenter_drag_tris( tri: orange_drag_tri,tri_img: generator_array[randomIndex] )
-            //randomIndex is previous index at this instance
-            if(randomIndex == 0 || randomIndex == 3){
-                randomIndex = generate_a_non_green_or_brown_downwards_tri_random()
-            }else{
-            randomIndex = randomShape_for_Difficulty_Level ()
-            }
-            if(randomIndex == 5 && number_of_dark_tri == 2 && random_shape_index == 0 || random_shape_index == 3){
-                randomIndex = generate_a_non_green_or_brown_downwards_tri_random_or_dark_tri()
-            }else if(randomIndex == 5 && number_of_dark_tri == 2 && random_shape_index != 0 && random_shape_index != 3){
-                randomIndex = generate_a_non_dark_green_dri_random()
-            }
-            //Int(arc4random_uniform(UInt32(generator_array.count)))
-            light_brown_drag_tri.image = generator_array[randomIndex]
-            light_brown_drag_tri.sizeToFit()
-            light_brown_drag_tri_orig_rec = light_brown_drag_tri.frame
-            //force_recenter_drag_tris( tri: light_brown_drag_tri,tri_img: generator_array[randomIndex] )
-            shape_type_index[2] = randomIndex
-            
-            
-
-            
-        }
-        else if(position_index == 1){
-            orange_drag_tri.image = generator_array[random_shape_index]
-            orange_drag_tri.sizeToFit()
-            orange_drag_tri_orig_rec = orange_drag_tri.frame
-            shape_type_index[1] = random_shape_index
-            
-            if(random_shape_index == 0 || random_shape_index == 3){
-                randomIndex = generate_a_non_green_or_brown_downwards_tri_random()
-            }else{
-                randomIndex = randomShape_for_Difficulty_Level ()
-            }
-            if(randomIndex == 5){
-                number_of_dark_tri += 1
-            }
-            green_drag_tri.image = generator_array[randomIndex]
-            green_drag_tri.sizeToFit()
-            green_drag_tri_orig_rec = green_drag_tri.frame
-            shape_type_index[0] = randomIndex
-            
-            if(random_shape_index == 0 || random_shape_index == 3){
-               randomIndex = generate_a_non_green_or_brown_downwards_tri_random()
-            }else{
-            randomIndex = randomShape_for_Difficulty_Level ()
-            }
-            if(randomIndex == 5 && number_of_dark_tri == 2 && random_shape_index == 0 || random_shape_index == 3){
-                randomIndex = generate_a_non_green_or_brown_downwards_tri_random_or_dark_tri()
-            }else if(randomIndex == 5 && number_of_dark_tri == 2 && random_shape_index != 0 && random_shape_index != 3){
-                randomIndex = generate_a_non_dark_green_dri_random()
-            }
-            //Int(arc4random_uniform(UInt32(generator_array.count)))
-            light_brown_drag_tri.image = generator_array[randomIndex]
-            light_brown_drag_tri.sizeToFit()
-            light_brown_drag_tri_orig_rec = light_brown_drag_tri.frame
-            //force_recenter_drag_tris( tri: light_brown_drag_tri,tri_img: generator_array[randomIndex] )
-            shape_type_index[2] = randomIndex
-            
-        }
-        
-        else if(position_index == 2){
-            //Int(arc4random_uniform(UInt32(generator_array.count)))
-            light_brown_drag_tri.image = generator_array[random_shape_index]
-            light_brown_drag_tri.sizeToFit()
-            //force_recenter_drag_tris( tri: light_brown_drag_tri,tri_img: generator_array[randomIndex] )
-            shape_type_index[2] = random_shape_index
-            
-             randomIndex = randomShape_for_Difficulty_Level ()
-            if(randomIndex == 5){
-                number_of_dark_tri += 1
-            }
-            //Int(arc4random_uniform(UInt32(generator_array.count)))
-            green_drag_tri.image = generator_array[randomIndex]
-            green_drag_tri.sizeToFit()
-            green_drag_tri_orig_rec = green_drag_tri.frame
-            shape_type_index[0] = randomIndex
-            
-            if(random_shape_index == 0 || random_shape_index == 3){
-                randomIndex = generate_a_non_green_or_brown_downwards_tri_random()
-            }else{
-            randomIndex = randomShape_for_Difficulty_Level ()
-            }
-            if(randomIndex == 5 && number_of_dark_tri == 2 && random_shape_index == 0 || random_shape_index == 3){
-                randomIndex = generate_a_non_green_or_brown_downwards_tri_random_or_dark_tri()
-            }else if(randomIndex == 5 && number_of_dark_tri == 2 && random_shape_index != 0 && random_shape_index != 3){
-                randomIndex = generate_a_non_dark_green_dri_random()
-            }
-            //Int(arc4random_uniform(UInt32(generator_array.count)))
-            orange_drag_tri.image = generator_array[randomIndex]
-            orange_drag_tri.sizeToFit()
-            orange_drag_tri_orig_rec = orange_drag_tri.frame
-            shape_type_index[1] = randomIndex
-
-        }
-
-        else{ randomIndex = randomShape_for_Difficulty_Level ()
-            //Int(arc4random_uniform(UInt32(generator_array.count)))
-            green_drag_tri.image = generator_array[randomIndex]
-            green_drag_tri.sizeToFit()
-            green_drag_tri_orig_rec = green_drag_tri.frame
-            shape_type_index[0] = randomIndex
-            // force_recenter_drag_tris( tri: green_drag_tri,tri_img: generator_array[randomIndex] )
-        
-        
-            randomIndex = randomShape_for_Difficulty_Level ()
-            //Int(arc4random_uniform(UInt32(generator_array.count)))
-            orange_drag_tri.image = generator_array[randomIndex]
-            orange_drag_tri.sizeToFit()
-            orange_drag_tri_orig_rec = orange_drag_tri.frame
-            shape_type_index[1] = randomIndex
-        
-            //force_recenter_drag_tris( tri: orange_drag_tri,tri_img: generator_array[randomIndex] )
-        
-            randomIndex = randomShape_for_Difficulty_Level ()
-            //Int(arc4random_uniform(UInt32(generator_array.count)))
-            light_brown_drag_tri.image = generator_array[randomIndex]
-            light_brown_drag_tri.sizeToFit()
-            light_brown_drag_tri_orig_rec = light_brown_drag_tri.frame
-           //force_recenter_drag_tris( tri: light_brown_drag_tri,tri_img: generator_array[randomIndex] )
-            shape_type_index[2] = randomIndex
-            
-        }
-        green_drag_tri.fadeInWithDisplacement()
-        orange_drag_tri.fadeInWithDisplacement()
-        light_brown_drag_tri.fadeInWithDisplacement()
-        exist1 = true
-        exist2 = true
-        exist3 = true
-    }
     
-    func Duplicate_Tri_Animate(i: Int, j: Int) ->Void {
-        //row NO 0
-        if (i == 0 && j == 0){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_0_0.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 0, j: 0)
-                self.tri_0_0.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-                    }
-        else if(i == 0 && j == 1) {
-            UIView.animate(withDuration: 0.2, animations: {
-               self.tri_0_1.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 0, j: 1)
-                self.tri_0_1.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-
-        }
-        else if (i == 0 && j == 2){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_0_2.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 0, j: 2)
-                self.tri_0_2.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 0 && j == 3) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_0_3.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 0, j: 3)
-                self.tri_0_3.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else  if (i == 0 && j == 4){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_0_4.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 0, j: 4)
-                self.tri_0_4.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 0 && j == 5) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_0_5.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 0, j: 5)
-                self.tri_0_5.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
     
-        }
-        else if (i == 0 && j == 6){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_0_6.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 0, j: 6)
-                self.tri_0_6.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-            //row NO 1
-        else  if (i == 1 && j == 0){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_1_0.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 1, j: 0)
-                self.tri_1_0.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else  if(i == 1 && j == 1) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_1_1.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 1, j: 1)
-                self.tri_1_1.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else  if (i == 1 && j == 2){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_1_2.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 1, j: 2)
-                self.tri_1_2.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else  if(i == 1 && j == 3) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_1_3.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 1, j: 3)
-                self.tri_1_3.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else  if (i == 1 && j == 4){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_1_4.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 1, j: 4)
-                self.tri_1_4.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-
-        }
-        else if(i == 1 && j == 5) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_1_5.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 1, j: 5)
-                self.tri_1_5.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-
-        }
-        else if (i == 1 && j == 6){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_1_6.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 1, j: 6)
-                self.tri_1_6.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })        }
-        else if(i == 1 && j == 7) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_1_7.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 1, j: 7)
-                self.tri_1_7.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-                  }
-        else if (i == 1 && j == 8){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_1_8.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 1, j: 8)
-                self.tri_1_8.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-          
-        }
-            //row NO 2
-        else if(i == 2 && j == 0) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_2_0.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 2, j: 0)
-                self.tri_2_0.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 2 && j == 1) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_2_1.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 2, j: 1)
-                self.tri_2_1.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 2 && j == 2) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_2_2.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 2, j: 2)
-                self.tri_2_2.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 2 && j == 3) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_2_3.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 2, j: 3)
-                self.tri_2_3.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 2 && j == 4) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_2_4.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 2, j: 4)
-                self.tri_2_4.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 2 && j == 5) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_2_5.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 2, j: 5)
-                self.tri_2_5.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 2 && j == 6) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_2_6.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 2, j: 6)
-                self.tri_2_6.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 2 && j == 7) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_2_7.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 2, j: 7)
-                self.tri_2_7.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 2 && j == 8) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_2_8.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 2, j: 8)
-                self.tri_2_8.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 2 && j == 9) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_2_9.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 2, j: 9)
-                self.tri_2_9.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 2 && j == 10) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_2_10.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 2, j: 10)
-                self.tri_2_10.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-            //row NO 3
-        else if(i == 3 && j == 0) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_3_0.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 3, j: 0)
-                self.tri_3_0.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 3 && j == 1) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_3_1.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 3, j: 1)
-                self.tri_3_1.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 3 && j == 2) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_3_2.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 3, j: 2)
-                self.tri_3_2.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 3 && j == 3) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_3_3.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 3, j: 3)
-                self.tri_3_3.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 3 && j == 4) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_3_4.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 3, j: 4)
-                self.tri_3_4.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 3 && j == 5) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_3_5.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 3, j: 5)
-                self.tri_3_5.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 3 && j == 6) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_3_6.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 3, j: 6)
-                self.tri_3_6.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 3 && j == 7) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_3_7.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 3, j: 7)
-                self.tri_3_7.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 3 && j == 8) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_3_8.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 3, j: 8)
-                self.tri_3_8.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 3 && j == 9) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_3_9.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 3, j: 9)
-                self.tri_3_9.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 3 && j == 10) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_3_10.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 3, j: 10)
-                self.tri_3_10.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-            //row NO 4
-            
-        else if (i == 4 && j == 0){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_4_0.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 4, j: 0)
-                self.tri_4_0.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 4 && j == 1) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_4_1.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 4, j: 1)
-                self.tri_4_1.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if (i == 4 && j == 2){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_4_2.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 4, j: 2)
-                self.tri_4_2.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })        }
-        else if(i == 4 && j == 3) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_4_3.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 4, j: 3)
-                self.tri_4_3.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })        }
-        else if (i == 4 && j == 4){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_4_4.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 4, j: 4)
-                self.tri_4_4.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 4 && j == 5) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_4_5.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 4, j: 5)
-                self.tri_4_5.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-
-        }
-        else if (i == 4 && j == 6){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_4_6.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 4, j: 6)
-                self.tri_4_6.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 4 && j == 7) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_4_7.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 4, j: 7)
-                self.tri_4_7.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if (i == 4 && j == 8){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_4_8.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 4, j: 8)
-                self.tri_4_8.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-            //row NO 5
-        else if (i == 5 && j == 0){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_5_0.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 5, j: 0)
-                self.tri_5_0.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 5 && j == 1) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_5_1.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 5, j: 1)
-                self.tri_5_1.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if (i == 5 && j == 2){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_5_2.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 5, j: 2)
-                self.tri_5_2.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 5 && j == 3) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_5_3.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 5, j: 3)
-                self.tri_5_3.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if (i == 5 && j == 4){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_5_4.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 5, j: 4)
-                self.tri_5_4.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        else if(i == 5 && j == 5) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_5_5.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 5, j: 5)
-                self.tri_5_5.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })        }
-        else if (i == 5 && j == 6){
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tri_5_6.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
-            }, completion: {
-                (finished) -> Void in
-                self.Restore_A_Grey_Tri(i: 5, j: 6)
-                self.tri_5_1.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        
-        
-    }
+    
+    ////////////////////////////////////////////////////////////////////////////////
+    //functions to check and erase lines on current board
     //situation for cancel
     var situation0 = false
     var situation1 = false
@@ -6208,15 +5023,7 @@ class GameBoardViewController: UIViewController {
         return duplicates_array
         }
     
-    var duplicates_array = [(row: Int, column: Int)]()
-    func Check_Element_In_Duplicate_Array(row: Int, column: Int) -> Bool{
-        for every_element in duplicates_array{
-            if(every_element.column == column && every_element.row == row){
-                return true
-            }
-        }
-     return false
-    }
+    
 
     
     func erase_animation_by_row_col(row: Int, col: Int) -> Void{
@@ -8792,7 +7599,235 @@ number_of_lines_erased += 1
     }
     
     
-   /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //functions about random regeneration
+    func Eligible_to_Generate () -> Bool {
+        if(!exist1 && !exist2 && !exist3){
+            exist1 = true
+            exist2 = true
+            exist3 = true
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    
+    
+    //auto generate three tris when previous are all fit in
+    func auto_random_generator() -> Void {
+        var number_of_dark_tri = 0
+        Check_for_Placable_Shape_And_Generate()
+        var position_index = 0
+        var end_loop = false
+        var random_shape_index = 0
+        while(!end_loop){
+            position_index = Int(arc4random_uniform(UInt32(3)))
+            random_shape_index = randomShape_for_Difficulty_Level ()
+            //need rewrite later
+            if(shape_placable_array[random_shape_index]){
+                end_loop = true
+            }
+        }
+        if(random_shape_index == 5){
+            number_of_dark_tri += 1
+        }
+        var randomIndex = 0
+        green_drag_tri.alpha = 0
+        orange_drag_tri.alpha = 0
+        light_brown_drag_tri.alpha = 0
+        if(position_index == 0){
+            green_drag_tri.image = generator_array[random_shape_index]
+            green_drag_tri.sizeToFit()
+            green_drag_tri_orig_rec = green_drag_tri.frame
+            shape_type_index[0] = random_shape_index
+            
+            randomIndex = randomShape_for_Difficulty_Level ()
+            if(random_shape_index == 0 || random_shape_index == 3){
+                randomIndex = generate_a_non_green_or_brown_downwards_tri_random()
+            }
+            
+            //Int(arc4random_uniform(UInt32(generator_array.count)))
+            if(randomIndex == 5){
+                number_of_dark_tri += 1
+            }
+            orange_drag_tri.image = generator_array[randomIndex]
+            orange_drag_tri.sizeToFit()
+            orange_drag_tri_orig_rec = orange_drag_tri.frame
+            shape_type_index[1] = randomIndex
+            
+            //force_recenter_drag_tris( tri: orange_drag_tri,tri_img: generator_array[randomIndex] )
+            //randomIndex is previous index at this instance
+            if(randomIndex == 0 || randomIndex == 3){
+                randomIndex = generate_a_non_green_or_brown_downwards_tri_random()
+            }else{
+                randomIndex = randomShape_for_Difficulty_Level ()
+            }
+            if(randomIndex == 5 && number_of_dark_tri == 2 && random_shape_index == 0 || random_shape_index == 3){
+                randomIndex = generate_a_non_green_or_brown_downwards_tri_random_or_dark_tri()
+            }else if(randomIndex == 5 && number_of_dark_tri == 2 && random_shape_index != 0 && random_shape_index != 3){
+                randomIndex = generate_a_non_dark_green_dri_random()
+            }
+            //Int(arc4random_uniform(UInt32(generator_array.count)))
+            light_brown_drag_tri.image = generator_array[randomIndex]
+            light_brown_drag_tri.sizeToFit()
+            light_brown_drag_tri_orig_rec = light_brown_drag_tri.frame
+            //force_recenter_drag_tris( tri: light_brown_drag_tri,tri_img: generator_array[randomIndex] )
+            shape_type_index[2] = randomIndex
+            
+            
+            
+            
+        }
+        else if(position_index == 1){
+            orange_drag_tri.image = generator_array[random_shape_index]
+            orange_drag_tri.sizeToFit()
+            orange_drag_tri_orig_rec = orange_drag_tri.frame
+            shape_type_index[1] = random_shape_index
+            
+            if(random_shape_index == 0 || random_shape_index == 3){
+                randomIndex = generate_a_non_green_or_brown_downwards_tri_random()
+            }else{
+                randomIndex = randomShape_for_Difficulty_Level ()
+            }
+            if(randomIndex == 5){
+                number_of_dark_tri += 1
+            }
+            green_drag_tri.image = generator_array[randomIndex]
+            green_drag_tri.sizeToFit()
+            green_drag_tri_orig_rec = green_drag_tri.frame
+            shape_type_index[0] = randomIndex
+            
+            if(random_shape_index == 0 || random_shape_index == 3){
+                randomIndex = generate_a_non_green_or_brown_downwards_tri_random()
+            }else{
+                randomIndex = randomShape_for_Difficulty_Level ()
+            }
+            if(randomIndex == 5 && number_of_dark_tri == 2 && random_shape_index == 0 || random_shape_index == 3){
+                randomIndex = generate_a_non_green_or_brown_downwards_tri_random_or_dark_tri()
+            }else if(randomIndex == 5 && number_of_dark_tri == 2 && random_shape_index != 0 && random_shape_index != 3){
+                randomIndex = generate_a_non_dark_green_dri_random()
+            }
+            //Int(arc4random_uniform(UInt32(generator_array.count)))
+            light_brown_drag_tri.image = generator_array[randomIndex]
+            light_brown_drag_tri.sizeToFit()
+            light_brown_drag_tri_orig_rec = light_brown_drag_tri.frame
+            //force_recenter_drag_tris( tri: light_brown_drag_tri,tri_img: generator_array[randomIndex] )
+            shape_type_index[2] = randomIndex
+            
+        }
+            
+        else if(position_index == 2){
+            //Int(arc4random_uniform(UInt32(generator_array.count)))
+            light_brown_drag_tri.image = generator_array[random_shape_index]
+            light_brown_drag_tri.sizeToFit()
+            //force_recenter_drag_tris( tri: light_brown_drag_tri,tri_img: generator_array[randomIndex] )
+            shape_type_index[2] = random_shape_index
+            
+            randomIndex = randomShape_for_Difficulty_Level ()
+            if(randomIndex == 5){
+                number_of_dark_tri += 1
+            }
+            //Int(arc4random_uniform(UInt32(generator_array.count)))
+            green_drag_tri.image = generator_array[randomIndex]
+            green_drag_tri.sizeToFit()
+            green_drag_tri_orig_rec = green_drag_tri.frame
+            shape_type_index[0] = randomIndex
+            
+            if(random_shape_index == 0 || random_shape_index == 3){
+                randomIndex = generate_a_non_green_or_brown_downwards_tri_random()
+            }else{
+                randomIndex = randomShape_for_Difficulty_Level ()
+            }
+            if(randomIndex == 5 && number_of_dark_tri == 2 && random_shape_index == 0 || random_shape_index == 3){
+                randomIndex = generate_a_non_green_or_brown_downwards_tri_random_or_dark_tri()
+            }else if(randomIndex == 5 && number_of_dark_tri == 2 && random_shape_index != 0 && random_shape_index != 3){
+                randomIndex = generate_a_non_dark_green_dri_random()
+            }
+            //Int(arc4random_uniform(UInt32(generator_array.count)))
+            orange_drag_tri.image = generator_array[randomIndex]
+            orange_drag_tri.sizeToFit()
+            orange_drag_tri_orig_rec = orange_drag_tri.frame
+            shape_type_index[1] = randomIndex
+            
+        }
+            
+        else{ randomIndex = randomShape_for_Difficulty_Level ()
+            //Int(arc4random_uniform(UInt32(generator_array.count)))
+            green_drag_tri.image = generator_array[randomIndex]
+            green_drag_tri.sizeToFit()
+            green_drag_tri_orig_rec = green_drag_tri.frame
+            shape_type_index[0] = randomIndex
+            // force_recenter_drag_tris( tri: green_drag_tri,tri_img: generator_array[randomIndex] )
+            
+            
+            randomIndex = randomShape_for_Difficulty_Level ()
+            //Int(arc4random_uniform(UInt32(generator_array.count)))
+            orange_drag_tri.image = generator_array[randomIndex]
+            orange_drag_tri.sizeToFit()
+            orange_drag_tri_orig_rec = orange_drag_tri.frame
+            shape_type_index[1] = randomIndex
+            
+            //force_recenter_drag_tris( tri: orange_drag_tri,tri_img: generator_array[randomIndex] )
+            
+            randomIndex = randomShape_for_Difficulty_Level ()
+            //Int(arc4random_uniform(UInt32(generator_array.count)))
+            light_brown_drag_tri.image = generator_array[randomIndex]
+            light_brown_drag_tri.sizeToFit()
+            light_brown_drag_tri_orig_rec = light_brown_drag_tri.frame
+            //force_recenter_drag_tris( tri: light_brown_drag_tri,tri_img: generator_array[randomIndex] )
+            shape_type_index[2] = randomIndex
+            
+        }
+        green_drag_tri.fadeInWithDisplacement()
+        orange_drag_tri.fadeInWithDisplacement()
+        light_brown_drag_tri.fadeInWithDisplacement()
+        exist1 = true
+        exist2 = true
+        exist3 = true
+    }
+
+    func generate_a_non_dark_green_dri_random() -> Int {
+        var randomIx = 5
+        while(randomIx == 5){
+            randomIx = Int(arc4random_uniform(UInt32(generator_array.count)))
+        }
+        
+        return randomIx
+        
+    }
+    
+    func generate_a_non_green_or_brown_downwards_tri_random() -> Int {
+        var randomIx = 0
+        while(randomIx == 0 || randomIx == 3){
+            randomIx = Int(arc4random_uniform(UInt32(generator_array.count)))
+            
+        }
+        return randomIx
+    }
+    
+    func generate_a_non_green_or_brown_downwards_tri_random_or_dark_tri() -> Int {
+        var randomIx = 0
+        while(randomIx == 5 || randomIx == 0 || randomIx == 3){
+            randomIx = Int(arc4random_uniform(UInt32(generator_array.count)))
+        }
+        
+        return randomIx
+    }
+
+    
     var bool_any_green_tri = true
     var bool_any_orange_tri = true
     var bool_any_light_brown_tri = true
@@ -8920,7 +7955,14 @@ number_of_lines_erased += 1
     }
     
     
-     //the function to check for gameover (if gameover return true, else return false)
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //the function to check for/jump to gameover (if gameover return true, else return false)
         func Check_for_Gameover () -> Bool {
             var i = 0
             for tri_row in filled{
@@ -9049,10 +8091,34 @@ number_of_lines_erased += 1
         }
     
 
-    
+    func Jump_to_Game_Over () -> Void {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
+        nextViewController.final_score = MarkBoard.text!
+        nextViewController.ThemeType = self.ThemeType
+        nextViewController.modalTransitionStyle = .crossDissolve
+        if (Int(MarkBoard.text!) == HighestScore){
+            nextViewController.is_high_score = true
+        } else {
+            nextViewController.is_high_score = false
+        }
+        self.present(nextViewController, animated: true, completion: nil)
+        //self.audioPlayer.stop()
+        self.timer.invalidate()
+        do{game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
+            game_over_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        game_over_player.play()
+        
+        
+    }
     
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //sup functions used by check for regenerate and check for gameover
     func Find_Any_Available_Green_Tri(row: Int, column: Int) -> Bool {
         //upper row
         if(row == 0 || row == 1 || row == 2){
@@ -9764,36 +8830,19 @@ number_of_lines_erased += 1
         
      return false
     }
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    func Jump_to_Game_Over () -> Void {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
-        nextViewController.final_score = MarkBoard.text!
-        nextViewController.ThemeType = self.ThemeType
-        nextViewController.modalTransitionStyle = .crossDissolve
-        if (Int(MarkBoard.text!) == HighestScore){
-            nextViewController.is_high_score = true
-        } else {
-            nextViewController.is_high_score = false
-        }
-        self.present(nextViewController, animated: true, completion: nil)
-        //self.audioPlayer.stop()
-        self.timer.invalidate()
-        do{game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
-            game_over_player.prepareToPlay()
-        }
-        catch{
-            
-        }
-        game_over_player.play()
-        
-        
-    }
+    
+    
+    
+    
+    
+    
+    
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    var score = 0
-    var last_score = 0
-    var current_score = 0
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //modify counter functions (before erased and after)
     func modify_counter(before: Array<Array<Bool>>, after: Array<Array<Bool>>) -> Void{
         cur_shape_tri = []
         var current_str = MarkBoard.text!
@@ -9963,7 +9012,16 @@ number_of_lines_erased += 1
         
     }
 
-func randomNumber(probabilities: [Double]) -> Int {
+    
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //functions that decide probability for each shapes generated
+    func randomNumber(probabilities: [Double]) -> Int {
             
             // Sum of all probabilities (so that we don't have to require that the sum is 1.0):
             let sum = probabilities.reduce(0, +)
@@ -9979,7 +9037,7 @@ func randomNumber(probabilities: [Double]) -> Int {
             }
             // This point might be reached due to floating point inaccuracies:
             return (probabilities.count - 1)
-}
+    }
     
     func randomShape_for_Difficulty_Level () -> Int{
         if(score <= 500){
@@ -9998,15 +9056,14 @@ func randomNumber(probabilities: [Double]) -> Int {
         
     }
     
-    func coordiante_transform (point_in_ip7: CGPoint) -> CGPoint {
-    //ip7: width 375 height:667
-    let x_proportion_const = Double(point_in_ip7.x)/Double(375)
-    let y_proportion_const = Double(point_in_ip7.y)/Double(667)
-    let new_CGPoint = CGPoint(x: CGFloat(Double(screen_width) * x_proportion_const), y: CGFloat(Double(screen_height)*y_proportion_const))
-        return new_CGPoint
-        
-    }
     
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //changes made after themes changed
     func change_current_shapes_according_to_theme(){
         let left_shape_index = shape_type_index[0]
         let mid_shape_index = shape_type_index[1]
@@ -10199,13 +9256,31 @@ func randomNumber(probabilities: [Double]) -> Int {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //star functions
+    //star animation
+    
     func star_score_increment() -> Void {
-    let current_times = Int(current_score / 20)
-    let last_times = Int(last_score / 20 )
-    star_score += (current_times - last_times)
-    starBoard.text = String(star_score)
-    defaults.set(star_score, forKey: "tritri_star_score")
-    defaults.synchronize()
+        let current_times = Int(current_score / 20)
+        let last_times = Int(last_score / 20 )
+        star_score += (current_times - last_times)
+        starBoard.text = String(star_score)
+        defaults.set(star_score, forKey: "tritri_star_score")
+        defaults.synchronize()
         if((current_times - last_times) != 0){
             star_animation()
         }
@@ -10244,7 +9319,1218 @@ func randomNumber(probabilities: [Double]) -> Int {
         path.addCurve(to: endPoint, controlPoint1: cp1, controlPoint2: cp2)
         return path
     }
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //test buttons as functions
+    @IBAction func test_gameover(_ sender: Any) {
+        Jump_to_Game_Over()
+    }
+    
+    @IBAction func random_generator(_ sender: UIButton) {
+        auto_random_generator()
+    }
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //never used functions
+    
+    var duplicates_array = [(row: Int, column: Int)]()
+    func Check_Element_In_Duplicate_Array(row: Int, column: Int) -> Bool{
+        for every_element in duplicates_array{
+            if(every_element.column == column && every_element.row == row){
+                return true
+            }
+        }
+        return false
+    }
+    
+    func Shape_fitting_When_Dragging(Shape_Type: Int, position: CGPoint) -> Bool {
+        if (Shape_Type == 0){
+            
+            var i = 0
+            for triangles_location in tri_location{
+                var j = 0
+                for triangle_location in triangles_location{
+                    if (i == 0 || i == 1 || i == 2){//upper half
+                        if (j%2 == 1){//only downward
+                            if (position.x + 25 <= triangle_location.x + 20 && position.x + 25 >= triangle_location.x - 20 &&
+                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j-1] && !filled[i][j+1]){//check available
+                                    //green_drag_tri.image = UIImage(named:"绿色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: super_light_green_down)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: super_light_green_up)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: super_light_green_up)
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    } else if (i == 3 || i == 4 || i == 5){
+                        if (j%2 == 0 && j != 0 && j != tri_location[i].count - 1){//lower half&&not edge
+                            if (position.x + 25 <= triangle_location.x + 20 && position.x + 25 >= triangle_location.x - 20 &&
+                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){
+                                if (!filled[i][j] && !filled[i][j-1] && !filled[i][j+1]){
+                                    //green_drag_tri.image = UIImage(named:"绿色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: super_light_green_down)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: super_light_green_up)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: super_light_green_up)
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    j += 1
+                }
+                i += 1
+            }
+        } else if (Shape_Type == 1){
+            var i = 0
+            for triangles_location in tri_location{
+                var j = 0
+                
+                for triangle_location in triangles_location{
+                    if (i == 0 || i == 1){//upper half row 0 1
+                        if (j%2 == 0){//only upward
+                            if (position.x + 25 <= triangle_location.x + 20 && position.x + 25 >= triangle_location.x - 20 &&
+                                position.y + 4 <= triangle_location.y + 20 && position.y + 4 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i+1][j+1]){//check available
+                                    //orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: orange_up)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i+1, y:j+1, image: orange_down)
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }else if (i == 2){//upper half row 2
+                        if (j%2 == 0){//only upward
+                            if (position.x + 25 <= triangle_location.x + 20 && position.x + 25 >= triangle_location.x - 20 &&
+                                position.y + 4 <= triangle_location.y + 20 && position.y + 4 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i+1][j]){//check available
+                                    //orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: orange_up)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i+1, y:j, image: orange_down)
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    else if (i == 3 || i == 4){
+                        if (j%2 == 1){//lower half
+                            if (position.x + 25 <= triangle_location.x + 20 && position.x + 25 >= triangle_location.x - 20 &&
+                                position.y + 4 <= triangle_location.y + 20 && position.y + 4 >= triangle_location.y - 20){
+                                if (!filled[i][j] && !filled[i+1][j-1]){
+                                    //orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: orange_up)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i+1, y:j-1, image: orange_down)
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    j += 1
+                }
+                i += 1
+            }
+        } else if (Shape_Type == 2) {    //Shape_Type == 2
+            var i = 0
+            for triangles_location in tri_location{
+                var j = 0
+                
+                for triangle_location in triangles_location{
+                    if (i == 1 || i == 2){//upper half row 1 2
+                        if (j%2 == 0 && j != tri_location[i].count - 1){//only upward
+                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
+                                position.y + 48 <= triangle_location.y + 20 && position.y + 48 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1] && !filled[i-1][j]){//check available
+                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: light_brown_up)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: light_brown_down)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: light_brown_up)
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }else if (i == 3){//lower half row 3
+                        if (j%2 == 1){//only upward
+                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
+                                position.y + 48 <= triangle_location.y + 20 && position.y + 48 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1] && !filled[i-1][j+1]){//check available
+                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: light_brown_up)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: light_brown_down)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+1, image: light_brown_up)
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    else if (i == 4 || i == 5){
+                        if (j%2 == 1){//lower half
+                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
+                                position.y + 48 <= triangle_location.y + 20 && position.y + 48 >= triangle_location.y - 20){
+                                if (!filled[i][j] && !filled[i][j+1] && !filled[i-1][j+2]){
+                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: light_brown_up)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: light_brown_down)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+2, image: light_brown_up)
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    j += 1
+                }
+                i += 1
+            }
+            
+        }
+        else if (Shape_Type == 3) {    //Shape_Type == 3
+            var i = 0
+            for triangles_location in tri_location{
+                var j = 0
+                
+                for triangle_location in triangles_location{
+                    if (i == 0||i == 1 || i == 2){//upper half row 1 2
+                        if (j%2 == 0 && j != tri_location[i].count - 1 && j != 0){//only upward
+                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 25 >= triangle_location.x - 20 &&
+                                position.y + 27 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1]){//check available
+                                    
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: light_brown_down)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: light_brown_up)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: light_brown_down)
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }else if (i == 3 || i == 4 || i == 5){//lower half
+                        if (j%2 == 1){//only upward
+                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
+                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1]){//check available
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: light_brown_down)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: light_brown_up)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: light_brown_down)
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    j += 1
+                }
+                i += 1
+            }
+            
+        }
+        else if (Shape_Type == 4) {    //Shape_Type == 4
+            var i = 0
+            for triangles_location in tri_location{
+                var j = 0
+                
+                for triangle_location in triangles_location{
+                    if (i == 0||i == 1 || i == 2){//upper half
+                        if (j%2 == 1){//only upward
+                            if (position.x + 15.5 <= triangle_location.x + 20 && position.x + 15.5 >= triangle_location.x - 20 &&
+                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1]){//check available
+                                    
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: super_light_green_down)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: super_light_green_up)
+                                    
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }else if (i == 3 || i == 4 || i == 5){//lower half
+                        if (j%2 == 0 && j != tri_location[i].count - 1){//only downward
+                            if (position.x + 15.5 <= triangle_location.x + 20 && position.x + 15.5 >= triangle_location.x - 20 &&
+                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1]){//check available
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: super_light_green_down)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: super_light_green_up)
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    j += 1
+                }
+                i += 1
+            }
+            
+        }
+        else if (Shape_Type == 5) {    //Shape_Type == 5
+            var i = 0
+            for triangles_location in tri_location{
+                var j = 0
+                
+                for triangle_location in triangles_location{
+                    if (i == 1 || i == 2){//upper half row 1 2
+                        if (j%2 == 0 && j != 0 && j != tri_location[i].count - 1){//only upward
+                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
+                                position.y + 46 <= triangle_location.y + 20 && position.y + 46 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1] && !filled[i-1][j] && !filled[i-1][j-2]){//check available
+                                    
+                                    auto_make_transparent()
+                                    if (ThemeType == 1){
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-2, image: dark_green_up)
+                                    } else if (ThemeType == 2){
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: meat_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: meat_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-2, image: meat_up)
+                                    }
+                                    
+                                    
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }else if (i == 3){//lower half row 3
+                        if (j%2 == 1){//only upward
+                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
+                                position.y + 46 <= triangle_location.y + 20 && position.y + 46 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1] && !filled[i-1][j-1] && !filled[i-1][j+1]){//check available
+                                    
+                                    auto_make_transparent()
+                                    if (ThemeType == 1){
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+1, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-1, image: dark_green_up)
+                                        
+                                    }else if (ThemeType == 2){
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: meat_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+1, image: meat_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j-1, image: meat_up)
+                                        
+                                    }
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    else if (i == 4 || i == 5){//lower half row 4 5
+                        if (j%2 == 1){//only upward
+                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
+                                position.y + 46 <= triangle_location.y + 20 && position.y + 46 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1] && !filled[i][j-1] && !filled[i-1][j] && !filled[i-1][j+2]){//check available
+                                    
+                                    auto_make_transparent()
+                                    if (ThemeType == 1){
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: dark_green_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+2, image: dark_green_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: dark_green_up)
+                                    } else if (ThemeType == 2){
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image:meat_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j-1, image: meat_down)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j+2, image: meat_up)
+                                        Change_Corresponding_Color_With_Image_Without_Animation(x:i-1, y:j, image: meat_up)
+                                    }
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    j += 1
+                }
+                i += 1
+            }
+            
+        }
+        else if (Shape_Type == 6) {    //Shape_Type == 6 pink right direction
+            var i = 0
+            for triangles_location in tri_location{
+                var j = 0
+                
+                for triangle_location in triangles_location{
+                    if (i == 0||i == 1 || i == 2){//upper half
+                        if (j%2 == 0 && j != tri_location[i].count - 1){//only upward not last one
+                            if (position.x + 15 <= triangle_location.x + 20 && position.x + 15 >= triangle_location.x - 20 &&
+                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1]){//check available
+                                    
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: pink_up)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: pink_down)
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }else if (i == 3 || i == 4 || i == 5){//lower half
+                        if (j%2 == 1){//only upward
+                            if (position.x + 15 <= triangle_location.x + 20 && position.x + 15 >= triangle_location.x - 20 &&
+                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1]){//check available
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: pink_up)
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j+1, image: pink_down)
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    j += 1
+                }
+                i += 1
+            }
+            
+        }
+        else if (Shape_Type == 7) {    //Shape_Type == 7 purple single up
+            var i = 0
+            for triangles_location in tri_location{
+                var j = 0
+                
+                for triangle_location in triangles_location{
+                    if (i == 0||i == 1 || i == 2){//upper half
+                        if (j%2 == 0){//only upward
+                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
+                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j]){//check available
+                                    
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: pur_up)
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }else if (i == 3 || i == 4 || i == 5){//lower half
+                        if (j%2 == 1){//only upward
+                            if (position.x + 27 <= triangle_location.x + 20 && position.x + 27 >= triangle_location.x - 20 &&
+                                position.y + 25 <= triangle_location.y + 20 && position.y + 25 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j]){//check available
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: pur_up)
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    j += 1
+                }
+                i += 1
+            }
+            
+        }
+        else if (Shape_Type == 8) {    //Shape_Type == 8 purple single down
+            var i = 0
+            for triangles_location in tri_location{
+                var j = 0
+                
+                for triangle_location in triangles_location{
+                    if (i == 0||i == 1 || i == 2){//upper half
+                        if (j%2 == 1){//only downward
+                            if (position.x + 28 <= triangle_location.x + 20 && position.x + 28 >= triangle_location.x - 20 &&
+                                position.y + 24 <= triangle_location.y + 20 && position.y + 24 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j]){//check available
+                                    
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: pur_down)
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }else if (i == 3 || i == 4 || i == 5){//lower half
+                        if (j%2 == 0){//only downward
+                            if (position.x + 28 <= triangle_location.x + 20 && position.x + 28 >= triangle_location.x - 20 &&
+                                position.y + 24 <= triangle_location.y + 20 && position.y + 24 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j]){//check available
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image_Without_Animation(x:i, y:j, image: pur_down)
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    j += 1
+                }
+                i += 1
+            }
+            
+        }
+        else if (Shape_Type == 9) {    //Shape_Type == 9 brown left downwards
+            var i = 0
+            for triangles_location in tri_location{
+                var j = 0
+                
+                for triangle_location in triangles_location{
+                    if (i == 0 || i == 1){//upper half row 0 1
+                        if (j%2 == 0 && j != tri_location[i].count - 1){//only upward
+                            if (position.x + 3 <= triangle_location.x + 20 && position.x + 3 >= triangle_location.x - 20 &&
+                                position.y + 3.5 <= triangle_location.y + 20 && position.y + 3.5 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1] && !filled[i+1][j+1]){//check available
+                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
+                                    Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
+                                    Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: light_brown_down)
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }else if (i == 2){//lower half row 2
+                        if (j%2 == 0){//only upward
+                            if (position.x + 3 <= triangle_location.x + 20 && position.x + 3 >= triangle_location.x - 20 &&
+                                position.y + 3.5 <= triangle_location.y + 20 && position.y + 3.5 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j+1] && !filled[i+1][j]){//check available
+                                    // light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
+                                    Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
+                                    Change_Corresponding_Color_With_Image(x:i+1, y:j, image: light_brown_down)
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    else if (i == 3 || i == 4){
+                        if (j%2 == 1){//lower half row 3 4
+                            if (position.x + 3 <= triangle_location.x + 20 && position.x + 3 >= triangle_location.x - 20 &&
+                                position.y + 3.5 <= triangle_location.y + 20 && position.y + 3.5 >= triangle_location.y - 20){
+                                if (!filled[i][j] && !filled[i][j+1] && !filled[i+1][j-1]){
+                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
+                                    Change_Corresponding_Color_With_Image(x:i, y:j+1, image: light_brown_down)
+                                    Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: light_brown_down)
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    j += 1
+                }
+                i += 1
+            }
+            
+        }
+        else if (Shape_Type == 10) {    //Shape_Type == 10 brown right downwards
+            var i = 0
+            for triangles_location in tri_location{
+                var j = 0
+                
+                for triangle_location in triangles_location{
+                    if (i == 0 || i == 1){//upper half row 0 1
+                        if (j%2 == 0 && j != 0){//only upward
+                            if (position.x + 52 <= triangle_location.x + 20 && position.x + 52 >= triangle_location.x - 20 &&
+                                position.y + 3 <= triangle_location.y + 20 && position.y + 3 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j-1] && !filled[i+1][j+1]){//check available
+                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
+                                    Change_Corresponding_Color_With_Image(x:i, y:j-1, image: light_brown_down)
+                                    Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: light_brown_down)
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }else if (i == 2){//upper half row 2
+                        if (j%2 == 0 && j != 0){//only upward
+                            if (position.x + 52 <= triangle_location.x + 20 && position.x + 52 >= triangle_location.x - 20 &&
+                                position.y + 3 <= triangle_location.y + 20 && position.y + 3 >= triangle_location.y - 20){//check location
+                                if (!filled[i][j] && !filled[i][j-1] && !filled[i+1][j]){//check available
+                                    // light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
+                                    Change_Corresponding_Color_With_Image(x:i, y:j-1, image: light_brown_down)
+                                    Change_Corresponding_Color_With_Image(x:i+1, y:j, image: light_brown_down)
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    else if (i == 3 || i == 4){
+                        if (j%2 == 1){//lower half row 3, 4
+                            if (position.x + 52 <= triangle_location.x + 20 && position.x + 52 >= triangle_location.x - 20 &&
+                                position.y + 3 <= triangle_location.y + 20 && position.y + 3 >= triangle_location.y - 20){
+                                if (!filled[i][j] && !filled[i][j-1] && !filled[i+1][j-1]){
+                                    //light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+                                    auto_make_transparent()
+                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: light_brown_up)
+                                    Change_Corresponding_Color_With_Image(x:i, y:j-1, image: light_brown_down)
+                                    Change_Corresponding_Color_With_Image(x:i+1, y:j-1, image: light_brown_down)
+                                    
+                                    
+                                    
+                                    return true
+                                }
+                                return false
+                            }
+                        }
+                        
+                    }
+                    j += 1
+                }
+                i += 1
+            }
+            
+        }
+        return false
+    }
+    
+    func force_recenter_drag_tris ( tri: UIImageView, tri_img: UIImage!) -> Void{
+        switch tri_img {
+        case UIImage(named:"绿色tri.png")!:
+            if(tri == green_drag_tri){
+                tri.frame.origin = green_drag_origin
+            }else if(tri == orange_drag_tri){
+                tri.frame.origin = CGPoint(x:orange_drag_origin.x-CGFloat(30), y:orange_drag_origin.y + CGFloat(17))
+            }else if(tri == light_brown_drag_tri){
+                tri.frame.origin = CGPoint(x:light_brown_drag_origin.x, y:light_brown_drag_origin.y + CGFloat(10))
+            }
+        // case UIImage(nm)
+        default:
+            if(tri == green_drag_tri){
+                tri.frame.origin = green_drag_origin
+            }else if(tri == orange_drag_tri){
+                tri.frame.origin = orange_drag_origin
+            }else if(tri == light_brown_drag_tri){
+                
+                
+                tri.frame.origin = light_brown_drag_origin
+            }
+        }
+    }
+    
+    func Duplicate_Tri_Animate(i: Int, j: Int) ->Void {
+        //row NO 0
+        if (i == 0 && j == 0){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_0.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 0, j: 0)
+                self.tri_0_0.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 0 && j == 1) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_1.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 0, j: 1)
+                self.tri_0_1.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+            
+        }
+        else if (i == 0 && j == 2){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_2.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 0, j: 2)
+                self.tri_0_2.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 0 && j == 3) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_3.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 0, j: 3)
+                self.tri_0_3.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else  if (i == 0 && j == 4){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_4.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 0, j: 4)
+                self.tri_0_4.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 0 && j == 5) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_5.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 0, j: 5)
+                self.tri_0_5.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+            
+        }
+        else if (i == 0 && j == 6){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_6.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 0, j: 6)
+                self.tri_0_6.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+            //row NO 1
+        else  if (i == 1 && j == 0){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_0.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 1, j: 0)
+                self.tri_1_0.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else  if(i == 1 && j == 1) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_1.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 1, j: 1)
+                self.tri_1_1.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else  if (i == 1 && j == 2){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_2.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 1, j: 2)
+                self.tri_1_2.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else  if(i == 1 && j == 3) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_3.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 1, j: 3)
+                self.tri_1_3.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else  if (i == 1 && j == 4){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_4.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 1, j: 4)
+                self.tri_1_4.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+            
+        }
+        else if(i == 1 && j == 5) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_5.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 1, j: 5)
+                self.tri_1_5.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+            
+        }
+        else if (i == 1 && j == 6){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_6.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 1, j: 6)
+                self.tri_1_6.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })        }
+        else if(i == 1 && j == 7) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_7.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 1, j: 7)
+                self.tri_1_7.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if (i == 1 && j == 8){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_8.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 1, j: 8)
+                self.tri_1_8.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+            
+        }
+            //row NO 2
+        else if(i == 2 && j == 0) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_0.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 2, j: 0)
+                self.tri_2_0.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 2 && j == 1) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_1.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 2, j: 1)
+                self.tri_2_1.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 2 && j == 2) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_2.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 2, j: 2)
+                self.tri_2_2.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 2 && j == 3) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_3.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 2, j: 3)
+                self.tri_2_3.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 2 && j == 4) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_4.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 2, j: 4)
+                self.tri_2_4.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 2 && j == 5) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_5.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 2, j: 5)
+                self.tri_2_5.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 2 && j == 6) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_6.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 2, j: 6)
+                self.tri_2_6.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 2 && j == 7) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_7.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 2, j: 7)
+                self.tri_2_7.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 2 && j == 8) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_8.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 2, j: 8)
+                self.tri_2_8.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 2 && j == 9) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_9.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 2, j: 9)
+                self.tri_2_9.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 2 && j == 10) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_10.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 2, j: 10)
+                self.tri_2_10.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+            //row NO 3
+        else if(i == 3 && j == 0) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_0.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 3, j: 0)
+                self.tri_3_0.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 3 && j == 1) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_1.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 3, j: 1)
+                self.tri_3_1.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 3 && j == 2) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_2.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 3, j: 2)
+                self.tri_3_2.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 3 && j == 3) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_3.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 3, j: 3)
+                self.tri_3_3.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 3 && j == 4) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_4.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 3, j: 4)
+                self.tri_3_4.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 3 && j == 5) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_5.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 3, j: 5)
+                self.tri_3_5.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 3 && j == 6) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_6.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 3, j: 6)
+                self.tri_3_6.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 3 && j == 7) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_7.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 3, j: 7)
+                self.tri_3_7.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 3 && j == 8) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_8.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 3, j: 8)
+                self.tri_3_8.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 3 && j == 9) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_9.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 3, j: 9)
+                self.tri_3_9.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 3 && j == 10) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_10.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 3, j: 10)
+                self.tri_3_10.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+            //row NO 4
+            
+        else if (i == 4 && j == 0){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_0.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 4, j: 0)
+                self.tri_4_0.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 4 && j == 1) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_1.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 4, j: 1)
+                self.tri_4_1.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if (i == 4 && j == 2){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_2.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 4, j: 2)
+                self.tri_4_2.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })        }
+        else if(i == 4 && j == 3) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_3.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 4, j: 3)
+                self.tri_4_3.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })        }
+        else if (i == 4 && j == 4){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_4.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 4, j: 4)
+                self.tri_4_4.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 4 && j == 5) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_5.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 4, j: 5)
+                self.tri_4_5.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+            
+        }
+        else if (i == 4 && j == 6){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_6.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 4, j: 6)
+                self.tri_4_6.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 4 && j == 7) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_7.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 4, j: 7)
+                self.tri_4_7.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if (i == 4 && j == 8){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_8.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 4, j: 8)
+                self.tri_4_8.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+            //row NO 5
+        else if (i == 5 && j == 0){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_0.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 5, j: 0)
+                self.tri_5_0.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 5 && j == 1) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_1.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 5, j: 1)
+                self.tri_5_1.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if (i == 5 && j == 2){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_2.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 5, j: 2)
+                self.tri_5_2.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 5 && j == 3) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_3.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 5, j: 3)
+                self.tri_5_3.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if (i == 5 && j == 4){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_4.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 5, j: 4)
+                self.tri_5_4.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        else if(i == 5 && j == 5) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_5.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 5, j: 5)
+                self.tri_5_5.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })        }
+        else if (i == 5 && j == 6){
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_6.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                self.Restore_A_Grey_Tri(i: 5, j: 6)
+                self.tri_5_1.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        
+        
+    }
+    
+    //compute distance between two CGPoint (Square Form) (not using rn)
+    func distance_generator( drag_location: CGPoint, triangle_location: CGPoint) -> Double {
+        let temp_distance = (drag_location.x-triangle_location.x)*(drag_location.x-triangle_location.x)+(drag_location.y-triangle_location.y)*(drag_location.y-triangle_location.y)
+        return Double(temp_distance)
+    }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
