@@ -77,8 +77,11 @@
                                     <constraint firstAttribute="width" constant="43" id="V4G-ux-bIR"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVy-u3-4Z8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVy-u3-4Z8">
                                 <rect key="frame" x="199" y="461" width="81" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="WLb-7M-OQ1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -807,7 +810,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9g-fj-p9q">
-                                <rect key="frame" x="29" y="90" width="160" height="128"/>
+                                <rect key="frame" x="22" y="90" width="160" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="J15-8z-o70"/>
                                     <constraint firstAttribute="width" constant="160" id="hTW-iG-xuy"/>
@@ -1059,7 +1062,7 @@
                             <constraint firstItem="oYp-Ma-39B" firstAttribute="centerY" secondItem="ygd-va-KF8" secondAttribute="centerY" id="dXR-TN-GqE"/>
                             <constraint firstItem="s7b-kk-HJh" firstAttribute="centerY" secondItem="Ve0-fZ-HmX" secondAttribute="centerY" id="dyr-vX-7lV"/>
                             <constraint firstItem="R9g-fj-p9q" firstAttribute="top" secondItem="z4m-dG-Hks" secondAttribute="bottom" constant="-17" id="eUk-qU-6ll"/>
-                            <constraint firstItem="P0M-hw-129" firstAttribute="leading" secondItem="R9g-fj-p9q" secondAttribute="trailing" constant="-57" id="ebK-0O-y9x"/>
+                            <constraint firstItem="P0M-hw-129" firstAttribute="leading" secondItem="R9g-fj-p9q" secondAttribute="trailing" constant="-50" id="ebK-0O-y9x"/>
                             <constraint firstItem="zhk-At-sbY" firstAttribute="centerY" secondItem="kH3-5k-I6y" secondAttribute="centerY" id="ed2-aZ-zS2"/>
                             <constraint firstItem="cZI-pJ-gFx" firstAttribute="centerY" secondItem="Hto-lh-OHx" secondAttribute="centerY" id="eeD-ct-eSA"/>
                             <constraint firstItem="WVu-JF-2JF" firstAttribute="centerX" secondItem="p5C-ee-UVz" secondAttribute="centerX" id="ei8-pM-Kvx"/>
