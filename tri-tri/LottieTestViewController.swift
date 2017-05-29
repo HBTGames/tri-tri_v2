@@ -18,7 +18,7 @@ class LottieTestViewController: UIViewController {
         super.viewDidLoad()
         
      
-            let animationView = LOTAnimationView(name: "start")!
+            let animationView = LOTAnimationView(name: "star_appear")!
             animationView.frame = CGRect(x: 0, y: 0, width: 400, height: 700)
             animationView.center = self.view.center
             animationView.contentMode = .scaleAspectFill

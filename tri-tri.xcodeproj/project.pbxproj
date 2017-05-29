@@ -34,6 +34,7 @@
 		566E64D71EDADC810034B1AA /* star_appear_ani.json in Resources */ = {isa = PBXBuildFile; fileRef = 566E64D61EDADC810034B1AA /* star_appear_ani.json */; };
 		56A61C841EC5D30500A29B6F /* GameBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEBEA51EC3254E008BBD04 /* GameBoardViewController.swift */; };
 		56A61C8B1EC5DA2400A29B6F /* background music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56A61C8A1EC5DA2400A29B6F /* background music.mp3 */; };
+		56BB16E61EDC693D00EB5826 /* star_appear.json in Resources */ = {isa = PBXBuildFile; fileRef = 56BB16E51EDC693D00EB5826 /* star_appear.json */; };
 		56BEBEA81EC32C25008BBD04 /* UIImageTintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEBEA71EC32C25008BBD04 /* UIImageTintExtension.swift */; };
 		56C3F4271ED276F200DE21BD /* restart_soundeffect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F4261ED276F200DE21BD /* restart_soundeffect.wav */; };
 		56C3F4291ED279D200DE21BD /* erase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F4281ED279D200DE21BD /* erase.wav */; };
@@ -94,6 +95,7 @@
 		566A59091EC942DD0056D665 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		566E64D61EDADC810034B1AA /* star_appear_ani.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star_appear_ani.json; sourceTree = "<group>"; };
 		56A61C8A1EC5DA2400A29B6F /* background music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "background music.mp3"; sourceTree = "<group>"; };
+		56BB16E51EDC693D00EB5826 /* star_appear.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star_appear.json; sourceTree = "<group>"; };
 		56BEBEA51EC3254E008BBD04 /* GameBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoardViewController.swift; sourceTree = "<group>"; };
 		56BEBEA71EC32C25008BBD04 /* UIImageTintExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageTintExtension.swift; sourceTree = "<group>"; };
 		56C3F4261ED276F200DE21BD /* restart_soundeffect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = restart_soundeffect.wav; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 		566E64D51EDADC750034B1AA /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				56BB16E51EDC693D00EB5826 /* star_appear.json */,
 				566E64D61EDADC810034B1AA /* star_appear_ani.json */,
 				56F66DEA1EDB1C2D001E1DB6 /* start.json */,
 			);
@@ -395,6 +398,7 @@
 				56C3F42B1ED27B1A00DE21BD /* general_button.wav in Resources */,
 				56C3F4291ED279D200DE21BD /* erase.wav in Resources */,
 				563E7F641ED474DA008F33C1 /* 3_times_erase.wav in Resources */,
+				56BB16E61EDC693D00EB5826 /* star_appear.json in Resources */,
 				56C3F42D1ED27CC400DE21BD /* opening.wav in Resources */,
 				042D87151ED99CC0007A329C /* tst.json in Resources */,
 				564542CF1EC9591A00BFBD0C /* anim.mp4 in Resources */,
