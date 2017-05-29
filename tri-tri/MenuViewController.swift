@@ -24,6 +24,16 @@ class MenuViewController: UIViewController {
         screen_width = view.frame.width
         screen_height = view.frame.height
         //add pangesture
+        //triangle_title = UIImageView(frame: CGRect(x: pause_screen_x_transform(40), y: pause_screen_y_transform(20), width: pause_screen_x_transform(120), height: pause_screen_y_transform(50)))
+        triangle_title.frame = CGRect(x: pause_screen_x_transform(Double(triangle_title.frame.origin.x)), y: pause_screen_y_transform(Double(triangle_title.frame.origin.y)), width: pause_screen_x_transform(Double(triangle_title.frame.width)), height: pause_screen_y_transform(Double(triangle_title.frame.height)))
+        shopping_cart.frame = CGRect(x: pause_screen_x_transform(Double(shopping_cart.frame.origin.x)), y: pause_screen_y_transform(Double(shopping_cart.frame.origin.y)), width: pause_screen_x_transform(Double(shopping_cart.frame.width)), height: pause_screen_y_transform(Double(shopping_cart.frame.height)))
+        like_button.frame =  CGRect(x: pause_screen_x_transform(Double(like_button.frame.origin.x)), y: pause_screen_y_transform(Double(like_button.frame.origin.y)), width: pause_screen_x_transform(Double(like_button.frame.width)), height: pause_screen_y_transform(Double(like_button.frame.height)))
+        continue_button.frame = CGRect(x: pause_screen_x_transform(Double(continue_button.frame.origin.x)), y: pause_screen_y_transform(Double(continue_button.frame.origin.y)), width: pause_screen_x_transform(Double(continue_button.frame.width)), height: pause_screen_y_transform(Double(continue_button.frame.height)))
+        star_counter.frame = CGRect(x: pause_screen_x_transform(Double(star_counter.frame.origin.x)), y: pause_screen_y_transform(Double(star_counter.frame.origin.y)), width: pause_screen_x_transform(Double(star_counter.frame.width)), height: pause_screen_y_transform(Double(star_counter.frame.height)))
+        trophy.frame = CGRect(x: pause_screen_x_transform(Double(trophy.frame.origin.x)), y: pause_screen_y_transform(Double(trophy.frame.origin.y)), width: pause_screen_x_transform(Double(trophy.frame.width)), height: pause_screen_y_transform(Double(trophy.frame.height)))
+        star_board.frame = CGRect(x: pause_screen_x_transform(Double(star_board.frame.origin.x)), y: pause_screen_y_transform(Double(star_board.frame.origin.y)), width: pause_screen_x_transform(Double(star_board.frame.width)), height: pause_screen_y_transform(Double(star_board.frame.height)))
+        highest_score.frame = CGRect(x: pause_screen_x_transform(Double(highest_score.frame.origin.x)), y: pause_screen_y_transform(Double(highest_score.frame.origin.y)), width: pause_screen_x_transform(Double(highest_score.frame.width)), height: pause_screen_y_transform(Double(highest_score.frame.height)))
+
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
         self.view.addGestureRecognizer(panGestureRecognizer)
         var HighestScore = 0
@@ -121,7 +131,8 @@ class MenuViewController: UIViewController {
 
             
         }
-      
+      star_counter.sizeToFit()
+      trophy.sizeToFit()
     
     
     

@@ -133,7 +133,16 @@ class GameOverViewController: UIViewController {
         super.viewDidLoad()
         screen_width = view.frame.width
         screen_height = view.frame.height
+        gameover_title.frame = CGRect(x: pause_screen_x_transform(Double(gameover_title.frame.origin.x)), y: pause_screen_y_transform(Double(gameover_title.frame.origin.y)), width: pause_screen_x_transform(Double(gameover_title.frame.width)), height: pause_screen_y_transform(Double(gameover_title.frame.height)))
+        share_button.frame = CGRect(x: pause_screen_x_transform(Double(share_button.frame.origin.x)), y: pause_screen_y_transform(Double(share_button.frame.origin.y)), width: pause_screen_x_transform(Double(share_button.frame.width)), height: pause_screen_y_transform(Double(share_button.frame.height)))
+        restart_button.frame = CGRect(x: pause_screen_x_transform(Double(restart_button.frame.origin.x)), y: pause_screen_y_transform(Double(restart_button.frame.origin.y)), width: pause_screen_x_transform(Double(restart_button.frame.width)), height: pause_screen_y_transform(Double(restart_button.frame.height)))
+        shopping_button.frame = CGRect(x: pause_screen_x_transform(Double(shopping_button.frame.origin.x)), y: pause_screen_y_transform(Double(shopping_button.frame.origin.y)), width: pause_screen_x_transform(Double(shopping_button.frame.width)), height: pause_screen_y_transform(Double(shopping_button.frame.height)))
+        home_button.frame = CGRect(x: pause_screen_x_transform(Double(home_button.frame.origin.x)), y: pause_screen_y_transform(Double(home_button.frame.origin.y)), width: pause_screen_x_transform(Double(home_button.frame.width)), height: pause_screen_y_transform(Double(home_button.frame.height)))
+        trophy.frame = CGRect(x: pause_screen_x_transform(Double(trophy.frame.origin.x)), y: pause_screen_y_transform(Double(trophy.frame.origin.y)), width: pause_screen_x_transform(Double(trophy.frame.width)), height: pause_screen_y_transform(Double(trophy.frame.height)))
+        score_board.frame = CGRect(x: pause_screen_x_transform(Double(score_board.frame.origin.x)), y: pause_screen_y_transform(Double(score_board.frame.origin.y)), width: pause_screen_x_transform(Double(score_board.frame.width)), height: pause_screen_y_transform(Double(score_board.frame.height)))
+
         restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
+    
         if (ThemeType == 1){
             home_button.setBackgroundImage(home_pic, for: .normal)
         } else if (ThemeType == 2){
@@ -225,7 +234,7 @@ class GameOverViewController: UIViewController {
             self.share_button.setImage(UIImage(named:"colors_share-icon"), for: .normal)
             
         }
-        
+        trophy.sizeToFit()
         
         //add pangesture
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
