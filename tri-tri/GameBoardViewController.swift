@@ -4740,173 +4740,109 @@ class GameBoardViewController: UIViewController {
     var situation16 = false
     var situation17 = false
 
-    func Check_and_Erase_Create_Array() -> Array<(row: Int, column: Int)> {
-        var eliminate_array = [(row: Int, column: Int)]()
-
+    //sub situation for determing current erase situation (using in shape_can_erase_line function)
+    var subsituation0 = false
+    var subsituation1 = false
+    var subsituation2 = false
+    var subsituation3 = false
+    var subsituation4 = false
+    var subsituation5 = false
+    var subsituation6 = false
+    var subsituation7 = false
+    var subsituation8 = false
+    var subsituation9 = false
+    var subsituation10 = false
+    var subsituation11 = false
+    var subsituation12 = false
+    var subsituation13 = false
+    var subsituation14 = false
+    var subsituation15 = false
+    var subsituation16 = false
+    var subsituation17 = false
+    
+    func Check_and_Erase_Return_Bool() -> Void {
+       
+        subsituation0 = false
+        subsituation1 = false
+        subsituation2 = false
+        subsituation3 = false
+        subsituation4 = false
+        subsituation5 = false
+        subsituation6 = false
+        subsituation7 = false
+        subsituation8 = false
+        subsituation9 = false
+        subsituation10 = false
+        subsituation11 = false
+        subsituation12 = false
+        subsituation13 = false
+        subsituation14 = false
+        subsituation15 = false
+        subsituation16 = false
+        subsituation17 = false
         if(filled[0][0]&&filled[0][1]&&filled[0][2]&&filled[0][3]&&filled[0][4]&&filled[0][5]&&filled[0][6]){
-            eliminate_array.append((row: 0, column: 0))
-            eliminate_array.append((row: 0, column: 1))
-            eliminate_array.append((row: 0, column: 2))
-            eliminate_array.append((row: 0, column: 3))
-            eliminate_array.append((row: 0, column: 4))
-            eliminate_array.append((row: 0, column: 5))
-            eliminate_array.append((row: 0, column: 6))
+            subsituation0 = true
+        
         }
           if(filled[1][0]&&filled[1][1]&&filled[1][2]&&filled[1][3]&&filled[1][4]&&filled[1][5]&&filled[1][6]&&filled[1][7]&&filled[1][8]){
-            eliminate_array.append((row: 1, column: 0))
-            eliminate_array.append((row: 1, column: 1))
-            eliminate_array.append((row: 1, column: 2))
-            eliminate_array.append((row: 1, column: 3))
-            eliminate_array.append((row: 1, column: 4))
-            eliminate_array.append((row: 1, column: 5))
-            eliminate_array.append((row: 1, column: 6))
-            eliminate_array.append((row: 1, column: 7))
-            eliminate_array.append((row: 1, column: 8))
+           subsituation1 = true
         }
         
         if(filled[2][0]&&filled[2][1]&&filled[2][2]&&filled[2][3]&&filled[2][4]&&filled[2][5]&&filled[2][6]&&filled[2][7]&&filled[2][8]&&filled[2][9]&&filled[2][10]){
-            eliminate_array.append((row: 2, column: 0))
-            eliminate_array.append((row: 2, column: 1))
-            eliminate_array.append((row: 2, column: 2))
-            eliminate_array.append((row: 2, column: 3))
-            eliminate_array.append((row: 2, column: 4))
-            eliminate_array.append((row: 2, column: 5))
-            eliminate_array.append((row: 2, column: 6))
-            eliminate_array.append((row: 2, column: 7))
-            eliminate_array.append((row: 2, column: 8))
-            eliminate_array.append((row: 2, column: 9))
-            eliminate_array.append((row: 2, column: 10))
+            subsituation2 = true
         }
         
        if(filled[3][0]&&filled[3][1]&&filled[3][2]&&filled[3][3]&&filled[3][4]&&filled[3][5]&&filled[3][6]&&filled[3][7]&&filled[3][8]&&filled[3][9]&&filled[3][10]){
-        eliminate_array.append((row: 3, column: 0))
-        eliminate_array.append((row: 3, column: 1))
-        eliminate_array.append((row: 3, column: 2))
-        eliminate_array.append((row: 3, column: 3))
-        eliminate_array.append((row: 3, column: 4))
-        eliminate_array.append((row: 3, column: 5))
-        eliminate_array.append((row: 3, column: 6))
-        eliminate_array.append((row: 3, column: 7))
-        eliminate_array.append((row: 3, column: 8))
-        eliminate_array.append((row: 3, column: 9))
-        eliminate_array.append((row: 3, column: 10))
+        subsituation3 = true
         }
 
         //eliminate fifth row
         if(filled[4][0]&&filled[4][1]&&filled[4][2]&&filled[4][3]&&filled[4][4]&&filled[4][5]&&filled[4][6]&&filled[4][7]&&filled[4][8]){
-            
-            eliminate_array.append((row: 4, column: 0))
-            eliminate_array.append((row: 4, column: 1))
-            eliminate_array.append((row: 4, column: 2))
-            eliminate_array.append((row: 4, column: 3))
-            eliminate_array.append((row: 4, column: 4))
-            eliminate_array.append((row: 4, column: 5))
-            eliminate_array.append((row: 4, column: 6))
-            eliminate_array.append((row: 4, column: 7))
-            eliminate_array.append((row: 4, column: 8))
-
+            subsituation4 = true
             
         }
         ////eliminate sixth row
         if(filled[5][0]&&filled[5][1]&&filled[5][2]&&filled[5][3]&&filled[5][4]&&filled[5][5]&&filled[5][6]){
 
-            eliminate_array.append((row: 5, column: 0))
-            eliminate_array.append((row: 5, column: 1))
-            eliminate_array.append((row: 5, column: 2))
-            eliminate_array.append((row: 5, column: 3))
-            eliminate_array.append((row: 5, column: 4))
-            eliminate_array.append((row: 5, column: 5))
-            eliminate_array.append((row: 5, column: 6))
-            
-            
+        subsituation5 = true
         }
         
         
         //situation two - 右下斜
         if(filled[2][0]&&filled[3][0]&&filled[3][1]&&filled[4][0]&&filled[4][1]&&filled[5][0]&&filled[5][1]){
 
-            eliminate_array.append((row: 2, column: 0))
-            eliminate_array.append((row: 3, column: 0))
-            eliminate_array.append((row: 3, column: 1))
-            eliminate_array.append((row: 4, column: 0))
-            eliminate_array.append((row: 4, column: 1))
-            eliminate_array.append((row: 5, column: 0))
-            eliminate_array.append((row: 5, column: 1))
+          subsituation6 = true
 
             
         }
         
         
         if(filled[1][0]&&filled[2][1]&&filled[2][2]&&filled[3][2]&&filled[3][3]&&filled[4][2]&&filled[4][3]&&filled[5][2]&&filled[5][3]){
-            eliminate_array.append((row: 1, column: 0))
-            eliminate_array.append((row: 2, column: 1))
-            eliminate_array.append((row: 2, column: 2))
-            eliminate_array.append((row: 3, column: 2))
-            eliminate_array.append((row: 3, column: 3))
-            eliminate_array.append((row: 4, column: 2))
-            eliminate_array.append((row: 4, column: 3))
-            eliminate_array.append((row: 5, column: 2))
-            eliminate_array.append((row: 5, column: 3))
+           subsituation7 = true
             
         }
         if(filled[0][0]&&filled[1][1]&&filled[1][2]&&filled[2][3]&&filled[2][4]&&filled[3][4]&&filled[3][5]&&filled[4][4]&&filled[4][5]&&filled[5][4]&&filled[5][5]){
-            eliminate_array.append((row: 0, column: 0))
-            eliminate_array.append((row: 1, column: 1))
-            eliminate_array.append((row: 1, column: 2))
-            eliminate_array.append((row: 2, column: 3))
-            eliminate_array.append((row: 2, column: 4))
-            eliminate_array.append((row: 3, column: 4))
-            eliminate_array.append((row: 3, column: 5))
-            eliminate_array.append((row: 4, column: 4))
-            eliminate_array.append((row: 4, column: 5))
-            eliminate_array.append((row: 5, column: 4))
-            eliminate_array.append((row: 5, column: 5))
-            
+           subsituation8 = true
         }
         
         
         
         
         if(filled[0][1]&&filled[0][2]&&filled[1][3]&&filled[1][4]&&filled[2][5]&&filled[2][6]&&filled[3][6]&&filled[3][7]&&filled[4][6]&&filled[4][7]&&filled[5][6]){
-            eliminate_array.append((row: 0, column: 1))
-            eliminate_array.append((row: 0, column: 2))
-            eliminate_array.append((row: 1, column: 3))
-            eliminate_array.append((row: 1, column: 4))
-            eliminate_array.append((row: 2, column: 5))
-            eliminate_array.append((row: 2, column: 6))
-            eliminate_array.append((row: 3, column: 6))
-            eliminate_array.append((row: 3, column: 7))
-            eliminate_array.append((row: 4, column: 6))
-            eliminate_array.append((row: 4, column: 7))
-            eliminate_array.append((row: 5, column: 6))
+           subsituation9 = true
             
         }
         
         
         if(filled[0][3]&&filled[0][4]&&filled[1][5]&&filled[1][6]&&filled[2][7]&&filled[2][8]&&filled[3][8]&&filled[3][9]&&filled[4][8]){
           
-            eliminate_array.append((row: 0, column: 3))
-            eliminate_array.append((row: 0, column: 4))
-            eliminate_array.append((row: 1, column: 5))
-            eliminate_array.append((row: 1, column: 6))
-            eliminate_array.append((row: 2, column: 7))
-            eliminate_array.append((row: 2, column: 8))
-            eliminate_array.append((row: 3, column: 8))
-            eliminate_array.append((row: 3, column: 9))
-            eliminate_array.append((row: 4, column: 8))
+           subsituation10 = true
 
         
         }
         if(filled[0][5]&&filled[0][6]&&filled[1][7]&&filled[1][8]&&filled[2][9]&&filled[2][10]&&filled[3][10]){
 
-            eliminate_array.append((row: 0, column: 5))
-            eliminate_array.append((row: 0, column: 6))
-            eliminate_array.append((row: 1, column: 7))
-            eliminate_array.append((row: 1, column: 8))
-            eliminate_array.append((row: 2, column: 9))
-            eliminate_array.append((row: 2, column: 10))
-            eliminate_array.append((row: 3, column: 10))
-
+            subsituation11 = true
             
             
         }
@@ -4914,111 +4850,40 @@ class GameBoardViewController: UIViewController {
         
         //situation three - 左下斜
         if(filled[0][0]&&filled[0][1]&&filled[1][0]&&filled[1][1]&&filled[2][0]&&filled[2][1]&&filled[3][0]){
-            eliminate_array.append((row: 0, column: 0))
-            eliminate_array.append((row: 0, column: 1))
-            eliminate_array.append((row: 1, column: 0))
-            eliminate_array.append((row: 1, column: 1))
-            eliminate_array.append((row: 2, column: 0))
-            eliminate_array.append((row: 2, column: 1))
-            eliminate_array.append((row: 3, column: 0))
-        
+            subsituation12 = true
             
             
         }
         
         
         if(filled[0][2]&&filled[0][3]&&filled[1][2]&&filled[1][3]&&filled[2][2]&&filled[2][3]&&filled[3][1]&&filled[3][2]&&filled[4][0]){
-            eliminate_array.append((row: 0, column: 2))
-            eliminate_array.append((row: 0, column: 3))
-            eliminate_array.append((row: 1, column: 2))
-            eliminate_array.append((row: 1, column: 3))
-            eliminate_array.append((row: 2, column: 2))
-            eliminate_array.append((row: 2, column: 3))
-            eliminate_array.append((row: 3, column: 1))
-            eliminate_array.append((row: 3, column: 2))
-            eliminate_array.append((row: 4, column: 0))
-
+           subsituation13 = true
             
             
         }
         
         if(filled[0][4]&&filled[0][5]&&filled[1][4]&&filled[1][5]&&filled[2][4]&&filled[2][5]&&filled[3][3]&&filled[3][4]&&filled[4][1]&&filled[4][2]&&filled[5][0]){
-            eliminate_array.append((row: 0, column: 4))
-            eliminate_array.append((row: 0, column: 5))
-            eliminate_array.append((row: 1, column: 4))
-            eliminate_array.append((row: 1, column: 5))
-            eliminate_array.append((row: 2, column: 4))
-            eliminate_array.append((row: 2, column: 5))
-            eliminate_array.append((row: 3, column: 3))
-            eliminate_array.append((row: 3, column: 4))
-            eliminate_array.append((row: 4, column: 1))
-            eliminate_array.append((row: 4, column: 2))
-            eliminate_array.append((row: 5, column: 0))
+           subsituation14 = true
 
         }
         if(filled[0][6]&&filled[1][6]&&filled[1][7]&&filled[2][6]&&filled[2][7]&&filled[3][5]&&filled[3][6]&&filled[4][3]&&filled[4][4]&&filled[5][1]&&filled[5][2]){
             
-            eliminate_array.append((row: 0, column: 6))
-            eliminate_array.append((row: 1, column: 6))
-            eliminate_array.append((row: 1, column: 7))
-            eliminate_array.append((row: 2, column: 6))
-            eliminate_array.append((row: 2, column: 7))
-            eliminate_array.append((row: 3, column: 5))
-            eliminate_array.append((row: 3, column: 6))
-            eliminate_array.append((row: 4, column: 3))
-            eliminate_array.append((row: 4, column: 4))
-            eliminate_array.append((row: 5, column: 1))
-            eliminate_array.append((row: 5, column: 2))
-
+           subsituation15 = true
             
         }
         
         
         
         if(filled[1][8]&&filled[2][8]&&filled[2][9]&&filled[3][7]&&filled[3][8]&&filled[4][5]&&filled[4][6]&&filled[5][3]&&filled[5][4]){
-            eliminate_array.append((row: 1, column: 8))
-            eliminate_array.append((row: 2, column: 8))
-            eliminate_array.append((row: 2, column: 9))
-            eliminate_array.append((row: 3, column: 7))
-            eliminate_array.append((row: 3, column: 8))
-            eliminate_array.append((row: 4, column: 5))
-            eliminate_array.append((row: 4, column: 6))
-            eliminate_array.append((row: 5, column: 3))
-            eliminate_array.append((row: 5, column: 4))
+            subsituation16 = true
         }
         
         
         if(filled[2][10]&&filled[3][9]&&filled[3][10]&&filled[4][7]&&filled[4][8]&&filled[5][5]&&filled[5][6]){
-            eliminate_array.append((row: 2, column: 10))
-            eliminate_array.append((row: 3, column: 9))
-            eliminate_array.append((row: 3, column: 10))
-            eliminate_array.append((row: 4, column: 7))
-            eliminate_array.append((row: 4, column: 8))
-            eliminate_array.append((row: 5, column: 5))
-            eliminate_array.append((row: 5, column: 6))
-
+            subsituation17 = true
         }
   
        
-        //get the duplicate array
-
-        let sorted_array = eliminate_array.sorted(by: {$0.row < $1.row && $0.column < $1.column})
-        
-        var previous_element : (row: Int , column: Int) = (row: -1, column: -1)
-        var i = 0
-        var duplicates_array = [(row: Int, column: Int)]()
-        for pair in eliminate_array{
-            let current_element = eliminate_array[i]
-            if(current_element.column == previous_element.column && current_element.row == previous_element.row){
-            duplicates_array.append(previous_element)
-            } else{
-                previous_element = current_element
-            }
-            i += 1
-        }
-        
-        
-        return duplicates_array
         }
     
     
@@ -7622,22 +7487,329 @@ number_of_lines_erased += 1
         }
     }
     
+    //give value to a shape array indicating whether line number can be erased by it
+    func shape_to_erase_line() -> Void {
+    line_can_erased_by_shape   = [false, false, false, false, false,false,false,false,false, false, false]
+    let previous_filled = filled
+     var i = 0
+        for element in shape_placable_array{
+            if(element){
+            //save previous filled
+            
+                if(element){
+                    //shape 0
+                    if(i == 0){
+                        var row = 0
+                        for subject in filled{
+                            var column = 0
+                            for point in subject{
+                                Find_Any_Available_Green_Tri_Change_Filled(row: row, column: column)
+                                Check_and_Erase_Return_Bool()
+                                filled = previous_filled
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                    line_can_erased_by_shape[0] = true
+                                    
+                                    break
+                                    //restore filled
+                                    
+                                }
+                               column += 1
+                            }
+                            row += 1
+                        }
+                        
+                    }
+                    //shape 1
+                    if(i == 1){
+                        var row = 0
+                        for subject in filled{
+                            var column = 0
+                            for point in subject{
+                                Find_Any_Available_Orange_Tri_Change_Filled(row: row, column: column)
+                                Check_and_Erase_Return_Bool()
+                                filled = previous_filled
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                    line_can_erased_by_shape[1] = true
+                                    
+                                    break
+                                    //restore filled
+                                    
+                                }
+                                column += 1
+                            }
+                            row += 1
+                        }
+                        
+                    }
+                    //shape 2
+                    if(i == 2){
+                        var row = 0
+                        for subject in filled{
+                            var column = 0
+                            for point in subject{
+                                Find_Any_Available_Light_Brown_Tri_Change_Filled(row: row, column: column)
+                                Check_and_Erase_Return_Bool()
+                                filled = previous_filled
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                    line_can_erased_by_shape[2] = true
+                                    
+                                    break
+                                    //restore filled
+                                   
+                                }
+                                column += 1
+                            }
+                            row += 1
+                        }
+                        
+                    }
+                    
+                    //shape 3
+                    if(i == 3){
+                        var row = 0
+                        for subject in filled{
+                            var column = 0
+                            for point in subject{
+                                Find_Any_Available_Brown_Downwards_Tri_Change_Filled(row: row, column: column)
+                                Check_and_Erase_Return_Bool()
+                                filled = previous_filled
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                    line_can_erased_by_shape[3] = true
+                                    
+                                    break
+                                    //restore filled
+                                    
+                                }
+                                column += 1
+                            }
+                            row += 1
+                        }
+                        
+                    }
+                    
+                    //shape 4
+                    if(i == 4){
+                        var row = 0
+                        for subject in filled{
+                            var column = 0
+                            for point in subject{
+                                Find_Any_Available_Brown_Left_Tri_Change_Filled(row: row, column: column)
+                                Check_and_Erase_Return_Bool()
+                                filled = previous_filled
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                    line_can_erased_by_shape[4] = true
+                                   
+                                    break
+                                    //restore filled
+                                    
+                                }
+                                column += 1
+                            }
+                            row += 1
+                        }
+                        
+                    }
+                    
+                    //shape 5
+                    if(i == 5){
+                        var row = 0
+                        for subject in filled{
+                            var column = 0
+                            for point in subject{
+                                Find_Any_Dark_Green_Tri_Change_Filled(row: row, column: column)
+                                Check_and_Erase_Return_Bool()
+                                filled = previous_filled
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                    line_can_erased_by_shape[5] = true
+                                    
+                                    break
+                                    //restore filled
+                                    
+                                }
+                                column += 1
+                            }
+                            row += 1
+                        }
+                        
+                    }
+                    
+                    //shape 6
+                    if(i == 6){
+                        var row = 0
+                        for subject in filled{
+                            var column = 0
+                            for point in subject{
+                                Find_Any_Pink_Right_Tri_Change_Filled(row: row, column: column)
+                                Check_and_Erase_Return_Bool()
+                                filled = previous_filled
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                    line_can_erased_by_shape[6] = true
+                                   
+                                    break
+                                    //restore filled
+                                    
+                                }
+                                column += 1
+                            }
+                            row += 1
+                        }
+                        
+                    }
+                    
+                    
+                    //shape 7
+                    if(i == 7){
+                        var row = 0
+                        for subject in filled{
+                            var column = 0
+                            for point in subject{
+                                Find_Any_Purple_Upwards_Tri_Change_Filled(row: row, column: column)
+                                Check_and_Erase_Return_Bool()
+                                filled = previous_filled
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                    line_can_erased_by_shape[7] = true
+                                   
+                                    break
+                                    //restore filled
+                                    
+                                }
+                                column += 1
+                            }
+                            row += 1
+                        }
+                        
+                    }
+                    
+                    //shape 8
+                    if(i == 8){
+                        var row = 0
+                        for subject in filled{
+                            var column = 0
+                            for point in subject{
+                                Find_Any_Purple_Downwards_Tri_Change_Filled(row: row, column: column)
+                                Check_and_Erase_Return_Bool()
+                                filled = previous_filled
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                    line_can_erased_by_shape[8] = true
+                                    
+                                    break
+                                    //restore filled
+                                    
+                                }
+                                column += 1
+                            }
+                            row += 1
+                        }
+                        
+                    }
+                    //shape 9
+                    if(i == 9){
+                        var row = 0
+                        for subject in filled{
+                            var column = 0
+                            for point in subject{
+                                Find_Any_Available_Brown_Left_Downwards_Tri_Change_Filled(row: row, column: column)
+                                Check_and_Erase_Return_Bool()
+                                filled = previous_filled
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                    line_can_erased_by_shape[9] = true
+                                    
+                                    break
+                                    //restore filled
+                                    
+                                }
+                                column += 1
+                            }
+                            row += 1
+                        }
+                        
+                    }
+                    
+                    
+                    
+                    
+                    
+                    //shape 10
+                    if(i == 10){
+                        var row = 0
+                        for subject in filled{
+                            var column = 0
+                            for point in subject{
+                                Find_Any_Available_Brown_Right_Downwards_Tri_Change_Filled(row: row, column: column)
+                                Check_and_Erase_Return_Bool()
+                                filled = previous_filled
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                    line_can_erased_by_shape[10] = true
+                                    
+                                    break
+                                    //restore filled
+                                    
+                                }
+                                column += 1
+                            }
+                            row += 1
+                        }
+                        
+                    }
+
+                    
+                    
+                    
+
+                }
+                
+                
+            }
+            i += 1
+        }
+        
+        
+    }
     
+    //any line can be potentially erase
+    func potentially_erased_line() -> Bool{
+        for element in line_can_erased_by_shape{
+            if(element){
+                return true
+            }
+            
+        }
+        
+       return false
+        
+    }
     
     //auto generate three tris when previous are all fit in
     func auto_random_generator() -> Void {
         var number_of_dark_tri = 0
         Check_for_Placable_Shape_And_Generate()
+        shape_to_erase_line()
         var position_index = 0
         var end_loop = false
         var random_shape_index = 0
-        while(!end_loop){
+        let bool_any_potentially_erased_line = potentially_erased_line()
+        
+        if(bool_any_potentially_erased_line){
+            print("a shape can erase a line")
+            while(!end_loop){
+                position_index = Int(arc4random_uniform(UInt32(3)))
+                random_shape_index = randomShape_for_Difficulty_Level ()
+                //need rewrite later
+                if(line_can_erased_by_shape[random_shape_index]){
+                    end_loop = true
+                }
+        }
+        }
+        else{
+            print("no shape can erase a line")
+            while(!end_loop){
             position_index = Int(arc4random_uniform(UInt32(3)))
             random_shape_index = randomShape_for_Difficulty_Level ()
             //need rewrite later
             if(shape_placable_array[random_shape_index]){
                 end_loop = true
             }
+        }
         }
         if(random_shape_index == 5){
             number_of_dark_tri += 1
@@ -7850,7 +8022,8 @@ number_of_lines_erased += 1
     var purple_upwards_result = false
     var purple_downwards_result = false
     var shape_placable_array : Array<Bool> = [false, false, false, false, false,false,false,false,false, false, false]
-    
+    var line_can_erased_by_shape : Array<Bool> = [false, false, false, false, false,false,false,false,false, false, false]
+
     //the funciton to find available space and autogenerate
     func Check_for_Placable_Shape_And_Generate () -> Void {
          green_result = false
@@ -8830,6 +9003,943 @@ number_of_lines_erased += 1
     }
     
     
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //function to find availabe tri and change filled
+    func Find_Any_Available_Green_Tri_Change_Filled(row: Int, column: Int) -> Void {
+        //upper row
+        if(row == 0 || row == 1 || row == 2){
+            //upwards tri (pos0 or pos2)
+            if(column % 2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row][column+2] = true
+                    return
+                }
+                if(column != 0 && !filled[row][column-2] && !filled[row][column-1] && !filled[row][column]){
+                    filled[row][column-2] = true
+                    filled[row][column-1] = true
+                    filled[row][column] = true
+                    return
+                }
+            }
+                //downwards tri (pos1)
+            else{
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row][column+1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column+1] = true
+                    return
+                }
+                
+            }
+            
+            
+            
+        }
+        else if(row == 3 || row == 4 || row == 5    ){
+            //upwards tri (pos0 and pos2)
+            if(column % 2 != 0){
+                if(column != 1 && !filled[row][column-2] && !filled[row][column-1] && !filled[row][column]){
+                   filled[row][column-2]  = true
+                   filled[row][column-1] = true
+                   filled[row][column] = true
+                    return
+                }
+                else if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row][column+2] = true
+                    return
+                }
+            }
+            
+            
+            
+        }
+        
+
+        
+        
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    func Find_Any_Available_Orange_Tri_Change_Filled (row: Int, column:Int) -> Void{
+        if(row == 0 || row == 1){
+            //upwards tri
+            if(column % 2 == 0){
+                if(!filled[row][column] && !filled[row+1][column+1]){
+                    filled[row][column] = true
+                    filled[row+1][column+1] = true
+                    return
+                }
+            }
+                //downwards tri
+            else{
+                if(row == 1 && !filled[row][column] && !filled[row-1][column-1]){
+                    filled[row][column] = true
+                    filled[row-1][column-1] = true
+                    return
+                }
+            }
+            
+        }
+            
+        else if(row == 2){
+            //upwards tri
+            if(column%2 == 0){
+                if(!filled[row][column] && !filled[row+1][column]){
+                    filled[row][column] = true
+                    filled[row+1][column] = true
+                    return
+                }
+            }
+                //downwards tri
+            else{
+                if(!filled[row][column] && !filled[row-1][column-1]){
+                    filled[row][column] = true
+                    filled[row-1][column-1] = true
+                    return
+                }
+                
+            }
+        }
+        else if(row == 3){
+            //downwards tri
+            if(column%2 == 0){
+                if(!filled[row][column] && !filled[row-1][column]){
+                    filled[row][column] = true
+                    filled[row-1][column] = true
+                    return
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column] && !filled[row+1][column-1]){
+                    filled[row][column] = true
+                    filled[row+1][column-1] = true
+                    return
+                }
+                
+            }
+        }
+        else if(row == 4 || row == 5){
+            //downwards tri
+            if(column%2 == 0){
+                if(!filled[row][column] && !filled[row-1][column+1]){
+                    filled[row][column] = true
+                    filled[row-1][column+1] = true
+                    return
+                }
+            }
+                //upwards tri
+            else{
+                if(row == 4 && !filled[row][column] && !filled[row+1][column-1]){
+                    filled[row][column] = true
+                    filled[row+1][column-1] = true
+                    return
+                }
+                
+                
+            }
+        }
+
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    func Find_Any_Available_Light_Brown_Tri_Change_Filled (row: Int, column:Int) -> Void{
+        if(row == 0){
+            //upwards tri
+            if(column%2 == 0 && !filled[row][column] && !filled[row+1][column] && !filled[row+1][column+1]){
+                filled[row][column] = true
+                filled[row+1][column] = true
+                filled[row+1][column+1] = true
+                return
+            }
+        }
+        else if(row == 1){
+            //upwards tri
+            if(column%2 == 0){
+                if(!filled[row][column] && !filled[row+1][column] && !filled[row+1][column+1]){
+                    filled[row][column] = true
+                    filled[row+1][column] = true
+                    filled[row+1][column+1] = true
+                    return
+                }
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row-1][column]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column] = true
+                    
+                    return
+                }
+            }
+                //downwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row-1][column-1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row-1][column-1] = true
+                    return
+                }
+            }
+        }
+        else if(row == 2){
+            //upwards tri
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row-1][column]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column] = true
+                    return
+                }
+                if(column != 0 && !filled[row][column] && !filled[row+1][column] && !filled[row+1][column-1]){
+                   filled[row][column]  = true
+                   filled[row+1][column] = true
+                   filled[row+1][column-1] = true
+                    return
+                }
+            }
+                //downwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row-1][column-1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row-1][column-1] = true
+                    return
+                }
+            }
+        }
+            
+        else if(row == 3){
+            //downwards tri
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row-1][column]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row-1][column] = true
+                    return
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row-1][column+1]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column+1] = true
+                    return
+                }
+                if(column != 1 && !filled[row][column] && !filled[row+1][column-1] && !filled[row+1][column-2]){
+                    filled[row][column] = true
+                    filled[row+1][column-1] = true
+                    filled[row+1][column-2] = true
+                    return
+                }
+            }
+        }
+        else if(row == 4){
+            //downwards tri
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row-1][column+1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row-1][column+1] = true
+                    return
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row-1][column+2]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column+2] = true
+                    return
+                }
+                if(column != 1 && !filled[row][column] && !filled[row+1][column-1] && !filled[row+1][column-2]){
+                    filled[row][column] = true
+                    filled[row+1][column-1] = true
+                    filled[row+1][column-2] = true
+                    return
+                }
+            }
+        }
+        else if(row == 5 ){
+            //downwards tri
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row-1][column+1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row-1][column+1] = true
+                    return
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row-1][column+2]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column+2] = true
+                    return
+                }
+            }
+        }
+        
+        return
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    func Find_Any_Available_Brown_Left_Tri_Change_Filled (row: Int, column:Int) -> Void{
+        if(row == 0 || row == 1 || row == 2){
+            //upwards tri
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    return
+                }
+            }
+                //downwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column+1]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    return
+                }
+            }
+        }
+        else if(row == 3 || row == 4 || row == 5){
+            //downwards tri
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    return
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column-1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    return
+                }
+            }
+        }
+        
+
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    func Find_Any_Available_Brown_Downwards_Tri_Change_Filled (row: Int, column:Int) -> Void{
+        if(row == 0 || row == 1 || row == 2){
+            //upwards tri
+            if(column%2 == 0){
+                if(column != 0 && column != filled[row].count-1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column+1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column+1] = true
+                    return
+                }
+            }
+                //downwards tri
+            else{
+                if(column != 1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column-2] = true
+                    return
+                }
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row][column+2] = true
+                    return
+                }
+            }
+        }
+        else if(row == 3 || row == 4 || row == 5){
+            //downwards tri
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row][column+2] = true
+                    return
+                }
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column-2] = true
+                    return
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column-1] && !filled[row][column] && !filled[row][column+1]){
+                    filled[row][column-1] = true
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    return
+                }
+            }
+        }
+    
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    func Find_Any_Dark_Green_Tri_Change_Filled (row: Int, column:Int) -> Void{
+        
+        if(row == 0){
+            //upwards tri
+            if(column%2 == 0){
+                
+                //left to right
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column+1] && !filled[row+1][column+2] && !filled[row+1][column+3]){
+                    filled[row][column] = true
+                    filled[row][column+2] = true
+                    filled[row+1][column+1] = true
+                    filled[row+1][column+2] = true
+                    filled[row+1][column+3] = true
+                    return
+                }
+                //right to left
+                if(column != 0 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column] && !filled[row+1][column-1] && !filled[row+1][column+1]){
+                    filled[row][column] = true
+                    filled[row][column-2] = true
+                    filled[row+1][column] = true
+                    filled[row+1][column-1] = true
+                    filled[row+1][column+1] = true
+                    return
+                }
+                //center not possible
+                
+            }
+                //downwards tri not possible
+         
+        }
+        else if(row == 1){
+            //upwards tri
+            if(column%2 == 0){
+                //left to right
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column+1] && !filled[row+1][column+2] && !filled[row+1][column+3]){
+                    return
+                }
+                //right to left
+                if(column != 0 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column] && !filled[row+1][column-1] && !filled[row+1][column+1]){
+                    return
+                }
+                //as center
+                if(column != 0 && column != filled[row].count-1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column-2] && !filled[row-1][column]){
+                    return
+                }
+            }
+                //downwards tri
+            else{
+                //bottom left to right
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2] && !filled[row-1][column-1] && !filled[row-1][column+1]){
+                    return
+                }
+                //bottom right to left
+                if(column != 1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column-1] && !filled[row-1][column-3]){
+                    return
+                }
+            }
+        }
+            
+        else if(row == 2){
+            //upwards tri
+            if(column%2 == 0){
+                //left to right
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column] && !filled[row+1][column+1] && !filled[row+1][column+2] ){
+                    return
+                }
+                //right to left
+                if(column != 0 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column] && !filled[row+1][column-1] && !filled[row+1][column-2]){
+                    return
+                }
+                //as center
+                if(column != 0 && column != filled[row].count-1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column-2] && !filled[row-1][column]){
+                    return
+                }
+            }
+                //downwards tri
+            else{
+                //bottom left to right
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2]  && !filled[row-1][column-1] && !filled[row-1][column+1]){
+                    return
+                }
+                //bottom right to left
+                if(column != 1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column-1] && !filled[row-1][column-3]){
+                    return
+                }
+                
+            }
+        }
+        else if(row == 3){
+            //downwards tri
+            if(column%2 == 0){
+                //bottom left to right
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2] && !filled[row-1][column] && !filled[row-1][column+2]){
+                    return
+                }
+                //bottom right to left
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column] && !filled[row-1][column-2]){
+                    return
+                }
+            }
+                //upwards tri
+            else{
+                //left to right
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column-1] && !filled[row+1][column] && !filled[row+1][column+1]){
+                    return
+                }
+                //right to left
+                if(column != 1 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column-1] && !filled[row+1][column-2] && !filled[row+1][column-3]){
+                    return
+                }
+                //as center
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column-1] && !filled[row-1][column+1]){
+                    return
+                }
+            }
+        }
+        else if(row == 4){
+            //downwards tri
+            if(column%2 == 0){
+                //bottom left to right
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2] && !filled[row-1][column+1] && !filled[row-1][column+3]){
+                    return
+                }
+                //bottom right to left
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column-1] && !filled[row-1][column+1]){
+                    return
+                }
+            }
+                //upwards tri
+            else{
+                //left to right
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column-1] && !filled[row+1][column] && !filled[row+1][column+1]){
+                    return
+                }
+                //right to left
+                if(column != 1 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column-1] && !filled[row+1][column-2] && !filled[row+1][column-3]){
+                    return
+                }
+                //as center
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column] && !filled[row-1][column+2]){
+                    return
+                }
+                
+            }
+        }
+        else if(row == 5){
+            //downwards tri
+            if(column%2 == 0){
+                //bottom left to right
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2] && !filled[row-1][column+1] && !filled[row-1][column+3]){
+                    return
+                }
+                //bottom right to left
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column-1] && !filled[row-1][column+1]){
+                    return
+                }
+                
+            }
+                //upwards tri
+            else{
+                //left to right & right to left not possible
+                //as center
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column] && !filled[row-1][column+2]){
+                    return
+                }
+                
+            }
+        }
+        return
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    func Find_Any_Pink_Right_Tri_Change_Filled (row: Int, column:Int) -> Void{
+        if(row == 0 || row == 1 || row == 2){
+            //upwards tri
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] ){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    return
+                }
+            }//downwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column-1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    return
+                }
+            }
+        }else if( row == 3 || row == 4 || row == 5 ){
+            //downwards tri
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    return
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column+1]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    return
+                }
+            }
+        }
+        
+        return
+        
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    func Find_Any_Purple_Upwards_Tri_Change_Filled (row: Int, column:Int) -> Void{
+        if(row == 0 || row == 1 || row == 2){
+            //upwards tri
+            if(column%2 == 0 && !filled[row][column]){
+                filled[row][column] = true
+                return
+            }
+        }else if(row == 3 || row == 4 || row == 5){
+            //upwards tri
+            if(column%2 != 0 && !filled[row][column]){
+                filled[row][column] = true
+                return
+            }
+        }
+        
+        
+        return
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    func Find_Any_Purple_Downwards_Tri_Change_Filled (row: Int, column:Int) -> Void{
+        if(row == 0 || row == 1 || row == 2){
+            //downwards
+            if(column%2 != 0 && !filled[row][column]){
+                filled[row][column] = true
+                return
+            }
+            
+        }else if(row == 3 || row == 4 || row == 5 ){
+            if(column%2 == 0 && !filled[row][column]){
+                filled[row][column] = true
+                return
+            }
+        }
+        
+        return
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    func Find_Any_Available_Brown_Left_Downwards_Tri_Change_Filled (row: Int, column:Int) -> Void{
+        if(row == 0){
+            //upwards tri
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row+1][column+1]){
+                    
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column+1] = true
+                    return
+                }
+            }else{
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row+1][column]){
+                    filled[row][column]  = true
+                    filled[row][column-1] = true
+                    filled[row+1][column] = true
+                    return
+                }
+            }
+        }
+        else if (row == 1){
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row+1][column+1]){
+                    filled[row][column] = true
+                    filled[row][column+1]  = true
+                    filled[row+1][column+1] = true
+                    return
+                }
+            }else{
+                //up to down
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row+1][column]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column] = true
+                    return
+                }
+                //down to up
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row-1][column-1] && !filled[row-1][column]){
+                    filled[row][column] = true
+                    filled[row-1][column-1]  = true
+                    filled[row-1][column] = true
+                    return
+                }
+                
+                
+            }
+        }
+        else if (row == 2){
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row+1][column]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column] = true
+                    return
+                }
+            }else{
+                //up to down
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row+1][column-1]){
+                    filled[row][column] = true
+
+                    filled[row][column-1] = true
+
+                    filled[row+1][column-1] = true
+                    
+                    return
+                }
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row-1][column-1] && !filled[row-1][column]){
+                     filled[row][column] = true
+                    filled[row-1][column-1] = true
+                     filled[row-1][column] = true
+                    return
+                }
+                
+            }
+            
+            
+        }
+        else if (row == 3){
+            //downwards tri
+            if(column%2 == 0){
+                //up to down
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row+1][column-2]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column-2] = true
+                    return
+                }
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row-1][column] && !filled[row-1][column+1]){
+                    filled[row][column] = true
+                    filled[row-1][column] = true
+                    filled[row-1][column+1] = true
+                    return
+                }
+            }else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row+1][column-1]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column-1] = true
+                    return
+                }
+                
+            }
+        }
+        else if (row == 4){
+            if(column%2 == 0){
+                //up to down
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row+1][column-2]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column-2] = true
+                    return
+                }
+                if(!filled[row][column] && !filled[row-1][column+1] && !filled[row-1][column+2]){
+                    filled[row][column] = true
+                    filled[row-1][column+1] = true
+                    filled[row-1][column+2] = true
+                    return
+                }
+                
+                
+            }else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row+1][column-1]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column-1] = true
+                    
+                    return
+                }
+                
+            }
+            
+            
+        }
+        else if (row == 5){
+            if(column%2 == 0 ){
+                if(!filled[row][column] && !filled[row-1][column+1] && !filled[row-1][column+2]){
+                    filled[row][column] = true
+                    filled[row-1][column+1] = true
+                    filled[row-1][column+2] = true
+                    
+                    return
+                }
+            }
+        }
+        return
+    }
+    
+    
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    func Find_Any_Available_Brown_Right_Downwards_Tri_Change_Filled (row: Int, column:Int) -> Void{
+        if(row == 0){
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row+1][column+1]){
+                    filled[row][column] = true
+                    filled[row][column-1]  = true
+                    filled[row+1][column+1] = true
+                    return
+                }
+            }else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row+1][column+2]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column+2] = true
+                    return
+                }
+            }
+        }
+        else if (row == 1){
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row+1][column+1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column+1] = true
+                    return
+                }
+            }else{
+                //up to down
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row+1][column+2]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column+2] = true
+                    return
+                }
+                if(column != 1 && !filled[row][column] && !filled[row-1][column-2] && !filled[row-1][column-1]){
+                    filled[row][column] = true
+                    filled[row-1][column-2] = true
+                    filled[row-1][column-1] = true
+                    return
+                }
+                
+            }
+        }
+        else if(row == 2){
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row+1][column]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column] = true
+                    return
+                }
+            }else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row+1][column+1]){
+                    filled[row][column] = true
+                    filled[row][column+1]  = true
+                    filled[row+1][column+1] = true
+                    
+                    return
+                }
+                if(column != 1 && !filled[row][column] && !filled[row-1][column-2] && !filled[row-1][column-1]){
+                    filled[row][column]  = true
+                    filled[row-1][column-2] = true
+                    filled[row-1][column-1] = true
+                    return
+                }
+            }
+        }
+        else if(row == 3){
+            //downwards tri
+            if(column%2 == 0){
+                //up to down
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row+1][column]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column] = true
+                    return
+                }
+                //down to up
+                if(column != 0 && !filled[row][column] && !filled[row-1][column-1] && !filled[row-1][column]){
+                    filled[row][column] = true
+                    filled[row-1][column-1] = true
+                    filled[row-1][column] = true
+                    return
+                }
+            }else{
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row+1][column-1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column-1] = true
+                    return
+                }
+            }
+            
+        }
+        else if(row == 4){
+            //upwards
+            if(column%2 == 0){
+                //up to down
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row+1][column]){
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column] = true
+                    return
+                }
+                //down to up
+                if(!filled[row][column] && !filled[row-1][column] && !filled[row-1][column+1]){
+                    filled[row][column] = true
+                    filled[row-1][column] = true
+                    filled[row-1][column+1] = true
+                    return
+                }
+                
+            }else{
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row+1][column-1]){
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column-1] = true
+                    return
+                }
+                
+            }
+        }
+        else if(row == 5){
+            //upwards
+            if(column%2 == 0){
+                //down to up
+                if(!filled[row][column] && !filled[row-1][column] && !filled[row-1][column+1]){
+                    filled[row][column] = true
+                    filled[row-1][column] = true
+                    filled[row-1][column+1] = true
+                    return
+                }
+            }
+            
+            
+        }
+        
+        
+        
+        
+        
+        return
+    }
+    
+
     
     
     
