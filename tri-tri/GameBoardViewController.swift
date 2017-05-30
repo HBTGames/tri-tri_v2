@@ -953,8 +953,6 @@ class GameBoardViewController: UIViewController {
             self.pause.setImage(UIImage(named: "school_pause-button"), for: .normal)
 
             self.triangle_title.image = UIImage(named:"school_triangle_title")
-
-            self.triangle_title.image = UIImage(named:"night mode triangle title")
              starBoard.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
         }else if ThemeType == 6{
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
