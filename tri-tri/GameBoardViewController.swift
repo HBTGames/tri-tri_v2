@@ -180,6 +180,7 @@ class GameBoardViewController: UIViewController {
     //variables about starboard
     @IBOutlet weak var triangle_title: UIImageView!
     
+    @IBOutlet weak var star_bg: UIImageView!
     @IBOutlet weak var starBoard: UILabel!
     var star_score = 0
     
@@ -972,13 +973,13 @@ class GameBoardViewController: UIViewController {
         change_shape_in_generate_array()
         change_current_shapes_according_to_theme()
         
-        
+        reorder_triangle_positions_during_loading_view()
         //update tris origin
 
         //center.frame.height
         
         //third row
-        tri_2_5.frame.origin.y = screen_height/2 - 21 - (tri_2_5.frame.height/2)
+        /*tri_2_5.frame.origin.y = screen_height/2 - 21 - (tri_2_5.frame.height/2)
         tri_2_5.frame.origin.x = (screen_width/2) - (tri_2_5.frame.width/2)
         tri_2_4.frame.origin.y = tri_2_5.frame.origin.y
         tri_2_4.frame.origin.x = tri_2_5.frame.origin.x - 26
@@ -1032,6 +1033,7 @@ class GameBoardViewController: UIViewController {
         tri_0_1.frame.origin.x = tri_0_2.frame.origin.x - 26
         tri_0_0.frame.origin.y = tri_0_3.frame.origin.y
         tri_0_0.frame.origin.x = tri_0_1.frame.origin.x - 26
+        
         tri_0_4.frame.origin.y = tri_0_3.frame.origin.y
         tri_0_4.frame.origin.x = tri_0_3.frame.origin.x + 26
         tri_0_5.frame.origin.y = tri_0_3.frame.origin.y
@@ -1095,10 +1097,7 @@ class GameBoardViewController: UIViewController {
         tri_5_5.frame.origin.y = tri_4_4.frame.origin.y + 43
         tri_5_5.frame.origin.x = tri_5_4.frame.origin.x + 26
         tri_5_6.frame.origin.y = tri_4_4.frame.origin.y + 43
-        tri_5_6.frame.origin.x = tri_5_5.frame.origin.x + 26
-
-        
-        
+        tri_5_6.frame.origin.x = tri_5_5.frame.origin.x + 26*/
         
         //set CGPoint value of all grey tringles
         
@@ -1256,8 +1255,251 @@ class GameBoardViewController: UIViewController {
         
     }
     
-    
+    func reorder_triangle_positions_during_loading_view() -> Void{
+        
+        pause.frame = CGRect(x: pause_screen_x_transform(312) , y: pause_screen_y_transform(144) , width: pause_screen_x_transform(47), height: pause_screen_y_transform(47))
+        print(pause.frame.origin.x)
+        print(pause.frame.origin.y)
+        
+        star_bg.frame = CGRect(x: pause_screen_x_transform(16) , y: pause_screen_y_transform(68) , width: pause_screen_x_transform(97), height: pause_screen_y_transform(41))
+        
+        starBoard.frame = CGRect(x: pause_screen_x_transform(47) , y: pause_screen_y_transform(74) , width: pause_screen_x_transform(82), height: pause_screen_y_transform(27))
+        
+        MarkBoard.frame = CGRect(x: pause_screen_x_transform(27) , y: pause_screen_y_transform(142) , width: pause_screen_x_transform(133), height: pause_screen_y_transform(41))
+        
+        multiple_marker.frame = CGRect(x: pause_screen_x_transform(90) , y: pause_screen_y_transform(90) , width: pause_screen_x_transform(200), height: pause_screen_y_transform(21))
 
+        trophy.frame = CGRect(x: pause_screen_x_transform(123) , y: pause_screen_y_transform(152) , width: pause_screen_x_transform(43), height: pause_screen_y_transform(31))
+        
+        HightestScoreBoard.frame = CGRect(x: pause_screen_x_transform(174) , y: pause_screen_y_transform(148) , width: pause_screen_x_transform(123), height: pause_screen_y_transform(37))
+        
+
+        
+
+        
+        
+        
+        
+        
+        
+        //set all triangle positions
+        tri_0_0.frame = CGRect(x: pause_screen_x_transform(85), y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_0_0_back.frame = CGRect(x: pause_screen_x_transform(85) , y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_0_0)
+        self.view.sendSubview(toBack: tri_0_0_back)
+        tri_0_1.frame = CGRect(x: pause_screen_x_transform(111), y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_0_1_back.frame = CGRect(x: pause_screen_x_transform(111) , y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_0_1)
+        self.view.sendSubview(toBack: tri_0_1_back)
+        tri_0_2.frame = CGRect(x: pause_screen_x_transform(137), y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_0_2_back.frame = CGRect(x: pause_screen_x_transform(137) , y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_0_2)
+        self.view.sendSubview(toBack: tri_0_2_back)
+        tri_0_3.frame = CGRect(x: pause_screen_x_transform(163), y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_0_3_back.frame = CGRect(x: pause_screen_x_transform(163) , y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_0_3)
+        self.view.sendSubview(toBack: tri_0_3_back)
+        tri_0_4.frame = CGRect(x: pause_screen_x_transform(189), y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_0_4_back.frame = CGRect(x: pause_screen_x_transform(189) , y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_0_4)
+        self.view.sendSubview(toBack: tri_0_4_back)
+        tri_0_5.frame = CGRect(x: pause_screen_x_transform(215), y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_0_5_back.frame = CGRect(x: pause_screen_x_transform(215) , y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_0_5)
+        self.view.sendSubview(toBack: tri_0_5_back)
+        tri_0_6.frame = CGRect(x: pause_screen_x_transform(241), y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_0_6_back.frame = CGRect(x: pause_screen_x_transform(241) , y: pause_screen_y_transform(205) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_0_6)
+        self.view.sendSubview(toBack: tri_0_6_back)
+        tri_1_0.frame = CGRect(x: pause_screen_x_transform(59) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_1_0_back.frame = CGRect(x: pause_screen_x_transform(59) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_1_0)
+        self.view.sendSubview(toBack: tri_1_0_back)
+        tri_1_1.frame = CGRect(x: pause_screen_x_transform(85) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_1_1_back.frame = CGRect(x: pause_screen_x_transform(85) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_1_1)
+        self.view.sendSubview(toBack: tri_1_1_back)
+        tri_1_2.frame = CGRect(x: pause_screen_x_transform(111) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_1_2_back.frame = CGRect(x: pause_screen_x_transform(111) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_1_2)
+        self.view.sendSubview(toBack: tri_1_2_back)
+        tri_1_3.frame = CGRect(x: pause_screen_x_transform(137) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_1_3_back.frame = CGRect(x: pause_screen_x_transform(137) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_1_3)
+        self.view.sendSubview(toBack: tri_1_3_back)
+        tri_1_4.frame = CGRect(x: pause_screen_x_transform(163) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_1_4_back.frame = CGRect(x: pause_screen_x_transform(163) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_1_4)
+        self.view.sendSubview(toBack: tri_1_4_back)
+        tri_1_5.frame = CGRect(x: pause_screen_x_transform(189) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_1_5_back.frame = CGRect(x: pause_screen_x_transform(189) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_1_5)
+        self.view.sendSubview(toBack: tri_1_5_back)
+        tri_1_6.frame = CGRect(x: pause_screen_x_transform(215) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_1_6_back.frame = CGRect(x: pause_screen_x_transform(215) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_1_6)
+        self.view.sendSubview(toBack: tri_1_6_back)
+        tri_1_7.frame = CGRect(x: pause_screen_x_transform(241) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_1_7_back.frame = CGRect(x: pause_screen_x_transform(241) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_1_7)
+        self.view.sendSubview(toBack: tri_1_7_back)
+        tri_1_8.frame = CGRect(x: pause_screen_x_transform(267) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_1_8_back.frame = CGRect(x: pause_screen_x_transform(267) , y: pause_screen_y_transform(249) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_1_8)
+        self.view.sendSubview(toBack: tri_1_8_back)
+        tri_2_0.frame = CGRect(x: pause_screen_x_transform(33) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_2_0_back.frame = CGRect(x: pause_screen_x_transform(33) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_2_0)
+        self.view.sendSubview(toBack: tri_2_0_back)
+        tri_2_1.frame = CGRect(x: pause_screen_x_transform(59) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_2_1_back.frame = CGRect(x: pause_screen_x_transform(59) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_2_1)
+        self.view.sendSubview(toBack: tri_2_1_back)
+        tri_2_2.frame = CGRect(x: pause_screen_x_transform(85) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_2_2_back.frame = CGRect(x: pause_screen_x_transform(85) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_2_2)
+        self.view.sendSubview(toBack: tri_2_2_back)
+        tri_2_3.frame = CGRect(x: pause_screen_x_transform(111) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_2_3_back.frame = CGRect(x: pause_screen_x_transform(111) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_2_3)
+        self.view.sendSubview(toBack: tri_2_3_back)
+        tri_2_4.frame = CGRect(x: pause_screen_x_transform(137) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_2_4_back.frame = CGRect(x: pause_screen_x_transform(137) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_2_4)
+        self.view.sendSubview(toBack: tri_2_4_back)
+        tri_2_5.frame = CGRect(x: pause_screen_x_transform(163) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_2_5_back.frame = CGRect(x: pause_screen_x_transform(163) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_2_5)
+        self.view.sendSubview(toBack: tri_2_5_back)
+        tri_2_6.frame = CGRect(x: pause_screen_x_transform(189) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_2_6_back.frame = CGRect(x: pause_screen_x_transform(189) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_2_6)
+        self.view.sendSubview(toBack: tri_2_6_back)
+        tri_2_7.frame = CGRect(x: pause_screen_x_transform(215) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_2_7_back.frame = CGRect(x: pause_screen_x_transform(215) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_2_7)
+        self.view.sendSubview(toBack: tri_2_7_back)
+        tri_2_8.frame = CGRect(x: pause_screen_x_transform(241) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_2_8_back.frame = CGRect(x: pause_screen_x_transform(241) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_2_8)
+        self.view.sendSubview(toBack: tri_2_8_back)
+        tri_2_9.frame = CGRect(x: pause_screen_x_transform(267) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_2_9_back.frame = CGRect(x: pause_screen_x_transform(267) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_2_9)
+        self.view.sendSubview(toBack: tri_2_9_back)
+        tri_2_10.frame = CGRect(x: pause_screen_x_transform(293) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_2_10_back.frame = CGRect(x: pause_screen_x_transform(293) , y: pause_screen_y_transform(293) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_2_10)
+        self.view.sendSubview(toBack: tri_2_10_back)
+        tri_3_0.frame = CGRect(x: pause_screen_x_transform(33) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_3_0_back.frame = CGRect(x: pause_screen_x_transform(33) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_3_0)
+        self.view.sendSubview(toBack: tri_3_0_back)
+        tri_3_1.frame = CGRect(x: pause_screen_x_transform(59) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_3_1_back.frame = CGRect(x: pause_screen_x_transform(59) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_3_1)
+        self.view.sendSubview(toBack: tri_3_1_back)
+        tri_3_2.frame = CGRect(x: pause_screen_x_transform(85) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_3_2_back.frame = CGRect(x: pause_screen_x_transform(85) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_3_2)
+        self.view.sendSubview(toBack: tri_3_2_back)
+        tri_3_3.frame = CGRect(x: pause_screen_x_transform(111) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_3_3_back.frame = CGRect(x: pause_screen_x_transform(111) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_3_3)
+        self.view.sendSubview(toBack: tri_3_3_back)
+        tri_3_4.frame = CGRect(x: pause_screen_x_transform(137) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_3_4_back.frame = CGRect(x: pause_screen_x_transform(137) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_3_4)
+        self.view.sendSubview(toBack: tri_3_4_back)
+        tri_3_5.frame = CGRect(x: pause_screen_x_transform(163) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_3_5_back.frame = CGRect(x: pause_screen_x_transform(163) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_3_5)
+        self.view.sendSubview(toBack: tri_3_5_back)
+        tri_3_6.frame = CGRect(x: pause_screen_x_transform(189) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_3_6_back.frame = CGRect(x: pause_screen_x_transform(189) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_3_6)
+        self.view.sendSubview(toBack: tri_3_6_back)
+        tri_3_7.frame = CGRect(x: pause_screen_x_transform(215) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_3_7_back.frame = CGRect(x: pause_screen_x_transform(215) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_3_7)
+        self.view.sendSubview(toBack: tri_3_7_back)
+        tri_3_8.frame = CGRect(x: pause_screen_x_transform(241) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_3_8_back.frame = CGRect(x: pause_screen_x_transform(241) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_3_8)
+        self.view.sendSubview(toBack: tri_3_8_back)
+        tri_3_9.frame = CGRect(x: pause_screen_x_transform(267) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_3_9_back.frame = CGRect(x: pause_screen_x_transform(267) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_3_9)
+        self.view.sendSubview(toBack: tri_3_9_back)
+        tri_3_10.frame = CGRect(x: pause_screen_x_transform(293) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_3_10_back.frame = CGRect(x: pause_screen_x_transform(293) , y: pause_screen_y_transform(337) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_3_10)
+        self.view.sendSubview(toBack: tri_3_10_back)
+        tri_4_0.frame = CGRect(x: pause_screen_x_transform(59) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_4_0_back.frame = CGRect(x: pause_screen_x_transform(59) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_4_0)
+        self.view.sendSubview(toBack: tri_4_0_back)
+        tri_4_1.frame = CGRect(x: pause_screen_x_transform(85) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_4_1_back.frame = CGRect(x: pause_screen_x_transform(85) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_4_1)
+        self.view.sendSubview(toBack: tri_4_1_back)
+        tri_4_2.frame = CGRect(x: pause_screen_x_transform(111) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_4_2_back.frame = CGRect(x: pause_screen_x_transform(111) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_4_2)
+        self.view.sendSubview(toBack: tri_4_2_back)
+        tri_4_3.frame = CGRect(x: pause_screen_x_transform(137) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_4_3_back.frame = CGRect(x: pause_screen_x_transform(137) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_4_3)
+        self.view.sendSubview(toBack: tri_4_3_back)
+        tri_4_4.frame = CGRect(x: pause_screen_x_transform(163) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_4_4_back.frame = CGRect(x: pause_screen_x_transform(163) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_4_4)
+        self.view.sendSubview(toBack: tri_4_4_back)
+        tri_4_5.frame = CGRect(x: pause_screen_x_transform(189) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_4_5_back.frame = CGRect(x: pause_screen_x_transform(189) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_4_5)
+        self.view.sendSubview(toBack: tri_4_5_back)
+        tri_4_6.frame = CGRect(x: pause_screen_x_transform(215) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_4_6_back.frame = CGRect(x: pause_screen_x_transform(215) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_4_6)
+        self.view.sendSubview(toBack: tri_4_6_back)
+        tri_4_7.frame = CGRect(x: pause_screen_x_transform(241) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_4_7_back.frame = CGRect(x: pause_screen_x_transform(241) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_4_7)
+        self.view.sendSubview(toBack: tri_4_7_back)
+        tri_4_8.frame = CGRect(x: pause_screen_x_transform(267) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_4_8_back.frame = CGRect(x: pause_screen_x_transform(267) , y: pause_screen_y_transform(381) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_4_8)
+        self.view.sendSubview(toBack: tri_4_8_back)
+        tri_5_0.frame = CGRect(x: pause_screen_x_transform(85) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_5_0_back.frame = CGRect(x: pause_screen_x_transform(85) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_5_0)
+        self.view.sendSubview(toBack: tri_5_0_back)
+        tri_5_1.frame = CGRect(x: pause_screen_x_transform(111) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_5_1_back.frame = CGRect(x: pause_screen_x_transform(111) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_5_1)
+        self.view.sendSubview(toBack: tri_5_1_back)
+        tri_5_2.frame = CGRect(x: pause_screen_x_transform(137) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_5_2_back.frame = CGRect(x: pause_screen_x_transform(137) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_5_2)
+        self.view.sendSubview(toBack: tri_5_2_back)
+        tri_5_3.frame = CGRect(x: pause_screen_x_transform(163) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_5_3_back.frame = CGRect(x: pause_screen_x_transform(163) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_5_3)
+        self.view.sendSubview(toBack: tri_5_3_back)
+        tri_5_4.frame = CGRect(x: pause_screen_x_transform(189) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_5_4_back.frame = CGRect(x: pause_screen_x_transform(189) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_5_4)
+        self.view.sendSubview(toBack: tri_5_4_back)
+        tri_5_5.frame = CGRect(x: pause_screen_x_transform(215) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_5_5_back.frame = CGRect(x: pause_screen_x_transform(215) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_5_5)
+        self.view.sendSubview(toBack: tri_5_5_back)
+        tri_5_6.frame = CGRect(x: pause_screen_x_transform(241) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        tri_5_6_back.frame = CGRect(x: pause_screen_x_transform(241) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+        self.view.sendSubview(toBack: tri_5_6)
+        self.view.sendSubview(toBack: tri_5_6_back)
+    }
     
     
     
