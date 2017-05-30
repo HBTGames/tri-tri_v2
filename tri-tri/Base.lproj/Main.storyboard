@@ -335,16 +335,6 @@
                                     <segue destination="qxD-t8-ioY" kind="presentation" modalTransitionStyle="crossDissolve" id="jOH-pV-lXR"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3GJ-KM-XwE">
-                                <rect key="frame" x="220" y="254" width="138" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="138" id="fXO-nQ-OHq"/>
-                                    <constraint firstAttribute="height" constant="40" id="vd0-ca-SoY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulY-n0-3X0">
                                 <rect key="frame" x="137" y="260" width="100" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -363,6 +353,13 @@
                                 <rect key="frame" x="50" y="131" width="275" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="         " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLK-G1-dsp">
+                                <rect key="frame" x="210" y="189" width="40" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration" label="gameover">
@@ -374,7 +371,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="High_score_marker" destination="3GJ-KM-XwE" id="bND-hJ-gaZ"/>
+                        <outlet property="High_score_marker" destination="aLK-G1-dsp" id="1gZ-io-QFp"/>
                         <outlet property="gameover_title" destination="cor-IV-WdS" id="TKf-7m-V8L"/>
                         <outlet property="home_button" destination="J3e-WT-fYS" id="VHJ-dC-ziF"/>
                         <outlet property="restart_button" destination="efL-Nx-AeG" id="gFk-Sd-rwD"/>
@@ -1236,7 +1233,7 @@
         <image name="棕色tri" width="104" height="93"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hkt-ax-Thn"/>
+        <segue reference="jOH-pV-lXR"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -141,8 +141,12 @@ class GameOverViewController: UIViewController {
         trophy.frame = CGRect(x: pause_screen_x_transform(Double(trophy.frame.origin.x)), y: pause_screen_y_transform(Double(trophy.frame.origin.y)), width: pause_screen_x_transform(Double(trophy.frame.width)), height: pause_screen_y_transform(Double(trophy.frame.height)))
         score_board.frame = CGRect(x: pause_screen_x_transform(Double(score_board.frame.origin.x)), y: pause_screen_y_transform(Double(score_board.frame.origin.y)), width: pause_screen_x_transform(Double(score_board.frame.width)), height: pause_screen_y_transform(Double(score_board.frame.height)))
 
+        High_score_marker.frame = CGRect(x: pause_screen_x_transform(Double(High_score_marker.frame.origin.x)), y: pause_screen_y_transform(Double(High_score_marker.frame.origin.y)), width: pause_screen_x_transform(Double(High_score_marker.frame.width)), height: pause_screen_y_transform(Double(High_score_marker.frame.height)))
+        
         restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
-    
+        
+       
+
         if (ThemeType == 1){
             home_button.setBackgroundImage(home_pic, for: .normal)
         } else if (ThemeType == 2){
