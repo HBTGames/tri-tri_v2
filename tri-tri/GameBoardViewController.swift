@@ -2640,8 +2640,8 @@ class GameBoardViewController: UIViewController {
                                     //orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
                                     auto_make_transparent()
                                     if(ThemeType == 1 || ThemeType == 2){
-                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: orange_up)
-                                    Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: orange_down)
+                                    Change_Corresponding_Color_With_Image(x:i, y:j, image: pink_up)
+                                    Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: pink_down)
                                     }else if(ThemeType == 3){
                                         Change_Corresponding_Color_With_Image(x:i, y:j, image: BW_black_up)
                                         Change_Corresponding_Color_With_Image(x:i+1, y:j+1, image: BW_black_down)
