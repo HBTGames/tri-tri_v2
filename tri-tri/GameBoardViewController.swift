@@ -1910,7 +1910,7 @@ class GameBoardViewController: UIViewController {
             self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
-            self.HightestScoreBoard.textColor = UIColor(red: 34.0/255, green: 61.0/255, blue: 128.0/255, alpha: 1.0)
+            self.HightestScoreBoard.textColor = UIColor(red: 255.0/255, green: 195.0/255, blue: 1.0/255, alpha: 1.0)
             self.MarkBoard.textColor = UIColor(red: 251.0/255, green: 250.0/255, blue: 249.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"colors_j-icon")
             self.pause.setImage(UIImage(named: "colors_pause-button"), for: .normal)
