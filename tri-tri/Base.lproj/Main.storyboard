@@ -1085,6 +1085,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="wheel_background" translatesAutoresizingMaskIntoConstraints="NO" id="eh0-Gu-lyV">
+                                <rect key="frame" x="1" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="wheel_text" translatesAutoresizingMaskIntoConstraints="NO" id="Ahs-vh-WqJ">
                                 <rect key="frame" x="1" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -1101,19 +1105,12 @@
                                 <rect key="frame" x="-1" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajX-lC-oGf">
-                                <rect key="frame" x="164" y="606" width="41" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="rotate"/>
-                                <connections>
-                                    <action selector="wheel_spin:" destination="NEE-e6-hOi" eventType="touchUpInside" id="gOJ-2f-GQe"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="wheel" destination="VAB-QK-96c" id="qZB-Rc-E42"/>
+                        <outlet property="wheel_background" destination="eh0-Gu-lyV" id="oqx-Gt-YK2"/>
                         <outlet property="wheel_outer" destination="4QJ-gm-Blo" id="hOr-sb-Mla"/>
                         <outlet property="wheel_pointer" destination="MbR-5M-jW5" id="YKV-Wm-gg0"/>
                         <outlet property="wheel_text" destination="Ahs-vh-WqJ" id="bz0-Me-oRF"/>
@@ -1148,6 +1145,7 @@
         <image name="shopping_cart" width="198" height="172"/>
         <image name="trophy_new" width="43" height="31"/>
         <image name="wheel" width="282" height="282"/>
+        <image name="wheel_background" width="375" height="667"/>
         <image name="wheel_outer" width="375" height="667"/>
         <image name="wheel_pointer" width="50" height="44"/>
         <image name="wheel_text" width="375" height="667"/>
