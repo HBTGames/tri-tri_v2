@@ -50,6 +50,7 @@ class DailyGiftViewController: UIViewController {
         screen_height = self.view.frame.height
         wheel_background.frame = self.view.frame
         wheel_background.image = #imageLiteral(resourceName: "wheel_background")
+        wheel_background.contentMode = .scaleAspectFill
          star_score = defaults.value(forKey: "tritri_star_score") as! NSInteger
         //view.backgroundColor = UIColor(patternImage: UIImage(named: "wheel_background.png")!)
         let cancel_button = MyButton(frame: CGRect(x: screen_x_transform(250), y: screen_y_transform(542), width: screen_x_transform(125), height: screen_y_transform(125)))
