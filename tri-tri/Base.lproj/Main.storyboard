@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -914,6 +914,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Io-Mm-rmb">
+                                <rect key="frame" x="175" y="57" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="lottie"/>
+                                <connections>
+                                    <action selector="lottie_test:" destination="qxD-t8-ioY" eventType="touchUpInside" id="Cmw-GQ-yEu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUf-e8-zg7">
+                                <rect key="frame" x="178" y="95" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="gift"/>
+                                <connections>
+                                    <segue destination="NEE-e6-hOi" kind="show" id="G8L-1L-BQl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1062,6 +1078,56 @@
             </objects>
             <point key="canvasLocation" x="0.80000000000000004" y="732.68365817091455"/>
         </scene>
+        <!--Daily Gift View Controller-->
+        <scene sceneID="Lat-xT-w57">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" id="NEE-e6-hOi" customClass="DailyGiftViewController" customModule="tri_tri" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CxG-SK-fas"/>
+                        <viewControllerLayoutGuide type="bottom" id="J3s-83-3yH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iP0-vw-n9s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="wheel_text" translatesAutoresizingMaskIntoConstraints="NO" id="Ahs-vh-WqJ">
+                                <rect key="frame" x="1" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="wheel" translatesAutoresizingMaskIntoConstraints="NO" id="VAB-QK-96c">
+                                <rect key="frame" x="45" y="207" width="282" height="282"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="wheel_pointer" translatesAutoresizingMaskIntoConstraints="NO" id="MbR-5M-jW5">
+                                <rect key="frame" x="161" y="186" width="50" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="wheel_outer" translatesAutoresizingMaskIntoConstraints="NO" id="4QJ-gm-Blo">
+                                <rect key="frame" x="-1" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajX-lC-oGf">
+                                <rect key="frame" x="164" y="606" width="41" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="rotate"/>
+                                <connections>
+                                    <action selector="wheel_spin:" destination="NEE-e6-hOi" eventType="touchUpInside" id="gOJ-2f-GQe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="wheel" destination="VAB-QK-96c" id="qZB-Rc-E42"/>
+                        <outlet property="wheel_outer" destination="4QJ-gm-Blo" id="hOr-sb-Mla"/>
+                        <outlet property="wheel_pointer" destination="MbR-5M-jW5" id="YKV-Wm-gg0"/>
+                        <outlet property="wheel_text" destination="Ahs-vh-WqJ" id="bz0-Me-oRF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xie-ts-n5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="880.79999999999995" y="732.68365817091455"/>
+        </scene>
     </scenes>
     <resources>
         <image name="B&amp;W_theme" width="177" height="177"/>
@@ -1086,10 +1152,14 @@
         <image name="return_button" width="23" height="29"/>
         <image name="shopping_cart" width="198" height="172"/>
         <image name="trophy_new" width="43" height="31"/>
+        <image name="wheel" width="282" height="282"/>
+        <image name="wheel_outer" width="375" height="667"/>
+        <image name="wheel_pointer" width="50" height="44"/>
+        <image name="wheel_text" width="375" height="667"/>
         <image name="棕色tri" width="104" height="93"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jOH-pV-lXR"/>
+        <segue reference="Hkt-ax-Thn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

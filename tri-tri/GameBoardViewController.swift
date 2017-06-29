@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import AVKit
 import UserNotifications
+import Lottie
 
 
 
@@ -684,6 +685,7 @@ class GameBoardViewController: UIViewController {
             self.action = action
             self.addTarget(self, action: #selector(MyButton.clicked), for: .touchUpInside)
         }
+        
         
         func clicked() {
             action?()
@@ -6549,7 +6551,7 @@ class GameBoardViewController: UIViewController {
             
         }
         if(filled[0][0]&&filled[1][1]&&filled[1][2]&&filled[2][3]&&filled[2][4]&&filled[3][4]&&filled[3][5]&&filled[4][4]&&filled[4][5]&&filled[5][4]&&filled[5][5]){
- situation8 = true
+            situation8 = true
             number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 8)
             reorder(loc: center_loc, index: 8)
@@ -8020,6 +8022,7 @@ number_of_lines_erased += 1
        return false
         
     }
+    
     
     //auto generate three tris when previous are all fit in
     func auto_random_generator() -> Void {
@@ -10664,6 +10667,12 @@ number_of_lines_erased += 1
 
         }, completion: {
             (finished) -> Void in
+            let crown_animation = LOTAnimationView(name: "star")!
+            crown_animation.frame = CGRect(x: self.pause_screen_x_transform(-40) , y: self.pause_screen_y_transform(0) , width: self.pause_screen_x_transform(220), height: self.pause_screen_y_transform(180))
+            crown_animation.contentMode = .scaleAspectFill
+            crown_animation.loopAnimation = false
+            self.view.addSubview(crown_animation)
+            crown_animation.play()
             self.moving_star.removeFromSuperview()
         })
         
@@ -11879,6 +11888,15 @@ number_of_lines_erased += 1
     func distance_generator( drag_location: CGPoint, triangle_location: CGPoint) -> Double {
         let temp_distance = (drag_location.x-triangle_location.x)*(drag_location.x-triangle_location.x)+(drag_location.y-triangle_location.y)*(drag_location.y-triangle_location.y)
         return Double(temp_distance)
+    }
+    @IBAction func lottie_test(_ sender: UIButton) {
+        let crown_animation = LOTAnimationView(name: "star")!
+        crown_animation.frame = CGRect(x: self.pause_screen_x_transform(-40) , y: self.pause_screen_y_transform(0) , width: self.pause_screen_x_transform(220), height: self.pause_screen_y_transform(180))
+        crown_animation.contentMode = .scaleAspectFill
+        crown_animation.loopAnimation = false
+        self.view.addSubview(crown_animation)
+        crown_animation.play()
+
     }
 }
 

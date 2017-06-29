@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517799173.96393"
+            timestampString = "520393291.345695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3206"
-            endingLineNumber = "3206"
+            startingLineNumber = "3208"
+            endingLineNumber = "3208"
             landmarkName = "Shape_fitting(Shape_Type:position:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517807311.90659"
+            timestampString = "520393291.345695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11349"
-            endingLineNumber = "11349"
-            landmarkName = "Duplicate_Tri_Animate(i:j:)"
+            startingLineNumber = "11357"
+            endingLineNumber = "11357"
+            landmarkName = "Shape_fitting_When_Dragging(Shape_Type:position:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "517807199.589739"
+            timestampString = "520393291.345695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "7510"
-            endingLineNumber = "7510"
-            landmarkName = "shape_to_erase_line()"
+            startingLineNumber = "7512"
+            endingLineNumber = "7512"
+            landmarkName = "Check_And_Erase_Fix_Filled()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
