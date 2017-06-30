@@ -318,7 +318,7 @@ class DailyGiftViewController: UIViewController {
         var valid_length = 0
             var i = 0
             //get valid length first
-            while(gesture_passing_area[i] != -1){
+            while(gesture_passing_area[i] != -1 && valid_length != gesture_passing_area.count){
                 //clockwise find the pattern of 0 -> 1 -> 2 -> 3 -> 4
                 i += 1
                 valid_length += 1
