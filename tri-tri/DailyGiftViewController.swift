@@ -308,6 +308,17 @@ class DailyGiftViewController: UIViewController {
         let final_position = CGPoint(x: spin_initial_point.x+final_translation.x, y: spin_initial_point.y+final_translation.y)
         print("inital point: x: \(spin_initial_point.x) y: \(spin_initial_point.y)")
         print("final point: x: \(final_position.x) y: \(final_position.y)")
+        
+        var valid_length = 0
+        var i = 0
+        //get valid length first
+        while(gesture_passing_area[i] != -1 && valid_length != gesture_passing_area.count){
+            //clockwise find the pattern of 0 -> 1 -> 2 -> 3 -> 4
+            i += 1
+            valid_length += 1
+        }
+        
+
         //left upper area
         if((spin_initial_point.x - wheel.frame.origin.x) < wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y < wheel.frame.height/2 ){
         let angle_init = atan((spin_initial_point.y - wheel_center.y)/(spin_initial_point.x - wheel_center.x))
@@ -315,16 +326,7 @@ class DailyGiftViewController: UIViewController {
         let degree_angle_init = Double(angle_init)*180/Double.pi
         let degree_angle_final = Double(angle_final)*180/Double.pi
         print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
-        var valid_length = 0
-            var i = 0
-            //get valid length first
-            while(gesture_passing_area[i] != -1 && valid_length != gesture_passing_area.count){
-                //clockwise find the pattern of 0 -> 1 -> 2 -> 3 -> 4
-                i += 1
-                valid_length += 1
-            }
-
-        //final_position in left upper boundary (same area)
+       //final_position in left upper boundary (same area)
        /** if((final_position.x - wheel.frame.origin.x) < wheel.frame.width/2 && final_position.y - wheel.frame.origin.y < wheel.frame.height/2 ){
             if(degree_angle_init > degree_angle_final){
                 return 1
@@ -398,15 +400,6 @@ class DailyGiftViewController: UIViewController {
             let degree_angle_init = Double(angle_init)*180/Double.pi
             let degree_angle_final = Double(angle_final)*180/Double.pi
             print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
-            var valid_length = 0
-            var i = 0
-            //get valid length first
-            while(gesture_passing_area[i] != -1){
-                //clockwise find the pattern of 0 -> 1 -> 2 -> 3 -> 4
-                i += 1
-                valid_length += 1
-            }
-            
             //use the last two area to get the direction
             //only one area
             if(valid_length == 1){
@@ -449,15 +442,6 @@ class DailyGiftViewController: UIViewController {
             let degree_angle_init = Double(angle_init)*180/Double.pi
             let degree_angle_final = Double(angle_final)*180/Double.pi
             print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
-            var valid_length = 0
-            var i = 0
-            //get valid length first
-            while(gesture_passing_area[i] != -1){
-                //clockwise find the pattern of 0 -> 1 -> 2 -> 3 -> 4
-                i += 1
-                valid_length += 1
-            }
-            
             //use the last two area to get the direction
             //only one area
             if(valid_length == 1){
@@ -491,15 +475,6 @@ class DailyGiftViewController: UIViewController {
             let degree_angle_init = Double(angle_init)*180/Double.pi
             let degree_angle_final = Double(angle_final)*180/Double.pi
             print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
-            var valid_length = 0
-            var i = 0
-            //get valid length first
-            while(gesture_passing_area[i] != -1){
-                //clockwise find the pattern of 0 -> 1 -> 2 -> 3 -> 4
-                i += 1
-                valid_length += 1
-            }
-            
             //use the last two area to get the direction
             //only one area
             if(valid_length == 1){
