@@ -16,6 +16,8 @@ class DailyGiftViewController: UIViewController {
     var display_reward : Bool = false
     var defaults = UserDefaults.standard
     var star_score = 0
+    var gesture_passing_area = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+    //left up: 0 right up: 1 right down: 2 left down: 3 unknown: -1
     
     @IBOutlet weak var wheel_background: UIImageView!
     @IBOutlet weak var wheel_text: UIImageView!
@@ -28,6 +30,9 @@ class DailyGiftViewController: UIViewController {
     var final_translation = CGPoint(x: 0, y: 0)
     var spin_initial_point = CGPoint(x: 0, y: 0)
     
+    var current_passing_area = 0
+    var current_passing_array_index = 0
+    
     //rotation_direction == 0 (clockwise)
     //rotation_direction == 1 (counterclockwise)
     var rotation_direction = 0
@@ -37,6 +42,29 @@ class DailyGiftViewController: UIViewController {
         super.touchesBegan(touches, with: event)
         spin_initial_point = touches.first!.location(in: view)
         print("initial touch location is x: \(spin_initial_point.x), y: \(spin_initial_point.y)")
+        current_passing_array_index = 0
+        if((spin_initial_point.x - wheel.frame.origin.x) < wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y < wheel.frame.height/2 ){
+            current_passing_area = 0
+            gesture_passing_area[0] = 0
+        }
+            
+            //current position in right uper boundary
+        else if((spin_initial_point.x - wheel.frame.origin.x) > wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y < wheel.frame.height/2 ){
+             current_passing_area = 1
+            gesture_passing_area[0] = 1
+        }
+            //current postion in right downer boundary
+        else if((spin_initial_point.x - wheel.frame.origin.x) > wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y > wheel.frame.height/2 ){
+             current_passing_area = 2
+            gesture_passing_area[0] = 2
+        }
+            //current position in left downer
+        else if((spin_initial_point.x - wheel.frame.origin.x) < wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y > wheel.frame.height/2 ){
+             current_passing_area = 3
+            gesture_passing_area[0] = 3
+        }
+
+        
      }
     
     
@@ -119,6 +147,7 @@ class DailyGiftViewController: UIViewController {
     }
 
     
+    
     //pan gesture recognizer
     func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
         if(wheel.frame.contains(spin_initial_point) && !display_reward){
@@ -130,19 +159,62 @@ class DailyGiftViewController: UIViewController {
         //print("real_velocity is : \(real_velocity)")
         }
         let translation = gesture.translation(in: view)
+        let current_position = CGPoint(x: spin_initial_point.x+translation.x, y: spin_initial_point.y+translation.y)
+        //record passing area
+        //current position in left upper boundary
+            if((current_position.x - wheel.frame.origin.x) < wheel.frame.width/2 && current_position.y - wheel.frame.origin.y < wheel.frame.height/2 ){
+                if(current_passing_area != 0){
+                    current_passing_array_index += 1
+                    current_passing_area = 0
+                    gesture_passing_area[current_passing_array_index] = 0
+                }
+            }
+                
+                //current position in right uper boundary
+            else if((current_position.x - wheel.frame.origin.x) > wheel.frame.width/2 && current_position.y - wheel.frame.origin.y < wheel.frame.height/2 ){
+                if(current_passing_area != 1){
+                    current_passing_array_index += 1
+                    current_passing_area = 1
+                    gesture_passing_area[current_passing_array_index] = 1
+                }
+            }
+                //current postion in right downer boundary
+            else if((current_position.x - wheel.frame.origin.x) > wheel.frame.width/2 && current_position.y - wheel.frame.origin.y > wheel.frame.height/2 ){
+                if(current_passing_area != 2){
+                    current_passing_array_index += 1
+                    current_passing_area = 2
+                    gesture_passing_area[current_passing_array_index] = 2
+                }
+            }
+                //current position in left downer
+            else if((current_position.x - wheel.frame.origin.x) < wheel.frame.width/2 && current_position.y - wheel.frame.origin.y > wheel.frame.height/2 ){
+                if(current_passing_area != 3){
+                    current_passing_array_index += 1
+                    current_passing_area = 3
+                    gesture_passing_area[current_passing_array_index] = 3
+                }
+            }
+     
+        final_translation = translation
         if(gesture.state == .ended){
+            var i = 0
+            while(gesture_passing_area[i] != -1){
+                print("gesture passing at index \(i) is \(gesture_passing_area[i])")
+                i += 1
+            }
             let direction = determine_rotation_direction()
+            print("final translation: x: \(final_translation.x) y: \(final_translation.y)")
             if(direction != -1){
                 rotation_direction = direction
                 spin_wheel()
             }
-            final_translation = translation
             //print("\(translation.x)")
             //print("\(translation.y)")
         }
         
         }
     }
+    
     
     func spin_wheel () -> Void {
         var final_angle = Int(arc4random_uniform(UInt32(360)))
@@ -156,8 +228,8 @@ class DailyGiftViewController: UIViewController {
         CATransaction.begin()
         CATransaction.setCompletionBlock({
             CATransaction.begin()
+            self.display_reward = true
             CATransaction.setCompletionBlock({
-                self.display_reward = true
                 let category = self.determine_final_case(final_angle: final_angle)
                 print("category is \(category)")
                 if(category == 0){
@@ -234,63 +306,222 @@ class DailyGiftViewController: UIViewController {
     func determine_rotation_direction() -> Int{
         let wheel_center = CGPoint(x: (wheel.frame.origin.x + wheel.frame.width/2), y: (wheel.frame.origin.y + wheel.frame.height/2))
         let final_position = CGPoint(x: spin_initial_point.x+final_translation.x, y: spin_initial_point.y+final_translation.y)
+        print("inital point: x: \(spin_initial_point.x) y: \(spin_initial_point.y)")
+        print("final point: x: \(final_position.x) y: \(final_position.y)")
         //left upper area
         if((spin_initial_point.x - wheel.frame.origin.x) < wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y < wheel.frame.height/2 ){
-            if(final_position.x > spin_initial_point.x ){
-                return 0
-            }else if(final_position.x < spin_initial_point.x){
+        let angle_init = atan((spin_initial_point.y - wheel_center.y)/(spin_initial_point.x - wheel_center.x))
+        let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
+        let degree_angle_init = Double(angle_init)*180/Double.pi
+        let degree_angle_final = Double(angle_final)*180/Double.pi
+        print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
+        var valid_length = 0
+            var i = 0
+            //get valid length first
+            while(gesture_passing_area[i] != -1){
+                //clockwise find the pattern of 0 -> 1 -> 2 -> 3 -> 4
+                i += 1
+                valid_length += 1
+            }
+
+        //final_position in left upper boundary (same area)
+       /** if((final_position.x - wheel.frame.origin.x) < wheel.frame.width/2 && final_position.y - wheel.frame.origin.y < wheel.frame.height/2 ){
+            if(degree_angle_init > degree_angle_final){
                 return 1
-            }else if(final_position.x == spin_initial_point.x && final_position.y < spin_initial_point.y){
+            }else if(degree_angle_init < degree_angle_final){
                 return 0
-            }else if(final_position.x == spin_initial_point.x && final_position.y > spin_initial_point.y){
+            }else{
+                return -1
+            }
+        }
+ **/
+            //use the last two area to get the direction
+            //only one area
+            if(valid_length == 1){
+                if(degree_angle_init > degree_angle_final){
+                    return 1
+                }else if(degree_angle_init < degree_angle_final){
+                    return 0
+                }else{
+                    return -1
+                }
+                
+            }
+            //two areas
+            else if(valid_length == 2){
+                if(gesture_passing_area[1] == 1){
+                    return 0
+                }else if(gesture_passing_area[1] == 3){
+                    return 1
+                }
+            }else{
+               let second_last_area = gesture_passing_area[valid_length-2]
+               let last_area = gesture_passing_area[valid_length-1]
+                if(last_area == second_last_area+1 || last_area == second_last_area - 3){
+                    return 0
+                }else if(last_area == second_last_area-1 || last_area == second_last_area + 3){
+                    return 1
+                }
+            }
+            
+            
+            
+    
+        
+        /**final position in right_upper boundary
+        else if((final_position.x - wheel.frame.origin.x) > wheel.frame.width/2 && final_position.y - wheel.frame.origin.y < wheel.frame.height/2 ){
+            return 0
+            }
+        //final postion in right downer boundary
+        else if((final_position.x - wheel.frame.origin.x) > wheel.frame.width/2 && final_position.y - wheel.frame.origin.y > wheel.frame.height/2 ){
+            if(degree_angle_init > degree_angle_final){
+                return 0
+            }else if(degree_angle_init < degree_angle_final){
                 return 1
             }else{
                 return -1
             }
+        }
+        //final position in left downer
+         else if((final_position.x - wheel.frame.origin.x) < wheel.frame.width/2 && final_position.y - wheel.frame.origin.y > wheel.frame.height/2 ){
+            return 1
+            
+            
+            
+            }
+    **/
             
         }//right upper area
         else if((spin_initial_point.x - wheel.frame.origin.x) > wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y < wheel.frame.height/2 ){
-            if(final_position.x > spin_initial_point.x ){
-                return 0
-            }else if(final_position.x < spin_initial_point.x){
-                return 1
-            }else if(final_position.x == spin_initial_point.x && final_position.y < spin_initial_point.y){
-                return 1
-            }else if(final_position.x == spin_initial_point.x && final_position.y > spin_initial_point.y){
-                return 0
-            }else{
-                return -1
+            let angle_init = atan((spin_initial_point.y - wheel_center.y)/(spin_initial_point.x - wheel_center.x))
+            let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
+            let degree_angle_init = Double(angle_init)*180/Double.pi
+            let degree_angle_final = Double(angle_final)*180/Double.pi
+            print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
+            var valid_length = 0
+            var i = 0
+            //get valid length first
+            while(gesture_passing_area[i] != -1){
+                //clockwise find the pattern of 0 -> 1 -> 2 -> 3 -> 4
+                i += 1
+                valid_length += 1
             }
+            
+            //use the last two area to get the direction
+            //only one area
+            if(valid_length == 1){
+                if(degree_angle_init > degree_angle_final){
+                    return 1
+                }else if(degree_angle_init < degree_angle_final){
+                    return 0
+                }else{
+                    return -1
+                }
+                
+            }
+                //more areas
+            else {
+                let second_last_area = gesture_passing_area[valid_length-2]
+                let last_area = gesture_passing_area[valid_length-1]
+                if(last_area == second_last_area+1 || last_area == second_last_area - 3){
+                    return 0
+                }else if(last_area == second_last_area-1 || last_area == second_last_area + 3){
+                    return 1
+                }
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }
+        
+        //right downer area
+        else if((spin_initial_point.x - wheel.frame.origin.x) > wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y > wheel.frame.height/2 ){
+            let angle_init = atan((spin_initial_point.y - wheel_center.y)/(spin_initial_point.x - wheel_center.x))
+            let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
+            let degree_angle_init = Double(angle_init)*180/Double.pi
+            let degree_angle_final = Double(angle_final)*180/Double.pi
+            print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
+            var valid_length = 0
+            var i = 0
+            //get valid length first
+            while(gesture_passing_area[i] != -1){
+                //clockwise find the pattern of 0 -> 1 -> 2 -> 3 -> 4
+                i += 1
+                valid_length += 1
+            }
+            
+            //use the last two area to get the direction
+            //only one area
+            if(valid_length == 1){
+                if(degree_angle_init > degree_angle_final){
+                    return 0
+                }else if(degree_angle_init < degree_angle_final){
+                    return 1
+                }else{
+                    return -1
+                }
+                
+            }
+                //more areas
+            else {
+                let second_last_area = gesture_passing_area[valid_length-2]
+                let last_area = gesture_passing_area[valid_length-1]
+                if(last_area == second_last_area+1 || last_area == second_last_area - 3){
+                    return 0
+                }else if(last_area == second_last_area-1 || last_area == second_last_area + 3){
+                    return 1
+                }
+            }
+            
+            
+            
         }
         //left downer area
         else if((spin_initial_point.x - wheel.frame.origin.x) < wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y > wheel.frame.height/2 ){
-            if(final_position.x > spin_initial_point.x ){
-                return 1
-            }else if(final_position.x < spin_initial_point.x){
-                return 0
-            }else if(final_position.x == spin_initial_point.x && final_position.y < spin_initial_point.y){
-                return 0
-            }else if(final_position.x == spin_initial_point.x && final_position.y > spin_initial_point.y){
-                return 1
-            }else{
-                return -1
+            let angle_init = atan((spin_initial_point.y - wheel_center.y)/(spin_initial_point.x - wheel_center.x))
+            let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
+            let degree_angle_init = Double(angle_init)*180/Double.pi
+            let degree_angle_final = Double(angle_final)*180/Double.pi
+            print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
+            var valid_length = 0
+            var i = 0
+            //get valid length first
+            while(gesture_passing_area[i] != -1){
+                //clockwise find the pattern of 0 -> 1 -> 2 -> 3 -> 4
+                i += 1
+                valid_length += 1
             }
             
-        }
-        //right downer area
-        else if((spin_initial_point.x - wheel.frame.origin.x) > wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y > wheel.frame.height/2 ){
-            if(final_position.x > spin_initial_point.x ){
-                return 1
-            }else if(final_position.x < spin_initial_point.x){
-                return 0
-            }else if(final_position.x == spin_initial_point.x && final_position.y < spin_initial_point.y){
-                return 1
-            }else if(final_position.x == spin_initial_point.x && final_position.y > spin_initial_point.y){
-                return 0
-            }else{
-                return -1
+            //use the last two area to get the direction
+            //only one area
+            if(valid_length == 1){
+                if(degree_angle_init > degree_angle_final){
+                    return 0
+                }else if(degree_angle_init < degree_angle_final){
+                    return 1
+                }else{
+                    return -1
+                }
+                
             }
-            
+                //more areas
+            else {
+                let second_last_area = gesture_passing_area[valid_length-2]
+                let last_area = gesture_passing_area[valid_length-1]
+                if(last_area == second_last_area+1 || last_area == second_last_area - 3){
+                    return 0
+                }else if(last_area == second_last_area-1 || last_area == second_last_area + 3){
+                    return 1
+                }
+            }
         }
         
         return 1
