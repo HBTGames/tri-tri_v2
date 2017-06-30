@@ -16,7 +16,7 @@ class DailyGiftViewController: UIViewController {
     var display_reward : Bool = false
     var defaults = UserDefaults.standard
     var star_score = 0
-    var gesture_passing_area = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+    var gesture_passing_area = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
     //left up: 0 right up: 1 right down: 2 left down: 3 unknown: -1
     
     @IBOutlet weak var wheel_background: UIImageView!
@@ -228,50 +228,70 @@ class DailyGiftViewController: UIViewController {
         CATransaction.begin()
         CATransaction.setCompletionBlock({
             CATransaction.begin()
-            self.display_reward = true
             CATransaction.setCompletionBlock({
-                let category = self.determine_final_case(final_angle: final_angle)
-                print("category is \(category)")
-                if(category == 0){
-                let ten_points = UIImageView(frame: self.view.frame)
-                ten_points.image = #imageLiteral(resourceName: "ten_points")
-                self.view.addSubview(ten_points)
-                ten_points.alpha = 0
-                ten_points.fadeIn()
-                self.star_score += 10
-                self.defaults.set(self.star_score, forKey: "tritri_star_score")
+                CATransaction.begin()
+                self.display_reward = true
+                CATransaction.setCompletionBlock({
+                    let category = self.determine_final_case(final_angle: final_angle)
+                    //print("category is \(category)")
+                    if(category == 0){
+                        let ten_points = UIImageView(frame: self.view.frame)
+                        ten_points.image = #imageLiteral(resourceName: "ten_points")
+                        self.view.addSubview(ten_points)
+                        ten_points.alpha = 0
+                        ten_points.fadeIn()
+                        self.star_score += 10
+                        self.defaults.set(self.star_score, forKey: "tritri_star_score")
+                        
+                        
+                    }else if(category == 1){
+                        let twenty_five_points = UIImageView(frame: self.view.frame)
+                        twenty_five_points.image = #imageLiteral(resourceName: "twenty-five_points")
+                        self.view.addSubview(twenty_five_points)
+                        twenty_five_points.alpha = 0
+                        twenty_five_points.fadeIn()
+                        self.star_score += 25
+                        self.defaults.set(self.star_score, forKey: "tritri_star_score")
+                        
+                        
+                    }else if(category == 2){
+                        let thirty_five_points = UIImageView(frame: self.view.frame)
+                        thirty_five_points.image = #imageLiteral(resourceName: "thirty-five_points")
+                        self.view.addSubview(thirty_five_points)
+                        thirty_five_points.alpha = 0
+                        thirty_five_points.fadeIn()
+                        self.star_score += 35
+                        self.defaults.set(self.star_score, forKey: "tritri_star_score")
+                    }
+                    
+                })
                 
-                    
-                }else if(category == 1){
-                    let twenty_five_points = UIImageView(frame: self.view.frame)
-                    twenty_five_points.image = #imageLiteral(resourceName: "twenty-five_points")
-                    self.view.addSubview(twenty_five_points)
-                    twenty_five_points.alpha = 0
-                    twenty_five_points.fadeIn()
-                   self.star_score += 25
-                    self.defaults.set(self.star_score, forKey: "tritri_star_score")
-
-                    
-                }else if(category == 2){
-                    let thirty_five_points = UIImageView(frame: self.view.frame)
-                    thirty_five_points.image = #imageLiteral(resourceName: "thirty-five_points")
-                    self.view.addSubview(thirty_five_points)
-                    thirty_five_points.alpha = 0
-                    thirty_five_points.fadeIn()
-                    self.star_score += 35
-                    self.defaults.set(self.star_score, forKey: "tritri_star_score")
-                }
-    
+                spin_animation.keyPath = "transform.rotation.z"
+                spin_animation.duration = 1
+                spin_animation.isRemovedOnCompletion = false
+                spin_animation.fillMode = kCAFillModeForwards
+                spin_animation.repeatCount = Float(1)
+                spin_animation.values = [CGFloat(final_proportion)*fullRotation]
+                self.wheel.layer.add(spin_animation, forKey: "rotate")
+                CATransaction.commit()
             })
+            //low speed one round
+            let slow_spin = CAKeyframeAnimation()
+            slow_spin.keyPath = "transform.rotation.z"
+            slow_spin.duration = 2
+            slow_spin.isRemovedOnCompletion = false
+            slow_spin.fillMode = kCAFillModeForwards
+            slow_spin.repeatCount = Float(1)
+            if(self.rotation_direction == 0){
+                slow_spin.values = [fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
+            }else if(self.rotation_direction == 1){
+                slow_spin.values = [fullRotation*3/4, fullRotation/2, fullRotation/4, 0]
+                
+            }
+            self.wheel.layer.add(slow_spin, forKey: "rotate")
             
-            spin_animation.keyPath = "transform.rotation.z"
-            spin_animation.duration = 1
-            spin_animation.isRemovedOnCompletion = false
-            spin_animation.fillMode = kCAFillModeForwards
-            spin_animation.repeatCount = Float(1)
-            spin_animation.values = [CGFloat(final_proportion)*fullRotation]
-            self.wheel.layer.add(spin_animation, forKey: "rotate")
             CATransaction.commit()
+         
         })
         spin_animation.keyPath = "transform.rotation.z"
         
