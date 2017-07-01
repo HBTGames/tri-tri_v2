@@ -41,7 +41,7 @@ class DailyGiftViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         spin_initial_point = touches.first!.location(in: view)
-        print("initial touch location is x: \(spin_initial_point.x), y: \(spin_initial_point.y)")
+        //print("initial touch location is x: \(spin_initial_point.x), y: \(spin_initial_point.y)")
         current_passing_array_index = 0
         if((spin_initial_point.x - wheel.frame.origin.x) < wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y < wheel.frame.height/2 ){
             current_passing_area = 0
@@ -199,11 +199,11 @@ class DailyGiftViewController: UIViewController {
         if(gesture.state == .ended){
             var i = 0
             while(gesture_passing_area[i] != -1){
-                print("gesture passing at index \(i) is \(gesture_passing_area[i])")
+               // print("gesture passing at index \(i) is \(gesture_passing_area[i])")
                 i += 1
             }
             let direction = determine_rotation_direction()
-            print("final translation: x: \(final_translation.x) y: \(final_translation.y)")
+            //print("final translation: x: \(final_translation.x) y: \(final_translation.y)")
             if(direction != -1){
                 rotation_direction = direction
                 spin_wheel()
@@ -265,21 +265,82 @@ class DailyGiftViewController: UIViewController {
                     }
                     
                 })
-                
-                spin_animation.keyPath = "transform.rotation.z"
-                spin_animation.duration = 1
-                spin_animation.isRemovedOnCompletion = false
-                spin_animation.fillMode = kCAFillModeForwards
-                spin_animation.repeatCount = Float(1)
-                spin_animation.values = [CGFloat(final_proportion)*fullRotation]
-                self.wheel.layer.add(spin_animation, forKey: "rotate")
+                /**if(self.rotation_direction == 0){
+                    if(final_angle < 180){
+                        UIView.animate(withDuration: 0.75, animations: {
+                            self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(final_proportion)*fullRotation)
+                        })
+                    }else{
+                        UIView.animate(withDuration: 0.75, animations: {
+                            self.wheel.transform = CGAffineTransform(rotationAngle: 0.5*fullRotation)
+                        }, completion: {
+                            (finished) -> Void in
+                            UIView.animate(withDuration: 0.75, animations: {
+                                self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(final_proportion)*fullRotation)
+   
+                            })
+                            
+                        })
+                    }
+                    
+                }else if(self.rotation_direction == 1){
+                    if(final_angle < 180){
+                        UIView.animate(withDuration: 0.5, animations: {
+                            self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(3/4)*fullRotation)
+                        }, completion: {
+                            (finished) -> Void in
+                            UIView.animate(withDuration: 0.5, animations: {
+                             self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(0.5)*fullRotation)
+                            }, completion: {
+                                (finished) -> Void in
+                                UIView.animate(withDuration: 1, animations: {
+                                    self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(final_proportion)*fullRotation)
+                                    
+                                })
+                                
+                            })
+                           
+
+                            
+                        })
+                    }else{
+                        UIView.animate(withDuration: 2.5, animations: {
+                            self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(final_proportion)*fullRotation)
+                        })
+                        
+                        
+                    }
+                    
+                }**/
+                let final_animation = CAKeyframeAnimation()
+                 final_animation.keyPath = "transform.rotation.z"
+                 final_animation.duration = 2
+                 final_animation.isRemovedOnCompletion = false
+                 final_animation.fillMode = kCAFillModeForwards
+                 final_animation.repeatCount = Float(1)
+                if(self.rotation_direction == 0){
+                    if(final_angle < 180){
+                        final_animation.values = [0, CGFloat(final_proportion)*fullRotation]
+    
+                    }else{
+                        final_animation.values = [fullRotation/4, fullRotation/2, CGFloat(final_proportion)*fullRotation]
+                    }
+                }else if(self.rotation_direction == 1){
+                    if(final_angle < 180){
+                        final_animation.values = [fullRotation*3/4, fullRotation/2, CGFloat(final_proportion)*fullRotation]
+                    }else{
+                        final_animation.values = [fullRotation, CGFloat(final_proportion)*fullRotation]
+                        
+                    }
+                }
+               self.wheel.layer.add(final_animation, forKey: "final_rotate")
                 CATransaction.commit()
             })
             //low speed one round
             let slow_spin = CAKeyframeAnimation()
             slow_spin.keyPath = "transform.rotation.z"
-            slow_spin.duration = 2
-            slow_spin.isRemovedOnCompletion = false
+            slow_spin.duration = 1.5
+            slow_spin.isRemovedOnCompletion = true
             slow_spin.fillMode = kCAFillModeForwards
             slow_spin.repeatCount = Float(1)
             if(self.rotation_direction == 0){
@@ -326,8 +387,8 @@ class DailyGiftViewController: UIViewController {
     func determine_rotation_direction() -> Int{
         let wheel_center = CGPoint(x: (wheel.frame.origin.x + wheel.frame.width/2), y: (wheel.frame.origin.y + wheel.frame.height/2))
         let final_position = CGPoint(x: spin_initial_point.x+final_translation.x, y: spin_initial_point.y+final_translation.y)
-        print("inital point: x: \(spin_initial_point.x) y: \(spin_initial_point.y)")
-        print("final point: x: \(final_position.x) y: \(final_position.y)")
+        //print("inital point: x: \(spin_initial_point.x) y: \(spin_initial_point.y)")
+        //print("final point: x: \(final_position.x) y: \(final_position.y)")
         
         var valid_length = 0
         var i = 0
@@ -345,7 +406,7 @@ class DailyGiftViewController: UIViewController {
         let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
         let degree_angle_init = Double(angle_init)*180/Double.pi
         let degree_angle_final = Double(angle_final)*180/Double.pi
-        print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
+        //print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
        //final_position in left upper boundary (same area)
        /** if((final_position.x - wheel.frame.origin.x) < wheel.frame.width/2 && final_position.y - wheel.frame.origin.y < wheel.frame.height/2 ){
             if(degree_angle_init > degree_angle_final){
@@ -419,7 +480,7 @@ class DailyGiftViewController: UIViewController {
             let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
             let degree_angle_init = Double(angle_init)*180/Double.pi
             let degree_angle_final = Double(angle_final)*180/Double.pi
-            print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
+            //print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
             //use the last two area to get the direction
             //only one area
             if(valid_length == 1){
@@ -461,7 +522,7 @@ class DailyGiftViewController: UIViewController {
             let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
             let degree_angle_init = Double(angle_init)*180/Double.pi
             let degree_angle_final = Double(angle_final)*180/Double.pi
-            print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
+            //print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
             //use the last two area to get the direction
             //only one area
             if(valid_length == 1){
@@ -494,7 +555,7 @@ class DailyGiftViewController: UIViewController {
             let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
             let degree_angle_init = Double(angle_init)*180/Double.pi
             let degree_angle_final = Double(angle_final)*180/Double.pi
-            print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
+            //print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
             //use the last two area to get the direction
             //only one area
             if(valid_length == 1){
