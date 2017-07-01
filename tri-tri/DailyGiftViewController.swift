@@ -17,6 +17,11 @@ class DailyGiftViewController: UIViewController {
     var defaults = UserDefaults.standard
     var star_score = 0
     var gesture_passing_area = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+    var time_storing = [0,0,0,0,0,0]
+    var previous_time_storing = [0,0,0,0,0,0]
+    var count_down_end = true
+    var count_down_time_string = String()
+
     //left up: 0 right up: 1 right down: 2 left down: 3 unknown: -1
     
     @IBOutlet weak var wheel_background: UIImageView!
@@ -27,15 +32,24 @@ class DailyGiftViewController: UIViewController {
     @IBOutlet weak var wheel_outer: UIImageView!
     @IBOutlet weak var wheel: UIImageView!
     
+
     var final_translation = CGPoint(x: 0, y: 0)
     var spin_initial_point = CGPoint(x: 0, y: 0)
     
     var current_passing_area = 0
     var current_passing_array_index = 0
     
+    var total_seconds = 12*60*60
     //rotation_direction == 0 (clockwise)
     //rotation_direction == 1 (counterclockwise)
     var rotation_direction = 0
+    
+    
+    //lock screen
+    var lock_screen = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var count_down_label = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var grey_transparent_image = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var cancel_button_lock = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
     //override touch begin function
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -103,11 +117,59 @@ class DailyGiftViewController: UIViewController {
         //add pan gesture recognizer
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
         self.view.addGestureRecognizer(panGestureRecognizer)
+        //count down
+        //initialize count board
+         real_time_handler()
+        if(!count_down_end){
+            let hours = total_seconds/(60*60)
+            let seconds_times_min = total_seconds%(60*60)
+            let min = seconds_times_min/60
+            let seconds = seconds_times_min%60
+            count_down_time_string = hours_formatter(hours: hours) + " : " + min_formatter(min: min) + " : " + sec_formatter(sec: seconds)
+            lock_screen_function()
+        _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DailyGiftViewController.auto_count_down), userInfo: nil, repeats: true)
+        
+        //
+        }
+       
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func lock_screen_function() -> Void {
+        
+    lock_screen = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
+    lock_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+    lock_screen.alpha = 0
+    self.view.addSubview(lock_screen)
+    lock_screen.fadeInTrans()
+    grey_transparent_image = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
+    grey_transparent_image.image = #imageLiteral(resourceName: "grey_transparent")
+    grey_transparent_image.alpha = 0
+    self.view.addSubview(grey_transparent_image)
+    grey_transparent_image.fadeIn()
+    cancel_button_lock = MyButton(frame: CGRect(x: screen_x_transform(250), y: screen_y_transform(542), width: screen_x_transform(125), height: screen_y_transform(125)))
+        cancel_button_lock.setImage(UIImage(named: "wheel_cancel"), for: .normal)
+        self.view.addSubview(cancel_button_lock)
+        // Do any additional setup after loading the view.
+        cancel_button_lock.whenButtonIsClicked(action: {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+            nextViewController.modalTransitionStyle = .crossDissolve
+            self.present(nextViewController, animated: true, completion: nil)
+            
+        })
+    count_down_label = UILabel(frame: CGRect(x: screen_width/2 - screen_x_transform(140), y: screen_height/2 - screen_y_transform(40), width: screen_x_transform(330), height: screen_y_transform(100)))
+    self.view.addSubview(count_down_label)
+    count_down_label.text = count_down_time_string
+    count_down_label.font = UIFont(name: "Helvetica", size: 60)
+    count_down_label.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
+   
+    
     }
     
     //modify position according to iphone generation functions
@@ -150,7 +212,7 @@ class DailyGiftViewController: UIViewController {
     
     //pan gesture recognizer
     func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
-        if(wheel.frame.contains(spin_initial_point) && !display_reward){
+        if(wheel.frame.contains(spin_initial_point) && !display_reward && count_down_end){
         let velocity = gesture.velocity(in: view)
         //print("velocity x: \(velocity.x), velocity y: \(velocity.y)")
         if(velocity.x != 0 || velocity.y != 0){
@@ -207,6 +269,8 @@ class DailyGiftViewController: UIViewController {
             if(direction != -1){
                 rotation_direction = direction
                 spin_wheel()
+                //let date = NSDate()
+                //defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
             }
             //print("\(translation.x)")
             //print("\(translation.y)")
@@ -263,6 +327,8 @@ class DailyGiftViewController: UIViewController {
                         self.star_score += 35
                         self.defaults.set(self.star_score, forKey: "tritri_star_score")
                     }
+                    let date = NSDate()
+                    self.defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
                     
                 })
                 /**if(self.rotation_direction == 0){
@@ -610,4 +676,103 @@ class DailyGiftViewController: UIViewController {
         }
     }
 
+    
+    
+    func auto_count_down() -> Void{
+        if(total_seconds > 0){
+        count_down_end = false
+        total_seconds = total_seconds - 1
+        let hours = total_seconds/(60*60)
+        let seconds_times_min = total_seconds%(60*60)
+        let min = seconds_times_min/60
+        let seconds = seconds_times_min%60
+        count_down_time_string = hours_formatter(hours: hours) + " : " + min_formatter(min: min) + " : " + sec_formatter(sec: seconds)
+        count_down_label.text = count_down_time_string
+        }else if(total_seconds == 0){
+            count_down_end = true
+            lock_screen.fadeOutandRemove()
+            count_down_label.fadeOutandRemove()
+            grey_transparent_image.fadeOutandRemove()
+            cancel_button_lock.fadeOutandRemove()}
+        
+                }
+    
+    
+    func real_time_handler() -> Void{
+        var current_date = NSDate()
+        var previous_date = NSDate()
+        let calendar = NSCalendar.current
+        var passed_seconds = 0
+        if(defaults.value(forKey: "tritri_wheel_last_access_time_new") != nil ){
+            previous_date = defaults.value(forKey: "tritri_wheel_last_access_time_new") as! NSDate!
+            let elapsed = Date().timeIntervalSince(previous_date as Date)
+            passed_seconds = Int(elapsed)
+            print("passed_seconds: \(elapsed)")
+            if(passed_seconds < 20){
+                count_down_end = false
+            total_seconds = 20 - passed_seconds
+            }else{
+                total_seconds = 0
+                count_down_end = true
+            }
+        }else{
+            count_down_end = true
+            total_seconds = 0
+            
+        }
+        
+    }
+    
+    
+    func hours_formatter(hours: Int) -> String {
+        if(hours < 10){
+    var formatted_hours = String()
+    formatted_hours = String(0)+String(hours)
+            return formatted_hours}
+        else{
+            return String(hours)
+        }
+    }
+    
+    func min_formatter(min: Int) -> String {
+        if(min<10){
+         var formatted_min = String()
+        formatted_min = String(0) + String(min)
+        return formatted_min
+        }else{
+            return String(min)
+        }
+    }
+    
+    func sec_formatter(sec: Int) -> String {
+        if(sec<10){
+            var formatted_sec = String()
+            formatted_sec = String(0) + String(sec)
+            return formatted_sec
+        }else{
+            return String(sec)
+        }
+    }
+    
+    
+    
 }
+
+
+public extension UIView {
+    func fadeInTrans(withDuration duration: TimeInterval = 0.5) {
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 0.5
+        })
+    }
+    
+        func fadeOutandRemove(withDuration duration: TimeInterval = 0.5){
+            UIView.animate(withDuration: duration, animations: {
+                self.alpha = 0.5
+            }, completion: {
+                (finished) -> Void in
+                self.removeFromSuperview()
+            })
+    }
+}
+

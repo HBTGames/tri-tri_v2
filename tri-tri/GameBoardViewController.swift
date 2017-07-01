@@ -776,7 +776,7 @@ class GameBoardViewController: UIViewController {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //function about music
     func background_music_pause () {
-        audioPlayer.pause()
+        //audioPlayer.pause()
         //timer.invalidate()
     }
     
