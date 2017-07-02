@@ -32,6 +32,7 @@ class DailyGiftViewController: UIViewController {
     //spinning player
     var spinning_player = AVAudioPlayer()
     
+    var count_down_timer_during_reward = Timer()
     //left up: 0 right up: 1 right down: 2 left down: 3 unknown: -1
     
     @IBOutlet weak var wheel_background: UIImageView!
@@ -43,6 +44,10 @@ class DailyGiftViewController: UIViewController {
     @IBOutlet weak var wheel: UIImageView!
     
 
+    //spin category
+    var spin_category = 0
+    
+    
     var final_translation = CGPoint(x: 0, y: 0)
     var spin_initial_point = CGPoint(x: 0, y: 0)
     
@@ -60,6 +65,14 @@ class DailyGiftViewController: UIViewController {
     var count_down_label = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var grey_transparent_image = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var cancel_button_lock = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    
+    //rewards count down
+    var rewards_count_down = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    
+    //rewards screen
+    var ten_points = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var twenty_five_points = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var thirty_five_points = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
     //override touch begin function
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -297,7 +310,7 @@ class DailyGiftViewController: UIViewController {
         }
         catch{
         }
-
+        
         
         var final_angle = Int(arc4random_uniform(UInt32(360)))
         while(final_angle%45 == 0){
@@ -318,40 +331,54 @@ class DailyGiftViewController: UIViewController {
                 
                 CATransaction.setCompletionBlock({
                     spinning_timer.invalidate()
-                    let category = self.determine_final_case(final_angle: final_angle)
+                    var category = self.determine_final_case(final_angle: final_angle)
+                    self.spin_category = category
                     //print("category is \(category)")
                     if(category == 0){
-                        let ten_points = UIImageView(frame: self.view.frame)
-                        ten_points.image = #imageLiteral(resourceName: "ten_points")
-                        self.view.addSubview(ten_points)
-                        ten_points.alpha = 0
-                        ten_points.fadeIn()
+                        self.ten_points = UIImageView(frame: self.view.frame)
+                        self.ten_points.image = #imageLiteral(resourceName: "ten_points")
+                        self.view.addSubview(self.ten_points)
+                        self.ten_points.alpha = 0
+                        self.ten_points.fadeIn()
                         self.star_score += 10
                         self.defaults.set(self.star_score, forKey: "tritri_star_score")
                         
                         
                     }else if(category == 1){
-                        let twenty_five_points = UIImageView(frame: self.view.frame)
-                        twenty_five_points.image = #imageLiteral(resourceName: "twenty-five_points")
-                        self.view.addSubview(twenty_five_points)
-                        twenty_five_points.alpha = 0
-                        twenty_five_points.fadeIn()
+                        self.twenty_five_points = UIImageView(frame: self.view.frame)
+                        self.twenty_five_points.image = #imageLiteral(resourceName: "twenty-five_points")
+                        self.view.addSubview(self.twenty_five_points)
+                        self.twenty_five_points.alpha = 0
+                        self.twenty_five_points.fadeIn()
                         self.star_score += 25
                         self.defaults.set(self.star_score, forKey: "tritri_star_score")
                         
                         
                     }else if(category == 2){
-                        let thirty_five_points = UIImageView(frame: self.view.frame)
-                        thirty_five_points.image = #imageLiteral(resourceName: "thirty-five_points")
-                        self.view.addSubview(thirty_five_points)
-                        thirty_five_points.alpha = 0
-                        thirty_five_points.fadeIn()
+                        self.thirty_five_points = UIImageView(frame: self.view.frame)
+                        self.thirty_five_points.image = #imageLiteral(resourceName: "thirty-five_points")
+                        self.view.addSubview(self.thirty_five_points)
+                        self.thirty_five_points.alpha = 0
+                        self.thirty_five_points.fadeIn()
                         self.star_score += 35
                         self.defaults.set(self.star_score, forKey: "tritri_star_score")
                     }
                     let date = NSDate()
                     self.defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
+                    self.total_seconds = 20
                     
+   
+                    self.rewards_count_down = UILabel(frame: CGRect(x: self.screen_width/2 - self.screen_x_transform(65), y: self.screen_height/2 - self.screen_y_transform(85), width: self.screen_x_transform(330), height: self.screen_y_transform(100)))
+                    self.view.addSubview(self.rewards_count_down)
+                    self.rewards_count_down.text = self.count_down_time_string
+                    self.rewards_count_down.font = UIFont(name: "Helvetica", size: 30)
+                    self.rewards_count_down.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
+                    self.rewards_count_down.fadeIn()
+
+                    
+                    
+                  self.count_down_timer_during_reward = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DailyGiftViewController.count_down_during_reward), userInfo: nil, repeats: true)
+                  self.count_down_timer_during_reward.fire()
                 })
                 /**if(self.rotation_direction == 0){
                     if(final_angle < 180){
@@ -477,6 +504,57 @@ class DailyGiftViewController: UIViewController {
     
     
     
+    
+    //count_down_during_reward
+    func count_down_during_reward() -> Void {
+        if(display_reward){
+        if(total_seconds > 0){
+            
+            unlock_player_played_time = 0
+           
+            do{clock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "clock_sound", ofType: "mp3")!))
+                clock_player.prepareToPlay()
+                
+            }
+            catch{
+            }
+            clock_player.play()
+            count_down_end = false
+            total_seconds = total_seconds - 1
+            let hours = total_seconds/(60*60)
+            let seconds_times_min = total_seconds%(60*60)
+            let min = seconds_times_min/60
+            let seconds = seconds_times_min%60
+            count_down_time_string = hours_formatter(hours: hours) + " : " + min_formatter(min: min) + " : " + sec_formatter(sec: seconds)
+            rewards_count_down.text = count_down_time_string
+        }else if(total_seconds == 0){
+            count_down_end = true
+            count_down_timer_during_reward.invalidate()
+            do{unlock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "door_open_and_reming", ofType: "mp3")!))
+                unlock_player.prepareToPlay()
+                
+            }
+            catch{
+            }
+            unlock_player.play()
+             unlock_player_played_time = unlock_player_played_time + 1
+            display_reward = false
+            if(spin_category == 0){
+            ten_points.fadeOutandRemove()
+            }else if(spin_category == 1){
+            twenty_five_points.fadeOutandRemove()
+            }else if(spin_category == 2 ){
+             thirty_five_points.fadeOutandRemove()
+            }
+            rewards_count_down.fadeOutandRemove()
+            //let date = NSDate()
+            //self.defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
+        }
+        
+        
+        
+    }
+    }
     
     //spinning sound effect
     func spinning_sound_effect() -> Void {
@@ -760,7 +838,9 @@ class DailyGiftViewController: UIViewController {
             grey_transparent_image.fadeOutandRemove()
             cancel_button_lock.fadeOutandRemove()}
         
-                }
+        }
+        
+    
     
     
     func real_time_handler() -> Void{
