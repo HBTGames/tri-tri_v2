@@ -36,6 +36,10 @@ class DailyGiftViewController: UIViewController {
     var lock_screen_count_down_timer = Timer()
     
     
+    var clock_sound_effect_should_on = true
+    var spin_sound_effect_should_on = true
+    var unlock_sound_effect_should_on = true
+    
     //left up: 0 right up: 1 right down: 2 left down: 3 unknown: -1
     
     @IBOutlet weak var wheel_background: UIImageView!
@@ -107,12 +111,26 @@ class DailyGiftViewController: UIViewController {
         
      }
     
+    func background_music_pause() -> Void{
+    clock_sound_effect_should_on = false
+        spin_sound_effect_should_on = false
+        unlock_sound_effect_should_on = false
+    }
     
+    func background_music_continue() -> Void{
+       clock_sound_effect_should_on = true
+        spin_sound_effect_should_on = true
+        unlock_sound_effect_should_on = true
+        
+    }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //when enter background
+        NotificationCenter.default.addObserver(self, selector: #selector(DailyGiftViewController.background_music_pause) , name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DailyGiftViewController.background_music_continue), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         unlock_player_played_time = 0
         display_reward = false
         screen_width = self.view.frame.width
@@ -520,7 +538,7 @@ class DailyGiftViewController: UIViewController {
         if(total_seconds > 0){
             
             unlock_player_played_time = 0
-           
+            if(clock_sound_effect_should_on){
             do{clock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "clock_sound", ofType: "mp3")!))
                 clock_player.prepareToPlay()
                 
@@ -528,6 +546,7 @@ class DailyGiftViewController: UIViewController {
             catch{
             }
             clock_player.play()
+            }
             count_down_end = false
             total_seconds = total_seconds - 1
             let hours = total_seconds/(60*60)
@@ -545,8 +564,11 @@ class DailyGiftViewController: UIViewController {
             }
             catch{
             }
+            if(unlock_sound_effect_should_on){
             unlock_player.play()
+            }
              unlock_player_played_time = unlock_player_played_time + 1
+                
             display_reward = false
             if(spin_category == 0){
             ten_points.fadeOutandRemove()
@@ -568,10 +590,14 @@ class DailyGiftViewController: UIViewController {
     //spinning sound effect
     func spinning_sound_effect() -> Void {
         if(!display_reward){
+            if(spin_sound_effect_should_on){
         spinning_player.play()
+            }
         if(spinning_player.currentTime == spinning_player.duration){
             spinning_player.currentTime = 0
+            if(spin_sound_effect_should_on){
             spinning_player.play()
+            }
         }
         }else{
             spinning_player.stop()
@@ -814,6 +840,7 @@ class DailyGiftViewController: UIViewController {
     func auto_count_down() -> Void{
         if(total_seconds > 0){
         unlock_player_played_time = 0
+            if(clock_sound_effect_should_on){
             do{clock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "clock_sound", ofType: "mp3")!))
                 clock_player.prepareToPlay()
                 
@@ -821,6 +848,7 @@ class DailyGiftViewController: UIViewController {
             catch{
             }
         clock_player.play()
+            }
         count_down_end = false
         total_seconds = total_seconds - 1
         let hours = total_seconds/(60*60)
@@ -837,7 +865,9 @@ class DailyGiftViewController: UIViewController {
             }
             catch{
             }
+                if(unlock_sound_effect_should_on){
                 unlock_player.play()
+                }
             unlock_player_played_time = unlock_player_played_time + 1
             }
             
