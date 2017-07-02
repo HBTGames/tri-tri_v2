@@ -291,12 +291,13 @@ class DailyGiftViewController: UIViewController {
     
     
     func spin_wheel () -> Void {
-        do{spinning_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "spinning", ofType: "mp3")!))
+        do{spinning_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "spin_new", ofType: "mp3")!))
             spinning_player.prepareToPlay()
             
         }
         catch{
         }
+
         
         var final_angle = Int(arc4random_uniform(UInt32(360)))
         while(final_angle%45 == 0){
@@ -314,9 +315,9 @@ class DailyGiftViewController: UIViewController {
             CATransaction.setCompletionBlock({
                 CATransaction.begin()
                 self.display_reward = true
-                spinning_timer.invalidate()
+                
                 CATransaction.setCompletionBlock({
-                    
+                    spinning_timer.invalidate()
                     let category = self.determine_final_case(final_angle: final_angle)
                     //print("category is \(category)")
                     if(category == 0){
@@ -449,16 +450,20 @@ class DailyGiftViewController: UIViewController {
         if(real_velocity<500){
             spin_animation.repeatCount = Float(1)
             spin_animation.duration = 1
+            spinning_player.rate = Float(spinning_player.duration)/1
         }else if(real_velocity >= 500 && real_velocity < 1000){
             spin_animation.repeatCount = Float(2)
             spin_animation.duration = 0.8
+            spinning_player.rate = Float(spinning_player.duration)/0.8
         }else if(real_velocity >= 1000 && real_velocity < 1500){
             spin_animation.repeatCount = Float(3)
             spin_animation.duration = 0.5
         }else if(real_velocity >= 1500){
             spin_animation.repeatCount = Float(4)
             spin_animation.duration = 0.4
+            spinning_player.rate = Float(spinning_player.duration)/0.4
         }
+        print("rotation direction is \(rotation_direction)")
         if(rotation_direction == 0){
         spin_animation.values = [fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
         }else if(rotation_direction == 1){
