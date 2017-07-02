@@ -33,6 +33,9 @@ class DailyGiftViewController: UIViewController {
     var spinning_player = AVAudioPlayer()
     
     var count_down_timer_during_reward = Timer()
+    var lock_screen_count_down_timer = Timer()
+    
+    
     //left up: 0 right up: 1 right down: 2 left down: 3 unknown: -1
     
     @IBOutlet weak var wheel_background: UIImageView!
@@ -127,6 +130,9 @@ class DailyGiftViewController: UIViewController {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
             nextViewController.modalTransitionStyle = .crossDissolve
+            self.clock_player.stop()
+            self.count_down_timer_during_reward.invalidate()
+            self.lock_screen_count_down_timer.invalidate()
             self.present(nextViewController, animated: true, completion: nil)
             
         })
@@ -151,7 +157,7 @@ class DailyGiftViewController: UIViewController {
             let seconds = seconds_times_min%60
             count_down_time_string = hours_formatter(hours: hours) + " : " + min_formatter(min: min) + " : " + sec_formatter(sec: seconds)
             lock_screen_function()
-        _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DailyGiftViewController.auto_count_down), userInfo: nil, repeats: true)
+        lock_screen_count_down_timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DailyGiftViewController.auto_count_down), userInfo: nil, repeats: true)
         
         //
         }
@@ -183,6 +189,9 @@ class DailyGiftViewController: UIViewController {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
             nextViewController.modalTransitionStyle = .crossDissolve
+            self.clock_player.stop()
+            self.count_down_timer_during_reward.invalidate()
+            self.lock_screen_count_down_timer.invalidate()
             self.present(nextViewController, animated: true, completion: nil)
             
         })
