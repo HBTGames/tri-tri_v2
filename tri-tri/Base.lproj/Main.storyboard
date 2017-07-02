@@ -103,6 +103,14 @@
                                     <segue destination="cke-Xd-ydB" kind="show" id="Bgk-bw-FBD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ry-HC-PbG">
+                                <rect key="frame" x="37" y="543" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="daily gift"/>
+                                <connections>
+                                    <segue destination="NEE-e6-hOi" kind="show" id="IQr-Nv-ufa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -915,14 +923,6 @@
                                 <state key="normal" title="lottie"/>
                                 <connections>
                                     <action selector="lottie_test:" destination="qxD-t8-ioY" eventType="touchUpInside" id="Cmw-GQ-yEu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUf-e8-zg7">
-                                <rect key="frame" x="178" y="95" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="gift"/>
-                                <connections>
-                                    <segue destination="NEE-e6-hOi" kind="show" id="G8L-1L-BQl"/>
                                 </connections>
                             </button>
                         </subviews>
