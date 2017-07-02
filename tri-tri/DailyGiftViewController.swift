@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class DailyGiftViewController: UIViewController {
 //screen width and height
@@ -21,7 +23,15 @@ class DailyGiftViewController: UIViewController {
     var previous_time_storing = [0,0,0,0,0,0]
     var count_down_end = true
     var count_down_time_string = String()
-
+    
+    //clock trick sound
+    var clock_player = AVAudioPlayer()
+    //unlock sound
+    var unlock_player = AVAudioPlayer()
+    var unlock_player_played_time = 0
+    //spinning player
+    var spinning_player = AVAudioPlayer()
+    
     //left up: 0 right up: 1 right down: 2 left down: 3 unknown: -1
     
     @IBOutlet weak var wheel_background: UIImageView!
@@ -87,6 +97,7 @@ class DailyGiftViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        unlock_player_played_time = 0
         display_reward = false
         screen_width = self.view.frame.width
         screen_height = self.view.frame.height
@@ -155,7 +166,6 @@ class DailyGiftViewController: UIViewController {
     cancel_button_lock = MyButton(frame: CGRect(x: screen_x_transform(250), y: screen_y_transform(542), width: screen_x_transform(125), height: screen_y_transform(125)))
         cancel_button_lock.setImage(UIImage(named: "wheel_cancel"), for: .normal)
         self.view.addSubview(cancel_button_lock)
-        // Do any additional setup after loading the view.
         cancel_button_lock.whenButtonIsClicked(action: {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
@@ -281,6 +291,13 @@ class DailyGiftViewController: UIViewController {
     
     
     func spin_wheel () -> Void {
+        do{spinning_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "spinning", ofType: "mp3")!))
+            spinning_player.prepareToPlay()
+            
+        }
+        catch{
+        }
+        
         var final_angle = Int(arc4random_uniform(UInt32(360)))
         while(final_angle%45 == 0){
             final_angle = Int(arc4random_uniform(UInt32(360)))
@@ -290,12 +307,16 @@ class DailyGiftViewController: UIViewController {
         let spin_animation = CAKeyframeAnimation()
         print("final_angle is \(final_angle)")
         CATransaction.begin()
+        var spinning_timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(DailyGiftViewController.spinning_sound_effect), userInfo: nil, repeats: true)
+
         CATransaction.setCompletionBlock({
             CATransaction.begin()
             CATransaction.setCompletionBlock({
                 CATransaction.begin()
                 self.display_reward = true
+                spinning_timer.invalidate()
                 CATransaction.setCompletionBlock({
+                    
                     let category = self.determine_final_case(final_angle: final_angle)
                     //print("category is \(category)")
                     if(category == 0){
@@ -420,6 +441,7 @@ class DailyGiftViewController: UIViewController {
             CATransaction.commit()
          
         })
+        
         spin_animation.keyPath = "transform.rotation.z"
         
         spin_animation.isRemovedOnCompletion = false
@@ -447,6 +469,25 @@ class DailyGiftViewController: UIViewController {
         CATransaction.commit()
         
     }
+    
+    
+    
+    
+    //spinning sound effect
+    func spinning_sound_effect() -> Void {
+        if(!display_reward){
+        spinning_player.play()
+        if(spinning_player.currentTime == spinning_player.duration){
+            spinning_player.currentTime = 0
+            spinning_player.play()
+        }
+        }else{
+            spinning_player.stop()
+        }
+    }
+    
+    
+    
     
     
     //function to determine spinning direction (need more implementation)
@@ -680,6 +721,14 @@ class DailyGiftViewController: UIViewController {
     
     func auto_count_down() -> Void{
         if(total_seconds > 0){
+        unlock_player_played_time = 0
+            do{clock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "clock_sound", ofType: "mp3")!))
+                clock_player.prepareToPlay()
+                
+            }
+            catch{
+            }
+        clock_player.play()
         count_down_end = false
         total_seconds = total_seconds - 1
         let hours = total_seconds/(60*60)
@@ -689,6 +738,17 @@ class DailyGiftViewController: UIViewController {
         count_down_time_string = hours_formatter(hours: hours) + " : " + min_formatter(min: min) + " : " + sec_formatter(sec: seconds)
         count_down_label.text = count_down_time_string
         }else if(total_seconds == 0){
+            if(unlock_player_played_time == 0){
+            do{unlock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "door_open_and_reming", ofType: "mp3")!))
+                unlock_player.prepareToPlay()
+                
+            }
+            catch{
+            }
+                unlock_player.play()
+            unlock_player_played_time = unlock_player_played_time + 1
+            }
+            
             count_down_end = true
             lock_screen.fadeOutandRemove()
             count_down_label.fadeOutandRemove()

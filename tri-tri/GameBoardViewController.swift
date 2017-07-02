@@ -811,7 +811,7 @@ class GameBoardViewController: UIViewController {
         catch{
         
         }
-        
+    
 
         ///
         //add UIPanGestureRecognizer

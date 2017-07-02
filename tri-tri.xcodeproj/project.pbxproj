@@ -44,6 +44,9 @@
 		56C3F4291ED279D200DE21BD /* erase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F4281ED279D200DE21BD /* erase.wav */; };
 		56C3F42B1ED27B1A00DE21BD /* general_button.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F42A1ED27B1A00DE21BD /* general_button.wav */; };
 		56C3F42D1ED27CC400DE21BD /* opening.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F42C1ED27CC400DE21BD /* opening.wav */; };
+		56D12A1C1F07E90100C047E1 /* clock_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D12A1B1F07E90100C047E1 /* clock_sound.mp3 */; };
+		56D12A1E1F07EC4E00C047E1 /* door_open_and_reming.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D12A1D1F07EC4E00C047E1 /* door_open_and_reming.mp3 */; };
+		56D12A201F07F08200C047E1 /* spinning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D12A1F1F07F08200C047E1 /* spinning.mp3 */; };
 		56F66DEB1EDB1C2D001E1DB6 /* start.json in Resources */ = {isa = PBXBuildFile; fileRef = 56F66DEA1EDB1C2D001E1DB6 /* start.json */; };
 		B7476A082D7B9720D6CAA215 /* Pods_tri_triUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FF444272BCFA86D0D6EEBF /* Pods_tri_triUITests.framework */; };
 		EA0889133B078E2736D5E47B /* Pods_tri_triTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CE8A342F12D783B129AFA0 /* Pods_tri_triTests.framework */; };
@@ -110,6 +113,9 @@
 		56C3F4281ED279D200DE21BD /* erase.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = erase.wav; sourceTree = "<group>"; };
 		56C3F42A1ED27B1A00DE21BD /* general_button.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = general_button.wav; sourceTree = "<group>"; };
 		56C3F42C1ED27CC400DE21BD /* opening.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = opening.wav; sourceTree = "<group>"; };
+		56D12A1B1F07E90100C047E1 /* clock_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clock_sound.mp3; sourceTree = "<group>"; };
+		56D12A1D1F07EC4E00C047E1 /* door_open_and_reming.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = door_open_and_reming.mp3; sourceTree = "<group>"; };
+		56D12A1F1F07F08200C047E1 /* spinning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spinning.mp3; sourceTree = "<group>"; };
 		56F66DEA1EDB1C2D001E1DB6 /* start.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = start.json; sourceTree = "<group>"; };
 		6E3662C80E04A565E7C9DB9B /* Pods-tri-triUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tri-triUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tri-triUITests/Pods-tri-triUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		71EE653BEA0021E2F147D2C3 /* Pods_tri_tri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tri_tri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,7 +258,10 @@
 				56C3F4261ED276F200DE21BD /* restart_soundeffect.wav */,
 				564542D21EC9A0E900BFBD0C /* Fit_In.aif */,
 				5620A3891ECAB8930035E099 /* background_music_tony.m4a */,
+				56D12A1D1F07EC4E00C047E1 /* door_open_and_reming.mp3 */,
 				56A61C8A1EC5DA2400A29B6F /* background music.mp3 */,
+				56D12A1B1F07E90100C047E1 /* clock_sound.mp3 */,
+				56D12A1F1F07F08200C047E1 /* spinning.mp3 */,
 			);
 			name = Music;
 			sourceTree = "<group>";
@@ -409,13 +418,16 @@
 				56C3F4271ED276F200DE21BD /* restart_soundeffect.wav in Resources */,
 				564542D31EC9A17100BFBD0C /* Fit_In.aif in Resources */,
 				56C3F42B1ED27B1A00DE21BD /* general_button.wav in Resources */,
+				56D12A1C1F07E90100C047E1 /* clock_sound.mp3 in Resources */,
 				56C3F4291ED279D200DE21BD /* erase.wav in Resources */,
 				563E7F641ED474DA008F33C1 /* 3_times_erase.wav in Resources */,
 				56BB16E61EDC693D00EB5826 /* star_appear.json in Resources */,
 				56C3F42D1ED27CC400DE21BD /* opening.wav in Resources */,
 				042D87151ED99CC0007A329C /* tst.json in Resources */,
 				564542CF1EC9591A00BFBD0C /* anim.mp4 in Resources */,
+				56D12A1E1F07EC4E00C047E1 /* door_open_and_reming.mp3 in Resources */,
 				04E48D291EC0704000823F45 /* LaunchScreen.storyboard in Resources */,
+				56D12A201F07F08200C047E1 /* spinning.mp3 in Resources */,
 				5644A5F61EC42905000066D6 /* Main.storyboard in Resources */,
 				5668B6EA1F03CA54007BC5E3 /* star.json in Resources */,
 				563E7F5E1ED2EE50008F33C1 /* game over.wav in Resources */,
