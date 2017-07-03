@@ -148,18 +148,18 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="tuto_bg" translatesAutoresizingMaskIntoConstraints="NO" id="1Zr-fJ-SPD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="meP-AV-r9s">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JW-82-v6x" userLabel="exit">
+                                <rect key="frame" x="95" y="268" width="130" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="tuto_exit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="exit:" destination="dWF-Fv-J3W" eventType="touchUpInside" id="Eeh-Cp-3uZ"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meP-AV-r9s">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeS-HU-X2t">
-                                        <rect key="frame" x="0.0" y="537" width="130" height="130"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="tuto_exit"/>
-                                        <connections>
-                                            <action selector="exit:" destination="dWF-Fv-J3W" eventType="touchUpInside" id="oeS-rX-uyh"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -175,7 +175,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="exit_button" destination="jeS-HU-X2t" id="DEn-vW-qvl"/>
+                        <outlet property="exit_button" destination="4JW-82-v6x" id="PEq-vg-X90"/>
                         <outlet property="mainScrollView" destination="meP-AV-r9s" id="Tf3-f2-VQc"/>
                     </connections>
                 </viewController>

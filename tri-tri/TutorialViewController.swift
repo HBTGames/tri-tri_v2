@@ -33,9 +33,10 @@ class TutorialViewController: UIViewController {
     @IBOutlet var mainScrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        exit_button.setTitle("", for: .normal)
+        exit_button.setImage(UIImage(named:"tuto_exit"), for: .normal)
         exit_button.frame = CGRect(x:0, y: pause_screen_y_transform(537), width: pause_screen_x_transform(130), height: pause_screen_y_transform(130))
-        
+        self.view.bringSubview(toFront: exit_button)
         let tuto_text = UIImageView()
         tuto_text.image = UIImage(named:"tuto_text")
         tuto_text.frame = CGRect(x:0, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
@@ -81,6 +82,13 @@ class TutorialViewController: UIViewController {
     }
     
 
+    func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
+        
+    }
+    
+    func swipeGestureRecognizerAction(_ gesture: UISwipeGestureRecognizer){
+        
+    }
     /*
     // MARK: - Navigation
 
