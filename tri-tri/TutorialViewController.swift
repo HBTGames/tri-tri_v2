@@ -9,7 +9,14 @@
 import UIKit
 
 class TutorialViewController: UIViewController, UIScrollViewDelegate {
-
+    let tuto_text = UIImageView()
+    let tuto_case_1 = UIImageView()
+    let tuto_case_2 = UIImageView()
+    let tuto_case_3 = UIImageView()
+    let tuto_case_4 = UIImageView()
+    let tuto_reward = UIImageView()
+    let tuto_reward_text = UIImageView()
+    
     var pageCount = Int()
     
     func pause_screen_x_transform(_ x: Double) -> CGFloat {
@@ -51,31 +58,29 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         
         self.view.bringSubview(toFront: tuto_page_con)
         
-        let tuto_text = UIImageView()
+        
         tuto_text.image = UIImage(named:"tuto_text")
         tuto_text.frame = CGRect(x:0, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
-        let tuto_case_1 = UIImageView()
+        
         tuto_case_1.image = UIImage(named:"tuto_case_1")
         tuto_case_1.frame = CGRect(x:0, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
-        let tuto_case_2 = UIImageView()
+        
         tuto_case_2.image = UIImage(named:"tuto_case_2")
         tuto_case_2.frame = CGRect(x:mainScrollView.frame.width, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
-        let tuto_case_3 = UIImageView()
         tuto_case_3.image = UIImage(named:"tuto_case_3")
         tuto_case_3.frame = CGRect(x:2*mainScrollView.frame.width, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
-        let tuto_case_4 = UIImageView()
+        
         tuto_case_4.image = UIImage(named:"tuto_case_4")
         tuto_case_4.frame = CGRect(x:3*mainScrollView.frame.width, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
-        let tuto_reward = UIImageView()
+        
         tuto_reward.image = UIImage(named:"tuto_reward")
         tuto_reward.frame = CGRect(x:4*mainScrollView.frame.width, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
-        let tuto_reward_text = UIImageView()
         tuto_reward_text.image = UIImage(named:"tuto_reward_text")
         tuto_reward_text.frame = CGRect(x:4*mainScrollView.frame.width, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
@@ -106,9 +111,17 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         tuto_page_con.currentPage = Int(pageIndex)
+        print(tuto_page_con.currentPage)
+        if (scrollView.contentOffset.x <= 3 * view.frame.width){
+            tuto_text.frame = CGRect(x:scrollView.contentOffset.x, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
+        }
+        
+        
     }
     /*
     // MARK: - Navigation
