@@ -18,18 +18,30 @@
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="tuto_text" translatesAutoresizingMaskIntoConstraints="NO" id="l3r-gO-wFK">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="tuto_case_1" translatesAutoresizingMaskIntoConstraints="NO" id="2fL-9T-v0Q">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="l3r-gO-wFK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ES4-0P-EZg"/>
+                <constraint firstItem="2fL-9T-v0Q" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="G8i-4E-b2J"/>
+                <constraint firstAttribute="bottom" secondItem="l3r-gO-wFK" secondAttribute="bottom" id="GC1-VC-bEN"/>
+                <constraint firstAttribute="trailing" secondItem="2fL-9T-v0Q" secondAttribute="trailing" id="GI4-iW-sgK"/>
+                <constraint firstAttribute="trailing" secondItem="l3r-gO-wFK" secondAttribute="trailing" id="KWq-Oh-K1g"/>
+                <constraint firstAttribute="bottom" secondItem="2fL-9T-v0Q" secondAttribute="bottom" id="OG9-9Q-O34"/>
+                <constraint firstItem="l3r-gO-wFK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WpV-C7-e3k"/>
                 <constraint firstAttribute="bottom" secondItem="l3r-gO-wFK" secondAttribute="bottom" id="YrE-kC-Bby"/>
                 <constraint firstAttribute="trailing" secondItem="l3r-gO-wFK" secondAttribute="trailing" id="fft-qU-T3H"/>
                 <constraint firstItem="l3r-gO-wFK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="p7y-pN-JwR"/>
                 <constraint firstItem="l3r-gO-wFK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qnr-KB-LQZ"/>
+                <constraint firstItem="2fL-9T-v0Q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xv9-8f-kY2"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>
     <resources>
+        <image name="tuto_case_1" width="375" height="667"/>
         <image name="tuto_text" width="375" height="667"/>
     </resources>
 </document>

@@ -14,7 +14,29 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="tuto_slide_2" customModule="tri_tri" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="tuto_text" translatesAutoresizingMaskIntoConstraints="NO" id="W1m-N4-Lb9">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="tuto_case_2" translatesAutoresizingMaskIntoConstraints="NO" id="r8j-fX-sM9">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="W1m-N4-Lb9" secondAttribute="trailing" id="3Dn-AR-2aB"/>
+                <constraint firstItem="W1m-N4-Lb9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7a3-rg-l3g"/>
+                <constraint firstItem="r8j-fX-sM9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EzI-S4-0O8"/>
+                <constraint firstAttribute="trailing" secondItem="r8j-fX-sM9" secondAttribute="trailing" id="Fuv-CY-fQh"/>
+                <constraint firstItem="W1m-N4-Lb9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KCm-jA-Iex"/>
+                <constraint firstItem="r8j-fX-sM9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LHU-Cd-o2U"/>
+                <constraint firstAttribute="bottom" secondItem="r8j-fX-sM9" secondAttribute="bottom" id="iBX-XC-haR"/>
+                <constraint firstAttribute="bottom" secondItem="W1m-N4-Lb9" secondAttribute="bottom" id="jfz-ay-Nqx"/>
+            </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="tuto_case_2" width="375" height="667"/>
+        <image name="tuto_text" width="375" height="667"/>
+    </resources>
 </document>
