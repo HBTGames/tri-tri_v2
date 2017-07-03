@@ -8,8 +8,10 @@
 
 import UIKit
 
-class TutorialViewController: UIViewController {
+class TutorialViewController: UIViewController, UIScrollViewDelegate {
 
+    var pageCount = Int()
+    
     func pause_screen_x_transform(_ x: Double) -> CGFloat {
         let const = x/Double(375)
         let new_x = Double(view.frame.width)*const
@@ -39,6 +41,8 @@ class TutorialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainScrollView.delegate = self
+        
         exit_button.setTitle("", for: .normal)
         exit_button.setImage(UIImage(named:"tuto_exit"), for: .normal)
         exit_button.frame = CGRect(x:0, y: pause_screen_y_transform(537), width: pause_screen_x_transform(130), height: pause_screen_y_transform(130))
@@ -83,6 +87,8 @@ class TutorialViewController: UIViewController {
         mainScrollView.addSubview(tuto_reward)
         mainScrollView.addSubview(tuto_reward_text)
         mainScrollView.addSubview(tuto_text)
+        
+        pageCount = 0
         // Do any additional setup after loading the view.
     }
 
@@ -98,6 +104,11 @@ class TutorialViewController: UIViewController {
     
     func swipeGestureRecognizerAction(_ gesture: UISwipeGestureRecognizer){
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
+        tuto_page_con.currentPage = Int(pageIndex)
     }
     /*
     // MARK: - Navigation
