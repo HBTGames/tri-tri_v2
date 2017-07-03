@@ -100,7 +100,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="tutorial"/>
                                 <connections>
-                                    <segue destination="cke-Xd-ydB" kind="show" id="Bgk-bw-FBD"/>
+                                    <segue destination="dWF-Fv-J3W" kind="show" id="Hp1-xL-aW9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ry-HC-PbG">
@@ -133,44 +133,54 @@
             </objects>
             <point key="canvasLocation" x="2.3999999999999999" y="34.632683658170919"/>
         </scene>
-        <!--Tuto View Controller-->
-        <scene sceneID="Tdn-ln-hCa">
+        <!--Tutorial View Controller-->
+        <scene sceneID="MC9-HO-gJJ">
             <objects>
-                <viewController id="cke-Xd-ydB" customClass="TutoViewController" customModule="tri_tri" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dWF-Fv-J3W" customClass="TutorialViewController" customModule="tri_tri" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0pf-Dl-8uK"/>
-                        <viewControllerLayoutGuide type="bottom" id="J1M-Jx-0D5"/>
+                        <viewControllerLayoutGuide type="top" id="czN-ng-1I5"/>
+                        <viewControllerLayoutGuide type="bottom" id="zwK-MB-wIa"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1Hy-Hb-MUZ">
+                    <view key="view" contentMode="scaleToFill" id="cZ2-le-ZPr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="tuto_bg" translatesAutoresizingMaskIntoConstraints="NO" id="xQu-Jd-JdD">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="tuto_bg" translatesAutoresizingMaskIntoConstraints="NO" id="1Zr-fJ-SPD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="acc-8k-mgW">
-                                <rect key="frame" x="168" y="524" width="39" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="pageIndicatorTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="currentPageIndicatorTintColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </pageControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZE-oN-b4q">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="meP-AV-r9s">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeS-HU-X2t">
+                                        <rect key="frame" x="0.0" y="540" width="130" height="130"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="tuto_exit"/>
+                                        <connections>
+                                            <action selector="exit:" destination="dWF-Fv-J3W" eventType="touchUpInside" id="oeS-rX-uyh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="J1M-Jx-0D5" firstAttribute="top" secondItem="RZE-oN-b4q" secondAttribute="bottom" id="BNB-jk-R4i"/>
-                            <constraint firstAttribute="trailing" secondItem="RZE-oN-b4q" secondAttribute="trailing" id="XLe-Ze-J1z"/>
-                            <constraint firstItem="RZE-oN-b4q" firstAttribute="top" secondItem="0pf-Dl-8uK" secondAttribute="bottom" id="gqD-Ah-JTr"/>
-                            <constraint firstItem="RZE-oN-b4q" firstAttribute="leading" secondItem="1Hy-Hb-MUZ" secondAttribute="leading" id="wHN-QP-y8S"/>
+                            <constraint firstItem="meP-AV-r9s" firstAttribute="width" secondItem="cZ2-le-ZPr" secondAttribute="width" id="057-8f-4bQ"/>
+                            <constraint firstItem="1Zr-fJ-SPD" firstAttribute="top" secondItem="cZ2-le-ZPr" secondAttribute="top" id="Eoq-5s-Y43"/>
+                            <constraint firstItem="meP-AV-r9s" firstAttribute="centerY" secondItem="cZ2-le-ZPr" secondAttribute="centerY" id="Lz0-46-CWd"/>
+                            <constraint firstItem="meP-AV-r9s" firstAttribute="height" secondItem="cZ2-le-ZPr" secondAttribute="height" id="WVb-Rp-AT7"/>
+                            <constraint firstItem="zwK-MB-wIa" firstAttribute="top" secondItem="1Zr-fJ-SPD" secondAttribute="bottom" id="hdH-Ha-IKn"/>
+                            <constraint firstItem="1Zr-fJ-SPD" firstAttribute="leading" secondItem="cZ2-le-ZPr" secondAttribute="leading" id="heh-Lu-sGg"/>
+                            <constraint firstAttribute="trailing" secondItem="1Zr-fJ-SPD" secondAttribute="trailing" id="hoJ-KY-mA7"/>
+                            <constraint firstItem="meP-AV-r9s" firstAttribute="centerX" secondItem="cZ2-le-ZPr" secondAttribute="centerX" id="zyb-Od-ge3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainScrollView" destination="meP-AV-r9s" id="Tf3-f2-VQc"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kCZ-Dc-92e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gpn-Rm-yBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="863.20000000000005" y="32.833583208395808"/>
+            <point key="canvasLocation" x="776.79999999999995" y="36.431784107946029"/>
         </scene>
         <!--Theme Menu View Controller-->
         <scene sceneID="4Ji-yD-aLf">
@@ -1166,6 +1176,7 @@
         <image name="shopping_cart" width="198" height="172"/>
         <image name="trophy_new" width="43" height="31"/>
         <image name="tuto_bg" width="375" height="667"/>
+        <image name="tuto_exit" width="130" height="130"/>
         <image name="wheel" width="282" height="282"/>
         <image name="wheel_background" width="375" height="667"/>
         <image name="wheel_outer" width="375" height="667"/>
