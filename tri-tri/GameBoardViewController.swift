@@ -533,9 +533,9 @@ class GameBoardViewController: UIViewController {
     
     //orange tri elements
     
-    let orange_down = UIImage(named:"orange_downwards")
+    let orange_down = UIImage(named:"pink_downwards")
     
-    let orange_up = UIImage(named:"orange_up")
+    let orange_up = UIImage(named:"pink_upwards")
     
     //light brown elements
     
