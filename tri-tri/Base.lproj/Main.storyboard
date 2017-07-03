@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -95,14 +95,6 @@
                                     <action selector="theme_menu_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h1A-Tx-Jy0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIE-d3-hMd">
-                                <rect key="frame" x="0.0" y="633" width="49" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="tutorial"/>
-                                <connections>
-                                    <segue destination="dWF-Fv-J3W" kind="show" id="Hp1-xL-aW9"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ry-HC-PbG">
                                 <rect key="frame" x="247" y="538" width="128" height="129"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -110,6 +102,15 @@
                                 <connections>
                                     <action selector="gift_sound_effect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="chm-be-mA0"/>
                                     <segue destination="NEE-e6-hOi" kind="show" id="ClW-ig-ZFV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIE-d3-hMd">
+                                <rect key="frame" x="0.0" y="538" width="128" height="129"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="tuto_icon_day_night"/>
+                                <connections>
+                                    <action selector="tutorial_button_sound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BzT-EX-fEd"/>
+                                    <segue destination="dWF-Fv-J3W" kind="show" id="Hp1-xL-aW9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -129,6 +130,7 @@
                         <outlet property="star_counter" destination="s2T-Fz-kax" id="WVr-cD-Mqa"/>
                         <outlet property="triangle_title" destination="j52-sZ-nKU" id="46J-XK-yDg"/>
                         <outlet property="trophy" destination="FcQ-gF-imE" id="lYb-T0-owx"/>
+                        <outlet property="tutorial_button" destination="XIE-d3-hMd" id="1Po-Yp-oLc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1186,6 +1188,7 @@
         <image name="trophy_new" width="43" height="31"/>
         <image name="tuto_bg" width="375" height="667"/>
         <image name="tuto_exit" width="130" height="130"/>
+        <image name="tuto_icon_day_night" width="126" height="129"/>
         <image name="wheel" width="282" height="282"/>
         <image name="wheel_background" width="375" height="667"/>
         <image name="wheel_outer" width="375" height="667"/>
