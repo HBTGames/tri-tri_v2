@@ -196,12 +196,12 @@
 				0453BA7C1F0A0C9800E2D724 /* tuto_slide_5.swift */,
 			);
 			name = tuto_slides;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		04E48D121EC0704000823F45 = {
 			isa = PBXGroup;
 			children = (
-				0453BA691F0A09EF00E2D724 /* tuto_slides */,
 				04E48D1D1EC0704000823F45 /* tri-tri */,
 				04E48D3D1EC0704000823F45 /* tri-triUITests */,
 				04E48D1C1EC0704000823F45 /* Products */,
@@ -223,6 +223,7 @@
 		04E48D1D1EC0704000823F45 /* tri-tri */ = {
 			isa = PBXGroup;
 			children = (
+				0453BA691F0A09EF00E2D724 /* tuto_slides */,
 				5668B6EB1F03E093007BC5E3 /* Assets.xcassets */,
 				566E64D51EDADC750034B1AA /* Animation */,
 				566A590C1EC944650056D665 /* Launch Animation */,
