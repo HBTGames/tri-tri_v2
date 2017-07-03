@@ -10,6 +10,19 @@ import UIKit
 
 class TutorialViewController: UIViewController {
 
+    func pause_screen_x_transform(_ x: Double) -> CGFloat {
+        let const = x/Double(375)
+        let new_x = Double(view.frame.width)*const
+        return CGFloat(new_x)
+        
+    }
+    func pause_screen_y_transform(_ y: Double) -> CGFloat {
+        let const = y/Double(667)
+        let new_y = Double(view.frame.height)*const
+        return CGFloat(new_y)
+    }
+    
+    @IBOutlet var exit_button: UIButton!
     @IBAction func exit(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
@@ -20,6 +33,8 @@ class TutorialViewController: UIViewController {
     @IBOutlet var mainScrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        exit_button.frame = CGRect(x:0, y: pause_screen_y_transform(537), width: pause_screen_x_transform(130), height: pause_screen_y_transform(130))
         
         let tuto_text = UIImageView()
         tuto_text.image = UIImage(named:"tuto_text")
