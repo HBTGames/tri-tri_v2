@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -103,12 +103,13 @@
                                     <segue destination="dWF-Fv-J3W" kind="show" id="Hp1-xL-aW9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ry-HC-PbG">
-                                <rect key="frame" x="316" y="635" width="59" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ry-HC-PbG">
+                                <rect key="frame" x="247" y="538" width="128" height="129"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="daily gift"/>
+                                <state key="normal" title="daily gift" image="gift_day_mode"/>
                                 <connections>
-                                    <segue destination="NEE-e6-hOi" kind="show" id="IQr-Nv-ufa"/>
+                                    <action selector="gift_sound_effect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="chm-be-mA0"/>
+                                    <segue destination="NEE-e6-hOi" kind="show" id="ClW-ig-ZFV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -120,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="continue_button" destination="ABN-yi-CDb" id="JyS-hV-8Wy"/>
+                        <outlet property="gift_button" destination="9Ry-HC-PbG" id="lef-PA-nv2"/>
                         <outlet property="highest_score" destination="jVy-u3-4Z8" id="cFj-tW-Ygh"/>
                         <outlet property="like_button" destination="PFh-NN-dAa" id="Fc8-Ys-Kas"/>
                         <outlet property="shopping_cart" destination="L5u-Zg-LxX" id="kqg-hZ-5f9"/>
@@ -1170,6 +1172,7 @@
         <image name="day mode triangle title" width="360" height="82"/>
         <image name="day_mode_star" width="97" height="41"/>
         <image name="day_theme" width="177" height="177"/>
+        <image name="gift_day_mode" width="128" height="129"/>
         <image name="grey_tir_downwards" width="49" height="43"/>
         <image name="grey_tri_upwards" width="49" height="43"/>
         <image name="home" width="198" height="172"/>

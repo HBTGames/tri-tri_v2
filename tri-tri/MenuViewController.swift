@@ -19,6 +19,24 @@ class MenuViewController: UIViewController {
     var button_player = AVAudioPlayer()
     var opening_player = AVAudioPlayer()
     var star_score = 0
+    
+    @IBOutlet weak var gift_button: UIButton!
+    
+    @IBAction func gift_sound_effect(_ sender: UIButton) {
+        do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+            self.button_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        self.button_player.play()
+
+    }
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         screen_width = view.frame.width
@@ -33,6 +51,7 @@ class MenuViewController: UIViewController {
         trophy.frame = CGRect(x: pause_screen_x_transform(Double(trophy.frame.origin.x)), y: pause_screen_y_transform(Double(trophy.frame.origin.y)), width: pause_screen_x_transform(Double(trophy.frame.width)), height: pause_screen_y_transform(Double(trophy.frame.height)))
         star_board.frame = CGRect(x: pause_screen_x_transform(Double(star_board.frame.origin.x)), y: pause_screen_y_transform(Double(star_board.frame.origin.y)), width: pause_screen_x_transform(Double(star_board.frame.width)), height: pause_screen_y_transform(Double(star_board.frame.height)))
         highest_score.frame = CGRect(x: pause_screen_x_transform(Double(highest_score.frame.origin.x)), y: pause_screen_y_transform(Double(highest_score.frame.origin.y)), width: pause_screen_x_transform(Double(highest_score.frame.width)), height: pause_screen_y_transform(Double(highest_score.frame.height)))
+        gift_button.frame = CGRect(x: pause_screen_x_transform(Double(gift_button.frame.origin.x)), y: pause_screen_y_transform(Double(gift_button.frame.origin.y)), width: pause_screen_x_transform(Double(gift_button.frame.width)), height: pause_screen_y_transform(Double(gift_button.frame.height)))
 
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
         self.view.addGestureRecognizer(panGestureRecognizer)
@@ -73,6 +92,7 @@ class MenuViewController: UIViewController {
             continue_button.setImage(UIImage(named:"continue"), for: .normal)
             star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
             star_counter.image = UIImage(named:"day_mode_star")
+            gift_button.setImage(#imageLiteral(resourceName: "gift_day_mode"), for: .normal)
         }else if(ThemeType == 2){
             trophy.image = UIImage(named:"night mode 奖杯")
             view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -83,6 +103,7 @@ class MenuViewController: UIViewController {
             continue_button.setImage(UIImage(named:"continue"), for: .normal)
             star_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             star_counter.image = UIImage(named:"night_mode_star")
+            gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
 
         }else if(ThemeType == 3){
             triangle_title.image = UIImage(named: "day mode triangle title")
@@ -94,6 +115,7 @@ class MenuViewController: UIViewController {
             continue_button.setImage(UIImage(named:"BW_continue"), for: .normal)
             star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             star_counter.image = UIImage(named:"BW_mode_star")
+            gift_button.setImage(#imageLiteral(resourceName: "gift_BW_mode"), for: .normal)
 
         }else if(ThemeType == 4){
             triangle_title.image = UIImage(named: "night mode triangle title")
@@ -103,6 +125,7 @@ class MenuViewController: UIViewController {
             highest_score.textColor = UIColor(red: 236.0/255, green: 232.0/255, blue: 187.0/255, alpha: 1.0)
             view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
             continue_button.setImage(UIImage(named:"chaos_start_icon"), for: .normal)
+            
         }else if(ThemeType == 5){
             triangle_title.image = UIImage(named: "school_triangle_title")
             like_button.setBackgroundImage(UIImage(named: "school_like-icon"), for: .normal)
@@ -113,6 +136,7 @@ class MenuViewController: UIViewController {
             continue_button.setImage(UIImage(named:"school_start-icon"), for: .normal)
             star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
             star_counter.image = UIImage(named:"school_mode_star")
+            gift_button.setImage(#imageLiteral(resourceName: "gift_school_mode"), for: .normal)
             
 
         }
@@ -126,7 +150,7 @@ class MenuViewController: UIViewController {
             view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
             star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
             star_counter.image = UIImage(named:"colors_mode_star")
-            
+            gift_button.setImage(#imageLiteral(resourceName: "gift_color_mode"), for: .normal)
 
 
             
@@ -244,7 +268,7 @@ class MenuViewController: UIViewController {
             self.star_counter.image = UIImage(named:"day_mode_star")
             self.theme_star_counter.image = UIImage(named:"day_mode_star")
             self.theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
-           
+            self.gift_button.setImage(#imageLiteral(resourceName: "gift_day_mode"), for: .normal)
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -304,7 +328,7 @@ class MenuViewController: UIViewController {
             self.star_counter.image = UIImage(named:"night_mode_star")
             self.theme_star_counter.image = UIImage(named:"night_mode_star")
             self.theme_star_board.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
-            
+            self.gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
 
 
            // self.trophy.image = UIImage(named:"night mode 奖杯")
@@ -364,6 +388,7 @@ class MenuViewController: UIViewController {
             self.star_counter.image = UIImage(named:"BW_mode_star")
             self.theme_star_counter.image = UIImage(named:"BW_mode_star")
             self.theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
+            self.gift_button.setImage(#imageLiteral(resourceName: "gift_BW_mode"), for: .normal)
           
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
@@ -492,7 +517,7 @@ class MenuViewController: UIViewController {
             self.star_counter.image = UIImage(named:"school_mode_star")
             self.theme_star_counter.image = UIImage(named:"school_mode_star")
             self.theme_star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
-            
+            self.gift_button.setImage(#imageLiteral(resourceName: "gift_school_mode"), for: .normal)
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -554,7 +579,7 @@ class MenuViewController: UIViewController {
             self.star_counter.image = UIImage(named:"colors_mode_star")
             self.theme_star_counter.image = UIImage(named:"colors_mode_star")
             self.theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
-            
+            self.gift_button.setImage(#imageLiteral(resourceName: "gift_color_mode"), for: .normal)
 
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)

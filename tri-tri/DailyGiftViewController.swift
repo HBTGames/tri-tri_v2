@@ -12,6 +12,8 @@ import AVFoundation
 
 class DailyGiftViewController: UIViewController {
 //screen width and height
+    
+    var button_player = AVAudioPlayer()
     var screen_width : CGFloat = 0
     var screen_height : CGFloat = 0
     var real_velocity = Double(0)
@@ -145,10 +147,16 @@ class DailyGiftViewController: UIViewController {
         self.view.addSubview(cancel_button)
         // Do any additional setup after loading the view.
         cancel_button.whenButtonIsClicked(action: {
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
             nextViewController.modalTransitionStyle = .crossDissolve
-            self.clock_player.stop()
             self.count_down_timer_during_reward.invalidate()
             self.lock_screen_count_down_timer.invalidate()
             self.present(nextViewController, animated: true, completion: nil)
@@ -204,10 +212,16 @@ class DailyGiftViewController: UIViewController {
         cancel_button_lock.setImage(UIImage(named: "wheel_cancel"), for: .normal)
         self.view.addSubview(cancel_button_lock)
         cancel_button_lock.whenButtonIsClicked(action: {
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
             nextViewController.modalTransitionStyle = .crossDissolve
-            self.clock_player.stop()
             self.count_down_timer_during_reward.invalidate()
             self.lock_screen_count_down_timer.invalidate()
             self.present(nextViewController, animated: true, completion: nil)
