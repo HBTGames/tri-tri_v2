@@ -30,13 +30,23 @@ class TutorialViewController: UIViewController {
         self.present(nextViewController, animated: true, completion: nil)
         
     }
+    
+    
+    @IBOutlet var tuto_page_con: UIPageControl!
+    
+    
     @IBOutlet var mainScrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         exit_button.setTitle("", for: .normal)
         exit_button.setImage(UIImage(named:"tuto_exit"), for: .normal)
         exit_button.frame = CGRect(x:0, y: pause_screen_y_transform(537), width: pause_screen_x_transform(130), height: pause_screen_y_transform(130))
+        tuto_page_con.frame = CGRect(x:pause_screen_x_transform(168), y: pause_screen_y_transform(520), width: pause_screen_x_transform(39), height: 37)
         self.view.bringSubview(toFront: exit_button)
+        
+        self.view.bringSubview(toFront: tuto_page_con)
+        
         let tuto_text = UIImageView()
         tuto_text.image = UIImage(named:"tuto_text")
         tuto_text.frame = CGRect(x:0, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)

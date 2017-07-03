@@ -145,6 +145,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="Sgq-9G-o33">
+                                <rect key="frame" x="168" y="520" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="tuto_bg" translatesAutoresizingMaskIntoConstraints="NO" id="1Zr-fJ-SPD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
@@ -177,6 +181,7 @@
                     <connections>
                         <outlet property="exit_button" destination="4JW-82-v6x" id="PEq-vg-X90"/>
                         <outlet property="mainScrollView" destination="meP-AV-r9s" id="Tf3-f2-VQc"/>
+                        <outlet property="tuto_page_con" destination="Sgq-9G-o33" id="wL9-Sg-85a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gpn-Rm-yBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
