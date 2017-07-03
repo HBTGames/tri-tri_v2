@@ -11,6 +11,17 @@
 		042D870B1ED8707D007A329C /* LottieTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D870A1ED8707D007A329C /* LottieTestViewController.swift */; };
 		042D870D1ED870FB007A329C /* servishero_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 042D870C1ED870FB007A329C /* servishero_loading.json */; };
 		042D87151ED99CC0007A329C /* tst.json in Resources */ = {isa = PBXBuildFile; fileRef = 042D87141ED99CC0007A329C /* tst.json */; };
+		0453BA681F0A010900E2D724 /* TutoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453BA671F0A010900E2D724 /* TutoViewController.swift */; };
+		0453BA6B1F0A0A2A00E2D724 /* tuto_slide_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0453BA6A1F0A0A2A00E2D724 /* tuto_slide_1.xib */; };
+		0453BA6D1F0A0A7C00E2D724 /* tuto_slide_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453BA6C1F0A0A7C00E2D724 /* tuto_slide_1.swift */; };
+		0453BA6F1F0A0C4500E2D724 /* tuto_slide_2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0453BA6E1F0A0C4500E2D724 /* tuto_slide_2.xib */; };
+		0453BA711F0A0C5100E2D724 /* tuto_slide_3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0453BA701F0A0C5100E2D724 /* tuto_slide_3.xib */; };
+		0453BA731F0A0C5900E2D724 /* tuto_slide_4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0453BA721F0A0C5900E2D724 /* tuto_slide_4.xib */; };
+		0453BA751F0A0C6900E2D724 /* tuto_slide_5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0453BA741F0A0C6900E2D724 /* tuto_slide_5.xib */; };
+		0453BA771F0A0C7600E2D724 /* tuto_slide_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453BA761F0A0C7600E2D724 /* tuto_slide_2.swift */; };
+		0453BA791F0A0C8300E2D724 /* tuto_slide_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453BA781F0A0C8300E2D724 /* tuto_slide_3.swift */; };
+		0453BA7B1F0A0C8D00E2D724 /* tuto_slide_4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453BA7A1F0A0C8D00E2D724 /* tuto_slide_4.swift */; };
+		0453BA7D1F0A0C9800E2D724 /* tuto_slide_5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453BA7C1F0A0C9800E2D724 /* tuto_slide_5.swift */; };
 		04E48D1F1EC0704000823F45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48D1E1EC0704000823F45 /* AppDelegate.swift */; };
 		04E48D211EC0704000823F45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48D201EC0704000823F45 /* ViewController.swift */; };
 		04E48D291EC0704000823F45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E48D271EC0704000823F45 /* LaunchScreen.storyboard */; };
@@ -75,6 +86,17 @@
 		042D870A1ED8707D007A329C /* LottieTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieTestViewController.swift; sourceTree = "<group>"; };
 		042D870C1ED870FB007A329C /* servishero_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servishero_loading.json; sourceTree = "<group>"; };
 		042D87141ED99CC0007A329C /* tst.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tst.json; sourceTree = "<group>"; };
+		0453BA671F0A010900E2D724 /* TutoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutoViewController.swift; sourceTree = "<group>"; };
+		0453BA6A1F0A0A2A00E2D724 /* tuto_slide_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tuto_slide_1.xib; sourceTree = "<group>"; };
+		0453BA6C1F0A0A7C00E2D724 /* tuto_slide_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tuto_slide_1.swift; sourceTree = "<group>"; };
+		0453BA6E1F0A0C4500E2D724 /* tuto_slide_2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tuto_slide_2.xib; sourceTree = "<group>"; };
+		0453BA701F0A0C5100E2D724 /* tuto_slide_3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tuto_slide_3.xib; sourceTree = "<group>"; };
+		0453BA721F0A0C5900E2D724 /* tuto_slide_4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tuto_slide_4.xib; sourceTree = "<group>"; };
+		0453BA741F0A0C6900E2D724 /* tuto_slide_5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tuto_slide_5.xib; sourceTree = "<group>"; };
+		0453BA761F0A0C7600E2D724 /* tuto_slide_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tuto_slide_2.swift; sourceTree = "<group>"; };
+		0453BA781F0A0C8300E2D724 /* tuto_slide_3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tuto_slide_3.swift; sourceTree = "<group>"; };
+		0453BA7A1F0A0C8D00E2D724 /* tuto_slide_4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tuto_slide_4.swift; sourceTree = "<group>"; };
+		0453BA7C1F0A0C9800E2D724 /* tuto_slide_5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tuto_slide_5.swift; sourceTree = "<group>"; };
 		04E48D1B1EC0704000823F45 /* tri-tri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tri-tri.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E48D1E1EC0704000823F45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E48D201EC0704000823F45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -159,9 +181,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0453BA691F0A09EF00E2D724 /* tuto_slides */ = {
+			isa = PBXGroup;
+			children = (
+				0453BA6A1F0A0A2A00E2D724 /* tuto_slide_1.xib */,
+				0453BA6C1F0A0A7C00E2D724 /* tuto_slide_1.swift */,
+				0453BA6E1F0A0C4500E2D724 /* tuto_slide_2.xib */,
+				0453BA761F0A0C7600E2D724 /* tuto_slide_2.swift */,
+				0453BA701F0A0C5100E2D724 /* tuto_slide_3.xib */,
+				0453BA781F0A0C8300E2D724 /* tuto_slide_3.swift */,
+				0453BA721F0A0C5900E2D724 /* tuto_slide_4.xib */,
+				0453BA7A1F0A0C8D00E2D724 /* tuto_slide_4.swift */,
+				0453BA741F0A0C6900E2D724 /* tuto_slide_5.xib */,
+				0453BA7C1F0A0C9800E2D724 /* tuto_slide_5.swift */,
+			);
+			name = tuto_slides;
+			sourceTree = "<group>";
+		};
 		04E48D121EC0704000823F45 = {
 			isa = PBXGroup;
 			children = (
+				0453BA691F0A09EF00E2D724 /* tuto_slides */,
 				04E48D1D1EC0704000823F45 /* tri-tri */,
 				04E48D3D1EC0704000823F45 /* tri-triUITests */,
 				04E48D1C1EC0704000823F45 /* Products */,
@@ -197,6 +237,7 @@
 				563230E71EC8A9F600EA49D9 /* GameOverViewController.swift */,
 				04E48D271EC0704000823F45 /* LaunchScreen.storyboard */,
 				5644A5F41EC42905000066D6 /* Main.storyboard */,
+				0453BA671F0A010900E2D724 /* TutoViewController.swift */,
 				042D870A1ED8707D007A329C /* LottieTestViewController.swift */,
 				566A59091EC942DD0056D665 /* LaunchViewController.swift */,
 				563E7F651ED47D5A008F33C1 /* ThemeMenuViewController.swift */,
@@ -419,6 +460,7 @@
 			files = (
 				5668B6E41F03507E007BC5E3 /* crown.json in Resources */,
 				5620A38A1ECAB89F0035E099 /* background_music_tony.m4a in Resources */,
+				0453BA6B1F0A0A2A00E2D724 /* tuto_slide_1.xib in Resources */,
 				56F66DEB1EDB1C2D001E1DB6 /* start.json in Resources */,
 				563E7F601ED2EE5A008F33C1 /* not_fit.wav in Resources */,
 				56C3F4271ED276F200DE21BD /* restart_soundeffect.wav in Resources */,
@@ -428,9 +470,12 @@
 				56C3F4291ED279D200DE21BD /* erase.wav in Resources */,
 				569D0F431F08F37200264D3C /* spin_new.mp3 in Resources */,
 				563E7F641ED474DA008F33C1 /* 3_times_erase.wav in Resources */,
+				0453BA731F0A0C5900E2D724 /* tuto_slide_4.xib in Resources */,
 				56BB16E61EDC693D00EB5826 /* star_appear.json in Resources */,
 				56C3F42D1ED27CC400DE21BD /* opening.wav in Resources */,
+				0453BA6F1F0A0C4500E2D724 /* tuto_slide_2.xib in Resources */,
 				042D87151ED99CC0007A329C /* tst.json in Resources */,
+				0453BA711F0A0C5100E2D724 /* tuto_slide_3.xib in Resources */,
 				564542CF1EC9591A00BFBD0C /* anim.mp4 in Resources */,
 				56D12A1E1F07EC4E00C047E1 /* door_open_and_reming.mp3 in Resources */,
 				04E48D291EC0704000823F45 /* LaunchScreen.storyboard in Resources */,
@@ -441,6 +486,7 @@
 				04E48D4F1EC075FA00823F45 /* 540654.jpg in Resources */,
 				563E7F621ED47352008F33C1 /* 1_time_erase.mp3 in Resources */,
 				56A61C8B1EC5DA2400A29B6F /* background music.mp3 in Resources */,
+				0453BA751F0A0C6900E2D724 /* tuto_slide_5.xib in Resources */,
 				566E64D71EDADC810034B1AA /* star_appear_ani.json in Resources */,
 				5668B6E81F03C632007BC5E3 /* favourite_app_icon.json in Resources */,
 				042D870D1ED870FB007A329C /* servishero_loading.json in Resources */,
@@ -609,6 +655,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0453BA681F0A010900E2D724 /* TutoViewController.swift in Sources */,
 				04E48D211EC0704000823F45 /* ViewController.swift in Sources */,
 				566A590A1EC942DD0056D665 /* LaunchViewController.swift in Sources */,
 				042D870B1ED8707D007A329C /* LottieTestViewController.swift in Sources */,
@@ -617,6 +664,11 @@
 				04E48D1F1EC0704000823F45 /* AppDelegate.swift in Sources */,
 				56BEBEA81EC32C25008BBD04 /* UIImageTintExtension.swift in Sources */,
 				563230E81EC8A9F600EA49D9 /* GameOverViewController.swift in Sources */,
+				0453BA771F0A0C7600E2D724 /* tuto_slide_2.swift in Sources */,
+				0453BA6D1F0A0A7C00E2D724 /* tuto_slide_1.swift in Sources */,
+				0453BA7B1F0A0C8D00E2D724 /* tuto_slide_4.swift in Sources */,
+				0453BA791F0A0C8300E2D724 /* tuto_slide_3.swift in Sources */,
+				0453BA7D1F0A0C9800E2D724 /* tuto_slide_5.swift in Sources */,
 				5668B6EE1F048475007BC5E3 /* DailyGiftViewController.swift in Sources */,
 				563E7F661ED47D5A008F33C1 /* ThemeMenuViewController.swift in Sources */,
 			);
