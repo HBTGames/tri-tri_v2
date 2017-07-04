@@ -801,7 +801,7 @@ class DailyGiftViewController: UIViewController {
             let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
             let degree_angle_init = Double(angle_init)*180/Double.pi
             let degree_angle_final = Double(angle_final)*180/Double.pi
-            //print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
+            print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
             //use the last two area to get the direction
             //only one area
             if(valid_length == 1){
@@ -843,7 +843,7 @@ class DailyGiftViewController: UIViewController {
             let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
             let degree_angle_init = Double(angle_init)*180/Double.pi
             let degree_angle_final = Double(angle_final)*180/Double.pi
-            //print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
+            print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
             //use the last two area to get the direction
             //only one area
             if(valid_length == 1){
@@ -876,14 +876,15 @@ class DailyGiftViewController: UIViewController {
             let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
             let degree_angle_init = Double(angle_init)*180/Double.pi
             let degree_angle_final = Double(angle_final)*180/Double.pi
-            //print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
+            print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
             //use the last two area to get the direction
             //only one area
             if(valid_length == 1){
+                print("same area")
                 if(degree_angle_init > degree_angle_final){
-                    return 0
-                }else if(degree_angle_init < degree_angle_final){
                     return 1
+                }else if(degree_angle_init < degree_angle_final){
+                    return 0
                 }else{
                     return -1
                 }
