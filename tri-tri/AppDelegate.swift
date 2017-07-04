@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notification_content.sound = UNNotificationSound.default()
         notification_content.badge = 1
         //deliver the notification
-        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 600, repeats: false)
         let request = UNNotificationRequest.init(identifier: "FiveSeconds", content: notification_content, trigger: trigger)
         //schedule notification
         let center = UNUserNotificationCenter.current()

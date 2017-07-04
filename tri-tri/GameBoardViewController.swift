@@ -748,23 +748,29 @@ class GameBoardViewController: UIViewController {
         light_brown_drag_origin_backup = light_brown_drag_origin
         if(green_drag_tri_orig_rec.contains(initialTouchLocation)){
             self.green_drag_origin.y = self.green_drag_origin.y - self.pause_screen_y_transform(70)
+            self.green_drag_origin.x = self.green_drag_origin.x - self.pause_screen_x_transform(10)
         UIView.animate(withDuration: 0.3, animations: {
             self.green_drag_tri.frame.origin.y = self.green_drag_tri.frame.origin.y - self.pause_screen_y_transform(70)
-            
+            self.green_drag_tri.frame.origin.x = self.green_drag_tri.frame.origin.x - self.pause_screen_x_transform(10)
             self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
         })
         }else if(orange_drag_tri_orig_rec.contains(initialTouchLocation)){
             self.orange_drag_origin.y = self.orange_drag_origin.y - self.pause_screen_y_transform(70)
+            self.orange_drag_origin.x = self.orange_drag_origin.x - self.pause_screen_x_transform(10)
 
             UIView.animate(withDuration: 0.3, animations: {
                 self.orange_drag_tri.frame.origin.y = self.orange_drag_tri.frame.origin.y - self.pause_screen_y_transform(70)
+                self.orange_drag_tri.frame.origin.x = self.orange_drag_tri.frame.origin.x - self.pause_screen_x_transform(10)
                 self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
             })
         }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation)){
+             self.light_brown_drag_origin.y = self.light_brown_drag_origin.y - self.pause_screen_y_transform(70)
+            self.light_brown_drag_origin.x = self.light_brown_drag_origin.x - self.pause_screen_x_transform(10)
+            
             UIView.animate(withDuration: 0.3, animations: {
-                self.light_brown_drag_origin.y = self.light_brown_drag_origin.y - self.pause_screen_y_transform(70)
+               
                 self.light_brown_drag_tri.frame.origin.y = self.light_brown_drag_tri.frame.origin.y - self.pause_screen_y_transform(70)
-                
+                self.light_brown_drag_tri.frame.origin.x = self.light_brown_drag_tri.frame.origin.x - self.pause_screen_x_transform(10)
                 self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
             })
         }
@@ -778,19 +784,28 @@ class GameBoardViewController: UIViewController {
             if(green_drag_tri_orig_rec.contains(finalTouchLocation)){
                 UIView.animate(withDuration: 0.3, animations: {
                      self.green_drag_tri.frame.origin.y = self.green_drag_tri.frame.origin.y + self.pause_screen_y_transform(70)
+                    self.green_drag_tri.frame.origin.x = self.green_drag_tri.frame.origin.x + self.pause_screen_x_transform(10)
                     self.green_drag_origin.y = self.green_drag_origin.y + self.pause_screen_y_transform(70)
+                    self.green_drag_origin.x = self.green_drag_origin.x + self.pause_screen_x_transform(10)
+                    
                     self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                 })
             }else if(orange_drag_tri_orig_rec.contains(finalTouchLocation)){
                 UIView.animate(withDuration: 0.3, animations: {
                     self.orange_drag_tri.frame.origin.y = self.orange_drag_tri.frame.origin.y + self.pause_screen_y_transform(70)
+                    self.orange_drag_tri.frame.origin.x = self.orange_drag_tri.frame.origin.x + self.pause_screen_x_transform(10)
+
                     self.orange_drag_origin.y = self.orange_drag_origin.y + self.pause_screen_y_transform(70)
+                    self.orange_drag_origin.x = self.orange_drag_origin.x + self.pause_screen_x_transform(10)
                     self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                 })
             }else if(light_brown_drag_tri_orig_rec.contains(finalTouchLocation)){
                 UIView.animate(withDuration: 0.3, animations: {
                     self.light_brown_drag_tri.frame.origin.y = self.light_brown_drag_tri.frame.origin.y + self.pause_screen_y_transform(70)
+                    self.light_brown_drag_tri.frame.origin.x = self.light_brown_drag_tri.frame.origin.x + self.pause_screen_x_transform(10)
                     self.light_brown_drag_origin.y = self.light_brown_drag_origin.y + self.pause_screen_y_transform(70)
+                    self.light_brown_drag_origin.x = self.light_brown_drag_origin.x + self.pause_screen_x_transform(10)
+
                     self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                 })
         }
@@ -868,10 +883,13 @@ class GameBoardViewController: UIViewController {
         light_brown_drag_tri.frame.origin = light_brown_drag_origin
         light_brown_drag_origin_backup = light_brown_drag_origin
         //declare original frames of the tris
-        green_drag_tri_orig_rec = green_drag_tri.frame
-        print("green origin x: \(green_drag_origin.x), y: \(green_drag_origin.y)")
-        orange_drag_tri_orig_rec = orange_drag_tri.frame
-        light_brown_drag_tri_orig_rec = light_brown_drag_tri.frame
+        green_drag_tri_orig_rec =  CGRect(x: green_drag_tri.frame.origin.x - pause_screen_x_transform(20), y: green_drag_tri.frame.origin.y - pause_screen_y_transform(15), width: green_drag_tri.frame.width + pause_screen_x_transform(40), height: green_drag_tri.frame.height + pause_screen_y_transform(30))
+        //print("green origin x: \(green_drag_origin.x), y: \(green_drag_origin.y)")
+        
+        orange_drag_tri_orig_rec = CGRect(x:  orange_drag_tri.frame.origin.x - pause_screen_x_transform(20), y:  orange_drag_tri.frame.origin.y - pause_screen_y_transform(15),  width: orange_drag_tri.frame.width + pause_screen_x_transform(40), height: orange_drag_tri.frame.height + pause_screen_y_transform(30))
+       
+        light_brown_drag_tri_orig_rec = CGRect(x: light_brown_drag_tri.frame.origin.x - pause_screen_x_transform(20), y: light_brown_drag_tri.frame.origin.y - pause_screen_y_transform(15), width: light_brown_drag_tri.frame.width + pause_screen_x_transform(40), height: light_brown_drag_tri.frame.height + pause_screen_y_transform(30))
+
         green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
         orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
         light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
