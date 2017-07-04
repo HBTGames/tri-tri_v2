@@ -402,6 +402,11 @@ class GameBoardViewController: UIViewController {
     var green_drag_tri_orig_rec = CGRect(origin:  CGPoint(x: 0, y:0 ) , size: CGSize(width: 0 , height: 0))
     var orange_drag_tri_orig_rec = CGRect(origin:  CGPoint(x: 0, y:0 ) , size: CGSize(width: 0 , height: 0))
     var light_brown_drag_tri_orig_rec = CGRect(origin:  CGPoint(x: 0, y:0 ) , size: CGSize(width: 0 , height: 0))
+    var green_drag_origin_backup = CGPoint(x: 0, y: 0)
+    var orange_drag_origin_backup = CGPoint(x: 0, y:0 )
+    var light_brown_drag_origin_backup = CGPoint(x:0 , y:0)
+
+    
     
     //array of image stored for shape 0 to shape 10
     //used for random generation
@@ -732,16 +737,28 @@ class GameBoardViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         initialTouchLocation = touches.first!.location(in: view)
+        orange_drag_origin_backup = orange_drag_origin
+        green_drag_origin_backup = green_drag_origin
+        light_brown_drag_origin_backup = light_brown_drag_origin
         if(green_drag_tri_orig_rec.contains(initialTouchLocation)){
+            self.green_drag_origin.y = self.green_drag_origin.y - self.pause_screen_y_transform(70)
         UIView.animate(withDuration: 0.3, animations: {
+            self.green_drag_tri.frame.origin.y = self.green_drag_tri.frame.origin.y - self.pause_screen_y_transform(70)
+            
             self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
         })
         }else if(orange_drag_tri_orig_rec.contains(initialTouchLocation)){
+            self.orange_drag_origin.y = self.orange_drag_origin.y - self.pause_screen_y_transform(70)
+
             UIView.animate(withDuration: 0.3, animations: {
+                self.orange_drag_tri.frame.origin.y = self.orange_drag_tri.frame.origin.y - self.pause_screen_y_transform(70)
                 self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
             })
         }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation)){
             UIView.animate(withDuration: 0.3, animations: {
+                self.light_brown_drag_origin.y = self.light_brown_drag_origin.y - self.pause_screen_y_transform(70)
+                self.light_brown_drag_tri.frame.origin.y = self.light_brown_drag_tri.frame.origin.y - self.pause_screen_y_transform(70)
+                
                 self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
             })
         }
@@ -750,17 +767,24 @@ class GameBoardViewController: UIViewController {
 
     override func touchesEnded( _ touches: Set<UITouch>, with event: UIEvent?){
         super.touchesEnded(touches, with: event)
+        
             let finalTouchLocation = touches.first!.location(in: view)
             if(green_drag_tri_orig_rec.contains(finalTouchLocation)){
                 UIView.animate(withDuration: 0.3, animations: {
+                     self.green_drag_tri.frame.origin.y = self.green_drag_tri.frame.origin.y + self.pause_screen_y_transform(70)
+                    self.green_drag_origin.y = self.green_drag_origin.y + self.pause_screen_y_transform(70)
                     self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                 })
             }else if(orange_drag_tri_orig_rec.contains(finalTouchLocation)){
                 UIView.animate(withDuration: 0.3, animations: {
+                    self.orange_drag_tri.frame.origin.y = self.orange_drag_tri.frame.origin.y + self.pause_screen_y_transform(70)
+                    self.orange_drag_origin.y = self.orange_drag_origin.y + self.pause_screen_y_transform(70)
                     self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                 })
             }else if(light_brown_drag_tri_orig_rec.contains(finalTouchLocation)){
                 UIView.animate(withDuration: 0.3, animations: {
+                    self.light_brown_drag_tri.frame.origin.y = self.light_brown_drag_tri.frame.origin.y + self.pause_screen_y_transform(70)
+                    self.light_brown_drag_origin.y = self.light_brown_drag_origin.y + self.pause_screen_y_transform(70)
                     self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                 })
         }
@@ -825,16 +849,18 @@ class GameBoardViewController: UIViewController {
         orange_drag_origin.y = screen_height - (51 + orange_drag_tri.frame.height)
         orange_drag_origin.x = (screen_width/2+4.5) -  (orange_drag_tri.frame.width/2)    //34
         orange_drag_tri.frame.origin = orange_drag_origin
+        orange_drag_origin_backup = orange_drag_origin
         
         green_drag_origin.y = screen_height - (51 + green_drag_tri.frame.height)
         green_drag_origin.x = 4   //4   //50 - (green_drag_tri.frame.width/2)
         green_drag_tri.frame.origin = green_drag_origin
-
+        green_drag_origin_backup = green_drag_origin
         
         
         light_brown_drag_origin.y = screen_height - (51 + light_brown_drag_tri.frame.height)
         light_brown_drag_origin.x = screen_width - 3.5 - (light_brown_drag_tri.frame.width)
         light_brown_drag_tri.frame.origin = light_brown_drag_origin
+        light_brown_drag_origin_backup = light_brown_drag_origin
         //declare original frames of the tris
         green_drag_tri_orig_rec = green_drag_tri.frame
         print("green origin x: \(green_drag_origin.x), y: \(green_drag_origin.y)")
@@ -2290,7 +2316,7 @@ class GameBoardViewController: UIViewController {
             position_in_use = 0
             //alternative_drag_tri = green_drag_tri
             let transition0 = gesture.translation(in: green_drag_tri)
-            green_drag_tri.frame.origin = CGPoint(x: green_drag_origin.x+transition0.x - 20, y: green_drag_origin.y+transition0.y - 40)
+            green_drag_tri.frame.origin = CGPoint(x: green_drag_origin.x+transition0.x , y: green_drag_origin.y+transition0.y)
             actual_type_index = shape_type_index[0]
             actual_location = green_drag_tri.frame.origin
             green_drag_tri_x_constraint.constant = -100
@@ -2302,7 +2328,7 @@ class GameBoardViewController: UIViewController {
             position_in_use = 1
             //alternative_drag_tri = orange_drag_tri
             let transition1 = gesture.translation(in: orange_drag_tri)
-            orange_drag_tri.frame.origin = CGPoint(x:orange_drag_origin.x+transition1.x - 20, y:orange_drag_origin.y+transition1.y - 40)
+            orange_drag_tri.frame.origin = CGPoint(x:orange_drag_origin.x+transition1.x , y:orange_drag_origin.y+transition1.y)
             actual_type_index = shape_type_index[1]
             actual_location = orange_drag_tri.frame.origin
             orange_drag_tri_x_constraint.constant = -100
@@ -2314,7 +2340,7 @@ class GameBoardViewController: UIViewController {
             position_in_use = 2
             //alternative_drag_tri = *light_brown_drag_tri
             let transition2 = gesture.translation(in: light_brown_drag_tri)
-            light_brown_drag_tri.frame.origin = CGPoint(x:light_brown_drag_origin.x+transition2.x - 20, y:light_brown_drag_origin.y+transition2.y - 40)
+            light_brown_drag_tri.frame.origin = CGPoint(x:light_brown_drag_origin.x+transition2.x , y:light_brown_drag_origin.y+transition2.y)
             actual_type_index = shape_type_index[2]
             actual_location = light_brown_drag_tri.frame.origin
             light_brown_drag_tri_x_constraint.constant = -100
@@ -2341,6 +2367,10 @@ class GameBoardViewController: UIViewController {
     
         //if dragging ended, return to original location (with animiation)
         if(gesture.state == .ended){
+            orange_drag_origin = orange_drag_origin_backup
+            green_drag_origin = green_drag_origin_backup
+            light_brown_drag_origin = light_brown_drag_origin_backup
+            
             let cond_before_insert = filled
             if (Shape_fitting(Shape_Type: actual_type_index, position: actual_location)){
                 //play fit in sound effect
@@ -2419,7 +2449,7 @@ class GameBoardViewController: UIViewController {
                     
                 }
                 not_fit_player.play()
-         
+                
                 UIView.animate(withDuration: 0.3, animations: {
                     if(self.position_in_use == 0){
                     self.green_drag_tri.frame.origin = self.green_drag_origin
