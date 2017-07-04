@@ -359,6 +359,7 @@ class DailyGiftViewController: UIViewController {
         }
         
         during_spinning = true
+        var last_duration = 0
         var final_angle = Int(arc4random_uniform(UInt32(360)))
         var final_proportion = Double(final_angle) / Double(360)
         let fullRotation = CGFloat(Double.pi * 2)
@@ -501,11 +502,11 @@ class DailyGiftViewController: UIViewController {
                         final_animation.values = [0, CGFloat(final_proportion)*fullRotation]
                         
                     }else{
-                        final_animation.values = [fullRotation/4, fullRotation/2, CGFloat(final_proportion)*fullRotation]
+                        final_animation.values = [0 , fullRotation/4, fullRotation/2, CGFloat(final_proportion)*fullRotation]
                     }
                 }else if(self.rotation_direction == 1){
                     if(final_angle < 180){
-                        final_animation.values = [fullRotation*3/4, fullRotation/2, CGFloat(final_proportion)*fullRotation]
+                        final_animation.values = [fullRotation, fullRotation*3/4, fullRotation/2, CGFloat(final_proportion)*fullRotation]
                     }else{
                         final_animation.values = [fullRotation, CGFloat(final_proportion)*fullRotation]
                         
@@ -530,9 +531,9 @@ class DailyGiftViewController: UIViewController {
             slow_spin.isRemovedOnCompletion = false
             slow_spin.fillMode = kCAFillModeForwards
             if(self.rotation_direction == 0){
-                slow_spin.values = [fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
+                slow_spin.values = [0, fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
             }else if(self.rotation_direction == 1){
-                slow_spin.values = [fullRotation*3/4, fullRotation/2, fullRotation/4, 0]
+                slow_spin.values = [fullRotation, fullRotation*3/4, fullRotation/2, fullRotation/4, 0]
                 
             }
             if(self.real_velocity >= 1000){
