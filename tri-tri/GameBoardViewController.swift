@@ -2290,7 +2290,7 @@ class GameBoardViewController: UIViewController {
             position_in_use = 0
             //alternative_drag_tri = green_drag_tri
             let transition0 = gesture.translation(in: green_drag_tri)
-            green_drag_tri.frame.origin = CGPoint(x: green_drag_origin.x+transition0.x , y: green_drag_origin.y+transition0.y)
+            green_drag_tri.frame.origin = CGPoint(x: green_drag_origin.x+transition0.x - 20, y: green_drag_origin.y+transition0.y - 40)
             actual_type_index = shape_type_index[0]
             actual_location = green_drag_tri.frame.origin
             green_drag_tri_x_constraint.constant = -100
@@ -2302,7 +2302,7 @@ class GameBoardViewController: UIViewController {
             position_in_use = 1
             //alternative_drag_tri = orange_drag_tri
             let transition1 = gesture.translation(in: orange_drag_tri)
-            orange_drag_tri.frame.origin = CGPoint(x:orange_drag_origin.x+transition1.x , y:orange_drag_origin.y+transition1.y)
+            orange_drag_tri.frame.origin = CGPoint(x:orange_drag_origin.x+transition1.x - 20, y:orange_drag_origin.y+transition1.y - 40)
             actual_type_index = shape_type_index[1]
             actual_location = orange_drag_tri.frame.origin
             orange_drag_tri_x_constraint.constant = -100
@@ -2314,7 +2314,7 @@ class GameBoardViewController: UIViewController {
             position_in_use = 2
             //alternative_drag_tri = *light_brown_drag_tri
             let transition2 = gesture.translation(in: light_brown_drag_tri)
-            light_brown_drag_tri.frame.origin = CGPoint(x:light_brown_drag_origin.x+transition2.x , y:light_brown_drag_origin.y+transition2.y)
+            light_brown_drag_tri.frame.origin = CGPoint(x:light_brown_drag_origin.x+transition2.x - 20, y:light_brown_drag_origin.y+transition2.y - 40)
             actual_type_index = shape_type_index[2]
             actual_location = light_brown_drag_tri.frame.origin
             light_brown_drag_tri_x_constraint.constant = -100
