@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -896,17 +896,13 @@
                                 <rect key="frame" x="123" y="152" width="43" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="棕色tri" translatesAutoresizingMaskIntoConstraints="NO" id="gxz-1Y-RXe">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="棕色tri" translatesAutoresizingMaskIntoConstraints="NO" id="gxz-1Y-RXe">
                                 <rect key="frame" x="4" y="523" width="104" height="93"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="93" id="NxT-Te-F78"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="棕色tri" translatesAutoresizingMaskIntoConstraints="NO" id="YRp-Xf-A4k">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="棕色tri" translatesAutoresizingMaskIntoConstraints="NO" id="YRp-Xf-A4k">
                                 <rect key="frame" x="268" y="523" width="104" height="93"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="93" id="Hg6-9j-zwO"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0H-mS-pgO">
                                 <rect key="frame" x="312" y="144" width="47" height="47"/>
@@ -932,11 +928,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="棕色tri" translatesAutoresizingMaskIntoConstraints="NO" id="eId-J2-6Yd">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="棕色tri" translatesAutoresizingMaskIntoConstraints="NO" id="eId-J2-6Yd">
                                 <rect key="frame" x="140" y="523" width="104" height="93"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="93" id="2uh-1S-89u"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" layoutMarginsFollowReadableWidth="YES" image="Triangle_Text" translatesAutoresizingMaskIntoConstraints="NO" id="gNR-HH-lwS">
                                 <rect key="frame" x="130" y="23" width="114" height="26"/>
@@ -967,16 +961,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gxz-1Y-RXe" firstAttribute="leading" secondItem="p5C-ee-UVz" secondAttribute="leading" constant="4" id="0kS-xX-vFU"/>
                             <constraint firstItem="gNR-HH-lwS" firstAttribute="centerX" secondItem="p5C-ee-UVz" secondAttribute="centerX" id="1GR-8M-Aq2"/>
                             <constraint firstItem="gNR-HH-lwS" firstAttribute="top" secondItem="QPr-PK-oJ5" secondAttribute="bottom" constant="3" id="2d0-sT-2uR"/>
-                            <constraint firstItem="eId-J2-6Yd" firstAttribute="centerX" secondItem="p5C-ee-UVz" secondAttribute="centerX" constant="4.5" id="GYe-Bd-k4d"/>
                             <constraint firstItem="Hxd-vF-KH0" firstAttribute="centerX" secondItem="p5C-ee-UVz" secondAttribute="centerX" id="Ocx-en-zEX"/>
                             <constraint firstItem="I8B-Hx-ehl" firstAttribute="top" secondItem="Hxd-vF-KH0" secondAttribute="bottom" constant="10" id="QA1-Ts-IhN"/>
-                            <constraint firstItem="I8B-Hx-ehl" firstAttribute="top" secondItem="gxz-1Y-RXe" secondAttribute="bottom" constant="51" id="Zzz-iy-Yqq"/>
-                            <constraint firstAttribute="trailing" secondItem="YRp-Xf-A4k" secondAttribute="trailing" constant="3.5" id="f8S-uK-DIC"/>
-                            <constraint firstItem="I8B-Hx-ehl" firstAttribute="top" secondItem="eId-J2-6Yd" secondAttribute="bottom" constant="51" id="fCQ-YC-taK"/>
-                            <constraint firstItem="I8B-Hx-ehl" firstAttribute="top" secondItem="YRp-Xf-A4k" secondAttribute="bottom" constant="51" id="okv-tH-QlV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -984,14 +972,8 @@
                         <outlet property="MarkBoard" destination="R9g-fj-p9q" id="hIa-ST-6zW"/>
                         <outlet property="center" destination="NDl-Da-Qca" id="5rr-Ls-bNL"/>
                         <outlet property="green_drag_tri" destination="gxz-1Y-RXe" id="UIE-Sq-pg7"/>
-                        <outlet property="green_drag_tri_x_constraint" destination="0kS-xX-vFU" id="HhQ-Kf-K2d"/>
-                        <outlet property="green_drag_tri_y_constraint" destination="Zzz-iy-Yqq" id="P1p-Jf-bhl"/>
                         <outlet property="light_brown_drag_tri" destination="YRp-Xf-A4k" id="Q8B-sM-uFu"/>
-                        <outlet property="light_brown_drag_tri_x_constraint" destination="f8S-uK-DIC" id="X56-tQ-JFI"/>
-                        <outlet property="light_brown_drag_tri_y_constraint" destination="okv-tH-QlV" id="uVv-K2-RAt"/>
                         <outlet property="orange_drag_tri" destination="eId-J2-6Yd" id="Bv1-4G-ukf"/>
-                        <outlet property="orange_drag_tri_x_constraint" destination="GYe-Bd-k4d" id="cTp-T4-fd3"/>
-                        <outlet property="orange_drag_tri_y_constraint" destination="fCQ-YC-taK" id="j9q-Gn-2TH"/>
                         <outlet property="pause" destination="x0H-mS-pgO" id="3ug-f2-hkG"/>
                         <outlet property="starBoard" destination="UYk-yQ-OGd" id="rZv-IJ-RDJ"/>
                         <outlet property="star_bg" destination="z4m-dG-Hks" id="QVQ-85-q9e"/>

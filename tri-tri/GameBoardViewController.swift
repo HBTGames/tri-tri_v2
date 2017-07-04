@@ -429,19 +429,9 @@ class GameBoardViewController: UIViewController {
     //6.
     //constraints and screen indexes
     @IBOutlet weak var center: UILabel!
-    @IBOutlet weak var green_drag_tri_x_constraint: NSLayoutConstraint!
     
     @IBOutlet weak var star_counter: UIImageView!
     
-    @IBOutlet weak var green_drag_tri_y_constraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var orange_drag_tri_x_constraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var orange_drag_tri_y_constraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var light_brown_drag_tri_x_constraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var light_brown_drag_tri_y_constraint: NSLayoutConstraint!
     
     // screen width
     var screen_width : CGFloat = 0
@@ -782,30 +772,22 @@ class GameBoardViewController: UIViewController {
         
             let finalTouchLocation = touches.first!.location(in: view)
             if(green_drag_tri_orig_rec.contains(finalTouchLocation)){
+                self.green_drag_origin = self.green_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
-                     self.green_drag_tri.frame.origin.y = self.green_drag_tri.frame.origin.y + self.pause_screen_y_transform(70)
-                    self.green_drag_tri.frame.origin.x = self.green_drag_tri.frame.origin.x + self.pause_screen_x_transform(10)
-                    self.green_drag_origin.y = self.green_drag_origin.y + self.pause_screen_y_transform(70)
-                    self.green_drag_origin.x = self.green_drag_origin.x + self.pause_screen_x_transform(10)
+                    self.green_drag_tri.frame.origin = self.green_drag_origin
                     
                     self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                 })
             }else if(orange_drag_tri_orig_rec.contains(finalTouchLocation)){
+                self.orange_drag_origin = self.orange_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.orange_drag_tri.frame.origin.y = self.orange_drag_tri.frame.origin.y + self.pause_screen_y_transform(70)
-                    self.orange_drag_tri.frame.origin.x = self.orange_drag_tri.frame.origin.x + self.pause_screen_x_transform(10)
-
-                    self.orange_drag_origin.y = self.orange_drag_origin.y + self.pause_screen_y_transform(70)
-                    self.orange_drag_origin.x = self.orange_drag_origin.x + self.pause_screen_x_transform(10)
+                    self.orange_drag_tri.frame.origin = self.orange_drag_origin
                     self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                 })
             }else if(light_brown_drag_tri_orig_rec.contains(finalTouchLocation)){
+                self.light_brown_drag_origin = self.light_brown_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.light_brown_drag_tri.frame.origin.y = self.light_brown_drag_tri.frame.origin.y + self.pause_screen_y_transform(70)
-                    self.light_brown_drag_tri.frame.origin.x = self.light_brown_drag_tri.frame.origin.x + self.pause_screen_x_transform(10)
-                    self.light_brown_drag_origin.y = self.light_brown_drag_origin.y + self.pause_screen_y_transform(70)
-                    self.light_brown_drag_origin.x = self.light_brown_drag_origin.x + self.pause_screen_x_transform(10)
-
+                    self.light_brown_drag_tri.frame.origin = self.light_brown_drag_origin
                     self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                 })
         }
@@ -867,28 +849,28 @@ class GameBoardViewController: UIViewController {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
         self.view.addGestureRecognizer(panGestureRecognizer)
         //assign original locations of three tris located at the location on storyboard of each of them
-        orange_drag_origin.y = screen_height - (51 + orange_drag_tri.frame.height)
-        orange_drag_origin.x = (screen_width/2+4.5) -  (orange_drag_tri.frame.width/2)    //34
-        orange_drag_tri.frame.origin = orange_drag_origin
+        orange_drag_tri.frame = CGRect(x: pause_screen_x_transform(Double(orange_drag_tri.frame.origin.x)), y: pause_screen_y_transform(Double(orange_drag_tri.frame.origin.y)), width: pause_screen_x_transform(Double(orange_drag_tri.frame.width)), height: pause_screen_y_transform(Double(orange_drag_tri.frame.height)))
+        //34
+       orange_drag_origin = orange_drag_tri.frame.origin
         orange_drag_origin_backup = orange_drag_origin
         
-        green_drag_origin.y = screen_height - (51 + green_drag_tri.frame.height)
-        green_drag_origin.x = 4   //4   //50 - (green_drag_tri.frame.width/2)
-        green_drag_tri.frame.origin = green_drag_origin
+        green_drag_tri.frame = CGRect(x: pause_screen_x_transform(Double(green_drag_tri.frame.origin.x)), y: pause_screen_y_transform(Double(green_drag_tri.frame.origin.y)), width: pause_screen_x_transform(Double(green_drag_tri.frame.width)), height: pause_screen_y_transform(Double(green_drag_tri.frame.height)))
+        //34
+        green_drag_origin = green_drag_tri.frame.origin
         green_drag_origin_backup = green_drag_origin
         
         
-        light_brown_drag_origin.y = screen_height - (51 + light_brown_drag_tri.frame.height)
-        light_brown_drag_origin.x = screen_width - 3.5 - (light_brown_drag_tri.frame.width)
-        light_brown_drag_tri.frame.origin = light_brown_drag_origin
+        light_brown_drag_tri.frame = CGRect(x: pause_screen_x_transform(Double(light_brown_drag_tri.frame.origin.x)), y: pause_screen_y_transform(Double(light_brown_drag_tri.frame.origin.y)), width: pause_screen_x_transform(Double(light_brown_drag_tri.frame.width)), height: pause_screen_y_transform(Double(light_brown_drag_tri.frame.height)))
+        //34
+        light_brown_drag_origin = light_brown_drag_tri.frame.origin
         light_brown_drag_origin_backup = light_brown_drag_origin
         //declare original frames of the tris
-        green_drag_tri_orig_rec =  CGRect(x: green_drag_tri.frame.origin.x - pause_screen_x_transform(20), y: green_drag_tri.frame.origin.y - pause_screen_y_transform(15), width: green_drag_tri.frame.width + pause_screen_x_transform(40), height: green_drag_tri.frame.height + pause_screen_y_transform(30))
+        green_drag_tri_orig_rec =  CGRect(x: green_drag_tri.frame.origin.x - pause_screen_x_transform(20), y: green_drag_tri.frame.origin.y - pause_screen_y_transform(15), width: green_drag_tri.frame.width + pause_screen_x_transform(40), height: green_drag_tri.frame.height + pause_screen_y_transform(45))
         //print("green origin x: \(green_drag_origin.x), y: \(green_drag_origin.y)")
         
-        orange_drag_tri_orig_rec = CGRect(x:  orange_drag_tri.frame.origin.x - pause_screen_x_transform(20), y:  orange_drag_tri.frame.origin.y - pause_screen_y_transform(15),  width: orange_drag_tri.frame.width + pause_screen_x_transform(40), height: orange_drag_tri.frame.height + pause_screen_y_transform(30))
+        orange_drag_tri_orig_rec = CGRect(x:  orange_drag_tri.frame.origin.x - pause_screen_x_transform(20), y:  orange_drag_tri.frame.origin.y - pause_screen_y_transform(15),  width: orange_drag_tri.frame.width + pause_screen_x_transform(40), height: orange_drag_tri.frame.height + pause_screen_y_transform(45))
        
-        light_brown_drag_tri_orig_rec = CGRect(x: light_brown_drag_tri.frame.origin.x - pause_screen_x_transform(20), y: light_brown_drag_tri.frame.origin.y - pause_screen_y_transform(15), width: light_brown_drag_tri.frame.width + pause_screen_x_transform(40), height: light_brown_drag_tri.frame.height + pause_screen_y_transform(30))
+        light_brown_drag_tri_orig_rec = CGRect(x: light_brown_drag_tri.frame.origin.x - pause_screen_x_transform(20), y: light_brown_drag_tri.frame.origin.y - pause_screen_y_transform(15), width: light_brown_drag_tri.frame.width + pause_screen_x_transform(40), height: light_brown_drag_tri.frame.height + pause_screen_y_transform(45))
 
         green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
         orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
@@ -2343,8 +2325,6 @@ class GameBoardViewController: UIViewController {
             green_drag_tri.frame.origin = CGPoint(x: green_drag_origin.x+transition0.x , y: green_drag_origin.y+transition0.y)
             actual_type_index = shape_type_index[0]
             actual_location = green_drag_tri.frame.origin
-            green_drag_tri_x_constraint.constant = -100
-            green_drag_tri_y_constraint.constant = -100
         } else if(orange_drag_tri_orig_rec.contains(initialTouchLocation)){
             if (exist2 == false){
                 return
@@ -2355,9 +2335,7 @@ class GameBoardViewController: UIViewController {
             orange_drag_tri.frame.origin = CGPoint(x:orange_drag_origin.x+transition1.x , y:orange_drag_origin.y+transition1.y)
             actual_type_index = shape_type_index[1]
             actual_location = orange_drag_tri.frame.origin
-            orange_drag_tri_x_constraint.constant = -100
-            orange_drag_tri_y_constraint.constant = -100
-        }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation)){
+          }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation)){
             if (exist3 == false){
                 return
             }
@@ -2367,8 +2345,6 @@ class GameBoardViewController: UIViewController {
             light_brown_drag_tri.frame.origin = CGPoint(x:light_brown_drag_origin.x+transition2.x , y:light_brown_drag_origin.y+transition2.y)
             actual_type_index = shape_type_index[2]
             actual_location = light_brown_drag_tri.frame.origin
-            light_brown_drag_tri_x_constraint.constant = -100
-            light_brown_drag_tri_y_constraint.constant = -100
         }
         
         //when dragging, keep scanning whether the shape fits any space
@@ -2422,20 +2398,14 @@ class GameBoardViewController: UIViewController {
                //if the triangles are fit
                 if (position_in_use == 0){
                     green_drag_tri.frame.origin = green_drag_origin
-                    green_drag_tri_x_constraint.constant = CGFloat(4)
-                    green_drag_tri_y_constraint.constant = CGFloat(51)
                     green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                     exist1 = false
                 }else if (position_in_use == 1){
                     orange_drag_tri.frame.origin = orange_drag_origin
-                    orange_drag_tri_x_constraint.constant = CGFloat(4.5)
-                    orange_drag_tri_y_constraint.constant = CGFloat(51)
                     orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                     exist2 = false
                 }else if (position_in_use == 2){
                     light_brown_drag_tri.frame.origin = light_brown_drag_origin
-                    light_brown_drag_tri_x_constraint.constant = CGFloat(3.5)
-                    light_brown_drag_tri_y_constraint.constant = CGFloat(51)
                     light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                     exist3 = false
                 }
@@ -2496,13 +2466,7 @@ class GameBoardViewController: UIViewController {
                     }, completion: {
                    (finished) -> Void in
                         self.position_in_use = 3
-                        self.green_drag_tri_x_constraint.constant = CGFloat(4)
-                        self.green_drag_tri_y_constraint.constant = CGFloat(51)
-                        self.orange_drag_tri_x_constraint.constant = CGFloat(4.5)
-                        self.orange_drag_tri_y_constraint.constant = CGFloat(51)
-                        self.light_brown_drag_tri_x_constraint.constant = CGFloat(3.5)
-                        self.light_brown_drag_tri_y_constraint.constant = CGFloat(51)
-                        
+                    
    
                         
                     })
