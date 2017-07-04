@@ -241,6 +241,13 @@ class MenuViewController: UIViewController {
     var school_theme_origin = CGPoint(x: 0, y: 0)
     var colors_theme_origin = CGPoint(x: 0, y: 0)
     @IBAction func theme_menu_action(_ sender: UIButton) {
+        do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+            self.button_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        self.button_player.play()
         let theme_menu: UIView = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
         theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
  
