@@ -7984,7 +7984,7 @@ number_of_lines_erased += 1
                                 Find_Any_Available_Green_Tri_Change_Filled(row: row, column: column)
                                 Check_and_Erase_Return_Bool()
                                 filled = previous_filled
-                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
                                     line_can_erased_by_shape[0] = true
                                     
                                     break
@@ -8006,7 +8006,7 @@ number_of_lines_erased += 1
                                 Find_Any_Available_Orange_Tri_Change_Filled(row: row, column: column)
                                 Check_and_Erase_Return_Bool()
                                 filled = previous_filled
-                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
                                     line_can_erased_by_shape[1] = true
                                     
                                     break
@@ -8028,7 +8028,7 @@ number_of_lines_erased += 1
                                 Find_Any_Available_Light_Brown_Tri_Change_Filled(row: row, column: column)
                                 Check_and_Erase_Return_Bool()
                                 filled = previous_filled
-                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
                                     line_can_erased_by_shape[2] = true
                                     
                                     break
@@ -8051,7 +8051,7 @@ number_of_lines_erased += 1
                                 Find_Any_Available_Brown_Downwards_Tri_Change_Filled(row: row, column: column)
                                 Check_and_Erase_Return_Bool()
                                 filled = previous_filled
-                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
                                     line_can_erased_by_shape[3] = true
                                     
                                     break
@@ -8074,7 +8074,7 @@ number_of_lines_erased += 1
                                 Find_Any_Available_Brown_Left_Tri_Change_Filled(row: row, column: column)
                                 Check_and_Erase_Return_Bool()
                                 filled = previous_filled
-                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
                                     line_can_erased_by_shape[4] = true
                                    
                                     break
@@ -8097,7 +8097,7 @@ number_of_lines_erased += 1
                                 Find_Any_Dark_Green_Tri_Change_Filled(row: row, column: column)
                                 Check_and_Erase_Return_Bool()
                                 filled = previous_filled
-                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
                                     line_can_erased_by_shape[5] = true
                                     
                                     break
@@ -8120,7 +8120,7 @@ number_of_lines_erased += 1
                                 Find_Any_Pink_Right_Tri_Change_Filled(row: row, column: column)
                                 Check_and_Erase_Return_Bool()
                                 filled = previous_filled
-                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
                                     line_can_erased_by_shape[6] = true
                                    
                                     break
@@ -8144,7 +8144,7 @@ number_of_lines_erased += 1
                                 Find_Any_Purple_Upwards_Tri_Change_Filled(row: row, column: column)
                                 Check_and_Erase_Return_Bool()
                                 filled = previous_filled
-                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
                                     line_can_erased_by_shape[7] = true
                                    
                                     break
@@ -8167,7 +8167,7 @@ number_of_lines_erased += 1
                                 Find_Any_Purple_Downwards_Tri_Change_Filled(row: row, column: column)
                                 Check_and_Erase_Return_Bool()
                                 filled = previous_filled
-                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
                                     line_can_erased_by_shape[8] = true
                                     
                                     break
@@ -8189,7 +8189,7 @@ number_of_lines_erased += 1
                                 Find_Any_Available_Brown_Left_Downwards_Tri_Change_Filled(row: row, column: column)
                                 Check_and_Erase_Return_Bool()
                                 filled = previous_filled
-                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
                                     line_can_erased_by_shape[9] = true
                                     
                                     break
@@ -8216,7 +8216,7 @@ number_of_lines_erased += 1
                                 Find_Any_Available_Brown_Right_Downwards_Tri_Change_Filled(row: row, column: column)
                                 Check_and_Erase_Return_Bool()
                                 filled = previous_filled
-                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17){
+                                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
                                     line_can_erased_by_shape[10] = true
                                     
                                     break
