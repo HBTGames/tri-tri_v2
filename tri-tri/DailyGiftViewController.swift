@@ -632,7 +632,7 @@ class DailyGiftViewController: UIViewController {
                 count_down_time_string = hours_formatter(hours: hours) + " : " + min_formatter(min: min) + " : " + sec_formatter(sec: seconds)
                 rewards_count_down.text = count_down_time_string
             }else if(total_seconds == 0){
-                count_down_end = true
+                
                 count_down_timer_during_reward.invalidate()
                 do{unlock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "door_open_and_reming", ofType: "mp3")!))
                     unlock_player.prepareToPlay()
@@ -655,6 +655,10 @@ class DailyGiftViewController: UIViewController {
                 }
                 rewards_count_down.fadeOutandRemove()
                 //reset animation
+                CATransaction.begin()
+                CATransaction.setCompletionBlock({
+                    self.count_down_end = true
+                })
                 let reset_animation = CAKeyframeAnimation()
                 reset_animation.keyPath = "transform.rotation.z"
                 reset_animation.isRemovedOnCompletion = false
@@ -671,7 +675,7 @@ class DailyGiftViewController: UIViewController {
                     reset_animation.values = [CGFloat(final_proportion)*fullRotation, 0]
                 }
                 wheel.layer.add(reset_animation, forKey: "rotate")
-                
+                CATransaction.commit()
                 
                 
                 let date = NSDate()
