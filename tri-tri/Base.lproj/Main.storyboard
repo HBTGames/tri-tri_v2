@@ -27,7 +27,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSb-Hu-EQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-806" y="33"/>
+            <point key="canvasLocation" x="-807" y="0.0"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -105,7 +105,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIE-d3-hMd">
-                                <rect key="frame" x="0.0" y="538" width="128" height="129"/>
+                                <rect key="frame" x="0.0" y="538" width="126" height="129"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="tuto_icon_day_night"/>
                                 <connections>
@@ -135,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2.3999999999999999" y="34.632683658170919"/>
+            <point key="canvasLocation" x="1" y="1"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="MC9-HO-gJJ">
@@ -153,8 +153,9 @@
                                 <rect key="frame" x="168" y="520" width="39" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pageControl>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="tuto_bg" translatesAutoresizingMaskIntoConstraints="NO" id="1Zr-fJ-SPD">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="tuto_bg" translatesAutoresizingMaskIntoConstraints="NO" id="1Zr-fJ-SPD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JW-82-v6x" userLabel="exit">
                                 <rect key="frame" x="95" y="268" width="130" height="130"/>
@@ -173,24 +174,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="meP-AV-r9s" firstAttribute="width" secondItem="cZ2-le-ZPr" secondAttribute="width" id="057-8f-4bQ"/>
-                            <constraint firstItem="1Zr-fJ-SPD" firstAttribute="top" secondItem="cZ2-le-ZPr" secondAttribute="top" id="Eoq-5s-Y43"/>
                             <constraint firstItem="meP-AV-r9s" firstAttribute="centerY" secondItem="cZ2-le-ZPr" secondAttribute="centerY" id="Lz0-46-CWd"/>
                             <constraint firstItem="meP-AV-r9s" firstAttribute="height" secondItem="cZ2-le-ZPr" secondAttribute="height" id="WVb-Rp-AT7"/>
-                            <constraint firstItem="zwK-MB-wIa" firstAttribute="top" secondItem="1Zr-fJ-SPD" secondAttribute="bottom" id="hdH-Ha-IKn"/>
-                            <constraint firstItem="1Zr-fJ-SPD" firstAttribute="leading" secondItem="cZ2-le-ZPr" secondAttribute="leading" id="heh-Lu-sGg"/>
-                            <constraint firstAttribute="trailing" secondItem="1Zr-fJ-SPD" secondAttribute="trailing" id="hoJ-KY-mA7"/>
                             <constraint firstItem="meP-AV-r9s" firstAttribute="centerX" secondItem="cZ2-le-ZPr" secondAttribute="centerX" id="zyb-Od-ge3"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="exit_button" destination="4JW-82-v6x" id="PEq-vg-X90"/>
                         <outlet property="mainScrollView" destination="meP-AV-r9s" id="Tf3-f2-VQc"/>
+                        <outlet property="tuto_bg" destination="1Zr-fJ-SPD" id="v2I-Oc-yEf"/>
                         <outlet property="tuto_page_con" destination="Sgq-9G-o33" id="wL9-Sg-85a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gpn-Rm-yBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="776.79999999999995" y="36.431784107946029"/>
+            <point key="canvasLocation" x="777" y="1"/>
         </scene>
         <!--Theme Menu View Controller-->
         <scene sceneID="4Ji-yD-aLf">

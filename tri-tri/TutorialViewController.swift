@@ -22,12 +22,16 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     func pause_screen_x_transform(_ x: Double) -> CGFloat {
         let const = x/Double(375)
         let new_x = Double(view.frame.width)*const
+        print(view.frame.width)
+        print(new_x)
         return CGFloat(new_x)
         
     }
     func pause_screen_y_transform(_ y: Double) -> CGFloat {
         let const = y/Double(667)
         let new_y = Double(view.frame.height)*const
+        print(view.frame.height)
+        print(new_y)
         return CGFloat(new_y)
     }
     
@@ -43,6 +47,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet var tuto_page_con: UIPageControl!
     
+    @IBOutlet var tuto_bg: UIImageView!
     
     @IBOutlet var mainScrollView: UIScrollView!
     
@@ -51,13 +56,15 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         mainScrollView.delegate = self
         
         exit_button.setTitle("", for: .normal)
-        exit_button.setImage(UIImage(named:"tuto_exit"), for: .normal)
+        exit_button.setBackgroundImage(UIImage(named:"tuto_exit"), for: .normal)
         exit_button.frame = CGRect(x:0, y: pause_screen_y_transform(537), width: pause_screen_x_transform(130), height: pause_screen_y_transform(130))
         tuto_page_con.frame = CGRect(x:pause_screen_x_transform(168), y: pause_screen_y_transform(520), width: pause_screen_x_transform(39), height: 37)
         self.view.bringSubview(toFront: exit_button)
         
         self.view.bringSubview(toFront: tuto_page_con)
         self.mainScrollView.frame = self.view.frame
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "tuto_bg")!)
         
         tuto_text.image = UIImage(named:"tuto_text")
         tuto_text.frame = CGRect(x:0, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
