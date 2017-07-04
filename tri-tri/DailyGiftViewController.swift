@@ -337,6 +337,7 @@ class DailyGiftViewController: UIViewController {
                 //print("final translation: x: \(final_translation.x) y: \(final_translation.y)")
                 if(direction != -1){
                     rotation_direction = direction
+                    count_down_timer_during_reward.invalidate()
                     spin_wheel()
                     //let date = NSDate()
                     //defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
@@ -359,10 +360,7 @@ class DailyGiftViewController: UIViewController {
         
         during_spinning = true
         var final_angle = Int(arc4random_uniform(UInt32(360)))
-        while(final_angle%45 == 0){
-            final_angle = Int(arc4random_uniform(UInt32(360)))
-        }
-        let final_proportion = Double(final_angle) / Double(360)
+        var final_proportion = Double(final_angle) / Double(360)
         let fullRotation = CGFloat(Double.pi * 2)
         let spin_animation = CAKeyframeAnimation()
         print("final_angle is \(final_angle)")
@@ -426,7 +424,7 @@ class DailyGiftViewController: UIViewController {
                     self.rewards_count_down.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
                     self.rewards_count_down.fadeIn()
                     
-                    
+                    self.count_down_timer_during_reward.invalidate()
                     if(!self.quit_during_spinning){
                         self.count_down_timer_during_reward = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DailyGiftViewController.count_down_during_reward), userInfo: nil, repeats: true)
                         self.count_down_timer_during_reward.fire()
@@ -485,10 +483,19 @@ class DailyGiftViewController: UIViewController {
                  }**/
                 let final_animation = CAKeyframeAnimation()
                 final_animation.keyPath = "transform.rotation.z"
+                if(self.real_velocity < 1000){
                 final_animation.duration = 2
+                }else if(self.real_velocity >= 1000 && self.real_velocity < 1500){
+                    final_animation.duration = 1.2
+                    //wheel.layer.add(spin_animation, forKey: "rotate")
+                }else if(self.real_velocity >= 1500){
+                    final_animation.duration = 1.1
+                    //wheel.layer.add(spin_animation, forKey: "rotate")
+                    //spinning_player.rate = Float(spinning_player.duration)/0.4
+                }
                 final_animation.isRemovedOnCompletion = false
                 final_animation.fillMode = kCAFillModeForwards
-                final_animation.repeatCount = Float(1)
+                final_animation.repeatCount = Float(0)
                 if(self.rotation_direction == 0){
                     if(final_angle < 180){
                         final_animation.values = [0, CGFloat(final_proportion)*fullRotation]
@@ -510,17 +517,30 @@ class DailyGiftViewController: UIViewController {
             //low speed one round
             let slow_spin = CAKeyframeAnimation()
             slow_spin.keyPath = "transform.rotation.z"
-            slow_spin.duration = 1.5
-            slow_spin.isRemovedOnCompletion = true
+            if(self.real_velocity >= 1000 && self.real_velocity < 1500){
+            slow_spin.duration = 1
+                //wheel.layer.add(spin_animation, forKey: "rotate")
+            }else if(self.real_velocity >= 1500){
+                slow_spin.duration = 0.9
+                //wheel.layer.add(spin_animation, forKey: "rotate")
+                //spinning_player.rate = Float(spinning_player.duration)/0.4
+            }
+
+            //slow_spin.duration = 1.5
+            slow_spin.isRemovedOnCompletion = false
             slow_spin.fillMode = kCAFillModeForwards
-            slow_spin.repeatCount = Float(1)
             if(self.rotation_direction == 0){
                 slow_spin.values = [fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
             }else if(self.rotation_direction == 1){
                 slow_spin.values = [fullRotation*3/4, fullRotation/2, fullRotation/4, 0]
                 
             }
+            if(self.real_velocity >= 1000){
             self.wheel.layer.add(slow_spin, forKey: "rotate")
+            }
+           
+            
+            
             
             CATransaction.commit()
             
@@ -530,30 +550,54 @@ class DailyGiftViewController: UIViewController {
         
         spin_animation.isRemovedOnCompletion = false
         spin_animation.fillMode = kCAFillModeForwards
+        print("rotation direction is \(rotation_direction)")
+        if(rotation_direction == 0){
+            spin_animation.values = [0,fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
+        }else if(rotation_direction == 1){
+            spin_animation.values = [fullRotation,fullRotation*3/4, fullRotation/2, fullRotation/4, 0]
+            
+        }
+
         if(real_velocity<500){
-            spin_animation.repeatCount = Float(1)
+            final_angle = Int(arc4random_uniform(UInt32(180)))
+            while(final_angle%45 == 0){
+                final_angle = Int(arc4random_uniform(UInt32(360)))
+            }
+            final_proportion = Double(final_angle) / Double(360)
+            spin_animation.repeatCount = Float(0)
             spin_animation.duration = 1
             spinning_player.rate = Float(spinning_player.duration)/1
         }else if(real_velocity >= 500 && real_velocity < 1000){
-            spin_animation.repeatCount = Float(2)
-            spin_animation.duration = 0.8
+            final_angle = Int(arc4random_uniform(UInt32(180))) + 90
+            while(final_angle%45 == 0){
+                final_angle = Int(arc4random_uniform(UInt32(360)))
+            }
+            final_proportion = Double(final_angle) / Double(360)
+            spin_animation.repeatCount = Float(0)
+            spin_animation.duration = 0.9
             spinning_player.rate = Float(spinning_player.duration)/0.8
         }else if(real_velocity >= 1000 && real_velocity < 1500){
-            spin_animation.repeatCount = Float(3)
-            spin_animation.duration = 0.5
+            final_angle = Int(arc4random_uniform(UInt32(90)))
+            while(final_angle%45 == 0){
+                final_angle = Int(arc4random_uniform(UInt32(360)))
+            }
+            final_proportion = Double(final_angle) / Double(360)
+            spin_animation.repeatCount = Float(0)
+            spin_animation.duration = 0.8
+            wheel.layer.add(spin_animation, forKey: "rotate")
         }else if(real_velocity >= 1500){
-            spin_animation.repeatCount = Float(4)
-            spin_animation.duration = 0.4
-            spinning_player.rate = Float(spinning_player.duration)/0.4
+            final_angle = Int(arc4random_uniform(UInt32(360)))
+            while(final_angle%45 == 0){
+                final_angle = Int(arc4random_uniform(UInt32(360)))
+            }
+            final_proportion = Double(final_angle) / Double(360)
+            spin_animation.repeatCount = Float(1)
+            spin_animation.duration = 0.7
+            wheel.layer.add(spin_animation, forKey: "rotate")
+            //spinning_player.rate = Float(spinning_player.duration)/0.4
         }
-        print("rotation direction is \(rotation_direction)")
-        if(rotation_direction == 0){
-            spin_animation.values = [fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
-        }else if(rotation_direction == 1){
-            spin_animation.values = [fullRotation*3/4, fullRotation/2, fullRotation/4, 0]
-            
-        }
-        wheel.layer.add(spin_animation, forKey: "rotate")
+        print("real velocity is \(real_velocity)")
+        
         CATransaction.commit()
         
     }
@@ -607,6 +651,9 @@ class DailyGiftViewController: UIViewController {
                     thirty_five_points.fadeOutandRemove()
                 }
                 rewards_count_down.fadeOutandRemove()
+                UIView.animate(withDuration: 1, animations: {
+                    self.wheel.transform = CGAffineTransform.identity
+                })
                 //let date = NSDate()
                 //self.defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
             }
