@@ -58,59 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "520773824.866564"
+            timestampString = "520831502.438377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
-            landmarkName = "panGestureRecognizerAction(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "520773824.866564"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "520773824.866564"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "520773824.866564"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "902"
-            endingLineNumber = "902"
+            startingLineNumber = "917"
+            endingLineNumber = "917"
             landmarkName = "real_time_handler()"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,60 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "520773824.866564"
+            timestampString = "520831502.438377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
-            landmarkName = "spin_wheel()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "520773824.866564"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "551"
-            endingLineNumber = "551"
+            startingLineNumber = "566"
+            endingLineNumber = "566"
             landmarkName = "count_down_during_reward()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "520773824.866564"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
-            landmarkName = "spin_wheel()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "520773824.866564"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
-            landmarkName = "spin_wheel()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -11,13 +11,15 @@ import AVKit
 import AVFoundation
 
 class DailyGiftViewController: UIViewController {
-//screen width and height
+    //screen width and height
     
     var button_player = AVAudioPlayer()
     var screen_width : CGFloat = 0
     var screen_height : CGFloat = 0
     var real_velocity = Double(0)
     var display_reward : Bool = false
+    var quit_during_spinning = false
+    var during_spinning = false
     var defaults = UserDefaults.standard
     var star_score = 0
     var gesture_passing_area = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
@@ -46,13 +48,13 @@ class DailyGiftViewController: UIViewController {
     
     @IBOutlet weak var wheel_background: UIImageView!
     @IBOutlet weak var wheel_text: UIImageView!
-
+    
     @IBOutlet weak var wheel_pointer: UIImageView!
     
     @IBOutlet weak var wheel_outer: UIImageView!
     @IBOutlet weak var wheel: UIImageView!
     
-
+    
     //spin category
     var spin_category = 0
     
@@ -96,31 +98,31 @@ class DailyGiftViewController: UIViewController {
             
             //current position in right uper boundary
         else if((spin_initial_point.x - wheel.frame.origin.x) > wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y < wheel.frame.height/2 ){
-             current_passing_area = 1
+            current_passing_area = 1
             gesture_passing_area[0] = 1
         }
             //current postion in right downer boundary
         else if((spin_initial_point.x - wheel.frame.origin.x) > wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y > wheel.frame.height/2 ){
-             current_passing_area = 2
+            current_passing_area = 2
             gesture_passing_area[0] = 2
         }
             //current position in left downer
         else if((spin_initial_point.x - wheel.frame.origin.x) < wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y > wheel.frame.height/2 ){
-             current_passing_area = 3
+            current_passing_area = 3
             gesture_passing_area[0] = 3
         }
-
         
-     }
+        
+    }
     
     func background_music_pause() -> Void{
-    clock_sound_effect_should_on = false
+        clock_sound_effect_should_on = false
         spin_sound_effect_should_on = false
         unlock_sound_effect_should_on = false
     }
     
     func background_music_continue() -> Void{
-       clock_sound_effect_should_on = true
+        clock_sound_effect_should_on = true
         spin_sound_effect_should_on = true
         unlock_sound_effect_should_on = true
         
@@ -140,7 +142,7 @@ class DailyGiftViewController: UIViewController {
         wheel_background.frame = self.view.frame
         wheel_background.image = #imageLiteral(resourceName: "wheel_background")
         wheel_background.contentMode = .scaleAspectFill
-         star_score = defaults.value(forKey: "tritri_star_score") as! NSInteger
+        star_score = defaults.value(forKey: "tritri_star_score") as! NSInteger
         //view.backgroundColor = UIColor(patternImage: UIImage(named: "wheel_background.png")!)
         let cancel_button = MyButton(frame: CGRect(x: screen_x_transform(250), y: screen_y_transform(542), width: screen_x_transform(125), height: screen_y_transform(125)))
         cancel_button.setImage(UIImage(named: "wheel_cancel"), for: .normal)
@@ -159,6 +161,9 @@ class DailyGiftViewController: UIViewController {
             nextViewController.modalTransitionStyle = .crossDissolve
             self.count_down_timer_during_reward.invalidate()
             self.lock_screen_count_down_timer.invalidate()
+            if(self.during_spinning){
+                self.quit_during_spinning = true
+            }
             self.present(nextViewController, animated: true, completion: nil)
             
         })
@@ -175,7 +180,7 @@ class DailyGiftViewController: UIViewController {
         self.view.addGestureRecognizer(panGestureRecognizer)
         //count down
         //initialize count board
-         real_time_handler()
+        real_time_handler()
         if(!count_down_end){
             let hours = total_seconds/(60*60)
             let seconds_times_min = total_seconds%(60*60)
@@ -183,13 +188,13 @@ class DailyGiftViewController: UIViewController {
             let seconds = seconds_times_min%60
             count_down_time_string = hours_formatter(hours: hours) + " : " + min_formatter(min: min) + " : " + sec_formatter(sec: seconds)
             lock_screen_function()
-        lock_screen_count_down_timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DailyGiftViewController.auto_count_down), userInfo: nil, repeats: true)
-        
-        //
+            lock_screen_count_down_timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DailyGiftViewController.auto_count_down), userInfo: nil, repeats: true)
+            
+            //
         }
-       
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -198,17 +203,17 @@ class DailyGiftViewController: UIViewController {
     
     func lock_screen_function() -> Void {
         
-    lock_screen = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
-    lock_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
-    lock_screen.alpha = 0
-    self.view.addSubview(lock_screen)
-    lock_screen.fadeInTrans()
-    grey_transparent_image = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
-    grey_transparent_image.image = #imageLiteral(resourceName: "grey_transparent")
-    grey_transparent_image.alpha = 0
-    self.view.addSubview(grey_transparent_image)
-    grey_transparent_image.fadeIn()
-    cancel_button_lock = MyButton(frame: CGRect(x: screen_x_transform(250), y: screen_y_transform(542), width: screen_x_transform(125), height: screen_y_transform(125)))
+        lock_screen = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
+        lock_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+        lock_screen.alpha = 0
+        self.view.addSubview(lock_screen)
+        lock_screen.fadeInTrans()
+        grey_transparent_image = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
+        grey_transparent_image.image = #imageLiteral(resourceName: "grey_transparent")
+        grey_transparent_image.alpha = 0
+        self.view.addSubview(grey_transparent_image)
+        grey_transparent_image.fadeIn()
+        cancel_button_lock = MyButton(frame: CGRect(x: screen_x_transform(250), y: screen_y_transform(542), width: screen_x_transform(125), height: screen_y_transform(125)))
         cancel_button_lock.setImage(UIImage(named: "wheel_cancel"), for: .normal)
         self.view.addSubview(cancel_button_lock)
         cancel_button_lock.whenButtonIsClicked(action: {
@@ -227,13 +232,13 @@ class DailyGiftViewController: UIViewController {
             self.present(nextViewController, animated: true, completion: nil)
             
         })
-    count_down_label = UILabel(frame: CGRect(x: screen_width/2 - screen_x_transform(140), y: screen_height/2 - screen_y_transform(40), width: screen_x_transform(330), height: screen_y_transform(100)))
-    self.view.addSubview(count_down_label)
-    count_down_label.text = count_down_time_string
-    count_down_label.font = UIFont(name: "Helvetica", size: 60)
-    count_down_label.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
-   
-    
+        count_down_label = UILabel(frame: CGRect(x: screen_width/2 - screen_x_transform(140), y: screen_height/2 - screen_y_transform(40), width: screen_x_transform(330), height: screen_y_transform(100)))
+        self.view.addSubview(count_down_label)
+        count_down_label.text = count_down_time_string
+        count_down_label.font = UIFont(name: "Helvetica", size: 60)
+        count_down_label.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
+        
+        
     }
     
     //modify position according to iphone generation functions
@@ -248,16 +253,16 @@ class DailyGiftViewController: UIViewController {
         let new_y = Double(screen_height)*const
         return CGFloat(new_y)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     class MyButton: UIButton {
         var action: (()->())?
         
@@ -271,23 +276,23 @@ class DailyGiftViewController: UIViewController {
             action?()
         }
     }
-
+    
     
     
     //pan gesture recognizer
     func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
         if(wheel.frame.contains(spin_initial_point) && !display_reward && count_down_end){
-        let velocity = gesture.velocity(in: view)
-        //print("velocity x: \(velocity.x), velocity y: \(velocity.y)")
-        if(velocity.x != 0 || velocity.y != 0){
-        real_velocity = Double(velocity.x*velocity.x + velocity.y*velocity.y)
-        real_velocity = sqrt(real_velocity)
-        //print("real_velocity is : \(real_velocity)")
-        }
-        let translation = gesture.translation(in: view)
-        let current_position = CGPoint(x: spin_initial_point.x+translation.x, y: spin_initial_point.y+translation.y)
-        //record passing area
-        //current position in left upper boundary
+            let velocity = gesture.velocity(in: view)
+            //print("velocity x: \(velocity.x), velocity y: \(velocity.y)")
+            if(velocity.x != 0 || velocity.y != 0){
+                real_velocity = Double(velocity.x*velocity.x + velocity.y*velocity.y)
+                real_velocity = sqrt(real_velocity)
+                //print("real_velocity is : \(real_velocity)")
+            }
+            let translation = gesture.translation(in: view)
+            let current_position = CGPoint(x: spin_initial_point.x+translation.x, y: spin_initial_point.y+translation.y)
+            //record passing area
+            //current position in left upper boundary
             if((current_position.x - wheel.frame.origin.x) < wheel.frame.width/2 && current_position.y - wheel.frame.origin.y < wheel.frame.height/2 ){
                 if(current_passing_area != 0){
                     current_passing_array_index += 1
@@ -320,26 +325,26 @@ class DailyGiftViewController: UIViewController {
                     gesture_passing_area[current_passing_array_index] = 3
                 }
             }
-     
-        final_translation = translation
-        if(gesture.state == .ended){
-            var i = 0
-            while(gesture_passing_area[i] != -1){
-               // print("gesture passing at index \(i) is \(gesture_passing_area[i])")
-                i += 1
+            
+            final_translation = translation
+            if(gesture.state == .ended){
+                var i = 0
+                while(gesture_passing_area[i] != -1){
+                    // print("gesture passing at index \(i) is \(gesture_passing_area[i])")
+                    i += 1
+                }
+                let direction = determine_rotation_direction()
+                //print("final translation: x: \(final_translation.x) y: \(final_translation.y)")
+                if(direction != -1){
+                    rotation_direction = direction
+                    spin_wheel()
+                    //let date = NSDate()
+                    //defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
+                }
+                //print("\(translation.x)")
+                //print("\(translation.y)")
             }
-            let direction = determine_rotation_direction()
-            //print("final translation: x: \(final_translation.x) y: \(final_translation.y)")
-            if(direction != -1){
-                rotation_direction = direction
-                spin_wheel()
-                //let date = NSDate()
-                //defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
-            }
-            //print("\(translation.x)")
-            //print("\(translation.y)")
-        }
-        
+            
         }
     }
     
@@ -352,7 +357,7 @@ class DailyGiftViewController: UIViewController {
         catch{
         }
         
-        
+        during_spinning = true
         var final_angle = Int(arc4random_uniform(UInt32(360)))
         while(final_angle%45 == 0){
             final_angle = Int(arc4random_uniform(UInt32(360)))
@@ -362,8 +367,13 @@ class DailyGiftViewController: UIViewController {
         let spin_animation = CAKeyframeAnimation()
         print("final_angle is \(final_angle)")
         CATransaction.begin()
-        var spinning_timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(DailyGiftViewController.spinning_sound_effect), userInfo: nil, repeats: true)
-
+        var spinning_timer = Timer()
+        if(!quit_during_spinning){
+            spinning_timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(DailyGiftViewController.spinning_sound_effect), userInfo: nil, repeats: true)}
+        else{
+            spinning_timer.invalidate()
+        }
+        
         CATransaction.setCompletionBlock({
             CATransaction.begin()
             CATransaction.setCompletionBlock({
@@ -408,76 +418,81 @@ class DailyGiftViewController: UIViewController {
                     self.defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
                     self.total_seconds = 20
                     
-   
+                    self.during_spinning = false
                     self.rewards_count_down = UILabel(frame: CGRect(x: self.screen_width/2 - self.screen_x_transform(65), y: self.screen_height/2 - self.screen_y_transform(85), width: self.screen_x_transform(330), height: self.screen_y_transform(100)))
                     self.view.addSubview(self.rewards_count_down)
                     self.rewards_count_down.text = self.count_down_time_string
                     self.rewards_count_down.font = UIFont(name: "Helvetica", size: 30)
                     self.rewards_count_down.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
                     self.rewards_count_down.fadeIn()
-
                     
                     
-                  self.count_down_timer_during_reward = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DailyGiftViewController.count_down_during_reward), userInfo: nil, repeats: true)
-                  self.count_down_timer_during_reward.fire()
+                    if(!self.quit_during_spinning){
+                        self.count_down_timer_during_reward = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DailyGiftViewController.count_down_during_reward), userInfo: nil, repeats: true)
+                        self.count_down_timer_during_reward.fire()
+                    }
+                    else{
+                        self.count_down_timer_during_reward.invalidate()
+                    }
+                    
                 })
                 /**if(self.rotation_direction == 0){
-                    if(final_angle < 180){
-                        UIView.animate(withDuration: 0.75, animations: {
-                            self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(final_proportion)*fullRotation)
-                        })
-                    }else{
-                        UIView.animate(withDuration: 0.75, animations: {
-                            self.wheel.transform = CGAffineTransform(rotationAngle: 0.5*fullRotation)
-                        }, completion: {
-                            (finished) -> Void in
-                            UIView.animate(withDuration: 0.75, animations: {
-                                self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(final_proportion)*fullRotation)
-   
-                            })
-                            
-                        })
-                    }
-                    
-                }else if(self.rotation_direction == 1){
-                    if(final_angle < 180){
-                        UIView.animate(withDuration: 0.5, animations: {
-                            self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(3/4)*fullRotation)
-                        }, completion: {
-                            (finished) -> Void in
-                            UIView.animate(withDuration: 0.5, animations: {
-                             self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(0.5)*fullRotation)
-                            }, completion: {
-                                (finished) -> Void in
-                                UIView.animate(withDuration: 1, animations: {
-                                    self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(final_proportion)*fullRotation)
-                                    
-                                })
-                                
-                            })
-                           
-
-                            
-                        })
-                    }else{
-                        UIView.animate(withDuration: 2.5, animations: {
-                            self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(final_proportion)*fullRotation)
-                        })
-                        
-                        
-                    }
-                    
-                }**/
+                 if(final_angle < 180){
+                 UIView.animate(withDuration: 0.75, animations: {
+                 self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(final_proportion)*fullRotation)
+                 })
+                 }else{
+                 UIView.animate(withDuration: 0.75, animations: {
+                 self.wheel.transform = CGAffineTransform(rotationAngle: 0.5*fullRotation)
+                 }, completion: {
+                 (finished) -> Void in
+                 UIView.animate(withDuration: 0.75, animations: {
+                 self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(final_proportion)*fullRotation)
+                 
+                 })
+                 
+                 })
+                 }
+                 
+                 }else if(self.rotation_direction == 1){
+                 if(final_angle < 180){
+                 UIView.animate(withDuration: 0.5, animations: {
+                 self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(3/4)*fullRotation)
+                 }, completion: {
+                 (finished) -> Void in
+                 UIView.animate(withDuration: 0.5, animations: {
+                 self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(0.5)*fullRotation)
+                 }, completion: {
+                 (finished) -> Void in
+                 UIView.animate(withDuration: 1, animations: {
+                 self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(final_proportion)*fullRotation)
+                 
+                 })
+                 
+                 })
+                 
+                 
+                 
+                 })
+                 }else{
+                 UIView.animate(withDuration: 2.5, animations: {
+                 self.wheel.transform = CGAffineTransform(rotationAngle: CGFloat(final_proportion)*fullRotation)
+                 })
+                 
+                 
+                 }
+                 
+                 }**/
                 let final_animation = CAKeyframeAnimation()
-                 final_animation.keyPath = "transform.rotation.z"
-                 final_animation.duration = 2
-                 final_animation.isRemovedOnCompletion = false
-                 final_animation.fillMode = kCAFillModeForwards
-                 final_animation.repeatCount = Float(1)
+                final_animation.keyPath = "transform.rotation.z"
+                final_animation.duration = 2
+                final_animation.isRemovedOnCompletion = false
+                final_animation.fillMode = kCAFillModeForwards
+                final_animation.repeatCount = Float(1)
                 if(self.rotation_direction == 0){
                     if(final_angle < 180){
                         final_animation.values = [0, CGFloat(final_proportion)*fullRotation]
-    
+                        
                     }else{
                         final_animation.values = [fullRotation/4, fullRotation/2, CGFloat(final_proportion)*fullRotation]
                     }
@@ -489,7 +504,7 @@ class DailyGiftViewController: UIViewController {
                         
                     }
                 }
-               self.wheel.layer.add(final_animation, forKey: "final_rotate")
+                self.wheel.layer.add(final_animation, forKey: "final_rotate")
                 CATransaction.commit()
             })
             //low speed one round
@@ -508,7 +523,7 @@ class DailyGiftViewController: UIViewController {
             self.wheel.layer.add(slow_spin, forKey: "rotate")
             
             CATransaction.commit()
-         
+            
         })
         
         spin_animation.keyPath = "transform.rotation.z"
@@ -533,10 +548,10 @@ class DailyGiftViewController: UIViewController {
         }
         print("rotation direction is \(rotation_direction)")
         if(rotation_direction == 0){
-        spin_animation.values = [fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
+            spin_animation.values = [fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
         }else if(rotation_direction == 1){
             spin_animation.values = [fullRotation*3/4, fullRotation/2, fullRotation/4, 0]
-    
+            
         }
         wheel.layer.add(spin_animation, forKey: "rotate")
         CATransaction.commit()
@@ -549,70 +564,70 @@ class DailyGiftViewController: UIViewController {
     //count_down_during_reward
     func count_down_during_reward() -> Void {
         if(display_reward){
-        if(total_seconds > 0){
+            if(total_seconds > 0){
+                
+                unlock_player_played_time = 0
+                if(clock_sound_effect_should_on){
+                    do{clock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "clock_sound", ofType: "mp3")!))
+                        clock_player.prepareToPlay()
+                        
+                    }
+                    catch{
+                    }
+                    clock_player.play()
+                }
+                count_down_end = false
+                total_seconds = total_seconds - 1
+                let hours = total_seconds/(60*60)
+                let seconds_times_min = total_seconds%(60*60)
+                let min = seconds_times_min/60
+                let seconds = seconds_times_min%60
+                count_down_time_string = hours_formatter(hours: hours) + " : " + min_formatter(min: min) + " : " + sec_formatter(sec: seconds)
+                rewards_count_down.text = count_down_time_string
+            }else if(total_seconds == 0){
+                count_down_end = true
+                count_down_timer_during_reward.invalidate()
+                do{unlock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "door_open_and_reming", ofType: "mp3")!))
+                    unlock_player.prepareToPlay()
+                    
+                }
+                catch{
+                }
+                if(unlock_sound_effect_should_on){
+                    unlock_player.play()
+                }
+                unlock_player_played_time = unlock_player_played_time + 1
+                
+                display_reward = false
+                if(spin_category == 0){
+                    ten_points.fadeOutandRemove()
+                }else if(spin_category == 1){
+                    twenty_five_points.fadeOutandRemove()
+                }else if(spin_category == 2 ){
+                    thirty_five_points.fadeOutandRemove()
+                }
+                rewards_count_down.fadeOutandRemove()
+                //let date = NSDate()
+                //self.defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
+            }
             
-            unlock_player_played_time = 0
-            if(clock_sound_effect_should_on){
-            do{clock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "clock_sound", ofType: "mp3")!))
-                clock_player.prepareToPlay()
-                
-            }
-            catch{
-            }
-            clock_player.play()
-            }
-            count_down_end = false
-            total_seconds = total_seconds - 1
-            let hours = total_seconds/(60*60)
-            let seconds_times_min = total_seconds%(60*60)
-            let min = seconds_times_min/60
-            let seconds = seconds_times_min%60
-            count_down_time_string = hours_formatter(hours: hours) + " : " + min_formatter(min: min) + " : " + sec_formatter(sec: seconds)
-            rewards_count_down.text = count_down_time_string
-        }else if(total_seconds == 0){
-            count_down_end = true
-            count_down_timer_during_reward.invalidate()
-            do{unlock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "door_open_and_reming", ofType: "mp3")!))
-                unlock_player.prepareToPlay()
-                
-            }
-            catch{
-            }
-            if(unlock_sound_effect_should_on){
-            unlock_player.play()
-            }
-             unlock_player_played_time = unlock_player_played_time + 1
-                
-            display_reward = false
-            if(spin_category == 0){
-            ten_points.fadeOutandRemove()
-            }else if(spin_category == 1){
-            twenty_five_points.fadeOutandRemove()
-            }else if(spin_category == 2 ){
-             thirty_five_points.fadeOutandRemove()
-            }
-            rewards_count_down.fadeOutandRemove()
-            //let date = NSDate()
-            //self.defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
+            
+            
         }
-        
-        
-        
-    }
     }
     
     //spinning sound effect
     func spinning_sound_effect() -> Void {
         if(!display_reward){
             if(spin_sound_effect_should_on){
-        spinning_player.play()
+                spinning_player.play()
             }
-        if(spinning_player.currentTime == spinning_player.duration){
-            spinning_player.currentTime = 0
-            if(spin_sound_effect_should_on){
-            spinning_player.play()
+            if(spinning_player.currentTime == spinning_player.duration){
+                spinning_player.currentTime = 0
+                if(spin_sound_effect_should_on){
+                    spinning_player.play()
+                }
             }
-        }
         }else{
             spinning_player.stop()
         }
@@ -638,25 +653,25 @@ class DailyGiftViewController: UIViewController {
             valid_length += 1
         }
         
-
+        
         //left upper area
         if((spin_initial_point.x - wheel.frame.origin.x) < wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y < wheel.frame.height/2 ){
-        let angle_init = atan((spin_initial_point.y - wheel_center.y)/(spin_initial_point.x - wheel_center.x))
-        let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
-        let degree_angle_init = Double(angle_init)*180/Double.pi
-        let degree_angle_final = Double(angle_final)*180/Double.pi
-        //print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
-       //final_position in left upper boundary (same area)
-       /** if((final_position.x - wheel.frame.origin.x) < wheel.frame.width/2 && final_position.y - wheel.frame.origin.y < wheel.frame.height/2 ){
-            if(degree_angle_init > degree_angle_final){
-                return 1
-            }else if(degree_angle_init < degree_angle_final){
-                return 0
-            }else{
-                return -1
-            }
-        }
- **/
+            let angle_init = atan((spin_initial_point.y - wheel_center.y)/(spin_initial_point.x - wheel_center.x))
+            let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
+            let degree_angle_init = Double(angle_init)*180/Double.pi
+            let degree_angle_final = Double(angle_final)*180/Double.pi
+            //print("init angle : \(degree_angle_init)  final angle: \(degree_angle_final)")
+            //final_position in left upper boundary (same area)
+            /** if((final_position.x - wheel.frame.origin.x) < wheel.frame.width/2 && final_position.y - wheel.frame.origin.y < wheel.frame.height/2 ){
+             if(degree_angle_init > degree_angle_final){
+             return 1
+             }else if(degree_angle_init < degree_angle_final){
+             return 0
+             }else{
+             return -1
+             }
+             }
+             **/
             //use the last two area to get the direction
             //only one area
             if(valid_length == 1){
@@ -669,7 +684,7 @@ class DailyGiftViewController: UIViewController {
                 }
                 
             }
-            //two areas
+                //two areas
             else if(valid_length == 2){
                 if(gesture_passing_area[1] == 1){
                     return 0
@@ -677,8 +692,8 @@ class DailyGiftViewController: UIViewController {
                     return 1
                 }
             }else{
-               let second_last_area = gesture_passing_area[valid_length-2]
-               let last_area = gesture_passing_area[valid_length-1]
+                let second_last_area = gesture_passing_area[valid_length-2]
+                let last_area = gesture_passing_area[valid_length-1]
                 if(last_area == second_last_area+1 || last_area == second_last_area - 3){
                     return 0
                 }else if(last_area == second_last_area-1 || last_area == second_last_area + 3){
@@ -688,30 +703,30 @@ class DailyGiftViewController: UIViewController {
             
             
             
-    
-        
-        /**final position in right_upper boundary
-        else if((final_position.x - wheel.frame.origin.x) > wheel.frame.width/2 && final_position.y - wheel.frame.origin.y < wheel.frame.height/2 ){
-            return 0
-            }
-        //final postion in right downer boundary
-        else if((final_position.x - wheel.frame.origin.x) > wheel.frame.width/2 && final_position.y - wheel.frame.origin.y > wheel.frame.height/2 ){
-            if(degree_angle_init > degree_angle_final){
-                return 0
-            }else if(degree_angle_init < degree_angle_final){
-                return 1
-            }else{
-                return -1
-            }
-        }
-        //final position in left downer
-         else if((final_position.x - wheel.frame.origin.x) < wheel.frame.width/2 && final_position.y - wheel.frame.origin.y > wheel.frame.height/2 ){
-            return 1
             
             
-            
-            }
-    **/
+            /**final position in right_upper boundary
+             else if((final_position.x - wheel.frame.origin.x) > wheel.frame.width/2 && final_position.y - wheel.frame.origin.y < wheel.frame.height/2 ){
+             return 0
+             }
+             //final postion in right downer boundary
+             else if((final_position.x - wheel.frame.origin.x) > wheel.frame.width/2 && final_position.y - wheel.frame.origin.y > wheel.frame.height/2 ){
+             if(degree_angle_init > degree_angle_final){
+             return 0
+             }else if(degree_angle_init < degree_angle_final){
+             return 1
+             }else{
+             return -1
+             }
+             }
+             //final position in left downer
+             else if((final_position.x - wheel.frame.origin.x) < wheel.frame.width/2 && final_position.y - wheel.frame.origin.y > wheel.frame.height/2 ){
+             return 1
+             
+             
+             
+             }
+             **/
             
         }//right upper area
         else if((spin_initial_point.x - wheel.frame.origin.x) > wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y < wheel.frame.height/2 ){
@@ -754,8 +769,8 @@ class DailyGiftViewController: UIViewController {
             
             
         }
-        
-        //right downer area
+            
+            //right downer area
         else if((spin_initial_point.x - wheel.frame.origin.x) > wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y > wheel.frame.height/2 ){
             let angle_init = atan((spin_initial_point.y - wheel_center.y)/(spin_initial_point.x - wheel_center.x))
             let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
@@ -788,7 +803,7 @@ class DailyGiftViewController: UIViewController {
             
             
         }
-        //left downer area
+            //left downer area
         else if((spin_initial_point.x - wheel.frame.origin.x) < wheel.frame.width/2 && spin_initial_point.y - wheel.frame.origin.y > wheel.frame.height/2 ){
             let angle_init = atan((spin_initial_point.y - wheel_center.y)/(spin_initial_point.x - wheel_center.x))
             let angle_final = atan((final_position.y - wheel.center.y)/(final_position.x - wheel_center.x))
@@ -829,7 +844,7 @@ class DailyGiftViewController: UIViewController {
     //case -1 : none
     func determine_final_case(final_angle : Int) -> Int{
         if(final_angle > 0 && final_angle < 45 ){
-         return 2
+            return 2
         }else if(final_angle > 45 && final_angle < 90){
             return 0
         }else if(final_angle > 90 && final_angle < 135){
@@ -848,41 +863,41 @@ class DailyGiftViewController: UIViewController {
             return -1
         }
     }
-
+    
     
     
     func auto_count_down() -> Void{
         if(total_seconds > 0){
-        unlock_player_played_time = 0
+            unlock_player_played_time = 0
             if(clock_sound_effect_should_on){
-            do{clock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "clock_sound", ofType: "mp3")!))
-                clock_player.prepareToPlay()
-                
+                do{clock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "clock_sound", ofType: "mp3")!))
+                    clock_player.prepareToPlay()
+                    
+                }
+                catch{
+                }
+                clock_player.play()
             }
-            catch{
-            }
-        clock_player.play()
-            }
-        count_down_end = false
-        total_seconds = total_seconds - 1
-        let hours = total_seconds/(60*60)
-        let seconds_times_min = total_seconds%(60*60)
-        let min = seconds_times_min/60
-        let seconds = seconds_times_min%60
-        count_down_time_string = hours_formatter(hours: hours) + " : " + min_formatter(min: min) + " : " + sec_formatter(sec: seconds)
-        count_down_label.text = count_down_time_string
+            count_down_end = false
+            total_seconds = total_seconds - 1
+            let hours = total_seconds/(60*60)
+            let seconds_times_min = total_seconds%(60*60)
+            let min = seconds_times_min/60
+            let seconds = seconds_times_min%60
+            count_down_time_string = hours_formatter(hours: hours) + " : " + min_formatter(min: min) + " : " + sec_formatter(sec: seconds)
+            count_down_label.text = count_down_time_string
         }else if(total_seconds == 0){
             if(unlock_player_played_time == 0){
-            do{unlock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "door_open_and_reming", ofType: "mp3")!))
-                unlock_player.prepareToPlay()
-                
-            }
-            catch{
-            }
-                if(unlock_sound_effect_should_on){
-                unlock_player.play()
+                do{unlock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "door_open_and_reming", ofType: "mp3")!))
+                    unlock_player.prepareToPlay()
+                    
                 }
-            unlock_player_played_time = unlock_player_played_time + 1
+                catch{
+                }
+                if(unlock_sound_effect_should_on){
+                    unlock_player.play()
+                }
+                unlock_player_played_time = unlock_player_played_time + 1
             }
             
             count_down_end = true
@@ -891,8 +906,8 @@ class DailyGiftViewController: UIViewController {
             grey_transparent_image.fadeOutandRemove()
             cancel_button_lock.fadeOutandRemove()}
         
-        }
-        
+    }
+    
     
     
     
@@ -908,7 +923,7 @@ class DailyGiftViewController: UIViewController {
             print("passed_seconds: \(elapsed)")
             if(passed_seconds < 20){
                 count_down_end = false
-            total_seconds = 20 - passed_seconds
+                total_seconds = 20 - passed_seconds
             }else{
                 total_seconds = 0
                 count_down_end = true
@@ -924,8 +939,8 @@ class DailyGiftViewController: UIViewController {
     
     func hours_formatter(hours: Int) -> String {
         if(hours < 10){
-    var formatted_hours = String()
-    formatted_hours = String(0)+String(hours)
+            var formatted_hours = String()
+            formatted_hours = String(0)+String(hours)
             return formatted_hours}
         else{
             return String(hours)
@@ -934,9 +949,9 @@ class DailyGiftViewController: UIViewController {
     
     func min_formatter(min: Int) -> String {
         if(min<10){
-         var formatted_min = String()
-        formatted_min = String(0) + String(min)
-        return formatted_min
+            var formatted_min = String()
+            formatted_min = String(0) + String(min)
+            return formatted_min
         }else{
             return String(min)
         }
@@ -964,13 +979,13 @@ public extension UIView {
         })
     }
     
-        func fadeOutandRemove(withDuration duration: TimeInterval = 0.5){
-            UIView.animate(withDuration: duration, animations: {
-                self.alpha = 0.5
-            }, completion: {
-                (finished) -> Void in
-                self.removeFromSuperview()
-            })
+    func fadeOutandRemove(withDuration duration: TimeInterval = 0.5){
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 0.5
+        }, completion: {
+            (finished) -> Void in
+            self.removeFromSuperview()
+        })
     }
 }
 
