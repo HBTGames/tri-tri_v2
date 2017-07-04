@@ -57,7 +57,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         self.view.bringSubview(toFront: exit_button)
         
         self.view.bringSubview(toFront: tuto_page_con)
-        
+        self.mainScrollView.frame = self.view.frame
         
         tuto_text.image = UIImage(named:"tuto_text")
         tuto_text.frame = CGRect(x:0, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
