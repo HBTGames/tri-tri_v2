@@ -71,6 +71,8 @@ class DailyGiftViewController: UIViewController {
     var rotation_direction = 0
     
     
+    var last_final_angle = 0
+    
     //lock screen
     var lock_screen = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var count_down_label = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -598,7 +600,7 @@ class DailyGiftViewController: UIViewController {
             //spinning_player.rate = Float(spinning_player.duration)/0.4
         }
         print("real velocity is \(real_velocity)")
-        
+        last_final_angle = final_angle
         CATransaction.commit()
         
     }
@@ -652,11 +654,28 @@ class DailyGiftViewController: UIViewController {
                     thirty_five_points.fadeOutandRemove()
                 }
                 rewards_count_down.fadeOutandRemove()
-                UIView.animate(withDuration: 1, animations: {
-                    self.wheel.transform = CGAffineTransform.identity
-                })
-                //let date = NSDate()
-                //self.defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
+                //reset animation
+                let reset_animation = CAKeyframeAnimation()
+                reset_animation.keyPath = "transform.rotation.z"
+                reset_animation.isRemovedOnCompletion = false
+                reset_animation.fillMode = kCAFillModeForwards
+                reset_animation.repeatCount = Float(1)
+                reset_animation.duration = 1.5
+                print("last final angle is \(last_final_angle)")
+                let fullRotation = CGFloat(2*Double.pi)
+                let final_proportion = Double(last_final_angle)/Double(360)
+                if(final_proportion >= 0.5){
+                    reset_animation.values = [CGFloat(final_proportion)*fullRotation, fullRotation]
+     
+                }else{
+                    reset_animation.values = [CGFloat(final_proportion)*fullRotation, 0]
+                }
+                wheel.layer.add(reset_animation, forKey: "rotate")
+                
+                
+                
+                let date = NSDate()
+                self.defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
             }
             
             
