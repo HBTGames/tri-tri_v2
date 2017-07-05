@@ -106,6 +106,14 @@ class MenuViewController: UIViewController {
         }
         star_board.text = String(star_score)
         
+        //tool box default 
+        //get tool box quantity array
+        if(defaults.value(forKey: "tritri_tool_quantity_array") != nil){
+            tool_quantity_array = defaults.value(forKey: "tritri_tool_quantity_array") as! Array
+        }else{
+            defaults.set([0,0,0,0,0], forKey: "tritri_tool_quantity_array")
+        }
+        
         
         
         if (defaults.value(forKey: "tritri_Theme") == nil){
@@ -932,15 +940,7 @@ class MenuViewController: UIViewController {
 
 
     }
-    
-    @IBAction func treasure_button_action(_ sender: UIButton) {
-        treasure_box_function()
 
-    }
-
-   
-    
-    
     
     func treasure_box_function() -> Void {
     let treasure_menu = UIImageView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
@@ -954,7 +954,9 @@ class MenuViewController: UIViewController {
     treasure_cancel.alpha = 0
     self.view.addSubview(treasure_cancel)
     treasure_cancel.fadeIn()
-    let new_life_button = MyButton(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(90), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+        
+//new  life button
+    let new_life_button = MyButton(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     new_life_button.setImage(#imageLiteral(resourceName: "new_life"), for: .normal)
     new_life_button.alpha = 0
     self.view.addSubview(new_life_button)
@@ -963,7 +965,16 @@ class MenuViewController: UIViewController {
             self.tool_selected = 0
             self.tool_selected_scene()
         })
-    let same_color_eliminator = MyButton(frame: CGRect(x: new_life_button.frame.origin.x + new_life_button.frame.width + pause_screen_x_transform(50), y: pause_screen_y_transform(90), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+        
+//new life text
+        let new_life_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+        new_life_text.image = #imageLiteral(resourceName: "new_life_text")
+        new_life_text.alpha = 0
+        self.view.addSubview(new_life_text)
+        new_life_text.fadeIn()
+    
+//same color eliminator button
+    let same_color_eliminator = MyButton(frame: CGRect(x: new_life_button.frame.origin.x + new_life_button.frame.width + pause_screen_x_transform(50), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     same_color_eliminator.setImage(#imageLiteral(resourceName: "same_color_eliminator"), for: .normal)
     same_color_eliminator.alpha = 0
     self.view.addSubview(same_color_eliminator)
@@ -973,6 +984,14 @@ class MenuViewController: UIViewController {
             self.tool_selected_scene()
         })
     
+    //same color eliminator text
+       let same_color_eliminator_text = UIImageView(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: pause_screen_y_transform(45), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+        same_color_eliminator_text.alpha = 0
+        same_color_eliminator_text.image = #imageLiteral(resourceName: "same_color_eliminator_text")
+        self.view.addSubview(same_color_eliminator_text)
+        same_color_eliminator_text.fadeIn()
+
+    //shape bomb button
     let shape_bomb = MyButton(frame: CGRect(x: new_life_button.frame.origin.x, y: new_life_button.frame.origin.y + new_life_button.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     shape_bomb.setImage(#imageLiteral(resourceName: "shape_bomb"), for: .normal)
     shape_bomb.alpha = 0
@@ -982,7 +1001,15 @@ class MenuViewController: UIViewController {
             self.tool_selected = 2
             self.tool_selected_scene()
         })
-    
+    //shape bomb text
+    let shape_bomb_text = UIImageView(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+    shape_bomb_text.alpha = 0
+    shape_bomb_text.image = #imageLiteral(resourceName: "shape_bomb_text")
+    self.view.addSubview(shape_bomb_text)
+    shape_bomb_text.fadeIn()
+        
+        
+    //times two button
     let times_two = MyButton(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: shape_bomb.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     times_two.setImage(#imageLiteral(resourceName: "times_two"), for: .normal)
     times_two.alpha = 0
@@ -992,8 +1019,15 @@ class MenuViewController: UIViewController {
             self.tool_selected = 3
             self.tool_selected_scene()
         })
+   //times two text
+        let times_two_text = UIImageView(frame: CGRect(x: times_two.frame.origin.x, y: times_two.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+        times_two_text.image = #imageLiteral(resourceName: "double_score_text")
+        times_two_text.alpha = 0
+        self.view.addSubview(times_two_text)
+        times_two_text.fadeIn()
         
         
+    //three triangles button
     let three_triangles = MyButton(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y + shape_bomb.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     three_triangles.setImage(#imageLiteral(resourceName: "three_triangle"), for: .normal)
     three_triangles.alpha = 0
@@ -1003,7 +1037,16 @@ class MenuViewController: UIViewController {
             self.tool_selected = 4
             self.tool_selected_scene()
         })
+    
+    //three triangle text
+    let three_triangles_text = UIImageView(frame: CGRect(x: three_triangles.frame.origin.x, y: three_triangles.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+    three_triangles_text.image = #imageLiteral(resourceName: "three_tri_text")
+    three_triangles_text.alpha = 0
+    self.view.addSubview(three_triangles_text)
+    three_triangles_text.fadeIn()
+    
         
+    //clear all button
     let clear_all = MyButton(frame: CGRect(x: times_two.frame.origin.x, y: three_triangles.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     clear_all.setImage(#imageLiteral(resourceName: "clear_all"), for: .normal)
     clear_all.alpha = 0
@@ -1013,7 +1056,18 @@ class MenuViewController: UIViewController {
             self.tool_selected = 5
             self.tool_selected_scene()
         })
+    
+    //clear all text
+        let clear_all_text = UIImageView(frame: CGRect(x: clear_all.frame.origin.x, y: clear_all.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+        clear_all_text.image = #imageLiteral(resourceName: "clear_all_text")
+        clear_all_text.alpha = 0
+        self.view.addSubview(clear_all_text)
+        clear_all_text.fadeIn()
+
         
+        
+        
+    //treasure cancel action
     treasure_cancel.whenButtonIsClicked(action: {
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
@@ -1029,7 +1083,13 @@ class MenuViewController: UIViewController {
             shape_bomb.fadeOutandRemove()
             times_two.fadeOutandRemove()
             three_triangles.fadeOutandRemove()
-            clear_all.fadeOut()
+            clear_all.fadeOutandRemove()
+            new_life_text.fadeOutandRemove()
+            same_color_eliminator_text.fadeOutandRemove()
+            shape_bomb_text.fadeOutandRemove()
+            times_two_text.fadeOutandRemove()
+            three_triangles_text.fadeOutandRemove()
+            clear_all_text.fadeOutandRemove()
         
         })
     }
@@ -1081,6 +1141,10 @@ class MenuViewController: UIViewController {
     // 0 - new life  1 - same color eliminator 2 - shape bomb 3 - score*2 4 - three triangles 5 - clear all
     var tool_selected = -1
     
+    //tool quantity array
+    //index : 0 - new life 1 - same color eliminator 2 - shape bomb 3 - score*2 4 - three triangles 5 - clear all
+    var tool_quantity_array = [0,0,0,0,0,0]
+    
     func tool_selected_scene() -> Void {
     let selected_scene_background = UIView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
     selected_scene_background.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
@@ -1097,13 +1161,53 @@ class MenuViewController: UIViewController {
     selected_cancel.alpha = 0
     self.view.addSubview(selected_cancel)
     selected_cancel.fadeIn()
+    let treasure_icon_selected = UIImageView(frame: CGRect(x: pause_screen_x_transform(30), y:   selected_scene.frame.origin.y+pause_screen_y_transform(70), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+        let treasure_text = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x, y: treasure_icon_selected.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+        if(tool_selected == 1){
+            treasure_text.frame = CGRect(x: treasure_icon_selected.frame.origin.x, y: treasure_icon_selected.frame.origin.y - pause_screen_y_transform(55), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70))
+        }
+    
+        if(tool_selected == 0){
+            treasure_icon_selected.image = #imageLiteral(resourceName: "new_life")
+            treasure_text.image = #imageLiteral(resourceName: "new_life_text")
+        }else if(tool_selected == 1){
+            treasure_icon_selected.image = #imageLiteral(resourceName: "same_color_eliminator")
+            treasure_text.image = #imageLiteral(resourceName: "same_color_eliminator_text")
+        }else if(tool_selected == 2){
+            treasure_icon_selected.image = #imageLiteral(resourceName: "shape_bomb")
+            treasure_text.image = #imageLiteral(resourceName: "shape_bomb_text")
+        }else if(tool_selected == 3){
+            treasure_icon_selected.image = #imageLiteral(resourceName: "times_two")
+            treasure_text.image = #imageLiteral(resourceName: "double_score_text")
+        }else if(tool_selected == 4){
+            treasure_icon_selected.image =  #imageLiteral(resourceName: "three_triangle")
+            treasure_text.image = #imageLiteral(resourceName: "three_tri_text")
+        }else if(tool_selected == 5){
+            treasure_icon_selected.image = #imageLiteral(resourceName: "clear_all")
+            treasure_text.image = #imageLiteral(resourceName: "clear_all_text")
+        }
+        
+        //fade in
+        treasure_icon_selected.alpha = 0
+        self.view.addSubview(treasure_icon_selected)
+        treasure_icon_selected.fadeIn()
+        
+        treasure_text.alpha = 0
+        self.view.addSubview(treasure_text)
+        treasure_text.fadeIn()
+
+        
+        
+        
         selected_cancel.whenButtonIsClicked(action: {
             selected_scene_background.fadeOutandRemove()
             selected_scene.fadeOutandRemove()
             selected_cancel.fadeOutandRemove()
+            treasure_icon_selected.fadeOutandRemove()
+            treasure_text.fadeOutandRemove()
             
         })
-        
+    
         
     }
     
