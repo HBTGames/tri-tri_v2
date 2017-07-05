@@ -975,7 +975,7 @@ class MenuViewController: UIViewController {
         })
         
 //new life text
-        let new_life_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+        let new_life_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         new_life_text.image = #imageLiteral(resourceName: "new_life_text")
         new_life_text.alpha = 0
         self.view.addSubview(new_life_text)
@@ -993,7 +993,7 @@ class MenuViewController: UIViewController {
         })
     
     //same color eliminator text
-       let same_color_eliminator_text = UIImageView(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: pause_screen_y_transform(45), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+       let same_color_eliminator_text = UIImageView(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: pause_screen_y_transform(40), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         same_color_eliminator_text.alpha = 0
         same_color_eliminator_text.image = #imageLiteral(resourceName: "same_color_eliminator_text")
         self.view.addSubview(same_color_eliminator_text)
@@ -1010,7 +1010,7 @@ class MenuViewController: UIViewController {
             self.tool_selected_scene()
         })
     //shape bomb text
-    let shape_bomb_text = UIImageView(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+    let shape_bomb_text = UIImageView(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
     shape_bomb_text.alpha = 0
     shape_bomb_text.image = #imageLiteral(resourceName: "shape_bomb_text")
     self.view.addSubview(shape_bomb_text)
@@ -1028,7 +1028,7 @@ class MenuViewController: UIViewController {
             self.tool_selected_scene()
         })
    //times two text
-        let times_two_text = UIImageView(frame: CGRect(x: times_two.frame.origin.x, y: times_two.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+        let times_two_text = UIImageView(frame: CGRect(x: times_two.frame.origin.x, y: times_two.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         times_two_text.image = #imageLiteral(resourceName: "double_score_text")
         times_two_text.alpha = 0
         self.view.addSubview(times_two_text)
@@ -1047,7 +1047,7 @@ class MenuViewController: UIViewController {
         })
     
     //three triangle text
-    let three_triangles_text = UIImageView(frame: CGRect(x: three_triangles.frame.origin.x, y: three_triangles.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+    let three_triangles_text = UIImageView(frame: CGRect(x: three_triangles.frame.origin.x, y: three_triangles.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
     three_triangles_text.image = #imageLiteral(resourceName: "three_tri_text")
     three_triangles_text.alpha = 0
     self.view.addSubview(three_triangles_text)
@@ -1066,7 +1066,7 @@ class MenuViewController: UIViewController {
         })
     
     //clear all text
-        let clear_all_text = UIImageView(frame: CGRect(x: clear_all.frame.origin.x, y: clear_all.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+        let clear_all_text = UIImageView(frame: CGRect(x: clear_all.frame.origin.x, y: clear_all.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         clear_all_text.image = #imageLiteral(resourceName: "clear_all_text")
         clear_all_text.alpha = 0
         self.view.addSubview(clear_all_text)
@@ -1170,9 +1170,9 @@ class MenuViewController: UIViewController {
     self.view.addSubview(selected_cancel)
     selected_cancel.fadeIn()
     let treasure_icon_selected = UIImageView(frame: CGRect(x: pause_screen_x_transform(30), y:   selected_scene.frame.origin.y+pause_screen_y_transform(70), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-        let treasure_text = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x, y: treasure_icon_selected.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70)))
+        let treasure_text = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x, y: treasure_icon_selected.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         if(tool_selected == 1){
-            treasure_text.frame = CGRect(x: treasure_icon_selected.frame.origin.x, y: treasure_icon_selected.frame.origin.y - pause_screen_y_transform(55), width: pause_screen_x_transform(140), height: pause_screen_y_transform(70))
+            treasure_text.frame = CGRect(x: treasure_icon_selected.frame.origin.x, y: treasure_icon_selected.frame.origin.y - pause_screen_y_transform(60), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80))
         }
     
         if(tool_selected == 0){
@@ -1203,9 +1203,20 @@ class MenuViewController: UIViewController {
         treasure_text.alpha = 0
         self.view.addSubview(treasure_text)
         treasure_text.fadeIn()
-
+       
+        let sub_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + pause_screen_x_transform(10), y: treasure_icon_selected.frame.origin.y + treasure_icon_selected.frame.height + pause_screen_y_transform(15), width: pause_screen_x_transform(35), height: pause_screen_y_transform(35)))
+        sub_button.setImage(#imageLiteral(resourceName: "substract"), for: .normal)
+        sub_button.contentMode = .scaleAspectFit
+        sub_button.alpha = 0
+        self.view.addSubview(sub_button)
+        sub_button.fadeIn()
         
-        
+        let add_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width - pause_screen_x_transform(45), y: sub_button.frame.origin.y, width: pause_screen_x_transform(35), height: pause_screen_y_transform(35)))
+        add_button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+        add_button.contentMode = .scaleAspectFit
+        add_button.alpha = 0
+        self.view.addSubview(add_button)
+        add_button.fadeIn()
         
         selected_cancel.whenButtonIsClicked(action: {
             selected_scene_background.fadeOutandRemove()
@@ -1213,7 +1224,8 @@ class MenuViewController: UIViewController {
             selected_cancel.fadeOutandRemove()
             treasure_icon_selected.fadeOutandRemove()
             treasure_text.fadeOutandRemove()
-            
+            sub_button.fadeOutandRemove()
+            add_button.fadeOutandRemove()
         })
     
         
