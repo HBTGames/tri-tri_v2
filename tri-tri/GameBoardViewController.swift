@@ -677,6 +677,7 @@ class GameBoardViewController: UIViewController {
     var game_over_player = AVAudioPlayer()
 
     
+    var language = String()
     
     
     class MyButton: UIButton {
@@ -839,7 +840,7 @@ class GameBoardViewController: UIViewController {
         
         }
     
-
+        language = defaults.value(forKey: "language") as! String
         ///
         //add UIPanGestureRecognizer
         ////
@@ -931,7 +932,7 @@ class GameBoardViewController: UIViewController {
             MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             trophy.image = UIImage(named:"trophy_new")
             pause.setImage(UIImage(named: "pause_button"), for: .normal)
-            triangle_title.image = UIImage(named:"day mode triangle title")
+            
             starBoard.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
             
             
@@ -946,7 +947,6 @@ class GameBoardViewController: UIViewController {
             MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             trophy.image = UIImage(named:"night mode 奖杯")
             pause.setImage(UIImage(named: "night mode pause"), for: .normal)
-            triangle_title.image = UIImage(named:"night mode triangle title")
             starBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             
         }else if ThemeType == 3{
@@ -960,7 +960,6 @@ class GameBoardViewController: UIViewController {
             MarkBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             trophy.image = UIImage(named: "BW_trophy")
             pause.setImage(UIImage(named: "BW_pause"), for: .normal)
-            triangle_title.image = UIImage(named: "day mode triangle title")
              starBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             
         }else if ThemeType == 4{
@@ -986,8 +985,6 @@ class GameBoardViewController: UIViewController {
             self.MarkBoard.textColor = UIColor(red: 113.0/255, green: 105.0/255, blue: 183.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"school_j-icon")
             self.pause.setImage(UIImage(named: "school_pause-button"), for: .normal)
-
-            self.triangle_title.image = UIImage(named:"school_triangle_title")
              starBoard.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
         }else if ThemeType == 6{
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
@@ -1001,9 +998,9 @@ class GameBoardViewController: UIViewController {
             self.MarkBoard.textColor = UIColor(red: 251.0/255, green: 250.0/255, blue: 249.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"colors_j-icon")
             self.pause.setImage(UIImage(named: "colors_pause-button"), for: .normal)
-            self.triangle_title.image = UIImage(named:"night mode triangle title")
             self.starBoard.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
         }
+        triangle_title_image_decider()
         change_shape_in_generate_array()
         change_current_shapes_according_to_theme()
         
@@ -1584,7 +1581,6 @@ class GameBoardViewController: UIViewController {
             self.MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"trophy_new")
             self.pause.setImage(UIImage(named: "pause_button"), for: .normal)
-            self.triangle_title.image = UIImage(named:"day mode triangle title")
             self.home_button.setBackgroundImage(self.home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.continue_pic, for: .normal)
             self.restart_button.setBackgroundImage(self.restart_pic, for: .normal)
@@ -1600,7 +1596,7 @@ class GameBoardViewController: UIViewController {
             self.theme_star_counter.image = UIImage(named:"day_mode_star")
             self.theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
             
-            
+            self.triangle_title_image_decider()
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
             self.BW_theme_button.fadeOut()
@@ -1654,8 +1650,7 @@ class GameBoardViewController: UIViewController {
             self.MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"night mode 奖杯")
             self.pause.setImage(UIImage(named: "night mode pause"), for: .normal)
-            self.triangle_title.image = UIImage(named:"night mode triangle title")
-            
+            self.triangle_title_image_decider()
             self.home_button.setBackgroundImage(self.night_home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.continue_pic, for: .normal)
             self.restart_button.setBackgroundImage(self.restart_pic, for: .normal)
@@ -1722,7 +1717,7 @@ class GameBoardViewController: UIViewController {
             self.MarkBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"BW_trophy")
             self.pause.setImage(UIImage(named: "BW_pause"), for: .normal)
-            self.triangle_title.image = UIImage(named:"day mode triangle title")
+            self.triangle_title_image_decider()
             self.star_counter.image = UIImage(named:"BW_mode_star")
             self.home_button.setBackgroundImage(self.BW_home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.BW_continue_pic, for: .normal)
@@ -1803,7 +1798,7 @@ class GameBoardViewController: UIViewController {
             self.MarkBoard.textColor = UIColor(red: 254.0/255, green: 254.0/255, blue: 254.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"chaos_j_icon")
             self.pause.setImage(UIImage(named: "chaos_pause_button"), for: .normal)
-            self.triangle_title.image = UIImage(named:"night mode triangle title")
+            self.triangle_title_image_decider()
             
             self.home_button.setBackgroundImage(self.chaos_home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.chaos_continue_pic, for: .normal)
@@ -1878,7 +1873,7 @@ class GameBoardViewController: UIViewController {
             self.MarkBoard.textColor = UIColor(red: 113.0/255, green: 105.0/255, blue: 183.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"school_j-icon")
             self.pause.setImage(UIImage(named: "school_pause-button"), for: .normal)
-            self.triangle_title.image = UIImage(named:"school_triangle_title")
+            self.triangle_title_image_decider()
             self.star_counter.image = UIImage(named:"school_mode_star")
             self.home_button.setBackgroundImage(self.school_home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.school_continue_pic, for: .normal)
@@ -1948,7 +1943,7 @@ class GameBoardViewController: UIViewController {
             self.MarkBoard.textColor = UIColor(red: 251.0/255, green: 250.0/255, blue: 249.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"colors_j-icon")
             self.pause.setImage(UIImage(named: "colors_pause-button"), for: .normal)
-            self.triangle_title.image = UIImage(named:"night mode triangle title")
+            self.triangle_title_image_decider()
             self.star_counter.image = UIImage(named:"colors_mode_star")
             self.home_button.setBackgroundImage(self.colors_home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.colors_continue_pic, for: .normal)
@@ -2012,7 +2007,12 @@ class GameBoardViewController: UIViewController {
         
         //add triangle text
         
-        triangle_text.image = UIImage(named: "day mode triangle title")
+        if (self.language == "English"){
+            triangle_text.image = UIImage(named: "day mode triangle title")
+        }
+        else {
+            triangle_text.image = UIImage(named: "san_title_day")
+        }
         triangle_text.contentMode = .scaleAspectFit
         //triangle_text.sizeToFit()
         triangle_text.alpha = 0
@@ -12132,6 +12132,46 @@ number_of_lines_erased += 1
         crown_animation.play()
 
     }
+    
+    func triangle_title_image_decider() -> Void{
+        if (ThemeType == 1){
+            if (language == "English"){
+                self.triangle_title.image = UIImage(named:"day mode triangle title")
+            } else {
+                self.triangle_title.image = UIImage(named:"san_title_day")
+            }
+        } else if (ThemeType == 2){
+            if (language == "English"){
+                self.triangle_title.image = UIImage(named:"night mode triangle title")
+            } else {
+                self.triangle_title.image = UIImage(named:"san_title_night")
+            }
+        } else if (ThemeType == 3){
+            if (language == "English"){
+                self.triangle_title.image = UIImage(named:"day mode triangle title")
+            } else {
+                self.triangle_title.image = UIImage(named:"san_title_day")
+            }
+        } else if (ThemeType == 4){
+            //chaos
+        }
+        else if (ThemeType == 5){
+            if (language == "English"){
+                self.triangle_title.image = UIImage(named:"school_triangle_title")
+            } else {
+                self.triangle_title.image = UIImage(named:"san_title_school")
+            }
+        } else if (ThemeType == 6){
+            if (language == "English"){
+                self.triangle_title.image = UIImage(named:"night mode triangle title")
+            } else {
+                self.triangle_title.image = UIImage(named:"san_title_night")
+            }
+        }
+        
+        
+    }
+
 }
 
 

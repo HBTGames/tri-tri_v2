@@ -113,20 +113,20 @@
                                     <segue destination="dWF-Fv-J3W" kind="show" id="Hp1-xL-aW9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfQ-f9-bqe">
-                                <rect key="frame" x="303" y="20" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="english"/>
-                                <connections>
-                                    <action selector="language_changing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K6L-Z6-OBG"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cy2-vD-TsN">
                                 <rect key="frame" x="0.0" y="0.0" width="110" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="treasure" image="treasure_day_mode"/>
                                 <connections>
                                     <action selector="treasure_box_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xXO-lj-8MB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfQ-f9-bqe">
+                                <rect key="frame" x="265" y="0.0" width="110" height="114"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="lang_icon_english_day_night"/>
+                                <connections>
+                                    <action selector="language_changing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K6L-Z6-OBG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1203,6 +1203,7 @@
         <image name="grey_tir_downwards" width="49" height="43"/>
         <image name="grey_tri_upwards" width="49" height="43"/>
         <image name="home" width="198" height="172"/>
+        <image name="lang_icon_english_day_night" width="126" height="128"/>
         <image name="like" width="198" height="172"/>
         <image name="link" width="198" height="172"/>
         <image name="night_theme" width="177" height="177"/>

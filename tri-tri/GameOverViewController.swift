@@ -681,8 +681,13 @@ class GameOverViewController: UIViewController {
         
         
         //add triangle text
-        
-        triangle_text.image = UIImage(named: "day mode triangle title")
+        if (language == "English"){
+            triangle_text.image = UIImage(named: "day mode triangle title")
+        }
+        else {
+            triangle_text.image = UIImage(named: "san_title_day")
+
+        }
         triangle_text.contentMode = .scaleAspectFit
         //triangle_text.sizeToFit()
         triangle_text.alpha = 0

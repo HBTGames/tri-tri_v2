@@ -13,6 +13,8 @@ class MenuViewController: UIViewController {
 
     var language = String()
     
+    
+    
     @IBOutlet weak var star_counter: UIImageView!
     
     @IBOutlet weak var star_board: UILabel!
@@ -60,11 +62,9 @@ class MenuViewController: UIViewController {
         
         if (defaults.value(forKey: "language") as! String == "English"){
             language = "English"
-            language_button.setTitle("English", for: .normal)
         }
         else {
             language = "Chinese"
-            language_button.setTitle("Chinese", for: .normal)
         }
         
         
@@ -115,6 +115,8 @@ class MenuViewController: UIViewController {
         else {
             ThemeType = defaults.integer(forKey: "tritri_Theme")
         }
+        
+        language_button_image_decider()
         if(ThemeType == 1){
             trophy.image = UIImage(named:"trophy_new")
             view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
@@ -254,13 +256,13 @@ class MenuViewController: UIViewController {
             language = "Chinese"
             defaults.set("Chinese", forKey: "language")
             print("System language change to Chinese")
-            language_button.setTitle("Chinese", for: .normal)
+            self.language_button_image_decider()
             triangle_title_image_decider()
         } else {
             language = "English"
             defaults.set("English", forKey: "language")
             print("System language change to English")
-            language_button.setTitle("English", for: .normal)
+            self.language_button_image_decider()
             triangle_title_image_decider()
         }
     }
@@ -287,6 +289,10 @@ class MenuViewController: UIViewController {
     var chaos_theme_origin = CGPoint(x: 0, y: 0)
     var school_theme_origin = CGPoint(x: 0, y: 0)
     var colors_theme_origin = CGPoint(x: 0, y: 0)
+    
+    
+    
+    
     @IBAction func theme_menu_action(_ sender: UIButton) {
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
@@ -306,6 +312,7 @@ class MenuViewController: UIViewController {
         theme_menu.fadeIn()
         let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(120)))
         let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(40), width: pause_screen_x_transform(155), height: pause_screen_y_transform(35)))
+        
         theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(250), y:pause_screen_y_transform(90),width: pause_screen_x_transform(97), height: pause_screen_y_transform(41)))
         theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(270),y:pause_screen_y_transform(95),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
         
@@ -334,7 +341,7 @@ class MenuViewController: UIViewController {
             else {
                 self.triangle_title.image = UIImage(named: "san_title_day")
             }
-            
+            self.language_button_image_decider()
             self.like_button.setBackgroundImage(UIImage(named: "day mode like"), for: .normal)
             self.highest_score.textColor = UIColor(red: 26.0/255, green: 58.0/255, blue: 49.0/255, alpha: 1)
             self.continue_button.setImage(UIImage(named:"continue"), for: .normal)
@@ -403,6 +410,7 @@ class MenuViewController: UIViewController {
             else {
                 self.triangle_title.image = UIImage(named: "san_title_night")
             }
+            self.language_button_image_decider()
             self.highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
             self.continue_button.setImage(UIImage(named:"continue"), for: .normal)
             self.shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
@@ -467,6 +475,7 @@ class MenuViewController: UIViewController {
             else {
                 self.triangle_title.image = UIImage(named: "san_title_day")
             }
+            self.language_button_image_decider()
             self.like_button.setBackgroundImage(UIImage(named: "BW_like"), for: .normal)
             self.highest_score.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
             self.shopping_cart.setImage(UIImage(named:"BW_shopping"), for: .normal)
@@ -602,6 +611,7 @@ class MenuViewController: UIViewController {
             else {
                 self.triangle_title.image = UIImage(named: "san_title_school")
             }
+            self.language_button_image_decider()
             self.like_button.setBackgroundImage(UIImage(named: "school_like-icon"), for: .normal)
             self.highest_score.textColor = UIColor(red: 34.0/255, green: 61.0/255, blue: 128.0/255, alpha: 1.0)
             self.shopping_cart.setImage(UIImage(named:"school_theme-button"), for: .normal)
@@ -671,6 +681,7 @@ class MenuViewController: UIViewController {
             else {
                 self.triangle_title.image = UIImage(named: "san_title_night")
             }
+            self.language_button_image_decider()
             self.like_button.setBackgroundImage(UIImage(named: "colors_like-icon"), for: .normal)
             self.highest_score.textColor = UIColor(red: 255.0/255, green: 195.0/255, blue: 1.0/255, alpha: 1.0)
             self.shopping_cart.setImage(UIImage(named:"colors_theme-button"), for: .normal)
@@ -733,8 +744,13 @@ class MenuViewController: UIViewController {
         
         
         //add triangle text
+        if (self.language == "English"){
+            triangle_text.image = UIImage(named: "day mode triangle title")
+        }
+        else {
+            triangle_text.image = UIImage(named: "san_title_day")
+        }
         
-        triangle_text.image = UIImage(named: "day mode triangle title")
         //triangle_text.sizeToFit()
         triangle_text.alpha = 0
         self.view.addSubview(triangle_text)
@@ -997,6 +1013,43 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var treasure_box_icon: UIButton!
     @IBAction func treasure_box_action(_ sender: UIButton) {
         treasure_box_function()
+    }
+    
+    func language_button_image_decider() -> Void{
+        if (ThemeType == 1){
+            if (language == "English"){
+                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_day_night"), for: .normal)
+            } else {
+                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_day_night"), for: .normal)
+            }
+        } else if (ThemeType == 2){
+            if (language == "English"){
+                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_day_night"), for: .normal)
+            } else {
+                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_day_night"), for: .normal)
+            }
+        } else if (ThemeType == 3){
+            if (language == "English"){
+                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_B&W"), for: .normal)
+            } else {
+                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_B&W"), for: .normal)
+            }
+        } else if (ThemeType == 4){
+            //chaos
+        }
+        else if (ThemeType == 5){
+            if (language == "English"){
+                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_school"), for: .normal)
+            } else {
+                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_school"), for: .normal)
+            }
+        } else if (ThemeType == 6){
+            if (language == "English"){
+                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_color"), for: .normal)
+            } else {
+                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_color"), for: .normal)
+            }
+        }
     }
 }
     
