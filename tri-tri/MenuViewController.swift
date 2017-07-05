@@ -958,8 +958,26 @@ class MenuViewController: UIViewController {
     treasure_cancel.alpha = 0
     self.view.addSubview(treasure_cancel)
     treasure_cancel.fadeIn()
+    let new_life_button = MyButton(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(90), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+    new_life_button.setImage(#imageLiteral(resourceName: "new_life"), for: .normal)
+    new_life_button.alpha = 0
+    self.view.addSubview(new_life_button)
+    new_life_button.fadeIn()
+    let same_color_eliminator = MyButton(frame: CGRect(x: new_life_button.frame.origin.x + new_life_button.frame.width + pause_screen_x_transform(50), y: pause_screen_y_transform(90), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+    same_color_eliminator.setImage(#imageLiteral(resourceName: "same_color_eliminator"), for: .normal)
+    same_color_eliminator.alpha = 0
+    self.view.addSubview(same_color_eliminator)
+    same_color_eliminator.fadeIn()
     
-        treasure_cancel.whenButtonIsClicked(action: {
+    let shape_bomb = MyButton(frame: CGRect(x: new_life_button.frame.origin.x, y: new_life_button.frame.origin.y + new_life_button.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+    shape_bomb.setImage(#imageLiteral(resourceName: "shape_bomb"), for: .normal)
+    shape_bomb.alpha = 0
+    self.view.addSubview(shape_bomb)
+    shape_bomb.fadeIn()
+        
+        
+        
+    treasure_cancel.whenButtonIsClicked(action: {
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -969,12 +987,14 @@ class MenuViewController: UIViewController {
             self.button_player.play()
             treasure_cancel.fadeOutandRemove()
             treasure_menu.fadeOutandRemove()
-            
-    
+            new_life_button.fadeOutandRemove()
+            same_color_eliminator.fadeOutandRemove()
+            shape_bomb.fadeOutandRemove()
         })
     }
    
 }
+    
     
     
     }
