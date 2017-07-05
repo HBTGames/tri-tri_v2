@@ -1032,7 +1032,12 @@ current_star_total.fadeIn()
         
 //new life text
         let new_life_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
-        new_life_text.image = #imageLiteral(resourceName: "resurrection_text")
+        if (self.language == "English"){
+            new_life_text.image = #imageLiteral(resourceName: "resurrection_text")
+        }
+        else {
+            new_life_text.image = #imageLiteral(resourceName: "resurrection_ch")
+        }
         new_life_text.alpha = 0
         self.view.addSubview(new_life_text)
         new_life_text.fadeIn()
@@ -1075,7 +1080,13 @@ current_star_total.fadeIn()
     //same color eliminator text
        let same_color_eliminator_text = UIImageView(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         same_color_eliminator_text.alpha = 0
-        same_color_eliminator_text.image = #imageLiteral(resourceName: "purification_text_en")
+        if (self.language == "English"){
+            same_color_eliminator_text.image = #imageLiteral(resourceName: "purification_text_en")
+        }
+        else {
+            same_color_eliminator_text.image = #imageLiteral(resourceName: "purification_ch")
+        }
+        
         self.view.addSubview(same_color_eliminator_text)
         same_color_eliminator_text.fadeIn()
         
@@ -1114,7 +1125,13 @@ current_star_total.fadeIn()
     //shape bomb text
     let shape_bomb_text = UIImageView(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
     shape_bomb_text.alpha = 0
-    shape_bomb_text.image = #imageLiteral(resourceName: "holy_nova_text_en")
+        if (self.language == "English"){
+            shape_bomb_text.image = #imageLiteral(resourceName: "holy_nova_text_en")
+        }
+        else {
+            shape_bomb_text.image = #imageLiteral(resourceName: "holy_nova_text_ch")
+        }
+    
     self.view.addSubview(shape_bomb_text)
     shape_bomb_text.fadeIn()
     //shape bomb circle
@@ -1151,7 +1168,13 @@ current_star_total.fadeIn()
         })
    //times two text
         let times_two_text = UIImageView(frame: CGRect(x: times_two.frame.origin.x, y: times_two.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
-        times_two_text.image = #imageLiteral(resourceName: "amplifier_en")
+        if (self.language == "English"){
+            times_two_text.image = #imageLiteral(resourceName: "amplifier_en")
+        }
+        else {
+           times_two_text.image = #imageLiteral(resourceName: "amplifier_ch")
+        }
+        
         times_two_text.alpha = 0
         self.view.addSubview(times_two_text)
         times_two_text.fadeIn()
@@ -1190,7 +1213,14 @@ current_star_total.fadeIn()
     
     //three triangle text
     let three_triangles_text = UIImageView(frame: CGRect(x: three_triangles.frame.origin.x, y: three_triangles.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
-    three_triangles_text.image = #imageLiteral(resourceName: "trinity_text_en")
+        if (self.language == "English"){
+            three_triangles_text.image = #imageLiteral(resourceName: "trinity_text_en")
+        }
+        else {
+            
+            three_triangles_text.image = #imageLiteral(resourceName: "trinity_ch")
+        }
+    
     three_triangles_text.alpha = 0
     self.view.addSubview(three_triangles_text)
     three_triangles_text.fadeIn()
@@ -1231,7 +1261,13 @@ current_star_total.fadeIn()
     
     //clear all text
         let clear_all_text = UIImageView(frame: CGRect(x: clear_all.frame.origin.x, y: clear_all.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
-        clear_all_text.image = #imageLiteral(resourceName: "doom_day_text_en")
+        if (language == "English"){
+            clear_all_text.image = #imageLiteral(resourceName: "doom_day_text_en")
+        } else{
+            clear_all_text.image = #imageLiteral(resourceName: "doom_day_text_ch")
+
+        }
+        
         clear_all_text.alpha = 0
         self.view.addSubview(clear_all_text)
         clear_all_text.fadeIn()
@@ -1430,7 +1466,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         
         
         
-    
+        if (self.language == "English"){
         if(tool_selected == 0){
             treasure_icon_selected.image = #imageLiteral(resourceName: "new_life")
             treasure_text.image = #imageLiteral(resourceName: "resurrection_text")
@@ -1475,7 +1511,53 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
 
             star_base = 999
         }
-        
+        }
+        else {
+            if(tool_selected == 0){
+                treasure_icon_selected.image = #imageLiteral(resourceName: "new_life")
+                treasure_text.image = #imageLiteral(resourceName: "resurrection_ch")
+                final_price_button.setImage(#imageLiteral(resourceName: "new_life_star_total"), for: .normal)
+                explaination_text.image =  #imageLiteral(resourceName: "resurrection_explain_ch")
+                total_star_need_label.textColor = UIColor(red: 208.0/255, green: 91.0/255, blue: 93.0/255, alpha: 1)
+                star_base = 25
+            }else if(tool_selected == 1){
+                treasure_icon_selected.image = #imageLiteral(resourceName: "same_color_eliminator")
+                treasure_text.image = #imageLiteral(resourceName: "purification_ch")
+                final_price_button.setImage(#imageLiteral(resourceName: "same_color_eliminator_star_total-1"), for: .normal)
+                explaination_text.image = #imageLiteral(resourceName: "purification_explain_ch")
+                total_star_need_label.textColor = UIColor(red: 77.0/255, green: 113.0/255, blue: 56.0/255, alpha: 1)
+                star_base = 100
+            }else if(tool_selected == 2){
+                treasure_icon_selected.image = #imageLiteral(resourceName: "shape_bomb")
+                treasure_text.image = #imageLiteral(resourceName: "holy_nova_text_ch")
+                final_price_button.setImage(#imageLiteral(resourceName: "shape_bomb_star_total"), for: .normal)
+                total_star_need_label.textColor = UIColor(red: 230.0/255, green: 157.0/255, blue: 68.0/255, alpha: 1)
+                explaination_text.image = #imageLiteral(resourceName: "holy_nova_explain_ch")
+                star_base = 150
+            }else if(tool_selected == 3){
+                treasure_icon_selected.image = #imageLiteral(resourceName: "times_two")
+                treasure_text.image = #imageLiteral(resourceName: "amplifier_ch")
+                final_price_button.setImage(#imageLiteral(resourceName: "double_score_star_total"), for: .normal)
+                explaination_text.image = #imageLiteral(resourceName: "amplifier_explain_ch")
+                total_star_need_label.textColor = UIColor(red: 180.0/255, green: 134.0/255, blue: 161.0/255, alpha: 1)
+                star_base = 50
+            }else if(tool_selected == 4){
+                treasure_icon_selected.image =  #imageLiteral(resourceName: "three_triangle")
+                treasure_text.image = #imageLiteral(resourceName: "trinity_ch")
+                final_price_button.setImage(#imageLiteral(resourceName: "three_triangles_star_total"), for: .normal)
+                explaination_text.image = #imageLiteral(resourceName: "trinity_explain_ch")
+                total_star_need_label.textColor = UIColor(red: 73.0/255, green: 159.0/255, blue: 192.0/255, alpha: 1)
+                star_base = 75
+            }else if(tool_selected == 5){
+                treasure_icon_selected.image = #imageLiteral(resourceName: "clear_all")
+                treasure_text.image = #imageLiteral(resourceName: "doom_day_text_ch")
+                final_price_button.setImage(#imageLiteral(resourceName: "clear_all_star_total"), for: .normal)
+                explaination_text.image = #imageLiteral(resourceName: "doom_day_explain_ch")
+                total_star_need_label.textColor = UIColor(red: 56.0/255, green: 75.0/255, blue: 130.0/255, alpha: 1)
+                
+                star_base = 999
+            }
+        }
         //fade in
         treasure_icon_selected.alpha = 0
         self.view.addSubview(treasure_icon_selected)
