@@ -126,7 +126,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="treasure"/>
                                 <connections>
-                                    <action selector="treasure_button_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zdM-ds-5rv"/>
+                                    <action selector="treasure_box_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xXO-lj-8MB"/>
                                 </connections>
                             </button>
                         </subviews>

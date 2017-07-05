@@ -939,11 +939,10 @@ class MenuViewController: UIViewController {
                 self.triangle_title.image = UIImage(named:"san_title_night")
             }
         }
-
-
-    @IBAction func treasure_button_action(_ sender: UIButton) {
-        treasure_box_function()
     }
+
+   
+    
     
     
     func treasure_box_function() -> Void {
@@ -974,8 +973,25 @@ class MenuViewController: UIViewController {
     shape_bomb.alpha = 0
     self.view.addSubview(shape_bomb)
     shape_bomb.fadeIn()
+    
+    let times_two = MyButton(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: shape_bomb.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+    times_two.setImage(#imageLiteral(resourceName: "times_two"), for: .normal)
+    times_two.alpha = 0
+    self.view.addSubview(times_two)
+    times_two.fadeIn()
+    
+    let three_triangles = MyButton(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y + shape_bomb.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+    three_triangles.setImage(#imageLiteral(resourceName: "three_triangle"), for: .normal)
+    three_triangles.alpha = 0
+    self.view.addSubview(three_triangles)
+    three_triangles.fadeIn()
+    
         
-        
+    let clear_all = MyButton(frame: CGRect(x: times_two.frame.origin.x, y: three_triangles.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+    clear_all.setImage(#imageLiteral(resourceName: "clear_all"), for: .normal)
+    clear_all.alpha = 0
+    self.view.addSubview(clear_all)
+    clear_all.fadeIn()
         
     treasure_cancel.whenButtonIsClicked(action: {
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -990,14 +1006,21 @@ class MenuViewController: UIViewController {
             new_life_button.fadeOutandRemove()
             same_color_eliminator.fadeOutandRemove()
             shape_bomb.fadeOutandRemove()
+            times_two.fadeOutandRemove()
+            three_triangles.fadeOutandRemove()
+            clear_all.fadeOut()
+        
         })
     }
    
+    @IBAction func treasure_box_action(_ sender: UIButton) {
+        treasure_box_function()
+    }
 }
     
     
     
-    }
+
 
     
 
