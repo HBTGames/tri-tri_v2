@@ -9,6 +9,12 @@
 import UIKit
 
 class TutorialViewController: UIViewController, UIScrollViewDelegate {
+    
+    
+    var language = String()
+    
+    
+    
     let tuto_text = UIImageView()
     let tuto_case_1 = UIImageView()
     let tuto_case_2 = UIImageView()
@@ -53,6 +59,8 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        language = defaults.value(forKey: "language") as! String
+        
         mainScrollView.delegate = self
         
         exit_button.setTitle("", for: .normal)
@@ -65,8 +73,11 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         self.mainScrollView.frame = self.view.frame
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "tuto_bg")!)
-        
-        tuto_text.image = UIImage(named:"tuto_text")
+        if (language == "English"){
+            tuto_text.image = UIImage(named:"tuto_text")
+        } else {
+            tuto_text.image = UIImage(named:"tuto_text_chinese")
+        }
         tuto_text.frame = CGRect(x:0, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
         
@@ -88,7 +99,12 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         tuto_reward.image = UIImage(named:"tuto_reward")
         tuto_reward.frame = CGRect(x:4*mainScrollView.frame.width, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
-        tuto_reward_text.image = UIImage(named:"tuto_reward_text")
+        
+        if (language == "English"){
+            tuto_reward_text.image = UIImage(named:"tuto_reward_text")
+        } else {
+            tuto_reward_text.image = UIImage(named:"tuto_reward_text_chinese")
+        }
         tuto_reward_text.frame = CGRect(x:4*mainScrollView.frame.width, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
         mainScrollView.contentSize.width = mainScrollView.frame.width * 5

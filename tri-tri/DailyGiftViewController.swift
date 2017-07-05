@@ -170,7 +170,13 @@ class DailyGiftViewController: UIViewController {
             
         })
         wheel_text.frame = self.view.frame
-        wheel_text.image = UIImage(named: "wheel_text")
+        if (defaults.value(forKey: "language") as! String == "English"){
+            wheel_text.image = UIImage(named: "wheel_text")
+        }
+        else {
+            wheel_text.image = UIImage(named: "dailygift_text_chinese")
+        }
+        
         wheel.frame = CGRect(x: screen_x_transform(Double(wheel.frame.origin.x)), y: screen_y_transform(Double(wheel.frame.origin.y)), width: screen_x_transform(Double(wheel.frame.width)), height: screen_y_transform(Double(wheel.frame.height)))
         wheel.image = UIImage(named: "wheel")
         wheel_outer.frame = self.view.frame
