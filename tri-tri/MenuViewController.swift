@@ -1023,7 +1023,7 @@ class MenuViewController: UIViewController {
         new_life_circle.image = #imageLiteral(resourceName: "new_life_circle")
         new_life_circle.alpha = 0
         self.view.addSubview(new_life_circle)
-        //new_life_circle.fadeIn()
+        new_life_circle.fadeIn()
         if(tool_quantity_array[0] != 0){
         new_life_circle.fadeIn()
         }
@@ -1032,6 +1032,7 @@ class MenuViewController: UIViewController {
         new_life_circle_text = UILabel(frame: CGRect(x: new_life_circle.frame.origin.x, y: new_life_circle.frame.origin.y, width: new_life_circle.frame.width, height: new_life_circle.frame.height))
         new_life_circle_text.text = String(tool_quantity_array[0])
         new_life_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        new_life_circle_text.textColor = UIColor(red: 208.0/255, green: 91.0/255, blue: 93.0/255, alpha: 1)
         new_life_circle_text.textAlignment = .center
         new_life_circle_text.alpha = 0
         self.view.addSubview(new_life_circle_text)
@@ -1072,6 +1073,7 @@ class MenuViewController: UIViewController {
         same_color_eliminator_circle_text = UILabel(frame: CGRect(x: same_color_eliminator_circle.frame.origin.x, y: same_color_eliminator_circle.frame.origin.y, width: same_color_eliminator_circle.frame.width, height: same_color_eliminator_circle.frame.height))
         same_color_eliminator_circle_text.text = String(tool_quantity_array[1])
         same_color_eliminator_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        same_color_eliminator_circle_text.textColor = UIColor(red: 77.0/255, green: 113.0/255, blue: 56.0/255, alpha: 1)
         same_color_eliminator_circle_text.textAlignment = .center
         same_color_eliminator_circle_text.alpha = 0
         self.view.addSubview(same_color_eliminator_circle_text)
@@ -1109,6 +1111,7 @@ class MenuViewController: UIViewController {
     shape_bomb_circle_text = UILabel(frame: CGRect(x: shape_bomb_circle.frame.origin.x, y: shape_bomb_circle.frame.origin.y, width: shape_bomb_circle.frame.width, height: shape_bomb_circle.frame.height))
         shape_bomb_circle_text.text = String(tool_quantity_array[2])
         shape_bomb_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        shape_bomb_circle_text.textColor = UIColor(red: 230.0/255, green: 157.0/255, blue: 68.0/255, alpha: 1)
         shape_bomb_circle_text.textAlignment = .center
         shape_bomb_circle_text.alpha = 0
         self.view.addSubview(shape_bomb_circle_text)
@@ -1147,6 +1150,7 @@ class MenuViewController: UIViewController {
         times_two_circle_text = UILabel(frame: CGRect(x: times_two_circle.frame.origin.x, y: times_two_circle.frame.origin.y, width: times_two_circle.frame.width, height: times_two_circle.frame.height))
         times_two_circle_text.text = String(tool_quantity_array[3])
         times_two_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        times_two_circle_text.textColor = UIColor(red: 180.0/255, green: 134.0/255, blue: 161.0/255, alpha: 1)
         times_two_circle_text.textAlignment = .center
         times_two_circle_text.alpha = 0
         self.view.addSubview(times_two_circle_text)
@@ -1185,6 +1189,8 @@ class MenuViewController: UIViewController {
         three_triangles_circle_text = UILabel(frame: CGRect(x: three_triangles_circle.frame.origin.x, y: three_triangles_circle.frame.origin.y, width: three_triangles_circle.frame.width, height: three_triangles_circle.frame.height))
         three_triangles_circle_text.text = String(tool_quantity_array[4])
         three_triangles_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        three_triangles_circle_text.textColor = UIColor(red: 73.0/255, green: 159.0/255, blue: 192.0/255, alpha: 1)
+
         three_triangles_circle_text.textAlignment = .center
         three_triangles_circle_text.alpha = 0
         self.view.addSubview(three_triangles_circle_text)
@@ -1223,9 +1229,10 @@ class MenuViewController: UIViewController {
         clear_all_circle_text = UILabel(frame: CGRect(x: clear_all_circle.frame.origin.x, y: clear_all_circle.frame.origin.y, width: clear_all_circle.frame.width, height: clear_all_circle.frame.height))
         clear_all_circle_text.text = String(tool_quantity_array[5])
         clear_all_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        clear_all_circle_text.textColor = UIColor(red: 56.0/255, green: 75.0/255, blue: 130.0/255, alpha: 1)
         clear_all_circle_text.textAlignment = .center
         clear_all_circle_text.alpha = 0
-        self.view.addSubview(three_triangles_circle_text)
+        self.view.addSubview(clear_all_circle_text)
         if(tool_quantity_array[5] != 0){
             clear_all_circle_text.fadeIn()
         }
@@ -1350,30 +1357,44 @@ class MenuViewController: UIViewController {
         if(tool_selected == 1){
             treasure_text.frame = CGRect(x: treasure_icon_selected.frame.origin.x, y: treasure_icon_selected.frame.origin.y - pause_screen_y_transform(60), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80))
         }
+        
+        
+let explaination_text = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(100), y: treasure_icon_selected.frame.origin.y, width: 140, height: 200))
+        
+        
+        
+let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(30), y: treasure_icon_selected.frame.origin.y + pause_screen_y_transform(50), width: 180, height: 50))
+
     
         if(tool_selected == 0){
             treasure_icon_selected.image = #imageLiteral(resourceName: "new_life")
             treasure_text.image = #imageLiteral(resourceName: "new_life_text")
+            final_price_button.setImage(#imageLiteral(resourceName: "new_life_total_star"), for: .normal)
             star_base = 25
         }else if(tool_selected == 1){
             treasure_icon_selected.image = #imageLiteral(resourceName: "same_color_eliminator")
             treasure_text.image = #imageLiteral(resourceName: "same_color_eliminator_text")
+            final_price_button.setImage(#imageLiteral(resourceName: "same_color_eliminator_star_total"), for: .normal)
             star_base = 100
         }else if(tool_selected == 2){
             treasure_icon_selected.image = #imageLiteral(resourceName: "shape_bomb")
             treasure_text.image = #imageLiteral(resourceName: "shape_bomb_text")
+            final_price_button.setImage(#imageLiteral(resourceName: "shape_bomb_total_star"), for: .normal)
             star_base = 150
         }else if(tool_selected == 3){
             treasure_icon_selected.image = #imageLiteral(resourceName: "times_two")
             treasure_text.image = #imageLiteral(resourceName: "double_score_text")
+            final_price_button.setImage(#imageLiteral(resourceName: "double_score_total_star"), for: .normal)
             star_base = 50
         }else if(tool_selected == 4){
             treasure_icon_selected.image =  #imageLiteral(resourceName: "three_triangle")
             treasure_text.image = #imageLiteral(resourceName: "three_tri_text")
+            final_price_button.setImage(#imageLiteral(resourceName: "three_triangles_total_star"), for: .normal)
             star_base = 75
         }else if(tool_selected == 5){
             treasure_icon_selected.image = #imageLiteral(resourceName: "clear_all")
             treasure_text.image = #imageLiteral(resourceName: "clear_all_text")
+            final_price_button.setImage(#imageLiteral(resourceName: "clear_all_total_star"), for: .normal)
             star_base = 999
         }
         
@@ -1385,7 +1406,11 @@ class MenuViewController: UIViewController {
         treasure_text.alpha = 0
         self.view.addSubview(treasure_text)
         treasure_text.fadeIn()
-       
+        
+        self.view.addSubview(final_price_button)
+        final_price_button.fadeIn()
+        
+        
         let sub_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + pause_screen_x_transform(10), y: treasure_icon_selected.frame.origin.y + treasure_icon_selected.frame.height + pause_screen_y_transform(15), width: pause_screen_x_transform(40), height: pause_screen_y_transform(40)))
         sub_button.setImage(#imageLiteral(resourceName: "substract"), for: .normal)
         sub_button.contentMode = .scaleAspectFit
@@ -1399,6 +1424,8 @@ class MenuViewController: UIViewController {
         add_button.alpha = 0
         self.view.addSubview(add_button)
         add_button.fadeIn()
+        
+        
         
         //quantity of tool
         var tool_quantity = 0
@@ -1416,21 +1443,18 @@ class MenuViewController: UIViewController {
         self.view.addSubview(tool_quantity_label)
         tool_quantity_label.fadeIn()
             
-        let total_star_need_label = UILabel(frame: CGRect(x: screen_width - pause_screen_x_transform(100), y: (treasure_icon_selected.frame.origin.y + sub_button.frame.origin.y)/2, width: pause_screen_x_transform(100), height: pause_screen_y_transform(40)))
+        let total_star_need_label = UILabel(frame: final_price_button.frame)
         total_star_need_label.text = String(star_quantiry_needed)
         total_star_need_label.font = UIFont(name: "Helvetica", size: CGFloat(25))
-        total_star_need_label.textAlignment = .left
+        total_star_need_label.textAlignment = .center
         total_star_need_label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         total_star_need_label.alpha = 0
         self.view.addSubview(total_star_need_label)
         total_star_need_label.fadeIn()
         
         
-        let explaination = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(100), y: treasure_icon_selected.frame.origin.y, width: 140, height: 200))
         
         
-        
-        let final_price_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
         
         
@@ -1445,6 +1469,12 @@ class MenuViewController: UIViewController {
             add_button.fadeOutandRemove()
             tool_quantity_label.fadeOutandRemove()
             total_star_need_label.fadeOutandRemove()
+            final_price_button.fadeOutandRemove()
+            
+            
+            
+            
+            
         })
        
         add_button.whenButtonIsClicked(action: {
@@ -1464,6 +1494,62 @@ class MenuViewController: UIViewController {
             star_quantiry_needed = tool_quantity * self.star_base
             total_star_need_label.text = String(star_quantiry_needed)
         })
+        
+        print("tool selected : \(tool_selected)")
+        //action for confirming price
+        final_price_button.whenButtonIsClicked(action: {
+        self.tool_quantity_array[self.tool_selected] += tool_quantity
+        selected_scene_background.fadeOutandRemove()
+        selected_scene.fadeOutandRemove()
+        selected_cancel.fadeOutandRemove()
+        treasure_icon_selected.fadeOutandRemove()
+        treasure_text.fadeOutandRemove()
+        sub_button.fadeOutandRemove()
+        add_button.fadeOutandRemove()
+        tool_quantity_label.fadeOutandRemove()
+        total_star_need_label.fadeOutandRemove()
+        final_price_button.fadeOutandRemove()
+        self.circle_pop_up(tool_index: self.tool_selected)
+        })
+        
+        
+        
+    }
+    
+    func circle_pop_up(tool_index: Int) -> Void {
+        if(tool_quantity_array[0] != 0){
+            new_life_circle.fadeIn()
+            new_life_circle_text.fadeIn()
+            new_life_circle_text.text = String(tool_quantity_array[0])
+            
+        }
+        if(tool_quantity_array[1] != 0){
+            same_color_eliminator_circle.fadeIn()
+            same_color_eliminator_circle_text.fadeIn()
+            same_color_eliminator_circle_text.text = String(tool_quantity_array[1])
+        }
+        if(tool_quantity_array[2] != 0){
+            shape_bomb_circle.fadeIn()
+            shape_bomb_circle_text.fadeIn()
+            shape_bomb_circle_text.text = String(tool_quantity_array[2])
+        }
+        if(tool_quantity_array[3] != 0){
+            times_two_circle.fadeIn()
+            times_two_circle_text.fadeIn()
+            times_two_circle_text.text = String(tool_quantity_array[3])
+        }
+        if(tool_quantity_array[4] != 0){
+            three_triangles_circle.fadeIn()
+            three_triangles_circle_text.fadeIn()
+            three_triangles_circle_text.text = String(tool_quantity_array[4])
+        }
+        if(tool_quantity_array[0] != 0){
+            clear_all_circle.fadeIn()
+            clear_all_circle_text.fadeIn()
+            clear_all_circle_text.text = String(tool_quantity_array[5])
+        }
+        defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
+        
         
     }
     
