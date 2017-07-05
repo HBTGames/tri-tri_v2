@@ -261,6 +261,13 @@ class MenuViewController: UIViewController {
     
     
     @IBAction func language_changing(_ sender: Any) {
+        do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+            self.button_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        self.button_player.play()
         if (defaults.value(forKey: "language") as! String == "English"){
             language = "Chinese"
             defaults.set("Chinese", forKey: "language")
