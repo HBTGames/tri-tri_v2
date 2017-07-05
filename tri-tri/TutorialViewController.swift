@@ -145,6 +145,10 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         }
         
         
+        
+    }
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     /*
     // MARK: - Navigation

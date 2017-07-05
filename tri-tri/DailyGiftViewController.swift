@@ -1046,7 +1046,9 @@ class DailyGiftViewController: UIViewController {
     }
     
     
-    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 

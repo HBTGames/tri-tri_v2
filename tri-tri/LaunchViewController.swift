@@ -62,6 +62,9 @@ class LaunchViewController: UIViewController {
     
     
     }
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
         
     /*
     // MARK: - Navigation

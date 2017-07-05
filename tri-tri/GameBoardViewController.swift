@@ -12171,6 +12171,10 @@ number_of_lines_erased += 1
         
         
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
 }
 

@@ -37,6 +37,9 @@ class MenuViewController: UIViewController {
 
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     @IBAction func tutorial_button_sound(_ sender: Any) {
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
