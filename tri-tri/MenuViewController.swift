@@ -117,12 +117,6 @@ class MenuViewController: UIViewController {
         if(ThemeType == 1){
             trophy.image = UIImage(named:"trophy_new")
             view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
-            if (language == "English"){
-                triangle_title.image = UIImage(named: "day mode triangle title")
-            }
-            else {
-                triangle_title.image = UIImage(named: "san_title_day")
-            }
             
             like_button.setBackgroundImage(UIImage(named: "day mode like"), for: .normal)
             highest_score.textColor = UIColor(red: 26.0/255, green: 58.0/255, blue: 49.0/255, alpha: 1)
@@ -136,15 +130,6 @@ class MenuViewController: UIViewController {
             trophy.image = UIImage(named:"night mode 奖杯")
             view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             
-            
-            
-            
-            if (language == "English"){
-                triangle_title.image = UIImage(named:"night mode triangle title")
-            }
-            else {
-                triangle_title.image = UIImage(named: "san_title_night")
-            }
             triangle_title.image = UIImage(named:"night mode triangle title")
             like_button.setBackgroundImage(UIImage(named: "night mode like button"), for: .normal)
              highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
@@ -156,12 +141,6 @@ class MenuViewController: UIViewController {
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
 
         }else if(ThemeType == 3){
-            if (language == "English"){
-                triangle_title.image = UIImage(named:"day mode triangle title")
-            }
-            else {
-                triangle_title.image = UIImage(named: "san_title_day")
-            }
             like_button.setBackgroundImage(UIImage(named: "BW_like"), for: .normal)
             shopping_cart.setImage(UIImage(named:"BW_shopping"), for: .normal)
             trophy.image = UIImage(named:"BW_trophy")
@@ -183,12 +162,6 @@ class MenuViewController: UIViewController {
             continue_button.setImage(UIImage(named:"chaos_start_icon"), for: .normal)
             
         }else if(ThemeType == 5){
-            if (language == "English"){
-                triangle_title.image = UIImage(named:"school_triangle_title")
-            }
-            else {
-                triangle_title.image = UIImage(named: "san_title_school")
-            }
             like_button.setBackgroundImage(UIImage(named: "school_like-icon"), for: .normal)
             shopping_cart.setImage(UIImage(named:"school_theme-button"), for: .normal)
             trophy.image = UIImage(named:"school_j-icon")
@@ -202,12 +175,6 @@ class MenuViewController: UIViewController {
 
         }
         else if(ThemeType == 6){
-            if (language == "English"){
-                triangle_title.image = UIImage(named:"night mode triangle title")
-            }
-            else {
-                triangle_title.image = UIImage(named: "san_title_night")
-            }
 
             like_button.setBackgroundImage(UIImage(named:"colors_like-icon"), for: .normal)
             shopping_cart.setImage(UIImage(named:"colors_theme-button"), for: .normal)
@@ -222,6 +189,7 @@ class MenuViewController: UIViewController {
 
             
         }
+        triangle_title_image_decider()
       star_counter.sizeToFit()
       trophy.sizeToFit()
     
@@ -940,7 +908,7 @@ class MenuViewController: UIViewController {
             }
         }
 
-
+    }
     @IBAction func treasure_button_action(_ sender: UIButton) {
         treasure_box_function()
     }
@@ -996,8 +964,7 @@ class MenuViewController: UIViewController {
 }
     
     
-    
-    }
+
 
     
 

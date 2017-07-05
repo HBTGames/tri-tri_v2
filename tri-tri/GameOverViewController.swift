@@ -12,6 +12,7 @@ import AVKit
 import AVFoundation
 
 class GameOverViewController: UIViewController {
+    var language = String()
     let home_pic = UIImage(named:"home")
     let night_home_pic = UIImage(named:"night mode home")
     let BW_home_pic = UIImage(named:"BW_home")
@@ -131,6 +132,7 @@ class GameOverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        language = defaults.value(forKey: "language") as! String
         screen_width = view.frame.width
         screen_height = view.frame.height
         gameover_title.frame = CGRect(x: pause_screen_x_transform(Double(gameover_title.frame.origin.x)), y: pause_screen_y_transform(Double(gameover_title.frame.origin.y)), width: pause_screen_x_transform(Double(gameover_title.frame.width)), height: pause_screen_y_transform(Double(gameover_title.frame.height)))
@@ -180,11 +182,12 @@ class GameOverViewController: UIViewController {
             defaults.set(0, forKey: "tritri_star_score")
         }
         // Do any additional setup after loading the view.
+        gameover_title_image_decider()
         if ThemeType == 1{
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"trophy_new")
             self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
-            self.gameover_title.image = UIImage(named:"day mode gameover title")
+            
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
             self.share_button.setImage(UIImage(named:"link"), for: .normal)
@@ -192,7 +195,7 @@ class GameOverViewController: UIViewController {
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"night mode 奖杯")
             self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
-            self.gameover_title.image = UIImage(named:"night mode gameover title")
+            
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
             self.share_button.setImage(UIImage(named:"link"), for: .normal)
@@ -200,7 +203,7 @@ class GameOverViewController: UIViewController {
             self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             self.trophy.image = UIImage(named: "BW_trophy")
             self.score_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
-            self.gameover_title.image = UIImage(named:"day mode gameover title")
+            
             self.restart_button.setImage(UIImage(named:"BW_restart_version2"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"BW_shopping"), for: .normal)
             self.share_button.setImage(UIImage(named:"BW_share"), for: .normal)
@@ -210,7 +213,7 @@ class GameOverViewController: UIViewController {
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
             self.trophy.image = UIImage(named: "chaos_j_icon")
             self.score_board.textColor = UIColor(red: 236.0/255, green: 232.0/255, blue: 187.0/255, alpha: 1.0)
-            self.gameover_title.image = UIImage(named:"night mode gameover title")
+            
             self.restart_button.setImage(UIImage(named:"chaos_restart_big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"chaos_theme_button"), for: .normal)
             self.share_button.setImage(UIImage(named:"chaos_share_icon"), for: .normal)
@@ -221,7 +224,7 @@ class GameOverViewController: UIViewController {
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
             self.trophy.image = UIImage(named: "school_j-icon")
             self.score_board.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
-            self.gameover_title.image = UIImage(named:"school_gameover")
+           
             self.restart_button.setImage(UIImage(named:"school_restart-big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"school_theme-button"), for: .normal)
             self.share_button.setImage(UIImage(named:"school_share-icon"), for: .normal)
@@ -232,7 +235,7 @@ class GameOverViewController: UIViewController {
            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
             self.trophy.image = UIImage(named: "colors_j-icon")
             self.score_board.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.0)
-            self.gameover_title.image = UIImage(named:"night mode gameover title")
+            
             self.restart_button.setImage(UIImage(named:"colors_restart-big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"colors_theme-button"), for: .normal)
             self.share_button.setImage(UIImage(named:"colors_share-icon"), for: .normal)
@@ -340,7 +343,7 @@ class GameOverViewController: UIViewController {
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"trophy_new")
             self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
-            self.gameover_title.image = UIImage(named:"day mode gameover title")
+            self.gameover_title_image_decider()
             self.home_button.setBackgroundImage(self.home_pic, for: .normal)
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
@@ -396,7 +399,7 @@ class GameOverViewController: UIViewController {
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"night mode 奖杯")
             self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
-            self.gameover_title.image = UIImage(named:"night mode gameover title")
+            self.gameover_title_image_decider()
             self.home_button.setBackgroundImage(self.night_home_pic, for: .normal)
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
@@ -447,7 +450,7 @@ class GameOverViewController: UIViewController {
             defaults.set(3, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             self.trophy.image = UIImage(named:"BW_trophy")
-            self.gameover_title.image = UIImage(named: "day mode gameover title")
+            self.gameover_title_image_decider()
             self.score_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
             self.shopping_button.setImage(UIImage(named:"BW_shopping"), for: .normal)
             self.restart_button.setImage(UIImage(named:"BW_restart_version2"), for: .normal)
@@ -569,7 +572,7 @@ class GameOverViewController: UIViewController {
             defaults.set(5, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
             self.trophy.image = UIImage(named:"school_j-icon")
-            self.gameover_title.image = UIImage(named: "school_gameover")
+            self.gameover_title_image_decider()
             self.score_board.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
             self.restart_button.setImage(UIImage(named:"school_restart-big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"school_theme-button"), for: .normal)
@@ -623,7 +626,7 @@ class GameOverViewController: UIViewController {
             defaults.set(6, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
             self.trophy.image = UIImage(named:"colors_j-icon")
-            self.gameover_title.image = UIImage(named: "night mode gameover title")
+            self.gameover_title_image_decider()
             self.score_board.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.00)
             self.restart_button.setImage(UIImage(named:"colors_restart-big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"colors_theme-button"), for: .normal)
@@ -810,6 +813,44 @@ class GameOverViewController: UIViewController {
         }
         
         
+        
+    }
+    
+    func gameover_title_image_decider() -> Void{
+        if (ThemeType == 1){
+            if (language == "English"){
+                self.gameover_title.image = UIImage(named:"day mode gameover title")
+            } else {
+                self.gameover_title.image = UIImage(named:"shibai_title_day")
+            }
+        } else if (ThemeType == 2){
+            if (language == "English"){
+                self.gameover_title.image = UIImage(named:"night mode gameover title")
+            } else {
+                self.gameover_title.image = UIImage(named:"shibai_title_night")
+            }
+        } else if (ThemeType == 3){
+            if (language == "English"){
+                self.gameover_title.image = UIImage(named:"day mode gameover title")
+            } else {
+                self.gameover_title.image = UIImage(named:"shibai_title_day")
+            }
+        } else if (ThemeType == 4){
+            //chaos
+        }
+        else if (ThemeType == 5){
+            if (language == "English"){
+                self.gameover_title.image = UIImage(named:"school_gameover")
+            } else {
+                self.gameover_title.image = UIImage(named:"shibai_title_school")
+            }
+        } else if (ThemeType == 6){
+            if (language == "English"){
+                self.gameover_title.image = UIImage(named:"night mode gameover title")
+            } else {
+                self.gameover_title.image = UIImage(named:"shibai_title_night")
+            }
+        }
         
     }
 
