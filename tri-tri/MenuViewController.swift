@@ -84,7 +84,8 @@ class MenuViewController: UIViewController {
         gift_button.frame = CGRect(x: pause_screen_x_transform(Double(gift_button.frame.origin.x)), y: pause_screen_y_transform(Double(gift_button.frame.origin.y)), width: pause_screen_x_transform(Double(gift_button.frame.width)), height: pause_screen_y_transform(Double(gift_button.frame.height)))
         tutorial_button.frame = CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(538), width: pause_screen_x_transform(128), height: pause_screen_y_transform(129))
         tutorial_button.contentMode = .scaleAspectFit
-
+        treasure_box_icon.frame = CGRect(x: pause_screen_x_transform(Double(treasure_box_icon.frame.origin.x)), y: pause_screen_y_transform(Double(treasure_box_icon.frame.origin.y)), width: pause_screen_x_transform(Double(treasure_box_icon.frame.width)), height: pause_screen_y_transform(Double(treasure_box_icon.frame.height)))
+        
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
         self.view.addGestureRecognizer(panGestureRecognizer)
         var HighestScore = 0
@@ -132,6 +133,7 @@ class MenuViewController: UIViewController {
             star_counter.image = UIImage(named:"day_mode_star")
             gift_button.setImage(#imageLiteral(resourceName: "gift_day_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
+            treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_day_mode"), for: .normal)
         }else if(ThemeType == 2){
             trophy.image = UIImage(named:"night mode 奖杯")
             view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -154,7 +156,7 @@ class MenuViewController: UIViewController {
             star_counter.image = UIImage(named:"night_mode_star")
             gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
-
+            treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_night_mode"), for: .normal)
         }else if(ThemeType == 3){
             if (language == "English"){
                 triangle_title.image = UIImage(named:"day mode triangle title")
@@ -172,7 +174,7 @@ class MenuViewController: UIViewController {
             star_counter.image = UIImage(named:"BW_mode_star")
             gift_button.setImage(#imageLiteral(resourceName: "gift_BW_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_B&W"), for: .normal)
-
+            treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_bw_mode"), for: .normal)
         }else if(ThemeType == 4){
             triangle_title.image = UIImage(named: "night mode triangle title")
             like_button.setBackgroundImage(UIImage(named: "chaos_like_icon"), for: .normal)
@@ -199,7 +201,7 @@ class MenuViewController: UIViewController {
             star_counter.image = UIImage(named:"school_mode_star")
             gift_button.setImage(#imageLiteral(resourceName: "gift_school_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_school"), for: .normal)
-
+            treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_school_mode"), for: .normal)
         }
         else if(ThemeType == 6){
             if (language == "English"){
@@ -219,7 +221,7 @@ class MenuViewController: UIViewController {
             star_counter.image = UIImage(named:"colors_mode_star")
             gift_button.setImage(#imageLiteral(resourceName: "gift_color_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_color"), for: .normal)
-
+            treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_color_mode"), for: .normal)
             
         }
       star_counter.sizeToFit()
@@ -375,6 +377,7 @@ class MenuViewController: UIViewController {
             self.theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_day_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
+            self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_day_mode"), for: .normal)
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -441,7 +444,7 @@ class MenuViewController: UIViewController {
             self.theme_star_board.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
-
+            self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_night_mode"), for: .normal)
            // self.trophy.image = UIImage(named:"night mode 奖杯")
            // self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"night mode gameover title")
@@ -506,6 +509,7 @@ class MenuViewController: UIViewController {
             self.theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_BW_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_B&W"), for: .normal)
+            self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_bw_mode"), for: .normal)
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -640,6 +644,7 @@ class MenuViewController: UIViewController {
             self.theme_star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_school_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_school"), for: .normal)
+            self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_school_mode"), for: .normal)
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -708,6 +713,7 @@ class MenuViewController: UIViewController {
             self.theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_color_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_color"), for: .normal)
+            self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_color_mode"), for: .normal)
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -1013,6 +1019,7 @@ class MenuViewController: UIViewController {
         })
     }
    
+    @IBOutlet weak var treasure_box_icon: UIButton!
     @IBAction func treasure_box_action(_ sender: UIButton) {
         treasure_box_function()
     }
