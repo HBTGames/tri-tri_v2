@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -113,6 +113,14 @@
                                     <segue destination="dWF-Fv-J3W" kind="show" id="Hp1-xL-aW9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfQ-f9-bqe">
+                                <rect key="frame" x="303" y="20" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="english"/>
+                                <connections>
+                                    <action selector="language_changing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K6L-Z6-OBG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -124,6 +132,7 @@
                         <outlet property="continue_button" destination="ABN-yi-CDb" id="JyS-hV-8Wy"/>
                         <outlet property="gift_button" destination="9Ry-HC-PbG" id="lef-PA-nv2"/>
                         <outlet property="highest_score" destination="jVy-u3-4Z8" id="cFj-tW-Ygh"/>
+                        <outlet property="language_button" destination="XfQ-f9-bqe" id="5HK-NR-vjB"/>
                         <outlet property="like_button" destination="PFh-NN-dAa" id="Fc8-Ys-Kas"/>
                         <outlet property="shopping_cart" destination="L5u-Zg-LxX" id="kqg-hZ-5f9"/>
                         <outlet property="star_board" destination="tCj-NR-SnI" id="0EN-fO-kW6"/>
@@ -426,6 +435,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2d-sK-tLb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-807.20000000000005" y="732.68365817091455"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4Ov-Xz-Ivd">
+            <objects>
+                <viewController id="1oK-PW-rZT" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jlj-sM-y7T"/>
+                        <viewControllerLayoutGuide type="bottom" id="CeN-dy-dkD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dEV-dA-rCe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="你好" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgZ-ju-0RY">
+                                <rect key="frame" x="91" y="195" width="210" height="188"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c22-OY-xVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1186.4000000000001" y="1518.8905547226389"/>
         </scene>
         <!--Game Board View Controller-->
         <scene sceneID="4ge-HZ-FD8">

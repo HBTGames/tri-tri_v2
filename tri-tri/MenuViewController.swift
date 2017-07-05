@@ -10,7 +10,6 @@ import UIKit
 import AVKit
 import AVFoundation
 class MenuViewController: UIViewController {
-    var defaults = UserDefaults.standard
 
     @IBOutlet weak var star_counter: UIImageView!
     
@@ -49,6 +48,14 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (defaults.value(forKey: "language") == nil){
+            defaults.set("English", forKey: "language")
+            print("System language initializes to English")
+        }
+        
+        
+        
         screen_width = view.frame.width
         screen_height = view.frame.height
         //add pangesture
@@ -223,6 +230,27 @@ class MenuViewController: UIViewController {
     }
     */
     
+    
+    @IBOutlet var language_button: UIButton!
+    
+    
+    @IBAction func language_changing(_ sender: Any) {
+        if (defaults.value(forKey: "language") as! String == "English"){
+            defaults.set("Chinese", forKey: "language")
+            print("System language change to Chinese")
+            language_button.setTitle("Chinese", for: .normal)
+        } else {
+            defaults.set("English", forKey: "language")
+            print("System language change to English")
+            language_button.setTitle("English", for: .normal)
+        }
+    }
+    
+    
+    
+    
+    
+    
     @IBOutlet weak var shopping_cart: UIButton!
     //origin
     var day_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -278,7 +306,7 @@ class MenuViewController: UIViewController {
             self.button_player.play()
             
             self.ThemeType = 1
-            self.defaults.set(1, forKey:"tritri_Theme")
+            defaults.set(1, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"trophy_new")
             self.triangle_title.image = UIImage(named: "day mode triangle title")
@@ -341,7 +369,7 @@ class MenuViewController: UIViewController {
             self.ThemeType = 2
             self.trophy.image = UIImage(named:"night mode 奖杯")
             self.like_button.setBackgroundImage(UIImage(named: "night mode like button"), for: .normal)
-            self.defaults.set(2, forKey:"tritri_Theme")
+            defaults.set(2, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             self.triangle_title.image = UIImage(named:"night mode triangle title")
             self.highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
@@ -399,7 +427,7 @@ class MenuViewController: UIViewController {
             }
             self.button_player.play()
             self.ThemeType = 3
-            self.defaults.set(3, forKey:"tritri_Theme")
+            defaults.set(3, forKey:"tritri_Theme")
            self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             self.trophy.image = UIImage(named:"BW_trophy")
             self.triangle_title.image = UIImage(named: "day mode triangle title")
@@ -467,7 +495,7 @@ class MenuViewController: UIViewController {
             }
             self.button_player.play()
             self.ThemeType = 4
-            self.defaults.set(4, forKey:"tritri_Theme")
+            defaults.set(4, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
             self.trophy.image = UIImage(named:"chaos_j_icon")
             self.triangle_title.image = UIImage(named: "night mode triangle title")
@@ -528,7 +556,7 @@ class MenuViewController: UIViewController {
             }
             self.button_player.play()
             self.ThemeType = 5
-            self.defaults.set(5, forKey:"tritri_Theme")
+            defaults.set(5, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
             self.trophy.image = UIImage(named:"school_j-icon")
             self.triangle_title.image = UIImage(named: "school_triangle_title")
@@ -591,7 +619,7 @@ class MenuViewController: UIViewController {
             }
             self.button_player.play()
             self.ThemeType = 6
-            self.defaults.set(6, forKey:"tritri_Theme")
+            defaults.set(6, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
             self.trophy.image = UIImage(named:"colors_j-icon")
             self.triangle_title.image = UIImage(named: "night mode triangle title")
