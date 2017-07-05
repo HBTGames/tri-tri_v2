@@ -1053,7 +1053,7 @@ public extension UIView {
     
     func fadeOutandRemove(withDuration duration: TimeInterval = 0.5){
         UIView.animate(withDuration: duration, animations: {
-            self.alpha = 0.5
+            self.alpha = 0
         }, completion: {
             (finished) -> Void in
             self.removeFromSuperview()

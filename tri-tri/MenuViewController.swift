@@ -903,6 +903,7 @@ class MenuViewController: UIViewController {
         
     @IBOutlet weak var highest_score: UILabel!
     
+
     func triangle_title_image_decider() -> Void{
         if (ThemeType == 1){
             if (language == "English"){
@@ -939,10 +940,45 @@ class MenuViewController: UIViewController {
             }
         }
 
+
+    @IBAction func treasure_button_action(_ sender: UIButton) {
+        treasure_box_function()
+    }
+    
+    
+    func treasure_box_function() -> Void {
+    let treasure_menu = UIImageView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
+    treasure_menu.image = #imageLiteral(resourceName: "treasure_background")
+    treasure_menu.alpha = 0
+    self.view.addSubview(treasure_menu)
+    treasure_menu.fadeIn()
+    let treasure_cancel = MyButton(frame: CGRect(x: treasure_menu.frame.origin.x, y: treasure_menu.frame.origin.y, width: pause_screen_x_transform(125), height: pause_screen_y_transform(125)))
+    treasure_cancel.setImage(#imageLiteral(resourceName: "treasure_box_cancel"), for: .normal)
+    treasure_cancel.contentMode = .scaleAspectFit
+    treasure_cancel.alpha = 0
+    self.view.addSubview(treasure_cancel)
+    treasure_cancel.fadeIn()
+    
+        treasure_cancel.whenButtonIsClicked(action: {
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+            treasure_cancel.fadeOutandRemove()
+            treasure_menu.fadeOutandRemove()
+            
+    
+        })
     }
    
 }
     
+    
+    }
+
     
 
 
