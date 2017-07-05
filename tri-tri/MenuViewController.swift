@@ -1207,20 +1207,34 @@ class MenuViewController: UIViewController {
         self.view.addSubview(treasure_text)
         treasure_text.fadeIn()
        
-        let sub_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + pause_screen_x_transform(10), y: treasure_icon_selected.frame.origin.y + treasure_icon_selected.frame.height + pause_screen_y_transform(15), width: pause_screen_x_transform(35), height: pause_screen_y_transform(35)))
+        let sub_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + pause_screen_x_transform(10), y: treasure_icon_selected.frame.origin.y + treasure_icon_selected.frame.height + pause_screen_y_transform(15), width: pause_screen_x_transform(40), height: pause_screen_y_transform(40)))
         sub_button.setImage(#imageLiteral(resourceName: "substract"), for: .normal)
         sub_button.contentMode = .scaleAspectFit
         sub_button.alpha = 0
         self.view.addSubview(sub_button)
         sub_button.fadeIn()
         
-        let add_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width - pause_screen_x_transform(45), y: sub_button.frame.origin.y, width: pause_screen_x_transform(35), height: pause_screen_y_transform(35)))
+        let add_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width - pause_screen_x_transform(50), y: sub_button.frame.origin.y, width: pause_screen_x_transform(40), height: pause_screen_y_transform(40)))
         add_button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
         add_button.contentMode = .scaleAspectFit
         add_button.alpha = 0
         self.view.addSubview(add_button)
         add_button.fadeIn()
         
+        
+        var tool_quantity = 0
+        
+        let tool_quantity_label = UILabel(frame: CGRect(x: (add_button.frame.origin.x + sub_button.frame.origin.x + sub_button.frame.width)/2 - pause_screen_x_transform(25), y: sub_button.frame.origin.y, width: pause_screen_x_transform(50), height: pause_screen_y_transform(45)))
+        tool_quantity_label.text = String(tool_quantity)
+        tool_quantity_label.font = UIFont(name: "Helvetica", size: CGFloat(25))
+        tool_quantity_label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        tool_quantity_label.alpha = 0
+        tool_quantity_label.textAlignment = .center
+        self.view.addSubview(tool_quantity_label)
+        tool_quantity_label.fadeIn()
+            
+            
+            
         selected_cancel.whenButtonIsClicked(action: {
             selected_scene_background.fadeOutandRemove()
             selected_scene.fadeOutandRemove()
@@ -1229,8 +1243,22 @@ class MenuViewController: UIViewController {
             treasure_text.fadeOutandRemove()
             sub_button.fadeOutandRemove()
             add_button.fadeOutandRemove()
+            tool_quantity_label.fadeOutandRemove()
         })
-    
+       
+        add_button.whenButtonIsClicked(action: {
+            tool_quantity = tool_quantity + 1
+            tool_quantity_label.text = String(tool_quantity)
+        })
+        
+        sub_button.whenButtonIsClicked(action: {
+            if(tool_quantity == 0){
+                tool_quantity = 0
+            }else{
+                tool_quantity = tool_quantity - 1
+                tool_quantity_label.text = String(tool_quantity)
+            }
+        })
         
     }
     
