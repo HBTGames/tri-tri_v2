@@ -1110,19 +1110,19 @@ class MenuViewController: UIViewController {
     
     func language_button_image_decider() -> Void{
         if (ThemeType == 1){
-            if (language == "English"){
+            if (language == "Chinese"){
                 self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_day_night"), for: .normal)
             } else {
                 self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_day_night"), for: .normal)
             }
         } else if (ThemeType == 2){
-            if (language == "English"){
+            if (language == "Chinese"){
                 self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_day_night"), for: .normal)
             } else {
                 self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_day_night"), for: .normal)
             }
         } else if (ThemeType == 3){
-            if (language == "English"){
+            if (language == "Chinese"){
                 self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_B&W"), for: .normal)
             } else {
                 self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_B&W"), for: .normal)
@@ -1131,13 +1131,13 @@ class MenuViewController: UIViewController {
             //chaos
         }
         else if (ThemeType == 5){
-            if (language == "English"){
+            if (language == "Chinese"){
                 self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_school"), for: .normal)
             } else {
                 self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_school"), for: .normal)
             }
         } else if (ThemeType == 6){
-            if (language == "English"){
+            if (language == "Chinese"){
                 self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_color"), for: .normal)
             } else {
                 self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_color"), for: .normal)
