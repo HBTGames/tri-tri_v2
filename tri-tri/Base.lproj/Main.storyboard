@@ -121,12 +121,12 @@
                                     <action selector="language_changing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K6L-Z6-OBG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cy2-vD-TsN">
-                                <rect key="frame" x="11" y="20" width="57" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cy2-vD-TsN">
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="treasure"/>
+                                <state key="normal" title="treasure" image="treasure_day_mode"/>
                                 <connections>
-                                    <action selector="treasure_button_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zdM-ds-5rv"/>
+                                    <action selector="treasure_box_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xXO-lj-8MB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -145,6 +145,7 @@
                         <outlet property="shopping_cart" destination="L5u-Zg-LxX" id="kqg-hZ-5f9"/>
                         <outlet property="star_board" destination="tCj-NR-SnI" id="0EN-fO-kW6"/>
                         <outlet property="star_counter" destination="s2T-Fz-kax" id="WVr-cD-Mqa"/>
+                        <outlet property="treasure_box_icon" destination="cy2-vD-TsN" id="R52-5O-xkg"/>
                         <outlet property="triangle_title" destination="j52-sZ-nKU" id="46J-XK-yDg"/>
                         <outlet property="trophy" destination="FcQ-gF-imE" id="lYb-T0-owx"/>
                         <outlet property="tutorial_button" destination="XIE-d3-hMd" id="1Po-Yp-oLc"/>
@@ -1209,6 +1210,7 @@
         <image name="restart_big" width="350" height="304"/>
         <image name="return_button" width="23" height="29"/>
         <image name="shopping_cart" width="198" height="172"/>
+        <image name="treasure_day_mode" width="428" height="427"/>
         <image name="trophy_new" width="43" height="31"/>
         <image name="tuto_bg" width="375" height="667"/>
         <image name="tuto_exit" width="130" height="130"/>
