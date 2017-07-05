@@ -984,8 +984,8 @@ class MenuViewController: UIViewController {
     var times_two_circle_text = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var three_triangles_circle_text = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var clear_all_circle_text = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    
-    
+    var current_star_total = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var current_star_total_text = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
     func treasure_box_function() -> Void {
     let treasure_menu = UIImageView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
@@ -999,7 +999,26 @@ class MenuViewController: UIViewController {
     treasure_cancel.alpha = 0
     self.view.addSubview(treasure_cancel)
     treasure_cancel.fadeIn()
+
+//current star total
+current_star_total = UIImageView(frame: CGRect(x: screen_width - pause_screen_x_transform(150), y: pause_screen_y_transform(10), width: pause_screen_x_transform(130), height: pause_screen_y_transform(50)))
+current_star_total.image = #imageLiteral(resourceName: "current_star")
+current_star_total.alpha = 0
+self.view.addSubview(current_star_total)
+current_star_total.fadeIn()
+    
         
+//current star total text
+        current_star_total_text = UILabel(frame: current_star_total.frame)
+        current_star_total_text.textColor = UIColor(red: 63.0/255, green: 70.0/255, blue: 82.0/255, alpha: 1)
+        current_star_total_text.text = String(star_score)
+        current_star_total_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        current_star_total_text.textAlignment = .center
+        current_star_total_text.alpha = 0
+        self.view.addSubview(current_star_total_text)
+        current_star_total_text.fadeIn()
+        
+
 //new  life button
     let new_life_button = MyButton(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     new_life_button.setImage(#imageLiteral(resourceName: "new_life"), for: .normal)
@@ -1274,7 +1293,9 @@ class MenuViewController: UIViewController {
           self.times_two_circle_text.fadeOutandRemove()
           self.three_triangles_circle_text.fadeOutandRemove()
           self.clear_all_circle_text.fadeOutandRemove()
-        
+        self.current_star_total_text.fadeOutandRemove()
+        self.current_star_total.fadeOutandRemove()
+
           })
     }
    
@@ -1474,7 +1495,6 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
             
             
             
-            
         })
        
         add_button.whenButtonIsClicked(action: {
@@ -1510,6 +1530,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         total_star_need_label.fadeOutandRemove()
         final_price_button.fadeOutandRemove()
         self.circle_pop_up(tool_index: self.tool_selected)
+        self.fix_star_score(star_needed: star_quantiry_needed)
         })
         
         
@@ -1550,6 +1571,14 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         }
         defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
         
+        
+    }
+    
+    func fix_star_score(star_needed: Int){
+        star_score -= star_needed
+        defaults.set(star_score, forKey: "tritri_star_score")
+        self.current_star_total_text.text = String(star_score)
+        self.star_board.text = String(star_score)
         
     }
     
