@@ -959,36 +959,60 @@ class MenuViewController: UIViewController {
     new_life_button.alpha = 0
     self.view.addSubview(new_life_button)
     new_life_button.fadeIn()
+        new_life_button.whenButtonIsClicked(action: {
+            self.tool_selected = 0
+            self.tool_selected_scene()
+        })
     let same_color_eliminator = MyButton(frame: CGRect(x: new_life_button.frame.origin.x + new_life_button.frame.width + pause_screen_x_transform(50), y: pause_screen_y_transform(90), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     same_color_eliminator.setImage(#imageLiteral(resourceName: "same_color_eliminator"), for: .normal)
     same_color_eliminator.alpha = 0
     self.view.addSubview(same_color_eliminator)
     same_color_eliminator.fadeIn()
+        same_color_eliminator.whenButtonIsClicked(action: {
+            self.tool_selected = 1
+            self.tool_selected_scene()
+        })
     
     let shape_bomb = MyButton(frame: CGRect(x: new_life_button.frame.origin.x, y: new_life_button.frame.origin.y + new_life_button.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     shape_bomb.setImage(#imageLiteral(resourceName: "shape_bomb"), for: .normal)
     shape_bomb.alpha = 0
     self.view.addSubview(shape_bomb)
     shape_bomb.fadeIn()
+        shape_bomb.whenButtonIsClicked(action: {
+            self.tool_selected = 2
+            self.tool_selected_scene()
+        })
     
     let times_two = MyButton(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: shape_bomb.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     times_two.setImage(#imageLiteral(resourceName: "times_two"), for: .normal)
     times_two.alpha = 0
     self.view.addSubview(times_two)
     times_two.fadeIn()
-    
+        times_two.whenButtonIsClicked(action: {
+            self.tool_selected = 3
+            self.tool_selected_scene()
+        })
+        
+        
     let three_triangles = MyButton(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y + shape_bomb.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     three_triangles.setImage(#imageLiteral(resourceName: "three_triangle"), for: .normal)
     three_triangles.alpha = 0
     self.view.addSubview(three_triangles)
     three_triangles.fadeIn()
-    
+        three_triangles.whenButtonIsClicked(action: {
+            self.tool_selected = 4
+            self.tool_selected_scene()
+        })
         
     let clear_all = MyButton(frame: CGRect(x: times_two.frame.origin.x, y: three_triangles.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     clear_all.setImage(#imageLiteral(resourceName: "clear_all"), for: .normal)
     clear_all.alpha = 0
     self.view.addSubview(clear_all)
     clear_all.fadeIn()
+        clear_all.whenButtonIsClicked(action: {
+            self.tool_selected = 5
+            self.tool_selected_scene()
+        })
         
     treasure_cancel.whenButtonIsClicked(action: {
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -1014,6 +1038,7 @@ class MenuViewController: UIViewController {
     @IBAction func treasure_box_action(_ sender: UIButton) {
         treasure_box_function()
     }
+
     
     func language_button_image_decider() -> Void{
         if (ThemeType == 1){
@@ -1051,6 +1076,40 @@ class MenuViewController: UIViewController {
             }
         }
     }
+
+    //tool selected:
+    // 0 - new life  1 - same color eliminator 2 - shape bomb 3 - score*2 4 - three triangles 5 - clear all
+    var tool_selected = -1
+    
+    func tool_selected_scene() -> Void {
+    let selected_scene_background = UIView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
+    selected_scene_background.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+    selected_scene_background.alpha = 0
+    self.view.addSubview(selected_scene_background)
+    selected_scene_background.fadeInTrans()
+    let selected_scene = UIView(frame: CGRect(x: 0, y: screen_height/2 - pause_screen_y_transform(150), width: screen_width, height: pause_screen_y_transform(300)))
+    selected_scene.backgroundColor = UIColor(red: 228.0/255, green: 229.0/255, blue: 224.0/255, alpha: 1.0)
+    selected_scene.alpha = 0
+    self.view.addSubview(selected_scene)
+    selected_scene.fadeIn()
+    let selected_cancel = MyButton(frame: CGRect(x: screen_width - pause_screen_x_transform(100), y: selected_scene.frame.origin.y, width: pause_screen_x_transform(100), height: pause_screen_y_transform(100)))
+    selected_cancel.setImage(#imageLiteral(resourceName: "selected_scene_cancel"), for: .normal)
+    selected_cancel.alpha = 0
+    self.view.addSubview(selected_cancel)
+    selected_cancel.fadeIn()
+        selected_cancel.whenButtonIsClicked(action: {
+            selected_scene_background.fadeOutandRemove()
+            selected_scene.fadeOutandRemove()
+            selected_cancel.fadeOutandRemove()
+            
+        })
+        
+        
+    }
+    
+    
+    
+
 }
     
     
