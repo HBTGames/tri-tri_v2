@@ -1001,15 +1001,15 @@ class MenuViewController: UIViewController {
     treasure_cancel.fadeIn()
 
 //current star total
-current_star_total = UIImageView(frame: CGRect(x: screen_width - pause_screen_x_transform(150), y: pause_screen_y_transform(10), width: pause_screen_x_transform(130), height: pause_screen_y_transform(50)))
-current_star_total.image = #imageLiteral(resourceName: "current_star")
+current_star_total = UIImageView(frame: CGRect(x: screen_width - pause_screen_x_transform(150), y: pause_screen_y_transform(10), width: pause_screen_x_transform(120), height: pause_screen_y_transform(45)))
+current_star_total.image = #imageLiteral(resourceName: "current_star_total")
 current_star_total.alpha = 0
 self.view.addSubview(current_star_total)
 current_star_total.fadeIn()
     
         
 //current star total text
-        current_star_total_text = UILabel(frame: current_star_total.frame)
+        current_star_total_text = UILabel(frame: CGRect(x: current_star_total.frame.origin.x + pause_screen_x_transform(20), y: current_star_total.frame.origin.y, width: current_star_total.frame.width, height: current_star_total.frame.height))
         current_star_total_text.textColor = UIColor(red: 63.0/255, green: 70.0/255, blue: 82.0/255, alpha: 1)
         current_star_total_text.text = String(star_score)
         current_star_total_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
@@ -1032,7 +1032,7 @@ current_star_total.fadeIn()
         
 //new life text
         let new_life_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
-        new_life_text.image = #imageLiteral(resourceName: "new_life_text")
+        new_life_text.image = #imageLiteral(resourceName: "resurrection_text")
         new_life_text.alpha = 0
         self.view.addSubview(new_life_text)
         new_life_text.fadeIn()
@@ -1073,9 +1073,9 @@ current_star_total.fadeIn()
         })
     
     //same color eliminator text
-       let same_color_eliminator_text = UIImageView(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: pause_screen_y_transform(40), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
+       let same_color_eliminator_text = UIImageView(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         same_color_eliminator_text.alpha = 0
-        same_color_eliminator_text.image = #imageLiteral(resourceName: "same_color_eliminator_text")
+        same_color_eliminator_text.image = #imageLiteral(resourceName: "purification_text_en")
         self.view.addSubview(same_color_eliminator_text)
         same_color_eliminator_text.fadeIn()
         
@@ -1114,7 +1114,7 @@ current_star_total.fadeIn()
     //shape bomb text
     let shape_bomb_text = UIImageView(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
     shape_bomb_text.alpha = 0
-    shape_bomb_text.image = #imageLiteral(resourceName: "shape_bomb_text")
+    shape_bomb_text.image = #imageLiteral(resourceName: "holy_nova_text_en")
     self.view.addSubview(shape_bomb_text)
     shape_bomb_text.fadeIn()
     //shape bomb circle
@@ -1151,7 +1151,7 @@ current_star_total.fadeIn()
         })
    //times two text
         let times_two_text = UIImageView(frame: CGRect(x: times_two.frame.origin.x, y: times_two.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
-        times_two_text.image = #imageLiteral(resourceName: "double_score_text")
+        times_two_text.image = #imageLiteral(resourceName: "amplifier_en")
         times_two_text.alpha = 0
         self.view.addSubview(times_two_text)
         times_two_text.fadeIn()
@@ -1190,7 +1190,7 @@ current_star_total.fadeIn()
     
     //three triangle text
     let three_triangles_text = UIImageView(frame: CGRect(x: three_triangles.frame.origin.x, y: three_triangles.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
-    three_triangles_text.image = #imageLiteral(resourceName: "three_tri_text")
+    three_triangles_text.image = #imageLiteral(resourceName: "trinity_text_en")
     three_triangles_text.alpha = 0
     self.view.addSubview(three_triangles_text)
     three_triangles_text.fadeIn()
@@ -1231,7 +1231,7 @@ current_star_total.fadeIn()
     
     //clear all text
         let clear_all_text = UIImageView(frame: CGRect(x: clear_all.frame.origin.x, y: clear_all.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
-        clear_all_text.image = #imageLiteral(resourceName: "clear_all_text")
+        clear_all_text.image = #imageLiteral(resourceName: "doom_day_text_en")
         clear_all_text.alpha = 0
         self.view.addSubview(clear_all_text)
         clear_all_text.fadeIn()
@@ -1375,47 +1375,104 @@ current_star_total.fadeIn()
     selected_cancel.fadeIn()
     let treasure_icon_selected = UIImageView(frame: CGRect(x: pause_screen_x_transform(30), y:   selected_scene.frame.origin.y+pause_screen_y_transform(70), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
         let treasure_text = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x, y: treasure_icon_selected.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
-        if(tool_selected == 1){
-            treasure_text.frame = CGRect(x: treasure_icon_selected.frame.origin.x, y: treasure_icon_selected.frame.origin.y - pause_screen_y_transform(60), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80))
-        }
         
         
-let explaination_text = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(100), y: treasure_icon_selected.frame.origin.y, width: 140, height: 200))
-        
-        
-        
-let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(30), y: treasure_icon_selected.frame.origin.y + pause_screen_y_transform(50), width: 180, height: 50))
+let explaination_text = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(40), y: treasure_icon_selected.frame.origin.y + pause_screen_y_transform(10), width: pause_screen_x_transform(150), height:pause_screen_y_transform(100)))
 
+        
+        
+let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(70), y: treasure_icon_selected.frame.origin.y + pause_screen_y_transform(120), width: 120, height: 45))
+
+        
+        
+        
+        let sub_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + pause_screen_x_transform(10), y: treasure_icon_selected.frame.origin.y + treasure_icon_selected.frame.height + pause_screen_y_transform(15), width: pause_screen_x_transform(40), height: pause_screen_y_transform(40)))
+        sub_button.setImage(#imageLiteral(resourceName: "substract"), for: .normal)
+        sub_button.contentMode = .scaleAspectFit
+       
+        
+        let add_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width - pause_screen_x_transform(50), y: sub_button.frame.origin.y, width: pause_screen_x_transform(40), height: pause_screen_y_transform(40)))
+        add_button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+        add_button.contentMode = .scaleAspectFit
+        
+        
+     
+        
+        
+        
+        
+        
+        
+        //quantity of tool
+        var tool_quantity = 0
+        //quantity of star needed
+        var star_quantiry_needed = 0
+        var previous_star_quantity_fontsize = CGFloat(25)
+        
+      
+        
+        
+        
+        let tool_quantity_label = UILabel(frame: CGRect(x: (add_button.frame.origin.x + sub_button.frame.origin.x + sub_button.frame.width)/2 - pause_screen_x_transform(25), y: sub_button.frame.origin.y, width: pause_screen_x_transform(50), height: pause_screen_y_transform(45)))
+        tool_quantity_label.text = String(tool_quantity)
+        tool_quantity_label.font = UIFont(name: "Helvetica", size: CGFloat(25))
+        tool_quantity_label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        tool_quantity_label.textAlignment = .center
+        
+        
+        let total_star_need_label = UILabel(frame: CGRect(x: final_price_button.frame.origin.x + pause_screen_x_transform(20), y: final_price_button.frame.origin.y, width: final_price_button.frame.width, height: final_price_button.frame.height))
+        total_star_need_label.text = String(star_quantiry_needed)
+        
+        total_star_need_label.font = UIFont(name: "Helvetica", size: CGFloat(25))
+        total_star_need_label.textAlignment = .center
+        total_star_need_label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+
+        
+        
+        
     
         if(tool_selected == 0){
             treasure_icon_selected.image = #imageLiteral(resourceName: "new_life")
-            treasure_text.image = #imageLiteral(resourceName: "new_life_text")
-            final_price_button.setImage(#imageLiteral(resourceName: "new_life_total_star"), for: .normal)
+            treasure_text.image = #imageLiteral(resourceName: "resurrection_text")
+            final_price_button.setImage(#imageLiteral(resourceName: "new_life_star_total"), for: .normal)
+            explaination_text.image =  #imageLiteral(resourceName: "new_life_en")
+            total_star_need_label.textColor = UIColor(red: 208.0/255, green: 91.0/255, blue: 93.0/255, alpha: 1)
             star_base = 25
         }else if(tool_selected == 1){
             treasure_icon_selected.image = #imageLiteral(resourceName: "same_color_eliminator")
-            treasure_text.image = #imageLiteral(resourceName: "same_color_eliminator_text")
-            final_price_button.setImage(#imageLiteral(resourceName: "same_color_eliminator_star_total"), for: .normal)
+            treasure_text.image = #imageLiteral(resourceName: "purification_text_en")
+            final_price_button.setImage(#imageLiteral(resourceName: "same_color_eliminator_star_total-1"), for: .normal)
+            explaination_text.image = #imageLiteral(resourceName: "same_color_eliminator_en")
+            total_star_need_label.textColor = UIColor(red: 77.0/255, green: 113.0/255, blue: 56.0/255, alpha: 1)
             star_base = 100
         }else if(tool_selected == 2){
             treasure_icon_selected.image = #imageLiteral(resourceName: "shape_bomb")
-            treasure_text.image = #imageLiteral(resourceName: "shape_bomb_text")
-            final_price_button.setImage(#imageLiteral(resourceName: "shape_bomb_total_star"), for: .normal)
+            treasure_text.image = #imageLiteral(resourceName: "holy_nova_text_en")
+            final_price_button.setImage(#imageLiteral(resourceName: "shape_bomb_star_total"), for: .normal)
+            total_star_need_label.textColor = UIColor(red: 230.0/255, green: 157.0/255, blue: 68.0/255, alpha: 1)
+            explaination_text.image = #imageLiteral(resourceName: "shape_bomb_en")
             star_base = 150
         }else if(tool_selected == 3){
             treasure_icon_selected.image = #imageLiteral(resourceName: "times_two")
-            treasure_text.image = #imageLiteral(resourceName: "double_score_text")
-            final_price_button.setImage(#imageLiteral(resourceName: "double_score_total_star"), for: .normal)
+            treasure_text.image = #imageLiteral(resourceName: "amplifier_en")
+            final_price_button.setImage(#imageLiteral(resourceName: "double_score_star_total"), for: .normal)
+            explaination_text.image = #imageLiteral(resourceName: "double_score_en")
+            total_star_need_label.textColor = UIColor(red: 180.0/255, green: 134.0/255, blue: 161.0/255, alpha: 1)
             star_base = 50
         }else if(tool_selected == 4){
             treasure_icon_selected.image =  #imageLiteral(resourceName: "three_triangle")
-            treasure_text.image = #imageLiteral(resourceName: "three_tri_text")
-            final_price_button.setImage(#imageLiteral(resourceName: "three_triangles_total_star"), for: .normal)
+            treasure_text.image = #imageLiteral(resourceName: "trinity_text_en")
+            final_price_button.setImage(#imageLiteral(resourceName: "three_triangles_star_total"), for: .normal)
+            explaination_text.image = #imageLiteral(resourceName: "three_triangles_en")
+            total_star_need_label.textColor = UIColor(red: 73.0/255, green: 159.0/255, blue: 192.0/255, alpha: 1)
             star_base = 75
         }else if(tool_selected == 5){
             treasure_icon_selected.image = #imageLiteral(resourceName: "clear_all")
-            treasure_text.image = #imageLiteral(resourceName: "clear_all_text")
-            final_price_button.setImage(#imageLiteral(resourceName: "clear_all_total_star"), for: .normal)
+            treasure_text.image = #imageLiteral(resourceName: "doom_day_text_en")
+            final_price_button.setImage(#imageLiteral(resourceName: "clear_all_star_total"), for: .normal)
+            explaination_text.image = #imageLiteral(resourceName: "clear_all_en")
+            total_star_need_label.textColor = UIColor(red: 56.0/255, green: 75.0/255, blue: 130.0/255, alpha: 1)
+
             star_base = 999
         }
         
@@ -1428,50 +1485,38 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         self.view.addSubview(treasure_text)
         treasure_text.fadeIn()
         
+        final_price_button.alpha = 0
         self.view.addSubview(final_price_button)
         final_price_button.fadeIn()
         
         
-        let sub_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + pause_screen_x_transform(10), y: treasure_icon_selected.frame.origin.y + treasure_icon_selected.frame.height + pause_screen_y_transform(15), width: pause_screen_x_transform(40), height: pause_screen_y_transform(40)))
-        sub_button.setImage(#imageLiteral(resourceName: "substract"), for: .normal)
-        sub_button.contentMode = .scaleAspectFit
+        explaination_text.alpha = 0
+        self.view.addSubview(explaination_text)
+        explaination_text.fadeIn()
+        
         sub_button.alpha = 0
         self.view.addSubview(sub_button)
         sub_button.fadeIn()
         
-        let add_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width - pause_screen_x_transform(50), y: sub_button.frame.origin.y, width: pause_screen_x_transform(40), height: pause_screen_y_transform(40)))
-        add_button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
-        add_button.contentMode = .scaleAspectFit
+        
         add_button.alpha = 0
         self.view.addSubview(add_button)
         add_button.fadeIn()
         
-        
-        
-        //quantity of tool
-        var tool_quantity = 0
-        //quantity of star needed
-        var star_quantiry_needed = 0
-        var previous_star_quantity_fontsize = CGFloat(25)
-        
-        
-        let tool_quantity_label = UILabel(frame: CGRect(x: (add_button.frame.origin.x + sub_button.frame.origin.x + sub_button.frame.width)/2 - pause_screen_x_transform(25), y: sub_button.frame.origin.y, width: pause_screen_x_transform(50), height: pause_screen_y_transform(45)))
-        tool_quantity_label.text = String(tool_quantity)
-        tool_quantity_label.font = UIFont(name: "Helvetica", size: CGFloat(25))
-        tool_quantity_label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         tool_quantity_label.alpha = 0
-        tool_quantity_label.textAlignment = .center
         self.view.addSubview(tool_quantity_label)
         tool_quantity_label.fadeIn()
-            
-        let total_star_need_label = UILabel(frame: final_price_button.frame)
-        total_star_need_label.text = String(star_quantiry_needed)
-        total_star_need_label.font = UIFont(name: "Helvetica", size: CGFloat(25))
-        total_star_need_label.textAlignment = .center
-        total_star_need_label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        
         total_star_need_label.alpha = 0
         self.view.addSubview(total_star_need_label)
         total_star_need_label.fadeIn()
+
+        
+        
+        
+        
+        
+       
         
         
         
@@ -1491,7 +1536,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
             tool_quantity_label.fadeOutandRemove()
             total_star_need_label.fadeOutandRemove()
             final_price_button.fadeOutandRemove()
-            
+            explaination_text.fadeOutandRemove()
             
             
             
@@ -1529,6 +1574,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         tool_quantity_label.fadeOutandRemove()
         total_star_need_label.fadeOutandRemove()
         final_price_button.fadeOutandRemove()
+        explaination_text.fadeOutandRemove()
         self.circle_pop_up(tool_index: self.tool_selected)
         self.fix_star_score(star_needed: star_quantiry_needed)
         })
@@ -1575,7 +1621,9 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
     }
     
     func fix_star_score(star_needed: Int){
+        if(star_score >= star_needed){
         star_score -= star_needed
+        }
         defaults.set(star_score, forKey: "tritri_star_score")
         self.current_star_total_text.text = String(star_score)
         self.star_board.text = String(star_score)
