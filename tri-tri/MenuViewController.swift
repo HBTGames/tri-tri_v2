@@ -605,7 +605,7 @@ class MenuViewController: UIViewController {
         //chaos_theme_button.fadeInWithDisplacement()
         
         
-        school_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        school_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         school_theme_origin = school_theme_button.frame.origin
         school_theme_button.setBackgroundImage(UIImage(named:"School_Theme"), for: .normal)
         school_theme_button.alpha = 0
@@ -675,7 +675,7 @@ class MenuViewController: UIViewController {
         self.view.addSubview(school_theme_button)
         school_theme_button.fadeInWithDisplacement()
         
-        colors_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        colors_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         colors_theme_origin = colors_theme_button.frame.origin
         colors_theme_button.setBackgroundImage(UIImage(named:"Colors_theme"), for: .normal)
         colors_theme_button.alpha = 0
