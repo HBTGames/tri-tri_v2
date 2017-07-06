@@ -1012,6 +1012,10 @@
                                     <action selector="backpack:" destination="qxD-t8-ioY" eventType="touchUpInside" id="w6H-6C-ib2"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="lower_half_pack_ring_not_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="66x-LO-sXf">
+                                <rect key="frame" x="312" y="142" width="47" height="47"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1028,6 +1032,7 @@
                         <outlet property="center" destination="NDl-Da-Qca" id="5rr-Ls-bNL"/>
                         <outlet property="green_drag_tri" destination="gxz-1Y-RXe" id="UIE-Sq-pg7"/>
                         <outlet property="light_brown_drag_tri" destination="YRp-Xf-A4k" id="Q8B-sM-uFu"/>
+                        <outlet property="lower_half_pack_ring" destination="66x-LO-sXf" id="GPD-wi-Ign"/>
                         <outlet property="orange_drag_tri" destination="eId-J2-6Yd" id="Bv1-4G-ukf"/>
                         <outlet property="pause" destination="x0H-mS-pgO" id="3ug-f2-hkG"/>
                         <outlet property="starBoard" destination="UYk-yQ-OGd" id="rZv-IJ-RDJ"/>
@@ -1220,6 +1225,7 @@
         <image name="lang_icon_english_day_night" width="126" height="128"/>
         <image name="like" width="198" height="172"/>
         <image name="link" width="198" height="172"/>
+        <image name="lower_half_pack_ring_not_transparent" width="400" height="400"/>
         <image name="new_life_circle" width="400" height="400"/>
         <image name="night_theme" width="177" height="177"/>
         <image name="pause_button" width="47" height="47"/>

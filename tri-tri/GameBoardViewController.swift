@@ -870,8 +870,8 @@ class GameBoardViewController: UIViewController {
         light_brown_drag_origin_backup = light_brown_drag_origin
         //set backpack button frame
         backpack_button.frame = CGRect(x: pause_screen_x_transform(Double(backpack_button.frame.origin.x)), y: pause_screen_y_transform(Double(backpack_button.frame.origin.y)), width: pause_screen_x_transform(Double(backpack_button.frame.width)), height: pause_screen_y_transform(Double(backpack_button.frame.height)))
-
-        
+        lower_half_pack_ring.frame = CGRect(x: pause_screen_x_transform(Double(lower_half_pack_ring.frame.origin.x)), y: pause_screen_y_transform(Double(lower_half_pack_ring.frame.origin.y)), width: pause_screen_x_transform(Double(lower_half_pack_ring.frame.width)), height: pause_screen_y_transform(Double(lower_half_pack_ring.frame.height)))
+        self.view.bringSubview(toFront: backpack_button)
         
         //declare original frames of the tris
         green_drag_tri_orig_rec =  CGRect(x: green_drag_tri.frame.origin.x - pause_screen_x_transform(20), y: green_drag_tri.frame.origin.y - pause_screen_y_transform(15), width: green_drag_tri.frame.width + pause_screen_x_transform(40), height: green_drag_tri.frame.height + pause_screen_y_transform(45))
@@ -12205,6 +12205,7 @@ number_of_lines_erased += 1
         
     }
     
+    @IBOutlet var lower_half_pack_ring: UIImageView!
     @IBOutlet weak var backpack_button: UIButton!
     var pack_open = false
     let redline_1 = UIView()
@@ -12221,12 +12222,14 @@ number_of_lines_erased += 1
             self.redline_2.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
 
             self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
+            
             self.view.addSubview(redline_1)
             self.view.addSubview(redline_2)
             
             UIView.animate(withDuration: 3, animations: {
                 self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
                 self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
+                self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142+250), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
             }, completion: {
                 (finished) -> Void in
                 print("haha")
@@ -12244,7 +12247,8 @@ number_of_lines_erased += 1
 
             UIView.animate(withDuration: 3, animations: {
                 self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
-                self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(354), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
+                self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
+                self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
             }, completion: {
                 (finished) -> Void in
                 print("hehe")
