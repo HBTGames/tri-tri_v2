@@ -1023,6 +1023,7 @@ class GameBoardViewController: UIViewController {
             self.pause.setImage(UIImage(named: "colors_pause-button"), for: .normal)
             self.starBoard.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
         }
+        backpack_decider()
         triangle_title_image_decider()
         change_shape_in_generate_array()
         change_current_shapes_according_to_theme()
@@ -1602,6 +1603,7 @@ class GameBoardViewController: UIViewController {
             self.change_all_back_tris_image()
             self.HightestScoreBoard.textColor = UIColor(red: 59.0/255, green: 76.0/255, blue: 65.0/255, alpha: 1.0)
             self.MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+            self.backpack_decider()
             self.trophy.image = UIImage(named:"trophy_new")
             self.pause.setImage(UIImage(named: "pause_button"), for: .normal)
             self.home_button.setBackgroundImage(self.home_pic, for: .normal)
@@ -1671,6 +1673,7 @@ class GameBoardViewController: UIViewController {
             self.star_counter.image = UIImage(named:"night_mode_star")
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
+            self.backpack_decider()
             self.HightestScoreBoard.textColor = UIColor(red: 186.0/255, green: 179.0/255, blue: 150.0/255, alpha: 1.0)
             self.MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             self.trophy.image = UIImage(named:"night mode 奖杯")
@@ -1745,6 +1748,7 @@ class GameBoardViewController: UIViewController {
             self.trophy.image = UIImage(named:"BW_trophy")
             self.pause.setImage(UIImage(named: "BW_pause"), for: .normal)
             self.triangle_title_image_decider()
+            self.backpack_decider()
             self.star_counter.image = UIImage(named:"BW_mode_star")
             self.home_button.setBackgroundImage(self.BW_home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.BW_continue_pic, for: .normal)
@@ -1904,6 +1908,7 @@ class GameBoardViewController: UIViewController {
             self.trophy.image = UIImage(named:"school_j-icon")
             self.pause.setImage(UIImage(named: "school_pause-button"), for: .normal)
             self.triangle_title_image_decider()
+            self.backpack_decider()
             self.star_counter.image = UIImage(named:"school_mode_star")
             self.home_button.setBackgroundImage(self.school_home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.school_continue_pic, for: .normal)
@@ -1976,6 +1981,7 @@ class GameBoardViewController: UIViewController {
             self.trophy.image = UIImage(named:"colors_j-icon")
             self.pause.setImage(UIImage(named: "colors_pause-button"), for: .normal)
             self.triangle_title_image_decider()
+            self.backpack_decider()
             self.star_counter.image = UIImage(named:"colors_mode_star")
             self.home_button.setBackgroundImage(self.colors_home_pic, for: .normal)
             self.continue_button.setBackgroundImage(self.colors_continue_pic, for: .normal)
@@ -12212,10 +12218,13 @@ number_of_lines_erased += 1
     var pack_open = false
     let pack_line_1 = UIView()
     let pack_line_2 = UIView()
+    let pack_patch = UIView()
     @IBAction func backpack(_ sender: Any) {
         backpack_decider()
+        
         if (!pack_open){
-            self.view.bringSubview(toFront: upper_half_pack_ring)
+            
+            
             UIView.transition(with: backpack_button,
                               duration: 1,
                               options: .transitionCrossDissolve,
@@ -12224,18 +12233,24 @@ number_of_lines_erased += 1
            
             self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
             self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
+            self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: 0)
             
+            self.view.addSubview(pack_patch)
             self.view.addSubview(pack_line_1)
             self.view.addSubview(pack_line_2)
+            self.view.bringSubview(toFront: self.backpack_button)
+            self.view.bringSubview(toFront: self.upper_half_pack_ring)
             
             UIView.animate(withDuration: 1, animations: {
                 self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
                 self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
+                self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(250))
                 self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142+250), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
             }, completion: {
                 (finished) -> Void in
                 print("haha")
                 self.view.sendSubview(toBack: self.upper_half_pack_ring)
+                self.view.bringSubview(toFront: self.backpack_button)
             })
             pack_open = true
 
@@ -12251,11 +12266,13 @@ number_of_lines_erased += 1
             UIView.animate(withDuration: 1, animations: {
                 self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
                 self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
+                self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: 0)
                 self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
             }, completion: {
                 (finished) -> Void in
                 print("hehe")
                 self.view.sendSubview(toBack: self.upper_half_pack_ring)
+                self.view.bringSubview(toFront: self.backpack_button)
             })
             pack_open = false
         }
@@ -12263,6 +12280,7 @@ number_of_lines_erased += 1
     
     
     func backpack_decider() -> Void{
+        self.pack_patch.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
         if (ThemeType == 1){
             self.pack_line_1.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
             self.pack_line_2.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
