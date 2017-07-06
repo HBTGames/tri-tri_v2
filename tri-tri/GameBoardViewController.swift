@@ -796,10 +796,31 @@ class GameBoardViewController: UIViewController {
                         
                     }
                     not_fit_player.play()
-                } else/* if (contained_boxes.count == 1)*/{
+                
+                }else if (contained_boxes.count == 1){
                     print("reach nova else")
-                    var row = candidates[0][0]
-                    var col = candidates[0][1]
+                    
+                    
+                    let row = candidates[0][0]
+                    let col = candidates[0][1]
+                    
+                    
+                    self.nova_breaker(row: row, col: col)
+                    self.during_holy_nova = false
+                }
+                else/* if (contained_boxes.count == 1)*/{
+                    print("reach nova else")
+                    var row = Int()
+                    var col = Int()
+                    var someFloat = Float(initialTouchLocation.x)
+                    if (someFloat < Float(contained_boxes[1].origin.x)){
+                        row = candidates[0][0]
+                        col = candidates[0][1]
+                    } else {
+                        row = candidates[1][0]
+                        col = candidates[1][1]
+                    }
+                    
                     self.nova_breaker(row: row, col: col)
                     self.during_holy_nova = false
                 }
@@ -12749,7 +12770,8 @@ number_of_lines_erased += 1
         }
         
         for i in break_list{
-            UIView.animate(withDuration: 0.1, animations: {
+            if filled[i[0]][i[1]] == true{
+            UIView.animate(withDuration: 0.2, animations: {
                 self.erase_animation_by_row_col(row: i[0] , col: i[1])
             }, completion: {
                 (finished) -> Void in
@@ -12761,7 +12783,7 @@ number_of_lines_erased += 1
             self.filled[i[0]][i[1]] = false
         }
         
-        
+        }
         
         
             
