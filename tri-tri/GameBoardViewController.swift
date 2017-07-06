@@ -872,7 +872,7 @@ class GameBoardViewController: UIViewController {
         backpack_button.frame = CGRect(x: pause_screen_x_transform(Double(backpack_button.frame.origin.x)), y: pause_screen_y_transform(Double(backpack_button.frame.origin.y)), width: pause_screen_x_transform(Double(backpack_button.frame.width)), height: pause_screen_y_transform(Double(backpack_button.frame.height)))
         lower_half_pack_ring.frame = CGRect(x: pause_screen_x_transform(Double(lower_half_pack_ring.frame.origin.x)), y: pause_screen_y_transform(Double(lower_half_pack_ring.frame.origin.y)), width: pause_screen_x_transform(Double(lower_half_pack_ring.frame.width)), height: pause_screen_y_transform(Double(lower_half_pack_ring.frame.height)))
         upper_half_pack_ring.frame = CGRect(x: pause_screen_x_transform(Double(upper_half_pack_ring.frame.origin.x)), y: pause_screen_y_transform(Double(upper_half_pack_ring.frame.origin.y)), width: pause_screen_x_transform(Double(upper_half_pack_ring.frame.width)), height: pause_screen_y_transform(Double(upper_half_pack_ring.frame.height)))
-        self.view.sendSubview(toBack: backpack_button)
+        self.view.bringSubview(toFront: backpack_button)
         
         //declare original frames of the tris
         green_drag_tri_orig_rec =  CGRect(x: green_drag_tri.frame.origin.x - pause_screen_x_transform(20), y: green_drag_tri.frame.origin.y - pause_screen_y_transform(15), width: green_drag_tri.frame.width + pause_screen_x_transform(40), height: green_drag_tri.frame.height + pause_screen_y_transform(45))
@@ -12215,6 +12215,7 @@ number_of_lines_erased += 1
     @IBAction func backpack(_ sender: Any) {
         backpack_decider()
         if (!pack_open){
+            self.view.bringSubview(toFront: upper_half_pack_ring)
             UIView.transition(with: backpack_button,
                               duration: 1,
                               options: .transitionCrossDissolve,
@@ -12234,12 +12235,13 @@ number_of_lines_erased += 1
             }, completion: {
                 (finished) -> Void in
                 print("haha")
-                
+                self.view.sendSubview(toBack: self.upper_half_pack_ring)
             })
             pack_open = true
 
         }
         else {
+            self.view.bringSubview(toFront: upper_half_pack_ring)
             UIView.transition(with: backpack_button,
                               duration: 1,
                               options: .transitionCrossDissolve,
@@ -12253,7 +12255,7 @@ number_of_lines_erased += 1
             }, completion: {
                 (finished) -> Void in
                 print("hehe")
-                
+                self.view.sendSubview(toBack: self.upper_half_pack_ring)
             })
             pack_open = false
         }
