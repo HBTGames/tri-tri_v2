@@ -12279,7 +12279,7 @@ number_of_lines_erased += 1
         
         
         self.resurrection_button.whenButtonIsClicked {
-            
+            self.resurrection_when_alive()
         }
         
         self.purification_button.whenButtonIsClicked {
@@ -12393,7 +12393,7 @@ number_of_lines_erased += 1
             self.doom_day_button.fadeOut()
         }, completion: {
             (finished) -> Void in
-            print("hehe")
+            print("pack closed")
             UIView.animate(withDuration: 0.2, animations: {
                 
             }, completion: {
@@ -12481,9 +12481,14 @@ number_of_lines_erased += 1
     }
     
     func resurrection_when_alive() -> Void {
-        let alive_resu_text = UILabel()
-        alive_resu_text.text = "YOU MUST DIE FIRST!"
-        alive_resu_text.frame = CGRect((x: self.pause_screen_x_transform(320), y: self.pause_screen_y_transform(195), width: self.pause_screen_x_transform(30), height: self.pause_screen_y_transform(30)))
+        print("resurrection when alive")
+        do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+            not_fit_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        not_fit_player.play()
     }
     
     
