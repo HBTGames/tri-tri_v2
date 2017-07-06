@@ -670,6 +670,7 @@ class GameBoardViewController: UIViewController {
     var player = AVPlayer()
     
     //declare different types of audio player
+    var purification_player = AVAudioPlayer()
     var fit_in_player = AVAudioPlayer()
     var audioPlayer = AVAudioPlayer()
     var timer = Timer()
@@ -12284,7 +12285,7 @@ number_of_lines_erased += 1
         }
         
         self.purification_button.whenButtonIsClicked {
-            
+            self.purification()
         }
         
         self.holy_nova_button.whenButtonIsClicked {
@@ -12497,6 +12498,62 @@ number_of_lines_erased += 1
         }
         not_fit_player.play()
     }
+    
+    
+    
+    
+    func purification() -> Void{
+        do{purification_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "purification", ofType: "wav")!))
+            purification_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        purification_player.play()
+        var purification_list : Array<Array<Int>> = []
+        var i = 0
+        for row in self.filled{
+            var j = 0
+            for whether_filled in row{
+                if (whether_filled == true){
+                    purification_list.append([i,j])
+                }
+                j += 1
+                
+            }
+            i += 1
+        }
+        var actual_purification_list : Array<Array<Int>> = []
+        while (purification_list.count > 10){
+            let randomNum:UInt32 = arc4random_uniform(UInt32(purification_list.count))
+            purification_list.remove(at:Int(randomNum))
+        }
+        
+        actual_purification_list = purification_list
+        
+        for i in actual_purification_list{
+            UIView.animate(withDuration: 0.1, animations: {
+                self.erase_animation_by_row_col(row: i[0] , col: i[1])
+            }, completion: {
+                (finished) -> Void in
+            
+                self.erase_animation_with_grey_tri_restore_by_row_col(row: i[0] , col: i[1])
+            
+            })
+            self.single_tri_stored_type_index[i[0]][i[1]] = -1
+            self.filled[i[0]][i[1]] = false
+        }
+    }
+        
+    
+        
+        
+    
+    
+    
+    
+    
+    
     
     
     

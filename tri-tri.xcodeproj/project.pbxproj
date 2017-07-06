@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00B30D3C3C9B83F7F1855572 /* Pods_tri_tri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EE653BEA0021E2F147D2C3 /* Pods_tri_tri.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		042B79691F0E5EC700F3E81D /* purification.wav in Resources */ = {isa = PBXBuildFile; fileRef = 042B79681F0E5EC700F3E81D /* purification.wav */; };
 		042D870B1ED8707D007A329C /* LottieTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D870A1ED8707D007A329C /* LottieTestViewController.swift */; };
 		042D870D1ED870FB007A329C /* servishero_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 042D870C1ED870FB007A329C /* servishero_loading.json */; };
 		042D87151ED99CC0007A329C /* tst.json in Resources */ = {isa = PBXBuildFile; fileRef = 042D87141ED99CC0007A329C /* tst.json */; };
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042B79681F0E5EC700F3E81D /* purification.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = purification.wav; sourceTree = "<group>"; };
 		042D870A1ED8707D007A329C /* LottieTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieTestViewController.swift; sourceTree = "<group>"; };
 		042D870C1ED870FB007A329C /* servishero_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servishero_loading.json; sourceTree = "<group>"; };
 		042D87141ED99CC0007A329C /* tst.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tst.json; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			children = (
 				563E7F611ED47352008F33C1 /* 1_time_erase.mp3 */,
 				563E7F631ED474DA008F33C1 /* 3_times_erase.wav */,
+				042B79681F0E5EC700F3E81D /* purification.wav */,
 				563E7F5F1ED2EE5A008F33C1 /* not_fit.wav */,
 				563E7F5D1ED2EE50008F33C1 /* game over.wav */,
 				56C3F42C1ED27CC400DE21BD /* opening.wav */,
@@ -424,6 +427,7 @@
 				5620A38A1ECAB89F0035E099 /* background_music_tony.m4a in Resources */,
 				56F66DEB1EDB1C2D001E1DB6 /* start.json in Resources */,
 				563E7F601ED2EE5A008F33C1 /* not_fit.wav in Resources */,
+				042B79691F0E5EC700F3E81D /* purification.wav in Resources */,
 				56C3F4271ED276F200DE21BD /* restart_soundeffect.wav in Resources */,
 				564542D31EC9A17100BFBD0C /* Fit_In.aif in Resources */,
 				56C3F42B1ED27B1A00DE21BD /* general_button.wav in Resources */,
