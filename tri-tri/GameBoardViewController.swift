@@ -10482,7 +10482,7 @@ number_of_lines_erased += 1
                 if before[i][j] != after[i][j]{
                     
                     cur_shape_tri.append([i,j])
-                    current_int += 1
+                    current_int += 1*amplify_base
                 }
                 j+=1
             }
@@ -10531,6 +10531,7 @@ number_of_lines_erased += 1
             }
             i+=1
         }
+        increment *= amplify_base
         increment *= number_of_lines_erased
         current_int += increment
         score = current_int
@@ -12299,7 +12300,7 @@ number_of_lines_erased += 1
         }
         
         self.amplifier_button.whenButtonIsClicked {
-            
+        self.amplifier_action()
         }
         
     
@@ -12549,7 +12550,7 @@ number_of_lines_erased += 1
         }
         //add score
         last_score = score
-        score += score_increment_number
+        score += score_increment_number*amplify_base
         print("star_increment: \(score_increment_number)")
         print("score is \(score)")
         //print(score)
@@ -12590,7 +12591,21 @@ number_of_lines_erased += 1
         
     }
     
+    //amplifer function
+    var amplify_base = 1
+    var amplifier_count_down_timer = Timer()
+    func amplifier_action() -> Void {
+    close_pack()
+    print("amplifier start")
+    amplify_base = 2
+    amplifier_count_down_timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(GameBoardViewController.amplifier_completed), userInfo: nil, repeats: false)
+    }
     
+    func amplifier_completed() -> Void{
+     amplify_base = 1
+    print("amplifier finished")
+        
+    }
  
     
 }
