@@ -2560,8 +2560,6 @@ class GameBoardViewController: UIViewController {
             
             
         }
-        
-  
             
             
             
@@ -12219,11 +12217,14 @@ number_of_lines_erased += 1
     let pack_line_1 = UIView()
     let pack_line_2 = UIView()
     let pack_patch = UIView()
+    
+    
+    
+    
     @IBAction func backpack(_ sender: Any) {
         backpack_decider()
         
         if (!pack_open){
-            
             
             UIView.transition(with: backpack_button,
                               duration: 1,
@@ -12253,6 +12254,7 @@ number_of_lines_erased += 1
                 self.view.bringSubview(toFront: self.backpack_button)
             })
             pack_open = true
+            
 
         }
         else {
@@ -12275,6 +12277,7 @@ number_of_lines_erased += 1
                 self.view.bringSubview(toFront: self.backpack_button)
             })
             pack_open = false
+            
         }
     }
     
