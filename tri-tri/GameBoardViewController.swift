@@ -12258,16 +12258,17 @@ number_of_lines_erased += 1
             self.view.bringSubview(toFront: self.backpack_button)
             self.view.bringSubview(toFront: self.upper_half_pack_ring)
             
-            UIView.animate(withDuration: 1, animations: {
-                self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
-                self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
-                self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(250))
-                self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142+250), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
+            UIView.animate(withDuration: 0.3, animations: {
+                self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(260))
+                self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(260))
+                self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(260))
+                self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142+250+10), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
             }, completion: {
                 (finished) -> Void in
                 print("haha")
                 
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 0.3, animations: {
+                    
                     self.resurrection_button.fadeInWithDisplacement()
                     self.purification_button.fadeInWithDisplacement()
                     self.holy_nova_button.fadeInWithDisplacement()
@@ -12276,9 +12277,22 @@ number_of_lines_erased += 1
                     self.doom_day_button.fadeInWithDisplacement()
                 }, completion: {
                     (finished) -> Void in
+                    
                 })
                 
-                
+                UIView.animate(withDuration: 0.1, animations:{
+                    
+                }, completion: {
+                    (finished) -> Void in
+                    UIView.animate(withDuration: 0.3, animations:{
+                    self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
+                    self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
+                    self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(250))
+                    self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142+250), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
+                    }, completion: {
+                        (finished) -> Void in
+                        print ("tan tan tan")
+                    })
                 
                 
                 
@@ -12286,9 +12300,10 @@ number_of_lines_erased += 1
                 self.view.sendSubview(toBack: self.upper_half_pack_ring)
                 self.view.bringSubview(toFront: self.backpack_button)
             })
-            pack_open = true
+            self.pack_open = true
             
 
+        })
         }
         else {
             self.view.bringSubview(toFront: upper_half_pack_ring)
@@ -12298,7 +12313,7 @@ number_of_lines_erased += 1
                               animations: { self.backpack_button.setImage(self.self.backpack_button_before_hit, for: .normal) },
                               completion: nil)
 
-            UIView.animate(withDuration: 1, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
                 self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
                 self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: 0)
@@ -12312,7 +12327,7 @@ number_of_lines_erased += 1
             }, completion: {
                 (finished) -> Void in
                 print("hehe")
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 0.2, animations: {
                     
                 }, completion: {
                     (finished) -> Void in
@@ -12331,7 +12346,7 @@ number_of_lines_erased += 1
                 self.view.sendSubview(toBack: self.upper_half_pack_ring)
                 self.view.bringSubview(toFront: self.backpack_button)
             })
-            pack_open = false
+            self.pack_open = false
             
         }
     }
@@ -12370,6 +12385,10 @@ number_of_lines_erased += 1
             self.upper_half_pack_ring.image = UIImage(named: "upper_half_pack_ring_color")
         }
     }
+    
+    
+    
+    
     
     func set_treasure_button_image_and_location() -> Void{
         resurrection_button.setBackgroundImage(UIImage(named: "item_round_resurrection"), for: .normal)
