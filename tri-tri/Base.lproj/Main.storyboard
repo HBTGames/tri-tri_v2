@@ -1000,6 +1000,22 @@
                                     <action selector="lottie_test:" destination="qxD-t8-ioY" eventType="touchUpInside" id="Cmw-GQ-yEu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhV-Ax-OFa">
+                                <rect key="frame" x="248" y="56" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="grow"/>
+                                <connections>
+                                    <action selector="line_grow:" destination="qxD-t8-ioY" eventType="touchUpInside" id="Q5w-Sa-Jqi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Yv-Sm-69R">
+                                <rect key="frame" x="312" y="200" width="47" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="new_life_circle"/>
+                                <connections>
+                                    <action selector="backpack:" destination="qxD-t8-ioY" eventType="touchUpInside" id="w6H-6C-ib2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1203,6 +1219,7 @@
         <image name="lang_icon_english_day_night" width="126" height="128"/>
         <image name="like" width="198" height="172"/>
         <image name="link" width="198" height="172"/>
+        <image name="new_life_circle" width="400" height="400"/>
         <image name="night_theme" width="177" height="177"/>
         <image name="pause_button" width="47" height="47"/>
         <image name="restart_big" width="350" height="304"/>
