@@ -12234,121 +12234,129 @@ number_of_lines_erased += 1
         
         if (!pack_open){
             set_treasure_button_image_and_location()
-            UIView.transition(with: backpack_button,
-                              duration: 1,
-                              options: .transitionCrossDissolve,
-                              animations: { self.backpack_button.setImage(self.backpack_button_after_hit, for: .normal) },
-                              completion: nil)
-           
-            self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
-            self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
-            self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: 0)
-            
-            self.view.addSubview(pack_patch)
-            self.view.addSubview(pack_line_1)
-            self.view.addSubview(pack_line_2)
-            
-            self.view.addSubview(resurrection_button)
-            self.view.addSubview(purification_button)
-            self.view.addSubview(holy_nova_button)
-            self.view.addSubview(amplifier_button)
-            self.view.addSubview(trinity_button)
-            self.view.addSubview(doom_day_button)
-            
-            self.view.bringSubview(toFront: self.backpack_button)
-            self.view.bringSubview(toFront: self.upper_half_pack_ring)
-            
-            UIView.animate(withDuration: 0.3, animations: {
-                self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(260))
-                self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(260))
-                self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(260))
-                self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142+250+10), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
-            }, completion: {
-                (finished) -> Void in
-                print("haha")
-                
-                UIView.animate(withDuration: 0.3, animations: {
-                    
-                    self.resurrection_button.fadeInWithDisplacement()
-                    self.purification_button.fadeInWithDisplacement()
-                    self.holy_nova_button.fadeInWithDisplacement()
-                    self.amplifier_button.fadeInWithDisplacement()
-                    self.trinity_button.fadeInWithDisplacement()
-                    self.doom_day_button.fadeInWithDisplacement()
-                }, completion: {
-                    (finished) -> Void in
-                    
-                })
-                
-                UIView.animate(withDuration: 0.1, animations:{
-                    
-                }, completion: {
-                    (finished) -> Void in
-                    UIView.animate(withDuration: 0.3, animations:{
-                    self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
-                    self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
-                    self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(250))
-                    self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142+250), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
-                    }, completion: {
-                        (finished) -> Void in
-                        print ("tan tan tan")
-                    })
-                
-                
-                
-                
-                self.view.sendSubview(toBack: self.upper_half_pack_ring)
-                self.view.bringSubview(toFront: self.backpack_button)
-            })
-            self.pack_open = true
+            open_pack()
             
 
-        })
+        
         }
         else {
-            self.view.bringSubview(toFront: upper_half_pack_ring)
-            UIView.transition(with: backpack_button,
-                              duration: 1,
-                              options: .transitionCrossDissolve,
-                              animations: { self.backpack_button.setImage(self.self.backpack_button_before_hit, for: .normal) },
-                              completion: nil)
-
-            UIView.animate(withDuration: 0.3, animations: {
-                self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
-                self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
-                self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: 0)
-                self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
-                self.resurrection_button.fadeOut()
-                self.purification_button.fadeOut()
-                self.holy_nova_button.fadeOut()
-                self.amplifier_button.fadeOut()
-                self.trinity_button.fadeOut()
-                self.doom_day_button.fadeOut()
+            close_pack()
+        }
+    }
+    
+func open_pack() -> Void{
+    UIView.transition(with: backpack_button,
+                      duration: 1,
+                      options: .transitionCrossDissolve,
+                      animations: { self.backpack_button.setImage(self.backpack_button_after_hit, for: .normal) },
+                      completion: nil)
+    
+    self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
+    self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
+    self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: 0)
+    
+    self.view.addSubview(pack_patch)
+    self.view.addSubview(pack_line_1)
+    self.view.addSubview(pack_line_2)
+    
+    self.view.addSubview(resurrection_button)
+    self.view.addSubview(purification_button)
+    self.view.addSubview(holy_nova_button)
+    self.view.addSubview(amplifier_button)
+    self.view.addSubview(trinity_button)
+    self.view.addSubview(doom_day_button)
+    
+    self.view.bringSubview(toFront: self.backpack_button)
+    self.view.bringSubview(toFront: self.upper_half_pack_ring)
+    
+    UIView.animate(withDuration: 0.3, animations: {
+        self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(260))
+        self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(260))
+        self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(260))
+        self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142+250+10), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
+    }, completion: {
+        (finished) -> Void in
+        print("haha")
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            
+            self.resurrection_button.fadeInWithDisplacement()
+            self.purification_button.fadeInWithDisplacement()
+            self.holy_nova_button.fadeInWithDisplacement()
+            self.amplifier_button.fadeInWithDisplacement()
+            self.trinity_button.fadeInWithDisplacement()
+            self.doom_day_button.fadeInWithDisplacement()
+        }, completion: {
+            (finished) -> Void in
+            
+        })
+        
+        UIView.animate(withDuration: 0.1, animations:{
+            
+        }, completion: {
+            (finished) -> Void in
+            UIView.animate(withDuration: 0.3, animations:{
+                self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
+                self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
+                self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(250))
+                self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142+250), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
             }, completion: {
                 (finished) -> Void in
-                print("hehe")
-                UIView.animate(withDuration: 0.2, animations: {
-                    
-                }, completion: {
-                    (finished) -> Void in
-                    self.resurrection_button.removeFromSuperview()
-                    self.purification_button.removeFromSuperview()
-                    self.holy_nova_button.removeFromSuperview()
-                    self.amplifier_button.removeFromSuperview()
-                    self.trinity_button.removeFromSuperview()
-                    self.doom_day_button.removeFromSuperview()
-                    
-                })
-
-                
-                
-                
-                self.view.sendSubview(toBack: self.upper_half_pack_ring)
-                self.view.bringSubview(toFront: self.backpack_button)
+                print ("tan tan tan")
             })
-            self.pack_open = false
             
-        }
+            
+            
+            
+            self.view.sendSubview(toBack: self.upper_half_pack_ring)
+            self.view.bringSubview(toFront: self.backpack_button)
+        })
+        self.pack_open = true
+    })
+}
+
+    func close_pack() -> Void{
+        self.view.bringSubview(toFront: upper_half_pack_ring)
+        UIView.transition(with: backpack_button,
+                          duration: 1,
+                          options: .transitionCrossDissolve,
+                          animations: { self.backpack_button.setImage(self.self.backpack_button_before_hit, for: .normal) },
+                          completion: nil)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
+            self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
+            self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: 0)
+            self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
+            self.resurrection_button.fadeOut()
+            self.purification_button.fadeOut()
+            self.holy_nova_button.fadeOut()
+            self.amplifier_button.fadeOut()
+            self.trinity_button.fadeOut()
+            self.doom_day_button.fadeOut()
+        }, completion: {
+            (finished) -> Void in
+            print("hehe")
+            UIView.animate(withDuration: 0.2, animations: {
+                
+            }, completion: {
+                (finished) -> Void in
+                self.resurrection_button.removeFromSuperview()
+                self.purification_button.removeFromSuperview()
+                self.holy_nova_button.removeFromSuperview()
+                self.amplifier_button.removeFromSuperview()
+                self.trinity_button.removeFromSuperview()
+                self.doom_day_button.removeFromSuperview()
+                
+            })
+            
+            
+            
+            
+            self.view.sendSubview(toBack: self.upper_half_pack_ring)
+            self.view.bringSubview(toFront: self.backpack_button)
+        })
+        self.pack_open = false
     }
     
     
