@@ -12226,7 +12226,7 @@ number_of_lines_erased += 1
             self.view.addSubview(redline_1)
             self.view.addSubview(redline_2)
             
-            UIView.animate(withDuration: 3, animations: {
+            UIView.animate(withDuration: 1, animations: {
                 self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
                 self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
                 self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142+250), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
@@ -12245,7 +12245,7 @@ number_of_lines_erased += 1
                               animations: { self.backpack_button.setImage(self.self.backpack_button_before_hit, for: .normal) },
                               completion: nil)
 
-            UIView.animate(withDuration: 3, animations: {
+            UIView.animate(withDuration: 1, animations: {
                 self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
                 self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
                 self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
