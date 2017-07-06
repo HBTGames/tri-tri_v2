@@ -2516,7 +2516,7 @@ class GameBoardViewController: UIViewController {
         else if(in_theme_menu){
             let transition0 = gesture.translation(in: day_theme_button)
             //上1/3和下1/3的空间
-            if(day_theme_button.frame.origin.y < (pause_screen_y_transform(145)+day_theme_button.frame.height/3) && school_theme_button.frame.origin.y > pause_screen_y_transform(493+144) - school_theme_button.frame.height/3 - school_theme_button.frame.height){
+            if(day_theme_button.frame.origin.y < (pause_screen_y_transform(145)+day_theme_button.frame.height/3) && colors_theme_button.frame.origin.y > pause_screen_y_transform(493+144) - colors_theme_button.frame.height/3 - colors_theme_button.frame.height){
                 day_theme_button.frame.origin = CGPoint(x: day_theme_origin.x, y: (day_theme_origin.y + transition0.y))
                 night_theme_button.frame.origin = CGPoint(x: night_theme_origin.x, y: (night_theme_origin.y + transition0.y))
                 BW_theme_button.frame.origin = CGPoint(x: BW_theme_origin.x, y: (BW_theme_origin.y + transition0.y))
@@ -2536,8 +2536,8 @@ class GameBoardViewController: UIViewController {
                     day_theme_origin.y = pause_screen_y_transform(145)
                     night_theme_origin.y =  pause_screen_y_transform(145)
                     BW_theme_origin.y = pause_screen_y_transform(319)
-                    chaos_theme_origin.y = pause_screen_y_transform(319)
-                    school_theme_origin.y = pause_screen_y_transform(493)
+                    //chaos_theme_origin.y = pause_screen_y_transform(319)
+                    school_theme_origin.y = pause_screen_y_transform(319)
                     colors_theme_origin.y = pause_screen_y_transform(493)
                     UIView.animate(withDuration: 0.5, animations: {
                         self.day_theme_button.frame.origin.y = self.day_theme_origin.y
