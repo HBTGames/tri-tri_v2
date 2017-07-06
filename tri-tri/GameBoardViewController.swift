@@ -871,7 +871,8 @@ class GameBoardViewController: UIViewController {
         //set backpack button frame
         backpack_button.frame = CGRect(x: pause_screen_x_transform(Double(backpack_button.frame.origin.x)), y: pause_screen_y_transform(Double(backpack_button.frame.origin.y)), width: pause_screen_x_transform(Double(backpack_button.frame.width)), height: pause_screen_y_transform(Double(backpack_button.frame.height)))
         lower_half_pack_ring.frame = CGRect(x: pause_screen_x_transform(Double(lower_half_pack_ring.frame.origin.x)), y: pause_screen_y_transform(Double(lower_half_pack_ring.frame.origin.y)), width: pause_screen_x_transform(Double(lower_half_pack_ring.frame.width)), height: pause_screen_y_transform(Double(lower_half_pack_ring.frame.height)))
-        self.view.bringSubview(toFront: backpack_button)
+        upper_half_pack_ring.frame = CGRect(x: pause_screen_x_transform(Double(upper_half_pack_ring.frame.origin.x)), y: pause_screen_y_transform(Double(upper_half_pack_ring.frame.origin.y)), width: pause_screen_x_transform(Double(upper_half_pack_ring.frame.width)), height: pause_screen_y_transform(Double(upper_half_pack_ring.frame.height)))
+        self.view.sendSubview(toBack: backpack_button)
         
         //declare original frames of the tris
         green_drag_tri_orig_rec =  CGRect(x: green_drag_tri.frame.origin.x - pause_screen_x_transform(20), y: green_drag_tri.frame.origin.y - pause_screen_y_transform(15), width: green_drag_tri.frame.width + pause_screen_x_transform(40), height: green_drag_tri.frame.height + pause_screen_y_transform(45))
@@ -12205,30 +12206,30 @@ number_of_lines_erased += 1
         
     }
     
+    @IBOutlet var upper_half_pack_ring: UIImageView!
     @IBOutlet var lower_half_pack_ring: UIImageView!
     @IBOutlet weak var backpack_button: UIButton!
     var pack_open = false
-    let redline_1 = UIView()
-    let redline_2 = UIView()
+    let pack_line_1 = UIView()
+    let pack_line_2 = UIView()
     @IBAction func backpack(_ sender: Any) {
+        backpack_decider()
         if (!pack_open){
             UIView.transition(with: backpack_button,
                               duration: 1,
                               options: .transitionCrossDissolve,
                               animations: { self.backpack_button.setImage(self.backpack_button_after_hit, for: .normal) },
                               completion: nil)
-           self.redline_1.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
-            self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
-            self.redline_2.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
-
-            self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
+           
+            self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
+            self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
             
-            self.view.addSubview(redline_1)
-            self.view.addSubview(redline_2)
+            self.view.addSubview(pack_line_1)
+            self.view.addSubview(pack_line_2)
             
             UIView.animate(withDuration: 1, animations: {
-                self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
-                self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
+                self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
+                self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
                 self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142+250), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
             }, completion: {
                 (finished) -> Void in
@@ -12246,8 +12247,8 @@ number_of_lines_erased += 1
                               completion: nil)
 
             UIView.animate(withDuration: 1, animations: {
-                self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
-                self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
+                self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
+                self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
                 self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(142), width: self.pause_screen_x_transform(47), height: self.pause_screen_y_transform(47))
             }, completion: {
                 (finished) -> Void in
@@ -12259,7 +12260,38 @@ number_of_lines_erased += 1
     }
     
     
-    
+    func backpack_decider() -> Void{
+        if (ThemeType == 1){
+            self.pack_line_1.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
+            self.pack_line_2.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
+            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_day")
+            self.upper_half_pack_ring.image = UIImage(named: "upper_half_pack_ring_day")
+        } else if (ThemeType == 2){
+            
+            self.pack_line_1.backgroundColor = UIColor(red:CGFloat(254/255.0), green:CGFloat(244/255.0), blue:CGFloat(228/255.0), alpha:CGFloat(1))
+            self.pack_line_2.backgroundColor = UIColor(red:CGFloat(254/255.0), green:CGFloat(244/255.0), blue:CGFloat(228/255.0), alpha:CGFloat(1))
+            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_night")
+            self.upper_half_pack_ring.image = UIImage(named: "upper_half_pack_ring_night")
+        } else if (ThemeType == 3){
+            
+            self.pack_line_1.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(1))
+            self.pack_line_2.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(1))
+            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_B&W")
+            self.upper_half_pack_ring.image = UIImage(named: "upper_half_pack_ring_B&W")
+        }else if (ThemeType == 5){
+            
+            self.pack_line_1.backgroundColor = UIColor(red:CGFloat(37/255.0), green:CGFloat(64/255.0), blue:CGFloat(126/255.0), alpha:CGFloat(1))
+            self.pack_line_2.backgroundColor = UIColor(red:CGFloat(37/255.0), green:CGFloat(64/255.0), blue:CGFloat(126/255.0), alpha:CGFloat(1))
+            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_school")
+            self.upper_half_pack_ring.image = UIImage(named: "upper_half_pack_ring_school")
+        }else if (ThemeType == 6){
+            
+            self.pack_line_1.backgroundColor = UIColor(red:CGFloat(252/255.0), green:CGFloat(194/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
+            self.pack_line_2.backgroundColor = UIColor(red:CGFloat(252/255.0), green:CGFloat(194/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
+            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_color")
+            self.upper_half_pack_ring.image = UIImage(named: "upper_half_pack_ring_color")
+        }
+    }
     
     
     

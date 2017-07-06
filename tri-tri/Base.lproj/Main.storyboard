@@ -1020,6 +1020,10 @@
                                 <rect key="frame" x="312" y="142" width="47" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="upper_half_pack_ring_day" translatesAutoresizingMaskIntoConstraints="NO" id="zzE-NV-pET">
+                                <rect key="frame" x="312" y="142" width="47" height="47"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1152,6 +1156,7 @@
                         <outlet property="tri_5_6_back" destination="meA-AH-8uH" id="XCP-bQ-xr1"/>
                         <outlet property="triangle_title" destination="gNR-HH-lwS" id="jGk-hZ-49b"/>
                         <outlet property="trophy" destination="P0M-hw-129" id="f8g-Wb-NxI"/>
+                        <outlet property="upper_half_pack_ring" destination="zzE-NV-pET" id="Cij-fM-Axi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44c-a1-QJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1241,6 +1246,7 @@
         <image name="tuto_bg" width="375" height="667"/>
         <image name="tuto_exit" width="130" height="130"/>
         <image name="tuto_icon_day_night" width="126" height="129"/>
+        <image name="upper_half_pack_ring_day" width="400" height="400"/>
         <image name="wheel" width="282" height="282"/>
         <image name="wheel_background" width="375" height="667"/>
         <image name="wheel_outer" width="375" height="667"/>
