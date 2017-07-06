@@ -262,7 +262,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
@@ -270,7 +270,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13335"
-            endingLineNumber = "13335">
+            endingLineNumber = "13335"
+            landmarkName = "exam_each_situation_lack_tri_number()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -285,8 +287,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "12518"
             endingLineNumber = "12518"
-            landmarkName = "GameBoardViewController"
-            landmarkType = "3">
+            landmarkName = "purification()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -301,7 +303,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13116"
             endingLineNumber = "13116"
-            landmarkName = "exam_each_situation_lack_tri_number()"
+            landmarkName = "fill_tris_to_situation(situation_index:tri_number:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -317,7 +319,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "12633"
             endingLineNumber = "12633"
-            landmarkName = "trinity_action()"
+            landmarkName = "doom_day_action()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -333,7 +335,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "12629"
             endingLineNumber = "12629"
-            landmarkName = "trinity_action()"
+            landmarkName = "doom_day_action()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

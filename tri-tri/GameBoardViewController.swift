@@ -2421,8 +2421,8 @@ class GameBoardViewController: UIViewController {
                 do{
                     fit_in_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Fit_In", ofType: "aif")!))
                     fit_in_player.prepareToPlay()
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-                    try AVAudioSession.sharedInstance().setActive(false)
+                    //try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+                    //try AVAudioSession.sharedInstance().setActive(false)
                 }
                 catch{
                     //print("error")
