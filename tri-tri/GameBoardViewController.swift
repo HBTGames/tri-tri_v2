@@ -740,6 +740,7 @@ class GameBoardViewController: UIViewController {
         orange_drag_origin_backup = orange_drag_origin
         green_drag_origin_backup = green_drag_origin
         light_brown_drag_origin_backup = light_brown_drag_origin
+        if(!paused){
         if(green_drag_tri_orig_rec.contains(initialTouchLocation)){
             self.green_drag_origin.y = self.green_drag_origin.y - self.pause_screen_y_transform(70)
             self.green_drag_origin.x = self.green_drag_origin.x - self.pause_screen_x_transform(10)
@@ -768,6 +769,7 @@ class GameBoardViewController: UIViewController {
                 self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
             })
         }
+        }
     }
         //print("Touche at x: \(initialTouchLocation.x), y:\(initialTouchLocation.y)")
 
@@ -775,6 +777,7 @@ class GameBoardViewController: UIViewController {
         super.touchesEnded(touches, with: event)
         
             let finalTouchLocation = touches.first!.location(in: view)
+        if(!paused){
             if(green_drag_tri_orig_rec.contains(finalTouchLocation)){
                 self.green_drag_origin = self.green_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
@@ -796,7 +799,7 @@ class GameBoardViewController: UIViewController {
                 })
         }
         }
-        
+    }
     
     
     
