@@ -12293,7 +12293,7 @@ number_of_lines_erased += 1
         }
         
         self.trinity_button.whenButtonIsClicked {
-            
+        self.trinity_action()
         }
         
         self.doom_day_button.whenButtonIsClicked {
@@ -12579,7 +12579,7 @@ number_of_lines_erased += 1
         return true
     }
     
-    
+    /***********************************************************************************/
     //doom day function
     
     func doom_day_action() -> Void{
@@ -12647,7 +12647,7 @@ number_of_lines_erased += 1
         })
         
     }
-    
+    /***********************************************************************************/
     //amplifer function
     var amplify_base = 1
     var amplifier_count_down_timer = Timer()
@@ -12663,7 +12663,711 @@ number_of_lines_erased += 1
     print("amplifier finished")
         
     }
- 
+    
+    
+ /********************* all functions needed for trinity ********************/
+  //trinity function
+    var situation_lack_tri_number = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    func trinity_action() -> Void{
+     close_pack()
+    exam_each_situation_lack_tri_number()
+    var sorted_situation_lack_tri_number = situation_lack_tri_number
+    sorted_situation_lack_tri_number.sort()
+    //get smallest lack
+    //let smallest_lack = sorted_situation_lack_tri_number[0]
+    //var smallest_lack_situation = situation_lack_tri_number.index(of: smallest_lack)!
+    //print("smallest_lack number is \(smallest_lack) with situation: \(smallest_lack_situation)")
+    
+   let cond_before_insert = filled
+        var remaining_tri = 3
+        var index = 0
+        while(remaining_tri > 0 && index < situation_lack_tri_number.count ){
+        var smallest_lack = sorted_situation_lack_tri_number[index]
+        print("smallest_lack is \(smallest_lack)")
+        var smallest_lack_situation = situation_lack_tri_number.index(of: smallest_lack)!
+        print("smallest_lack_situation is \(smallest_lack_situation)")
+            if(smallest_lack > 3){
+                smallest_lack = 3
+            }
+        situation_lack_tri_number[smallest_lack_situation] -= smallest_lack
+        sorted_situation_lack_tri_number = situation_lack_tri_number
+        sorted_situation_lack_tri_number.sort()
+        fill_tris_to_situation(situation_index: smallest_lack_situation, tri_number: smallest_lack)
+        remaining_tri -= smallest_lack
+        index += 1
+        }
+        
+        let cond_before_erase = filled
+        last_score = score
+        modify_counter(before: cond_before_insert, after: cond_before_erase)
+        current_score = score
+        star_score_increment()
+        Check_and_Erase()
+        let cond_after_erase = filled
+        last_score = score
+        modify_counter_after_erase(before: cond_before_erase, after: cond_after_erase)
+        current_score = score
+        star_score_increment()
+
+    
+        
+    }
+    
+    
+    func fill_tris_to_situation(situation_index: Int, tri_number: Int) -> Void{
+        var shape_color_up = UIImage(named:"purple_upwards")!
+        var shape_color_down = UIImage(named:"purple_downwards")!
+        //if Themetype == 1 doesnt change
+        if (ThemeType == 2){
+            shape_color_up = UIImage(named: "小肉 up")!
+            shape_color_down = UIImage(named: "小肉 down")!
+        }else if(ThemeType == 3){
+            shape_color_up = UIImage(named: "BW_black_tri_up")!
+            shape_color_down = UIImage(named: "BW_black_tri_down")!
+       }else if(ThemeType == 4){
+             shape_color_up = UIImage(named: "chaos_up")!
+            shape_color_down = UIImage(named: "chaos_down")!
+            
+        }else if(ThemeType == 5){
+            shape_color_up = UIImage(named: "school_up")!
+            
+            shape_color_down = UIImage(named: "school_down")!
+            
+            
+        }else if(ThemeType == 6){
+            shape_color_up = UIImage(named: "colors_pink_up")!
+        
+            shape_color_down = UIImage(named: "colors_pink_down")!
+            
+        }
+
+        if(situation_index == 0){
+        var filled_number = 0
+        var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_0.count ){
+                let row = default_erase_situation_0[i][0]
+                let col = default_erase_situation_0[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                        }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+            
+            
+        }else if(situation_index == 1){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_1.count){
+                let row = default_erase_situation_1[i][0]
+                let col = default_erase_situation_1[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 2){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_2.count){
+                let row = default_erase_situation_2[i][0]
+                let col = default_erase_situation_2[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 3){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_3.count){
+                let row = default_erase_situation_3[i][0]
+                let col = default_erase_situation_3[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 4){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_4.count){
+                let row = default_erase_situation_4[i][0]
+                let col = default_erase_situation_4[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 5){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_5.count){
+                let row = default_erase_situation_5[i][0]
+                let col = default_erase_situation_5[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 6){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_6.count){
+                let row = default_erase_situation_6[i][0]
+                let col = default_erase_situation_6[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 7){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_7.count){
+                let row = default_erase_situation_7[i][0]
+                let col = default_erase_situation_7[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 8){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_8.count){
+                let row = default_erase_situation_8[i][0]
+                let col = default_erase_situation_8[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 9){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_9.count ){
+                let row = default_erase_situation_9[i][0]
+                let col = default_erase_situation_9[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 10){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_10.count){
+                let row = default_erase_situation_10[i][0]
+                let col = default_erase_situation_10[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 11){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_11.count){
+                let row = default_erase_situation_11[i][0]
+                let col = default_erase_situation_11[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 12){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_12.count){
+                let row = default_erase_situation_12[i][0]
+                let col = default_erase_situation_12[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 13){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_13.count){
+                let row = default_erase_situation_13[i][0]
+                let col = default_erase_situation_13[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 14){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_14.count){
+                let row = default_erase_situation_14[i][0]
+                let col = default_erase_situation_14[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 15){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_15.count){
+                let row = default_erase_situation_15[i][0]
+                let col = default_erase_situation_15[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 16){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_16.count){
+                let row = default_erase_situation_16[i][0]
+                let col = default_erase_situation_16[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 17){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_17.count){
+                let row = default_erase_situation_17[i][0]
+                let col = default_erase_situation_17[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }else if(situation_index == 18){
+            var filled_number = 0
+            var i = 0
+            while(filled_number < tri_number && i < default_erase_situation_18.count){
+                let row = default_erase_situation_18[i][0]
+                let col = default_erase_situation_18[i][1]
+                if(!filled[row][col]){
+                    if(true_if_up(i: row, j: col)){
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        single_tri_stored_type_index[row][col] = 7
+                        filled[row][col] = true
+                    }else{
+                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        single_tri_stored_type_index[row][col] = 8
+                        filled[row][col] = true
+                    }
+                    filled_number += 1
+                }
+                i += 1
+            }
+
+            
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+    func exam_each_situation_lack_tri_number() -> Void{
+    var lack_number = 0
+      //situation 0
+        for pair in default_erase_situation_0{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[0] = lack_number
+        //print("situation 0 lack \(lack_number) of tirs")
+      //situation 1
+        lack_number = 0
+        for pair in default_erase_situation_1{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[1] = lack_number
+        //print("situation 1 lack \(lack_number) of tirs")
+        //situation 2
+        lack_number = 0
+        for pair in default_erase_situation_2{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[2] = lack_number
+        //print("situation 2 lack \(lack_number) of tirs")
+        //situation 3
+        lack_number = 0
+        for pair in default_erase_situation_3{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[3] = lack_number
+        //print("situation 3 lack \(lack_number) of tirs")
+        //situation 4
+        lack_number = 0
+        for pair in default_erase_situation_4{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[4] = lack_number
+        //print("situation 4 lack \(lack_number) of tirs")
+        //situation 5
+        lack_number = 0
+        for pair in default_erase_situation_5{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[5] = lack_number
+        //print("situation 5 lack \(lack_number) of tirs")
+        //situation 6
+        lack_number = 0
+        for pair in default_erase_situation_6{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[6] = lack_number
+        //print("situation 6 lack \(lack_number) of tirs")
+        //situation 7
+        lack_number = 0
+        for pair in default_erase_situation_7{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[7] = lack_number
+        //print("situation 7 lack \(lack_number) of tirs")
+        //situation 8
+        lack_number = 0
+        for pair in default_erase_situation_8{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[8] = lack_number
+        //print("situation 8 lack \(lack_number) of tirs")
+        //situation 9
+        lack_number = 0
+        for pair in default_erase_situation_9{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[9] = lack_number
+        //print("situation 9 lack \(lack_number) of tirs")
+        //situation 10
+        lack_number = 0
+        for pair in default_erase_situation_10{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[10] = lack_number
+        //print("situation 10 lack \(lack_number) of tirs")
+        //situation 11
+        lack_number = 0
+        for pair in default_erase_situation_11{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[11] = lack_number
+        //print("situation 11 lack \(lack_number) of tirs")
+        //situation 12
+        lack_number = 0
+        for pair in default_erase_situation_12{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[12] = lack_number
+        //print("situation 12 lack \(lack_number) of tirs")
+        //situation 13
+        lack_number = 0
+        for pair in default_erase_situation_13{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[13] = lack_number
+        //print("situation 13 lack \(lack_number) of tirs")
+        //situation 14
+        lack_number = 0
+        for pair in default_erase_situation_14{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[14] = lack_number
+        //print("situation 14 lack \(lack_number) of tirs")
+        //situation 15
+        lack_number = 0
+        for pair in default_erase_situation_15{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[15] = lack_number
+        //print("situation 15 lack \(lack_number) of tirs")
+        //situation 16
+        lack_number = 0
+        for pair in default_erase_situation_16{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[16] = lack_number
+       //print("situation 16 lack \(lack_number) of tirs")
+        //situation 17
+        lack_number = 0
+        for pair in default_erase_situation_17{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[17] = lack_number
+        //print("situation 17 lack \(lack_number) of tirs")
+        //situation 18
+        lack_number = 0
+        for pair in default_erase_situation_18{
+            if(!filled[pair[0]][pair[1]]){
+                lack_number += 1
+            }
+            
+        }
+        situation_lack_tri_number[18] = lack_number
+        //print("situation 18 lack \(lack_number) of tirs")
+
+        
+        
+    }
+/***********************************************************************************/
+    
+    
+    
+    
     
 }
 
