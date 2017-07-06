@@ -12213,6 +12213,15 @@ number_of_lines_erased += 1
         
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    ///////////////treasure
     @IBOutlet var upper_half_pack_ring: UIImageView!
     @IBOutlet var lower_half_pack_ring: UIImageView!
     @IBOutlet weak var backpack_button: UIButton!
@@ -12221,43 +12230,82 @@ number_of_lines_erased += 1
     let pack_line_2 = UIView()
     let pack_patch = UIView()
     
-    let resurrection_button = UIButton()
-    let purification_button = UIButton()
-    let holy_nova_button = UIButton()
-    let amplifier_button = UIButton()
-    let trinity_button = UIButton()
-    let doom_day_button = UIButton()
+    let resurrection_button = MyButton()
+    let purification_button = MyButton()
+    let holy_nova_button = MyButton()
+    let amplifier_button = MyButton()
+    let trinity_button = MyButton()
+    let doom_day_button = MyButton()
+    
+    
+    
+    
+    
     
     
     @IBAction func backpack(_ sender: Any) {
         backpack_decider()
-        
         if (!pack_open){
             set_treasure_button_image_and_location()
             open_pack()
-            
-
-        
         }
         else {
             close_pack()
         }
     }
     
-func open_pack() -> Void{
-    UIView.transition(with: backpack_button,
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    func open_pack() -> Void{
+        UIView.transition(with: backpack_button,
                       duration: 1,
                       options: .transitionCrossDissolve,
                       animations: { self.backpack_button.setImage(self.backpack_button_after_hit, for: .normal) },
                       completion: nil)
     
-    self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
-    self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
-    self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: 0)
+        self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
+        self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
+        self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(47), height: 0)
+        
+        
+        self.resurrection_button.whenButtonIsClicked {
+            
+        }
+        
+        self.purification_button.whenButtonIsClicked {
+            
+        }
+        
+        self.holy_nova_button.whenButtonIsClicked {
+            
+        }
+        
+        self.trinity_button.whenButtonIsClicked {
+            
+        }
+        
+        self.doom_day_button.whenButtonIsClicked {
+            
+        }
+        
+        self.amplifier_button.whenButtonIsClicked {
+            
+        }
+        
     
-    self.view.addSubview(pack_patch)
-    self.view.addSubview(pack_line_1)
-    self.view.addSubview(pack_line_2)
+        self.view.addSubview(pack_patch)
+        self.view.addSubview(pack_line_1)
+        self.view.addSubview(pack_line_2)
     
     self.view.addSubview(resurrection_button)
     self.view.addSubview(purification_button)
@@ -12313,8 +12361,17 @@ func open_pack() -> Void{
         })
         self.pack_open = true
     })
-}
+    }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
     func close_pack() -> Void{
         self.view.bringSubview(toFront: upper_half_pack_ring)
         UIView.transition(with: backpack_button,
@@ -12418,6 +12475,35 @@ func open_pack() -> Void{
         trinity_button.alpha = 0
         doom_day_button.alpha = 0
     }
+    
+    func resurrection_when_dead() -> Void {
+        
+    }
+    
+    func resurrection_when_alive() -> Void {
+        let alive_resu_text = UILabel()
+        alive_resu_text.text = "YOU MUST DIE FIRST!"
+        alive_resu_text.frame = CGRect((x: self.pause_screen_x_transform(320), y: self.pause_screen_y_transform(195), width: self.pause_screen_x_transform(30), height: self.pause_screen_y_transform(30)))
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     override var prefersStatusBarHidden: Bool {
