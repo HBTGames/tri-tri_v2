@@ -354,7 +354,7 @@ class GameBoardViewController: UIViewController {
         [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )],
         [CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 ),CGPoint(x: 0, y:0 )]]
 
-    
+    var tri_boxes: Array<Array<CGRect>> = []
     
     
     
@@ -660,6 +660,7 @@ class GameBoardViewController: UIViewController {
     //indicate into theme menu
     var in_theme_menu = false
 
+    var during_holy_nova = false
     
     
     
@@ -742,6 +743,7 @@ class GameBoardViewController: UIViewController {
         green_drag_origin_backup = green_drag_origin
         light_brown_drag_origin_backup = light_brown_drag_origin
         if(!paused){
+            if(!during_holy_nova){
         if(green_drag_tri_orig_rec.contains(initialTouchLocation)){
             self.green_drag_origin.y = self.green_drag_origin.y - self.pause_screen_y_transform(70)
             self.green_drag_origin.x = self.green_drag_origin.x - self.pause_screen_x_transform(10)
@@ -770,6 +772,38 @@ class GameBoardViewController: UIViewController {
                 self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
             })
         }
+        }
+            else{   //during holy nova
+                var contained_boxes: Array<CGRect> = []
+                var candidates: Array<Array<Int>> = []
+                var i = 0
+                for row in tri_boxes{
+                    var j = 0
+                    for tri_frame in row{
+                        if (tri_frame.contains(initialTouchLocation)){
+                            contained_boxes.append(tri_frame)
+                            candidates.append([i, j])
+                        }
+                        j+=1
+                    }
+                    i += 1
+                }
+                if contained_boxes.count == 0{
+                    do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                        not_fit_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    not_fit_player.play()
+                } else/* if (contained_boxes.count == 1)*/{
+                    print("reach nova else")
+                    var row = candidates[0][0]
+                    var col = candidates[0][1]
+                    self.nova_breaker(row: row, col: col)
+                    self.during_holy_nova = false
+                }
+            }
         }
     }
         //print("Touche at x: \(initialTouchLocation.x), y:\(initialTouchLocation.y)")
@@ -1254,6 +1288,24 @@ class GameBoardViewController: UIViewController {
         
         //-----------------------------------------------------------------------------------------------
         //ugly and long init finished XD
+        
+        
+        
+        
+        
+        for row in tri_location{
+            
+            var temp_array : Array<CGRect> = []
+            for tri in row{
+                var temp_frame: CGRect = CGRect(x: tri.x, y: tri.y, width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
+                temp_array.append(temp_frame)
+            }
+            tri_boxes.append(temp_array)
+            print(temp_array.count)
+        }
+        
+        
+        
         
         //audio intialize
         //do{
@@ -12289,7 +12341,7 @@ number_of_lines_erased += 1
         }
         
         self.holy_nova_button.whenButtonIsClicked {
-            
+            self.holy_nova()
         }
         
         self.trinity_button.whenButtonIsClicked {
@@ -12543,12 +12595,178 @@ number_of_lines_erased += 1
             self.single_tri_stored_type_index[i[0]][i[1]] = -1
             self.filled[i[0]][i[1]] = false
         }
+        self.close_pack()
     }
         
     
+    func holy_nova() -> Void{
+        during_holy_nova = true
+        self.close_pack()
+    }
+        
+    func nova_breaker(row: Int, col: Int) -> Void{
+        print("reach here")
+        print (row)
+        print (col)
+        var break_list: Array<Array<Int>> = []
+        break_list.append([row,col])
+        for positions in default_erase_situation_0{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_0{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_1{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_1{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_2{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_2{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_3{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_3{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_1{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_1{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_4{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_4{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_5{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_5{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_6{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_6{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_7{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_7{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_8{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_8{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_9{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_9{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_10{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_10{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_11{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_11{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_12{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_12{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_13{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_13{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_14{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_14{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_15{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_15{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_16{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_16{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for positions in default_erase_situation_17{
+            if (positions[0] == row && positions[1] == col){
+                for tri in default_erase_situation_17{
+                    break_list.append(tri)
+                }
+            }
+        }
+        for i in break_list{
+            print (i[0])
+            print(i[1])
+        }
+        
+        for i in break_list{
+            UIView.animate(withDuration: 0.1, animations: {
+                self.erase_animation_by_row_col(row: i[0] , col: i[1])
+            }, completion: {
+                (finished) -> Void in
+                
+                self.erase_animation_with_grey_tri_restore_by_row_col(row: i[0] , col: i[1])
+                
+            })
+            self.single_tri_stored_type_index[i[0]][i[1]] = -1
+            self.filled[i[0]][i[1]] = false
+        }
         
         
-    
+        
+        
+            
+       
+    }
     
     
     
@@ -13370,32 +13588,6 @@ number_of_lines_erased += 1
     
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
