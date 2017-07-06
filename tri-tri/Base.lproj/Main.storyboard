@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -529,10 +529,6 @@
                                 <rect key="frame" x="163" y="248" width="49" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="grey_tir_downwards" translatesAutoresizingMaskIntoConstraints="NO" id="v0M-8F-PAv">
-                                <rect key="frame" x="189" y="248" width="49" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="grey_tri_upwards" translatesAutoresizingMaskIntoConstraints="NO" id="3R3-ST-7f3">
                                 <rect key="frame" x="215" y="248" width="49" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1028,6 +1024,7 @@
                     <connections>
                         <outlet property="HightestScoreBoard" destination="XIJ-Xa-Clo" id="8Iq-Zy-CDC"/>
                         <outlet property="MarkBoard" destination="R9g-fj-p9q" id="hIa-ST-6zW"/>
+                        <outlet property="backpack_button" destination="0Yv-Sm-69R" id="IjI-Uv-DIS"/>
                         <outlet property="center" destination="NDl-Da-Qca" id="5rr-Ls-bNL"/>
                         <outlet property="green_drag_tri" destination="gxz-1Y-RXe" id="UIE-Sq-pg7"/>
                         <outlet property="light_brown_drag_tri" destination="YRp-Xf-A4k" id="Q8B-sM-uFu"/>
@@ -1149,6 +1146,10 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44c-a1-QJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="grey_tir_downwards" id="v0M-8F-PAv">
+                    <rect key="frame" x="0.0" y="0.0" width="49" height="43"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </objects>
             <point key="canvasLocation" x="0.80000000000000004" y="732.68365817091455"/>
         </scene>

@@ -643,6 +643,9 @@ class GameBoardViewController: UIViewController {
     let school_restart_big_pic = UIImage(named:"school_restart_big")
     let school_like_pic = UIImage(named:"school_like-icon")
     
+    //backpack button for each theme
+    var backpack_button_before_hit = #imageLiteral(resourceName: "day_mode_backup_before_hit")
+    var backpack_button_after_hit = #imageLiteral(resourceName: "backpack_day_after_hit")
     
 
     
@@ -865,6 +868,11 @@ class GameBoardViewController: UIViewController {
         //34
         light_brown_drag_origin = light_brown_drag_tri.frame.origin
         light_brown_drag_origin_backup = light_brown_drag_origin
+        //set backpack button frame
+        backpack_button.frame = CGRect(x: pause_screen_x_transform(Double(backpack_button.frame.origin.x)), y: pause_screen_y_transform(Double(backpack_button.frame.origin.y)), width: pause_screen_x_transform(Double(backpack_button.frame.width)), height: pause_screen_y_transform(Double(backpack_button.frame.height)))
+
+        
+        
         //declare original frames of the tris
         green_drag_tri_orig_rec =  CGRect(x: green_drag_tri.frame.origin.x - pause_screen_x_transform(20), y: green_drag_tri.frame.origin.y - pause_screen_y_transform(15), width: green_drag_tri.frame.width + pause_screen_x_transform(40), height: green_drag_tri.frame.height + pause_screen_y_transform(45))
         //print("green origin x: \(green_drag_origin.x), y: \(green_drag_origin.y)")
@@ -932,7 +940,9 @@ class GameBoardViewController: UIViewController {
             MarkBoard.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             trophy.image = UIImage(named:"trophy_new")
             pause.setImage(UIImage(named: "pause_button"), for: .normal)
-            
+            backpack_button_before_hit = #imageLiteral(resourceName: "day_mode_backup_before_hit")
+            backpack_button_after_hit = #imageLiteral(resourceName: "backpack_day_after_hit")
+            backpack_button.setImage(backpack_button_before_hit, for: .normal)
             starBoard.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
             
             
@@ -947,6 +957,9 @@ class GameBoardViewController: UIViewController {
             MarkBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             trophy.image = UIImage(named:"night mode 奖杯")
             pause.setImage(UIImage(named: "night mode pause"), for: .normal)
+            backpack_button_before_hit = #imageLiteral(resourceName: "night_mode_backpack_before_hit")
+            backpack_button_after_hit = #imageLiteral(resourceName: "night_mode_backpack_after_hit")
+            backpack_button.setImage(backpack_button_before_hit, for: .normal)
             starBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             
         }else if ThemeType == 3{
@@ -960,6 +973,10 @@ class GameBoardViewController: UIViewController {
             MarkBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             trophy.image = UIImage(named: "BW_trophy")
             pause.setImage(UIImage(named: "BW_pause"), for: .normal)
+            backpack_button_before_hit = #imageLiteral(resourceName: "bw_backpack_before_hit")
+            backpack_button_after_hit = #imageLiteral(resourceName: "bw_backpack_after_hit")
+            backpack_button.setImage(backpack_button_before_hit, for: .normal)
+
              starBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             
         }else if ThemeType == 4{
@@ -978,6 +995,9 @@ class GameBoardViewController: UIViewController {
             self.downwards_tri = UIImage(named:"grey_tir_downwards")
             self.upwards_tri = UIImage(named:"grey_tri_upwards")
             star_counter.image = UIImage(named:"school_mode_star")
+            backpack_button_before_hit = #imageLiteral(resourceName: "school_backpack_before_hit")
+            backpack_button_after_hit = #imageLiteral(resourceName: "school_backpack_after_hit")
+            backpack_button.setImage(backpack_button_before_hit, for: .normal)
 
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
@@ -991,7 +1011,9 @@ class GameBoardViewController: UIViewController {
             self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
             self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
             star_counter.image = UIImage(named:"colors_mode_star")
-
+            self.backpack_button_before_hit = #imageLiteral(resourceName: "color_backpack_before_hit")
+            self.backpack_button_after_hit = #imageLiteral(resourceName: "color_backpack_after_hit")
+           backpack_button.setImage(backpack_button_before_hit, for: .normal)
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
             self.HightestScoreBoard.textColor = UIColor(red: 255.0/255, green: 195.0/255, blue: 1.0/255, alpha: 1.0)
@@ -1595,7 +1617,9 @@ class GameBoardViewController: UIViewController {
              self.starBoard.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
             self.theme_star_counter.image = UIImage(named:"day_mode_star")
             self.theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
-            
+            self.backpack_button_before_hit = #imageLiteral(resourceName: "day_mode_backup_before_hit")
+            self.backpack_button_after_hit = #imageLiteral(resourceName: "backpack_day_after_hit")
+            self.backpack_button.setImage(self.backpack_button_before_hit, for: .normal)
             self.triangle_title_image_decider()
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
@@ -1655,7 +1679,9 @@ class GameBoardViewController: UIViewController {
             self.continue_button.setBackgroundImage(self.continue_pic, for: .normal)
             self.restart_button.setBackgroundImage(self.restart_pic, for: .normal)
             self.shopping_button.setBackgroundImage(self.shopping_pic, for: .normal)
-
+            self.backpack_button_before_hit = #imageLiteral(resourceName: "night_mode_backpack_before_hit")
+            self.backpack_button_after_hit = #imageLiteral(resourceName: "night_mode_backpack_after_hit")
+            self.backpack_button.setImage(self.backpack_button_before_hit, for: .normal)
             self.change_shape_in_generate_array()
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
@@ -1723,6 +1749,9 @@ class GameBoardViewController: UIViewController {
             self.continue_button.setBackgroundImage(self.BW_continue_pic, for: .normal)
             self.restart_button.setBackgroundImage(self.BW_restart_pic, for: .normal)
             self.shopping_button.setBackgroundImage(self.BW_shopping_pic, for: .normal)
+            self.backpack_button_before_hit = #imageLiteral(resourceName: "bw_backpack_before_hit")
+            self.backpack_button_after_hit = #imageLiteral(resourceName: "bw_backpack_after_hit")
+            self.backpack_button.setImage(self.backpack_button_before_hit, for: .normal)
 
             self.change_shape_in_generate_array()
             self.change_current_shapes_according_to_theme()
@@ -1879,7 +1908,9 @@ class GameBoardViewController: UIViewController {
             self.continue_button.setBackgroundImage(self.school_continue_pic, for: .normal)
             self.restart_button.setBackgroundImage(self.school_restart_small_pic, for: .normal)
             self.shopping_button.setBackgroundImage(self.school_shopping_pic, for: .normal)
-            
+            self.backpack_button_before_hit = #imageLiteral(resourceName: "school_backpack_before_hit")
+            self.backpack_button_after_hit = #imageLiteral(resourceName: "school_backpack_after_hit")
+            self.backpack_button.setImage(self.backpack_button_before_hit, for: .normal)
             self.change_shape_in_generate_array()
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
@@ -1949,7 +1980,9 @@ class GameBoardViewController: UIViewController {
             self.continue_button.setBackgroundImage(self.colors_continue_pic, for: .normal)
             self.restart_button.setBackgroundImage(self.colors_restart_small_pic, for: .normal)
             self.shopping_button.setBackgroundImage(self.colors_shopping_pic, for: .normal)
-            
+            self.backpack_button_before_hit = #imageLiteral(resourceName: "color_backpack_before_hit")
+            self.backpack_button_after_hit = #imageLiteral(resourceName: "color_backpack_after_hit")
+            self.backpack_button.setImage(self.backpack_button_before_hit, for: .normal)
             self.change_shape_in_generate_array()
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
@@ -12172,17 +12205,24 @@ number_of_lines_erased += 1
         
     }
     
+    @IBOutlet weak var backpack_button: UIButton!
     var pack_open = false
     let redline_1 = UIView()
     let redline_2 = UIView()
     @IBAction func backpack(_ sender: Any) {
         if (!pack_open){
-            self.redline_1.backgroundColor = .red
+            UIView.transition(with: backpack_button,
+                              duration: 1,
+                              options: .transitionCrossDissolve,
+                              animations: { self.backpack_button.setImage(self.backpack_button_after_hit, for: .normal) },
+                              completion: nil)
+           self.redline_1.backgroundColor = .red
             self.redline_1.frame = CGRect(x: 312, y: 223.5, width: 1, height: 0)
             self.redline_2.backgroundColor = .red
             self.redline_2.frame = CGRect(x: 359, y: 223.5, width: 1, height: 0)
             self.view.addSubview(redline_1)
             self.view.addSubview(redline_2)
+            
             UIView.animate(withDuration: 3, animations: {
                 self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(5), height: self.pause_screen_y_transform(250))
                 self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(354), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(5), height: self.pause_screen_y_transform(250))
@@ -12195,6 +12235,12 @@ number_of_lines_erased += 1
 
         }
         else {
+            UIView.transition(with: backpack_button,
+                              duration: 1,
+                              options: .transitionCrossDissolve,
+                              animations: { self.backpack_button.setImage(self.self.backpack_button_before_hit, for: .normal) },
+                              completion: nil)
+
             UIView.animate(withDuration: 3, animations: {
                 self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(5), height: self.pause_screen_y_transform(0))
                 self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(354), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(5), height: self.pause_screen_y_transform(0))
@@ -12216,7 +12262,10 @@ number_of_lines_erased += 1
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
+    
+    
+ 
+    
 }
 
 

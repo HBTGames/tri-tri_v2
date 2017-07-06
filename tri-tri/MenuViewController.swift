@@ -999,6 +999,7 @@ class MenuViewController: UIViewController {
     treasure_cancel.alpha = 0
     self.view.addSubview(treasure_cancel)
     treasure_cancel.fadeIn()
+ 
 
 //current star total
 current_star_total = UIImageView(frame: CGRect(x: screen_width - pause_screen_x_transform(150), y: pause_screen_y_transform(10), width: pause_screen_x_transform(120), height: pause_screen_y_transform(45)))
