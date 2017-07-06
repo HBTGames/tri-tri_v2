@@ -12216,16 +12216,17 @@ number_of_lines_erased += 1
                               options: .transitionCrossDissolve,
                               animations: { self.backpack_button.setImage(self.backpack_button_after_hit, for: .normal) },
                               completion: nil)
-           self.redline_1.backgroundColor = .red
-            self.redline_1.frame = CGRect(x: 312, y: 223.5, width: 1, height: 0)
-            self.redline_2.backgroundColor = .red
-            self.redline_2.frame = CGRect(x: 359, y: 223.5, width: 1, height: 0)
+           self.redline_1.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
+            self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(4), height: 0)
+            self.redline_2.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
+
+            self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(4), height: 0)
             self.view.addSubview(redline_1)
             self.view.addSubview(redline_2)
             
             UIView.animate(withDuration: 3, animations: {
-                self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(5), height: self.pause_screen_y_transform(250))
-                self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(354), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(5), height: self.pause_screen_y_transform(250))
+                self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
+                self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
             }, completion: {
                 (finished) -> Void in
                 print("haha")
