@@ -1310,7 +1310,7 @@ class GameBoardViewController: UIViewController {
     
     func reorder_triangle_positions_during_loading_view() -> Void{
         
-        pause.frame = CGRect(x: pause_screen_x_transform(312) , y: pause_screen_y_transform(144) , width: pause_screen_x_transform(47), height: pause_screen_y_transform(47))
+        pause.frame = CGRect(x: pause_screen_x_transform(Double(self.pause.frame.origin.x)) , y: pause_screen_y_transform(Double(self.pause.frame.origin.y)) , width: pause_screen_x_transform(Double(self.pause.frame.width)), height: pause_screen_y_transform(Double(self.pause.frame.height)))
         print(pause.frame.origin.x)
         print(pause.frame.origin.y)
         
@@ -12217,16 +12217,16 @@ number_of_lines_erased += 1
                               animations: { self.backpack_button.setImage(self.backpack_button_after_hit, for: .normal) },
                               completion: nil)
            self.redline_1.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
-            self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(4), height: 0)
+            self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
             self.redline_2.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
 
-            self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(4), height: 0)
+            self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
             self.view.addSubview(redline_1)
             self.view.addSubview(redline_2)
             
             UIView.animate(withDuration: 3, animations: {
-                self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
-                self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
+                self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
+                self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(250))
             }, completion: {
                 (finished) -> Void in
                 print("haha")
@@ -12243,8 +12243,8 @@ number_of_lines_erased += 1
                               completion: nil)
 
             UIView.animate(withDuration: 3, animations: {
-                self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(5), height: self.pause_screen_y_transform(0))
-                self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(354), y: self.pause_screen_y_transform(223.5), width: self.pause_screen_x_transform(5), height: self.pause_screen_y_transform(0))
+                self.redline_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
+                self.redline_2.frame = CGRect(x: self.pause_screen_x_transform(354), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: self.pause_screen_y_transform(0))
             }, completion: {
                 (finished) -> Void in
                 print("hehe")
