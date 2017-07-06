@@ -12284,31 +12284,31 @@ number_of_lines_erased += 1
         if (ThemeType == 1){
             self.pack_line_1.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
             self.pack_line_2.backgroundColor = UIColor(red:CGFloat(28/255.0), green:CGFloat(58/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
-            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_day")
+            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_not_transparent")
             self.upper_half_pack_ring.image = UIImage(named: "upper_half_pack_ring_day")
         } else if (ThemeType == 2){
             
             self.pack_line_1.backgroundColor = UIColor(red:CGFloat(254/255.0), green:CGFloat(244/255.0), blue:CGFloat(228/255.0), alpha:CGFloat(1))
             self.pack_line_2.backgroundColor = UIColor(red:CGFloat(254/255.0), green:CGFloat(244/255.0), blue:CGFloat(228/255.0), alpha:CGFloat(1))
-            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_night")
+            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_not_transparent_night")
             self.upper_half_pack_ring.image = UIImage(named: "upper_half_pack_ring_night")
         } else if (ThemeType == 3){
             
             self.pack_line_1.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(1))
             self.pack_line_2.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(1))
-            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_B&W")
+            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_not_transparent_B&W")
             self.upper_half_pack_ring.image = UIImage(named: "upper_half_pack_ring_B&W")
         }else if (ThemeType == 5){
             
             self.pack_line_1.backgroundColor = UIColor(red:CGFloat(37/255.0), green:CGFloat(64/255.0), blue:CGFloat(126/255.0), alpha:CGFloat(1))
             self.pack_line_2.backgroundColor = UIColor(red:CGFloat(37/255.0), green:CGFloat(64/255.0), blue:CGFloat(126/255.0), alpha:CGFloat(1))
-            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_school")
+            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_not_transparent_school")
             self.upper_half_pack_ring.image = UIImage(named: "upper_half_pack_ring_school")
         }else if (ThemeType == 6){
             
             self.pack_line_1.backgroundColor = UIColor(red:CGFloat(252/255.0), green:CGFloat(194/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
             self.pack_line_2.backgroundColor = UIColor(red:CGFloat(252/255.0), green:CGFloat(194/255.0), blue:CGFloat(49/255.0), alpha:CGFloat(1))
-            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_color")
+            self.lower_half_pack_ring.image = UIImage(named: "lower_half_pack_ring_not_transparent_color")
             self.upper_half_pack_ring.image = UIImage(named: "upper_half_pack_ring_color")
         }
     }
