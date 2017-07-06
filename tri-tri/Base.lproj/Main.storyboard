@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -527,6 +527,10 @@
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="grey_tri_upwards" translatesAutoresizingMaskIntoConstraints="NO" id="WVu-JF-2JF">
                                 <rect key="frame" x="163" y="248" width="49" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="grey_tir_downwards" translatesAutoresizingMaskIntoConstraints="NO" id="la5-qz-Qde">
+                                <rect key="frame" x="189" y="248" width="49" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="grey_tri_upwards" translatesAutoresizingMaskIntoConstraints="NO" id="3R3-ST-7f3">
@@ -1063,7 +1067,7 @@
                         <outlet property="tri_1_4" destination="NWO-Jw-TIU" id="KEP-yu-4Hh"/>
                         <outlet property="tri_1_4_back" destination="WVu-JF-2JF" id="LZ6-G3-1zs"/>
                         <outlet property="tri_1_5" destination="Foo-vv-WLq" id="mvh-yx-OGW"/>
-                        <outlet property="tri_1_5_back" destination="v0M-8F-PAv" id="qbj-lz-7Jd"/>
+                        <outlet property="tri_1_5_back" destination="la5-qz-Qde" id="YI9-Fy-HdK"/>
                         <outlet property="tri_1_6" destination="5zN-Xa-dkf" id="0yS-ya-JS3"/>
                         <outlet property="tri_1_6_back" destination="3R3-ST-7f3" id="cT8-qp-Gqv"/>
                         <outlet property="tri_1_7" destination="EtO-vg-YPU" id="iI5-jp-2nt"/>
