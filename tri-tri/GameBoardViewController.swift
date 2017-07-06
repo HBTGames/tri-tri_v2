@@ -12295,7 +12295,7 @@ number_of_lines_erased += 1
         }
         
         self.doom_day_button.whenButtonIsClicked {
-            
+        self.doom_day_action()
         }
         
         self.amplifier_button.whenButtonIsClicked {
@@ -12359,6 +12359,12 @@ number_of_lines_erased += 1
             self.view.sendSubview(toBack: self.upper_half_pack_ring)
             self.view.bringSubview(toFront: self.backpack_button)
         })
+        //when doom day is clicked
+        
+        
+        
+        
+        
         self.pack_open = true
     })
     }
@@ -12513,6 +12519,75 @@ number_of_lines_erased += 1
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    
+    //doom day function
+    
+    func doom_day_action() -> Void{
+    close_pack()
+    var score_increment_number = 0
+    //fix all filled first
+    var i = 0 //row
+        for row in filled{
+            var j = 0 //column
+            for object in row{
+                if(object){
+                    //print("i is \(i)")
+                    //print("j is \(j)")
+                    erase_animation_combination(row: i, column: j, duration: 0.3)
+                filled[i][j] = false
+                score_increment_number += 1
+                }
+                
+                single_tri_stored_type_index[i][j] = -1
+                
+                j += 1
+            }
+            i += 1
+            
+        }
+        //add score
+        last_score = score
+        score += score_increment_number
+        print("star_increment: \(score_increment_number)")
+        print("score is \(score)")
+        //print(score)
+        
+        MarkBoard.text = String(score)
+        UIView.animate(withDuration: 0.2, animations: {
+            self.MarkBoard.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }, completion: {
+            (finished) -> Void in
+            UIView.animate(withDuration: 0.1, animations: {
+                self.MarkBoard.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
+        })
+        
+        if(score > HighestScore){
+            HighestScore = score
+            HightestScoreBoard.text = String(HighestScore)
+            var HighScoreDefault = UserDefaults.standard
+            HighScoreDefault.set(HighestScore, forKey: "tritri_HighestScore")
+            HighScoreDefault.synchronize()
+            
+        }
+        
+        current_score = score
+        star_score_increment()
+        
+    }
+    
+    func erase_animation_combination(row: Int, column: Int , duration: TimeInterval){
+        UIView.animate(withDuration: duration, animations: {
+            self.erase_animation_by_row_col(row: row, col: column)
+        }, completion: {
+            (finished) -> Void in
+            //print("new i is \(i)")
+            //print("new j is \(j)")
+            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: column)
+        })
+        
     }
     
     
