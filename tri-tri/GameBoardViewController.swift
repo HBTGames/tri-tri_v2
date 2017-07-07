@@ -784,6 +784,8 @@ class GameBoardViewController: UIViewController {
             else{   //during holy nova
                 var contained_boxes: Array<CGRect> = []
                 var candidates: Array<Array<Int>> = []
+                let before = filled
+                last_score = score
                 var i = 0
                 for row in tri_boxes{
                     var j = 0
@@ -832,6 +834,10 @@ class GameBoardViewController: UIViewController {
                     self.nova_breaker(row: row, col: col)
                     self.during_holy_nova = false
                 }
+                let after = filled
+                current_score = score
+                modify_counter(before: before, after: after)
+                star_score_increment()
             }
         }
     }
@@ -12610,6 +12616,8 @@ number_of_lines_erased += 1
             
         }
         purification_player.play()
+            let cond_before_insert = filled
+            last_score = score
         var purification_list : Array<Array<Int>> = []
         var i = 0
         for row in self.filled{
@@ -12645,6 +12653,11 @@ number_of_lines_erased += 1
         }
         self.tool_quantity_array[1] -= 1
             defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
+            let cond_after_insert = filled
+            modify_counter(before: cond_before_insert, after: cond_after_insert)
+            current_score = score
+            star_score_increment()
+            
         self.close_pack()
         }
         else
@@ -12662,6 +12675,7 @@ number_of_lines_erased += 1
     
     func holy_nova() -> Void{
         if self.tool_quantity_array[2] > 0{
+            
         during_holy_nova = true
         self.close_pack()
             self.tool_quantity_array[2] -= 1
