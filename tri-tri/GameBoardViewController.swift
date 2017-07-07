@@ -13058,11 +13058,14 @@ number_of_lines_erased += 1
     
     
  /********************* all functions needed for trinity ********************/
+    var cond_before_insert_trinity : Array<Array<Bool>> = []
   //trinity function
+    var the_three_lack_tri: Array<Array<Int>> = []
     var situation_lack_tri_number = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     func trinity_action() -> Void{
        // if (tool_quantity_array[4] > 0){
-        trinity_animation()
+        the_three_lack_tri = []
+        //trinity_animation()
         do{trinity_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "trinity_sound", ofType: "wav")!))
             trinity_player.prepareToPlay()
         }
@@ -13079,14 +13082,14 @@ number_of_lines_erased += 1
     //var smallest_lack_situation = situation_lack_tri_number.index(of: smallest_lack)!
     //print("smallest_lack number is \(smallest_lack) with situation: \(smallest_lack_situation)")
     
-   let cond_before_insert = filled
+   cond_before_insert_trinity = filled
         var remaining_tri = 3
         var index = 0
         while(remaining_tri > 0 && index < situation_lack_tri_number.count ){
         var smallest_lack = sorted_situation_lack_tri_number[index]
-        print("smallest_lack is \(smallest_lack)")
+        //print("smallest_lack is \(smallest_lack)")
         var smallest_lack_situation = situation_lack_tri_number.index(of: smallest_lack)!
-        print("smallest_lack_situation is \(smallest_lack_situation)")
+        //print("smallest_lack_situation is \(smallest_lack_situation)")
             if(smallest_lack > 3){
                 smallest_lack = 3
             }
@@ -13097,19 +13100,10 @@ number_of_lines_erased += 1
         remaining_tri -= smallest_lack
         index += 1
         }
-        
-        let cond_before_erase = filled
-        last_score = score
-        modify_counter(before: cond_before_insert, after: cond_before_erase)
-        current_score = score
-        star_score_increment()
-        Check_and_Erase()
-        let cond_after_erase = filled
-        last_score = score
-        modify_counter_after_erase(before: cond_before_erase, after: cond_after_erase)
-        current_score = score
-        star_score_increment()
-            //self.tool_quantity_array[4] -= 1
+        print("lacks are")
+        print(the_three_lack_tri[0],the_three_lack_tri[1],the_three_lack_tri[2])
+        trinity_animation()
+        //self.tool_quantity_array[4] -= 1
             //defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
         //}
         /**else {
@@ -13126,32 +13120,6 @@ number_of_lines_erased += 1
     
     
     func fill_tris_to_situation(situation_index: Int, tri_number: Int) -> Void{
-        var shape_color_up = UIImage(named:"purple_upwards")!
-        var shape_color_down = UIImage(named:"purple_downwards")!
-        //if Themetype == 1 doesnt change
-        if (ThemeType == 2){
-            shape_color_up = UIImage(named: "小肉 up")!
-            shape_color_down = UIImage(named: "小肉 down")!
-        }else if(ThemeType == 3){
-            shape_color_up = UIImage(named: "BW_black_tri_up")!
-            shape_color_down = UIImage(named: "BW_black_tri_down")!
-       }else if(ThemeType == 4){
-             shape_color_up = UIImage(named: "chaos_up")!
-            shape_color_down = UIImage(named: "chaos_down")!
-            
-        }else if(ThemeType == 5){
-            shape_color_up = UIImage(named: "school_up")!
-            
-            shape_color_down = UIImage(named: "school_down")!
-            
-            
-        }else if(ThemeType == 6){
-            shape_color_up = UIImage(named: "colors_pink_up")!
-        
-            shape_color_down = UIImage(named: "colors_pink_down")!
-            
-        }
-
         if(situation_index == 0){
         var filled_number = 0
         var i = 0
@@ -13160,11 +13128,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_0[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                         }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13182,11 +13152,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_1[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13204,11 +13176,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_2[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13226,11 +13200,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_3[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13248,11 +13224,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_4[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13270,11 +13248,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_5[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13292,11 +13272,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_6[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13314,11 +13296,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_7[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13336,11 +13320,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_8[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13358,11 +13344,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_9[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13380,11 +13368,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_10[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13402,11 +13392,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_11[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13424,11 +13416,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_12[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13446,11 +13440,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_13[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13468,11 +13464,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_14[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13490,11 +13488,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_15[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13512,11 +13512,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_16[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13534,11 +13536,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_17[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13556,11 +13560,13 @@ number_of_lines_erased += 1
                 let col = default_erase_situation_18[i][1]
                 if(!filled[row][col]){
                     if(true_if_up(i: row, j: col)){
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_up)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 7
                         filled[row][col] = true
                     }else{
-                        Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        //Change_Corresponding_Color_With_Image(x: row, y: col, image: shape_color_down)
+                        the_three_lack_tri.append([row,col])
                         single_tri_stored_type_index[row][col] = 8
                         filled[row][col] = true
                     }
@@ -13777,6 +13783,33 @@ number_of_lines_erased += 1
 
 //trinity animation
 func trinity_animation() -> Void {
+    var shape_color_up = UIImage(named:"purple_upwards")!
+    var shape_color_down = UIImage(named:"purple_downwards")!
+    //if Themetype == 1 doesnt change
+    if (ThemeType == 2){
+        shape_color_up = UIImage(named: "小肉 up")!
+        shape_color_down = UIImage(named: "小肉 down")!
+    }else if(ThemeType == 3){
+        shape_color_up = UIImage(named: "BW_black_tri_up")!
+        shape_color_down = UIImage(named: "BW_black_tri_down")!
+    }else if(ThemeType == 4){
+        shape_color_up = UIImage(named: "chaos_up")!
+        shape_color_down = UIImage(named: "chaos_down")!
+        
+    }else if(ThemeType == 5){
+        shape_color_up = UIImage(named: "school_up")!
+        
+        shape_color_down = UIImage(named: "school_down")!
+        
+        
+    }else if(ThemeType == 6){
+        shape_color_up = UIImage(named: "colors_pink_up")!
+        
+        shape_color_down = UIImage(named: "colors_pink_down")!
+        
+    }
+    
+
     var trinity_icon_for_animation = UIImageView(frame: trinity_button.frame)
     trinity_icon_for_animation.image = #imageLiteral(resourceName: "item_round_trinity")
     self.view.addSubview(trinity_icon_for_animation)
@@ -13792,22 +13825,104 @@ func trinity_animation() -> Void {
     }, completion: {
         (finished) -> Void in
         let spin_animation = CAKeyframeAnimation()
-        CATransaction.begin()
-        UIView.animate(withDuration: 1.5, animations: {
-            trinity_icon_for_animation.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
-        }, completion: {
-            (finsihed) -> Void in
-            trinity_icon_for_animation.removeFromSuperview()
-        })
+        //CATransaction.begin()
         spin_animation.keyPath = "transform.rotation.z"
         spin_animation.isRemovedOnCompletion = false
         spin_animation.fillMode = kCAFillModeForwards
-        spin_animation.duration = 0.15
-        spin_animation.repeatCount = 10.0
+        spin_animation.duration = 0.5
+        spin_animation.repeatCount = 5.0
         spin_animation.values = [0,fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
         trinity_icon_for_animation.layer.add(spin_animation, forKey: nil)
-        CATransaction.commit()
+        let center_cgpoint = CGPoint(x: self.screen_width/2.0 - self.tri_0_0.frame.width/2.0, y: self.screen_height/2.0 - self.tri_0_0.frame.height/2.0)
+        var lack_tri_1 = UIImageView(frame: CGRect(origin: center_cgpoint , size: self.tri_0_0.frame.size))
+        var lack_tri_2 = UIImageView(frame: lack_tri_1.frame)
+        var lack_tri_3 = UIImageView(frame: lack_tri_1.frame)
+        let lack_tri_1_row = self.the_three_lack_tri[0][0]
+        let lack_tri_1_col = self.the_three_lack_tri[0][1]
+        let lack_tri_2_row = self.the_three_lack_tri[1][0]
+        let lack_tri_2_col = self.the_three_lack_tri[1][1]
+        let lack_tri_3_row = self.the_three_lack_tri[2][0]
+        let lack_tri_3_col = self.the_three_lack_tri[2][1]
+        if(self.single_tri_stored_type_index[lack_tri_1_row][lack_tri_1_col] == 7){
+            lack_tri_1.image = shape_color_up
+        }else{
+            lack_tri_1.image = shape_color_down
+        }
+        if(self.single_tri_stored_type_index[lack_tri_2_row][lack_tri_2_col] == 7){
+            lack_tri_2.image = shape_color_up
+        }else{
+            lack_tri_2.image = shape_color_down
+        }
+        if(self.single_tri_stored_type_index[lack_tri_3_row][lack_tri_3_col] == 7){
+            lack_tri_3.image = shape_color_up
+        }else{
+            lack_tri_3.image = shape_color_down
+        }
+        lack_tri_3.alpha = 0
+        lack_tri_2.alpha = 0
+        lack_tri_1.alpha = 0
+        self.view.addSubview(lack_tri_3)
+        self.view.addSubview(lack_tri_2)
+        self.view.addSubview(lack_tri_1)
+        self.view.bringSubview(toFront: trinity_icon_for_animation)
+        lack_tri_3.fadeInWithDisplacement()
+        lack_tri_2.fadeInWithDisplacement()
+        lack_tri_1.fadeInWithDisplacement()
+
+        //CATransaction.commit()
+
+        UIView.animate(withDuration: 1, animations: {
+            trinity_icon_for_animation.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+        }, completion: {
+            (finsihed) -> Void in
+            //three lack tris
+            trinity_icon_for_animation.removeFromSuperview()
+            //now three tris move to its location
+            UIView.animate(withDuration: 0.3, animations: {
+                lack_tri_1.transform = CGAffineTransform(translationX: self.tri_location[lack_tri_1_row][lack_tri_1_col].x - lack_tri_1.frame.origin.x, y: self.tri_location[lack_tri_1_row][lack_tri_1_col].y - lack_tri_1.frame.origin.y).scaledBy(x: 0.8, y: 0.8).rotated(by: 360)
+            }, completion: {
+                (finished) -> Void in
+                lack_tri_1.removeFromSuperview()
+                self.Change_Corresponding_Color_With_Image(x: lack_tri_1_row, y: lack_tri_1_col, image: lack_tri_1.image)
+                UIView.animate(withDuration: 0.3, animations: {
+                    lack_tri_2.transform = CGAffineTransform(translationX: self.tri_location[lack_tri_2_row][lack_tri_2_col].x - lack_tri_2.frame.origin.x, y: self.tri_location[lack_tri_2_row][lack_tri_2_col].y - lack_tri_2.frame.origin.y).scaledBy(x: 0.8, y: 0.8).rotated(by: 360)
+                }, completion: {
+                    (finished) -> Void in
+                    lack_tri_2.removeFromSuperview()
+                    self.Change_Corresponding_Color_With_Image(x: lack_tri_2_row, y: lack_tri_2_col, image: lack_tri_2.image)
+                    UIView.animate(withDuration: 0.3, animations: {
+                        lack_tri_3.transform = CGAffineTransform(translationX: self.tri_location[lack_tri_3_row][lack_tri_3_col].x - lack_tri_3.frame.origin.x, y: self.tri_location[lack_tri_3_row][lack_tri_3_col].y - lack_tri_3.frame.origin.y).scaledBy(x: 0.8, y: 0.8).rotated(by: 360)
+                        
+                        
+                    }, completion: {
+                        (finished) -> Void in
+                        lack_tri_3.removeFromSuperview()
+                        self.Change_Corresponding_Color_With_Image(x: lack_tri_3_row, y: lack_tri_3_col, image: lack_tri_3.image)
+                        let cond_before_erase = self.filled
+                        self.last_score = self.score
+                        self.modify_counter(before: self.cond_before_insert_trinity, after: cond_before_erase)
+                        self.current_score = self.score
+                        self.star_score_increment()
+                        self.Check_and_Erase()
+                        let cond_after_erase = self.filled
+                        self.last_score = self.score
+                        self.modify_counter_after_erase(before: cond_before_erase, after: cond_after_erase)
+                        self.current_score = self.score
+                        self.star_score_increment()
+                        
+                        
+                    })
+                    
+                })
+                
+            })
+
+            
+        })
     })
+ 
+    
+    
     
     
 }
