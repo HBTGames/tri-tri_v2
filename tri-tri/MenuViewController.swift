@@ -1048,7 +1048,6 @@ current_star_total.fadeIn()
         new_life_circle.image = #imageLiteral(resourceName: "new_life_circle")
         new_life_circle.alpha = 0
         self.view.addSubview(new_life_circle)
-        new_life_circle.fadeIn()
         if(tool_quantity_array[0] != 0){
         new_life_circle.fadeIn()
         }
@@ -1692,7 +1691,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
             three_triangles_circle_text.fadeIn()
             three_triangles_circle_text.text = String(tool_quantity_array[4])
         }
-        if(tool_quantity_array[0] != 0){
+        if(tool_quantity_array[5] != 0){
             clear_all_circle.fadeIn()
             clear_all_circle_text.fadeIn()
             clear_all_circle_text.text = String(tool_quantity_array[5])
