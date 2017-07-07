@@ -1024,6 +1024,10 @@
                                 <rect key="frame" x="312" y="142" width="47" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="item_round_amplifier" translatesAutoresizingMaskIntoConstraints="NO" id="XLD-Cd-3Jv">
+                                <rect key="frame" x="126" y="65" width="40" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1036,6 +1040,7 @@
                     <connections>
                         <outlet property="HightestScoreBoard" destination="XIJ-Xa-Clo" id="8Iq-Zy-CDC"/>
                         <outlet property="MarkBoard" destination="R9g-fj-p9q" id="hIa-ST-6zW"/>
+                        <outlet property="amplifier_valide_icon" destination="XLD-Cd-3Jv" id="mZY-RQ-fDX"/>
                         <outlet property="backpack_button" destination="0Yv-Sm-69R" id="IjI-Uv-DIS"/>
                         <outlet property="center" destination="NDl-Da-Qca" id="5rr-Ls-bNL"/>
                         <outlet property="green_drag_tri" destination="gxz-1Y-RXe" id="UIE-Sq-pg7"/>
@@ -1231,6 +1236,7 @@
         <image name="grey_tir_downwards" width="49" height="43"/>
         <image name="grey_tri_upwards" width="49" height="43"/>
         <image name="home" width="198" height="172"/>
+        <image name="item_round_amplifier" width="400" height="400"/>
         <image name="lang_icon_english_day_night" width="126" height="128"/>
         <image name="like" width="198" height="172"/>
         <image name="link" width="198" height="172"/>

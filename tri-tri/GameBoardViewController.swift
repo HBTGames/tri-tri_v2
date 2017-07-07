@@ -945,6 +945,8 @@ class GameBoardViewController: UIViewController {
         backpack_button.frame = CGRect(x: pause_screen_x_transform(Double(backpack_button.frame.origin.x)), y: pause_screen_y_transform(Double(backpack_button.frame.origin.y)), width: pause_screen_x_transform(Double(backpack_button.frame.width)), height: pause_screen_y_transform(Double(backpack_button.frame.height)))
         lower_half_pack_ring.frame = CGRect(x: pause_screen_x_transform(Double(lower_half_pack_ring.frame.origin.x)), y: pause_screen_y_transform(Double(lower_half_pack_ring.frame.origin.y)), width: pause_screen_x_transform(Double(lower_half_pack_ring.frame.width)), height: pause_screen_y_transform(Double(lower_half_pack_ring.frame.height)))
         upper_half_pack_ring.frame = CGRect(x: pause_screen_x_transform(Double(upper_half_pack_ring.frame.origin.x)), y: pause_screen_y_transform(Double(upper_half_pack_ring.frame.origin.y)), width: pause_screen_x_transform(Double(upper_half_pack_ring.frame.width)), height: pause_screen_y_transform(Double(upper_half_pack_ring.frame.height)))
+        amplifier_valide_icon.frame = CGRect(x: pause_screen_x_transform(Double(amplifier_valide_icon.frame.origin.x)), y: pause_screen_y_transform(Double(amplifier_valide_icon.frame.origin.y)), width: pause_screen_x_transform(Double(amplifier_valide_icon.frame.width)), height: pause_screen_y_transform(Double(amplifier_valide_icon.frame.height)))
+        amplifier_valide_icon.alpha = 0
         self.view.bringSubview(toFront: backpack_button)
         
         //declare original frames of the tris
@@ -961,6 +963,7 @@ class GameBoardViewController: UIViewController {
         
         
         pack_opened_frame = CGRect(x: pause_screen_x_transform(312), y: pause_screen_y_transform(165.5), width: pause_screen_x_transform(47), height: pause_screen_y_transform(306))
+        
         
 
         // Do any additional setup after loading the view.
@@ -13024,7 +13027,7 @@ number_of_lines_erased += 1
     var amplify_base = 1
     var amplifier_count_down_timer = Timer()
     func amplifier_action() -> Void {
-        if tool_quantity_array[3] > 0{
+        //if tool_quantity_array[3] > 0{
         do{amplifier_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "amplifier_sound", ofType: "wav")!))
             amplifier_player.prepareToPlay()
         }
@@ -13032,14 +13035,15 @@ number_of_lines_erased += 1
             
         }
         amplifier_player.play()
+    amplifier_animation()
     close_pack()
     print("amplifier start")
     amplify_base = 2
     amplifier_count_down_timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(GameBoardViewController.amplifier_completed), userInfo: nil, repeats: false)
-            self.tool_quantity_array[3] -= 1
+            //self.tool_quantity_array[3] -= 1
             defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
-        }
-        else {
+        //}
+        /**else {
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                 not_fit_player.prepareToPlay()
             }
@@ -13047,15 +13051,74 @@ number_of_lines_erased += 1
                 
             }
             not_fit_player.play()
-        }
+        }**/
     }
     
     func amplifier_completed() -> Void{
      amplify_base = 1
     print("amplifier finished")
+    //amplifier_valide_icon.fadeOut()
         
     }
     
+    //amplifier animation
+    //var amplifier_small_icon_location = CGPoint(x: 0, y: 0)
+    
+    @IBOutlet weak var amplifier_valide_icon: UIImageView!
+    
+    func amplifier_animation() -> Void{
+       // amplifier_small_icon_location = CGPoint(x: self.star_bg.frame.origin.x + self.star_bg.frame.width + self.pause_screen_x_transform(30), y: self.star_bg.frame.origin.y)
+    var amplifier_icon_for_animation = UIImageView(frame: amplifier_button.frame)
+    amplifier_icon_for_animation.image = #imageLiteral(resourceName: "item_round_amplifier")
+    self.view.addSubview(amplifier_icon_for_animation)
+    let amplifier_curve_moving_animation = CAKeyframeAnimation(keyPath: "position")
+    let fullRotation = CGFloat(2 * Double.pi)
+    amplifier_curve_moving_animation.path = customPathwithArg(from: amplifier_icon_for_animation.frame.origin, to: CGPoint(x: screen_width/2.0, y: screen_height/2.0)).cgPath
+    amplifier_curve_moving_animation.duration = 1.5
+    amplifier_curve_moving_animation.fillMode = kCAFillModeForwards
+    amplifier_curve_moving_animation.isRemovedOnCompletion = false
+    amplifier_icon_for_animation.layer.add(amplifier_curve_moving_animation, forKey: nil)
+        UIView.animate(withDuration: 1.5, animations: {
+           amplifier_icon_for_animation.transform = CGAffineTransform(scaleX: 5.0, y: 5.0)
+        }, completion: {
+            (finished) -> Void in
+            //spin animation
+            //amplifier_icon_for_animation.removeFromSuperview()
+            amplifier_icon_for_animation.frame.origin = CGPoint(x: self.screen_width/2.0 - amplifier_icon_for_animation.frame.width/2.0, y: self.screen_height/2.0 - amplifier_icon_for_animation.frame.height/2.0)
+            let spin_animation = CAKeyframeAnimation()
+            //CATransaction.begin()
+            spin_animation.keyPath = "transform.rotation.z"
+            spin_animation.isRemovedOnCompletion = false
+            spin_animation.fillMode = kCAFillModeForwards
+            spin_animation.duration = 0.5
+            spin_animation.repeatCount = 5.0
+            spin_animation.values = [0,fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
+            amplifier_icon_for_animation.layer.add(spin_animation, forKey: nil)
+            UIView.animate(withDuration: 1.5, animations: {
+              amplifier_icon_for_animation.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+            }, completion: {
+                (finished) -> Void in
+               amplifier_icon_for_animation.removeFromSuperview()
+                self.amplifier_valide_icon.fadeIn()
+                self.amplifier_valide_icon.transform = CGAffineTransform(scaleX: 1.8, y: 0.3).translatedBy(x: self.pause_screen_x_transform(15), y: 0)
+                
+                UIView.animate(withDuration: 1.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
+                    self.amplifier_valide_icon.transform = .identity
+                }, completion: {
+                    (finished) -> Void in
+                    UIView.animate(withDuration: 25, animations: {
+                     self.amplifier_valide_icon.alpha = 0
+                    })
+                    
+                })
+            })
+        })
+        
+        
+        
+        
+        
+    }
     
  /********************* all functions needed for trinity ********************/
     var cond_before_insert_trinity : Array<Array<Bool>> = []
