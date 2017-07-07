@@ -11062,6 +11062,16 @@ number_of_lines_erased += 1
         return path
     }
     
+    func customPathwithArg(from: CGPoint, to: CGPoint) -> UIBezierPath {
+        let path = UIBezierPath()
+        path.move(to: from)
+        let endPoint = to
+        let cp1 = CGPoint(x: (screen_width/2.0 + from.x)/2.0, y: (screen_height/2.0 + from.y)/2.0)
+        let cp2 = cp1
+        path.addCurve(to: endPoint, controlPoint1: cp1, controlPoint2: cp2)
+        return path
+    }
+    
     
     
     
@@ -13016,7 +13026,8 @@ number_of_lines_erased += 1
   //trinity function
     var situation_lack_tri_number = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     func trinity_action() -> Void{
-        if (tool_quantity_array[4] > 0){
+       // if (tool_quantity_array[4] > 0){
+        trinity_animation()
         do{trinity_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "trinity_sound", ofType: "wav")!))
             trinity_player.prepareToPlay()
         }
@@ -13063,10 +13074,10 @@ number_of_lines_erased += 1
         modify_counter_after_erase(before: cond_before_erase, after: cond_after_erase)
         current_score = score
         star_score_increment()
-            self.tool_quantity_array[4] -= 1
-            defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
-        }
-        else {
+            //self.tool_quantity_array[4] -= 1
+            //defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
+        //}
+        /**else {
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                 not_fit_player.prepareToPlay()
             }
@@ -13074,7 +13085,7 @@ number_of_lines_erased += 1
                 
             }
             not_fit_player.play()
-        }
+        }**/
         
     }
     
@@ -13728,6 +13739,46 @@ number_of_lines_erased += 1
         
         
     }
+
+//trinity animation
+func trinity_animation() -> Void {
+    var trinity_icon_for_animation = UIImageView(frame: trinity_button.frame)
+    trinity_icon_for_animation.image = #imageLiteral(resourceName: "item_round_trinity")
+    self.view.addSubview(trinity_icon_for_animation)
+    let trinity_curve_moving_animation = CAKeyframeAnimation(keyPath: "position")
+    let fullRotation = CGFloat(2 * Double.pi)
+    trinity_curve_moving_animation.path = customPathwithArg(from: trinity_icon_for_animation.frame.origin, to: CGPoint(x: screen_width/2.0, y: screen_height/2.0)).cgPath
+    trinity_curve_moving_animation.duration = 1.5
+    trinity_curve_moving_animation.fillMode = kCAFillModeForwards
+    trinity_curve_moving_animation.isRemovedOnCompletion = false
+    trinity_icon_for_animation.layer.add(trinity_curve_moving_animation, forKey: nil)
+    UIView.animate(withDuration: 1.5, animations: {
+        trinity_icon_for_animation.transform = CGAffineTransform(scaleX: 5.0, y: 5.0).rotated(by: 360)
+    }, completion: {
+        (finished) -> Void in
+        let spin_animation = CAKeyframeAnimation()
+        CATransaction.begin()
+        UIView.animate(withDuration: 1.5, animations: {
+            trinity_icon_for_animation.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+        }, completion: {
+            (finsihed) -> Void in
+            trinity_icon_for_animation.removeFromSuperview()
+        })
+        spin_animation.keyPath = "transform.rotation.z"
+        spin_animation.isRemovedOnCompletion = false
+        spin_animation.fillMode = kCAFillModeForwards
+        spin_animation.duration = 0.15
+        spin_animation.repeatCount = 10.0
+        spin_animation.values = [0,fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
+        trinity_icon_for_animation.layer.add(spin_animation, forKey: nil)
+        CATransaction.commit()
+    })
+    
+    
+}
+
+
+
 /***********************************************************************************/
     
     
