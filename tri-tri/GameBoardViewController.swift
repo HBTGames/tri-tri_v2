@@ -8880,27 +8880,15 @@ number_of_lines_erased += 1
     
 
     func Jump_to_Game_Over () -> Void {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
-        nextViewController.final_score = MarkBoard.text!
-        nextViewController.ThemeType = self.ThemeType
-        nextViewController.modalTransitionStyle = .crossDissolve
-        if (Int(MarkBoard.text!) == HighestScore){
-            nextViewController.is_high_score = true
-        } else {
-            nextViewController.is_high_score = false
-        }
-        self.present(nextViewController, animated: true, completion: nil)
-        //self.audioPlayer.stop()
-        self.timer.invalidate()
-        do{game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
-            game_over_player.prepareToPlay()
-        }
-        catch{
-            
-        }
-        game_over_player.play()
         
+        
+        
+        
+        
+        
+        resurrection_when_dead()
+            
+                
         
     }
     
@@ -12600,6 +12588,53 @@ number_of_lines_erased += 1
     }
     
     func resurrection_when_dead() -> Void {
+        self.pause_screen = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
+        self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
+        self.view.addSubview(self.pause_screen)
+        self.paused = true
+        let resu_activate_button = MyButton()
+        let just_kill_me = MyButton()
+        just_kill_me.frame = CGRect(x: self.pause_screen_x_transform(112), y: self.pause_screen_y_transform(400), width: self.pause_screen_x_transform(150), height: self.pause_screen_y_transform(150))
+        resu_activate_button.frame = CGRect(x: self.pause_screen_x_transform(112), y: self.pause_screen_y_transform(250), width: self.pause_screen_x_transform(150), height: self.pause_screen_y_transform(150))
+        resu_activate_button.setImage(UIImage(named:"item_round_resurrection"), for: .normal)
+        just_kill_me.setImage(UIImage(named:"home"), for: .normal)
+        
+        just_kill_me.whenButtonIsClicked {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
+            nextViewController.final_score = self.MarkBoard.text!
+            nextViewController.ThemeType = self.ThemeType
+            nextViewController.modalTransitionStyle = .crossDissolve
+            if (Int(self.MarkBoard.text!) == self.HighestScore){
+                nextViewController.is_high_score = true
+            } else {
+                nextViewController.is_high_score = false
+            }
+            self.present(nextViewController, animated: true, completion: nil)
+            //self.audioPlayer.stop()
+            self.timer.invalidate()
+            do{self.game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
+                self.game_over_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.game_over_player.play()
+            
+        }
+
+        
+        
+        resu_activate_button.whenButtonIsClicked {
+            self.pause_screen.removeFromSuperview()
+            resu_activate_button.removeFromSuperview()
+            just_kill_me.removeFromSuperview()
+            self.tool_quantity_array[5] += 1
+            self.doom_day_action()
+            self.paused = false
+        }
+        self.view.addSubview(resu_activate_button)
+        self.view.addSubview(just_kill_me)
         
     }
     
