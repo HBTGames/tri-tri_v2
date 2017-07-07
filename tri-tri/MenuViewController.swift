@@ -1647,6 +1647,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         //action for confirming price
         final_price_button.whenButtonIsClicked(action: {
         self.tool_quantity_array[self.tool_selected] += tool_quantity
+            defaults.set(self.tool_quantity_array, forKey: "tritri_tool_quantity_array")
         selected_scene_background.fadeOutandRemove()
         selected_scene.fadeOutandRemove()
         selected_cancel.fadeOutandRemove()
@@ -1661,8 +1662,6 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         self.circle_pop_up(tool_index: self.tool_selected)
         self.fix_star_score(star_needed: star_quantiry_needed)
         })
-        
-        
         
     }
     

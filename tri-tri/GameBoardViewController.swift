@@ -686,6 +686,9 @@ class GameBoardViewController: UIViewController {
     var language = String()
     
     
+    var tool_quantity_array = [0,0,0,0,0,0]
+    
+    
     class MyButton: UIButton {
         var action: (()->())?
         
@@ -981,7 +984,11 @@ class GameBoardViewController: UIViewController {
         starBoard.text = String(star_score)
         
         
-        
+        if(defaults.value(forKey: "tritri_tool_quantity_array") != nil){
+            tool_quantity_array = defaults.value(forKey: "tritri_tool_quantity_array") as! Array
+        }else{
+            defaults.set([0,0,0,0,0,0], forKey: "tritri_tool_quantity_array")
+        }
         
         //---------------------------------------------------------------------------
         //var to decide various theme type
@@ -12553,12 +12560,21 @@ number_of_lines_erased += 1
         amplifier_button.setBackgroundImage(UIImage(named: "item_round_amplifier"), for: .normal)
         trinity_button.setBackgroundImage(UIImage(named: "item_round_trinity"), for: .normal)
         doom_day_button.setBackgroundImage(UIImage(named: "item_round_doom_day"), for: .normal)
+        
         resurrection_button.frame = CGRect(x: self.pause_screen_x_transform(320), y: self.pause_screen_y_transform(195), width: self.pause_screen_x_transform(30), height: self.pause_screen_y_transform(30))
         holy_nova_button.frame = CGRect(x: self.pause_screen_x_transform(320), y: self.pause_screen_y_transform(235), width: self.pause_screen_x_transform(30), height: self.pause_screen_y_transform(30))
         purification_button.frame = CGRect(x: self.pause_screen_x_transform(320), y: self.pause_screen_y_transform(275), width: self.pause_screen_x_transform(30), height: self.pause_screen_y_transform(30))
         trinity_button.frame = CGRect(x: self.pause_screen_x_transform(320), y: self.pause_screen_y_transform(315), width: self.pause_screen_x_transform(30), height: self.pause_screen_y_transform(30))
         doom_day_button.frame = CGRect(x: self.pause_screen_x_transform(320), y: self.pause_screen_y_transform(355), width: self.pause_screen_x_transform(30), height: self.pause_screen_y_transform(30))
         amplifier_button.frame = CGRect(x: self.pause_screen_x_transform(320), y: self.pause_screen_y_transform(395), width: self.pause_screen_x_transform(30), height: self.pause_screen_y_transform(30))
+        
+        resurrection_button.setTitle(String(self.tool_quantity_array[0]), for: .normal)
+        purification_button.setTitle(String(self.tool_quantity_array[1]), for: .normal)
+        holy_nova_button.setTitle(String(self.tool_quantity_array[2]), for: .normal)
+        amplifier_button.setTitle(String(self.tool_quantity_array[3]), for: .normal)
+        trinity_button.setTitle(String(self.tool_quantity_array[4]), for: .normal)
+        doom_day_button.setTitle(String(self.tool_quantity_array[5]), for: .normal)
+        
         resurrection_button.alpha = 0
         purification_button.alpha = 0
         holy_nova_button.alpha = 0
@@ -12586,6 +12602,7 @@ number_of_lines_erased += 1
     
     
     func purification() -> Void{
+        if (self.tool_quantity_array[1] > 0){
         do{purification_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "purification", ofType: "wav")!))
             purification_player.prepareToPlay()
         }
@@ -12626,15 +12643,41 @@ number_of_lines_erased += 1
             self.single_tri_stored_type_index[i[0]][i[1]] = -1
             self.filled[i[0]][i[1]] = false
         }
+        self.tool_quantity_array[1] -= 1
+            defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
         self.close_pack()
+        }
+        else
+        {
+            do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                not_fit_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            not_fit_player.play()
+        }
     }
         
     
     func holy_nova() -> Void{
+        if self.tool_quantity_array[2] > 0{
         during_holy_nova = true
         self.close_pack()
+            self.tool_quantity_array[2] -= 1
+            defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
     }
-        
+        else {
+            do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                not_fit_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            not_fit_player.play()
+        }
+    }
+    
     func nova_breaker(row: Int, col: Int) -> Void{
         print("reach here")
         print (row)
@@ -12833,6 +12876,8 @@ number_of_lines_erased += 1
     //doom day function
     
     func doom_day_action() -> Void{
+        if self.tool_quantity_array[5] > 0{
+        defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
         do{doom_day_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "doom_day_sound", ofType: "wav")!))
             doom_day_player.prepareToPlay()
         }
@@ -12890,7 +12935,18 @@ number_of_lines_erased += 1
         
         current_score = score
         star_score_increment()
-        
+            self.tool_quantity_array[5] -= 1
+            defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
+        }
+        else {
+            do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                not_fit_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            not_fit_player.play()
+        }
     }
     
     func erase_animation_combination(row: Int, column: Int , duration: TimeInterval){
@@ -12909,6 +12965,7 @@ number_of_lines_erased += 1
     var amplify_base = 1
     var amplifier_count_down_timer = Timer()
     func amplifier_action() -> Void {
+        if tool_quantity_array[3] > 0{
         do{amplifier_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "amplifier_sound", ofType: "wav")!))
             amplifier_player.prepareToPlay()
         }
@@ -12920,6 +12977,18 @@ number_of_lines_erased += 1
     print("amplifier start")
     amplify_base = 2
     amplifier_count_down_timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(GameBoardViewController.amplifier_completed), userInfo: nil, repeats: false)
+            self.tool_quantity_array[3] -= 1
+            defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
+        }
+        else {
+            do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                not_fit_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            not_fit_player.play()
+        }
     }
     
     func amplifier_completed() -> Void{
@@ -12933,6 +13002,7 @@ number_of_lines_erased += 1
   //trinity function
     var situation_lack_tri_number = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     func trinity_action() -> Void{
+        if (tool_quantity_array[4] > 0){
         do{trinity_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "trinity_sound", ofType: "wav")!))
             trinity_player.prepareToPlay()
         }
@@ -12979,8 +13049,18 @@ number_of_lines_erased += 1
         modify_counter_after_erase(before: cond_before_erase, after: cond_after_erase)
         current_score = score
         star_score_increment()
-
-    
+            self.tool_quantity_array[4] -= 1
+            defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
+        }
+        else {
+            do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                not_fit_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            not_fit_player.play()
+        }
         
     }
     
