@@ -671,6 +671,9 @@ class GameBoardViewController: UIViewController {
     var player = AVPlayer()
     
     //declare different types of audio player
+    var amplifier_player = AVAudioPlayer()
+    var doom_day_player = AVAudioPlayer()
+    var trinity_player = AVAudioPlayer()
     var purification_player = AVAudioPlayer()
     var fit_in_player = AVAudioPlayer()
     var audioPlayer = AVAudioPlayer()
@@ -12823,6 +12826,13 @@ number_of_lines_erased += 1
     //doom day function
     
     func doom_day_action() -> Void{
+        do{doom_day_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "doom_day_sound", ofType: "wav")!))
+            doom_day_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        doom_day_player.play()
     close_pack()
     var score_increment_number = 0
     //fix all filled first
@@ -12892,6 +12902,13 @@ number_of_lines_erased += 1
     var amplify_base = 1
     var amplifier_count_down_timer = Timer()
     func amplifier_action() -> Void {
+        do{amplifier_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "amplifier_sound", ofType: "wav")!))
+            amplifier_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        amplifier_player.play()
     close_pack()
     print("amplifier start")
     amplify_base = 2
@@ -12909,6 +12926,13 @@ number_of_lines_erased += 1
   //trinity function
     var situation_lack_tri_number = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     func trinity_action() -> Void{
+        do{trinity_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "trinity_sound", ofType: "wav")!))
+            trinity_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        trinity_player.play()
      close_pack()
     exam_each_situation_lack_tri_number()
     var sorted_situation_lack_tri_number = situation_lack_tri_number

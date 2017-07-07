@@ -38,6 +38,9 @@
 		5668B6EE1F048475007BC5E3 /* DailyGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5668B6ED1F048475007BC5E3 /* DailyGiftViewController.swift */; };
 		566A590A1EC942DD0056D665 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A59091EC942DD0056D665 /* LaunchViewController.swift */; };
 		566E64D71EDADC810034B1AA /* star_appear_ani.json in Resources */ = {isa = PBXBuildFile; fileRef = 566E64D61EDADC810034B1AA /* star_appear_ani.json */; };
+		566ED38A1F0EFFFF006A0BBF /* doom_day_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 566ED3891F0EFFFF006A0BBF /* doom_day_sound.wav */; };
+		566ED38C1F0F0140006A0BBF /* amplifier_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 566ED38B1F0F0140006A0BBF /* amplifier_sound.wav */; };
+		566ED38E1F0F01DF006A0BBF /* trinity_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 566ED38D1F0F01DF006A0BBF /* trinity_sound.wav */; };
 		569D0F431F08F37200264D3C /* spin_new.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 569D0F421F08F37200264D3C /* spin_new.mp3 */; };
 		569D0F451F0907F700264D3C /* spin_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 569D0F441F0907F700264D3C /* spin_2.mp3 */; };
 		56A61C841EC5D30500A29B6F /* GameBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEBEA51EC3254E008BBD04 /* GameBoardViewController.swift */; };
@@ -111,6 +114,9 @@
 		5668B6ED1F048475007BC5E3 /* DailyGiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyGiftViewController.swift; sourceTree = "<group>"; };
 		566A59091EC942DD0056D665 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		566E64D61EDADC810034B1AA /* star_appear_ani.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star_appear_ani.json; sourceTree = "<group>"; };
+		566ED3891F0EFFFF006A0BBF /* doom_day_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = doom_day_sound.wav; sourceTree = "<group>"; };
+		566ED38B1F0F0140006A0BBF /* amplifier_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = amplifier_sound.wav; sourceTree = "<group>"; };
+		566ED38D1F0F01DF006A0BBF /* trinity_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trinity_sound.wav; sourceTree = "<group>"; };
 		569D0F421F08F37200264D3C /* spin_new.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spin_new.mp3; sourceTree = "<group>"; };
 		569D0F441F0907F700264D3C /* spin_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spin_2.mp3; sourceTree = "<group>"; };
 		56A61C8A1EC5DA2400A29B6F /* background music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "background music.mp3"; sourceTree = "<group>"; };
@@ -265,11 +271,14 @@
 				56C3F42C1ED27CC400DE21BD /* opening.wav */,
 				56C3F42A1ED27B1A00DE21BD /* general_button.wav */,
 				56C3F4281ED279D200DE21BD /* erase.wav */,
+				566ED3891F0EFFFF006A0BBF /* doom_day_sound.wav */,
 				56C3F4261ED276F200DE21BD /* restart_soundeffect.wav */,
 				564542D21EC9A0E900BFBD0C /* Fit_In.aif */,
 				5620A3891ECAB8930035E099 /* background_music_tony.m4a */,
+				566ED38B1F0F0140006A0BBF /* amplifier_sound.wav */,
 				569D0F421F08F37200264D3C /* spin_new.mp3 */,
 				56D12A1D1F07EC4E00C047E1 /* door_open_and_reming.mp3 */,
+				566ED38D1F0F01DF006A0BBF /* trinity_sound.wav */,
 				56A61C8A1EC5DA2400A29B6F /* background music.mp3 */,
 				569D0F441F0907F700264D3C /* spin_2.mp3 */,
 				56D12A1B1F07E90100C047E1 /* clock_sound.mp3 */,
@@ -425,12 +434,14 @@
 			files = (
 				5668B6E41F03507E007BC5E3 /* crown.json in Resources */,
 				5620A38A1ECAB89F0035E099 /* background_music_tony.m4a in Resources */,
+				566ED38A1F0EFFFF006A0BBF /* doom_day_sound.wav in Resources */,
 				56F66DEB1EDB1C2D001E1DB6 /* start.json in Resources */,
 				563E7F601ED2EE5A008F33C1 /* not_fit.wav in Resources */,
 				042B79691F0E5EC700F3E81D /* purification.wav in Resources */,
 				56C3F4271ED276F200DE21BD /* restart_soundeffect.wav in Resources */,
 				564542D31EC9A17100BFBD0C /* Fit_In.aif in Resources */,
 				56C3F42B1ED27B1A00DE21BD /* general_button.wav in Resources */,
+				566ED38C1F0F0140006A0BBF /* amplifier_sound.wav in Resources */,
 				56D12A1C1F07E90100C047E1 /* clock_sound.mp3 in Resources */,
 				56C3F4291ED279D200DE21BD /* erase.wav in Resources */,
 				569D0F431F08F37200264D3C /* spin_new.mp3 in Resources */,
@@ -453,6 +464,7 @@
 				042D870D1ED870FB007A329C /* servishero_loading.json in Resources */,
 				5644A5F31EC428FC000066D6 /* Base.lproj in Resources */,
 				5668B6EC1F03E093007BC5E3 /* Assets.xcassets in Resources */,
+				566ED38E1F0F01DF006A0BBF /* trinity_sound.wav in Resources */,
 				569D0F451F0907F700264D3C /* spin_2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
