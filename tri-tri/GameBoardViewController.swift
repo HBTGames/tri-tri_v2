@@ -405,9 +405,7 @@ class GameBoardViewController: UIViewController {
     var green_drag_origin_backup = CGPoint(x: 0, y: 0)
     var orange_drag_origin_backup = CGPoint(x: 0, y:0 )
     var light_brown_drag_origin_backup = CGPoint(x:0 , y:0)
-
-    
-    
+    var pack_opened_frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     //array of image stored for shape 0 to shape 10
     //used for random generation
     var generator_array : Array<UIImage> = [UIImage(named:"绿色tri.png")!,UIImage(named:"橙色tri.png")!,UIImage(named:"棕色tri.png")!,UIImage(named:"brown_downwards.png")!,UIImage(named:"brown_left_direction.png")!,UIImage(named:"dark_green_tri.png")!,UIImage(named:"pink_right_direction.png")!,UIImage(named:"purple_upwards_as_shape.png")!,UIImage(named:"purple_downwards_as_shape")!, UIImage(named:"brown_left_downwards.png")!, UIImage(named: "brown_right_downwards.png")!]
@@ -747,6 +745,10 @@ class GameBoardViewController: UIViewController {
         light_brown_drag_origin_backup = light_brown_drag_origin
         if(!paused){
             if(!during_holy_nova){
+                if(pack_open && !pack_opened_frame.contains(initialTouchLocation)){
+                close_pack()
+                pack_open = false
+                }
         if(green_drag_tri_orig_rec.contains(initialTouchLocation)){
             self.green_drag_origin.y = self.green_drag_origin.y - self.pause_screen_y_transform(70)
             self.green_drag_origin.x = self.green_drag_origin.x - self.pause_screen_x_transform(10)
@@ -947,6 +949,11 @@ class GameBoardViewController: UIViewController {
         green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
         orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
         light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
+        
+        
+        pack_opened_frame = CGRect(x: pause_screen_x_transform(312), y: pause_screen_y_transform(165.5), width: pause_screen_x_transform(47), height: pause_screen_y_transform(306))
+        
+
         // Do any additional setup after loading the view.
         //generate first group
         if(score == 0){
