@@ -13057,15 +13057,17 @@ number_of_lines_erased += 1
     func amplifier_completed() -> Void{
      amplify_base = 1
     print("amplifier finished")
-    //amplifier_valide_icon.fadeOut()
-        
+    amplifier_valide_icon.fadeOut()
+    wave_animator_amplifier.fadeOutandRemove()
+    wave_animator_amplifier_timer.invalidate()
     }
     
     //amplifier animation
     //var amplifier_small_icon_location = CGPoint(x: 0, y: 0)
     
     @IBOutlet weak var amplifier_valide_icon: UIImageView!
-    
+    var wave_animator_amplifier = waveAnimator(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var wave_animator_amplifier_timer = Timer()
     func amplifier_animation() -> Void{
        // amplifier_small_icon_location = CGPoint(x: self.star_bg.frame.origin.x + self.star_bg.frame.width + self.pause_screen_x_transform(30), y: self.star_bg.frame.origin.y)
     var amplifier_icon_for_animation = UIImageView(frame: amplifier_button.frame)
@@ -13099,6 +13101,7 @@ number_of_lines_erased += 1
             }, completion: {
                 (finished) -> Void in
                amplifier_icon_for_animation.removeFromSuperview()
+                self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_amplifier")
                 self.amplifier_valide_icon.fadeIn()
                 self.amplifier_valide_icon.transform = CGAffineTransform(scaleX: 1.8, y: 0.3).translatedBy(x: self.pause_screen_x_transform(15), y: 0)
                 
@@ -13106,9 +13109,14 @@ number_of_lines_erased += 1
                     self.amplifier_valide_icon.transform = .identity
                 }, completion: {
                     (finished) -> Void in
-                    UIView.animate(withDuration: 25, animations: {
-                     self.amplifier_valide_icon.alpha = 0
-                    })
+                    self.amplifier_valide_icon.image = #imageLiteral(resourceName: "amplifier_transparent")
+                    self.wave_animator_amplifier.frame = self.amplifier_valide_icon.frame
+                    self.wave_animator_amplifier.alpha = 1
+                    self.view.addSubview(self.wave_animator_amplifier)
+                    self.view.bringSubview(toFront: self.amplifier_valide_icon)
+                    self.wave_animator_amplifier.waveAmplitude = Double(2)
+                    self.wave_animator_amplifier.progress = 1
+                    self.wave_animator_amplifier_timer = Timer.scheduledTimer(timeInterval: 0.01667, target: self, selector: #selector(GameBoardViewController.wave_animation_count_down), userInfo: nil, repeats: true)
                     
                 })
             })
@@ -13118,6 +13126,18 @@ number_of_lines_erased += 1
         
         
         
+    }
+    
+    func wave_animation_count_down() -> Void {
+        if(wave_animator_amplifier.progress != 0){
+    wave_animator_amplifier.progress -= 0.00055556
+        }else{
+        wave_animator_amplifier_timer.invalidate()
+        //wave_animator_amplifier.fadeOutandRemove()
+        amplifier_valide_icon.fadeOutandRemove()
+        }
+    
+    
     }
     
  /********************* all functions needed for trinity ********************/

@@ -51,6 +51,8 @@
 		56C3F4291ED279D200DE21BD /* erase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F4281ED279D200DE21BD /* erase.wav */; };
 		56C3F42B1ED27B1A00DE21BD /* general_button.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F42A1ED27B1A00DE21BD /* general_button.wav */; };
 		56C3F42D1ED27CC400DE21BD /* opening.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F42C1ED27CC400DE21BD /* opening.wav */; };
+		56C432391F105C9500D76D84 /* waveAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C432381F105C9500D76D84 /* waveAnimator.swift */; };
+		56C4323B1F105F9A00D76D84 /* WaveTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C4323A1F105F9A00D76D84 /* WaveTestViewController.swift */; };
 		56D12A1C1F07E90100C047E1 /* clock_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D12A1B1F07E90100C047E1 /* clock_sound.mp3 */; };
 		56D12A1E1F07EC4E00C047E1 /* door_open_and_reming.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D12A1D1F07EC4E00C047E1 /* door_open_and_reming.mp3 */; };
 		56D12A201F07F08200C047E1 /* spinning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D12A1F1F07F08200C047E1 /* spinning.mp3 */; };
@@ -127,6 +129,8 @@
 		56C3F4281ED279D200DE21BD /* erase.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = erase.wav; sourceTree = "<group>"; };
 		56C3F42A1ED27B1A00DE21BD /* general_button.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = general_button.wav; sourceTree = "<group>"; };
 		56C3F42C1ED27CC400DE21BD /* opening.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = opening.wav; sourceTree = "<group>"; };
+		56C432381F105C9500D76D84 /* waveAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = waveAnimator.swift; sourceTree = "<group>"; };
+		56C4323A1F105F9A00D76D84 /* WaveTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveTestViewController.swift; sourceTree = "<group>"; };
 		56D12A1B1F07E90100C047E1 /* clock_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clock_sound.mp3; sourceTree = "<group>"; };
 		56D12A1D1F07EC4E00C047E1 /* door_open_and_reming.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = door_open_and_reming.mp3; sourceTree = "<group>"; };
 		56D12A1F1F07F08200C047E1 /* spinning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spinning.mp3; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 				04E48D321EC0704000823F45 /* tri-triTests */,
 				5644A5F21EC428FC000066D6 /* Base.lproj */,
 				04E48D2A1EC0704000823F45 /* Info.plist */,
+				56C432381F105C9500D76D84 /* waveAnimator.swift */,
+				56C4323A1F105F9A00D76D84 /* WaveTestViewController.swift */,
 			);
 			path = "tri-tri";
 			sourceTree = "<group>";
@@ -635,8 +641,10 @@
 				564542D11EC95C2300BFBD0C /* MenuViewController.swift in Sources */,
 				04E48D1F1EC0704000823F45 /* AppDelegate.swift in Sources */,
 				56BEBEA81EC32C25008BBD04 /* UIImageTintExtension.swift in Sources */,
+				56C432391F105C9500D76D84 /* waveAnimator.swift in Sources */,
 				563230E81EC8A9F600EA49D9 /* GameOverViewController.swift in Sources */,
 				0453BA7F1F0A255300E2D724 /* TutorialViewController.swift in Sources */,
+				56C4323B1F105F9A00D76D84 /* WaveTestViewController.swift in Sources */,
 				5668B6EE1F048475007BC5E3 /* DailyGiftViewController.swift in Sources */,
 				563E7F661ED47D5A008F33C1 /* ThemeMenuViewController.swift in Sources */,
 			);
