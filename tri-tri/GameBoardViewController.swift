@@ -806,6 +806,7 @@ class GameBoardViewController: UIViewController {
                         
                     }
                     not_fit_player.play()
+                    self.during_holy_nova = false
                 
                 }else if (contained_boxes.count == 1){
                     print("reach nova else")
@@ -822,7 +823,7 @@ class GameBoardViewController: UIViewController {
                     print("reach nova else")
                     var row = Int()
                     var col = Int()
-                    var someFloat = Float(initialTouchLocation.x)
+                    let someFloat = Float(initialTouchLocation.x)
                     if (someFloat < Float(contained_boxes[1].origin.x)){
                         row = candidates[0][0]
                         col = candidates[0][1]
