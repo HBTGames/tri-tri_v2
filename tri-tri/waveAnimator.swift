@@ -132,7 +132,7 @@ class waveAnimator: UIView {
         
         //wave path
         var tempPoint = originX
-        for _ in 1...rounding(4 * cycle) {//(2 * cycle)即可充满屏幕，即一个循环,为了移动画布使波浪移动，我们要画两个循环
+        for _ in 1...rounding(4 * cycle) {//(2 * cycle)
             curvePath.addQuadCurve(to: keyPoint(tempPoint + term / 2, originX: originX), controlPoint: keyPoint(tempPoint + term / 4, originX: originX))
             tempPoint += term / 2
         }

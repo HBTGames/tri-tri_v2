@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521170474.734429"
+            timestampString = "521214143.258601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13452"
-            endingLineNumber = "13452"
+            startingLineNumber = "13552"
+            endingLineNumber = "13552"
             landmarkName = "amplifier_completed()"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521170474.734429"
+            timestampString = "521214143.258601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13974"
-            endingLineNumber = "13974"
+            startingLineNumber = "14074"
+            endingLineNumber = "14074"
             landmarkName = "fill_tris_to_situation(situation_index:tri_number:)"
             landmarkType = "7">
          </BreakpointContent>

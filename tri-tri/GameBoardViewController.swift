@@ -13340,7 +13340,9 @@ number_of_lines_erased += 1
         }
         doom_day_player.play()
     close_pack()
-    var score_increment_number = 0
+    
+    doom_day_animation_with_real_action()
+    /**var score_increment_number = 0
     //fix all filled first
     var i = 0 //row
         for row in filled{
@@ -13389,8 +13391,8 @@ number_of_lines_erased += 1
         
         current_score = score
         star_score_increment()
-            self.tool_quantity_array[5] -= 1
-            defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
+            //self.tool_quantity_array[5] -= 1
+            defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")**/
         }
         else {
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
@@ -13401,6 +13403,104 @@ number_of_lines_erased += 1
             }
             not_fit_player.play()
         }
+    }
+    
+
+    
+    func doom_day_animation_with_real_action() -> Void{
+        var doom_day_icon_for_animation = UIImageView(frame: amplifier_button.frame)
+        doom_day_icon_for_animation.image = #imageLiteral(resourceName: "item_round_doom_day")
+        self.view.addSubview(doom_day_icon_for_animation)
+        let doom_day_curve_moving_animation = CAKeyframeAnimation(keyPath: "position")
+        let fullRotation = CGFloat(2 * Double.pi)
+        doom_day_curve_moving_animation.path = customPathwithArg(from: doom_day_icon_for_animation.frame.origin, to: CGPoint(x: screen_width/2.0, y: screen_height/2.0)).cgPath
+        doom_day_curve_moving_animation.duration = 1.5
+        doom_day_curve_moving_animation.fillMode = kCAFillModeForwards
+        doom_day_curve_moving_animation.isRemovedOnCompletion = false
+        doom_day_icon_for_animation.layer.add(doom_day_curve_moving_animation, forKey: nil)
+        UIView.animate(withDuration: 1.5, animations: {
+            doom_day_icon_for_animation.transform = CGAffineTransform(scaleX: 5.0, y: 5.0)
+        }, completion: {
+            (finished) -> Void in
+            //spin
+            let spin_animation = CAKeyframeAnimation()
+            //CATransaction.begin()
+            spin_animation.keyPath = "transform.rotation.z"
+            spin_animation.isRemovedOnCompletion = false
+            spin_animation.fillMode = kCAFillModeForwards
+            spin_animation.duration = 0.5
+            spin_animation.repeatCount = 5.0
+            spin_animation.values = [0,fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
+            doom_day_icon_for_animation.layer.add(spin_animation, forKey: nil)
+            UIView.animate(withDuration: 1.5, animations: {
+             doom_day_icon_for_animation.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+            }, completion: {
+                (finished) -> Void in
+                doom_day_icon_for_animation.removeFromSuperview()
+                //doom day real action
+                self.doom_day_real_action()
+                
+                
+    
+            })
+            
+        })
+        
+        
+    }
+    
+    func doom_day_real_action() -> Void {
+        var score_increment_number = 0
+        //fix all filled first
+        var i = 0 //row
+        for row in filled{
+            var j = 0 //column
+            for object in row{
+                if(object){
+                    //print("i is \(i)")
+                    //print("j is \(j)")
+                    erase_animation_combination(row: i, column: j, duration: 0.3)
+                    filled[i][j] = false
+                    score_increment_number += 1
+                }
+                
+                single_tri_stored_type_index[i][j] = -1
+                
+                j += 1
+            }
+            i += 1
+            
+        }
+        //add score
+        last_score = score
+        score += score_increment_number*amplify_base
+        print("star_increment: \(score_increment_number)")
+        print("score is \(score)")
+        //print(score)
+        
+        MarkBoard.text = String(score)
+        UIView.animate(withDuration: 0.2, animations: {
+            self.MarkBoard.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }, completion: {
+            (finished) -> Void in
+            UIView.animate(withDuration: 0.1, animations: {
+                self.MarkBoard.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
+        })
+        
+        if(score > HighestScore){
+            HighestScore = score
+            HightestScoreBoard.text = String(HighestScore)
+            var HighScoreDefault = UserDefaults.standard
+            HighScoreDefault.set(HighestScore, forKey: "tritri_HighestScore")
+            HighScoreDefault.synchronize()
+            
+        }
+        
+        current_score = score
+        star_score_increment()
+        self.tool_quantity_array[5] -= 1
+        defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
     }
     
     func erase_animation_combination(row: Int, column: Int , duration: TimeInterval){
@@ -13419,7 +13519,7 @@ number_of_lines_erased += 1
     var amplify_base = 1
     var amplifier_count_down_timer = Timer()
     func amplifier_action() -> Void {
-        //if tool_quantity_array[3] > 0{
+        if tool_quantity_array[3] > 0{
         do{amplifier_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "amplifier_sound", ofType: "wav")!))
             amplifier_player.prepareToPlay()
         }
@@ -13432,10 +13532,10 @@ number_of_lines_erased += 1
     print("amplifier start")
     amplify_base = 2
     amplifier_count_down_timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(GameBoardViewController.amplifier_completed), userInfo: nil, repeats: false)
-            //self.tool_quantity_array[3] -= 1
+            self.tool_quantity_array[3] -= 1
             defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
-        //}
-        /**else {
+        }
+        else {
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                 not_fit_player.prepareToPlay()
             }
@@ -13443,7 +13543,7 @@ number_of_lines_erased += 1
                 
             }
             not_fit_player.play()
-        }**/
+        }
     }
     
     func amplifier_completed() -> Void{
@@ -13538,7 +13638,7 @@ number_of_lines_erased += 1
     var the_three_lack_tri: Array<Array<Int>> = []
     var situation_lack_tri_number = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     func trinity_action() -> Void{
-       // if (tool_quantity_array[4] > 0){
+       if (tool_quantity_array[4] > 0){
         the_three_lack_tri = []
         //trinity_animation()
         do{trinity_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "trinity_sound", ofType: "wav")!))
@@ -13578,10 +13678,10 @@ number_of_lines_erased += 1
         print("lacks are")
         print(the_three_lack_tri[0],the_three_lack_tri[1],the_three_lack_tri[2])
         trinity_animation()
-        //self.tool_quantity_array[4] -= 1
-            //defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
-        //}
-        /**else {
+        self.tool_quantity_array[4] -= 1
+            defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
+        }
+        else {
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                 not_fit_player.prepareToPlay()
             }
@@ -13589,7 +13689,7 @@ number_of_lines_erased += 1
                 
             }
             not_fit_player.play()
-        }**/
+        }
         
     }
     
