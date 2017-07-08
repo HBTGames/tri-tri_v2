@@ -13502,7 +13502,7 @@ number_of_lines_erased += 1
                 }, completion: {
                     (finished) -> Void in
                     self.amplifier_valide_icon.image = #imageLiteral(resourceName: "amplifier_transparent")
-                    self.wave_animator_amplifier.frame = self.amplifier_valide_icon.frame
+                    self.wave_animator_amplifier = waveAnimator(frame: self.amplifier_valide_icon.frame)
                     self.wave_animator_amplifier.alpha = 1
                     self.view.addSubview(self.wave_animator_amplifier)
                     self.view.bringSubview(toFront: self.amplifier_valide_icon)

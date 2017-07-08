@@ -271,7 +271,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13452"
             endingLineNumber = "13452"
-            landmarkName = "fill_tris_to_situation(situation_index:tri_number:)"
+            landmarkName = "amplifier_completed()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -287,7 +287,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "12541"
             endingLineNumber = "12541"
-            landmarkName = "backpack_decider()"
+            landmarkName = "open_pack()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -303,7 +303,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13213"
             endingLineNumber = "13213"
-            landmarkName = "fill_tris_to_situation(situation_index:tri_number:)"
+            landmarkName = "nova_breaker(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -319,8 +319,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "12656"
             endingLineNumber = "12656"
-            landmarkName = "GameBoardViewController"
-            landmarkType = "3">
+            landmarkName = "close_pack()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -335,7 +335,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "12652"
             endingLineNumber = "12652"
-            landmarkName = "resurrection_when_alive()"
+            landmarkName = "close_pack()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -351,7 +351,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13974"
             endingLineNumber = "13974"
-            landmarkName = "trinity_animation()"
+            landmarkName = "fill_tris_to_situation(situation_index:tri_number:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
