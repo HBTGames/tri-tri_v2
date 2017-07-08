@@ -782,7 +782,7 @@ class GameBoardViewController: UIViewController {
         }
         }
             else{   //during holy nova
-                var contained_boxes: Array<CGRect> = []
+                /*var contained_boxes: Array<CGRect> = []
                 var candidates: Array<Array<Int>> = []
                 let before = filled
                 last_score = score
@@ -838,7 +838,72 @@ class GameBoardViewController: UIViewController {
                 let after = filled
                 current_score = score
                 modify_counter(before: before, after: after)
-                star_score_increment()
+                star_score_increment()*/
+                print("nova_touches_begin")
+                var contained_boxes: Array<CGRect> = []
+                var candidates: Array<Array<Int>> = []
+                //let before = filled
+                //last_score = score
+                var i = 0
+                for row in tri_boxes{
+                    var j = 0
+                    for tri_frame in row{
+                        if (tri_frame.contains(initialTouchLocation)){
+                            contained_boxes.append(tri_frame)
+                            candidates.append([i, j])
+                        }
+                        j+=1
+                    }
+                    i += 1
+                }
+                if contained_boxes.count == 0{
+                    do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                        not_fit_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    not_fit_player.play()
+                    //self.during_holy_nova = false
+                    
+                }else if (contained_boxes.count == 1){
+                    print("reach nova else")
+                    
+                    
+                    let row = candidates[0][0]
+                    let col = candidates[0][1]
+                    self.nova_row = row
+                    self.nova_col = col
+                    self.nova_tri_recorder_helper(row: row, col: col)
+                    self.tri_image_change(row: row, col: col, up: UIImage(named:"colors_gold_up")!, down: UIImage(named:"colors_gold_down")!)
+                    
+                    //self.nova_breaker(row: row, col: col)
+                    //self.during_holy_nova = false
+                }
+                else/* if (contained_boxes.count == 1)*/{
+                    print("reach nova else")
+                    var row = Int()
+                    var col = Int()
+                    let someFloat = Float(initialTouchLocation.x)
+                    if (someFloat < Float(contained_boxes[1].origin.x)){
+                        row = candidates[0][0]
+                        col = candidates[0][1]
+                    } else {
+                        row = candidates[1][0]
+                        col = candidates[1][1]
+                    }
+                    self.nova_row = row
+                    self.nova_col = col
+                    self.nova_tri_recorder_helper(row: row, col: col)
+                    self.tri_image_change(row: row, col: col, up: UIImage(named:"colors_gold_up")!, down: UIImage(named:"colors_gold_down")!)
+                    
+                    //self.nova_breaker(row: row, col: col)
+                    //self.during_holy_nova = false
+                }
+                /*let after = filled
+                current_score = score
+                modify_counter(before: before, after: after)
+                star_score_increment()*/
             }
         }
     }
@@ -849,6 +914,7 @@ class GameBoardViewController: UIViewController {
         
             let finalTouchLocation = touches.first!.location(in: view)
         if(!paused){
+            if (!during_holy_nova){
             if(green_drag_tri_orig_rec.contains(finalTouchLocation)){
                 self.green_drag_origin = self.green_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
@@ -869,6 +935,68 @@ class GameBoardViewController: UIViewController {
                     self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
                 })
         }
+            }else {
+                  //during holy nova
+                print("nova_touches_end")
+                    var contained_boxes: Array<CGRect> = []
+                    var candidates: Array<Array<Int>> = []
+                    let before = filled
+                    last_score = score
+                    var i = 0
+                    for row in tri_boxes{
+                        var j = 0
+                        for tri_frame in row{
+                            if (tri_frame.contains(finalTouchLocation)){
+                                contained_boxes.append(tri_frame)
+                                candidates.append([i, j])
+                            }
+                            j+=1
+                        }
+                        i += 1
+                    }
+                    if contained_boxes.count == 0{
+                        do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                            not_fit_player.prepareToPlay()
+                        }
+                        catch{
+                            
+                        }
+                        not_fit_player.play()
+                        self.during_holy_nova = false
+                        
+                    }else if (contained_boxes.count == 1){
+                        print("reach nova else")
+                        
+                        
+                        let row = candidates[0][0]
+                        let col = candidates[0][1]
+                        
+                        
+                        self.nova_breaker(row: row, col: col)
+                        self.during_holy_nova = false
+                    }
+                    else/* if (contained_boxes.count == 1)*/{
+                        print("reach nova else")
+                        var row = Int()
+                        var col = Int()
+                        let someFloat = Float(finalTouchLocation.x)
+                        if (someFloat < Float(contained_boxes[1].origin.x)){
+                            row = candidates[0][0]
+                            col = candidates[0][1]
+                        } else {
+                            row = candidates[1][0]
+                            col = candidates[1][1]
+                        }
+                        
+                        self.nova_breaker(row: row, col: col)
+                        self.during_holy_nova = false
+                    }
+                    let after = filled
+                    current_score = score
+                    modify_counter(before: before, after: after)
+                    star_score_increment()
+                }
+            
         }
     }
     
@@ -2452,7 +2580,7 @@ class GameBoardViewController: UIViewController {
     //
     //function in response to drag movement
     func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
-        if (!paused && !in_theme_menu){
+        if (!paused && !in_theme_menu && !during_holy_nova){
             
         
         var actual_type_index = 0
@@ -2622,6 +2750,12 @@ class GameBoardViewController: UIViewController {
             
 
         }
+        }
+        else if (during_holy_nova){
+            tri_image_change(row: self.nova_row, col: self.nova_col, up: nova_tri_recorder, down: nova_tri_recorder)
+            during_holy_nova = false
+            tool_quantity_array[2] += 1
+            defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
         }
         else if(in_theme_menu){
             let transition0 = gesture.translation(in: day_theme_button)
@@ -12741,6 +12875,259 @@ number_of_lines_erased += 1
         }
     }
     
+    
+    func tri_image_change(row: Int, col: Int, up: UIImage, down: UIImage) -> Void{
+        if (row == 0 && col == 0){
+            self.tri_0_0.image = up
+        } else if (row == 0 && col == 1){
+            self.tri_0_1.image = down
+        }else if (row == 0 && col == 2){
+            self.tri_0_2.image = up
+        } else if (row == 0 && col == 3){
+            self.tri_0_3.image = down
+        } else if (row == 0 && col == 4){
+            self.tri_0_4.image = up
+        } else if (row == 0 && col == 5){
+            self.tri_0_5.image = down
+        } else if (row == 0 && col == 6){
+            self.tri_0_6.image = up
+        }
+            
+        else if (row == 1 && col == 0){
+            self.tri_1_0.image = up
+        } else if (row == 1 && col == 1){
+            self.tri_1_1.image = down
+        } else if (row == 1 && col == 2){
+            self.tri_1_2.image = up
+        } else if (row == 1 && col == 3){
+            self.tri_1_3.image = down
+        } else if (row == 1 && col == 4){
+            self.tri_1_4.image = up
+        } else if (row == 1 && col == 5){
+            self.tri_1_5.image = down
+        } else if (row == 1 && col == 6){
+            self.tri_1_6.image = up
+        } else if (row == 1 && col == 7){
+            self.tri_1_7.image = down
+        } else if (row == 1 && col == 8){
+            self.tri_1_8.image = up
+        }
+            
+        else if (row == 2 && col == 0){
+            self.tri_2_0.image = up
+        } else if (row == 2 && col == 1){
+            self.tri_2_1.image = down
+        } else if (row == 2 && col == 2){
+            self.tri_2_2.image = up
+        } else if (row == 2 && col == 3){
+            self.tri_2_3.image = down
+        } else if (row == 2 && col == 4){
+            self.tri_2_4.image = up
+        } else if (row == 2 && col == 5){
+            self.tri_2_5.image = down
+        } else if (row == 2 && col == 6){
+            self.tri_2_6.image = up
+        } else if (row == 2 && col == 7){
+            self.tri_2_7.image = down
+        } else if (row == 2 && col == 8){
+            self.tri_2_8.image = up
+        } else if (row == 2 && col == 9){
+            self.tri_2_9.image = down
+        } else if (row == 2 && col == 10){
+            self.tri_2_10.image = up
+        }
+            
+        else if (row == 3 && col == 0){
+            self.tri_3_0.image = down
+        } else if (row == 3 && col == 1){
+            self.tri_3_1.image = up
+        } else if (row == 3 && col == 2){
+            self.tri_3_2.image = down
+        } else if (row == 3 && col == 3){
+            self.tri_3_3.image = up
+        } else if (row == 3 && col == 4){
+            self.tri_3_4.image = down
+        } else if (row == 3 && col == 5){
+            self.tri_3_5.image = up
+        } else if (row == 3 && col == 6){
+            self.tri_3_6.image = down
+        } else if (row == 3 && col == 7){
+            self.tri_3_7.image = up
+        } else if (row == 3 && col == 8){
+            self.tri_3_8.image = down
+        } else if (row == 3 && col == 9){
+            self.tri_3_9.image = up
+        } else if (row == 3 && col == 10){
+            self.tri_3_10.image = down
+        }
+            
+        else if (row == 4 && col == 0){
+            self.tri_4_0.image = down
+        } else if (row == 4 && col == 1){
+            self.tri_4_1.image = up
+        } else if (row == 4 && col == 2){
+            self.tri_4_2.image = down
+        } else if (row == 4 && col == 3){
+            self.tri_4_3.image = up
+        } else if (row == 4 && col == 4){
+            self.tri_4_4.image = down
+        } else if (row == 4 && col == 5){
+            self.tri_4_5.image = up
+        } else if (row == 4 && col == 6){
+            self.tri_4_6.image = down
+        } else if (row == 4 && col == 7){
+            self.tri_4_7.image = up
+        } else if (row == 4 && col == 8){
+            self.tri_4_8.image = down
+        }
+            
+        else if (row == 5 && col == 0){
+            self.tri_5_0.image = down
+        } else if (row == 5 && col == 1){
+            self.tri_5_1.image = up
+        }else if (row == 5 && col == 2){
+            self.tri_5_2.image = down
+        } else if (row == 5 && col == 3){
+            self.tri_5_3.image = up
+        } else if (row == 5 && col == 4){
+            self.tri_5_4.image = down
+        } else if (row == 5 && col == 5){
+            self.tri_5_5.image = up
+        } else if (row == 5 && col == 6){
+            self.tri_5_6.image = down
+        }
+    }
+    
+    
+    
+    var nova_row = Int()
+    
+    var nova_col = Int()
+    
+    var nova_tri_recorder = UIImage()
+    
+    func nova_tri_recorder_helper(row: Int, col: Int) -> Void{
+        if (row == 0 && col == 0){
+            self.nova_tri_recorder = self.tri_0_0.image!
+        } else if (row == 0 && col == 1){
+            self.nova_tri_recorder = self.tri_0_1.image!
+        }else if (row == 0 && col == 2){
+            self.nova_tri_recorder = self.tri_0_2.image!
+        } else if (row == 0 && col == 3){
+            self.nova_tri_recorder = self.tri_0_3.image!
+        } else if (row == 0 && col == 4){
+            self.nova_tri_recorder = self.tri_0_4.image!
+        } else if (row == 0 && col == 5){
+            self.nova_tri_recorder = self.tri_0_5.image!
+        } else if (row == 0 && col == 6){
+            self.nova_tri_recorder = self.tri_0_6.image!
+        }
+            
+        else if (row == 1 && col == 0){
+            self.nova_tri_recorder = self.tri_1_0.image!
+        } else if (row == 1 && col == 1){
+            self.nova_tri_recorder = self.tri_1_1.image!
+        } else if (row == 1 && col == 2){
+            self.nova_tri_recorder = self.tri_1_2.image!
+        } else if (row == 1 && col == 3){
+            self.nova_tri_recorder = self.tri_1_3.image!
+        } else if (row == 1 && col == 4){
+            self.nova_tri_recorder = self.tri_1_4.image!
+        } else if (row == 1 && col == 5){
+            self.nova_tri_recorder = self.tri_1_5.image!
+        } else if (row == 1 && col == 6){
+            self.nova_tri_recorder = self.tri_1_6.image!
+        } else if (row == 1 && col == 7){
+            self.nova_tri_recorder = self.tri_1_7.image!
+        } else if (row == 1 && col == 8){
+            self.nova_tri_recorder = self.tri_1_8.image!
+        }
+            
+        else if (row == 2 && col == 0){
+            self.nova_tri_recorder = self.tri_2_0.image!
+        } else if (row == 2 && col == 1){
+            self.nova_tri_recorder = self.tri_2_1.image!
+        } else if (row == 2 && col == 2){
+            self.nova_tri_recorder = self.tri_2_2.image!
+        } else if (row == 2 && col == 3){
+            self.nova_tri_recorder = self.tri_2_3.image!
+        } else if (row == 2 && col == 4){
+            self.nova_tri_recorder = self.tri_2_4.image!
+        } else if (row == 2 && col == 5){
+            self.nova_tri_recorder = self.tri_2_5.image!
+        } else if (row == 2 && col == 6){
+            self.nova_tri_recorder = self.tri_2_6.image!
+        } else if (row == 2 && col == 7){
+            self.nova_tri_recorder = self.tri_2_7.image!
+        } else if (row == 2 && col == 8){
+            self.nova_tri_recorder = self.tri_2_8.image!
+        } else if (row == 2 && col == 9){
+            self.nova_tri_recorder = self.tri_2_9.image!
+        } else if (row == 2 && col == 10){
+            self.nova_tri_recorder = self.tri_2_10.image!
+        }
+            
+        else if (row == 3 && col == 0){
+            self.nova_tri_recorder = self.tri_3_0.image!
+        } else if (row == 3 && col == 1){
+            self.nova_tri_recorder = self.tri_3_1.image!
+        } else if (row == 3 && col == 2){
+            self.nova_tri_recorder = self.tri_3_2.image!
+        } else if (row == 3 && col == 3){
+            self.nova_tri_recorder = self.tri_3_3.image!
+        } else if (row == 3 && col == 4){
+            self.nova_tri_recorder = self.tri_3_4.image!
+        } else if (row == 3 && col == 5){
+            self.nova_tri_recorder = self.tri_3_5.image!
+        } else if (row == 3 && col == 6){
+            self.nova_tri_recorder = self.tri_3_6.image!
+        } else if (row == 3 && col == 7){
+            self.nova_tri_recorder = self.tri_3_7.image!
+        } else if (row == 3 && col == 8){
+            self.nova_tri_recorder = self.tri_3_8.image!
+        } else if (row == 3 && col == 9){
+            self.nova_tri_recorder = self.tri_3_9.image!
+        } else if (row == 3 && col == 10){
+            self.nova_tri_recorder = self.tri_3_10.image!
+        }
+            
+        else if (row == 4 && col == 0){
+            self.nova_tri_recorder = self.tri_4_0.image!
+        } else if (row == 4 && col == 1){
+            self.nova_tri_recorder = self.tri_4_1.image!
+        } else if (row == 4 && col == 2){
+            self.nova_tri_recorder = self.tri_4_2.image!
+        } else if (row == 4 && col == 3){
+            self.nova_tri_recorder = self.tri_4_3.image!
+        } else if (row == 4 && col == 4){
+            self.nova_tri_recorder = self.tri_4_4.image!
+        } else if (row == 4 && col == 5){
+            self.nova_tri_recorder = self.tri_4_5.image!
+        } else if (row == 4 && col == 6){
+            self.nova_tri_recorder = self.tri_4_6.image!
+        } else if (row == 4 && col == 7){
+            self.nova_tri_recorder = self.tri_4_7.image!
+        } else if (row == 4 && col == 8){
+            self.nova_tri_recorder = self.tri_4_8.image!
+        }
+            
+        else if (row == 5 && col == 0){
+            self.nova_tri_recorder = self.tri_5_0.image!
+        } else if (row == 5 && col == 1){
+             self.nova_tri_recorder = self.tri_5_1.image!
+        }else if (row == 5 && col == 2){
+             self.nova_tri_recorder = self.tri_5_2.image!
+        } else if (row == 5 && col == 3){
+             self.nova_tri_recorder = self.tri_5_3.image!
+        } else if (row == 5 && col == 4){
+             self.nova_tri_recorder = self.tri_5_4.image!
+        } else if (row == 5 && col == 5){
+             self.nova_tri_recorder = self.tri_5_5.image!
+        } else if (row == 5 && col == 6){
+             self.nova_tri_recorder = self.tri_5_6.image!
+        }
+    }
+    
     func nova_breaker(row: Int, col: Int) -> Void{
         print("reach here")
         print (row)
@@ -12886,18 +13273,22 @@ number_of_lines_erased += 1
         }
         
         for i in break_list{
-            if filled[i[0]][i[1]] == true{
-            UIView.animate(withDuration: 0.2, animations: {
-                self.erase_animation_by_row_col(row: i[0] , col: i[1])
+            
+            UIView.animate(withDuration: 1, animations: {
+                self.tri_image_change(row: i[0], col: i[1], up: UIImage(named:"colors_gold_up")!, down: UIImage(named:"colors_gold_down")!)
             }, completion: {
                 (finished) -> Void in
-                
-                self.erase_animation_with_grey_tri_restore_by_row_col(row: i[0] , col: i[1])
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.tri_image_change(row: i[0], col: i[1], up: self.upwards_tri!, down: self.downwards_tri!)
+                }, completion: {
+                    (finished) -> Void in
+                    
+                })
                 
             })
             self.single_tri_stored_type_index[i[0]][i[1]] = -1
             self.filled[i[0]][i[1]] = false
-        }
+        
         
         }
         
