@@ -14503,6 +14503,12 @@ func trinity_animation() -> Void {
 }
 
 
+    @IBAction func star_cheat_function(_ sender: UIButton) {
+    star_score += 10000
+    starBoard.text = String(star_score)
+    defaults.set(star_score, forKey: "tritri_star_score")
+    defaults.synchronize()
+    }
 
 /***********************************************************************************/
     
