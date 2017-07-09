@@ -13128,6 +13128,727 @@ number_of_lines_erased += 1
         }
     }
     
+    let nova_mid_status_up = UIImage(named:"colors_gold_up")
+    let nova_mid_status_down = UIImage(named:"colors_gold_down")
+    
+    
+    
+    func nova_boom_animation(row: Int, col: Int) -> Void{
+        if (row == 0 && col == 0){
+           
+            
+            UIView.transition(with: self.tri_0_0,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_0_0.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_0_0,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_0_0.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+            
+            
+            
+            
+        } else if (row == 0 && col == 1){
+            UIView.transition(with: self.tri_0_1,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_0_1.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_0_1,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_0_1.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        } else if (row == 0 && col == 2){
+            UIView.transition(with: self.tri_0_2,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_0_2.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_0_2,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_0_2.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 0 && col == 3){
+            UIView.transition(with: self.tri_0_3,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_0_3.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_0_3,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_0_3.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 0 && col == 4){
+            UIView.transition(with: self.tri_0_4,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_0_4.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_0_4,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_0_4.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 0 && col == 5){
+            UIView.transition(with: self.tri_0_5,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_0_5.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_0_5,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_0_5.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 0 && col == 6){
+            UIView.transition(with: self.tri_0_6,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_0_6.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_0_6,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_0_6.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 1 && col == 0){
+            UIView.transition(with: self.tri_1_0,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_1_0.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_1_0,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_1_0.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 1 && col == 1){
+            UIView.transition(with: self.tri_1_1,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_1_1.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_1_1,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_1_1.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 1 && col == 2){
+            UIView.transition(with: self.tri_1_2,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_1_2.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_1_2,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_1_2.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 1 && col == 3){
+            UIView.transition(with: self.tri_1_3,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_1_3.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_1_3,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_1_3.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 1 && col == 4){
+            UIView.transition(with: self.tri_1_4,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_1_4.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_1_4,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_1_4.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 1 && col == 5){
+            UIView.transition(with: self.tri_1_5,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_1_5.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_1_5,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_1_5.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 1 && col == 6){
+            UIView.transition(with: self.tri_1_6,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_1_6.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_1_6,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_1_6.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 1 && col == 7){
+            UIView.transition(with: self.tri_1_7,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_1_7.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_1_7,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_1_7.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 1 && col == 8){
+            UIView.transition(with: self.tri_1_8,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_1_8.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_1_8,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_1_8.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 2 && col == 0){
+            UIView.transition(with: self.tri_2_0,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_2_0.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_2_0,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_2_0.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 2 && col == 1){
+            UIView.transition(with: self.tri_2_1,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_2_1.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_2_1,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_2_1.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 2 && col == 2){
+            UIView.transition(with: self.tri_2_2,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_2_2.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_2_2,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_2_2.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 2 && col == 3){
+            UIView.transition(with: self.tri_2_3,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_2_3.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_2_3,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_2_3.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 2 && col == 4){
+            UIView.transition(with: self.tri_2_4,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_2_4.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_2_4,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_2_4.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 2 && col == 5){
+            UIView.transition(with: self.tri_2_5,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_2_5.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_2_5,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_2_5.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 2 && col == 6){
+            UIView.transition(with: self.tri_2_6,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_2_6.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_2_6,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_2_6.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 2 && col == 7){
+            UIView.transition(with: self.tri_2_7,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_2_7.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_2_7,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_2_7.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 2 && col == 8){
+            UIView.transition(with: self.tri_2_8,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_2_8.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_2_8,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_2_8.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 2 && col == 9){
+            UIView.transition(with: self.tri_2_9,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_2_9.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_2_9,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_2_9.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 2 && col == 10){
+            UIView.transition(with: self.tri_2_10,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_2_10.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_2_10,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_2_10.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 3 && col == 0){
+            UIView.transition(with: self.tri_3_0,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_3_0.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_3_0,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_3_0.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 3 && col == 1){
+            UIView.transition(with: self.tri_3_1,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_3_1.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_3_1,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_3_1.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 3 && col == 2){
+            UIView.transition(with: self.tri_3_2,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_3_2.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_3_2,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_3_2.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 3 && col == 3){
+            UIView.transition(with: self.tri_3_3,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_3_3.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_3_3,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_3_3.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 3 && col == 4){
+            UIView.transition(with: self.tri_3_4,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_3_4.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_3_4,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_3_4.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 3 && col == 5){
+            UIView.transition(with: self.tri_3_5,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_3_5.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_3_5,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_3_5.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 3 && col == 6){
+            UIView.transition(with: self.tri_3_6,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_3_6.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_3_6,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_3_6.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 3 && col == 7){
+            UIView.transition(with: self.tri_3_7,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_3_7.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_3_7,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_3_7.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 3 && col == 8){
+            UIView.transition(with: self.tri_3_8,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_3_8.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_3_8,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_3_8.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 3 && col == 9){
+            UIView.transition(with: self.tri_3_9,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_3_9.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_3_9,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_3_9.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 3 && col == 10){
+            UIView.transition(with: self.tri_3_10,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_3_10.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_3_10,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_3_10.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 4 && col == 0){
+            UIView.transition(with: self.tri_4_0,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_4_0.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_4_0,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_4_0.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 4 && col == 1){
+            UIView.transition(with: self.tri_4_1,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_4_1.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_4_1,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_4_1.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 4 && col == 2){
+            UIView.transition(with: self.tri_4_2,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_4_2.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_4_2,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_4_2.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 4 && col == 3){
+            UIView.transition(with: self.tri_4_3,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_4_3.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_4_3,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_4_3.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 4 && col == 4){
+            UIView.transition(with: self.tri_4_4,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_4_4.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_4_4,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_4_4.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 4 && col == 5){
+            UIView.transition(with: self.tri_4_5,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_4_5.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_4_5,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_4_5.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 4 && col == 6){
+            UIView.transition(with: self.tri_4_6,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_4_6.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_4_6,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_4_6.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 4 && col == 7){
+            UIView.transition(with: self.tri_4_7,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_4_7.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_4_7,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_4_7.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 4 && col == 8){
+            UIView.transition(with: self.tri_4_8,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_4_8.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_4_8,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_4_8.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 5 && col == 0){
+            UIView.transition(with: self.tri_5_0,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_5_0.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_5_0,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_5_0.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 5 && col == 1){
+            UIView.transition(with: self.tri_5_1,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_5_1.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_5_1,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_5_1.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 5 && col == 2){
+            UIView.transition(with: self.tri_5_2,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_5_2.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_5_2,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_5_2.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 5 && col == 3){
+            UIView.transition(with: self.tri_5_3,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_5_3.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_5_3,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_5_3.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 5 && col == 4){
+            UIView.transition(with: self.tri_5_4,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_5_4.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_5_4,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_5_4.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 5 && col == 5){
+            UIView.transition(with: self.tri_5_5,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_5_5.image = self.nova_mid_status_up},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_5_5,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_5_5.image = self.upwards_tri},
+                                                  completion: nil)
+            })
+        }else if (row == 5 && col == 6){
+            UIView.transition(with: self.tri_5_6,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tri_5_6.image = self.nova_mid_status_down},
+                              completion: {
+                                (finished) -> Void in
+                                UIView.transition(with: self.tri_5_6,
+                                                  duration: 0.5,
+                                                  options: .transitionCrossDissolve,
+                                                  animations: {self.tri_5_6.image = self.downwards_tri},
+                                                  completion: nil)
+            })
+        }
+    }
+    
+    
+    
+    
+    
     func nova_breaker(row: Int, col: Int) -> Void{
         print("reach here")
         print (row)
@@ -13274,7 +13995,7 @@ number_of_lines_erased += 1
         
         for i in break_list{
             
-            UIView.animate(withDuration: 1, animations: {
+            /*UIView.animate(withDuration: 1, animations: {
                 self.tri_image_change(row: i[0], col: i[1], up: UIImage(named:"colors_gold_up")!, down: UIImage(named:"colors_gold_down")!)
             }, completion: {
                 (finished) -> Void in
@@ -13285,7 +14006,8 @@ number_of_lines_erased += 1
                     
                 })
                 
-            })
+            })*/
+            self.nova_boom_animation(row: i[0], col: i[1])
             self.single_tri_stored_type_index[i[0]][i[1]] = -1
             self.filled[i[0]][i[1]] = false
         
