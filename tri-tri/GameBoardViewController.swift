@@ -144,7 +144,6 @@ class GameBoardViewController: UIViewController {
     
     
     
-    
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //2.
     //record theme type for now
@@ -1256,6 +1255,7 @@ class GameBoardViewController: UIViewController {
             self.pause.setImage(UIImage(named: "colors_pause-button"), for: .normal)
             self.starBoard.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
         }
+
         backpack_decider()
         triangle_title_image_decider()
         change_shape_in_generate_array()
@@ -4445,6 +4445,7 @@ class GameBoardViewController: UIViewController {
     
     }
     
+   
     func Restore_Grey_Tris( ) ->Void {
         //row NO 0
         if (!filled[0][0]){
@@ -14208,17 +14209,457 @@ number_of_lines_erased += 1
         
     }
     
+    
     func doom_day_real_action() -> Void {
         var score_increment_number = 0
         //fix all filled first
         var i = 0 //row
-        for row in filled{
+        for row_objects in filled{
             var j = 0 //column
-            for object in row{
+            for object in row_objects{
                 if(object){
                     //print("i is \(i)")
                     //print("j is \(j)")
-                    erase_animation_combination(row: i, column: j, duration: 0.3)
+                    //find the replace grey
+                    var the_replace_grey_tri = UIImageView(frame: CGRect(x: tri_location[i][j].x, y: tri_location[i][j].y, width: tri_0_0.frame.width, height: tri_0_0.frame.height))
+                    if(true_if_up(i: i, j: j)){
+                        the_replace_grey_tri.image = upwards_tri
+                    }else{
+                        the_replace_grey_tri.image = downwards_tri
+                    }
+                    self.view.addSubview(the_replace_grey_tri)
+                    //transparent_tri_and_add_certain_tri_and_add_a_cover(row: i, col: j)
+                    //explosion full content
+                    //tri_explosion_animation_and_restore(row: i, col: j, duration: 1)
+                    let row = i
+                    let col = j
+                    let duration = 1.0
+                    if (row == 0 && col == 0){
+                        self.tri_0_0.explode(duration: duration, completion: {
+                            self.tri_0_0.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+                        })
+                    } else if (row == 0 && col == 1){
+                        self.tri_0_1.explode(duration: duration, completion: {
+                            self.tri_0_1.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    }else if (row == 0 && col == 2){
+                        self.tri_0_2.explode(duration: duration, completion: {
+                            self.tri_0_2.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 0 && col == 3){
+                        self.tri_0_3.explode(duration: duration, completion: {
+                            self.tri_0_3.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 0 && col == 4){
+                        self.tri_0_4.explode(duration: duration, completion: {
+                            self.tri_0_4.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 0 && col == 5){
+                        self.tri_0_5.explode(duration: duration, completion: {
+                            self.tri_0_5.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 0 && col == 6){
+                        self.tri_0_6.explode(duration: duration, completion: {
+                            self.tri_0_6.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    }
+                        
+                    else if (row == 1 && col == 0){
+                        self.tri_1_0.explode(duration: duration, completion: {
+                            self.tri_1_0.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 1 && col == 1){
+                        self.tri_1_1.explode(duration: duration, completion: {
+                            self.tri_1_1.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 1 && col == 2){
+                        self.tri_1_2.explode(duration: duration, completion: {
+                            self.tri_1_2.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 1 && col == 3){
+                        self.tri_1_3.explode(duration: duration, completion: {
+                            self.tri_1_3.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 1 && col == 4){
+                        self.tri_1_4.explode(duration: duration, completion: {
+                            self.tri_1_4.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 1 && col == 5){
+                        self.tri_1_5.explode(duration: duration, completion: {
+                            self.tri_1_5.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 1 && col == 6){
+                        self.tri_1_6.explode(duration: duration, completion: {
+                            self.tri_1_6.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 1 && col == 7){
+                        self.tri_1_7.explode(duration: duration, completion: {
+                            self.tri_1_7.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 1 && col == 8){
+                        self.tri_1_8.explode(duration: duration, completion: {
+                            self.tri_1_8.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    }
+                        
+                    else if (row == 2 && col == 0){
+                        self.tri_2_0.explode(duration: duration, completion: {
+                            self.tri_2_0.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 2 && col == 1){
+                        self.tri_2_1.explode(duration: duration, completion: {
+                            self.tri_2_1.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 2 && col == 2){
+                        self.tri_2_2.explode(duration: duration, completion: {
+                            self.tri_2_2.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 2 && col == 3){
+                        self.tri_2_3.explode(duration: duration, completion: {
+                            self.tri_2_3.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 2 && col == 4){
+                        self.tri_2_4.explode(duration: duration, completion: {
+                            self.tri_2_4.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 2 && col == 5){
+                        self.tri_2_5.explode(duration: duration, completion: {
+                            self.tri_2_5.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 2 && col == 6){
+                        self.tri_2_6.explode(duration: duration, completion: {
+                            self.tri_2_6.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 2 && col == 7){
+                        self.tri_2_7.explode(duration: duration, completion: {
+                            self.tri_2_7.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 2 && col == 8){
+                        self.tri_2_8.explode(duration: duration, completion: {
+                            self.tri_2_8.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 2 && col == 9){
+                        self.tri_2_9.explode(duration: duration, completion: {
+                            self.tri_2_9.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 2 && col == 10){
+                        self.tri_2_10.explode(duration: duration, completion: {
+                            self.tri_2_10.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    }
+                        
+                    else if (row == 3 && col == 0){
+                        self.tri_3_0.explode(duration: duration, completion: {
+                            self.tri_3_0.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 3 && col == 1){
+                        self.tri_3_1.explode(duration: duration, completion: {
+                            self.tri_3_1.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 3 && col == 2){
+                        self.tri_3_2.explode(duration: duration, completion: {
+                            self.tri_3_2.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 3 && col == 3){
+                        self.tri_3_3.explode(duration: duration, completion: {
+                            self.tri_3_3.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 3 && col == 4){
+                        self.tri_3_4.explode(duration: duration, completion: {
+                            self.tri_3_4.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 3 && col == 5){
+                        self.tri_3_5.explode(duration: duration, completion: {
+                            self.tri_3_5.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 3 && col == 6){
+                        self.tri_3_6.explode(duration: duration, completion: {
+                            self.tri_3_6.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 3 && col == 7){
+                        self.tri_3_7.explode(duration: duration, completion: {
+                            self.tri_3_7.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 3 && col == 8){
+                        self.tri_3_8.explode(duration: duration, completion: {
+                            self.tri_3_8.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 3 && col == 9){
+                        self.tri_3_9.explode(duration: duration, completion: {
+                            self.tri_3_9.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    } else if (row == 3 && col == 10){
+                        self.tri_3_10.explode(duration: duration, completion: {
+                            self.tri_3_10.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                    }
+                        
+                    else if (row == 4 && col == 0){
+                        self.tri_4_0.explode(duration: duration, completion: {
+                            self.tri_4_0.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                        })
+                        
+                    } else if (row == 4 && col == 1){
+                        self.tri_4_1.explode(duration: duration, completion: {
+                            self.tri_4_1.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    } else if (row == 4 && col == 2){
+                        self.tri_4_2.explode(duration: duration, completion: {
+                            self.tri_4_2.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    } else if (row == 4 && col == 3){
+                        self.tri_4_3.explode(duration: duration, completion: {
+                            self.tri_4_3.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    } else if (row == 4 && col == 4){
+                        self.tri_4_4.explode(duration: duration, completion: {
+                            self.tri_4_4.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                        
+                    } else if (row == 4 && col == 5){
+                        self.tri_4_5.explode(duration: duration, completion: {
+                            self.tri_4_5.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    } else if (row == 4 && col == 6){
+                        self.tri_4_6.explode(duration: duration, completion: {
+                            self.tri_4_6.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                        
+                    } else if (row == 4 && col == 7){
+                        self.tri_4_7.explode(duration: duration, completion: {
+                            self.tri_4_7.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    } else if (row == 4 && col == 8){
+                        self.tri_4_8.explode(duration: duration, completion: {
+                            self.tri_4_8.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    }
+                        
+                    else if (row == 5 && col == 0){
+                        self.tri_5_0.explode(duration: duration, completion: {
+                            self.tri_5_0.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    } else if (row == 5 && col == 1){
+                        self.tri_5_1.explode(duration: duration, completion: {
+                            self.tri_5_1.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    }else if (row == 5 && col == 2){
+                        self.tri_5_2.explode(duration: duration, completion: {
+                            self.tri_5_2.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    } else if (row == 5 && col == 3){
+                        self.tri_5_3.explode(duration: duration, completion: {
+                            self.tri_5_3.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    } else if (row == 5 && col == 4){
+                        self.tri_5_4.explode(duration: duration, completion: {
+                            self.tri_5_4.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    } else if (row == 5 && col == 5){
+                        self.tri_5_5.explode(duration: duration, completion: {
+                            self.tri_5_5.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    } else if (row == 5 && col == 6){
+                        self.tri_5_6.explode(duration: duration, completion: {
+                            self.tri_5_6.alpha = 1
+                            self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                            the_replace_grey_tri.removeFromSuperview()
+
+                            
+                        })
+                    }
+
+                    
+                    
+                    
+                    
+                    
+                    
                     filled[i][j] = false
                     score_increment_number += 1
                 }
@@ -14273,6 +14714,324 @@ number_of_lines_erased += 1
         })
         
     }
+    
+    func tri_explosion_animation_and_restore(row: Int, col: Int, duration: TimeInterval){
+            if (row == 0 && col == 0){
+                self.tri_0_0.explode(duration: duration, completion: {
+                    self.tri_0_0.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 0 && col == 1){
+                self.tri_0_1.explode(duration: duration, completion: {
+                    self.tri_0_1.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            }else if (row == 0 && col == 2){
+                self.tri_0_2.explode(duration: duration, completion: {
+                    self.tri_0_2.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            } else if (row == 0 && col == 3){
+                self.tri_0_3.explode(duration: duration, completion: {
+                    self.tri_0_3.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            } else if (row == 0 && col == 4){
+                self.tri_0_4.explode(duration: duration, completion: {
+                    self.tri_0_4.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            } else if (row == 0 && col == 5){
+                self.tri_0_5.explode(duration: duration, completion: {
+                    self.tri_0_5.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            } else if (row == 0 && col == 6){
+                self.tri_0_6.explode(duration: duration, completion: {
+                    self.tri_0_6.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            }
+                
+            else if (row == 1 && col == 0){
+                self.tri_1_0.explode(duration: duration, completion: {
+                    self.tri_1_0.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 1 && col == 1){
+                self.tri_1_1.explode(duration: duration, completion: {
+                    self.tri_1_1.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            } else if (row == 1 && col == 2){
+                self.tri_1_2.explode(duration: duration, completion: {
+                    self.tri_1_2.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            } else if (row == 1 && col == 3){
+                self.tri_1_3.explode(duration: duration, completion: {
+                    self.tri_1_3.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 1 && col == 4){
+                self.tri_1_4.explode(duration: duration, completion: {
+                    self.tri_1_4.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 1 && col == 5){
+                self.tri_1_5.explode(duration: duration, completion: {
+                    self.tri_1_5.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 1 && col == 6){
+                self.tri_1_6.explode(duration: duration, completion: {
+                    self.tri_1_6.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 1 && col == 7){
+                self.tri_1_7.explode(duration: duration, completion: {
+                    self.tri_1_7.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            } else if (row == 1 && col == 8){
+                self.tri_1_8.explode(duration: duration, completion: {
+                    self.tri_1_8.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            }
+                
+            else if (row == 2 && col == 0){
+                self.tri_2_0.explode(duration: duration, completion: {
+                    self.tri_2_0.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 2 && col == 1){
+                self.tri_2_1.explode(duration: duration, completion: {
+                    self.tri_2_1.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 2 && col == 2){
+                self.tri_2_2.explode(duration: duration, completion: {
+                    self.tri_2_2.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 2 && col == 3){
+                self.tri_2_3.explode(duration: duration, completion: {
+                    self.tri_2_3.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 2 && col == 4){
+                self.tri_2_4.explode(duration: duration, completion: {
+                    self.tri_2_4.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 2 && col == 5){
+                self.tri_2_5.explode(duration: duration, completion: {
+                    self.tri_2_5.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 2 && col == 6){
+                self.tri_2_6.explode(duration: duration, completion: {
+                    self.tri_2_6.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 2 && col == 7){
+                self.tri_2_7.explode(duration: duration, completion: {
+                    self.tri_2_7.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 2 && col == 8){
+                self.tri_2_8.explode(duration: duration, completion: {
+                    self.tri_2_8.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 2 && col == 9){
+                self.tri_2_9.explode(duration: duration, completion: {
+                    self.tri_2_9.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 2 && col == 10){
+                self.tri_2_10.explode(duration: duration, completion: {
+                    self.tri_2_10.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            }
+                
+            else if (row == 3 && col == 0){
+                self.tri_3_0.explode(duration: duration, completion: {
+                    self.tri_3_0.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 3 && col == 1){
+                self.tri_3_1.explode(duration: duration, completion: {
+                    self.tri_3_1.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 3 && col == 2){
+                self.tri_3_2.explode(duration: duration, completion: {
+                    self.tri_3_2.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            } else if (row == 3 && col == 3){
+                self.tri_3_3.explode(duration: duration, completion: {
+                    self.tri_3_3.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            } else if (row == 3 && col == 4){
+                self.tri_3_4.explode(duration: duration, completion: {
+                    self.tri_3_4.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            } else if (row == 3 && col == 5){
+                self.tri_3_5.explode(duration: duration, completion: {
+                    self.tri_3_5.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            } else if (row == 3 && col == 6){
+                self.tri_3_6.explode(duration: duration, completion: {
+                    self.tri_3_6.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 3 && col == 7){
+                self.tri_3_7.explode(duration: duration, completion: {
+                    self.tri_3_7.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 3 && col == 8){
+                self.tri_3_8.explode(duration: duration, completion: {
+                    self.tri_3_8.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 3 && col == 9){
+                self.tri_3_9.explode(duration: duration, completion: {
+                    self.tri_3_9.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            } else if (row == 3 && col == 10){
+                self.tri_3_10.explode(duration: duration, completion: {
+                    self.tri_3_10.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+            }
+                
+            else if (row == 4 && col == 0){
+                self.tri_4_0.explode(duration: duration, completion: {
+                    self.tri_4_0.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+                })
+
+            } else if (row == 4 && col == 1){
+                self.tri_4_1.explode(duration: duration, completion: {
+                    self.tri_4_1.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+     
+                })
+            } else if (row == 4 && col == 2){
+                self.tri_4_2.explode(duration: duration, completion: {
+                    self.tri_4_2.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+    
+                })
+            } else if (row == 4 && col == 3){
+                self.tri_4_3.explode(duration: duration, completion: {
+                    self.tri_4_3.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+    
+                })
+            } else if (row == 4 && col == 4){
+                self.tri_4_4.explode(duration: duration, completion: {
+                    self.tri_4_4.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+    
+                })
+
+            } else if (row == 4 && col == 5){
+                self.tri_4_5.explode(duration: duration, completion: {
+                    self.tri_4_5.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+    
+                })
+            } else if (row == 4 && col == 6){
+                self.tri_4_6.explode(duration: duration, completion: {
+                    self.tri_4_6.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+    
+                })
+
+            } else if (row == 4 && col == 7){
+                self.tri_4_7.explode(duration: duration, completion: {
+                    self.tri_4_7.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+   
+                })
+            } else if (row == 4 && col == 8){
+                self.tri_4_8.explode(duration: duration, completion: {
+                    self.tri_4_8.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+    
+                })
+            }
+                
+            else if (row == 5 && col == 0){
+                self.tri_5_0.explode(duration: duration, completion: {
+                    self.tri_5_0.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+   
+                })
+            } else if (row == 5 && col == 1){
+                self.tri_5_1.explode(duration: duration, completion: {
+                    self.tri_5_1.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+    
+                })
+            }else if (row == 5 && col == 2){
+                self.tri_5_2.explode(duration: duration, completion: {
+                    self.tri_5_2.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+    
+                })
+            } else if (row == 5 && col == 3){
+                self.tri_5_3.explode(duration: duration, completion: {
+                    self.tri_5_3.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+    
+                })
+            } else if (row == 5 && col == 4){
+                self.tri_5_4.explode(duration: duration, completion: {
+                    self.tri_5_4.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+    
+                })
+            } else if (row == 5 && col == 5){
+                self.tri_5_5.explode(duration: duration, completion: {
+                    self.tri_5_5.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+    
+                })
+            } else if (row == 5 && col == 6){
+                self.tri_5_6.explode(duration: duration, completion: {
+                    self.tri_5_6.alpha = 1
+                    self.erase_animation_with_grey_tri_restore_by_row_col(row: row, col: col)
+    
+                })
+            }
+        }
+    
+ 
+  
+    
     /***********************************************************************************/
     //amplifer function
     var amplify_base = 1

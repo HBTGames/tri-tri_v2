@@ -31,6 +31,7 @@
 		564542CF1EC9591A00BFBD0C /* anim.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 564542CE1EC958AA00BFBD0C /* anim.mp4 */; };
 		564542D11EC95C2300BFBD0C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564542D01EC95C2300BFBD0C /* MenuViewController.swift */; };
 		564542D31EC9A17100BFBD0C /* Fit_In.aif in Resources */ = {isa = PBXBuildFile; fileRef = 564542D21EC9A0E900BFBD0C /* Fit_In.aif */; };
+		5665D8FB1F1244E7006853BF /* Explosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665D8FA1F1244E7006853BF /* Explosion.swift */; };
 		5668B6E41F03507E007BC5E3 /* crown.json in Resources */ = {isa = PBXBuildFile; fileRef = 5668B6E31F03507E007BC5E3 /* crown.json */; };
 		5668B6E81F03C632007BC5E3 /* favourite_app_icon.json in Resources */ = {isa = PBXBuildFile; fileRef = 5668B6E71F03C632007BC5E3 /* favourite_app_icon.json */; };
 		5668B6EA1F03CA54007BC5E3 /* star.json in Resources */ = {isa = PBXBuildFile; fileRef = 5668B6E91F03CA54007BC5E3 /* star.json */; };
@@ -109,6 +110,7 @@
 		564542CE1EC958AA00BFBD0C /* anim.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = anim.mp4; sourceTree = "<group>"; };
 		564542D01EC95C2300BFBD0C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		564542D21EC9A0E900BFBD0C /* Fit_In.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fit_In.aif; sourceTree = "<group>"; };
+		5665D8FA1F1244E7006853BF /* Explosion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explosion.swift; sourceTree = "<group>"; };
 		5668B6E31F03507E007BC5E3 /* crown.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crown.json; sourceTree = "<group>"; };
 		5668B6E71F03C632007BC5E3 /* favourite_app_icon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = favourite_app_icon.json; sourceTree = "<group>"; };
 		5668B6E91F03CA54007BC5E3 /* star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star.json; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				04E48D2A1EC0704000823F45 /* Info.plist */,
 				56C432381F105C9500D76D84 /* waveAnimator.swift */,
 				56C4323A1F105F9A00D76D84 /* WaveTestViewController.swift */,
+				5665D8FA1F1244E7006853BF /* Explosion.swift */,
 			);
 			path = "tri-tri";
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E48D211EC0704000823F45 /* ViewController.swift in Sources */,
+				5665D8FB1F1244E7006853BF /* Explosion.swift in Sources */,
 				566A590A1EC942DD0056D665 /* LaunchViewController.swift in Sources */,
 				042D870B1ED8707D007A329C /* LottieTestViewController.swift in Sources */,
 				56A61C841EC5D30500A29B6F /* GameBoardViewController.swift in Sources */,

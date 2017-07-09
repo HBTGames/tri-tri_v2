@@ -9,9 +9,14 @@
 import UIKit
 import AVKit
 import AVFoundation
+extension UIView:Explodable { }
+
+
+
 class MenuViewController: UIViewController {
 
     var language = String()
+    
     
     @IBOutlet weak var background_image: UIImageView!
     

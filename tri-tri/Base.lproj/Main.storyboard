@@ -490,8 +490,30 @@
                     <view key="view" contentMode="scaleToFill" id="Dp3-JJ-kIy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="BW_background" translatesAutoresizingMaskIntoConstraints="NO" id="nEm-EZ-SiR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIR-es-XVl">
+                                <rect key="frame" x="160" y="64" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="explode"/>
+                                <connections>
+                                    <action selector="explode_action:" destination="o1m-kg-0XA" eventType="touchUpInside" id="AyE-eW-nyb"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nEm-EZ-SiR" firstAttribute="leading" secondItem="Dp3-JJ-kIy" secondAttribute="leading" id="O19-DL-ycs"/>
+                            <constraint firstItem="SIU-vj-zkE" firstAttribute="top" secondItem="nEm-EZ-SiR" secondAttribute="bottom" id="Od8-sp-y1t"/>
+                            <constraint firstAttribute="trailing" secondItem="nEm-EZ-SiR" secondAttribute="trailing" id="T4l-Yd-yxd"/>
+                            <constraint firstItem="nEm-EZ-SiR" firstAttribute="top" secondItem="Dp3-JJ-kIy" secondAttribute="top" id="iGL-kk-kQ8"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="test_image" destination="nEm-EZ-SiR" id="QQu-L0-xDH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTQ-RL-A8z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1263,6 +1285,7 @@
     </scenes>
     <resources>
         <image name="B&amp;W_theme" width="177" height="177"/>
+        <image name="BW_background" width="375" height="667"/>
         <image name="Chaos_theme" width="177" height="177"/>
         <image name="Colors_theme" width="177" height="177"/>
         <image name="GameOver" width="243" height="52"/>

@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+
+
 class WaveTestViewController: UIViewController {
    var screen_width = CGFloat(0)
    var screen_height = CGFloat(0)
@@ -18,28 +21,20 @@ class WaveTestViewController: UIViewController {
     override func viewDidLoad() {
         screen_width = self.view.frame.width
         screen_height = self.view.frame.height
-        wave_indicator.frame = CGRect(x: screen_width/2, y: screen_height/2, width: 200, height: 200)
-        super.viewDidLoad()
-        wave_indicator.progress = 1
-        self.view.addSubview(wave_indicator)
-        timer = Timer.scheduledTimer(timeInterval: 0.01667, target: self, selector: #selector(WaveTestViewController.change_progress), userInfo: nil, repeats: true)
-
-        // Do any additional setup after loading the view.
+                // Do any additional setup after loading the view.
     }
     
-    func change_progress(){
-        if(wave_indicator.progress == 0){
-            wave_indicator.progress = 0
-        }else{
-    wave_indicator.progress = wave_indicator.progress - 0.00055556
-        }
-        
-    }
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBOutlet weak var test_image: UIImageView!
+    @IBAction func explode_action(_ sender: UIButton) {
+        //Explodable:
+        test_image.explode(.chaos, duration: 2)
+    }
 
     /*
     // MARK: - Navigation
