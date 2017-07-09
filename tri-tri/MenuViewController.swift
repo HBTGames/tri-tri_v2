@@ -17,6 +17,10 @@ class MenuViewController: UIViewController {
 
     var language = String()
     
+    var cash_player = AVAudioPlayer()
+    var add_player = AVAudioPlayer()
+    var sub_player = AVAudioPlayer()
+    var sub_not_allowed_player = AVAudioPlayer()
     
     @IBOutlet weak var background_image: UIImageView!
     
@@ -1052,6 +1056,13 @@ current_star_total.fadeIn()
     self.view.addSubview(new_life_button)
     new_life_button.fadeIn()
         new_life_button.whenButtonIsClicked(action: {
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
             self.tool_selected = 0
             self.tool_selected_scene()
         })
@@ -1098,6 +1109,13 @@ current_star_total.fadeIn()
     self.view.addSubview(same_color_eliminator)
     same_color_eliminator.fadeIn()
         same_color_eliminator.whenButtonIsClicked(action: {
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
             self.tool_selected = 1
             self.tool_selected_scene()
         })
@@ -1144,6 +1162,13 @@ current_star_total.fadeIn()
     self.view.addSubview(shape_bomb)
     shape_bomb.fadeIn()
         shape_bomb.whenButtonIsClicked(action: {
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
             self.tool_selected = 2
             self.tool_selected_scene()
         })
@@ -1188,6 +1213,13 @@ current_star_total.fadeIn()
     self.view.addSubview(times_two)
     times_two.fadeIn()
         times_two.whenButtonIsClicked(action: {
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
             self.tool_selected = 3
             self.tool_selected_scene()
         })
@@ -1232,6 +1264,13 @@ current_star_total.fadeIn()
     self.view.addSubview(three_triangles)
     three_triangles.fadeIn()
         three_triangles.whenButtonIsClicked(action: {
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
             self.tool_selected = 4
             self.tool_selected_scene()
         })
@@ -1280,6 +1319,13 @@ current_star_total.fadeIn()
     self.view.addSubview(clear_all)
     clear_all.fadeIn()
         clear_all.whenButtonIsClicked(action: {
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
             self.tool_selected = 5
             self.tool_selected_scene()
         })
@@ -1362,6 +1408,13 @@ current_star_total.fadeIn()
    
     @IBOutlet weak var treasure_box_icon: UIButton!
     @IBAction func treasure_box_action(_ sender: UIButton) {
+        do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+            self.button_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        self.button_player.play()
         treasure_box_function()
     }
 
@@ -1650,6 +1703,13 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         })
        
         add_button.whenButtonIsClicked(action: {
+            do{self.add_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "add", ofType: "wav")!))
+                self.add_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.add_player.play()
             tool_quantity = tool_quantity + 1
             tool_quantity_label.text = String(tool_quantity)
             star_quantiry_needed = tool_quantity * self.star_base
@@ -1659,7 +1719,22 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         sub_button.whenButtonIsClicked(action: {
             if(tool_quantity == 0){
                 tool_quantity = 0
+                do{self.sub_not_allowed_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "sub_not_allowed", ofType: "wav")!))
+                    self.sub_not_allowed_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.sub_not_allowed_player.play()
+     
             }else{
+                do{self.sub_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "sub", ofType: "wav")!))
+                    self.sub_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.sub_player.play()
                 tool_quantity = tool_quantity - 1
                 tool_quantity_label.text = String(tool_quantity)
             }
@@ -1729,6 +1804,13 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
     func fix_star_score(star_needed: Int){
         if(star_score >= star_needed){
         star_score -= star_needed
+            do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
+                self.cash_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.cash_player.play()
         }
         defaults.set(star_score, forKey: "tritri_star_score")
         self.current_star_total_text.text = String(star_score)

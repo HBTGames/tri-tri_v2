@@ -32,6 +32,10 @@
 		564542D11EC95C2300BFBD0C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564542D01EC95C2300BFBD0C /* MenuViewController.swift */; };
 		564542D31EC9A17100BFBD0C /* Fit_In.aif in Resources */ = {isa = PBXBuildFile; fileRef = 564542D21EC9A0E900BFBD0C /* Fit_In.aif */; };
 		5665D8FB1F1244E7006853BF /* Explosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665D8FA1F1244E7006853BF /* Explosion.swift */; };
+		5665D8FF1F12603D006853BF /* cash_register.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5665D8FE1F12603D006853BF /* cash_register.wav */; };
+		5665D9011F12630F006853BF /* add.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5665D9001F12630F006853BF /* add.wav */; };
+		5665D9031F12631E006853BF /* sub.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5665D9021F12631E006853BF /* sub.wav */; };
+		5665D9051F126394006853BF /* sub_not_allowed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5665D9041F126394006853BF /* sub_not_allowed.wav */; };
 		5668B6E41F03507E007BC5E3 /* crown.json in Resources */ = {isa = PBXBuildFile; fileRef = 5668B6E31F03507E007BC5E3 /* crown.json */; };
 		5668B6E81F03C632007BC5E3 /* favourite_app_icon.json in Resources */ = {isa = PBXBuildFile; fileRef = 5668B6E71F03C632007BC5E3 /* favourite_app_icon.json */; };
 		5668B6EA1F03CA54007BC5E3 /* star.json in Resources */ = {isa = PBXBuildFile; fileRef = 5668B6E91F03CA54007BC5E3 /* star.json */; };
@@ -111,6 +115,10 @@
 		564542D01EC95C2300BFBD0C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		564542D21EC9A0E900BFBD0C /* Fit_In.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fit_In.aif; sourceTree = "<group>"; };
 		5665D8FA1F1244E7006853BF /* Explosion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explosion.swift; sourceTree = "<group>"; };
+		5665D8FE1F12603D006853BF /* cash_register.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cash_register.wav; sourceTree = "<group>"; };
+		5665D9001F12630F006853BF /* add.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = add.wav; sourceTree = "<group>"; };
+		5665D9021F12631E006853BF /* sub.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sub.wav; sourceTree = "<group>"; };
+		5665D9041F126394006853BF /* sub_not_allowed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sub_not_allowed.wav; sourceTree = "<group>"; };
 		5668B6E31F03507E007BC5E3 /* crown.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crown.json; sourceTree = "<group>"; };
 		5668B6E71F03C632007BC5E3 /* favourite_app_icon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = favourite_app_icon.json; sourceTree = "<group>"; };
 		5668B6E91F03CA54007BC5E3 /* star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star.json; sourceTree = "<group>"; };
@@ -280,12 +288,16 @@
 				56C3F42C1ED27CC400DE21BD /* opening.wav */,
 				56C3F42A1ED27B1A00DE21BD /* general_button.wav */,
 				56C3F4281ED279D200DE21BD /* erase.wav */,
+				5665D9021F12631E006853BF /* sub.wav */,
 				566ED3891F0EFFFF006A0BBF /* doom_day_sound.wav */,
 				56C3F4261ED276F200DE21BD /* restart_soundeffect.wav */,
 				564542D21EC9A0E900BFBD0C /* Fit_In.aif */,
 				5620A3891ECAB8930035E099 /* background_music_tony.m4a */,
 				566ED38B1F0F0140006A0BBF /* amplifier_sound.wav */,
+				5665D9001F12630F006853BF /* add.wav */,
+				5665D8FE1F12603D006853BF /* cash_register.wav */,
 				569D0F421F08F37200264D3C /* spin_new.mp3 */,
+				5665D9041F126394006853BF /* sub_not_allowed.wav */,
 				56D12A1D1F07EC4E00C047E1 /* door_open_and_reming.mp3 */,
 				566ED38D1F0F01DF006A0BBF /* trinity_sound.wav */,
 				56A61C8A1EC5DA2400A29B6F /* background music.mp3 */,
@@ -453,6 +465,7 @@
 				566ED38C1F0F0140006A0BBF /* amplifier_sound.wav in Resources */,
 				56D12A1C1F07E90100C047E1 /* clock_sound.mp3 in Resources */,
 				56C3F4291ED279D200DE21BD /* erase.wav in Resources */,
+				5665D9031F12631E006853BF /* sub.wav in Resources */,
 				569D0F431F08F37200264D3C /* spin_new.mp3 in Resources */,
 				563E7F641ED474DA008F33C1 /* 3_times_erase.wav in Resources */,
 				56BB16E61EDC693D00EB5826 /* star_appear.json in Resources */,
@@ -464,7 +477,9 @@
 				56D12A201F07F08200C047E1 /* spinning.mp3 in Resources */,
 				5644A5F61EC42905000066D6 /* Main.storyboard in Resources */,
 				5668B6EA1F03CA54007BC5E3 /* star.json in Resources */,
+				5665D9051F126394006853BF /* sub_not_allowed.wav in Resources */,
 				563E7F5E1ED2EE50008F33C1 /* game over.wav in Resources */,
+				5665D9011F12630F006853BF /* add.wav in Resources */,
 				04E48D4F1EC075FA00823F45 /* 540654.jpg in Resources */,
 				563E7F621ED47352008F33C1 /* 1_time_erase.mp3 in Resources */,
 				56A61C8B1EC5DA2400A29B6F /* background music.mp3 in Resources */,
@@ -472,6 +487,7 @@
 				5668B6E81F03C632007BC5E3 /* favourite_app_icon.json in Resources */,
 				042D870D1ED870FB007A329C /* servishero_loading.json in Resources */,
 				5644A5F31EC428FC000066D6 /* Base.lproj in Resources */,
+				5665D8FF1F12603D006853BF /* cash_register.wav in Resources */,
 				5668B6EC1F03E093007BC5E3 /* Assets.xcassets in Resources */,
 				566ED38E1F0F01DF006A0BBF /* trinity_sound.wav in Resources */,
 				569D0F451F0907F700264D3C /* spin_2.mp3 in Resources */,
