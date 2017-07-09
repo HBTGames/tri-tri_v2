@@ -21,6 +21,7 @@ class GameOverViewController: UIViewController {
     let colors_home_pic = UIImage(named:"colors_home-icon")
     @IBOutlet weak var High_score_marker: UILabel!
 
+    @IBOutlet weak var background_image: UIImageView!
     @IBOutlet weak var score_board: UILabel!
     
     @IBOutlet weak var gameover_title: UIImageView!
@@ -146,7 +147,7 @@ class GameOverViewController: UIViewController {
         High_score_marker.frame = CGRect(x: pause_screen_x_transform(Double(High_score_marker.frame.origin.x)), y: pause_screen_y_transform(Double(High_score_marker.frame.origin.y)), width: pause_screen_x_transform(Double(High_score_marker.frame.width)), height: pause_screen_y_transform(Double(High_score_marker.frame.height)))
         
         restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
-        
+        background_image.frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
        
 
         if (ThemeType == 1){
@@ -185,6 +186,7 @@ class GameOverViewController: UIViewController {
         gameover_title_image_decider()
         if ThemeType == 1{
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
+            background_image.alpha = 0
             self.trophy.image = UIImage(named:"trophy_new")
             self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             
@@ -193,6 +195,7 @@ class GameOverViewController: UIViewController {
             self.share_button.setImage(UIImage(named:"link"), for: .normal)
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
+            background_image.alpha = 0
             self.trophy.image = UIImage(named:"night mode 奖杯")
             self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             
@@ -200,7 +203,9 @@ class GameOverViewController: UIViewController {
             self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
             self.share_button.setImage(UIImage(named:"link"), for: .normal)
         }else if ThemeType == 3{
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
+            background_image.alpha = 1
+            background_image.image = #imageLiteral(resourceName: "BW_background")
             self.trophy.image = UIImage(named: "BW_trophy")
             self.score_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             
@@ -210,7 +215,9 @@ class GameOverViewController: UIViewController {
             //self.home_button.setImage(UIImage(named:"BW_home"), for: .normal)
             
         }else if ThemeType == 4{
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
+            background_image.alpha = 1
+            background_image.image = #imageLiteral(resourceName: "chaos_background")
             self.trophy.image = UIImage(named: "chaos_j_icon")
             self.score_board.textColor = UIColor(red: 236.0/255, green: 232.0/255, blue: 187.0/255, alpha: 1.0)
             
@@ -221,7 +228,9 @@ class GameOverViewController: UIViewController {
             
         }
         else if ThemeType == 5{
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
+            background_image.alpha = 1
+            background_image.image = #imageLiteral(resourceName: "school_background")
             self.trophy.image = UIImage(named: "school_j-icon")
             self.score_board.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
            
@@ -232,7 +241,9 @@ class GameOverViewController: UIViewController {
             
         }
         else if ThemeType == 6{
-           self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
+           //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
+            background_image.image = #imageLiteral(resourceName: "colors_background")
+            background_image.alpha = 1
             self.trophy.image = UIImage(named: "colors_j-icon")
             self.score_board.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.0)
             
@@ -341,6 +352,7 @@ class GameOverViewController: UIViewController {
             self.ThemeType = 1
             defaults.set(1, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
+            self.background_image.alpha = 0
             self.trophy.image = UIImage(named:"trophy_new")
             self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             self.gameover_title_image_decider()
@@ -397,6 +409,7 @@ class GameOverViewController: UIViewController {
             self.ThemeType = 2
             defaults.set(2, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
+            self.background_image.alpha = 0
             self.trophy.image = UIImage(named:"night mode 奖杯")
             self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             self.gameover_title_image_decider()
@@ -448,7 +461,9 @@ class GameOverViewController: UIViewController {
             self.button_player.play()
             self.ThemeType = 3
             defaults.set(3, forKey:"tritri_Theme")
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
+            self.background_image.alpha = 1
+            self.background_image.image = #imageLiteral(resourceName: "BW_background")
             self.trophy.image = UIImage(named:"BW_trophy")
             self.gameover_title_image_decider()
             self.score_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
@@ -513,7 +528,9 @@ class GameOverViewController: UIViewController {
             
             self.ThemeType = 4
             defaults.set(4, forKey:"tritri_Theme")
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
+            self.background_image.alpha = 1
+            self.background_image.image = #imageLiteral(resourceName: "chaos_background")
             self.trophy.image = UIImage(named:"chaos_j_icon")
             self.gameover_title.image = UIImage(named: "night mode gameover title")
             self.score_board.textColor = UIColor(red: 236.0/255, green: 232.0/255, blue: 187.0/255, alpha: 1.0)
@@ -570,7 +587,9 @@ class GameOverViewController: UIViewController {
             self.button_player.play()
             self.ThemeType = 5
             defaults.set(5, forKey:"tritri_Theme")
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
+            self.background_image.alpha = 1
+            self.background_image.image = #imageLiteral(resourceName: "school_background")
             self.trophy.image = UIImage(named:"school_j-icon")
             self.gameover_title_image_decider()
             self.score_board.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
@@ -624,7 +643,9 @@ class GameOverViewController: UIViewController {
             self.button_player.play()
             self.ThemeType = 6
             defaults.set(6, forKey:"tritri_Theme")
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
+            self.background_image.alpha = 1
+            self.background_image.image = #imageLiteral(resourceName: "colors_background")
             self.trophy.image = UIImage(named:"colors_j-icon")
             self.gameover_title_image_decider()
             self.score_board.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.00)

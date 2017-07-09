@@ -137,7 +137,8 @@ class GameBoardViewController: UIViewController {
     var shopping_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var restart_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
-    
+    //background_image
+    @IBOutlet weak var background_image: UIImageView!
     
     
     
@@ -1078,6 +1079,8 @@ class GameBoardViewController: UIViewController {
         amplifier_valide_icon.alpha = 0
         self.view.bringSubview(toFront: backpack_button)
         
+        background_image.frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
+        
         //declare original frames of the tris
         green_drag_tri_orig_rec =  CGRect(x: green_drag_tri.frame.origin.x - pause_screen_x_transform(20), y: green_drag_tri.frame.origin.y - pause_screen_y_transform(15), width: green_drag_tri.frame.width + pause_screen_x_transform(40), height: green_drag_tri.frame.height + pause_screen_y_transform(45))
         //print("green origin x: \(green_drag_origin.x), y: \(green_drag_origin.y)")
@@ -1146,6 +1149,8 @@ class GameBoardViewController: UIViewController {
         //change bg color
         if ThemeType == 1{
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
+            background_image.alpha = 0
+            //self.view.sendSubview(toBack: background_image)
             downwards_tri = UIImage(named:"grey_tir_downwards")
             upwards_tri = UIImage(named:"grey_tri_upwards")
             star_counter.image = UIImage(named:"day_mode_star")
@@ -1163,6 +1168,8 @@ class GameBoardViewController: UIViewController {
             
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
+            background_image.alpha = 0
+            //self.view.sendSubview(toBack: background_image)
             downwards_tri = UIImage(named:"bgtri_downward_night_mode")
             upwards_tri = UIImage(named:"bgtri_upward_night_mode")
             star_counter.image = UIImage(named:"night_mode_star")
@@ -1178,7 +1185,10 @@ class GameBoardViewController: UIViewController {
             starBoard.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             
         }else if ThemeType == 3{
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
+            background_image.alpha = 1
+            background_image.image = #imageLiteral(resourceName: "BW_background")
+            //self.view.sendSubview(toBack: background_image)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             downwards_tri = UIImage(named:"BW_white_tri_downwards")
             upwards_tri = UIImage(named:"BW_white_tri_upwards")
             star_counter.image = UIImage(named:"BW_mode_star")
@@ -1195,7 +1205,10 @@ class GameBoardViewController: UIViewController {
              starBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             
         }else if ThemeType == 4{
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
+            background_image.alpha = 1
+            background_image.image = #imageLiteral(resourceName: "chaos_background")
+            self.view.sendSubview(toBack: background_image)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
             self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
             self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
             self.Restore_Grey_Tris()
@@ -1206,7 +1219,10 @@ class GameBoardViewController: UIViewController {
             self.pause.setImage(UIImage(named: "chaos_pause_button"), for: .normal)
             self.triangle_title.image = UIImage(named:"night mode triangle title")
         }else if ThemeType == 5{
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
+            background_image.alpha = 1
+            background_image.image = #imageLiteral(resourceName: "school_background")
+            self.view.sendSubview(toBack: background_image)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
             self.downwards_tri = UIImage(named:"grey_tir_downwards")
             self.upwards_tri = UIImage(named:"grey_tri_upwards")
             star_counter.image = UIImage(named:"school_mode_star")
@@ -1222,7 +1238,10 @@ class GameBoardViewController: UIViewController {
             self.pause.setImage(UIImage(named: "school_pause-button"), for: .normal)
              starBoard.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
         }else if ThemeType == 6{
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
+            background_image.alpha = 1
+            background_image.image = #imageLiteral(resourceName: "colors_background")
+            self.view.sendSubview(toBack: background_image)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
             self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
             self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
             star_counter.image = UIImage(named:"colors_mode_star")
@@ -1243,6 +1262,7 @@ class GameBoardViewController: UIViewController {
         change_current_shapes_according_to_theme()
         
         reorder_triangle_positions_during_loading_view()
+        
         //update tris origin
 
         //center.frame.height
@@ -1786,6 +1806,11 @@ class GameBoardViewController: UIViewController {
         tri_5_6_back.frame = CGRect(x: pause_screen_x_transform(241) , y: pause_screen_y_transform(425) , width: pause_screen_x_transform(49), height: pause_screen_y_transform(43))
         self.view.sendSubview(toBack: tri_5_6)
         self.view.sendSubview(toBack: tri_5_6_back)
+        
+        
+        
+        //send background to very back
+        self.view.sendSubview(toBack: background_image)
     }
     
     
@@ -1828,6 +1853,8 @@ class GameBoardViewController: UIViewController {
             defaults.set(1, forKey: "tritri_Theme")
             self.ThemeType = 1
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
+            self.background_image.alpha = 0
+            
             self.downwards_tri = UIImage(named:"grey_tir_downwards")
             self.upwards_tri = UIImage(named:"grey_tri_upwards")
             self.star_counter.image = UIImage(named:"day_mode_star")
@@ -1899,6 +1926,7 @@ class GameBoardViewController: UIViewController {
             self.button_player.play()
             defaults.set(2, forKey: "tritri_Theme")
             self.ThemeType = 2
+            self.background_image.alpha = 0
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
             self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
@@ -1970,7 +1998,10 @@ class GameBoardViewController: UIViewController {
             self.button_player.play()
             defaults.set(3, forKey: "tritri_Theme")
             self.ThemeType = 3
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
+            self.background_image.alpha = 1
+            self.background_image.image = #imageLiteral(resourceName: "BW_background")
+            self.view.sendSubview(toBack: self.background_image)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             self.downwards_tri = UIImage(named:"BW_white_tri_downwards")
             self.upwards_tri = UIImage(named:"BW_white_tri_upwards")
             self.Restore_Grey_Tris()
@@ -2053,9 +2084,10 @@ class GameBoardViewController: UIViewController {
             self.button_player.play()
             defaults.set(4, forKey: "tritri_Theme")
             self.ThemeType = 4
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
-            
-            
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
+            self.background_image.alpha = 1
+            self.background_image.image = #imageLiteral(resourceName: "chaos_background")
+            self.view.sendSubview(toBack: self.background_image)
             self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
             self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
             self.Restore_Grey_Tris()
@@ -2128,8 +2160,10 @@ class GameBoardViewController: UIViewController {
             self.button_player.play()
             defaults.set(5, forKey: "tritri_Theme")
             self.ThemeType = 5
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
-            
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
+            self.background_image.alpha = 1
+            self.background_image.image = #imageLiteral(resourceName: "school_background")
+            self.view.sendSubview(toBack: self.background_image)
             
             self.downwards_tri = UIImage(named:"grey_tir_downwards")
             self.upwards_tri = UIImage(named:"grey_tri_upwards")
@@ -2203,7 +2237,10 @@ class GameBoardViewController: UIViewController {
             self.button_player.play()
             defaults.set(6, forKey: "tritri_Theme")
             self.ThemeType = 6
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named:"colors_background")!)
+            //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"colors_background")!)
+            self.background_image.alpha = 1
+            self.background_image.image = #imageLiteral(resourceName: "colors_background")
+            self.view.sendSubview(toBack: self.background_image)
             self.downwards_tri = UIImage(named:"bgtri_downward_night_mode")
             self.upwards_tri = UIImage(named:"bgtri_upward_night_mode")
             self.Restore_Grey_Tris()
