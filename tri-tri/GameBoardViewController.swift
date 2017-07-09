@@ -14092,13 +14092,7 @@ number_of_lines_erased += 1
     func doom_day_action() -> Void{
         if self.tool_quantity_array[5] > 0{
         defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
-        do{doom_day_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "doom_day_sound", ofType: "wav")!))
-            doom_day_player.prepareToPlay()
-        }
-        catch{
-            
-        }
-        doom_day_player.play()
+        
     close_pack()
     
     doom_day_animation_with_real_action()
@@ -14211,6 +14205,13 @@ number_of_lines_erased += 1
     
     
     func doom_day_real_action() -> Void {
+        do{doom_day_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "doom_day_sound", ofType: "wav")!))
+            doom_day_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        doom_day_player.play()
         var score_increment_number = 0
         //fix all filled first
         var i = 0 //row
