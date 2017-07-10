@@ -12789,12 +12789,24 @@ number_of_lines_erased += 1
         text_background_patch.frame = CGRect(x:0, y:0, width: self.pause_screen_x_transform(375), height: self.pause_screen_y_transform(200))
         text_background_patch.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.5))
         
+        
+        
         let revive_text = UIImageView()
-        if (self.language == "English"){
-            revive_text.image = UIImage(named: "revive_text_en")
+        if (tool_quantity_array[0] == 0){
+            if (self.language == "English"){
+                revive_text.image = UIImage(named: "revive_purchase_text_en")
+            }
+            else {
+                revive_text.image = UIImage(named: "revive_purchase_text_ch")
+            }
         }
         else {
-            revive_text.image = UIImage(named: "revive_text_ch")
+            if (self.language == "English"){
+                revive_text.image = UIImage(named: "revive_text_en")
+            }
+            else {
+                revive_text.image = UIImage(named: "revive_text_ch")
+            }
         }
         revive_text.frame = CGRect(x: 0, y: 0, width: self.pause_screen_x_transform(375), height: self.pause_screen_y_transform(200))
         
@@ -12805,7 +12817,7 @@ number_of_lines_erased += 1
         let just_kill_me = MyButton()
         just_kill_me.frame = CGRect(x: self.pause_screen_x_transform(147), y: self.pause_screen_y_transform(450), width: self.pause_screen_x_transform(80), height: self.pause_screen_y_transform(80))
         resu_activate_button.frame = CGRect(x: self.pause_screen_x_transform(112), y: self.pause_screen_y_transform(250), width: self.pause_screen_x_transform(150), height: self.pause_screen_y_transform(150))
-        resu_activate_button.setImage(UIImage(named:"item_round_resurrection"), for: .normal)
+        
         just_kill_me.setImage(UIImage(named:"revive_just_let_me_die"), for: .normal)
         
         just_kill_me.whenButtonIsClicked {
@@ -12833,20 +12845,85 @@ number_of_lines_erased += 1
         }
 
         
+        if (tool_quantity_array[0] > 0){
+            resu_activate_button.setImage(UIImage(named:"item_round_resurrection"), for: .normal)
+            resu_activate_button.whenButtonIsClicked {
+                self.pause_screen.removeFromSuperview()
+                resu_activate_button.removeFromSuperview()
+                just_kill_me.removeFromSuperview()
+                revive_text.removeFromSuperview()
+                text_background_patch.removeFromSuperview()
+                self.tool_quantity_array[5] += 1
+                self.doom_day_action()
+                self.paused = false
+            }
         
-        resu_activate_button.whenButtonIsClicked {
-            self.pause_screen.removeFromSuperview()
-            resu_activate_button.removeFromSuperview()
-            just_kill_me.removeFromSuperview()
-            revive_text.removeFromSuperview()
-            text_background_patch.removeFromSuperview()
-            self.tool_quantity_array[5] += 1
-            self.doom_day_action()
-            self.paused = false
         }
-        
-        
-        
+        else {  //no resu left
+            resu_activate_button.setImage(UIImage(named:"revive_star_icon"), for: .normal)
+            resu_activate_button.whenButtonIsClicked {
+                if (self.star_score >= 25){
+                    self.star_score -= 25
+                    self.starBoard.text = String(self.star_score)
+                    defaults.set(self.star_score, forKey: "tritri_star_score")
+                    defaults.synchronize()
+                    
+                    self.pause_screen.removeFromSuperview()
+                    resu_activate_button.removeFromSuperview()
+                    just_kill_me.removeFromSuperview()
+                    revive_text.removeFromSuperview()
+                    text_background_patch.removeFromSuperview()
+                    self.tool_quantity_array[5] += 1
+                    self.doom_day_action()
+                    self.paused = false
+                }
+                else {  //star not enough
+                    //currently gameover
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
+                    nextViewController.final_score = self.MarkBoard.text!
+                    nextViewController.ThemeType = self.ThemeType
+                    nextViewController.modalTransitionStyle = .crossDissolve
+                    if (Int(self.MarkBoard.text!) == self.HighestScore){
+                        nextViewController.is_high_score = true
+                    } else {
+                        nextViewController.is_high_score = false
+                    }
+                    self.present(nextViewController, animated: true, completion: nil)
+                    //self.audioPlayer.stop()
+                    self.timer.invalidate()
+                    do{self.game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
+                        self.game_over_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.game_over_player.play()
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    /*do{self.not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                        self.not_fit_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.not_fit_player.play()
+                    self.pause_screen.removeFromSuperview()
+                    resu_activate_button.removeFromSuperview()
+                    just_kill_me.removeFromSuperview()
+                    revive_text.removeFromSuperview()
+                    text_background_patch.removeFromSuperview()
+                    self.paused = false*/
+                }
+                
+            }
+
+        }
         
         
         self.view.addSubview(text_background_patch)
@@ -15121,6 +15198,7 @@ number_of_lines_erased += 1
     @IBOutlet weak var amplifier_valide_icon: UIImageView!
     var wave_animator_amplifier = waveAnimator(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var wave_animator_amplifier_timer = Timer()
+    
     func amplifier_animation() -> Void{
        // amplifier_small_icon_location = CGPoint(x: self.star_bg.frame.origin.x + self.star_bg.frame.width + self.pause_screen_x_transform(30), y: self.star_bg.frame.origin.y)
     var amplifier_icon_for_animation = UIImageView(frame: amplifier_button.frame)
