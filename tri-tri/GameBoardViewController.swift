@@ -681,6 +681,7 @@ class GameBoardViewController: UIViewController {
     var button_player = AVAudioPlayer()
     var not_fit_player = AVAudioPlayer()
     var game_over_player = AVAudioPlayer()
+    var holy_nova_player = AVAudioPlayer()
 
     
     var language = String()
@@ -971,7 +972,13 @@ class GameBoardViewController: UIViewController {
                         let row = candidates[0][0]
                         let col = candidates[0][1]
                         
-                        
+                        do{holy_nova_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "holy_nova", ofType: "mp3")!))
+                            holy_nova_player.prepareToPlay()
+                        }
+                        catch{
+                            
+                        }
+                        holy_nova_player.play()
                         self.nova_breaker(row: row, col: col)
                         self.during_holy_nova = false
                     }
@@ -987,7 +994,13 @@ class GameBoardViewController: UIViewController {
                             row = candidates[1][0]
                             col = candidates[1][1]
                         }
-                        
+                        do{holy_nova_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "holy_nova", ofType: "mp3")!))
+                            holy_nova_player.prepareToPlay()
+                        }
+                        catch{
+                            
+                        }
+                        holy_nova_player.play()
                         self.nova_breaker(row: row, col: col)
                         self.during_holy_nova = false
                     }

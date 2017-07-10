@@ -12,6 +12,7 @@
 		042D870B1ED8707D007A329C /* LottieTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D870A1ED8707D007A329C /* LottieTestViewController.swift */; };
 		042D870D1ED870FB007A329C /* servishero_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 042D870C1ED870FB007A329C /* servishero_loading.json */; };
 		042D87151ED99CC0007A329C /* tst.json in Resources */ = {isa = PBXBuildFile; fileRef = 042D87141ED99CC0007A329C /* tst.json */; };
+		042F04A11F132BA6005DD0EC /* holy_nova.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 042F04A01F132BA6005DD0EC /* holy_nova.mp3 */; };
 		0453BA7F1F0A255300E2D724 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453BA7E1F0A255300E2D724 /* TutorialViewController.swift */; };
 		04E48D1F1EC0704000823F45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48D1E1EC0704000823F45 /* AppDelegate.swift */; };
 		04E48D211EC0704000823F45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48D201EC0704000823F45 /* ViewController.swift */; };
@@ -88,6 +89,7 @@
 		042D870A1ED8707D007A329C /* LottieTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieTestViewController.swift; sourceTree = "<group>"; };
 		042D870C1ED870FB007A329C /* servishero_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servishero_loading.json; sourceTree = "<group>"; };
 		042D87141ED99CC0007A329C /* tst.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tst.json; sourceTree = "<group>"; };
+		042F04A01F132BA6005DD0EC /* holy_nova.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = holy_nova.mp3; sourceTree = "<group>"; };
 		0453BA7E1F0A255300E2D724 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		04E48D1B1EC0704000823F45 /* tri-tri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tri-tri.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E48D1E1EC0704000823F45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				563E7F5D1ED2EE50008F33C1 /* game over.wav */,
 				56C3F42C1ED27CC400DE21BD /* opening.wav */,
 				56C3F42A1ED27B1A00DE21BD /* general_button.wav */,
+				042F04A01F132BA6005DD0EC /* holy_nova.mp3 */,
 				56C3F4281ED279D200DE21BD /* erase.wav */,
 				5665D9021F12631E006853BF /* sub.wav */,
 				566ED3891F0EFFFF006A0BBF /* doom_day_sound.wav */,
@@ -487,6 +490,7 @@
 				5668B6E81F03C632007BC5E3 /* favourite_app_icon.json in Resources */,
 				042D870D1ED870FB007A329C /* servishero_loading.json in Resources */,
 				5644A5F31EC428FC000066D6 /* Base.lproj in Resources */,
+				042F04A11F132BA6005DD0EC /* holy_nova.mp3 in Resources */,
 				5665D8FF1F12603D006853BF /* cash_register.wav in Resources */,
 				5668B6EC1F03E093007BC5E3 /* Assets.xcassets in Resources */,
 				566ED38E1F0F01DF006A0BBF /* trinity_sound.wav in Resources */,
