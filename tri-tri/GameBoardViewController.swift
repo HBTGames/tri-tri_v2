@@ -12789,23 +12789,36 @@ number_of_lines_erased += 1
         text_background_patch.frame = CGRect(x:0, y:0, width: self.pause_screen_x_transform(375), height: self.pause_screen_y_transform(200))
         text_background_patch.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.5))
         
-        
+        let resu_activate_button = MyButton()
+        let just_kill_me = MyButton()
         
         let revive_text = UIImageView()
-        if (tool_quantity_array[0] == 0){
+        if (/*tool_quantity_array[0] == 0*/self.star_score < 25 && (self.tool_quantity_array[0] == 0)){   //all not enough
             if (self.language == "English"){
                 revive_text.image = UIImage(named: "revive_purchase_text_en")
             }
             else {
                 revive_text.image = UIImage(named: "revive_purchase_text_ch")
             }
+            resu_activate_button.setImage(UIImage(named:"revive_star_icon"), for: .normal)
         }
-        else {
+        else{
+            resu_activate_button.setImage(UIImage(named:"item_round_resurrection"), for: .normal)
+            if (self.tool_quantity_array[0] > 0){
             if (self.language == "English"){
                 revive_text.image = UIImage(named: "revive_text_en")
             }
             else {
                 revive_text.image = UIImage(named: "revive_text_ch")
+            }
+            }
+            else{
+                if (self.language == "English"){
+                    revive_text.image = UIImage(named: "purchase_heart_when_gameover_en")
+                }
+                else {
+                    revive_text.image = UIImage(named: "purchase_heart_when_gameover_ch")
+                }
             }
         }
         revive_text.frame = CGRect(x: 0, y: 0, width: self.pause_screen_x_transform(375), height: self.pause_screen_y_transform(200))
@@ -12813,8 +12826,7 @@ number_of_lines_erased += 1
         
         
         
-        let resu_activate_button = MyButton()
-        let just_kill_me = MyButton()
+        
         just_kill_me.frame = CGRect(x: self.pause_screen_x_transform(147), y: self.pause_screen_y_transform(450), width: self.pause_screen_x_transform(80), height: self.pause_screen_y_transform(80))
         resu_activate_button.frame = CGRect(x: self.pause_screen_x_transform(112), y: self.pause_screen_y_transform(250), width: self.pause_screen_x_transform(150), height: self.pause_screen_y_transform(150))
         
@@ -12846,13 +12858,15 @@ number_of_lines_erased += 1
 
         
         if (tool_quantity_array[0] > 0){
-            resu_activate_button.setImage(UIImage(named:"item_round_resurrection"), for: .normal)
+            
             resu_activate_button.whenButtonIsClicked {
                 self.pause_screen.removeFromSuperview()
                 resu_activate_button.removeFromSuperview()
                 just_kill_me.removeFromSuperview()
                 revive_text.removeFromSuperview()
                 text_background_patch.removeFromSuperview()
+                self.tool_quantity_array[0] -= 1
+                defaults.set(self.tool_quantity_array, forKey: "tritri_tool_quantity_array")
                 self.tool_quantity_array[5] += 1
                 self.doom_day_action()
                 self.paused = false
@@ -12860,7 +12874,6 @@ number_of_lines_erased += 1
         
         }
         else {  //no resu left
-            resu_activate_button.setImage(UIImage(named:"revive_star_icon"), for: .normal)
             resu_activate_button.whenButtonIsClicked {
                 if (self.star_score >= 25){
                     self.star_score -= 25
@@ -15194,7 +15207,6 @@ number_of_lines_erased += 1
     
     //amplifier animation
     //var amplifier_small_icon_location = CGPoint(x: 0, y: 0)
-    
     @IBOutlet weak var amplifier_valide_icon: UIImageView!
     var wave_animator_amplifier = waveAnimator(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var wave_animator_amplifier_timer = Timer()
