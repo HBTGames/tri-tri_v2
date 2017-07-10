@@ -12768,12 +12768,32 @@ number_of_lines_erased += 1
         self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
         self.view.addSubview(self.pause_screen)
         self.paused = true
+        
+        
+        
+        
+        let text_background_patch = UIView()
+        text_background_patch.frame = CGRect(x:0, y:0, width: self.pause_screen_x_transform(375), height: self.pause_screen_y_transform(200))
+        text_background_patch.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.5))
+        
+        let revive_text = UIImageView()
+        if (self.language == "English"){
+            revive_text.image = UIImage(named: "revive_text_en")
+        }
+        else {
+            revive_text.image = UIImage(named: "revive_text_ch")
+        }
+        revive_text.frame = CGRect(x: 0, y: 0, width: self.pause_screen_x_transform(375), height: self.pause_screen_y_transform(200))
+        
+        
+        
+        
         let resu_activate_button = MyButton()
         let just_kill_me = MyButton()
-        just_kill_me.frame = CGRect(x: self.pause_screen_x_transform(112), y: self.pause_screen_y_transform(400), width: self.pause_screen_x_transform(150), height: self.pause_screen_y_transform(150))
+        just_kill_me.frame = CGRect(x: self.pause_screen_x_transform(147), y: self.pause_screen_y_transform(450), width: self.pause_screen_x_transform(80), height: self.pause_screen_y_transform(80))
         resu_activate_button.frame = CGRect(x: self.pause_screen_x_transform(112), y: self.pause_screen_y_transform(250), width: self.pause_screen_x_transform(150), height: self.pause_screen_y_transform(150))
         resu_activate_button.setImage(UIImage(named:"item_round_resurrection"), for: .normal)
-        just_kill_me.setImage(UIImage(named:"home"), for: .normal)
+        just_kill_me.setImage(UIImage(named:"revive_just_let_me_die"), for: .normal)
         
         just_kill_me.whenButtonIsClicked {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -12805,10 +12825,19 @@ number_of_lines_erased += 1
             self.pause_screen.removeFromSuperview()
             resu_activate_button.removeFromSuperview()
             just_kill_me.removeFromSuperview()
+            revive_text.removeFromSuperview()
+            text_background_patch.removeFromSuperview()
             self.tool_quantity_array[5] += 1
             self.doom_day_action()
             self.paused = false
         }
+        
+        
+        
+        
+        
+        self.view.addSubview(text_background_patch)
+        self.view.addSubview(revive_text)
         self.view.addSubview(resu_activate_button)
         self.view.addSubview(just_kill_me)
         
