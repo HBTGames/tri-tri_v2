@@ -31,7 +31,7 @@ class resurrectCountDownCircle: SKScene{
         circle.zRotation = CGFloat.pi / 2
         addChild(circle)
         
-        countdown(circle: circle, steps: 20, duration: 5) {
+        countdown(circle: circle, steps: 100, duration: 5) {
             print("done")
         }
     }
