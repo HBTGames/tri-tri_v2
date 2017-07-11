@@ -384,8 +384,8 @@ class MenuViewController: UIViewController {
         let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(50)))
         let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(15), width: pause_screen_x_transform(155), height: pause_screen_y_transform(35)))
         white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
-        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(260), y:pause_screen_y_transform(15),width: pause_screen_x_transform(97), height: pause_screen_y_transform(41)))
-        theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(280),y:pause_screen_y_transform(20),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
+        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(250), y:pause_screen_y_transform(15),width: pause_screen_x_transform(97), height: pause_screen_y_transform(41)))
+        theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(275),y:pause_screen_y_transform(20),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
         theme_button_height = (screen_height - white_cover_y)/5.0
         let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
@@ -454,6 +454,8 @@ class MenuViewController: UIViewController {
             white_cover.fadeOut()
             theme_menu.fadeOut()
             
+            self.remove_all_theme_star_counter_fragments()
+                
             self.day_apply_button.removeFromSuperview()
             self.night_apply_button.removeFromSuperview()
             self.BW_apply_button.removeFromSuperview()
@@ -555,7 +557,8 @@ class MenuViewController: UIViewController {
             return_button.fadeOut()
             white_cover.fadeOut()
             theme_menu.fadeOut()
-            
+            self.remove_all_theme_star_counter_fragments()
+                
             self.day_apply_button.removeFromSuperview()
             self.night_apply_button.removeFromSuperview()
             self.BW_apply_button.removeFromSuperview()
@@ -708,7 +711,7 @@ class MenuViewController: UIViewController {
             theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
              self.theme_star_board.removeFromSuperview()
-            
+            self.remove_all_theme_star_counter_fragments()
             
             }else{
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
@@ -916,6 +919,8 @@ class MenuViewController: UIViewController {
             theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
            self.theme_star_board.removeFromSuperview()
+            self.remove_all_theme_star_counter_fragments()
+                
             }else{
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
@@ -1033,7 +1038,7 @@ class MenuViewController: UIViewController {
             return_button.fadeOut()
             white_cover.fadeOut()
             theme_menu.fadeOut()
-            
+            self.remove_all_theme_star_counter_fragments()
             self.day_theme_button.removeFromSuperview()
             self.night_theme_button.removeFromSuperview()
             self.BW_theme_button.removeFromSuperview()
@@ -1111,9 +1116,9 @@ class MenuViewController: UIViewController {
         }else if(ThemeType == 6){
             theme_star_counter.image = UIImage(named:"colors_mode_star")
         }
-        theme_star_counter.alpha = 0
-        self.view.addSubview(theme_star_counter)
-        theme_star_counter.fadeInWithDisplacement()
+        theme_star_counter.alpha = 1
+        
+        //theme_star_counter.fadeInWithDisplacement()
         
         
         
@@ -1132,11 +1137,16 @@ class MenuViewController: UIViewController {
         }else if(ThemeType == 6){
             theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
         }
+        theme_star_board_width = theme_star_board.frame.width
         theme_star_board.alpha = 0
         self.view.addSubview(theme_star_board)
         theme_star_board.fadeInWithDisplacement()
         
+        split_theme_star_counter()
+        update_theme_star_length_according_to_string_length()
         
+        theme_star_counter.alpha = 0
+        self.view.addSubview(theme_star_counter)
         //add  return button
         
         return_button.setBackgroundImage(UIImage(named:"return_button"), for: .normal)
@@ -1181,6 +1191,7 @@ class MenuViewController: UIViewController {
             theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
+            self.remove_all_theme_star_counter_fragments()
         })
         
         return_button.alpha = 0
@@ -2321,10 +2332,77 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         current_star_total_fragments[3].frame.origin.x = current_star_total_fragments[2].frame.origin.x + current_star_total_fragments[2].frame.width
         self.view.bringSubview(toFront: current_star_total_text)
     }
+ /////
+    var theme_star_counter_fragments : Array<UIView> = []
+    var theme_star_board_width = CGFloat(0)
+    var theme_star_counter_fragments_width = CGFloat(0)
     
+    func split_theme_star_counter() -> Void{
+        theme_star_counter_fragments = []
+        theme_star_counter.alpha = 1
+        theme_star_counter_fragments = theme_star_counter.generateFragmentsFrom(theme_star_counter, with: 4.0, in: self.view)
+        var i = 0
+        theme_star_counter.alpha = 0
+        theme_star_counter_fragments[0].frame.origin.x = theme_star_counter.frame.origin.x
+        theme_star_counter_fragments[1].frame.origin.x = theme_star_counter_fragments[0].frame.origin.x + theme_star_counter_fragments[0].frame.width
+        theme_star_counter_fragments[2].frame.origin.x = theme_star_counter_fragments[1].frame.origin.x + theme_star_counter_fragments[1].frame.width
+        theme_star_counter_fragments[3].frame.origin.x = theme_star_counter_fragments[2].frame.origin.x + theme_star_counter_fragments[2].frame.width
+        //print("current_star_total_fragments 0 width is \(current_star_total_fragments[0].frame.width)")
+        //print("0 x is \(current_star_total_fragments[0].frame.origin.x)")
+        self.view.addSubview(theme_star_counter_fragments[0])
+        self.view.addSubview(theme_star_counter_fragments[1])
+        self.view.addSubview(theme_star_counter_fragments[2])
+        self.view.addSubview(theme_star_counter_fragments[3])
+        theme_star_counter_fragments[0].alpha = 0
+        theme_star_counter_fragments[1].alpha = 0
+        theme_star_counter_fragments[2].alpha = 0
+        theme_star_counter_fragments[3].alpha = 0
+        theme_star_counter_fragments[0].fadeInWithDisplacement()
+        theme_star_counter_fragments[1].fadeInWithDisplacement()
+        theme_star_counter_fragments[2].fadeInWithDisplacement()
+        theme_star_counter_fragments[3].fadeInWithDisplacement()
+        theme_star_counter_fragments_width = theme_star_counter_fragments[2].frame.width
+        self.view.bringSubview(toFront: theme_star_board)
+        
+        //print(star_counter_fragment_width)
+    }
+    func remove_all_theme_star_counter_fragments() -> Void{
+        theme_star_counter_fragments[0].removeFromSuperview()
+        theme_star_counter_fragments[1].removeFromSuperview()
+        theme_star_counter_fragments[2].removeFromSuperview()
+        theme_star_counter_fragments[3].removeFromSuperview()
+    }
+    
+    func update_theme_star_length_according_to_string_length() -> Void{
+        var i = 0
+        var loop = true
+        var argument_integer = 0
+        if(star_score != 0){
+            while(loop){
+                let first_pow = pow(10, Double(i))
+                let second_pow = pow(10, Double(i+1))
+                if(Double(star_score) >= first_pow && Double(star_score) < second_pow){
+                    loop = false
+                }
+                i += 1
+            }
+        }else{
+            i = 0
+        }
+        argument_integer = i - 2
+        update_theme_star_counter_length(i: argument_integer)
+    }
+    func update_theme_star_counter_length(i: Int) -> Void{
+        //print("star_board_original_width: \(star_board_original_width)")
+        theme_star_board.frame.size = CGSize(width: theme_star_board_width + (CGFloat(i)*pause_screen_x_transform(3)), height: theme_star_board.frame.height)
+        // print("star_board width: \(star_board.frame.width)")
+        theme_star_counter_fragments[2].frame.size = CGSize(width: theme_star_counter_fragments_width + CGFloat(i)*pause_screen_x_transform(3), height: theme_star_counter_fragments[2].frame.height)
+        theme_star_counter_fragments[3].frame.origin.x = theme_star_counter_fragments[2].frame.origin.x + theme_star_counter_fragments[2].frame.width
+        self.view.bringSubview(toFront: theme_star_board)
+    }
     
 }
-    
+
     
 
 
