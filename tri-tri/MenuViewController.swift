@@ -15,6 +15,11 @@ extension UIView:Explodable { }
 
 class MenuViewController: UIViewController {
 
+    
+    //theme islocked array
+    var theme_islocked_array : Array<Bool> = []
+    
+    
     var language = String()
     
     var cash_player = AVAudioPlayer()
@@ -323,12 +328,26 @@ class MenuViewController: UIViewController {
     var theme_star_counter = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var theme_star_board = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
+    var day_apply_button = MyButton()
+    var night_apply_button = MyButton()
+    var BW_apply_button = MyButton()
+    var school_apply_button = MyButton()
+    var colors_apply_button = MyButton()
+    
+    
     var day_theme_origin = CGPoint(x: 0, y: 0)
     var night_theme_origin = CGPoint(x: 0, y: 0)
     var BW_theme_origin = CGPoint(x: 0, y: 0)
     var chaos_theme_origin = CGPoint(x: 0, y: 0)
     var school_theme_origin = CGPoint(x: 0, y: 0)
     var colors_theme_origin = CGPoint(x: 0, y: 0)
+    
+    var day_apply_origin = CGPoint()
+    var night_apply_origin = CGPoint()
+    var BW_apply_origin = CGPoint()
+    var school_apply_origin = CGPoint()
+    var colors_apply_origin = CGPoint()
+    
     var white_cover_y = CGFloat(0)
     var theme_button_height = CGFloat(0)
     
@@ -362,7 +381,10 @@ class MenuViewController: UIViewController {
         day_theme_origin = day_theme_button.frame.origin
         day_theme_button.setBackgroundImage(#imageLiteral(resourceName: "day_mode_theme_menu_button"), for: .normal)
         day_theme_button.alpha = 0
-        day_theme_button.whenButtonIsClicked(action:{
+        day_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: day_theme_button.frame.origin.y + day_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
+        day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
+        day_apply_origin = day_apply_button.frame.origin
+        day_apply_button.whenButtonIsClicked(action:{
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -398,7 +420,6 @@ class MenuViewController: UIViewController {
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"day mode gameover title")
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
-            
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
             self.BW_theme_button.fadeOut()
@@ -409,6 +430,12 @@ class MenuViewController: UIViewController {
             return_button.fadeOut()
             white_cover.fadeOut()
             theme_menu.fadeOut()
+            
+            self.day_apply_button.removeFromSuperview()
+            self.night_apply_button.removeFromSuperview()
+            self.BW_apply_button.removeFromSuperview()
+            self.school_apply_button.removeFromSuperview()
+            self.colors_apply_button.removeFromSuperview()
             
             self.day_theme_button.removeFromSuperview()
             self.night_theme_button.removeFromSuperview()
@@ -427,11 +454,17 @@ class MenuViewController: UIViewController {
         self.view.addSubview(day_theme_button)
         day_theme_button.fadeInWithDisplacement()
         
+        self.view.addSubview(day_apply_button)
+        day_apply_button.fadeInWithDisplacement()
+        
         night_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y:day_theme_button.frame.origin.y + day_theme_button.frame.height, width: screen_width, height: theme_button_height))
         night_theme_origin = night_theme_button.frame.origin
         night_theme_button.setBackgroundImage(#imageLiteral(resourceName: "night_mode_theme_menu_button"), for: .normal)
         night_theme_button.alpha = 0
-        night_theme_button.whenButtonIsClicked(action:{
+        night_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: night_theme_button.frame.origin.y + night_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
+        night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+        night_apply_origin = night_apply_button.frame.origin
+        night_apply_button.whenButtonIsClicked(action:{
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -469,6 +502,7 @@ class MenuViewController: UIViewController {
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             
             self.day_theme_button.fadeOut()
+            
             self.night_theme_button.fadeOut()
             self.BW_theme_button.fadeOut()
             //self.chaos_theme_button.fadeOut()
@@ -478,6 +512,12 @@ class MenuViewController: UIViewController {
             return_button.fadeOut()
             white_cover.fadeOut()
             theme_menu.fadeOut()
+            
+            self.day_apply_button.removeFromSuperview()
+            self.night_apply_button.removeFromSuperview()
+            self.BW_apply_button.removeFromSuperview()
+            self.school_apply_button.removeFromSuperview()
+            self.colors_apply_button.removeFromSuperview()
             
             self.day_theme_button.removeFromSuperview()
             self.night_theme_button.removeFromSuperview()
@@ -494,12 +534,17 @@ class MenuViewController: UIViewController {
         })
         self.view.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
+        self.view.addSubview(night_apply_button)
+        night_apply_button.fadeInWithDisplacement()
         
         BW_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y: night_theme_button.frame.origin.y + night_theme_button.frame.height, width: screen_width, height: theme_button_height))
         BW_theme_origin = BW_theme_button.frame.origin
         BW_theme_button.setBackgroundImage(#imageLiteral(resourceName: "BW_theme_menu_button"), for: .normal)
         BW_theme_button.alpha = 0
-        BW_theme_button.whenButtonIsClicked(action:{
+        BW_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: BW_theme_button.frame.origin.y + BW_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
+        BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+        BW_apply_origin = BW_apply_button.frame.origin
+        BW_apply_button.whenButtonIsClicked(action:{
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -547,6 +592,13 @@ class MenuViewController: UIViewController {
             white_cover.fadeOut()
             theme_menu.fadeOut()
             
+            self.day_apply_button.removeFromSuperview()
+            self.night_apply_button.removeFromSuperview()
+            self.BW_apply_button.removeFromSuperview()
+            self.school_apply_button.removeFromSuperview()
+            self.colors_apply_button.removeFromSuperview()
+            
+            
             self.day_theme_button.removeFromSuperview()
             self.night_theme_button.removeFromSuperview()
             self.BW_theme_button.removeFromSuperview()
@@ -572,6 +624,8 @@ class MenuViewController: UIViewController {
         self.view.addSubview(BW_theme_button)
         BW_theme_button.fadeInWithDisplacement()
         
+        self.view.addSubview(BW_apply_button)
+        BW_apply_button.fadeInWithDisplacement()
         chaos_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         chaos_theme_origin = chaos_theme_button.frame.origin
         chaos_theme_button.setBackgroundImage(UIImage(named:"Chaos_theme"), for: .normal)
@@ -639,7 +693,10 @@ class MenuViewController: UIViewController {
         school_theme_origin = school_theme_button.frame.origin
         school_theme_button.setBackgroundImage(#imageLiteral(resourceName: "school_mode_theme_menu_button"), for: .normal)
         school_theme_button.alpha = 0
-        school_theme_button.whenButtonIsClicked(action:{
+        school_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: school_theme_button.frame.origin.y + school_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
+        school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+        school_apply_origin = school_apply_button.frame.origin
+        school_apply_button.whenButtonIsClicked(action:{
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -678,6 +735,11 @@ class MenuViewController: UIViewController {
             
             
             
+            self.day_apply_button.removeFromSuperview()
+            self.night_apply_button.removeFromSuperview()
+            self.BW_apply_button.removeFromSuperview()
+            self.school_apply_button.removeFromSuperview()
+            self.colors_apply_button.removeFromSuperview()
             
             
             self.day_theme_button.fadeOut()
@@ -707,11 +769,17 @@ class MenuViewController: UIViewController {
         self.view.addSubview(school_theme_button)
         school_theme_button.fadeInWithDisplacement()
         
+        self.view.addSubview(school_apply_button)
+        school_apply_button.fadeInWithDisplacement()
+        
         colors_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y: school_theme_button.frame.origin.y + school_theme_button.frame.height, width: screen_width, height: theme_button_height))
         colors_theme_origin = colors_theme_button.frame.origin
         colors_theme_button.setBackgroundImage(#imageLiteral(resourceName: "colors_theme_menu_button"), for: .normal)
         colors_theme_button.alpha = 0
-        colors_theme_button.whenButtonIsClicked(action:{
+        colors_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: colors_theme_button.frame.origin.y + colors_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
+        colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+        colors_apply_origin = colors_apply_button.frame.origin
+        colors_apply_button.whenButtonIsClicked(action:{
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -771,7 +839,12 @@ class MenuViewController: UIViewController {
             self.theme_star_counter.removeFromSuperview()
              self.theme_star_board.removeFromSuperview()
             
-
+            
+            self.day_apply_button.removeFromSuperview()
+            self.night_apply_button.removeFromSuperview()
+            self.BW_apply_button.removeFromSuperview()
+            self.school_apply_button.removeFromSuperview()
+            self.colors_apply_button.removeFromSuperview()
             
             
             
@@ -785,6 +858,8 @@ class MenuViewController: UIViewController {
         self.view.addSubview(colors_theme_button)
         colors_theme_button.fadeInWithDisplacement()
         
+        self.view.addSubview(colors_apply_button)
+        colors_apply_button.fadeInWithDisplacement()
         //add white to 遮挡
         
         white_cover.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
@@ -872,6 +947,12 @@ class MenuViewController: UIViewController {
             white_cover.fadeOut()
             theme_menu.fadeOut()
             
+            self.day_apply_button.fadeOutandRemove()
+            self.night_apply_button.fadeOutandRemove()
+            self.BW_apply_button.fadeOutandRemove()
+            self.school_apply_button.fadeOutandRemove()
+            self.colors_apply_button.fadeOutandRemove()
+            
             self.day_theme_button.removeFromSuperview()
             self.night_theme_button.removeFromSuperview()
             self.BW_theme_button.removeFromSuperview()
@@ -916,6 +997,15 @@ class MenuViewController: UIViewController {
             chaos_theme_button.frame.origin = CGPoint(x: chaos_theme_origin.x, y: (chaos_theme_origin.y + transition0.y))
             school_theme_button.frame.origin = CGPoint(x: school_theme_origin.x, y: (school_theme_origin.y + transition0.y))
             colors_theme_button.frame.origin = CGPoint(x: colors_theme_origin.x, y: (colors_theme_origin.y + transition0.y))
+            
+            
+            day_apply_button.frame.origin = CGPoint(x: day_apply_origin.x, y: (day_apply_origin.y + transition0.y))
+            night_apply_button.frame.origin = CGPoint(x: night_apply_origin.x, y: (night_apply_origin.y + transition0.y))
+            BW_apply_button.frame.origin = CGPoint(x: BW_apply_origin.x, y: (BW_apply_origin.y + transition0.y))
+            school_apply_button.frame.origin = CGPoint(x: school_apply_origin.x, y: (school_apply_origin.y + transition0.y))
+            colors_apply_button.frame.origin = CGPoint(x: colors_apply_origin.x, y: (colors_apply_origin.y + transition0.y))
+            
+            
             if(gesture.state == .ended){
                 day_theme_origin.y = day_theme_button.frame.origin.y
                 night_theme_origin.y = night_theme_button.frame.origin.y
@@ -923,6 +1013,15 @@ class MenuViewController: UIViewController {
                 chaos_theme_origin.y = chaos_theme_button.frame.origin.y
                 school_theme_origin.y = school_theme_button.frame.origin.y
                 colors_theme_origin.y = colors_theme_button.frame.origin.y
+                
+                day_apply_origin.y = day_apply_button.frame.origin.y
+                night_apply_origin.y = night_apply_button.frame.origin.y
+                BW_apply_origin.y = BW_apply_button.frame.origin.y
+                school_apply_origin.y = school_apply_button.frame.origin.y
+                colors_apply_origin.y = colors_apply_button.frame.origin.y
+                
+                
+                
             }
         }else{
             if(gesture.state == .ended){
@@ -932,6 +1031,13 @@ class MenuViewController: UIViewController {
                 //chaos_theme_origin.y = pause_screen_y_transform(319)
                 school_theme_origin.y = BW_theme_origin.y + BW_theme_button.frame.height
                 colors_theme_origin.y = school_theme_origin.y + school_theme_button.frame.height
+                
+               day_apply_origin.y = white_cover_y + day_theme_button.frame.height/2.0 - pause_screen_y_transform(18)
+               night_apply_origin.y = day_apply_origin.y + day_theme_button.frame.height
+                BW_apply_origin.y = night_apply_origin.y + night_theme_button.frame.height
+                school_apply_origin.y = BW_apply_origin.y + BW_theme_button.frame.height
+                colors_apply_origin.y = school_apply_origin.y + school_theme_button.frame.height
+                
                 UIView.animate(withDuration: 0.5, animations: {
                     self.day_theme_button.frame.origin.y = self.day_theme_origin.y
                     self.night_theme_button.frame.origin.y = self.night_theme_origin.y
@@ -939,6 +1045,12 @@ class MenuViewController: UIViewController {
                     self.chaos_theme_button.frame.origin.y = self.chaos_theme_origin.y
                     self.school_theme_button.frame.origin.y = self.school_theme_origin.y
                     self.colors_theme_button.frame.origin.y = self.colors_theme_origin.y
+                    
+                    self.day_apply_button.frame.origin.y = self.day_apply_origin.y
+                    self.night_apply_button.frame.origin.y = self.night_apply_origin.y
+                    self.BW_apply_button.frame.origin.y = self.BW_apply_origin.y
+                    self.school_apply_button.frame.origin.y = self.school_apply_origin.y
+                    self.colors_apply_button.frame.origin.y = self.colors_apply_origin.y
                     
                 })
             }
