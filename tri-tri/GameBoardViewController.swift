@@ -12892,7 +12892,7 @@ number_of_lines_erased += 1
     func open_pack() -> Void{
         
         
-        
+        self.paused = true
         
         self.pack_line_1.frame = CGRect(x: self.pause_screen_x_transform(312), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
         self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(355), y: self.pause_screen_y_transform(165.5), width: self.pause_screen_x_transform(4), height: 0)
@@ -12980,6 +12980,7 @@ number_of_lines_erased += 1
                 self.pack_line_2.frame = CGRect(x: self.pause_screen_x_transform(347.5), y: self.pause_screen_y_transform(163), width: self.pause_screen_x_transform(7.5), height: self.pause_screen_y_transform(362))
                 self.pack_patch.frame = CGRect(x: self.pause_screen_x_transform(275), y: self.pause_screen_y_transform(163), width: self.pause_screen_x_transform(80), height: self.pause_screen_y_transform(362))
                 self.lower_half_pack_ring.frame = CGRect(x: self.pause_screen_x_transform(275), y: self.pause_screen_y_transform(485), width: self.pause_screen_x_transform(80), height: self.pause_screen_y_transform(80))
+                self.paused = false
             },
             completion: nil)
     })
@@ -12999,6 +13000,7 @@ number_of_lines_erased += 1
     
     
     func close_pack() -> Void{
+        self.paused = true
         self.view.bringSubview(toFront: upper_half_pack_ring)
         UIView.transition(with: backpack_button,
                           duration: 0.3,
@@ -13031,7 +13033,9 @@ number_of_lines_erased += 1
                                                 self.holy_nova_button.removeFromSuperview()
                                                 self.amplifier_button.removeFromSuperview()
                                                 self.trinity_button.removeFromSuperview()
-                                                self.doom_day_button.removeFromSuperview()},
+                                                self.doom_day_button.removeFromSuperview()
+                                                self.paused = false
+                            },
                                               completion: nil)
         })
         
