@@ -33,6 +33,8 @@ class resurrectCountDownCircle: SKScene{
         
         countdown(circle: circle, steps: 100, duration: 5) {
             print("done")
+            /*let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController*/
         }
     }
     
@@ -53,12 +55,15 @@ class resurrectCountDownCircle: SKScene{
         let wait = SKAction.wait(forDuration:timeInterval)
         let action = SKAction.sequence([wait, animate])
         
-        run(SKAction.repeat(action,count:steps-1)) {
-            self.run(SKAction.wait(forDuration:timeInterval)) {
-                circle.path = nil
-                completion()
-            }
+        let completed = SKAction.run{
+            circle.path = nil
+            completion()
         }
+        
+        let countDown = SKAction.repeat(action,count:steps-1)
+        let sequence = SKAction.sequence([countDown, SKAction.wait(forDuration: timeInterval),completed])
+        
+        run(sequence, withKey: "revive_continue_count_down")
     }
     
     // Creates a CGPath in the shape of a pie with slices missing
@@ -71,5 +76,9 @@ class resurrectCountDownCircle: SKScene{
         bezierPath.addArc(withCenter:center, radius: radius, startAngle: start, endAngle: end, clockwise: true)
         bezierPath.addLine(to:center)
         return bezierPath.cgPath
+    }
+    
+    func send_stop_signal() -> Void{
+        removeAction(forKey: "revive_continue_count_down")
     }
 }

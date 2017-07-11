@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1845"
             endingLineNumber = "1845"
-            landmarkName = "theme_menu_action()"
+            landmarkName = "reorder_triangle_positions_during_loading_view()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "7887"
             endingLineNumber = "7887"
-            landmarkName = "Check_And_Erase_Fix_Filled()"
+            landmarkName = "Check_and_Erase()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -300,7 +300,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "10203"
             endingLineNumber = "10203"
-            landmarkName = "Find_Any_Dark_Green_Tri_Change_Filled(row:column:)"
+            landmarkName = "Find_Any_Available_Orange_Tri_Change_Filled(row:column:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

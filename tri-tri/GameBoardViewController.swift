@@ -13115,10 +13115,11 @@ number_of_lines_erased += 1
         count_down_view.presentScene(count_down_circle)
         
         
+        defaults.set(self.MarkBoard.text!, forKey: "final_score_for_revive")
+        defaults.set(self.ThemeType, forKey: "theme_for_revive")
         
         
-        
-        
+        var game_over_timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(GameBoardViewController.game_over_after_counter_done), userInfo: nil, repeats: false)
         
         
         
@@ -13171,6 +13172,7 @@ number_of_lines_erased += 1
         just_kill_me.setImage(UIImage(named:"revive_just_let_me_die"), for: .normal)
         
         just_kill_me.whenButtonIsClicked {
+            count_down_circle.send_stop_signal()
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
             nextViewController.final_score = self.MarkBoard.text!
@@ -13198,6 +13200,7 @@ number_of_lines_erased += 1
         if (tool_quantity_array[0] > 0){
             
             resu_activate_button.whenButtonIsClicked {
+                count_down_circle.send_stop_signal()
                 self.pause_screen.removeFromSuperview()
                 resu_activate_button.removeFromSuperview()
                 just_kill_me.removeFromSuperview()
@@ -13206,9 +13209,10 @@ number_of_lines_erased += 1
                 count_down_view.removeFromSuperview()
                 self.tool_quantity_array[0] -= 1
                 defaults.set(self.tool_quantity_array, forKey: "tritri_tool_quantity_array")
-                self.tool_quantity_array[5] += 1
-                self.doom_day_action()
+                
+                self.auto_random_generator()
                 self.paused = false
+                game_over_timer.invalidate()
             }
         
         }
@@ -13219,19 +13223,20 @@ number_of_lines_erased += 1
                     self.starBoard.text = String(self.star_score)
                     defaults.set(self.star_score, forKey: "tritri_star_score")
                     defaults.synchronize()
-                    
+                    count_down_circle.send_stop_signal()
                     self.pause_screen.removeFromSuperview()
                     resu_activate_button.removeFromSuperview()
                     just_kill_me.removeFromSuperview()
                     revive_text.removeFromSuperview()
                     text_background_patch.removeFromSuperview()
                     count_down_view.removeFromSuperview()
-                    self.tool_quantity_array[5] += 1
-                    self.doom_day_action()
+                    self.auto_random_generator()
                     self.paused = false
+                    game_over_timer.invalidate()
                 }
                 else {  //star not enough
                     //currently gameover
+                    count_down_circle.send_stop_signal()
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
                     nextViewController.final_score = self.MarkBoard.text!
@@ -13252,7 +13257,7 @@ number_of_lines_erased += 1
                         
                     }
                     self.game_over_player.play()
-                    
+                    game_over_timer.invalidate()
                     
                     
                     
@@ -16496,7 +16501,36 @@ func trinity_animation() -> Void {
 
 /***********************************************************************************/
 
-  
+    
+    func game_over_after_counter_done() -> Void
+    {
+        print("time over boom")
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
+        nextViewController.final_score = self.MarkBoard.text!
+        nextViewController.ThemeType = self.ThemeType
+        nextViewController.modalTransitionStyle = .crossDissolve
+        if (Int(self.MarkBoard.text!) == self.HighestScore){
+            nextViewController.is_high_score = true
+        } else {
+            nextViewController.is_high_score = false
+        }
+        self.present(nextViewController, animated: true, completion: nil)
+        //self.audioPlayer.stop()
+        self.timer.invalidate()
+        do{self.game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
+            self.game_over_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        self.game_over_player.play()
+    }
+    
+//function to split star counter
+    func split_star_counter() -> VoID{
+        
+    }
     
     
     
