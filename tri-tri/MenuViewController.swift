@@ -2238,18 +2238,19 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
     }
     
     func update_star_counter_length_according_to_string_length() -> Void{
-        if(star_score >= 1000 && star_score < 9999){
-            update_star_counter_length(i: 1)
-        }else if(star_score >= 10000 && star_score < 99999){
-            //update_star_counter_length()
-            update_star_counter_length(i: 2)
-        }else if(star_score >= 100 && star_score < 999){
-            update_star_counter_length(i: 0)
-        }else if(star_score >= 10 && star_score < 99){
-            update_star_counter_length(i: -1)
-        }else if(star_score >= 0 && star_score < 9){
-            update_star_counter_length(i: -2)
+        var i = 0
+        var loop = true
+        var argument_integer = 0
+        while(loop){
+            let first_pow = Int(pow(10, Double(i)))
+            let second_pow = Int(pow(10, Double(i+1)))
+            if(star_score >= first_pow && star_score < second_pow){
+                loop = false
+            }
+            i += 1
         }
+        argument_integer = i - 2
+        update_star_counter_length(i: argument_integer)
     }
     
 

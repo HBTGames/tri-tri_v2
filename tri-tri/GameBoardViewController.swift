@@ -201,7 +201,7 @@ class GameBoardViewController: UIViewController {
     //variables about starboard
     @IBOutlet weak var triangle_title: UIImageView!
     
-    @IBOutlet weak var star_bg: UIImageView!
+  
     @IBOutlet weak var starBoard: UILabel!
     var star_score = 0
     
@@ -1572,7 +1572,9 @@ class GameBoardViewController: UIViewController {
             NotificationCenter.default.addObserver(self, selector: #selector(GameBoardViewController.background_music_pause) , name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(GameBoardViewController.background_music_continue), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
-        
+        starBoard_width = starBoard.frame.width
+        split_star_counter()
+        update_star_counter_length_according_to_string_length()
     }
     
     
@@ -1613,9 +1615,11 @@ class GameBoardViewController: UIViewController {
         print(pause.frame.origin.x)
         print(pause.frame.origin.y)
         
-        star_bg.frame = CGRect(x: pause_screen_x_transform(16) , y: pause_screen_y_transform(68) , width: pause_screen_x_transform(97), height: pause_screen_y_transform(41))
+       /** star_bg.frame = CGRect(x: pause_screen_x_transform(16) , y: pause_screen_y_transform(68) , width: pause_screen_x_transform(97), height: pause_screen_y_transform(41))**/
+       
+        star_counter.frame = CGRect(x: pause_screen_x_transform(Double(star_counter.frame.origin.x)) , y: pause_screen_y_transform(Double(star_counter.frame.origin.y)) , width: pause_screen_x_transform(Double(star_counter.frame.width)), height: pause_screen_y_transform(Double(star_counter.frame.height)))
         
-        starBoard.frame = CGRect(x: pause_screen_x_transform(47) , y: pause_screen_y_transform(74) , width: pause_screen_x_transform(82), height: pause_screen_y_transform(27))
+        starBoard.frame = CGRect(x: pause_screen_x_transform(Double(starBoard.frame.origin.x)) , y: pause_screen_y_transform(Double(starBoard.frame.origin.y)) , width: pause_screen_x_transform(Double(starBoard.frame.width)), height: pause_screen_y_transform(Double(starBoard.frame.height)))
         
         MarkBoard.frame = CGRect(x: pause_screen_x_transform(27) , y: pause_screen_y_transform(142) , width: pause_screen_x_transform(133), height: pause_screen_y_transform(41))
         
@@ -1940,6 +1944,11 @@ class GameBoardViewController: UIViewController {
             self.backpack_button_before_hit = #imageLiteral(resourceName: "day_mode_backup_before_hit")
             self.backpack_button_after_hit = #imageLiteral(resourceName: "backpack_day_after_hit")
             self.backpack_button.setImage(self.backpack_button_before_hit, for: .normal)
+                
+            self.remove_all_fragments()
+            self.split_star_counter()
+            self.update_star_counter_length_according_to_string_length()
+    
             self.triangle_title_image_decider()
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
@@ -2053,7 +2062,10 @@ class GameBoardViewController: UIViewController {
             return_button.fadeOut()
             white_cover.fadeOut()
             theme_menu.fadeOut()
-            
+                self.remove_all_fragments()
+                self.split_star_counter()
+                self.update_star_counter_length_according_to_string_length()
+
                 self.day_apply_button.removeFromSuperview()
                 self.night_apply_button.removeFromSuperview()
                 self.BW_apply_button.removeFromSuperview()
@@ -2168,7 +2180,10 @@ class GameBoardViewController: UIViewController {
                 self.backpack_button_before_hit = #imageLiteral(resourceName: "bw_backpack_before_hit")
                 self.backpack_button_after_hit = #imageLiteral(resourceName: "bw_backpack_after_hit")
                 self.backpack_button.setImage(self.backpack_button_before_hit, for: .normal)
-                
+                self.remove_all_fragments()
+                self.split_star_counter()
+                self.update_star_counter_length_according_to_string_length()
+        
                 self.change_shape_in_generate_array()
                 self.change_current_shapes_according_to_theme()
                 self.change_current_board_according_to_theme()
@@ -2402,7 +2417,10 @@ class GameBoardViewController: UIViewController {
             self.change_current_board_according_to_theme()
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255/255.0), green:CGFloat(255/255.0), blue:CGFloat(255/255.0), alpha:CGFloat(0.8))
             
-            
+                self.remove_all_fragments()
+                self.split_star_counter()
+                self.update_star_counter_length_according_to_string_length()
+
             
             self.starBoard.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
@@ -2559,7 +2577,10 @@ class GameBoardViewController: UIViewController {
             return_button.fadeOut()
             white_cover.fadeOut()
             theme_menu.fadeOut()
-            
+                self.remove_all_fragments()
+                self.split_star_counter()
+                self.update_star_counter_length_according_to_string_length()
+
                 self.day_apply_button.removeFromSuperview()
                 self.night_apply_button.removeFromSuperview()
                 self.BW_apply_button.removeFromSuperview()
@@ -16497,6 +16518,7 @@ func trinity_animation() -> Void {
     starBoard.text = String(star_score)
     defaults.set(star_score, forKey: "tritri_star_score")
     defaults.synchronize()
+    update_star_counter_length_according_to_string_length()
     }
 
 /***********************************************************************************/
@@ -16526,12 +16548,66 @@ func trinity_animation() -> Void {
         }
         self.game_over_player.play()
     }
-    
+
+//functions to auto resize star_counter
 //function to split star counter
-    func split_star_counter() -> VoID{
+    var star_counter_fragment_width = CGFloat()
+    var starBoard_width = CGFloat()
+    var star_counter_fragments : Array<UIView> = []
+    func split_star_counter() -> Void{
+    star_counter.alpha = 1
+    star_counter_fragments = star_counter.generateFragmentsFrom(star_counter, with: 4.0, in: self.view)
+    star_counter.alpha = 0
+    star_counter_fragments[0].frame.origin.x = star_counter.frame.origin.x
+    star_counter_fragments[1].frame.origin.x = star_counter_fragments[0].frame.origin.x + star_counter_fragments[0].frame.width
+    star_counter_fragments[2].frame.origin.x = star_counter_fragments[1].frame.origin.x + star_counter_fragments[1].frame.width
+    star_counter_fragments[3].frame.origin.x = star_counter_fragments[2].frame.origin.x + star_counter_fragments[2].frame.width
+    print("star counter fragment 0 width is \(star_counter_fragments[0].frame.width)")
+    self.view.addSubview(star_counter_fragments[0])
+    self.view.addSubview(star_counter_fragments[1])
+    self.view.addSubview(star_counter_fragments[2])
+    self.view.addSubview(star_counter_fragments[3])
+    star_counter_fragment_width = star_counter_fragments[2].frame.width
+    self.view.bringSubview(toFront: starBoard)
+        
+        
         
     }
     
+    func remove_all_fragments() -> Void{
+        star_counter_fragments[0].removeFromSuperview()
+        star_counter_fragments[1].removeFromSuperview()
+        star_counter_fragments[2].removeFromSuperview()
+        star_counter_fragments[3].removeFromSuperview()
+    }
+    
+    func update_star_counter_length(i: Int) -> Void{
+        print("star_board_original_width: \(starBoard_width)")
+        starBoard.frame.size = CGSize(width: starBoard_width + (CGFloat(i)*pause_screen_x_transform(10)), height: starBoard.frame.height)
+        print("star_board width: \(starBoard.frame.width)")
+        star_counter_fragments[2].frame.size = CGSize(width: star_counter_fragment_width + CGFloat(i)*pause_screen_x_transform(8), height: star_counter_fragments[2].frame.height)
+        star_counter_fragments[3].frame.origin.x = star_counter_fragments[2].frame.origin.x + star_counter_fragments[2].frame.width
+        self.view.bringSubview(toFront: starBoard)
+    }
+    
+    func update_star_counter_length_according_to_string_length() -> Void{
+        var i = 0
+        var loop = true
+        var argument_integer = 0
+        while(loop){
+            let first_pow = Int(pow(10, Double(i)))
+            let second_pow = Int(pow(10, Double(i+1)))
+            if(star_score >= first_pow && star_score < second_pow){
+            loop = false
+            }
+            i += 1
+        }
+        argument_integer = i - 2
+       update_star_counter_length(i: argument_integer)
+        amplifier_valide_icon.frame.origin.x = star_counter_fragments[3].frame.origin.x + star_counter_fragment_width + pause_screen_x_transform(5)
+        
+            }
+
     
     
 }

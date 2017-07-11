@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521456702.135532"
+            timestampString = "521466684.933068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13907"
-            endingLineNumber = "13907"
+            startingLineNumber = "13928"
+            endingLineNumber = "13928"
             landmarkName = "nova_boom_animation(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521456702.135532"
+            timestampString = "521466684.933068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12896"
-            endingLineNumber = "12896"
+            startingLineNumber = "12917"
+            endingLineNumber = "12917"
             landmarkName = "open_pack()"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521456702.135532"
+            timestampString = "521466684.933068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13568"
-            endingLineNumber = "13568"
+            startingLineNumber = "13589"
+            endingLineNumber = "13589"
             landmarkName = "nova_tri_recorder_helper(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521456702.135532"
+            timestampString = "521466684.933068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13011"
-            endingLineNumber = "13011"
+            startingLineNumber = "13032"
+            endingLineNumber = "13032"
             landmarkName = "close_pack()"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521456702.135532"
+            timestampString = "521466684.933068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13007"
-            endingLineNumber = "13007"
+            startingLineNumber = "13028"
+            endingLineNumber = "13028"
             landmarkName = "close_pack()"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521456702.135532"
+            timestampString = "521466684.933068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14423"
-            endingLineNumber = "14423"
+            startingLineNumber = "14444"
+            endingLineNumber = "14444"
             landmarkName = "nova_breaker(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521456702.135532"
+            timestampString = "521466684.933068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14501"
-            endingLineNumber = "14501"
+            startingLineNumber = "14522"
+            endingLineNumber = "14522"
             landmarkName = "nova_breaker(row:col:)"
             landmarkType = "7">
          </BreakpointContent>

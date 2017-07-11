@@ -1047,8 +1047,8 @@
                                 <rect key="frame" x="16" y="68" width="97" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-yQ-OGd">
-                                <rect key="frame" x="47" y="74" width="72" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-yQ-OGd">
+                                <rect key="frame" x="61" y="73" width="39" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="24"/>
                                 <nil key="textColor"/>
@@ -1091,7 +1091,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PL-dc-Xhe">
-                                <rect key="frame" x="173" y="82" width="71" height="30"/>
+                                <rect key="frame" x="35" y="10" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="star_cheat"/>
                                 <connections>
@@ -1120,7 +1120,6 @@
                         <outlet property="orange_drag_tri" destination="eId-J2-6Yd" id="Bv1-4G-ukf"/>
                         <outlet property="pause" destination="x0H-mS-pgO" id="3ug-f2-hkG"/>
                         <outlet property="starBoard" destination="UYk-yQ-OGd" id="rZv-IJ-RDJ"/>
-                        <outlet property="star_bg" destination="z4m-dG-Hks" id="QVQ-85-q9e"/>
                         <outlet property="star_counter" destination="z4m-dG-Hks" id="l2a-Lh-eKm"/>
                         <outlet property="tri_0_0" destination="oLJ-AF-fNV" id="Cdz-uw-kuB"/>
                         <outlet property="tri_0_0_back" destination="CKy-kf-ekX" id="Q0E-qd-ddo"/>
