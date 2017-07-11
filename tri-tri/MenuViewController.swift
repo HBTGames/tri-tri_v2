@@ -394,8 +394,8 @@ class MenuViewController: UIViewController {
         day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
         day_apply_origin = day_apply_button.frame.origin
         if(ThemeType == 1){
-            day_apply_button.frame.origin.x -= pause_screen_x_transform(10)
-            day_apply_button.frame.size = CGSize(width: pause_screen_x_transform(120), height: pause_screen_y_transform(36))
+            day_apply_button.frame.origin.x -= pause_screen_x_transform(16)
+            day_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
             day_apply_button.setImage( #imageLiteral(resourceName: "day_selected"), for: .normal)
         }
         day_apply_button.whenButtonIsClicked(action:{
@@ -490,8 +490,8 @@ class MenuViewController: UIViewController {
         night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
         night_apply_origin = night_apply_button.frame.origin
         if(ThemeType == 2){
-            night_apply_button.frame.origin.x -= pause_screen_x_transform(10)
-            night_apply_button.frame.size = CGSize(width: pause_screen_x_transform(120), height: pause_screen_y_transform(36))
+            night_apply_button.frame.origin.x -= pause_screen_x_transform(16)
+            night_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
             night_apply_button.setImage( #imageLiteral(resourceName: "night_selected"), for: .normal)
         }
         night_apply_button.whenButtonIsClicked(action:{
@@ -588,8 +588,8 @@ class MenuViewController: UIViewController {
         BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
         BW_apply_button.setImage(#imageLiteral(resourceName: "BW_price"), for: .normal)
         }else if(ThemeType == 3){
-            BW_apply_button.frame.origin.x -= pause_screen_x_transform(10)
-            BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(120), height: pause_screen_y_transform(36))
+            BW_apply_button.frame.origin.x -= pause_screen_x_transform(16)
+            BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
         BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
         }
         else{
@@ -789,8 +789,8 @@ class MenuViewController: UIViewController {
             school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
          school_apply_button.setImage(#imageLiteral(resourceName: "school_price"), for: .normal)
         }else if(ThemeType == 5){
-            school_apply_button.frame.origin.x -= pause_screen_x_transform(10)
-            school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(120), height: pause_screen_y_transform(36))
+            school_apply_button.frame.origin.x -= pause_screen_x_transform(16)
+            school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
             school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
         }
         else{
@@ -925,8 +925,8 @@ class MenuViewController: UIViewController {
 
             colors_apply_button.setImage(#imageLiteral(resourceName: "colors_price"), for: .normal)
         }else if(ThemeType == 6){
-            colors_apply_button.frame.origin.x -= pause_screen_x_transform(10)
-            colors_apply_button.frame.size = CGSize(width: pause_screen_x_transform(120), height: pause_screen_y_transform(36))
+            colors_apply_button.frame.origin.x -= pause_screen_x_transform(16)
+            colors_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
          colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
         }
         else{
@@ -1140,11 +1140,11 @@ class MenuViewController: UIViewController {
             white_cover.fadeOut()
             theme_menu.fadeOut()
             
-            self.day_apply_button.fadeOutandRemove()
-            self.night_apply_button.fadeOutandRemove()
-            self.BW_apply_button.fadeOutandRemove()
-            self.school_apply_button.fadeOutandRemove()
-            self.colors_apply_button.fadeOutandRemove()
+            self.day_apply_button.removeFromSuperview()
+            self.night_apply_button.removeFromSuperview()
+            self.BW_apply_button.removeFromSuperview()
+            self.school_apply_button.removeFromSuperview()
+            self.colors_apply_button.removeFromSuperview()
             
             self.day_theme_button.removeFromSuperview()
             self.night_theme_button.removeFromSuperview()
