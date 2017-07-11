@@ -14,6 +14,7 @@
 		042D87151ED99CC0007A329C /* tst.json in Resources */ = {isa = PBXBuildFile; fileRef = 042D87141ED99CC0007A329C /* tst.json */; };
 		042F04A11F132BA6005DD0EC /* holy_nova.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 042F04A01F132BA6005DD0EC /* holy_nova.mp3 */; };
 		0453BA7F1F0A255300E2D724 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453BA7E1F0A255300E2D724 /* TutorialViewController.swift */; };
+		04DFBD621F148D4700266144 /* resurrectCountDownCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFBD611F148D4700266144 /* resurrectCountDownCircle.swift */; };
 		04E48D1F1EC0704000823F45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48D1E1EC0704000823F45 /* AppDelegate.swift */; };
 		04E48D211EC0704000823F45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48D201EC0704000823F45 /* ViewController.swift */; };
 		04E48D291EC0704000823F45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E48D271EC0704000823F45 /* LaunchScreen.storyboard */; };
@@ -91,6 +92,7 @@
 		042D87141ED99CC0007A329C /* tst.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tst.json; sourceTree = "<group>"; };
 		042F04A01F132BA6005DD0EC /* holy_nova.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = holy_nova.mp3; sourceTree = "<group>"; };
 		0453BA7E1F0A255300E2D724 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		04DFBD611F148D4700266144 /* resurrectCountDownCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resurrectCountDownCircle.swift; sourceTree = "<group>"; };
 		04E48D1B1EC0704000823F45 /* tri-tri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tri-tri.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E48D1E1EC0704000823F45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E48D201EC0704000823F45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				56C432381F105C9500D76D84 /* waveAnimator.swift */,
 				56C4323A1F105F9A00D76D84 /* WaveTestViewController.swift */,
 				5665D8FA1F1244E7006853BF /* Explosion.swift */,
+				04DFBD611F148D4700266144 /* resurrectCountDownCircle.swift */,
 			);
 			path = "tri-tri";
 			sourceTree = "<group>";
@@ -669,6 +672,7 @@
 				563230E81EC8A9F600EA49D9 /* GameOverViewController.swift in Sources */,
 				0453BA7F1F0A255300E2D724 /* TutorialViewController.swift in Sources */,
 				56C4323B1F105F9A00D76D84 /* WaveTestViewController.swift in Sources */,
+				04DFBD621F148D4700266144 /* resurrectCountDownCircle.swift in Sources */,
 				5668B6EE1F048475007BC5E3 /* DailyGiftViewController.swift in Sources */,
 				563E7F661ED47D5A008F33C1 /* ThemeMenuViewController.swift in Sources */,
 			);

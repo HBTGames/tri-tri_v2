@@ -11,7 +11,7 @@ import AVFoundation
 import AVKit
 import UserNotifications
 import Lottie
-
+import SpriteKit
 
 
 public extension UIView {
@@ -12783,10 +12783,30 @@ number_of_lines_erased += 1
         self.paused = true
         
         
+        let count_down_circle = resurrectCountDownCircle(size: CGSize(width: 250, height: 250))
+        count_down_circle.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0))
+
+        count_down_circle.scaleMode = .aspectFill
+        
+        
+        let count_down_view = SKView()
+        count_down_view.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0))
+        count_down_view.frame = CGRect(x:62.5, y: 200, width: 250, height: 250)
+        count_down_view.ignoresSiblingOrder = true
+        // Do any additional setup after loading the view, typically from a nib.
+        count_down_view.presentScene(count_down_circle)
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         let text_background_patch = UIView()
-        text_background_patch.frame = CGRect(x:0, y:0, width: self.pause_screen_x_transform(375), height: self.pause_screen_y_transform(200))
+        text_background_patch.frame = CGRect(x:0, y:0, width: self.pause_screen_x_transform(375), height: self.pause_screen_y_transform(180))
         text_background_patch.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.5))
         
         let resu_activate_button = MyButton()
@@ -12827,7 +12847,7 @@ number_of_lines_erased += 1
         
         
         
-        just_kill_me.frame = CGRect(x: self.pause_screen_x_transform(147), y: self.pause_screen_y_transform(450), width: self.pause_screen_x_transform(80), height: self.pause_screen_y_transform(80))
+        just_kill_me.frame = CGRect(x: self.pause_screen_x_transform(147), y: self.pause_screen_y_transform(470), width: self.pause_screen_x_transform(80), height: self.pause_screen_y_transform(80))
         resu_activate_button.frame = CGRect(x: self.pause_screen_x_transform(112), y: self.pause_screen_y_transform(250), width: self.pause_screen_x_transform(150), height: self.pause_screen_y_transform(150))
         
         just_kill_me.setImage(UIImage(named:"revive_just_let_me_die"), for: .normal)
@@ -12938,7 +12958,7 @@ number_of_lines_erased += 1
 
         }
         
-        
+        self.view.addSubview(count_down_view)
         self.view.addSubview(text_background_patch)
         self.view.addSubview(revive_text)
         self.view.addSubview(resu_activate_button)
