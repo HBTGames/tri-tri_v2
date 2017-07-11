@@ -12783,7 +12783,7 @@ number_of_lines_erased += 1
         self.paused = true
         
         
-        let count_down_circle = resurrectCountDownCircle(size: CGSize(width: 250, height: 250))
+        let count_down_circle = resurrectCountDownCircle(size: CGSize(width: self.pause_screen_x_transform(250), height: self.pause_screen_y_transform(250)))
         count_down_circle.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0))
 
         count_down_circle.scaleMode = .aspectFill
@@ -12791,7 +12791,7 @@ number_of_lines_erased += 1
         
         let count_down_view = SKView()
         count_down_view.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0))
-        count_down_view.frame = CGRect(x:62.5, y: 200, width: 250, height: 250)
+        count_down_view.frame = CGRect(x:self.pause_screen_x_transform(62.5), y: self.pause_screen_y_transform(200), width: self.pause_screen_x_transform(250), height: self.pause_screen_y_transform(250))
         count_down_view.ignoresSiblingOrder = true
         // Do any additional setup after loading the view, typically from a nib.
         count_down_view.presentScene(count_down_circle)
