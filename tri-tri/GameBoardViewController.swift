@@ -13209,8 +13209,8 @@ number_of_lines_erased += 1
                 count_down_view.removeFromSuperview()
                 self.tool_quantity_array[0] -= 1
                 defaults.set(self.tool_quantity_array, forKey: "tritri_tool_quantity_array")
-                self.tool_quantity_array[5] += 1
-                self.doom_day_action()
+                
+                self.auto_random_generator()
                 self.paused = false
                 game_over_timer.invalidate()
             }
@@ -13230,8 +13230,7 @@ number_of_lines_erased += 1
                     revive_text.removeFromSuperview()
                     text_background_patch.removeFromSuperview()
                     count_down_view.removeFromSuperview()
-                    self.tool_quantity_array[5] += 1
-                    self.doom_day_action()
+                    self.auto_random_generator()
                     self.paused = false
                     game_over_timer.invalidate()
                 }
