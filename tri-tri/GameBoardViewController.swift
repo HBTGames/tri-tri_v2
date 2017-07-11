@@ -16598,13 +16598,18 @@ func trinity_animation() -> Void {
         var i = 0
         var loop = true
         var argument_integer = 0
+        if(star_score != 0){
         while(loop){
-            let first_pow = Int(pow(10, Double(i)))
-            let second_pow = Int(pow(10, Double(i+1)))
-            if(star_score >= first_pow && star_score < second_pow){
+            let first_pow = pow(10, Double(i))
+            let second_pow = pow(10, Double(i+1))
+            if(Double(star_score) >= first_pow && Double(star_score) < second_pow){
             loop = false
             }
             i += 1
+            }
+        }
+        else{
+        i = 0
         }
         argument_integer = i - 2
        update_star_counter_length(i: argument_integer)

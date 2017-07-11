@@ -1361,9 +1361,9 @@ class MenuViewController: UIViewController {
 //current star total
 current_star_total = UIImageView(frame: CGRect(x: screen_width - pause_screen_x_transform(150), y: pause_screen_y_transform(10), width: pause_screen_x_transform(120), height: pause_screen_y_transform(45)))
 current_star_total.image = #imageLiteral(resourceName: "current_star_total")
-current_star_total.alpha = 0
-self.view.addSubview(current_star_total)
-current_star_total.fadeIn()
+current_star_total.alpha = 1
+
+
     
         
 //current star total text
@@ -1375,8 +1375,14 @@ current_star_total.fadeIn()
         current_star_total_text.alpha = 0
         self.view.addSubview(current_star_total_text)
         current_star_total_text.fadeIn()
-        
 
+//auto resizing 
+current_star_total_text_width = current_star_total_text.frame.width
+split_current_star_total()
+update_current_star_length_according_to_string_length()
+
+current_star_total.alpha = 0
+self.view.addSubview(current_star_total)
 //new  life button
     let new_life_button = MyButton(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button") , for: .normal)
@@ -1771,6 +1777,7 @@ current_star_total.fadeIn()
           self.clear_all_circle_text.fadeOutandRemove()
         self.current_star_total_text.fadeOutandRemove()
         self.current_star_total.fadeOutandRemove()
+        self.remove_all_current_star_fragments()
 
           })
     }
@@ -2130,6 +2137,8 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         self.circle_pop_up(tool_index: self.tool_selected)
         self.fix_star_score(star_needed: star_quantiry_needed)
         self.update_star_counter_length_according_to_string_length()
+        self.update_current_star_length_according_to_string_length()
+        
         })
         
     }
@@ -2188,12 +2197,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         
     }
     
-    @IBAction func split_action(_ sender: UIButton) {
-   
-        update_star_counter_length(i: 1)
- 
-
-    }
+    //
     
     var star_counter_fragments : Array<UIView> = []
     
@@ -2241,19 +2245,84 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         var i = 0
         var loop = true
         var argument_integer = 0
+        if(star_score != 0){
         while(loop){
-            let first_pow = Int(pow(10, Double(i)))
-            let second_pow = Int(pow(10, Double(i+1)))
-            if(star_score >= first_pow && star_score < second_pow){
+            let first_pow = pow(10, Double(i))
+            let second_pow = pow(10, Double(i+1))
+            if(Double(star_score) >= first_pow && Double(star_score) < second_pow){
                 loop = false
             }
             i += 1
+        }
+        }else{
+            i = 0
         }
         argument_integer = i - 2
         update_star_counter_length(i: argument_integer)
     }
     
-
+//
+    var current_star_total_fragments : Array<UIView> = []
+    var current_star_total_text_width = CGFloat(0)
+    var current_star_fragments_width = CGFloat(0)
+    
+    func split_current_star_total() -> Void{
+        current_star_total_fragments = []
+        current_star_total.alpha = 1
+        current_star_total_fragments = current_star_total.generateFragmentsFrom(current_star_total, with: 4.0, in: self.view)
+        var i = 0
+        current_star_total.alpha = 0
+        current_star_total_fragments[0].frame.origin.x = current_star_total.frame.origin.x
+        current_star_total_fragments[1].frame.origin.x = current_star_total_fragments[0].frame.origin.x + current_star_total_fragments[0].frame.width
+        current_star_total_fragments[2].frame.origin.x = current_star_total_fragments[1].frame.origin.x + current_star_total_fragments[1].frame.width
+        current_star_total_fragments[3].frame.origin.x = current_star_total_fragments[2].frame.origin.x + current_star_total_fragments[2].frame.width
+        print("current_star_total_fragments 0 width is \(current_star_total_fragments[0].frame.width)")
+        print("0 x is \(current_star_total_fragments[0].frame.origin.x)")
+        self.view.addSubview(current_star_total_fragments[0])
+        self.view.addSubview(current_star_total_fragments[1])
+        self.view.addSubview(current_star_total_fragments[2])
+        self.view.addSubview(current_star_total_fragments[3])
+        current_star_fragments_width = current_star_total_fragments[2].frame.width
+        self.view.bringSubview(toFront: current_star_total_text)
+        
+        //print(star_counter_fragment_width)
+    }
+    func remove_all_current_star_fragments() -> Void{
+        current_star_total_fragments[0].removeFromSuperview()
+        current_star_total_fragments[1].removeFromSuperview()
+        current_star_total_fragments[2].removeFromSuperview()
+        current_star_total_fragments[3].removeFromSuperview()
+    }
+    
+    func update_current_star_length_according_to_string_length() -> Void{
+        var i = 0
+        var loop = true
+        var argument_integer = 0
+        if(star_score != 0){
+        while(loop){
+            let first_pow = pow(10, Double(i))
+            let second_pow = pow(10, Double(i+1))
+            if(Double(star_score) >= first_pow && Double(star_score) < second_pow){
+                loop = false
+            }
+            i += 1
+        }
+        }else{
+            i = 0
+        }
+        argument_integer = i - 2
+        update_current_star_length(i: argument_integer)
+    }
+    func update_current_star_length(i: Int) -> Void{
+        //print("star_board_original_width: \(star_board_original_width)")
+        current_star_total_text.frame.size = CGSize(width: current_star_total_text_width + (CGFloat(i)*pause_screen_x_transform(2)), height: current_star_total_text.frame.height)
+       // print("star_board width: \(star_board.frame.width)")
+        current_star_total_fragments[2].frame.size = CGSize(width: current_star_fragments_width + CGFloat(i)*pause_screen_x_transform(2), height: current_star_total_fragments[2].frame.height)
+        current_star_total_fragments[3].frame.origin.x = current_star_total_fragments[2].frame.origin.x + current_star_total_fragments[2].frame.width
+        self.view.bringSubview(toFront: current_star_total_text)
+    }
+    
+    
 }
     
     
