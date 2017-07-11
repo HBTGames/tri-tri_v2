@@ -303,7 +303,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13251"
             endingLineNumber = "13251"
-            landmarkName = "nova_boom_animation(row:col:)"
+            landmarkName = "nova_tri_recorder_helper(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -351,7 +351,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14106"
             endingLineNumber = "14106"
-            landmarkName = "doom_day_action()"
+            landmarkName = "nova_breaker(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -367,7 +367,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14184"
             endingLineNumber = "14184"
-            landmarkName = "doom_day_animation_with_real_action()"
+            landmarkName = "nova_breaker(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

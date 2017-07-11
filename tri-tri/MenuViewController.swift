@@ -1051,7 +1051,7 @@ current_star_total.fadeIn()
 
 //new  life button
     let new_life_button = MyButton(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-    new_life_button.setImage(#imageLiteral(resourceName: "new_life"), for: .normal)
+    new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button") , for: .normal)
     new_life_button.alpha = 0
     self.view.addSubview(new_life_button)
     new_life_button.fadeIn()
@@ -1104,7 +1104,7 @@ current_star_total.fadeIn()
     
 //same color eliminator button
     let same_color_eliminator = MyButton(frame: CGRect(x: new_life_button.frame.origin.x + new_life_button.frame.width + pause_screen_x_transform(50), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-    same_color_eliminator.setImage(#imageLiteral(resourceName: "same_color_eliminator"), for: .normal)
+    same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
     same_color_eliminator.alpha = 0
     self.view.addSubview(same_color_eliminator)
     same_color_eliminator.fadeIn()
@@ -1157,7 +1157,7 @@ current_star_total.fadeIn()
         
     //shape bomb button
     let shape_bomb = MyButton(frame: CGRect(x: new_life_button.frame.origin.x, y: new_life_button.frame.origin.y + new_life_button.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-    shape_bomb.setImage(#imageLiteral(resourceName: "shape_bomb"), for: .normal)
+    shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
     shape_bomb.alpha = 0
     self.view.addSubview(shape_bomb)
     shape_bomb.fadeIn()
@@ -1208,7 +1208,7 @@ current_star_total.fadeIn()
         
     //times two button
     let times_two = MyButton(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: shape_bomb.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-    times_two.setImage(#imageLiteral(resourceName: "times_two"), for: .normal)
+    times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
     times_two.alpha = 0
     self.view.addSubview(times_two)
     times_two.fadeIn()
@@ -1259,7 +1259,7 @@ current_star_total.fadeIn()
         
     //three triangles button
     let three_triangles = MyButton(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y + shape_bomb.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-    three_triangles.setImage(#imageLiteral(resourceName: "three_triangle"), for: .normal)
+    three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
     three_triangles.alpha = 0
     self.view.addSubview(three_triangles)
     three_triangles.fadeIn()
@@ -1314,7 +1314,7 @@ current_star_total.fadeIn()
         
     //clear all button
     let clear_all = MyButton(frame: CGRect(x: times_two.frame.origin.x, y: three_triangles.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-    clear_all.setImage(#imageLiteral(resourceName: "clear_all"), for: .normal)
+    clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
     clear_all.alpha = 0
     self.view.addSubview(clear_all)
     clear_all.fadeIn()
