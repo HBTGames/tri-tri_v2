@@ -392,12 +392,13 @@ class MenuViewController: UIViewController {
         day_theme_button.alpha = 0
         day_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: day_theme_button.frame.origin.y + day_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
         day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
-        day_apply_origin = day_apply_button.frame.origin
+        
         if(ThemeType == 1){
             day_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             day_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
             day_apply_button.setImage( #imageLiteral(resourceName: "day_selected"), for: .normal)
         }
+        day_apply_origin = day_apply_button.frame.origin
         day_apply_button.whenButtonIsClicked(action:{
             if(self.ThemeType != 1){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -488,12 +489,13 @@ class MenuViewController: UIViewController {
         night_theme_button.alpha = 0
         night_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: night_theme_button.frame.origin.y + night_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
         night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
-        night_apply_origin = night_apply_button.frame.origin
+        
         if(ThemeType == 2){
             night_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             night_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
             night_apply_button.setImage( #imageLiteral(resourceName: "night_selected"), for: .normal)
         }
+        night_apply_origin = night_apply_button.frame.origin
         night_apply_button.whenButtonIsClicked(action:{
             if(self.ThemeType != 2){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -608,6 +610,7 @@ class MenuViewController: UIViewController {
                     self.cash_player.play()
                     self.star_score -= 2000
                     defaults.set(self.star_score, forKey: "tritri_star_score")
+                    self.theme_star_board.text = String(self.star_score)
                     self.star_board.text = String(self.star_score)
                     self.theme_islocked_array[2] = false
                     defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
@@ -810,6 +813,7 @@ class MenuViewController: UIViewController {
                     self.cash_player.play()
                     self.star_score -= 1000
                     defaults.set(self.star_score, forKey: "tritri_star_score")
+                    self.theme_star_board.text = String(self.star_score)
                     self.star_board.text = String(self.star_score)
                     self.theme_islocked_array[3] = false
                     self.school_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.school_theme_button.frame.origin.y + self.school_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
@@ -948,6 +952,7 @@ class MenuViewController: UIViewController {
                     self.star_score -= 1000
                     defaults.set(self.star_score, forKey: "tritri_star_score")
                     self.star_board.text = String(self.star_score)
+                    self.theme_star_board.text = String(self.star_score)
                     self.theme_islocked_array[4] = false
                     defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
                     self.colors_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.colors_theme_button.frame.origin.y + self.colors_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))

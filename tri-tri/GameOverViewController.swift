@@ -12,6 +12,16 @@ import AVKit
 import AVFoundation
 
 class GameOverViewController: UIViewController {
+    
+    
+    
+    
+    //theme islocked array
+    //if locked : true , unlocked : false
+    var theme_islocked_array : Array<Bool> = []
+    var wrong_player = AVAudioPlayer()
+    var cash_player = AVAudioPlayer()
+    
     var language = String()
     let home_pic = UIImage(named:"home")
     let night_home_pic = UIImage(named:"night mode home")
@@ -133,6 +143,14 @@ class GameOverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(defaults.value(forKey: "tritri_theme_lock_array") == nil){
+            theme_islocked_array = [false,false,true,true,true]
+            defaults.set(theme_islocked_array, forKey: "tritri_theme_lock_array")
+        }else{
+            theme_islocked_array = defaults.value(forKey: "tritri_theme_lock_array") as! Array<Bool>
+        }
+
         language = defaults.value(forKey: "language") as! String
         screen_width = view.frame.width
         screen_height = view.frame.height
@@ -306,14 +324,15 @@ class GameOverViewController: UIViewController {
     }
     
     //origin
-    var day_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var night_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var BW_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var chaos_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var school_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var colors_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var day_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var night_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var BW_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var chaos_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var school_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var colors_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var theme_star_counter = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var theme_star_board = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+
     
     var day_theme_origin = CGPoint(x: 0, y: 0)
     var night_theme_origin = CGPoint(x: 0, y: 0)
@@ -321,6 +340,26 @@ class GameOverViewController: UIViewController {
     var chaos_theme_origin = CGPoint(x: 0, y: 0)
     var school_theme_origin = CGPoint(x: 0, y: 0)
     var colors_theme_origin = CGPoint(x: 0, y: 0)
+    
+    var day_apply_button = MyButton()
+    var night_apply_button = MyButton()
+    var BW_apply_button = MyButton()
+    var school_apply_button = MyButton()
+    var colors_apply_button = MyButton()
+    var day_apply_origin = CGPoint()
+    var night_apply_origin = CGPoint()
+    var BW_apply_origin = CGPoint()
+    var school_apply_origin = CGPoint()
+    var colors_apply_origin = CGPoint()
+    
+    var white_cover_y = CGFloat(0)
+    var theme_button_height = CGFloat(0)
+    
+    
+    
+    
+    
+    
     @IBAction func theme_menu_action(_ sender: UIButton) {
         let theme_menu: UIView = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
         theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
@@ -330,17 +369,30 @@ class GameOverViewController: UIViewController {
         self.view.isUserInteractionEnabled = true
         self.view.addSubview(theme_menu)
         theme_menu.fadeIn()
-        let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(120)))
-        let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(40), width: pause_screen_x_transform(155), height: pause_screen_y_transform(50)))
-        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(250), y:pause_screen_y_transform(90),width: pause_screen_x_transform(97), height: pause_screen_y_transform(41)))
-         theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(270),y:pause_screen_y_transform(95),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
-        let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(90), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
+        let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(50)))
+        let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(15), width: pause_screen_x_transform(155), height: pause_screen_y_transform(35)))
+        white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
+        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(260), y:pause_screen_y_transform(15),width: pause_screen_x_transform(97), height: pause_screen_y_transform(41)))
+        theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(280),y:pause_screen_y_transform(20),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
+        theme_button_height = (screen_height - white_cover_y)/5.0
+        let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
-        day_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(145), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        day_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: white_cover.frame.origin.y + white_cover.frame.height, width: screen_width, height: theme_button_height))
         day_theme_origin = day_theme_button.frame.origin
-        day_theme_button.setBackgroundImage(UIImage(named:"day_theme"), for: .normal)
+        day_theme_button.image = #imageLiteral(resourceName: "day_mode_theme_menu_button")
+        day_apply_button.contentMode = .scaleAspectFit
         day_theme_button.alpha = 0
-        day_theme_button.whenButtonIsClicked(action:{
+        day_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: day_theme_button.frame.origin.y + day_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
+        day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
+        
+        if(ThemeType == 1){
+            day_apply_button.frame.origin.x -= pause_screen_x_transform(16)
+            day_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
+            day_apply_button.setImage( #imageLiteral(resourceName: "day_selected"), for: .normal)
+        }
+        day_apply_origin = day_apply_button.frame.origin
+        day_apply_button.whenButtonIsClicked(action:{
+            if(self.ThemeType != 1){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -374,7 +426,11 @@ class GameOverViewController: UIViewController {
             white_cover.fadeOut()
             theme_menu.fadeOut()
             
-            
+                self.day_apply_button.removeFromSuperview()
+                self.night_apply_button.removeFromSuperview()
+                self.BW_apply_button.removeFromSuperview()
+                self.school_apply_button.removeFromSuperview()
+                self.colors_apply_button.removeFromSuperview()
             
             self.day_theme_button.removeFromSuperview()
             self.night_theme_button.removeFromSuperview()
@@ -388,16 +444,42 @@ class GameOverViewController: UIViewController {
             theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
+            }else{
+                do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                    self.wrong_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.wrong_player.play()
+            }
         })
         
         self.view.addSubview(day_theme_button)
         day_theme_button.fadeInWithDisplacement()
         
-        night_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(145), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        self.view.addSubview(day_apply_button)
+        day_apply_button.fadeInWithDisplacement()
+        
+        
+        night_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y:day_theme_button.frame.origin.y + day_theme_button.frame.height, width: screen_width, height: theme_button_height))
         night_theme_origin = night_theme_button.frame.origin
-        night_theme_button.setBackgroundImage(UIImage(named:"night_theme"), for: .normal)
+        night_theme_button.image = #imageLiteral(resourceName: "night_mode_theme_menu_button")
+        night_theme_button.contentMode = .scaleAspectFill
         night_theme_button.alpha = 0
-        night_theme_button.whenButtonIsClicked(action:{
+        night_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: night_theme_button.frame.origin.y + night_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
+        night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+        
+        //night_apply_origin = night_apply_button.frame.origin
+        if(ThemeType == 2){
+            night_apply_button.frame.origin.x -= pause_screen_x_transform(16)
+            night_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
+            night_apply_button.setImage( #imageLiteral(resourceName: "night_selected"), for: .normal)
+        }
+        night_apply_origin = night_apply_button.frame.origin
+        
+        night_apply_button.whenButtonIsClicked(action:{
+            if(self.ThemeType != 2){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -431,6 +513,13 @@ class GameOverViewController: UIViewController {
             white_cover.fadeOut()
             theme_menu.fadeOut()
             
+                
+                self.day_apply_button.removeFromSuperview()
+                self.night_apply_button.removeFromSuperview()
+                self.BW_apply_button.removeFromSuperview()
+                self.school_apply_button.removeFromSuperview()
+                self.colors_apply_button.removeFromSuperview()
+                
             self.day_theme_button.removeFromSuperview()
             self.night_theme_button.removeFromSuperview()
             self.BW_theme_button.removeFromSuperview()
@@ -443,64 +532,139 @@ class GameOverViewController: UIViewController {
             theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
+            }else{
+                do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                    self.wrong_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.wrong_player.play()
+   
+            }
         })
         self.view.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
         
-        BW_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        self.view.addSubview(night_apply_button)
+        night_apply_button.fadeInWithDisplacement()
+        
+        
+        BW_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: night_theme_button.frame.origin.y + night_theme_button.frame.height, width: screen_width, height: theme_button_height))
         BW_theme_origin = BW_theme_button.frame.origin
-        BW_theme_button.setBackgroundImage(UIImage(named:"B&W_theme"), for: .normal)
+        BW_theme_button.image = #imageLiteral(resourceName: "BW_theme_menu_button")
+        BW_theme_button.contentMode = .scaleAspectFill
         BW_theme_button.alpha = 0
-        BW_theme_button.whenButtonIsClicked(action:{
-            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
-                self.button_player.prepareToPlay()
-            }
-            catch{
+        BW_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: BW_theme_button.frame.origin.y + BW_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
+        if(theme_islocked_array[2]){
+            BW_apply_button.frame.origin.x -= pause_screen_x_transform(7)
+            BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
+            BW_apply_button.setImage(#imageLiteral(resourceName: "BW_price"), for: .normal)
+        }else if(ThemeType == 3){
+            BW_apply_button.frame.origin.x -= pause_screen_x_transform(16)
+            BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
+            BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
+        }
+        else{
+            BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+        }
+        BW_apply_origin = BW_apply_button.frame.origin
+        BW_apply_button.whenButtonIsClicked(action:{
+            if(self.theme_islocked_array[2]){
+                if(self.star_score >= 2000){
+                    do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
+                        self.cash_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.cash_player.play()
+                    self.star_score -= 2000
+                    defaults.set(self.star_score, forKey: "tritri_star_score")
+                    self.theme_star_board.text = String(self.star_score)
+                    self.theme_islocked_array[2] = false
+                    defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
+                    self.BW_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.BW_theme_button.frame.origin.y + self.BW_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                    self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                }else{
+                    do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                        self.wrong_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.wrong_player.play()
+                }
+    
                 
+                
+            }else if(self.ThemeType != 3){
+                do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                    self.button_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.button_player.play()
+                self.ThemeType = 3
+                defaults.set(3, forKey:"tritri_Theme")
+                //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
+                self.background_image.alpha = 1
+                self.background_image.image = #imageLiteral(resourceName: "BW_background")
+                self.trophy.image = UIImage(named:"BW_trophy")
+                self.gameover_title_image_decider()
+                self.score_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
+                self.shopping_button.setImage(UIImage(named:"BW_shopping"), for: .normal)
+                self.restart_button.setImage(UIImage(named:"BW_restart_version2"), for: .normal)
+                self.share_button.setImage(UIImage(named:"BW_share"), for: .normal)
+                self.home_button.setBackgroundImage(self.BW_home_pic, for: .normal)
+                self.theme_star_counter.image = UIImage(named:"BW_mode_star")
+                self.theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
+                //self.trophy.image = UIImage(named:"trophy_new")
+                //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+                // self.gameover_title.image = UIImage(named:"day mode gameover title")
+                theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+                
+                self.day_theme_button.fadeOut()
+                self.night_theme_button.fadeOut()
+                self.BW_theme_button.fadeOut()
+                //self.chaos_theme_button.fadeOut()
+                self.school_theme_button.fadeOut()
+                self.colors_theme_button.fadeOut()
+                triangle_text.fadeOut()
+                return_button.fadeOut()
+                white_cover.fadeOut()
+                theme_menu.fadeOut()
+                
+                self.day_apply_button.removeFromSuperview()
+                self.night_apply_button.removeFromSuperview()
+                self.BW_apply_button.removeFromSuperview()
+                self.school_apply_button.removeFromSuperview()
+                self.colors_apply_button.removeFromSuperview()
+                
+                self.day_theme_button.removeFromSuperview()
+                self.night_theme_button.removeFromSuperview()
+                self.BW_theme_button.removeFromSuperview()
+                //self.chaos_theme_button.removeFromSuperview()
+                self.school_theme_button.removeFromSuperview()
+                self.colors_theme_button.removeFromSuperview()
+                triangle_text.removeFromSuperview()
+                return_button.removeFromSuperview()
+                white_cover.removeFromSuperview()
+                theme_menu.removeFromSuperview()
+                self.theme_star_counter.removeFromSuperview()
+                self.theme_star_board.removeFromSuperview()
+            }else{
+                do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                    self.wrong_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.wrong_player.play()
+   
             }
-            self.button_player.play()
-            self.ThemeType = 3
-            defaults.set(3, forKey:"tritri_Theme")
-            //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
-            self.background_image.alpha = 1
-            self.background_image.image = #imageLiteral(resourceName: "BW_background")
-            self.trophy.image = UIImage(named:"BW_trophy")
-            self.gameover_title_image_decider()
-            self.score_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
-            self.shopping_button.setImage(UIImage(named:"BW_shopping"), for: .normal)
-            self.restart_button.setImage(UIImage(named:"BW_restart_version2"), for: .normal)
-            self.share_button.setImage(UIImage(named:"BW_share"), for: .normal)
-            self.home_button.setBackgroundImage(self.BW_home_pic, for: .normal)
-            self.theme_star_counter.image = UIImage(named:"BW_mode_star")
-            self.theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
-            //self.trophy.image = UIImage(named:"trophy_new")
-            //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
-            // self.gameover_title.image = UIImage(named:"day mode gameover title")
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             
-            self.day_theme_button.fadeOut()
-            self.night_theme_button.fadeOut()
-            self.BW_theme_button.fadeOut()
-            //self.chaos_theme_button.fadeOut()
-            self.school_theme_button.fadeOut()
-            self.colors_theme_button.fadeOut()
-            triangle_text.fadeOut()
-            return_button.fadeOut()
-            white_cover.fadeOut()
-            theme_menu.fadeOut()
-            
-            self.day_theme_button.removeFromSuperview()
-            self.night_theme_button.removeFromSuperview()
-            self.BW_theme_button.removeFromSuperview()
-            //self.chaos_theme_button.removeFromSuperview()
-            self.school_theme_button.removeFromSuperview()
-            self.colors_theme_button.removeFromSuperview()
-            triangle_text.removeFromSuperview()
-            return_button.removeFromSuperview()
-            white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
-            self.theme_star_counter.removeFromSuperview()
-            self.theme_star_board.removeFromSuperview()
             
 
             
@@ -512,8 +676,12 @@ class GameOverViewController: UIViewController {
         })
         self.view.addSubview(BW_theme_button)
         BW_theme_button.fadeInWithDisplacement()
+        self.view.addSubview(BW_apply_button)
+        BW_apply_button.fadeInWithDisplacement()
         
-        chaos_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        
+        
+       /** chaos_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         chaos_theme_origin = chaos_theme_button.frame.origin
         chaos_theme_button.setBackgroundImage(UIImage(named:"Chaos_theme"), for: .normal)
         chaos_theme_button.alpha = 0
@@ -571,118 +739,249 @@ class GameOverViewController: UIViewController {
         })
         //self.view.addSubview(chaos_theme_button)
         //chaos_theme_button.fadeInWithDisplacement()
+        **/
         
-        
-        school_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        school_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: BW_theme_button.frame.origin.y + BW_theme_button.frame.height, width: screen_width, height: theme_button_height))
         school_theme_origin = school_theme_button.frame.origin
-        school_theme_button.setBackgroundImage(UIImage(named:"School_Theme"), for: .normal)
+        school_theme_button.image = #imageLiteral(resourceName: "school_mode_theme_menu_button")
+        school_theme_button.contentMode = .scaleAspectFit
         school_theme_button.alpha = 0
-        school_theme_button.whenButtonIsClicked(action:{
-            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
-                self.button_player.prepareToPlay()
-            }
-            catch{
+        school_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: school_theme_button.frame.origin.y + school_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
+        if(theme_islocked_array[3]){
+            school_apply_button.frame.origin.x -= pause_screen_x_transform(7)
+            school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
+            school_apply_button.setImage(#imageLiteral(resourceName: "school_price"), for: .normal)
+        }else if(ThemeType == 5){
+            school_apply_button.frame.origin.x -= pause_screen_x_transform(16)
+            school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
+            school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
+        }
+        else{
+            school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+        }
+        
+        school_apply_origin = school_apply_button.frame.origin
+        school_apply_button.whenButtonIsClicked(action:{
+            if(self.theme_islocked_array[3]){
+                if(self.star_score >= 1000){
+                    do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
+                        self.cash_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.cash_player.play()
+                    self.star_score -= 1000
+                    defaults.set(self.star_score, forKey: "tritri_star_score")
+                    self.theme_star_board.text = String(self.star_score)
+                    self.theme_islocked_array[3] = false
+                    self.school_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.school_theme_button.frame.origin.y + self.school_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                    self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+                    
+                    defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
+                }else{
+                    do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                        self.wrong_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.wrong_player.play()
+                }
                 
+                
+                
+            
+            }else if(self.ThemeType != 5){
+                do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                    self.button_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.button_player.play()
+                self.ThemeType = 5
+                defaults.set(5, forKey:"tritri_Theme")
+                //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
+                self.background_image.alpha = 1
+                self.background_image.image = #imageLiteral(resourceName: "school_background")
+                self.trophy.image = UIImage(named:"school_j-icon")
+                self.gameover_title_image_decider()
+                self.score_board.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
+                self.restart_button.setImage(UIImage(named:"school_restart-big"), for: .normal)
+                self.shopping_button.setImage(UIImage(named:"school_theme-button"), for: .normal)
+                self.share_button.setImage(UIImage(named:"school_share-icon"), for: .normal)
+                self.home_button.setBackgroundImage(self.school_home_pic, for: .normal)
+                self.theme_star_counter.image = UIImage(named:"school_mode_star")
+                self.theme_star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
+                
+                theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+                
+                self.day_theme_button.fadeOut()
+                self.night_theme_button.fadeOut()
+                self.BW_theme_button.fadeOut()
+                //self.chaos_theme_button.fadeOut()
+                self.school_theme_button.fadeOut()
+                self.colors_theme_button.fadeOut()
+                triangle_text.fadeOut()
+                return_button.fadeOut()
+                white_cover.fadeOut()
+                theme_menu.fadeOut()
+                
+                self.day_apply_button.removeFromSuperview()
+                self.night_apply_button.removeFromSuperview()
+                self.BW_apply_button.removeFromSuperview()
+                self.school_apply_button.removeFromSuperview()
+                self.colors_apply_button.removeFromSuperview()
+                
+                self.day_theme_button.removeFromSuperview()
+                self.night_theme_button.removeFromSuperview()
+                self.BW_theme_button.removeFromSuperview()
+                //self.chaos_theme_button.removeFromSuperview()
+                self.school_theme_button.removeFromSuperview()
+                self.colors_theme_button.removeFromSuperview()
+                triangle_text.removeFromSuperview()
+                return_button.removeFromSuperview()
+                white_cover.removeFromSuperview()
+                theme_menu.removeFromSuperview()
+                self.theme_star_counter.removeFromSuperview()
+                self.theme_star_board.removeFromSuperview()
+                
+            }else{
+                do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                    self.wrong_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.wrong_player.play()
             }
-            self.button_player.play()
-            self.ThemeType = 5
-            defaults.set(5, forKey:"tritri_Theme")
-            //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
-            self.background_image.alpha = 1
-            self.background_image.image = #imageLiteral(resourceName: "school_background")
-            self.trophy.image = UIImage(named:"school_j-icon")
-            self.gameover_title_image_decider()
-            self.score_board.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
-            self.restart_button.setImage(UIImage(named:"school_restart-big"), for: .normal)
-            self.shopping_button.setImage(UIImage(named:"school_theme-button"), for: .normal)
-            self.share_button.setImage(UIImage(named:"school_share-icon"), for: .normal)
-            self.home_button.setBackgroundImage(self.school_home_pic, for: .normal)
-            self.theme_star_counter.image = UIImage(named:"school_mode_star")
-            self.theme_star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
-            
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
-            
-            self.day_theme_button.fadeOut()
-            self.night_theme_button.fadeOut()
-            self.BW_theme_button.fadeOut()
-            //self.chaos_theme_button.fadeOut()
-            self.school_theme_button.fadeOut()
-            self.colors_theme_button.fadeOut()
-            triangle_text.fadeOut()
-            return_button.fadeOut()
-            white_cover.fadeOut()
-            theme_menu.fadeOut()
-            
-            self.day_theme_button.removeFromSuperview()
-            self.night_theme_button.removeFromSuperview()
-            self.BW_theme_button.removeFromSuperview()
-            //self.chaos_theme_button.removeFromSuperview()
-            self.school_theme_button.removeFromSuperview()
-            self.colors_theme_button.removeFromSuperview()
-            triangle_text.removeFromSuperview()
-            return_button.removeFromSuperview()
-            white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
-            self.theme_star_counter.removeFromSuperview()
-            self.theme_star_board.removeFromSuperview()
         })
         self.view.addSubview(school_theme_button)
         school_theme_button.fadeInWithDisplacement()
         
-        colors_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        self.view.addSubview(school_apply_button)
+        school_apply_button.fadeInWithDisplacement()
+        
+        colors_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: school_theme_button.frame.origin.y + school_theme_button.frame.height, width: screen_width, height: theme_button_height))
         colors_theme_origin = colors_theme_button.frame.origin
-        colors_theme_button.setBackgroundImage(UIImage(named:"Colors_theme"), for: .normal)
+        colors_theme_button.image = #imageLiteral(resourceName: "colors_theme_menu_button")
+        colors_theme_button.contentMode = .scaleAspectFit
         colors_theme_button.alpha = 0
-        colors_theme_button.whenButtonIsClicked(action:{
-            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
-                self.button_player.prepareToPlay()
-            }
-            catch{
+        colors_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: colors_theme_button.frame.origin.y + colors_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
+        if(theme_islocked_array[4]){
+            colors_apply_button.frame.origin.x -= pause_screen_x_transform(7)
+            colors_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
+            
+            colors_apply_button.setImage(#imageLiteral(resourceName: "colors_price"), for: .normal)
+        }else if(ThemeType == 6){
+            colors_apply_button.frame.origin.x -= pause_screen_x_transform(16)
+            colors_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
+            colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
+        }
+        else{
+            colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+        }
+        
+        
+        colors_apply_origin = colors_apply_button.frame.origin
+        colors_apply_button.whenButtonIsClicked(action:{
+           
+            if(self.theme_islocked_array[4]){
+                if(self.star_score >= 1000){
+                    do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
+                        self.cash_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.cash_player.play()
+                    self.star_score -= 1000
+                    defaults.set(self.star_score, forKey: "tritri_star_score")
+                    self.theme_star_board.text = String(self.star_score)
+                    self.theme_islocked_array[4] = false
+                    defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
+                    self.colors_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.colors_theme_button.frame.origin.y + self.colors_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                    self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                }else{
+                    do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                        self.wrong_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.wrong_player.play()
+                }
                 
+   
+                
+            }else if(self.ThemeType != 6){
+                do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                    self.button_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.button_player.play()
+                self.ThemeType = 6
+                defaults.set(6, forKey:"tritri_Theme")
+                //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
+                self.background_image.alpha = 1
+                self.background_image.image = #imageLiteral(resourceName: "colors_background")
+                self.trophy.image = UIImage(named:"colors_j-icon")
+                self.gameover_title_image_decider()
+                self.score_board.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.00)
+                self.restart_button.setImage(UIImage(named:"colors_restart-big"), for: .normal)
+                self.shopping_button.setImage(UIImage(named:"colors_theme-button"), for: .normal)
+                self.share_button.setImage(UIImage(named:"colors_share-icon"), for: .normal)
+                self.home_button.setBackgroundImage(self.colors_home_pic, for: .normal)
+                self.theme_star_counter.image = UIImage(named:"colors_mode_star")
+                self.theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
+                //self.trophy.image = UIImage(named:"trophy_new")
+                //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
+                // self.gameover_title.image = UIImage(named:"day mode gameover title")
+                theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+                
+                self.day_theme_button.fadeOut()
+                self.night_theme_button.fadeOut()
+                self.BW_theme_button.fadeOut()
+                //self.chaos_theme_button.fadeOut()
+                self.school_theme_button.fadeOut()
+                self.colors_theme_button.fadeOut()
+                triangle_text.fadeOut()
+                return_button.fadeOut()
+                white_cover.fadeOut()
+                theme_menu.fadeOut()
+                
+                self.day_apply_button.removeFromSuperview()
+                self.night_apply_button.removeFromSuperview()
+                self.BW_apply_button.removeFromSuperview()
+                self.school_apply_button.removeFromSuperview()
+                self.colors_apply_button.removeFromSuperview()
+                
+                self.day_theme_button.removeFromSuperview()
+                self.night_theme_button.removeFromSuperview()
+                self.BW_theme_button.removeFromSuperview()
+                //self.chaos_theme_button.removeFromSuperview()
+                self.school_theme_button.removeFromSuperview()
+                self.colors_theme_button.removeFromSuperview()
+                triangle_text.removeFromSuperview()
+                return_button.removeFromSuperview()
+                white_cover.removeFromSuperview()
+                theme_menu.removeFromSuperview()
+                self.theme_star_counter.removeFromSuperview()
+                self.theme_star_board.removeFromSuperview()
+            }else{
+                do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                    self.wrong_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.wrong_player.play()
             }
-            self.button_player.play()
-            self.ThemeType = 6
-            defaults.set(6, forKey:"tritri_Theme")
-            //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
-            self.background_image.alpha = 1
-            self.background_image.image = #imageLiteral(resourceName: "colors_background")
-            self.trophy.image = UIImage(named:"colors_j-icon")
-            self.gameover_title_image_decider()
-            self.score_board.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.00)
-            self.restart_button.setImage(UIImage(named:"colors_restart-big"), for: .normal)
-            self.shopping_button.setImage(UIImage(named:"colors_theme-button"), for: .normal)
-            self.share_button.setImage(UIImage(named:"colors_share-icon"), for: .normal)
-            self.home_button.setBackgroundImage(self.colors_home_pic, for: .normal)
-            self.theme_star_counter.image = UIImage(named:"colors_mode_star")
-            self.theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
-            //self.trophy.image = UIImage(named:"trophy_new")
-            //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
-            // self.gameover_title.image = UIImage(named:"day mode gameover title")
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             
-            self.day_theme_button.fadeOut()
-            self.night_theme_button.fadeOut()
-            self.BW_theme_button.fadeOut()
-            //self.chaos_theme_button.fadeOut()
-            self.school_theme_button.fadeOut()
-            self.colors_theme_button.fadeOut()
-            triangle_text.fadeOut()
-            return_button.fadeOut()
-            white_cover.fadeOut()
-            theme_menu.fadeOut()
-            
-            self.day_theme_button.removeFromSuperview()
-            self.night_theme_button.removeFromSuperview()
-            self.BW_theme_button.removeFromSuperview()
-            //self.chaos_theme_button.removeFromSuperview()
-            self.school_theme_button.removeFromSuperview()
-            self.colors_theme_button.removeFromSuperview()
-            triangle_text.removeFromSuperview()
-            return_button.removeFromSuperview()
-            white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
-            self.theme_star_counter.removeFromSuperview()
-            self.theme_star_board.removeFromSuperview()
+           
             
             
             
@@ -692,6 +991,9 @@ class GameOverViewController: UIViewController {
         
         self.view.addSubview(colors_theme_button)
         colors_theme_button.fadeInWithDisplacement()
+        
+        self.view.addSubview(colors_apply_button)
+        colors_apply_button.fadeInWithDisplacement()
         
         //add white to 遮挡
         
@@ -778,6 +1080,14 @@ class GameOverViewController: UIViewController {
             white_cover.fadeOut()
             theme_menu.fadeOut()
             
+            
+            self.day_apply_button.removeFromSuperview()
+            self.night_apply_button.removeFromSuperview()
+            self.BW_apply_button.removeFromSuperview()
+            self.school_apply_button.removeFromSuperview()
+            self.colors_apply_button.removeFromSuperview()
+            
+            
             self.day_theme_button.removeFromSuperview()
             self.night_theme_button.removeFromSuperview()
             self.BW_theme_button.removeFromSuperview()
@@ -803,13 +1113,21 @@ class GameOverViewController: UIViewController {
     func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
         let transition0 = gesture.translation(in: day_theme_button)
         //上1/3和下1/3的空间
-        if(day_theme_button.frame.origin.y < (pause_screen_y_transform(145)+day_theme_button.frame.height/3) && colors_theme_button.frame.origin.y > pause_screen_y_transform(493+144) - colors_theme_button.frame.height/3 - colors_theme_button.frame.height){
+        if(day_theme_button.frame.origin.y < (white_cover_y+day_theme_button.frame.height/3.5) && colors_theme_button.frame.origin.y > pause_screen_y_transform(493+144) - colors_theme_button.frame.height/3 - colors_theme_button.frame.height){
             day_theme_button.frame.origin = CGPoint(x: day_theme_origin.x, y: (day_theme_origin.y + transition0.y))
             night_theme_button.frame.origin = CGPoint(x: night_theme_origin.x, y: (night_theme_origin.y + transition0.y))
             BW_theme_button.frame.origin = CGPoint(x: BW_theme_origin.x, y: (BW_theme_origin.y + transition0.y))
-            chaos_theme_button.frame.origin = CGPoint(x: chaos_theme_origin.x, y: (chaos_theme_origin.y + transition0.y))
+            //chaos_theme_button.frame.origin = CGPoint(x: chaos_theme_origin.x, y: (chaos_theme_origin.y + transition0.y))
             school_theme_button.frame.origin = CGPoint(x: school_theme_origin.x, y: (school_theme_origin.y + transition0.y))
             colors_theme_button.frame.origin = CGPoint(x: colors_theme_origin.x, y: (colors_theme_origin.y + transition0.y))
+            
+            day_apply_button.frame.origin = CGPoint(x: day_apply_origin.x, y: (day_apply_origin.y + transition0.y))
+            night_apply_button.frame.origin = CGPoint(x: night_apply_origin.x, y: (night_apply_origin.y + transition0.y))
+            BW_apply_button.frame.origin = CGPoint(x: BW_apply_origin.x, y: (BW_apply_origin.y + transition0.y))
+            school_apply_button.frame.origin = CGPoint(x: school_apply_origin.x, y: (school_apply_origin.y + transition0.y))
+            colors_apply_button.frame.origin = CGPoint(x: colors_apply_origin.x, y: (colors_apply_origin.y + transition0.y))
+
+            
             if(gesture.state == .ended){
                 day_theme_origin.y = day_theme_button.frame.origin.y
                 night_theme_origin.y = night_theme_button.frame.origin.y
@@ -817,15 +1135,31 @@ class GameOverViewController: UIViewController {
                 chaos_theme_origin.y = chaos_theme_button.frame.origin.y
                 school_theme_origin.y = school_theme_button.frame.origin.y
                 colors_theme_origin.y = colors_theme_button.frame.origin.y
+                
+                
+                
+                day_apply_origin.y = day_apply_button.frame.origin.y
+                night_apply_origin.y = night_apply_button.frame.origin.y
+                BW_apply_origin.y = BW_apply_button.frame.origin.y
+                school_apply_origin.y = school_apply_button.frame.origin.y
+                colors_apply_origin.y = colors_apply_button.frame.origin.y
+
             }
         }else{
             if(gesture.state == .ended){
-                day_theme_origin.y = pause_screen_y_transform(145)
-                night_theme_origin.y =  pause_screen_y_transform(145)
-                BW_theme_origin.y = pause_screen_y_transform(319)
+                day_theme_origin.y = white_cover_y
+                night_theme_origin.y =  day_theme_origin.y + day_theme_button.frame.height
+                BW_theme_origin.y = night_theme_origin.y + night_theme_button.frame.height
                 //chaos_theme_origin.y = pause_screen_y_transform(319)
-                school_theme_origin.y = pause_screen_y_transform(319)
-                colors_theme_origin.y = pause_screen_y_transform(493)
+                school_theme_origin.y = BW_theme_origin.y + BW_theme_button.frame.height
+                colors_theme_origin.y = school_theme_origin.y + school_theme_button.frame.height
+                
+                day_apply_origin.y = white_cover_y + day_theme_button.frame.height/2.0 - pause_screen_y_transform(18)
+                night_apply_origin.y = day_apply_origin.y + day_theme_button.frame.height
+                BW_apply_origin.y = night_apply_origin.y + night_theme_button.frame.height
+                school_apply_origin.y = BW_apply_origin.y + BW_theme_button.frame.height
+                colors_apply_origin.y = school_apply_origin.y + school_theme_button.frame.height
+                
                 UIView.animate(withDuration: 0.5, animations: {
                     self.day_theme_button.frame.origin.y = self.day_theme_origin.y
                     self.night_theme_button.frame.origin.y = self.night_theme_origin.y
@@ -833,6 +1167,12 @@ class GameOverViewController: UIViewController {
                     self.chaos_theme_button.frame.origin.y = self.chaos_theme_origin.y
                     self.school_theme_button.frame.origin.y = self.school_theme_origin.y
                     self.colors_theme_button.frame.origin.y = self.colors_theme_origin.y
+                    
+                    self.day_apply_button.frame.origin.y = self.day_apply_origin.y
+                    self.night_apply_button.frame.origin.y = self.night_apply_origin.y
+                    self.BW_apply_button.frame.origin.y = self.BW_apply_origin.y
+                    self.school_apply_button.frame.origin.y = self.school_apply_origin.y
+                    self.colors_apply_button.frame.origin.y = self.colors_apply_origin.y
                     
                 })
             }
