@@ -14076,13 +14076,6 @@ number_of_lines_erased += 1
                 }
             }
         }
-        for positions in default_erase_situation_1{
-            if (positions[0] == row && positions[1] == col){
-                for tri in default_erase_situation_1{
-                    break_list.append(tri)
-                }
-            }
-        }
         for positions in default_erase_situation_4{
             if (positions[0] == row && positions[1] == col){
                 for tri in default_erase_situation_4{
