@@ -13,19 +13,19 @@ class resurrectCountDownCircle: SKScene{
     
     func pause_screen_x_transform(_ x: Double) -> CGFloat {
         let const = x/Double(375)
-        let new_x = Double((view?.frame.width)!)*const
+        let new_x = (defaults.value(forKey: "screen_x") as! Double)*const
         return CGFloat(new_x)
         
     }
     func pause_screen_y_transform(_ y: Double) -> CGFloat {
         let const = y/Double(667)
-        let new_y = Double((view?.frame.height)!)*const
+        let new_y = (defaults.value(forKey: "screen_y") as! Double)*const
         return CGFloat(new_y)
     }
     
     override func didMove(to:SKView) {
         
-        let circle = SKShapeNode(circleOfRadius: 125)
+        let circle = SKShapeNode(circleOfRadius: pause_screen_x_transform(125))
         circle.fillColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.5))
         circle.strokeColor = SKColor.clear
         circle.zRotation = CGFloat.pi / 2
@@ -65,7 +65,7 @@ class resurrectCountDownCircle: SKScene{
     func circle(radius:CGFloat, percent:CGFloat) -> CGPath {
         let start:CGFloat = 0
         let end = CGFloat.pi * 2 * percent
-        let center = CGPoint(x: 125, y: -125)
+        let center = CGPoint(x: pause_screen_x_transform(125), y: pause_screen_y_transform(-125))
         let bezierPath = UIBezierPath()
         bezierPath.move(to:center)
         bezierPath.addArc(withCenter:center, radius: radius, startAngle: start, endAngle: end, clockwise: true)

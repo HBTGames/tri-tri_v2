@@ -12782,7 +12782,8 @@ number_of_lines_erased += 1
         self.view.addSubview(self.pause_screen)
         self.paused = true
         
-        
+        defaults.set(self.screen_width, forKey: "screen_x")
+        defaults.set(self.screen_height, forKey: "screen_y")
         let count_down_circle = resurrectCountDownCircle(size: CGSize(width: self.pause_screen_x_transform(250), height: self.pause_screen_y_transform(250)))
         count_down_circle.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0))
 
@@ -12885,6 +12886,7 @@ number_of_lines_erased += 1
                 just_kill_me.removeFromSuperview()
                 revive_text.removeFromSuperview()
                 text_background_patch.removeFromSuperview()
+                count_down_view.removeFromSuperview()
                 self.tool_quantity_array[0] -= 1
                 defaults.set(self.tool_quantity_array, forKey: "tritri_tool_quantity_array")
                 self.tool_quantity_array[5] += 1
@@ -12906,6 +12908,7 @@ number_of_lines_erased += 1
                     just_kill_me.removeFromSuperview()
                     revive_text.removeFromSuperview()
                     text_background_patch.removeFromSuperview()
+                    count_down_view.removeFromSuperview()
                     self.tool_quantity_array[5] += 1
                     self.doom_day_action()
                     self.paused = false
