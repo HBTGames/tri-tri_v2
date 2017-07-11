@@ -889,13 +889,22 @@ class GameOverViewController: UIViewController {
 
 class MyButton: UIButton {
     var action: (()->())?
-    
+    var highlight_action: (()->())?
     func whenButtonIsClicked(action: @escaping ()->()) {
         self.action = action
         self.addTarget(self, action: #selector(MyButton.clicked), for: .touchUpInside)
     }
+    func whenButtonIsHighlighted(action: @escaping () -> () ) {
+        self.highlight_action = action
+        self.addTarget(self, action: #selector(MyButton.highlighted), for: .touchDown)
+        
+    }
     
     func clicked() {
         action?()
+    }
+    
+    func highlighted() {
+        highlight_action?()
     }
 }

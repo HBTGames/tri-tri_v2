@@ -329,8 +329,8 @@ class MenuViewController: UIViewController {
     var chaos_theme_origin = CGPoint(x: 0, y: 0)
     var school_theme_origin = CGPoint(x: 0, y: 0)
     var colors_theme_origin = CGPoint(x: 0, y: 0)
-    
-    
+    var white_cover_y = CGFloat(0)
+    var theme_button_height = CGFloat(0)
     
     
     @IBAction func theme_menu_action(_ sender: UIButton) {
@@ -350,17 +350,17 @@ class MenuViewController: UIViewController {
         self.view.isUserInteractionEnabled = true
         self.view.addSubview(theme_menu)
         theme_menu.fadeIn()
-        let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(120)))
-        let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(40), width: pause_screen_x_transform(155), height: pause_screen_y_transform(35)))
-        
-        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(250), y:pause_screen_y_transform(90),width: pause_screen_x_transform(97), height: pause_screen_y_transform(41)))
-        theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(270),y:pause_screen_y_transform(95),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
-        
-        let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(90), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
+        let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(50)))
+        let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(15), width: pause_screen_x_transform(155), height: pause_screen_y_transform(35)))
+        white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
+        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(250), y:pause_screen_y_transform(15),width: pause_screen_x_transform(97), height: pause_screen_y_transform(41)))
+        theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(270),y:pause_screen_y_transform(20),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
+        theme_button_height = (screen_height - white_cover_y)/5.0
+        let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
-        day_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(145), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        day_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y: white_cover.frame.origin.y + white_cover.frame.height, width: screen_width, height: theme_button_height))
         day_theme_origin = day_theme_button.frame.origin
-        day_theme_button.setBackgroundImage(UIImage(named:"day_theme"), for: .normal)
+        day_theme_button.setBackgroundImage(#imageLiteral(resourceName: "day_mode_theme_menu_button"), for: .normal)
         day_theme_button.alpha = 0
         day_theme_button.whenButtonIsClicked(action:{
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -427,9 +427,9 @@ class MenuViewController: UIViewController {
         self.view.addSubview(day_theme_button)
         day_theme_button.fadeInWithDisplacement()
         
-        night_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(145), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        night_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y:day_theme_button.frame.origin.y + day_theme_button.frame.height, width: screen_width, height: theme_button_height))
         night_theme_origin = night_theme_button.frame.origin
-        night_theme_button.setBackgroundImage(UIImage(named:"night_theme"), for: .normal)
+        night_theme_button.setBackgroundImage(#imageLiteral(resourceName: "night_mode_theme_menu_button"), for: .normal)
         night_theme_button.alpha = 0
         night_theme_button.whenButtonIsClicked(action:{
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -495,9 +495,9 @@ class MenuViewController: UIViewController {
         self.view.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
         
-        BW_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        BW_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y: night_theme_button.frame.origin.y + night_theme_button.frame.height, width: screen_width, height: theme_button_height))
         BW_theme_origin = BW_theme_button.frame.origin
-        BW_theme_button.setBackgroundImage(UIImage(named:"B&W_theme"), for: .normal)
+        BW_theme_button.setBackgroundImage(#imageLiteral(resourceName: "BW_theme_menu_button"), for: .normal)
         BW_theme_button.alpha = 0
         BW_theme_button.whenButtonIsClicked(action:{
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -635,9 +635,9 @@ class MenuViewController: UIViewController {
         //chaos_theme_button.fadeInWithDisplacement()
         
         
-        school_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        school_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y: BW_theme_button.frame.origin.y + BW_theme_button.frame.height, width: screen_width, height: theme_button_height))
         school_theme_origin = school_theme_button.frame.origin
-        school_theme_button.setBackgroundImage(UIImage(named:"School_Theme"), for: .normal)
+        school_theme_button.setBackgroundImage(#imageLiteral(resourceName: "school_mode_theme_menu_button"), for: .normal)
         school_theme_button.alpha = 0
         school_theme_button.whenButtonIsClicked(action:{
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -707,9 +707,9 @@ class MenuViewController: UIViewController {
         self.view.addSubview(school_theme_button)
         school_theme_button.fadeInWithDisplacement()
         
-        colors_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(493), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        colors_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y: school_theme_button.frame.origin.y + school_theme_button.frame.height, width: screen_width, height: theme_button_height))
         colors_theme_origin = colors_theme_button.frame.origin
-        colors_theme_button.setBackgroundImage(UIImage(named:"Colors_theme"), for: .normal)
+        colors_theme_button.setBackgroundImage(#imageLiteral(resourceName: "colors_theme_menu_button"), for: .normal)
         colors_theme_button.alpha = 0
         colors_theme_button.whenButtonIsClicked(action:{
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -926,12 +926,12 @@ class MenuViewController: UIViewController {
             }
         }else{
             if(gesture.state == .ended){
-                day_theme_origin.y = pause_screen_y_transform(145)
-                night_theme_origin.y =  pause_screen_y_transform(145)
-                BW_theme_origin.y = pause_screen_y_transform(319)
+                day_theme_origin.y = white_cover_y
+                night_theme_origin.y =  day_theme_origin.y + day_theme_button.frame.height
+                BW_theme_origin.y = night_theme_origin.y + night_theme_button.frame.height
                 //chaos_theme_origin.y = pause_screen_y_transform(319)
-                school_theme_origin.y = pause_screen_y_transform(319)
-                colors_theme_origin.y = pause_screen_y_transform(493)
+                school_theme_origin.y = BW_theme_origin.y + BW_theme_button.frame.height
+                colors_theme_origin.y = school_theme_origin.y + school_theme_button.frame.height
                 UIView.animate(withDuration: 0.5, animations: {
                     self.day_theme_button.frame.origin.y = self.day_theme_origin.y
                     self.night_theme_button.frame.origin.y = self.night_theme_origin.y
@@ -1055,8 +1055,14 @@ current_star_total.fadeIn()
     new_life_button.alpha = 0
     self.view.addSubview(new_life_button)
     new_life_button.fadeIn()
+        new_life_button.whenButtonIsHighlighted(action: {
+            new_life_button.setImage(#imageLiteral(resourceName: "new_life"), for: .normal)
+            new_life_button.frame.origin.y += self.pause_screen_y_transform(2)
+        })
         new_life_button.whenButtonIsClicked(action: {
-            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+            new_life_button.frame.origin.y -= self.pause_screen_y_transform(2)
+            new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button"), for: .normal)
+        do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
             catch{
@@ -1105,10 +1111,17 @@ current_star_total.fadeIn()
 //same color eliminator button
     let same_color_eliminator = MyButton(frame: CGRect(x: new_life_button.frame.origin.x + new_life_button.frame.width + pause_screen_x_transform(50), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
+        same_color_eliminator.whenButtonIsHighlighted(action: {
+        same_color_eliminator.setImage(#imageLiteral(resourceName: "same_color_eliminator"), for: .normal)
+        same_color_eliminator.frame.origin.y += self.pause_screen_y_transform(2)
+        })
+    
     same_color_eliminator.alpha = 0
     self.view.addSubview(same_color_eliminator)
     same_color_eliminator.fadeIn()
         same_color_eliminator.whenButtonIsClicked(action: {
+            same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
+            same_color_eliminator.frame.origin.y -= self.pause_screen_y_transform(2)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1158,10 +1171,18 @@ current_star_total.fadeIn()
     //shape bomb button
     let shape_bomb = MyButton(frame: CGRect(x: new_life_button.frame.origin.x, y: new_life_button.frame.origin.y + new_life_button.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
+        shape_bomb.whenButtonIsHighlighted(action: {
+            shape_bomb.setImage(#imageLiteral(resourceName: "shape_bomb"), for: .normal)
+            shape_bomb.frame.origin.y += self.pause_screen_y_transform(2)
+        })
+    
     shape_bomb.alpha = 0
     self.view.addSubview(shape_bomb)
     shape_bomb.fadeIn()
+    
         shape_bomb.whenButtonIsClicked(action: {
+            shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
+            shape_bomb.frame.origin.y -= self.pause_screen_y_transform(2)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1209,10 +1230,18 @@ current_star_total.fadeIn()
     //times two button
     let times_two = MyButton(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: shape_bomb.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
-    times_two.alpha = 0
+        times_two.whenButtonIsHighlighted(action: {
+            times_two.setImage(#imageLiteral(resourceName: "times_two"), for: .normal)
+            times_two.frame.origin.y += self.pause_screen_y_transform(2)
+       
+        })
+        times_two.alpha = 0
     self.view.addSubview(times_two)
     times_two.fadeIn()
         times_two.whenButtonIsClicked(action: {
+            times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
+            times_two.frame.origin.y -= self.pause_screen_y_transform(2)
+
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1260,10 +1289,16 @@ current_star_total.fadeIn()
     //three triangles button
     let three_triangles = MyButton(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y + shape_bomb.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
+        three_triangles.whenButtonIsHighlighted(action: {
+            three_triangles.setImage(#imageLiteral(resourceName: "three_triangle"), for: .normal)
+            three_triangles.frame.origin.y += self.pause_screen_y_transform(2)
+        })
     three_triangles.alpha = 0
     self.view.addSubview(three_triangles)
     three_triangles.fadeIn()
         three_triangles.whenButtonIsClicked(action: {
+            three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
+            three_triangles.frame.origin.y -= self.pause_screen_y_transform(2)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1315,10 +1350,16 @@ current_star_total.fadeIn()
     //clear all button
     let clear_all = MyButton(frame: CGRect(x: times_two.frame.origin.x, y: three_triangles.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
-    clear_all.alpha = 0
+        clear_all.whenButtonIsHighlighted(action: {
+            clear_all.setImage(#imageLiteral(resourceName: "clear_all"), for: .normal)
+            clear_all.frame.origin.y += self.pause_screen_y_transform(2)
+        })
+       clear_all.alpha = 0
     self.view.addSubview(clear_all)
     clear_all.fadeIn()
         clear_all.whenButtonIsClicked(action: {
+            clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
+            clear_all.frame.origin.y -= self.pause_screen_y_transform(2)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
