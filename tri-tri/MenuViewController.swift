@@ -17,6 +17,7 @@ class MenuViewController: UIViewController {
 
     
     //theme islocked array
+    //if locked : true , unlocked : false
     var theme_islocked_array : Array<Bool> = []
     
     
@@ -26,6 +27,7 @@ class MenuViewController: UIViewController {
     var add_player = AVAudioPlayer()
     var sub_player = AVAudioPlayer()
     var sub_not_allowed_player = AVAudioPlayer()
+    var wrong_player = AVAudioPlayer()
     
     @IBOutlet weak var background_image: UIImageView!
     
@@ -85,6 +87,12 @@ class MenuViewController: UIViewController {
             language = "Chinese"
         }
         
+        if(defaults.value(forKey: "tritri_theme_lock_array") == nil){
+         theme_islocked_array = [false,false,true,true,true]
+        defaults.set(theme_islocked_array, forKey: "tritri_theme_lock_array")
+        }else{
+            theme_islocked_array = defaults.value(forKey: "tritri_theme_lock_array") as! Array<Bool>
+        }
         
         
         screen_width = view.frame.width
@@ -319,12 +327,12 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var shopping_cart: UIButton!
     //origin
-    var day_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var night_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var BW_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var chaos_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var school_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    var colors_theme_button = MyButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var day_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var night_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var BW_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var chaos_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var school_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var colors_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var theme_star_counter = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var theme_star_board = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
@@ -377,14 +385,21 @@ class MenuViewController: UIViewController {
         theme_button_height = (screen_height - white_cover_y)/5.0
         let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
-        day_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y: white_cover.frame.origin.y + white_cover.frame.height, width: screen_width, height: theme_button_height))
+        day_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: white_cover.frame.origin.y + white_cover.frame.height, width: screen_width, height: theme_button_height))
         day_theme_origin = day_theme_button.frame.origin
-        day_theme_button.setBackgroundImage(#imageLiteral(resourceName: "day_mode_theme_menu_button"), for: .normal)
+        day_theme_button.image = #imageLiteral(resourceName: "day_mode_theme_menu_button")
+        day_apply_button.contentMode = .scaleAspectFit
         day_theme_button.alpha = 0
         day_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: day_theme_button.frame.origin.y + day_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
         day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
         day_apply_origin = day_apply_button.frame.origin
+        if(ThemeType == 1){
+            day_apply_button.frame.origin.x -= pause_screen_x_transform(10)
+            day_apply_button.frame.size = CGSize(width: pause_screen_x_transform(120), height: pause_screen_y_transform(36))
+            day_apply_button.setImage( #imageLiteral(resourceName: "day_selected"), for: .normal)
+        }
         day_apply_button.whenButtonIsClicked(action:{
+            if(self.ThemeType != 1){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -449,6 +464,15 @@ class MenuViewController: UIViewController {
             theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
+            }else{
+                do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                    self.wrong_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.wrong_player.play()
+            }
         })
         
         self.view.addSubview(day_theme_button)
@@ -457,14 +481,21 @@ class MenuViewController: UIViewController {
         self.view.addSubview(day_apply_button)
         day_apply_button.fadeInWithDisplacement()
         
-        night_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y:day_theme_button.frame.origin.y + day_theme_button.frame.height, width: screen_width, height: theme_button_height))
+        night_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y:day_theme_button.frame.origin.y + day_theme_button.frame.height, width: screen_width, height: theme_button_height))
         night_theme_origin = night_theme_button.frame.origin
-        night_theme_button.setBackgroundImage(#imageLiteral(resourceName: "night_mode_theme_menu_button"), for: .normal)
+        night_theme_button.image = #imageLiteral(resourceName: "night_mode_theme_menu_button")
+        night_theme_button.contentMode = .scaleAspectFill
         night_theme_button.alpha = 0
         night_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: night_theme_button.frame.origin.y + night_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
         night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
         night_apply_origin = night_apply_button.frame.origin
+        if(ThemeType == 2){
+            night_apply_button.frame.origin.x -= pause_screen_x_transform(10)
+            night_apply_button.frame.size = CGSize(width: pause_screen_x_transform(120), height: pause_screen_y_transform(36))
+            night_apply_button.setImage( #imageLiteral(resourceName: "night_selected"), for: .normal)
+        }
         night_apply_button.whenButtonIsClicked(action:{
+            if(self.ThemeType != 2){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -531,20 +562,70 @@ class MenuViewController: UIViewController {
             theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
           self.theme_star_board.removeFromSuperview()
+            }else{
+                do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                    self.wrong_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.wrong_player.play()
+            }
         })
         self.view.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
         self.view.addSubview(night_apply_button)
         night_apply_button.fadeInWithDisplacement()
         
-        BW_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y: night_theme_button.frame.origin.y + night_theme_button.frame.height, width: screen_width, height: theme_button_height))
+        BW_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: night_theme_button.frame.origin.y + night_theme_button.frame.height, width: screen_width, height: theme_button_height))
         BW_theme_origin = BW_theme_button.frame.origin
-        BW_theme_button.setBackgroundImage(#imageLiteral(resourceName: "BW_theme_menu_button"), for: .normal)
+        BW_theme_button.image = #imageLiteral(resourceName: "BW_theme_menu_button")
+        BW_theme_button.contentMode = .scaleAspectFill
         BW_theme_button.alpha = 0
         BW_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: BW_theme_button.frame.origin.y + BW_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
+        if(theme_islocked_array[2]){
+        BW_apply_button.frame.origin.x -= pause_screen_x_transform(7)
+        BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
+        BW_apply_button.setImage(#imageLiteral(resourceName: "BW_price"), for: .normal)
+        }else if(ThemeType == 3){
+            BW_apply_button.frame.origin.x -= pause_screen_x_transform(10)
+            BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(120), height: pause_screen_y_transform(36))
+        BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
+        }
+        else{
         BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+        }
         BW_apply_origin = BW_apply_button.frame.origin
         BW_apply_button.whenButtonIsClicked(action:{
+            if(self.theme_islocked_array[2]){
+                if(self.star_score >= 2000){
+                    do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
+                        self.cash_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.cash_player.play()
+                    self.star_score -= 2000
+                    defaults.set(self.star_score, forKey: "tritri_star_score")
+                    self.star_board.text = String(self.star_score)
+                    self.theme_islocked_array[2] = false
+                    defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
+                    self.BW_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.BW_theme_button.frame.origin.y + self.BW_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                     self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                }else{
+                    do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                        self.wrong_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.wrong_player.play()
+                }
+                
+                
+            }
+            else if(self.ThemeType != 3){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -613,7 +694,15 @@ class MenuViewController: UIViewController {
              self.theme_star_board.removeFromSuperview()
             
             
-            
+            }else{
+                do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                    self.wrong_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.wrong_player.play()
+            }
             
             
             
@@ -626,11 +715,11 @@ class MenuViewController: UIViewController {
         
         self.view.addSubview(BW_apply_button)
         BW_apply_button.fadeInWithDisplacement()
-        chaos_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
+        chaos_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         chaos_theme_origin = chaos_theme_button.frame.origin
-        chaos_theme_button.setBackgroundImage(UIImage(named:"Chaos_theme"), for: .normal)
+       // chaos_theme_button.setBackgroundImage(UIImage(named:"Chaos_theme"), for: .normal)
         chaos_theme_button.alpha = 0
-        chaos_theme_button.whenButtonIsClicked(action:{
+       /** chaos_theme_button.whenButtonIsClicked(action:{
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -687,16 +776,59 @@ class MenuViewController: UIViewController {
         })
         //self.view.addSubview(chaos_theme_button)
         //chaos_theme_button.fadeInWithDisplacement()
+       **/
         
-        
-        school_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y: BW_theme_button.frame.origin.y + BW_theme_button.frame.height, width: screen_width, height: theme_button_height))
+        school_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: BW_theme_button.frame.origin.y + BW_theme_button.frame.height, width: screen_width, height: theme_button_height))
         school_theme_origin = school_theme_button.frame.origin
-        school_theme_button.setBackgroundImage(#imageLiteral(resourceName: "school_mode_theme_menu_button"), for: .normal)
+        school_theme_button.image = #imageLiteral(resourceName: "school_mode_theme_menu_button")
+        school_theme_button.contentMode = .scaleAspectFit
         school_theme_button.alpha = 0
         school_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: school_theme_button.frame.origin.y + school_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
-        school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+        if(theme_islocked_array[3]){
+            school_apply_button.frame.origin.x -= pause_screen_x_transform(7)
+            school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
+         school_apply_button.setImage(#imageLiteral(resourceName: "school_price"), for: .normal)
+        }else if(ThemeType == 5){
+            school_apply_button.frame.origin.x -= pause_screen_x_transform(10)
+            school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(120), height: pause_screen_y_transform(36))
+            school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
+        }
+        else{
+         school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+        }
+        
         school_apply_origin = school_apply_button.frame.origin
         school_apply_button.whenButtonIsClicked(action:{
+            if(self.theme_islocked_array[3]){
+                if(self.star_score >= 1000){
+                    do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
+                        self.cash_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.cash_player.play()
+                    self.star_score -= 1000
+                    defaults.set(self.star_score, forKey: "tritri_star_score")
+                    self.star_board.text = String(self.star_score)
+                    self.theme_islocked_array[3] = false
+                    self.school_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.school_theme_button.frame.origin.y + self.school_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                    self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+
+                    defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
+                }else{
+                    do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                        self.wrong_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.wrong_player.play()
+                }
+                
+                
+            }
+            else if(self.ThemeType != 5){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -765,6 +897,15 @@ class MenuViewController: UIViewController {
             theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
            self.theme_star_board.removeFromSuperview()
+            }else{
+                do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                    self.wrong_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.wrong_player.play()
+            }
         })
         self.view.addSubview(school_theme_button)
         school_theme_button.fadeInWithDisplacement()
@@ -772,14 +913,58 @@ class MenuViewController: UIViewController {
         self.view.addSubview(school_apply_button)
         school_apply_button.fadeInWithDisplacement()
         
-        colors_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(0), y: school_theme_button.frame.origin.y + school_theme_button.frame.height, width: screen_width, height: theme_button_height))
+        colors_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: school_theme_button.frame.origin.y + school_theme_button.frame.height, width: screen_width, height: theme_button_height))
         colors_theme_origin = colors_theme_button.frame.origin
-        colors_theme_button.setBackgroundImage(#imageLiteral(resourceName: "colors_theme_menu_button"), for: .normal)
+        colors_theme_button.image = #imageLiteral(resourceName: "colors_theme_menu_button")
+        colors_theme_button.contentMode = .scaleAspectFit
         colors_theme_button.alpha = 0
         colors_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: colors_theme_button.frame.origin.y + colors_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
+        if(theme_islocked_array[4]){
+            colors_apply_button.frame.origin.x -= pause_screen_x_transform(7)
+            colors_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
+
+            colors_apply_button.setImage(#imageLiteral(resourceName: "colors_price"), for: .normal)
+        }else if(ThemeType == 6){
+            colors_apply_button.frame.origin.x -= pause_screen_x_transform(10)
+            colors_apply_button.frame.size = CGSize(width: pause_screen_x_transform(120), height: pause_screen_y_transform(36))
+         colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
+        }
+        else{
         colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+        }
+        
+            
         colors_apply_origin = colors_apply_button.frame.origin
         colors_apply_button.whenButtonIsClicked(action:{
+            if(self.theme_islocked_array[4]){
+                if(self.star_score >= 1000){
+                    do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
+                        self.cash_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.cash_player.play()
+                    self.star_score -= 1000
+                    defaults.set(self.star_score, forKey: "tritri_star_score")
+                    self.star_board.text = String(self.star_score)
+                    self.theme_islocked_array[4] = false
+                    defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
+                    self.colors_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.colors_theme_button.frame.origin.y + self.colors_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                    self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                }else{
+                    do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                        self.wrong_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.wrong_player.play()
+                }
+                
+                
+            }
+            else if(self.ThemeType != 6){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -852,7 +1037,15 @@ class MenuViewController: UIViewController {
             
             
             
-            
+            }else{
+                do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                    self.wrong_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.wrong_player.play()
+            }
         })
         
         self.view.addSubview(colors_theme_button)
