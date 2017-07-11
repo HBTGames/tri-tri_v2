@@ -95,6 +95,7 @@ class MenuViewController: UIViewController {
         }
         
         
+        
         screen_width = view.frame.width
         screen_height = view.frame.height
         //add pangesture
@@ -242,8 +243,11 @@ class MenuViewController: UIViewController {
         triangle_title_image_decider()
       star_counter.sizeToFit()
       trophy.sizeToFit()
-    
-    
+        star_board_original_width = star_board.frame.width
+        print("star board width is \(star_board.frame.width)")
+    //spliti star counter
+    split_star_counter()
+    update_star_counter_length_according_to_string_length()
     
     
     }
@@ -432,6 +436,9 @@ class MenuViewController: UIViewController {
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_day_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
             self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_day_mode"), for: .normal)
+            self.remove_all_fragments()
+            self.split_star_counter()
+            self.update_star_counter_length_according_to_string_length()
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -529,6 +536,9 @@ class MenuViewController: UIViewController {
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
             self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_night_mode"), for: .normal)
+            self.remove_all_fragments()
+            self.split_star_counter()
+            self.update_star_counter_length_according_to_string_length()
            // self.trophy.image = UIImage(named:"night mode 奖杯")
            // self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"night mode gameover title")
@@ -660,6 +670,9 @@ class MenuViewController: UIViewController {
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_BW_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_B&W"), for: .normal)
             self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_bw_mode"), for: .normal)
+            self.remove_all_fragments()
+            self.split_star_counter()
+            self.update_star_counter_length_according_to_string_length()
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -868,7 +881,9 @@ class MenuViewController: UIViewController {
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
-            
+            self.remove_all_fragments()
+            self.split_star_counter()
+            self.update_star_counter_length_according_to_string_length()
             
             
             self.day_apply_button.removeFromSuperview()
@@ -1001,6 +1016,9 @@ class MenuViewController: UIViewController {
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_color_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_color"), for: .normal)
             self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_color_mode"), for: .normal)
+            self.remove_all_fragments()
+            self.split_star_counter()
+            self.update_star_counter_length_according_to_string_length()
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
@@ -2111,6 +2129,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         explaination_text.fadeOutandRemove()
         self.circle_pop_up(tool_index: self.tool_selected)
         self.fix_star_score(star_needed: star_quantiry_needed)
+        self.update_star_counter_length_according_to_string_length()
         })
         
     }
@@ -2169,7 +2188,69 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         
     }
     
+    @IBAction func split_action(_ sender: UIButton) {
+   
+        update_star_counter_length(i: 1)
+ 
+
+    }
     
+    var star_counter_fragments : Array<UIView> = []
+    
+    func remove_all_fragments() -> Void{
+        star_counter_fragments[0].removeFromSuperview()
+        star_counter_fragments[1].removeFromSuperview()
+        star_counter_fragments[2].removeFromSuperview()
+        star_counter_fragments[3].removeFromSuperview()
+    }
+    func split_star_counter() -> Void{
+        star_counter_fragments = []
+        star_counter.alpha = 1
+        star_counter_fragments = star_counter.generateFragmentsFrom(star_counter, with: 4.0, in: self.view)
+        var i = 0
+        star_counter.alpha = 0
+        star_counter_fragments[0].frame.origin.x = star_counter.frame.origin.x
+        star_counter_fragments[1].frame.origin.x = star_counter_fragments[0].frame.origin.x + star_counter_fragments[0].frame.width
+        star_counter_fragments[2].frame.origin.x = star_counter_fragments[1].frame.origin.x + star_counter_fragments[1].frame.width
+        star_counter_fragments[3].frame.origin.x = star_counter_fragments[2].frame.origin.x + star_counter_fragments[2].frame.width
+        print("star counter fragment 0 width is \(star_counter_fragments[0].frame.width)")
+         self.view.addSubview(star_counter_fragments[0])
+        self.view.addSubview(star_counter_fragments[1])
+        self.view.addSubview(star_counter_fragments[2])
+        self.view.addSubview(star_counter_fragments[3])
+        star_counter_fragment_width = star_counter_fragments[2].frame.width
+        self.view.bringSubview(toFront: star_board)
+        
+      print(star_counter_fragment_width)
+    }
+    
+    
+    var star_board_original_width = CGFloat(0)
+    var star_counter_fragment_width = CGFloat(0)
+    
+    func update_star_counter_length(i: Int) -> Void{
+    print("star_board_original_width: \(star_board_original_width)")
+    star_board.frame.size = CGSize(width: star_board_original_width + (CGFloat(i)*pause_screen_x_transform(5)), height: star_board.frame.height)
+    print("star_board width: \(star_board.frame.width)")
+    star_counter_fragments[2].frame.size = CGSize(width: star_counter_fragment_width + CGFloat(i)*pause_screen_x_transform(5), height: star_counter_fragments[2].frame.height)
+    star_counter_fragments[3].frame.origin.x = star_counter_fragments[2].frame.origin.x + star_counter_fragments[2].frame.width
+    self.view.bringSubview(toFront: star_board)
+    }
+    
+    func update_star_counter_length_according_to_string_length() -> Void{
+        if(star_score >= 1000 && star_score < 9999){
+            update_star_counter_length(i: 1)
+        }else if(star_score >= 10000 && star_score < 99999){
+            //update_star_counter_length()
+            update_star_counter_length(i: 2)
+        }else if(star_score >= 100 && star_score < 999){
+            update_star_counter_length(i: 0)
+        }else if(star_score >= 10 && star_score < 99){
+            update_star_counter_length(i: -1)
+        }else if(star_score >= 0 && star_score < 9){
+            update_star_counter_length(i: -2)
+        }
+    }
     
 
 }
@@ -2177,7 +2258,36 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
     
 
 
-
+public extension UIView{
+    
+//only horizontal gap
+func generateFragmentsFrom(_ originView:UIView, with splitRatio:CGFloat, in containerView:UIView) -> [UIView] {
+        
+        let size = originView.frame.size
+        let snapshots = originView.snapshotView(afterScreenUpdates: true)
+        var fragments = [UIView]()
+        
+        //let shortSide = min(size.width, size.height)
+        let gap =  size.width/splitRatio
+        
+        for x in stride(from: 0.0, to: Double(size.width), by: Double(gap)) {
+            
+                
+                let fragmentRect = CGRect(x: CGFloat(x), y: CGFloat(0.0), width: size.width/splitRatio, height: size.height)
+                let fragment = snapshots?.resizableSnapshotView(from: fragmentRect, afterScreenUpdates: false, withCapInsets: UIEdgeInsets.zero)
+                
+                fragment?.frame = originView.convert(fragmentRect, to: containerView)
+                containerView.addSubview(fragment!)
+                fragments.append(fragment!)
+                
+            
+        }
+        
+        return fragments
+        
+    }
+    
+}
     
 
 
