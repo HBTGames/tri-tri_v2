@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import EggRating
 extension UIView:Explodable { }
 
 
@@ -2597,7 +2598,21 @@ final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.orig
     return new_image!
     }
 
+//like button action
     
+    @IBAction func like_button_action(_ sender: UIButton) {
+        do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+            self.button_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        self.button_player.play()
+         
+         EggRating.promptRateUs(viewController: self)
+        
+        
+    }
     
 }
 

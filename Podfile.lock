@@ -1,12 +1,18 @@
 PODS:
+  - EggRating (0.1.2):
+    - RateView
   - lottie-ios (1.5.1)
+  - RateView (1.2)
 
 DEPENDENCIES:
+  - EggRating
   - lottie-ios
 
 SPEC CHECKSUMS:
+  EggRating: 633703d4be5c9938bfee58208966d75995f2cc21
   lottie-ios: f680a7c4cb7a567ecf258fde0f967913aff111b8
+  RateView: d4d12e9bb76dc23a77a56f4e5c5fb530a3f3f998
 
-PODFILE CHECKSUM: 83795ddc5fb30c85a8a06765a0c66d357228a202
+PODFILE CHECKSUM: e722e5f74d7a72ffb3561b4b13e9b14c94f8fb16
 
 COCOAPODS: 1.2.1

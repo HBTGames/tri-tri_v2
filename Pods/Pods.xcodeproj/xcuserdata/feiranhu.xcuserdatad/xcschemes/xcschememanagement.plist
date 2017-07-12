@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>EggRating-EggRating.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>EggRating.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-tri-tri.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -15,6 +25,11 @@
 			<false/>
 		</dict>
 		<key>Pods-tri-triUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RateView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,7 +47,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4DBCBC28FA50ECD5D88A7D356A84EA2E</key>
+		<key>95C1D6A1CF95DA221B4137711144E0AB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A83BEC656AA68223BDCC744605C94D6E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -43,6 +63,16 @@
 			<true/>
 		</dict>
 		<key>F0B27E6F715FEC931CA54BCD1CB7E3AF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F95B49D0D98FB3ED479314D29CD0D978</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA1AA8FF35BBD0D3C4B3C76F8D4B5F04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
