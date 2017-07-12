@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -467,15 +467,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="你好" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgZ-ju-0RY">
-                                <rect key="frame" x="91" y="195" width="210" height="188"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="revive_just_let_me_die" translatesAutoresizingMaskIntoConstraints="NO" id="NLd-sH-Cct">
+                                <rect key="frame" x="137" y="491" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="purchase_star_1000" translatesAutoresizingMaskIntoConstraints="NO" id="yHX-vD-Ai6">
+                                <rect key="frame" x="35" y="162" width="305" height="115"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="purchase_star_500" translatesAutoresizingMaskIntoConstraints="NO" id="vz9-bz-HaT">
+                                <rect key="frame" x="35" y="314" width="305" height="115"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="more_stars" translatesAutoresizingMaskIntoConstraints="NO" id="Dis-UC-RC5">
+                                <rect key="frame" x="77" y="18" width="221" height="126"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="purchase_star_1000_price" translatesAutoresizingMaskIntoConstraints="NO" id="vKY-OM-3Nj">
+                                <rect key="frame" x="208" y="196" width="122" height="47"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="purchase_star_500_price" translatesAutoresizingMaskIntoConstraints="NO" id="LRS-m9-RFJ">
+                                <rect key="frame" x="208" y="348" width="122" height="47"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c22-OY-xVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1083,6 +1100,14 @@
                                 <state key="normal" title="star_cheat"/>
                                 <connections>
                                     <action selector="star_cheat_function:" destination="qxD-t8-ioY" eventType="touchUpInside" id="Tnq-ns-eo7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQP-ED-8jb">
+                                <rect key="frame" x="7" y="485" width="63" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="star_zero"/>
+                                <connections>
+                                    <action selector="star_zero_cheat:" destination="qxD-t8-ioY" eventType="touchUpInside" id="c9Y-gT-Jbu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -12038,11 +12063,17 @@ zwAAAAAAAAQBAAAAAAAAAD4AAAAAAAAAAAAAAAAACdLRA
         <image name="like" width="198" height="172"/>
         <image name="link" width="198" height="172"/>
         <image name="lower_half_pack_ring_not_transparent" width="400" height="400"/>
+        <image name="more_stars" width="500" height="300"/>
         <image name="new_life_circle" width="400" height="400"/>
         <image name="night_theme" width="177" height="177"/>
         <image name="pause_button" width="47" height="47"/>
+        <image name="purchase_star_1000" width="615" height="246"/>
+        <image name="purchase_star_1000_price" width="211" height="94"/>
+        <image name="purchase_star_500" width="615" height="246"/>
+        <image name="purchase_star_500_price" width="211" height="94"/>
         <image name="restart_big" width="350" height="304"/>
         <image name="return_button" width="23" height="29"/>
+        <image name="revive_just_let_me_die" width="400" height="400"/>
         <image name="shopping_cart" width="198" height="172"/>
         <image name="treasure_day_mode" width="428" height="427"/>
         <image name="trophy_new" width="43" height="31"/>

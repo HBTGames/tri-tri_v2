@@ -13219,6 +13219,16 @@ number_of_lines_erased += 1
     }
     
     
+    
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    let count_down_view = SKView()
+    let text_background_patch = UIView()
+    let resu_activate_button = MyButton()
+    let just_kill_me = MyButton()
+    let revive_text = UIImageView()
+    
     func resurrection_when_dead() -> Void {
         self.pause_screen = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
         self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
@@ -13227,13 +13237,14 @@ number_of_lines_erased += 1
         
         defaults.set(self.screen_width, forKey: "screen_x")
         defaults.set(self.screen_height, forKey: "screen_y")
+        
         let count_down_circle = resurrectCountDownCircle(size: CGSize(width: self.pause_screen_x_transform(250), height: self.pause_screen_y_transform(250)))
         count_down_circle.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0))
 
         count_down_circle.scaleMode = .aspectFill
         
         
-        let count_down_view = SKView()
+        
         count_down_view.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0))
         count_down_view.frame = CGRect(x:self.pause_screen_x_transform(62.5), y: self.pause_screen_y_transform(200), width: self.pause_screen_x_transform(250), height: self.pause_screen_y_transform(250))
         count_down_view.ignoresSiblingOrder = true
@@ -13250,14 +13261,12 @@ number_of_lines_erased += 1
         
         
         
-        let text_background_patch = UIView()
+        
         text_background_patch.frame = CGRect(x:0, y:0, width: self.pause_screen_x_transform(375), height: self.pause_screen_y_transform(180))
         text_background_patch.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.5))
         
-        let resu_activate_button = MyButton()
-        let just_kill_me = MyButton()
+       
         
-        let revive_text = UIImageView()
         if (/*tool_quantity_array[0] == 0*/self.star_score < 25 && (self.tool_quantity_array[0] == 0)){   //all not enough
             if (self.language == "English"){
                 revive_text.image = UIImage(named: "revive_purchase_text_en")
@@ -13312,6 +13321,7 @@ number_of_lines_erased += 1
             self.present(nextViewController, animated: true, completion: nil)
             //self.audioPlayer.stop()
             self.timer.invalidate()
+            game_over_timer.invalidate()
             do{self.game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
                 self.game_over_player.prepareToPlay()
             }
@@ -13328,11 +13338,11 @@ number_of_lines_erased += 1
             resu_activate_button.whenButtonIsClicked {
                 count_down_circle.send_stop_signal()
                 self.pause_screen.removeFromSuperview()
-                resu_activate_button.removeFromSuperview()
-                just_kill_me.removeFromSuperview()
-                revive_text.removeFromSuperview()
-                text_background_patch.removeFromSuperview()
-                count_down_view.removeFromSuperview()
+                self.resu_activate_button.removeFromSuperview()
+                self.just_kill_me.removeFromSuperview()
+                self.revive_text.removeFromSuperview()
+                self.text_background_patch.removeFromSuperview()
+                self.count_down_view.removeFromSuperview()
                 self.tool_quantity_array[0] -= 1
                 defaults.set(self.tool_quantity_array, forKey: "tritri_tool_quantity_array")
                 
@@ -13351,11 +13361,11 @@ number_of_lines_erased += 1
                     defaults.synchronize()
                     count_down_circle.send_stop_signal()
                     self.pause_screen.removeFromSuperview()
-                    resu_activate_button.removeFromSuperview()
-                    just_kill_me.removeFromSuperview()
-                    revive_text.removeFromSuperview()
-                    text_background_patch.removeFromSuperview()
-                    count_down_view.removeFromSuperview()
+                    self.resu_activate_button.removeFromSuperview()
+                    self.just_kill_me.removeFromSuperview()
+                    self.revive_text.removeFromSuperview()
+                    self.text_background_patch.removeFromSuperview()
+                    self.count_down_view.removeFromSuperview()
                     self.auto_random_generator()
                     self.paused = false
                     game_over_timer.invalidate()
@@ -13363,7 +13373,9 @@ number_of_lines_erased += 1
                 else {  //star not enough
                     //currently gameover
                     count_down_circle.send_stop_signal()
-                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    game_over_timer.invalidate()
+                    self.purchase_star_function()
+                    /*let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
                     nextViewController.final_score = self.MarkBoard.text!
                     nextViewController.ThemeType = self.ThemeType
@@ -13383,7 +13395,7 @@ number_of_lines_erased += 1
                         
                     }
                     self.game_over_player.play()
-                    game_over_timer.invalidate()
+                    game_over_timer.invalidate()*/
                     
                     
                     
@@ -16798,6 +16810,123 @@ func trinity_animation() -> Void {
         self.view.bringSubview(toFront: theme_star_board)
     }
     
+    @IBAction func star_zero_cheat(_ sender: Any) {
+        defaults.set(0, forKey: "tritri_star_score")
+        star_score = 0
+        starBoard.text = String(star_score)
+        defaults.synchronize()
+        update_star_counter_length_according_to_string_length()
+    }
+    
+    
+    
+    var purchase_star_menu = UIImageView()
+    var more_stars_label = UIImageView()
+    var close_button = MyButton()
+    var purchase_star_1000_bg = UIImageView()
+    var purchase_star_500_bg = UIImageView()
+    var purchase_star_1000_button = MyButton()
+    var purchase_star_500_button = MyButton()
+    
+    func purchase_star_function() -> Void{
+        self.pause_screen.removeFromSuperview()
+        self.resu_activate_button.removeFromSuperview()
+        self.just_kill_me.removeFromSuperview()
+        self.revive_text.removeFromSuperview()
+        self.text_background_patch.removeFromSuperview()
+        self.count_down_view.removeFromSuperview()
+
+        
+        purchase_star_menu = UIImageView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
+        purchase_star_menu.image = #imageLiteral(resourceName: "treasure_background")
+        purchase_star_menu.alpha = 0
+        self.view.addSubview(purchase_star_menu)
+        purchase_star_menu.fadeIn()
+        
+        more_stars_label = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(42), y: self.pause_screen_y_transform(30), width: self.pause_screen_x_transform(272), height: self.pause_screen_y_transform(146)))
+        more_stars_label.image = #imageLiteral(resourceName: "more_stars")
+        more_stars_label.alpha = 0
+        self.view.addSubview(more_stars_label)
+        more_stars_label.fadeIn()
+        
+        purchase_star_1000_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(162), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
+        purchase_star_1000_bg.image = #imageLiteral(resourceName: "purchase_star_1000")
+        purchase_star_1000_bg.alpha = 0
+        self.view.addSubview(purchase_star_1000_bg)
+        purchase_star_1000_bg.fadeIn()
+
+        purchase_star_500_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(314), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
+        purchase_star_500_bg.image = #imageLiteral(resourceName: "purchase_star_500")
+        purchase_star_500_bg.alpha = 0
+        self.view.addSubview(purchase_star_500_bg)
+        purchase_star_500_bg.fadeIn()
+        
+        
+        
+        close_button.frame = CGRect(x: self.pause_screen_x_transform(137), y: self.pause_screen_y_transform(500), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(100))
+        close_button.setImage(#imageLiteral(resourceName: "revive_just_let_me_die"), for: .normal)
+        close_button.alpha = 0
+        self.view.addSubview(close_button)
+        close_button.whenButtonIsClicked{
+            self.purchase_star_menu.removeFromSuperview()
+            self.more_stars_label.removeFromSuperview()
+            self.close_button.removeFromSuperview()
+            
+            
+            self.purchase_star_1000_bg.removeFromSuperview()
+            self.purchase_star_500_bg.removeFromSuperview()
+            self.purchase_star_1000_button.removeFromSuperview()
+            self.purchase_star_500_button.removeFromSuperview()
+            
+            self.auto_random_generator()
+            self.paused = false
+        }
+        close_button.fadeIn()
+        
+        purchase_star_1000_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(196), width: self.pause_screen_x_transform(122), height: self.pause_screen_y_transform(47))
+        purchase_star_1000_button.setImage(#imageLiteral(resourceName: "purchase_star_1000_price"), for: .normal)
+        purchase_star_1000_button.alpha = 0
+        self.view.addSubview(purchase_star_1000_button)
+        purchase_star_1000_button.whenButtonIsClicked{
+            self.purchase_star_menu.removeFromSuperview()
+            self.more_stars_label.removeFromSuperview()
+            self.close_button.removeFromSuperview()
+            
+            
+            self.purchase_star_1000_bg.removeFromSuperview()
+            self.purchase_star_500_bg.removeFromSuperview()
+            self.purchase_star_1000_button.removeFromSuperview()
+            self.purchase_star_500_button.removeFromSuperview()
+            
+            self.auto_random_generator()
+            self.paused = false
+        }
+        
+        
+        purchase_star_1000_button.fadeIn()
+        
+        purchase_star_500_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(348), width: self.pause_screen_x_transform(122), height: self.pause_screen_y_transform(47))
+        purchase_star_500_button.setImage(#imageLiteral(resourceName: "purchase_star_500_price"), for: .normal)
+        purchase_star_500_button.alpha = 0
+        self.view.addSubview(purchase_star_500_button)
+        purchase_star_500_button.whenButtonIsClicked{
+            self.purchase_star_menu.removeFromSuperview()
+            self.more_stars_label.removeFromSuperview()
+            self.close_button.removeFromSuperview()
+            
+            
+            self.purchase_star_1000_bg.removeFromSuperview()
+            self.purchase_star_500_bg.removeFromSuperview()
+            self.purchase_star_1000_button.removeFromSuperview()
+            self.purchase_star_500_button.removeFromSuperview()
+            
+            self.auto_random_generator()
+            self.paused = false
+        }
+        
+        
+        purchase_star_500_button.fadeIn()
+    }
     
 }
 
