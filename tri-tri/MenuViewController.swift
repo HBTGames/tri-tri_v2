@@ -2542,7 +2542,7 @@ final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.orig
             while(loop){
                 let first_pow = pow(10, Double(i))
                 let second_pow = pow(10, Double(i+1))
-                if(Double(star_score) >= first_pow && Double(star_score) < second_pow){
+                if(Double(star_quantiry_needed) >= first_pow && Double(star_quantiry_needed) < second_pow){
                     loop = false
                 }
                 i += 1
