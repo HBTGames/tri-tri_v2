@@ -1880,7 +1880,13 @@ self.view.addSubview(current_star_total)
     //tool quantity array
     //index : 0 - new life 1 - same color eliminator 2 - shape bomb 3 - score*2 4 - three triangles 5 - clear all
     var tool_quantity_array = [0,0,0,0,0,0]
-    
+    var total_price_image = UIImageView()
+    var total_star_need_label = UILabel()
+    var tool_quantity = 0
+    var star_quantiry_needed = 0
+    var total_star_full_length = CGFloat(0)
+    var final_price_button_length = CGFloat(0)
+    var final_price_button = MyButton()
     func tool_selected_scene() -> Void {
     let selected_scene_background = UIView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
     selected_scene_background.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
@@ -1900,14 +1906,13 @@ self.view.addSubview(current_star_total)
     let treasure_icon_selected = UIImageView(frame: CGRect(x: pause_screen_x_transform(30), y:   selected_scene.frame.origin.y+pause_screen_y_transform(70), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
         let treasure_text = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x, y: treasure_icon_selected.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         
-        
+    
 let explaination_text = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(40), y: treasure_icon_selected.frame.origin.y + pause_screen_y_transform(10), width: pause_screen_x_transform(150), height:pause_screen_y_transform(100)))
 
         
         
-let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(70), y: treasure_icon_selected.frame.origin.y + pause_screen_y_transform(120), width: 120, height: 45))
+final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(70), y: treasure_icon_selected.frame.origin.y + pause_screen_y_transform(120), width: 120, height: 45))
 
-        
         
         
         let sub_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + pause_screen_x_transform(10), y: treasure_icon_selected.frame.origin.y + treasure_icon_selected.frame.height + pause_screen_y_transform(15), width: pause_screen_x_transform(40), height: pause_screen_y_transform(40)))
@@ -1928,9 +1933,9 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         
         
         //quantity of tool
-        var tool_quantity = 0
+         self.tool_quantity = 0
         //quantity of star needed
-        var star_quantiry_needed = 0
+        self.star_quantiry_needed = 0
         var previous_star_quantity_fontsize = CGFloat(25)
         
       
@@ -1944,8 +1949,8 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         tool_quantity_label.textAlignment = .center
         
         
-        let total_star_need_label = UILabel(frame: CGRect(x: final_price_button.frame.origin.x + pause_screen_x_transform(20), y: final_price_button.frame.origin.y, width: final_price_button.frame.width, height: final_price_button.frame.height))
-        total_star_need_label.text = String(star_quantiry_needed)
+         total_star_need_label = UILabel(frame: CGRect(x: final_price_button.frame.origin.x + pause_screen_x_transform(20), y: final_price_button.frame.origin.y, width: final_price_button.frame.width, height: final_price_button.frame.height))
+        total_star_need_label.text = String(self.star_quantiry_needed)
         
         total_star_need_label.font = UIFont(name: "Helvetica", size: CGFloat(25))
         total_star_need_label.textAlignment = .center
@@ -2080,16 +2085,40 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         total_star_need_label.alpha = 0
         self.view.addSubview(total_star_need_label)
         total_star_need_label.fadeIn()
-
+        total_price_text_width = total_star_need_label.frame.width
+        
+        final_price_button_length = final_price_button.frame.width
+        
+        //add total_price_image
+        //total_price_image.frame = final_price_button.frame
+        total_price_image.frame = final_price_button.frame
+        total_price_image.image = final_price_button.image(for: .normal)
+        //total_price_image.alpha = 0
+        final_price_button.alpha = 1
+        
+        split_total_price_counter()
+        update_total_star_length_according_to_string_length()
+        //self.view.bringSubview(toFront: final_price_button)
+        //self.view.addSubview(total_price_image)
+        //total_price_image.fadeIn()
+        //final_price_button.alpha = 1
+        
+        total_price_image.frame.size = CGSize(width: total_star_full_length, height: total_price_image.frame.height)
+        print("total price image width is \(total_star_full_length)")
+        //total_price_image.image = temp_image
+        total_price_image.alpha = 1
+        if(total_price_image.image == nil){
+            print("nil image")
+        }
+        //self.view.bringSubview(toFront: total_price_image)
+        final_price_button.alpha = 0.02
+        //final_price_button.isHidden = false
+        //final_price_button.backgroundColor = UIColor.clear
+        self.view.bringSubview(toFront: final_price_button)
+        //self.remove_all_total_price_fragments()
         
         
-        
-        
-        
-       
-        
-        
-        
+        //let temp_image_1 = treasure_icon_selected.image
         
         
         
@@ -2104,16 +2133,18 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
             sub_button.fadeOutandRemove()
             add_button.fadeOutandRemove()
             tool_quantity_label.fadeOutandRemove()
-            total_star_need_label.fadeOutandRemove()
-            final_price_button.fadeOutandRemove()
+            self.total_star_need_label.fadeOutandRemove()
+            self.final_price_button.fadeOutandRemove()
             explaination_text.fadeOutandRemove()
+            self.total_price_image.fadeOutandRemove()
+            self.remove_all_total_price_fragments()
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
             catch{
                 
             }
-            
+            self.button_player.play()
             
         })
        
@@ -2125,15 +2156,16 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
                 
             }
             self.add_player.play()
-            tool_quantity = tool_quantity + 1
-            tool_quantity_label.text = String(tool_quantity)
-            star_quantiry_needed = tool_quantity * self.star_base
-            total_star_need_label.text = String(star_quantiry_needed)
+            self.tool_quantity = self.tool_quantity + 1
+            tool_quantity_label.text = String(self.tool_quantity)
+            self.star_quantiry_needed = self.tool_quantity * self.star_base
+            self.total_star_need_label.text = String(self.star_quantiry_needed)
+            self.update_total_star_length_according_to_string_length()
         })
         
         sub_button.whenButtonIsClicked(action: {
-            if(tool_quantity == 0){
-                tool_quantity = 0
+            if(self.tool_quantity == 0){
+                self.tool_quantity = 0
                 do{self.sub_not_allowed_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "sub_not_allowed", ofType: "wav")!))
                     self.sub_not_allowed_player.prepareToPlay()
                 }
@@ -2150,18 +2182,18 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
                     
                 }
                 self.sub_player.play()
-                tool_quantity = tool_quantity - 1
-                tool_quantity_label.text = String(tool_quantity)
+                self.tool_quantity = self.tool_quantity - 1
+                tool_quantity_label.text = String(self.tool_quantity)
             }
-            star_quantiry_needed = tool_quantity * self.star_base
-            total_star_need_label.text = String(star_quantiry_needed)
+            self.star_quantiry_needed = self.tool_quantity * self.star_base
+            self.total_star_need_label.text = String(self.star_quantiry_needed)
+            self.update_total_star_length_according_to_string_length()
         })
         
         print("tool selected : \(tool_selected)")
         //action for confirming price
-        final_price_button.whenButtonIsClicked(action: {
-        self.tool_quantity_array[self.tool_selected] += tool_quantity
-            defaults.set(self.tool_quantity_array, forKey: "tritri_tool_quantity_array")
+        //have an issue
+        final_price_button.whenButtonIsClicked (action: {
         selected_scene_background.fadeOutandRemove()
         selected_scene.fadeOutandRemove()
         selected_cancel.fadeOutandRemove()
@@ -2170,14 +2202,15 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         sub_button.fadeOutandRemove()
         add_button.fadeOutandRemove()
         tool_quantity_label.fadeOutandRemove()
-        total_star_need_label.fadeOutandRemove()
-        final_price_button.fadeOutandRemove()
+        self.total_star_need_label.fadeOutandRemove()
+        self.final_price_button.fadeOutandRemove()
         explaination_text.fadeOutandRemove()
+        self.total_price_image.fadeOutandRemove()
         self.circle_pop_up(tool_index: self.tool_selected)
-        self.fix_star_score(star_needed: star_quantiry_needed)
+        self.fix_star_score(star_needed: self.star_quantiry_needed)
         self.update_star_counter_length_according_to_string_length()
         self.update_current_star_length_according_to_string_length()
-        
+        self.remove_all_total_price_fragments()
         })
         
     }
@@ -2220,8 +2253,10 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
     }
     
     func fix_star_score(star_needed: Int){
-        if(star_score >= star_needed){
+        if(star_score >= star_needed && star_needed != 0){
         star_score -= star_needed
+        tool_quantity_array[tool_selected] += tool_quantity
+        defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
             do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
                 self.cash_player.prepareToPlay()
             }
@@ -2229,6 +2264,16 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
                 
             }
             self.cash_player.play()
+        }else{
+            star_score = star_score - 0
+            do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                self.wrong_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.wrong_player.play()
+
         }
         defaults.set(star_score, forKey: "tritri_star_score")
         self.current_star_total_text.text = String(star_score)
@@ -2236,7 +2281,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         
     }
     
-    //
+    // star counter auto resize
     
     var star_counter_fragments : Array<UIView> = []
     
@@ -2273,6 +2318,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
     
     func update_star_counter_length(i: Int) -> Void{
     print("star_board_original_width: \(star_board_original_width)")
+    
     star_board.frame.size = CGSize(width: star_board_original_width + (CGFloat(i)*pause_screen_x_transform(5)), height: star_board.frame.height)
     print("star_board width: \(star_board.frame.width)")
     star_counter_fragments[2].frame.size = CGSize(width: star_counter_fragment_width + CGFloat(i)*pause_screen_x_transform(5), height: star_counter_fragments[2].frame.height)
@@ -2299,7 +2345,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         update_star_counter_length(i: argument_integer)
     }
     
-//
+//current star total auto resize
     var current_star_total_fragments : Array<UIView> = []
     var current_star_total_text_width = CGFloat(0)
     var current_star_fragments_width = CGFloat(0)
@@ -2358,7 +2404,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         current_star_total_fragments[2].frame.size = CGSize(width: current_star_fragments_width + CGFloat(i)*pause_screen_x_transform(2), height: current_star_total_fragments[2].frame.height)
         current_star_total_fragments[3].frame.origin.x = current_star_total_fragments[2].frame.origin.x + current_star_total_fragments[2].frame.width
     }
- /////
+ ///// theme star counter auto resize
     var theme_star_counter_fragments : Array<UIView> = []
     var theme_star_board_width = CGFloat(0)
     var theme_star_counter_fragments_width = CGFloat(0)
@@ -2426,6 +2472,116 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         theme_star_counter_fragments[3].frame.origin.x = theme_star_counter_fragments[2].frame.origin.x + theme_star_counter_fragments[2].frame.width
 
     }
+  
+//tool select menu auto resizing  first divide into four then combine all togather as one image
+    var total_price_fragments : Array<UIView> = []
+    var total_price_text_width = CGFloat(0)
+    var total_price_fragments_width = CGFloat(0)
+    
+    func split_total_price_counter() -> Void{
+        total_price_fragments = []
+        total_price_image.alpha = 1
+        total_price_fragments = total_price_image.generateFragmentsFrom(total_price_image, with: 4.0, in: self.view)
+        //var i = 0
+        let total_price_fragments_image = total_price_image.generateImageFragmentsFrom(total_price_image, with: 4.0, in: self.view)
+        //let image_super_temp = total_price_fragments_image[0]
+        total_price_fragments_image[0].draw(at: CGPoint.zero)
+        total_price_image.alpha = 0
+        total_price_fragments[0].frame.origin.x = total_price_image.frame.origin.x
+        total_price_fragments[1].frame.origin.x = total_price_fragments[0].frame.origin.x + total_price_fragments[0].frame.width
+        total_price_fragments[2].frame.origin.x = total_price_fragments[1].frame.origin.x + total_price_fragments[1].frame.width
+        total_price_fragments[3].frame.origin.x = total_price_fragments[2].frame.origin.x + total_price_fragments[2].frame.width
+        //print("current_star_total_fragments 0 width is \(current_star_total_fragments[0].frame.width)")
+        //print("0 x is \(current_star_total_fragments[0].frame.origin.x)")
+        self.view.addSubview(total_price_fragments[0])
+        self.view.addSubview(total_price_fragments[1])
+        self.view.addSubview(total_price_fragments[2])
+        self.view.addSubview(total_price_fragments[3])
+        total_price_fragments[0].alpha = 0
+        total_price_fragments[1].alpha = 0
+        total_price_fragments[2].alpha = 0
+        total_price_fragments[3].alpha = 0
+        total_price_fragments[0].fadeIn()
+        total_price_fragments[1].fadeIn()
+        total_price_fragments[2].fadeIn()
+        total_price_fragments[3].fadeIn()
+        total_price_fragments_width = total_price_fragments[2].frame.width
+        self.view.bringSubview(toFront: total_star_need_label)
+        //let temp_image = combine_total_price_fragments()
+        //print(star_counter_fragment_width)
+    }
+    func remove_all_total_price_fragments() -> Void{
+        total_price_fragments[0].removeFromSuperview()
+        total_price_fragments[1].removeFromSuperview()
+        total_price_fragments[2].removeFromSuperview()
+        total_price_fragments[3].removeFromSuperview()
+    }
+    
+    func update_total_star_length_according_to_string_length() -> Void{
+        var i = 0
+        var loop = true
+        var argument_integer = 0
+        if(star_quantiry_needed != 0){
+            while(loop){
+                let first_pow = pow(10, Double(i))
+                let second_pow = pow(10, Double(i+1))
+                if(Double(star_score) >= first_pow && Double(star_score) < second_pow){
+                    loop = false
+                }
+                i += 1
+            }
+        }else{
+            i = 0
+        }
+        argument_integer = i - 2
+        update_total_star_length(i: argument_integer)
+        total_star_full_length = total_price_fragments[0].frame.width + total_price_fragments[1].frame.width + total_price_fragments[2].frame.width + total_price_fragments[3].frame.width
+    }
+    func update_total_star_length(i: Int) -> Void{
+        //print("star_board_original_width: \(star_board_original_width)")
+        final_price_button.frame.size = CGSize(width: final_price_button_length + (CGFloat(i)*pause_screen_x_transform(2)) , height: final_price_button.frame.height)
+        total_star_need_label.frame.size = CGSize(width: total_price_text_width + (CGFloat(i)*pause_screen_x_transform(2)), height: total_star_need_label.frame.height)
+        // print("star_board width: \(star_board.frame.width)")
+        total_price_fragments[2].frame.size = CGSize(width: total_price_fragments_width + CGFloat(i)*pause_screen_x_transform(2), height: total_price_fragments[2].frame.height)
+        total_price_fragments[3].frame.origin.x = total_price_fragments[2].frame.origin.x + total_price_fragments[2].frame.width
+        
+    }
+    
+    func combine_total_price_fragments() -> UIImage{
+    total_price_fragments[0].alpha = 1
+        total_price_fragments[1].alpha = 1
+        total_price_fragments[2].alpha = 1
+        total_price_fragments[3].alpha = 1
+        self.view.bringSubview(toFront: total_price_fragments[0])
+        self.view.bringSubview(toFront: total_price_fragments[1])
+        self.view.bringSubview(toFront: total_price_fragments[2])
+        self.view.bringSubview(toFront: total_price_fragments[3])
+
+    let total_width = total_price_fragments[0].frame.width + total_price_fragments[1].frame.width + total_price_fragments[2].frame.width + total_price_fragments[3].frame.width
+    let new_size = CGSize(width: total_width, height: total_price_fragments[0].frame.height)
+    let point_0 = CGPoint.zero
+    let point_1 = CGPoint(x: total_price_fragments[0].frame.width, y: 0)
+    let point_2 = CGPoint(x: point_1.x + total_price_fragments[1].frame.width, y: 0)
+    let point_3 = CGPoint(x: point_2.x + total_price_fragments[2].frame.width, y: 0)
+    let image_0 = total_price_fragments[0].createImage()
+    
+    
+    //image_0.draw(at: CGPoint(x: 200, y: 200))
+    let image_1 = total_price_fragments[1].createImage()
+    let image_2 = total_price_fragments[2].createImage()
+    let image_3 = total_price_fragments[3].createImage()
+
+    UIGraphicsBeginImageContext(new_size)
+    image_0.draw(in: CGRect(origin: point_0, size:total_price_fragments[0].frame.size))
+    image_1.draw(in: CGRect(origin: point_1, size:total_price_fragments[1].frame.size))
+    image_2.draw(in: CGRect(origin: point_2, size:total_price_fragments[2].frame.size))
+    image_3.draw(in:  CGRect(origin: point_3, size:total_price_fragments[3].frame.size))
+    let new_image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return new_image!
+    }
+
+    
     
 }
 
@@ -2460,14 +2616,70 @@ func generateFragmentsFrom(_ originView:UIView, with splitRatio:CGFloat, in cont
         return fragments
         
     }
+   
+    func generateImageFragmentsFrom(_ originView:UIView, with splitRatio:CGFloat, in containerView:UIView) -> [UIImage] {
+        
+        let size = originView.frame.size
+        let snapshots = originView.snapshotView(afterScreenUpdates: true)
+        var fragments = [UIImage]()
+        
+        //let shortSide = min(size.width, size.height)
+        let gap =  size.width/splitRatio
+        
+        for x in stride(from: 0.0, to: Double(size.width), by: Double(gap)) {
+            
+            
+            let fragmentRect = CGRect(x: CGFloat(x), y: CGFloat(0.0), width: size.width/splitRatio, height: size.height)
+            UIGraphicsBeginImageContext(fragmentRect.size)
+            snapshots?.drawHierarchy(in: fragmentRect, afterScreenUpdates: false)
+            //let fragment = snapshots?.resizableSnapshotView(from: fragmentRect, afterScreenUpdates: false, withCapInsets: UIEdgeInsets.zero)
+            
+            let fragment = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            //containerView.addSubview(fragment!)
+            fragments.append(fragment!)
+            
+            
+        }
+        
+        return fragments
+        
+    }
+
     
+    func createImage() -> UIImage {
+        
+        if #available(iOS 10.0, *) {
+            let renderer = UIGraphicsImageRenderer(bounds: bounds)
+            return renderer.image { rendererContext in
+                layer.render(in: rendererContext.cgContext)
+            }
+        } else {
+            // Fallback on earlier versions
+            let rect: CGRect = self.frame
+            
+            UIGraphicsBeginImageContext(rect.size)
+            let context: CGContext = UIGraphicsGetCurrentContext()!
+            self.layer.render(in: context)
+            let img = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            return img!
+        }
+    }
+    
+   }
+
+
+
+/**
+extension UIImage{
+    convenience init(view: UIView) {
+        
+        
+    }
 }
-    
-
-
-
-
-
+**/
 
 /**class MyButton: UIButton {
     var action: (()->())?
