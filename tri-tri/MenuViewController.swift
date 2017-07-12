@@ -2194,6 +2194,7 @@ final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.orig
         //action for confirming price
         //have an issue
         final_price_button.whenButtonIsClicked (action: {
+            if(self.star_score >= self.star_quantiry_needed && self.star_quantiry_needed != 0){
         selected_scene_background.fadeOutandRemove()
         selected_scene.fadeOutandRemove()
         selected_cancel.fadeOutandRemove()
@@ -2207,10 +2208,25 @@ final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.orig
         explaination_text.fadeOutandRemove()
         self.total_price_image.fadeOutandRemove()
         self.circle_pop_up(tool_index: self.tool_selected)
-        self.fix_star_score(star_needed: self.star_quantiry_needed)
         self.update_star_counter_length_according_to_string_length()
         self.update_current_star_length_according_to_string_length()
         self.remove_all_total_price_fragments()
+            }else{
+              selected_scene.shake(duration: 0.5)
+              selected_cancel.shake(duration: 0.5)
+              treasure_icon_selected.shake(duration: 0.5)
+              treasure_text.shake(duration: 0.5)
+              add_button.shake(duration: 0.5)
+              sub_button.shake(duration: 0.5)
+              tool_quantity_label.shake(duration: 0.5)
+              explaination_text.shake(duration: 0.5)
+              self.total_price_fragments[0].shake(duration: 0.5)
+                self.total_price_fragments[1].shake(duration: 0.5)
+                self.total_price_fragments[2].shake(duration: 0.5)
+                self.total_price_fragments[3].shake(duration: 0.5)
+                self.total_star_need_label.shake(duration: 0.5)
+            }
+            self.fix_star_score(star_needed: self.star_quantiry_needed)
         })
         
     }
@@ -2667,6 +2683,25 @@ func generateFragmentsFrom(_ originView:UIView, with splitRatio:CGFloat, in cont
             return img!
         }
     }
+    
+    func shake(duration: CFTimeInterval) {
+        let translation = CAKeyframeAnimation(keyPath: "transform.translation.x");
+        translation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        translation.values = [-5, 5, -5, 5, -3, 3, -2, 2, 0]
+        
+        let rotation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+        rotation.values = [-5, 5, -5, 5, -3, 3, -2, 2, 0].map {
+            ( degrees: Double) -> Double in
+            let radians: Double = (M_PI * degrees) / 180.0
+            return radians
+        }
+        
+        let shakeGroup: CAAnimationGroup = CAAnimationGroup()
+        shakeGroup.animations = [translation, rotation]
+        shakeGroup.duration = duration
+        self.layer.add(shakeGroup, forKey: "shakeIt")
+    }
+    
     
    }
 
