@@ -1456,6 +1456,7 @@ self.view.addSubview(current_star_total)
         new_life_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
         new_life_circle_text.textColor = UIColor(red: 208.0/255, green: 91.0/255, blue: 93.0/255, alpha: 1)
         new_life_circle_text.textAlignment = .center
+        new_life_circle_text.adjustsFontSizeToFitWidth = true
         new_life_circle_text.alpha = 0
         self.view.addSubview(new_life_circle_text)
         if(tool_quantity_array[0] != 0){
@@ -1517,6 +1518,7 @@ self.view.addSubview(current_star_total)
         same_color_eliminator_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
         same_color_eliminator_circle_text.textColor = UIColor(red: 77.0/255, green: 113.0/255, blue: 56.0/255, alpha: 1)
         same_color_eliminator_circle_text.textAlignment = .center
+        same_color_eliminator_circle_text.adjustsFontSizeToFitWidth = true
         same_color_eliminator_circle_text.alpha = 0
         self.view.addSubview(same_color_eliminator_circle_text)
         if(tool_quantity_array[1] != 0){
@@ -1576,6 +1578,7 @@ self.view.addSubview(current_star_total)
         shape_bomb_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
         shape_bomb_circle_text.textColor = UIColor(red: 230.0/255, green: 157.0/255, blue: 68.0/255, alpha: 1)
         shape_bomb_circle_text.textAlignment = .center
+        shape_bomb_circle_text.adjustsFontSizeToFitWidth = true
         shape_bomb_circle_text.alpha = 0
         self.view.addSubview(shape_bomb_circle_text)
         if(tool_quantity_array[2] != 0){
@@ -1636,6 +1639,7 @@ self.view.addSubview(current_star_total)
         times_two_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
         times_two_circle_text.textColor = UIColor(red: 180.0/255, green: 134.0/255, blue: 161.0/255, alpha: 1)
         times_two_circle_text.textAlignment = .center
+        times_two_circle_text.adjustsFontSizeToFitWidth = true
         times_two_circle_text.alpha = 0
         self.view.addSubview(times_two_circle_text)
         if(tool_quantity_array[3] != 0){
@@ -1694,8 +1698,8 @@ self.view.addSubview(current_star_total)
         three_triangles_circle_text.text = String(tool_quantity_array[4])
         three_triangles_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
         three_triangles_circle_text.textColor = UIColor(red: 73.0/255, green: 159.0/255, blue: 192.0/255, alpha: 1)
-
         three_triangles_circle_text.textAlignment = .center
+        three_triangles_circle_text.adjustsFontSizeToFitWidth = true
         three_triangles_circle_text.alpha = 0
         self.view.addSubview(three_triangles_circle_text)
         if(tool_quantity_array[4] != 0){
@@ -1754,6 +1758,7 @@ self.view.addSubview(current_star_total)
         clear_all_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
         clear_all_circle_text.textColor = UIColor(red: 56.0/255, green: 75.0/255, blue: 130.0/255, alpha: 1)
         clear_all_circle_text.textAlignment = .center
+        clear_all_circle_text.adjustsFontSizeToFitWidth = true
         clear_all_circle_text.alpha = 0
         self.view.addSubview(clear_all_circle_text)
         if(tool_quantity_array[5] != 0){
@@ -2102,7 +2107,12 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
             total_star_need_label.fadeOutandRemove()
             final_price_button.fadeOutandRemove()
             explaination_text.fadeOutandRemove()
-            
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
             
             
         })
@@ -2267,7 +2277,6 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
     print("star_board width: \(star_board.frame.width)")
     star_counter_fragments[2].frame.size = CGSize(width: star_counter_fragment_width + CGFloat(i)*pause_screen_x_transform(5), height: star_counter_fragments[2].frame.height)
     star_counter_fragments[3].frame.origin.x = star_counter_fragments[2].frame.origin.x + star_counter_fragments[2].frame.width
-    self.view.bringSubview(toFront: star_board)
     }
     
     func update_star_counter_length_according_to_string_length() -> Void{
@@ -2348,7 +2357,6 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
        // print("star_board width: \(star_board.frame.width)")
         current_star_total_fragments[2].frame.size = CGSize(width: current_star_fragments_width + CGFloat(i)*pause_screen_x_transform(2), height: current_star_total_fragments[2].frame.height)
         current_star_total_fragments[3].frame.origin.x = current_star_total_fragments[2].frame.origin.x + current_star_total_fragments[2].frame.width
-        self.view.bringSubview(toFront: current_star_total_text)
     }
  /////
     var theme_star_counter_fragments : Array<UIView> = []
@@ -2416,7 +2424,7 @@ let final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.
         // print("star_board width: \(star_board.frame.width)")
         theme_star_counter_fragments[2].frame.size = CGSize(width: theme_star_counter_fragments_width + CGFloat(i)*pause_screen_x_transform(3), height: theme_star_counter_fragments[2].frame.height)
         theme_star_counter_fragments[3].frame.origin.x = theme_star_counter_fragments[2].frame.origin.x + theme_star_counter_fragments[2].frame.width
-        self.view.bringSubview(toFront: theme_star_board)
+
     }
     
 }
