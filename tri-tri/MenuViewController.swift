@@ -1363,6 +1363,15 @@ class MenuViewController: UIViewController {
     treasure_menu.alpha = 0
     self.view.addSubview(treasure_menu)
     treasure_menu.fadeIn()
+    //treasure_menu.tag = 110
+    //super.view.isUserInteractionEnabled = false
+    //self.view.isUserInteractionEnabled = true
+    continue_button.isEnabled = false
+    like_button.isEnabled = false
+    shopping_cart.isEnabled = false
+    gift_button.isEnabled = false
+    language_button.isEnabled = false
+    tutorial_button.isEnabled = false
     let treasure_cancel = MyButton(frame: CGRect(x: treasure_menu.frame.origin.x, y: treasure_menu.frame.origin.y, width: pause_screen_x_transform(125), height: pause_screen_y_transform(125)))
     treasure_cancel.setImage(#imageLiteral(resourceName: "treasure_box_cancel"), for: .normal)
     treasure_cancel.contentMode = .scaleAspectFit
@@ -1792,6 +1801,13 @@ self.view.addSubview(current_star_total)
         self.current_star_total.fadeOutandRemove()
         self.remove_all_current_star_fragments()
 
+        //restore all buttons
+        self.continue_button.isEnabled = true
+        self.like_button.isEnabled = true
+        self.shopping_cart.isEnabled = true
+        self.gift_button.isEnabled = true
+        self.language_button.isEnabled = true
+        self.tutorial_button.isEnabled = true
           })
     }
    
