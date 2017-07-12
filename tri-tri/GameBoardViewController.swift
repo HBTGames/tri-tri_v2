@@ -12876,8 +12876,12 @@ number_of_lines_erased += 1
     let trinity_button = MyButton()
     let doom_day_button = MyButton()
     
-    
-    
+    let resurrection_circle = MyButton()
+    let purification_circle = MyButton()
+    let holy_nova_circle = MyButton()
+    let amplifier_circle = MyButton()
+    let trinity_circle = MyButton()
+    let doom_day_circle = MyButton()
     
     
     
@@ -12939,6 +12943,29 @@ number_of_lines_erased += 1
             self.amplifier_action()
         }
         
+        self.resurrection_circle.whenButtonIsClicked {
+            self.resurrection_when_alive()
+        }
+        
+        self.purification_circle.whenButtonIsClicked {
+            self.purification()
+        }
+        
+        self.holy_nova_circle.whenButtonIsClicked {
+            self.holy_nova()
+        }
+        
+        self.trinity_circle.whenButtonIsClicked {
+            self.trinity_action()
+        }
+        
+        self.doom_day_circle.whenButtonIsClicked {
+            self.doom_day_action()
+        }
+        
+        self.amplifier_circle.whenButtonIsClicked {
+            self.amplifier_action()
+        }
         
         self.view.addSubview(pack_patch)
         self.view.addSubview(pack_line_1)
@@ -12950,6 +12977,13 @@ number_of_lines_erased += 1
         self.view.addSubview(amplifier_button)
         self.view.addSubview(trinity_button)
         self.view.addSubview(doom_day_button)
+        
+        self.view.addSubview(resurrection_circle)
+        self.view.addSubview(purification_circle)
+        self.view.addSubview(holy_nova_circle)
+        self.view.addSubview(amplifier_circle)
+        self.view.addSubview(trinity_circle)
+        self.view.addSubview(doom_day_circle)
         
         self.view.bringSubview(toFront: self.backpack_button)
         self.view.bringSubview(toFront: self.upper_half_pack_ring)
@@ -12979,6 +13013,12 @@ number_of_lines_erased += 1
                         self.amplifier_button.fadeInWithDisplacement()
                         self.trinity_button.fadeInWithDisplacement()
                         self.doom_day_button.fadeInWithDisplacement()
+                        self.resurrection_circle.fadeInWithDisplacement()
+                        self.purification_circle.fadeInWithDisplacement()
+                        self.holy_nova_circle.fadeInWithDisplacement()
+                        self.amplifier_circle.fadeInWithDisplacement()
+                        self.trinity_circle.fadeInWithDisplacement()
+                        self.doom_day_circle.fadeInWithDisplacement()
                         
                         self.view.sendSubview(toBack: self.upper_half_pack_ring)
                         self.view.bringSubview(toFront: self.backpack_button)
@@ -13036,6 +13076,12 @@ number_of_lines_erased += 1
                             self.amplifier_button.fadeOut()
                             self.trinity_button.fadeOut()
                             self.doom_day_button.fadeOut()
+                            self.resurrection_circle.fadeOut()
+                            self.purification_circle.fadeOut()
+                            self.holy_nova_circle.fadeOut()
+                            self.amplifier_circle.fadeOut()
+                            self.trinity_circle.fadeOut()
+                            self.doom_day_circle.fadeOut()
                             self.view.sendSubview(toBack: self.upper_half_pack_ring)
                             self.view.bringSubview(toFront: self.backpack_button)
         },
@@ -13050,6 +13096,12 @@ number_of_lines_erased += 1
                                                 self.amplifier_button.removeFromSuperview()
                                                 self.trinity_button.removeFromSuperview()
                                                 self.doom_day_button.removeFromSuperview()
+                                                self.resurrection_circle.removeFromSuperview()
+                                                self.purification_circle.removeFromSuperview()
+                                                self.holy_nova_circle.removeFromSuperview()
+                                                self.amplifier_circle.removeFromSuperview()
+                                                self.trinity_circle.removeFromSuperview()
+                                                self.doom_day_circle.removeFromSuperview()
                                                 self.paused = false
                             },
                                               completion: nil)
@@ -13123,12 +13175,12 @@ number_of_lines_erased += 1
         doom_day_button.frame = CGRect(x: self.pause_screen_x_transform(291), y: self.pause_screen_y_transform(430), width: self.pause_screen_x_transform(48), height: self.pause_screen_y_transform(48))
         amplifier_button.frame = CGRect(x: self.pause_screen_x_transform(291), y: self.pause_screen_y_transform(485), width: self.pause_screen_x_transform(48), height: self.pause_screen_y_transform(48))
         
-        resurrection_button.setTitle(String(self.tool_quantity_array[0]), for: .normal)
+        /*resurrection_button.setTitle(String(self.tool_quantity_array[0]), for: .normal)
         purification_button.setTitle(String(self.tool_quantity_array[1]), for: .normal)
         holy_nova_button.setTitle(String(self.tool_quantity_array[2]), for: .normal)
         amplifier_button.setTitle(String(self.tool_quantity_array[3]), for: .normal)
         trinity_button.setTitle(String(self.tool_quantity_array[4]), for: .normal)
-        doom_day_button.setTitle(String(self.tool_quantity_array[5]), for: .normal)
+        doom_day_button.setTitle(String(self.tool_quantity_array[5]), for: .normal)*/
         
         resurrection_button.alpha = 0
         purification_button.alpha = 0
@@ -13136,7 +13188,36 @@ number_of_lines_erased += 1
         amplifier_button.alpha = 0
         trinity_button.alpha = 0
         doom_day_button.alpha = 0
+        
+        resurrection_circle.setBackgroundImage(UIImage(named: "new_life_circle"), for: .normal)
+        purification_circle.setBackgroundImage(UIImage(named: "same_color_eminator_circle"), for: .normal)
+        holy_nova_circle.setBackgroundImage(UIImage(named: "shape_bomb_circle"), for: .normal)
+        amplifier_circle.setBackgroundImage(UIImage(named: "double_score_circle"), for: .normal)
+        trinity_circle.setBackgroundImage(UIImage(named: "three_tri_circle"), for: .normal)
+        doom_day_circle.setBackgroundImage(UIImage(named: "clear_all_circle"), for: .normal)
+        
+        resurrection_circle.frame = CGRect(x: self.pause_screen_x_transform(323), y: self.pause_screen_y_transform(208), width: self.pause_screen_x_transform(25), height: self.pause_screen_y_transform(25))
+        holy_nova_circle.frame = CGRect(x: self.pause_screen_x_transform(323), y: self.pause_screen_y_transform(263), width: self.pause_screen_x_transform(25), height: self.pause_screen_y_transform(25))
+        purification_circle.frame = CGRect(x: self.pause_screen_x_transform(323), y: self.pause_screen_y_transform(318), width: self.pause_screen_x_transform(25), height: self.pause_screen_y_transform(25))
+        trinity_circle.frame = CGRect(x: self.pause_screen_x_transform(323), y: self.pause_screen_y_transform(373), width: self.pause_screen_x_transform(25), height: self.pause_screen_y_transform(25))
+        doom_day_circle.frame = CGRect(x: self.pause_screen_x_transform(323), y: self.pause_screen_y_transform(428), width: self.pause_screen_x_transform(25), height: self.pause_screen_y_transform(25))
+        amplifier_circle.frame = CGRect(x: self.pause_screen_x_transform(323), y: self.pause_screen_y_transform(483), width: self.pause_screen_x_transform(25), height: self.pause_screen_y_transform(25))
+        
+        resurrection_circle.setTitle(String(self.tool_quantity_array[0]), for: .normal)
+        purification_circle.setTitle(String(self.tool_quantity_array[1]), for: .normal)
+        holy_nova_circle.setTitle(String(self.tool_quantity_array[2]), for: .normal)
+        amplifier_circle.setTitle(String(self.tool_quantity_array[3]), for: .normal)
+        trinity_circle.setTitle(String(self.tool_quantity_array[4]), for: .normal)
+        doom_day_circle.setTitle(String(self.tool_quantity_array[5]), for: .normal)
+        
+        resurrection_circle.alpha = 0
+        purification_circle.alpha = 0
+        holy_nova_circle.alpha = 0
+        amplifier_circle.alpha = 0
+        trinity_circle.alpha = 0
+        doom_day_circle.alpha = 0
     }
+    
     
     func resurrection_when_dead() -> Void {
         self.pause_screen = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
