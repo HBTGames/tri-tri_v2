@@ -385,8 +385,8 @@ class MenuViewController: UIViewController {
         let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(50)))
         let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(15), width: pause_screen_x_transform(155), height: pause_screen_y_transform(35)))
         white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
-        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(9),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
-        theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(285),y:pause_screen_y_transform(14),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
+        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(15),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
+        theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(285),y:pause_screen_y_transform(18),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
         theme_button_height = (screen_height - white_cover_y)/5.0
         let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
@@ -1897,11 +1897,11 @@ self.view.addSubview(current_star_total)
         let treasure_text = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x, y: treasure_icon_selected.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         
     
-let explaination_text = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(40), y: treasure_icon_selected.frame.origin.y + pause_screen_y_transform(10), width: pause_screen_x_transform(150), height:pause_screen_y_transform(100)))
+let explaination_text = UIImageView(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(37), y: treasure_icon_selected.frame.origin.y + pause_screen_y_transform(10), width: pause_screen_x_transform(159), height:pause_screen_y_transform(100)))
 
         
         
-final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.origin.x + treasure_icon_selected.frame.width + pause_screen_x_transform(70), y: treasure_icon_selected.frame.origin.y + pause_screen_y_transform(120), width: 120, height: 45))
+final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x + explaination_text.frame.width/2.0 - pause_screen_x_transform(120)/2.0, y: treasure_icon_selected.frame.origin.y + pause_screen_y_transform(120), width: pause_screen_x_transform(120), height: pause_screen_y_transform(45)))
 
         
         
