@@ -1362,7 +1362,7 @@ class MenuViewController: UIViewController {
     gift_button.isEnabled = false
     language_button.isEnabled = false
     tutorial_button.isEnabled = false
-    let treasure_cancel = MyButton(frame: CGRect(x: treasure_menu.frame.origin.x, y: treasure_menu.frame.origin.y, width: pause_screen_x_transform(125), height: pause_screen_y_transform(125)))
+    let treasure_cancel = MyButton(frame: CGRect(x: treasure_menu.frame.origin.x, y: treasure_menu.frame.origin.y, width: pause_screen_x_transform(117), height: pause_screen_y_transform(117)))
     treasure_cancel.setImage(#imageLiteral(resourceName: "treasure_box_cancel"), for: .normal)
     treasure_cancel.contentMode = .scaleAspectFit
     treasure_cancel.alpha = 0
@@ -1420,7 +1420,7 @@ self.view.addSubview(current_star_total)
         })
         
 //new life text
-        let new_life_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
+        let new_life_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(45), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         if (self.language == "English"){
             new_life_text.image = #imageLiteral(resourceName: "resurrection_text")
         }
@@ -1481,7 +1481,7 @@ self.view.addSubview(current_star_total)
         })
     
     //same color eliminator text
-       let same_color_eliminator_text = UIImageView(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
+       let same_color_eliminator_text = UIImageView(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: pause_screen_y_transform(45), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         same_color_eliminator_text.alpha = 0
         if (self.language == "English"){
             same_color_eliminator_text.image = #imageLiteral(resourceName: "purification_text_en")
@@ -1542,7 +1542,7 @@ self.view.addSubview(current_star_total)
             self.tool_selected_scene()
         })
     //shape bomb text
-    let shape_bomb_text = UIImageView(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
+    let shape_bomb_text = UIImageView(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y - pause_screen_y_transform(55), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
     shape_bomb_text.alpha = 0
         if (self.language == "English"){
             shape_bomb_text.image = #imageLiteral(resourceName: "holy_nova_text_en")
@@ -1602,7 +1602,7 @@ self.view.addSubview(current_star_total)
             self.tool_selected_scene()
         })
    //times two text
-        let times_two_text = UIImageView(frame: CGRect(x: times_two.frame.origin.x, y: times_two.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
+        let times_two_text = UIImageView(frame: CGRect(x: times_two.frame.origin.x, y: times_two.frame.origin.y - pause_screen_y_transform(55), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         if (self.language == "English"){
             times_two_text.image = #imageLiteral(resourceName: "amplifier_en")
         }
@@ -1661,7 +1661,7 @@ self.view.addSubview(current_star_total)
         })
     
     //three triangle text
-    let three_triangles_text = UIImageView(frame: CGRect(x: three_triangles.frame.origin.x, y: three_triangles.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
+    let three_triangles_text = UIImageView(frame: CGRect(x: three_triangles.frame.origin.x, y: three_triangles.frame.origin.y - pause_screen_y_transform(55), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         if (self.language == "English"){
             three_triangles_text.image = #imageLiteral(resourceName: "trinity_text_en")
         }
@@ -1722,7 +1722,7 @@ self.view.addSubview(current_star_total)
         })
     
     //clear all text
-        let clear_all_text = UIImageView(frame: CGRect(x: clear_all.frame.origin.x, y: clear_all.frame.origin.y - pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
+        let clear_all_text = UIImageView(frame: CGRect(x: clear_all.frame.origin.x, y: clear_all.frame.origin.y - pause_screen_y_transform(55), width: pause_screen_x_transform(140), height: pause_screen_y_transform(80)))
         if (language == "English"){
             clear_all_text.image = #imageLiteral(resourceName: "doom_day_text_en")
         } else{
