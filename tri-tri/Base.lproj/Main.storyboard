@@ -1262,15 +1262,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="wheel_background" translatesAutoresizingMaskIntoConstraints="NO" id="eh0-Gu-lyV">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="treasure_background" translatesAutoresizingMaskIntoConstraints="NO" id="eh0-Gu-lyV">
                                 <rect key="frame" x="1" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="wheel_text" translatesAutoresizingMaskIntoConstraints="NO" id="Ahs-vh-WqJ">
-                                <rect key="frame" x="1" y="0.0" width="375" height="667"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="wheel_outer" translatesAutoresizingMaskIntoConstraints="NO" id="4QJ-gm-Blo">
+                                <rect key="frame" x="28" y="193" width="315" height="315"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="wheel" translatesAutoresizingMaskIntoConstraints="NO" id="VAB-QK-96c">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="wheel" translatesAutoresizingMaskIntoConstraints="NO" id="VAB-QK-96c">
                                 <rect key="frame" x="45" y="207" width="282" height="282"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -1278,8 +1278,8 @@
                                 <rect key="frame" x="161" y="186" width="50" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="wheel_outer" translatesAutoresizingMaskIntoConstraints="NO" id="4QJ-gm-Blo">
-                                <rect key="frame" x="-1" y="0.0" width="375" height="667"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="wheel_text" translatesAutoresizingMaskIntoConstraints="NO" id="Ahs-vh-WqJ">
+                                <rect key="frame" x="1" y="0.0" width="375" height="219"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                         </subviews>
@@ -12072,15 +12072,15 @@ zwAAAAAAAAQBAAAAAAAAAD4AAAAAAAAAAAAAAAAACdLRA
         <image name="return_button" width="23" height="29"/>
         <image name="revive_just_let_me_die" width="400" height="400"/>
         <image name="shopping_cart" width="198" height="172"/>
+        <image name="treasure_background" width="375" height="667"/>
         <image name="treasure_day_mode" width="400" height="400"/>
         <image name="tuto_bg" width="375" height="667"/>
         <image name="tuto_exit" width="130" height="130"/>
-        <image name="tuto_icon_day_night" width="126" height="129"/>
-        <image name="wheel" width="282" height="282"/>
-        <image name="wheel_background" width="375" height="667"/>
-        <image name="wheel_outer" width="375" height="667"/>
-        <image name="wheel_pointer" width="50" height="44"/>
-        <image name="wheel_text" width="375" height="667"/>
+        <image name="tuto_icon_day_night" width="400" height="400"/>
+        <image name="wheel" width="316" height="316"/>
+        <image name="wheel_outer" width="316" height="316"/>
+        <image name="wheel_pointer" width="50" height="47"/>
+        <image name="wheel_text" width="500" height="300"/>
         <image name="棕色tri" width="104" height="93"/>
     </resources>
     <inferredMetricsTieBreakers>

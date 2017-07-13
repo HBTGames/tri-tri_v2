@@ -142,7 +142,7 @@ class DailyGiftViewController: UIViewController {
         screen_width = self.view.frame.width
         screen_height = self.view.frame.height
         wheel_background.frame = self.view.frame
-        wheel_background.image = #imageLiteral(resourceName: "wheel_background")
+        wheel_background.image = #imageLiteral(resourceName: "treasure_background")
         wheel_background.contentMode = .scaleAspectFill
         star_score = defaults.value(forKey: "tritri_star_score") as! NSInteger
         //view.backgroundColor = UIColor(patternImage: UIImage(named: "wheel_background.png")!)
@@ -169,20 +169,25 @@ class DailyGiftViewController: UIViewController {
             self.present(nextViewController, animated: true, completion: nil)
             
         })
-        wheel_text.frame = self.view.frame
+        wheel_text.frame = CGRect(x: screen_x_transform(Double(wheel_text.frame.origin.x)), y: screen_y_transform(Double(wheel_text.frame.origin.y)), width: screen_x_transform(Double(wheel_text.frame.width)), height: screen_y_transform(Double(wheel_text.frame.height)))
         if (defaults.value(forKey: "language") as! String == "English"){
-            wheel_text.image = UIImage(named: "wheel_text")
+            wheel_text.image = #imageLiteral(resourceName: "wheel_text")
         }
         else {
-            wheel_text.image = UIImage(named: "dailygift_text_chinese")
+            wheel_text.image = #imageLiteral(resourceName: "dailygift_text_chinese")
         }
         
         wheel.frame = CGRect(x: screen_x_transform(Double(wheel.frame.origin.x)), y: screen_y_transform(Double(wheel.frame.origin.y)), width: screen_x_transform(Double(wheel.frame.width)), height: screen_y_transform(Double(wheel.frame.height)))
-        wheel.image = UIImage(named: "wheel")
-        wheel_outer.frame = self.view.frame
+        wheel.image = #imageLiteral(resourceName: "wheel")
+        //self.view.bringSubview(toFront: wheel)
+        //wheel.contentMode = .scaleAspectFit
+        wheel_outer.frame = CGRect(x: screen_x_transform(Double(wheel_outer.frame.origin.x)), y: screen_y_transform(Double(wheel_outer.frame.origin.y)), width: screen_x_transform(Double(wheel_outer.frame.width)), height: screen_y_transform(Double(wheel_outer.frame.height)))
         wheel_outer.image = #imageLiteral(resourceName: "wheel_outer")
         wheel_pointer.frame = CGRect(x: screen_x_transform(Double(wheel_pointer.frame.origin.x)), y: screen_y_transform(Double(wheel_pointer.frame.origin.y)), width: screen_x_transform(Double(wheel_pointer.frame.width)), height: screen_y_transform(Double(wheel_pointer.frame.height)))
         wheel_pointer.image = #imageLiteral(resourceName: "wheel_pointer")
+        //self.view.sendSubview(toBack: wheel_outer)
+        //self.view.bringSubview(toFront: wheel)
+        
         //add pan gesture recognizer
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
         self.view.addGestureRecognizer(panGestureRecognizer)
@@ -240,7 +245,7 @@ class DailyGiftViewController: UIViewController {
             self.present(nextViewController, animated: true, completion: nil)
             
         })
-        count_down_label = UILabel(frame: CGRect(x: screen_width/2 - screen_x_transform(140), y: screen_height/2 - screen_y_transform(40), width: screen_x_transform(330), height: screen_y_transform(100)))
+        count_down_label = UILabel(frame: CGRect(x: screen_width/2 - screen_x_transform(140), y: screen_height/2 - screen_y_transform(10), width: screen_x_transform(330), height: screen_y_transform(100)))
         self.view.addSubview(count_down_label)
         count_down_label.text = count_down_time_string
         count_down_label.font = UIFont(name: "Helvetica", size: 60)
