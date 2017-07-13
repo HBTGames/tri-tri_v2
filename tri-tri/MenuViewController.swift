@@ -2194,8 +2194,10 @@ final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.orig
         print("tool selected : \(tool_selected)")
         //action for confirming price
         //have an issue
+        
         final_price_button.whenButtonIsClicked (action: {
             if(self.star_score >= self.star_quantiry_needed && self.star_quantiry_needed != 0){
+        self.tool_quantity_array[self.tool_selected] += self.tool_quantity
         selected_scene_background.fadeOutandRemove()
         selected_scene.fadeOutandRemove()
         selected_cancel.fadeOutandRemove()
@@ -2272,7 +2274,6 @@ final_price_button = MyButton(frame: CGRect(x: treasure_icon_selected.frame.orig
     func fix_star_score(star_needed: Int){
         if(star_score >= star_needed && star_needed != 0){
         star_score -= star_needed
-        tool_quantity_array[tool_selected] += tool_quantity
         defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
             do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
                 self.cash_player.prepareToPlay()
