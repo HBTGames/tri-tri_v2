@@ -12065,16 +12065,16 @@ zwAAAAAAAAQBAAAAAAAAAD4AAAAAAAAAAAAAAAAACdLRA
         <image name="night_theme" width="177" height="177"/>
         <image name="pause_button" width="47" height="47"/>
         <image name="purchase_star_1000" width="615" height="246"/>
-        <image name="purchase_star_1000_price" width="211" height="94"/>
+        <image name="purchase_star_1000_price" width="171" height="76"/>
         <image name="purchase_star_500" width="615" height="246"/>
-        <image name="purchase_star_500_price" width="211" height="94"/>
+        <image name="purchase_star_500_price" width="171" height="76"/>
         <image name="restart_big" width="350" height="304"/>
         <image name="return_button" width="23" height="29"/>
         <image name="revive_just_let_me_die" width="400" height="400"/>
         <image name="shopping_cart" width="198" height="172"/>
         <image name="treasure_background" width="375" height="667"/>
         <image name="treasure_day_mode" width="400" height="400"/>
-        <image name="tuto_exit" width="130" height="130"/>
+        <image name="tuto_exit" width="398" height="400"/>
         <image name="tuto_icon_day_night" width="400" height="400"/>
         <image name="wheel" width="316" height="316"/>
         <image name="wheel_outer" width="316" height="316"/>

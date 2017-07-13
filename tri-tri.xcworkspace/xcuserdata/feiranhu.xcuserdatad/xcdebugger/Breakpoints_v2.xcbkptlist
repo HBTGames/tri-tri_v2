@@ -319,8 +319,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13048"
             endingLineNumber = "13048"
-            landmarkName = "GameBoardViewController"
-            landmarkType = "3">
+            landmarkName = "open_pack()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
