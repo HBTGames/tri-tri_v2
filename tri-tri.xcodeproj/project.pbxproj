@@ -833,7 +833,7 @@
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "tri-tri/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "HBTGames.tri-tri";
+				PRODUCT_BUNDLE_IDENTIFIER = tritri.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -849,7 +849,7 @@
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "tri-tri/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "HBTGames.tri-tri";
+				PRODUCT_BUNDLE_IDENTIFIER = tritri.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

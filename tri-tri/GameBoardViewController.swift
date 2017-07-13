@@ -12,7 +12,7 @@ import AVKit
 import UserNotifications
 import Lottie
 import SpriteKit
-
+import StoreKit
 
 public extension UIView {
     func fadeIn(withDuration duration: TimeInterval = 0.5) {
@@ -75,7 +75,7 @@ extension UIButton {
 var defaults = UserDefaults.standard
 
 
-class GameBoardViewController: UIViewController {
+class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1078,6 +1078,17 @@ class GameBoardViewController: UIViewController {
         catch{
         
         }
+        
+        if (SKPaymentQueue.canMakePayments()){
+            print ("In_app_purchase is enabled, loading")
+            let productID : NSSet = NSSet(objects: "tritri.test.add_500_stars", "tritri.test.add_1000_stars")
+            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+            request.delegate = self
+            request.start()
+        } else {
+            print("please enable IAPs")
+        }
+        
         
         
     
@@ -16715,7 +16726,7 @@ func trinity_animation() -> Void {
     }
     
     
-    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var purchase_star_menu = UIImageView()
     var more_stars_label = UIImageView()
     var close_button = MyButton()
@@ -16779,49 +16790,162 @@ func trinity_animation() -> Void {
         }
         close_button.fadeIn()
         
-        purchase_star_1000_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(196), width: self.pause_screen_x_transform(122), height: self.pause_screen_y_transform(47))
+        purchase_star_1000_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(196), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
         purchase_star_1000_button.setImage(#imageLiteral(resourceName: "purchase_star_1000_price"), for: .normal)
         purchase_star_1000_button.alpha = 0
         self.view.addSubview(purchase_star_1000_button)
         purchase_star_1000_button.whenButtonIsClicked{
-            self.purchase_star_menu.removeFromSuperview()
-            self.more_stars_label.removeFromSuperview()
-            self.close_button.removeFromSuperview()
-            
-            
-            self.purchase_star_1000_bg.removeFromSuperview()
-            self.purchase_star_500_bg.removeFromSuperview()
-            self.purchase_star_1000_button.removeFromSuperview()
-            self.purchase_star_500_button.removeFromSuperview()
-            
-            self.auto_random_generator()
-            self.paused = false
+            for product in self.purchase_product_list{
+                let productID = product.productIdentifier
+                if productID == "tritri.add_1000_stars"{
+                    self.present_product = product
+                    self.buyProduct()
+                }
+                print(productID)
+            }
         }
         
         
         purchase_star_1000_button.fadeIn()
         
-        purchase_star_500_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(348), width: self.pause_screen_x_transform(122), height: self.pause_screen_y_transform(47))
+        purchase_star_500_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(348), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
         purchase_star_500_button.setImage(#imageLiteral(resourceName: "purchase_star_500_price"), for: .normal)
         purchase_star_500_button.alpha = 0
         self.view.addSubview(purchase_star_500_button)
         purchase_star_500_button.whenButtonIsClicked{
-            self.purchase_star_menu.removeFromSuperview()
-            self.more_stars_label.removeFromSuperview()
-            self.close_button.removeFromSuperview()
-            
-            
-            self.purchase_star_1000_bg.removeFromSuperview()
-            self.purchase_star_500_bg.removeFromSuperview()
-            self.purchase_star_1000_button.removeFromSuperview()
-            self.purchase_star_500_button.removeFromSuperview()
-            
-            self.auto_random_generator()
-            self.paused = false
+            for product in self.purchase_product_list{
+                let productID = product.productIdentifier
+                if productID == "tritri.add_500_stars"{
+                    self.present_product = product
+                    self.buyProduct()
+                }
+            }
         }
         
         
         purchase_star_500_button.fadeIn()
+    }
+    
+    func buyProduct() -> Void{
+        print ("purchasing")
+        let pay = SKPayment(product: self.present_product)
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().add(pay as SKPayment)
+    }
+    
+    
+    func add_500_stars() -> Void{
+        star_score += 500
+        starBoard.text = String(star_score)
+        defaults.set(star_score, forKey: "tritri_star_score")
+        defaults.synchronize()
+        update_star_counter_length_according_to_string_length()
+        self.purchase_star_menu.removeFromSuperview()
+        self.more_stars_label.removeFromSuperview()
+        self.close_button.removeFromSuperview()
+        
+        
+        self.purchase_star_1000_bg.removeFromSuperview()
+        self.purchase_star_500_bg.removeFromSuperview()
+        self.purchase_star_1000_button.removeFromSuperview()
+        self.purchase_star_500_button.removeFromSuperview()
+        
+        self.auto_random_generator()
+        self.paused = false
+    }
+    
+    func add_1000_stars() -> Void{
+        star_score += 1000
+        starBoard.text = String(star_score)
+        defaults.set(star_score, forKey: "tritri_star_score")
+        defaults.synchronize()
+        update_star_counter_length_according_to_string_length()
+        self.purchase_star_menu.removeFromSuperview()
+        self.more_stars_label.removeFromSuperview()
+        self.close_button.removeFromSuperview()
+        
+        
+        self.purchase_star_1000_bg.removeFromSuperview()
+        self.purchase_star_500_bg.removeFromSuperview()
+        self.purchase_star_1000_button.removeFromSuperview()
+        self.purchase_star_500_button.removeFromSuperview()
+        
+        self.auto_random_generator()
+        self.paused = false
+    }
+    
+    var purchase_product_list = [SKProduct]()
+    var present_product = SKProduct()
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        print("Product request")
+        let myProduct = response.products
+        for product in myProduct{
+            print("product added")
+            print(product.productIdentifier)
+            print(product.localizedTitle)
+            print(product.localizedDescription)
+            print(product.price)
+            
+            purchase_product_list.append(product)
+        }
+        
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        print("Transaction restored")
+        for transaction in queue.transactions{
+            let t:SKPaymentTransaction = transaction
+            let productID = t.payment.productIdentifier as String
+            
+            switch productID{
+            case "tritri.add_500_stars":
+                print ("add 500 stars")
+                add_500_stars()
+            case "tritri.add_1000_stars":
+                print ("add 1000 stars")
+                add_1000_stars()
+            default:
+                print ("in app purchase not found")
+            }
+        }
+        
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print ("add payment")
+        for transaction: AnyObject in transactions{
+            let trans = transaction as! SKPaymentTransaction
+            print (trans.error)
+            
+            switch trans.transactionState{
+            case .purchased:
+                print ("IAP unlock")
+                print (present_product.productIdentifier)
+                
+                let productID = present_product.productIdentifier
+                
+                switch productID{
+                case "tritri.add_500_stars":
+                    print ("add 500 stars")
+                    add_500_stars()
+                case "tritri.add_1000_stars":
+                    print ("add 1000 stars")
+                    add_1000_stars()
+                default:
+                    print ("in app purchase not found")
+                }
+                queue.finishTransaction(trans)
+            case .failed:
+                print ("purchase failed")
+                queue.finishTransaction(trans)
+                break
+            default:
+                print("default")
+                break
+            }
+            
+        }
     }
     
 }
