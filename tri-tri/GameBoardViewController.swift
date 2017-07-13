@@ -14770,45 +14770,7 @@ number_of_lines_erased += 1
 
     
     func doom_day_animation_with_real_action() -> Void{
-        var doom_day_icon_for_animation = UIImageView(frame: amplifier_button.frame)
-        doom_day_icon_for_animation.image = #imageLiteral(resourceName: "item_round_doom_day")
-        self.view.addSubview(doom_day_icon_for_animation)
-        let doom_day_curve_moving_animation = CAKeyframeAnimation(keyPath: "position")
-        let fullRotation = CGFloat(2 * Double.pi)
-        doom_day_curve_moving_animation.path = customPathwithArg(from: doom_day_icon_for_animation.frame.origin, to: CGPoint(x: screen_width/2.0, y: screen_height/2.0)).cgPath
-        doom_day_curve_moving_animation.duration = 1.5
-        doom_day_curve_moving_animation.fillMode = kCAFillModeForwards
-        doom_day_curve_moving_animation.isRemovedOnCompletion = false
-        doom_day_icon_for_animation.layer.add(doom_day_curve_moving_animation, forKey: nil)
-        UIView.animate(withDuration: 1.5, animations: {
-            doom_day_icon_for_animation.transform = CGAffineTransform(scaleX: 5.0, y: 5.0)
-        }, completion: {
-            (finished) -> Void in
-            //spin
-            let spin_animation = CAKeyframeAnimation()
-            //CATransaction.begin()
-            spin_animation.keyPath = "transform.rotation.z"
-            spin_animation.isRemovedOnCompletion = false
-            spin_animation.fillMode = kCAFillModeForwards
-            spin_animation.duration = 0.5
-            spin_animation.repeatCount = 5.0
-            spin_animation.values = [0,fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
-            doom_day_icon_for_animation.layer.add(spin_animation, forKey: nil)
-            UIView.animate(withDuration: 1.5, animations: {
-             doom_day_icon_for_animation.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
-            }, completion: {
-                (finished) -> Void in
-                doom_day_icon_for_animation.removeFromSuperview()
-                //doom day real action
-                self.doom_day_real_action()
-                
-                
-    
-            })
-            
-        })
-        
-        
+    self.doom_day_real_action()   
     }
     
     
@@ -15689,61 +15651,24 @@ number_of_lines_erased += 1
     
     func amplifier_animation() -> Void{
        // amplifier_small_icon_location = CGPoint(x: self.star_bg.frame.origin.x + self.star_bg.frame.width + self.pause_screen_x_transform(30), y: self.star_bg.frame.origin.y)
-    var amplifier_icon_for_animation = UIImageView(frame: amplifier_button.frame)
-    amplifier_icon_for_animation.image = #imageLiteral(resourceName: "item_round_amplifier")
-    self.view.addSubview(amplifier_icon_for_animation)
-    let amplifier_curve_moving_animation = CAKeyframeAnimation(keyPath: "position")
-    let fullRotation = CGFloat(2 * Double.pi)
-    amplifier_curve_moving_animation.path = customPathwithArg(from: amplifier_icon_for_animation.frame.origin, to: CGPoint(x: screen_width/2.0, y: screen_height/2.0)).cgPath
-    amplifier_curve_moving_animation.duration = 1.5
-    amplifier_curve_moving_animation.fillMode = kCAFillModeForwards
-    amplifier_curve_moving_animation.isRemovedOnCompletion = false
-    amplifier_icon_for_animation.layer.add(amplifier_curve_moving_animation, forKey: nil)
-        UIView.animate(withDuration: 1.5, animations: {
-           amplifier_icon_for_animation.transform = CGAffineTransform(scaleX: 5.0, y: 5.0)
+self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_amplifier")
+        self.amplifier_valide_icon.fadeIn()
+        self.amplifier_valide_icon.transform = CGAffineTransform(scaleX: 1.8, y: 0.3).translatedBy(x: self.pause_screen_x_transform(15), y: 0)
+        
+        UIView.animate(withDuration: 1.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
+            self.amplifier_valide_icon.transform = .identity
         }, completion: {
             (finished) -> Void in
-            //spin animation
-            //amplifier_icon_for_animation.removeFromSuperview()
-            amplifier_icon_for_animation.frame.origin = CGPoint(x: self.screen_width/2.0 - amplifier_icon_for_animation.frame.width/2.0, y: self.screen_height/2.0 - amplifier_icon_for_animation.frame.height/2.0)
-            let spin_animation = CAKeyframeAnimation()
-            //CATransaction.begin()
-            spin_animation.keyPath = "transform.rotation.z"
-            spin_animation.isRemovedOnCompletion = false
-            spin_animation.fillMode = kCAFillModeForwards
-            spin_animation.duration = 0.5
-            spin_animation.repeatCount = 5.0
-            spin_animation.values = [0,fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
-            amplifier_icon_for_animation.layer.add(spin_animation, forKey: nil)
-            UIView.animate(withDuration: 1.5, animations: {
-              amplifier_icon_for_animation.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
-            }, completion: {
-                (finished) -> Void in
-               amplifier_icon_for_animation.removeFromSuperview()
-                self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_amplifier")
-                self.amplifier_valide_icon.fadeIn()
-                self.amplifier_valide_icon.transform = CGAffineTransform(scaleX: 1.8, y: 0.3).translatedBy(x: self.pause_screen_x_transform(15), y: 0)
-                
-                UIView.animate(withDuration: 1.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
-                    self.amplifier_valide_icon.transform = .identity
-                }, completion: {
-                    (finished) -> Void in
-                    self.amplifier_valide_icon.image = #imageLiteral(resourceName: "amplifier_transparent")
-                    self.wave_animator_amplifier = waveAnimator(frame: self.amplifier_valide_icon.frame)
-                    self.wave_animator_amplifier.alpha = 1
-                    self.view.addSubview(self.wave_animator_amplifier)
-                    self.view.bringSubview(toFront: self.amplifier_valide_icon)
-                    self.wave_animator_amplifier.waveAmplitude = Double(2)
-                    self.wave_animator_amplifier.progress = 1
-                    self.wave_animator_amplifier_timer = Timer.scheduledTimer(timeInterval: 0.01667, target: self, selector: #selector(GameBoardViewController.wave_animation_count_down), userInfo: nil, repeats: true)
-                    
-                })
-            })
+            self.amplifier_valide_icon.image = #imageLiteral(resourceName: "amplifier_transparent")
+            self.wave_animator_amplifier = waveAnimator(frame: self.amplifier_valide_icon.frame)
+            self.wave_animator_amplifier.alpha = 1
+            self.view.addSubview(self.wave_animator_amplifier)
+            self.view.bringSubview(toFront: self.amplifier_valide_icon)
+            self.wave_animator_amplifier.waveAmplitude = Double(2)
+            self.wave_animator_amplifier.progress = 1
+            self.wave_animator_amplifier_timer = Timer.scheduledTimer(timeInterval: 0.01667, target: self, selector: #selector(GameBoardViewController.wave_animation_count_down), userInfo: nil, repeats: true)
+            
         })
-        
-        
-        
-        
         
     }
     
@@ -16511,116 +16436,87 @@ func trinity_animation() -> Void {
         
     }
     
+    let center_cgpoint = CGPoint(x: self.screen_width/2.0 - self.tri_0_0.frame.width/2.0, y: self.screen_height/2.0 - self.tri_0_0.frame.height/2.0)
+    var lack_tri_1 = UIImageView(frame: CGRect(origin: center_cgpoint , size: self.tri_0_0.frame.size))
+    var lack_tri_2 = UIImageView(frame: lack_tri_1.frame)
+    var lack_tri_3 = UIImageView(frame: lack_tri_1.frame)
+    let lack_tri_1_row = self.the_three_lack_tri[0][0]
+    let lack_tri_1_col = self.the_three_lack_tri[0][1]
+    let lack_tri_2_row = self.the_three_lack_tri[1][0]
+    let lack_tri_2_col = self.the_three_lack_tri[1][1]
+    let lack_tri_3_row = self.the_three_lack_tri[2][0]
+    let lack_tri_3_col = self.the_three_lack_tri[2][1]
+    if(self.single_tri_stored_type_index[lack_tri_1_row][lack_tri_1_col] == 7){
+        lack_tri_1.image = shape_color_up
+    }else{
+        lack_tri_1.image = shape_color_down
+    }
+    if(self.single_tri_stored_type_index[lack_tri_2_row][lack_tri_2_col] == 7){
+        lack_tri_2.image = shape_color_up
+    }else{
+        lack_tri_2.image = shape_color_down
+    }
+    if(self.single_tri_stored_type_index[lack_tri_3_row][lack_tri_3_col] == 7){
+        lack_tri_3.image = shape_color_up
+    }else{
+        lack_tri_3.image = shape_color_down
+    }
+    lack_tri_3.alpha = 0
+    lack_tri_2.alpha = 0
+    lack_tri_1.alpha = 0
+    self.view.addSubview(lack_tri_3)
+    self.view.addSubview(lack_tri_2)
+    self.view.addSubview(lack_tri_1)
 
-    var trinity_icon_for_animation = UIImageView(frame: trinity_button.frame)
-    trinity_icon_for_animation.image = #imageLiteral(resourceName: "item_round_trinity")
-    self.view.addSubview(trinity_icon_for_animation)
-    let trinity_curve_moving_animation = CAKeyframeAnimation(keyPath: "position")
-    let fullRotation = CGFloat(2 * Double.pi)
-    trinity_curve_moving_animation.path = customPathwithArg(from: trinity_icon_for_animation.frame.origin, to: CGPoint(x: screen_width/2.0, y: screen_height/2.0)).cgPath
-    trinity_curve_moving_animation.duration = 1.5
-    trinity_curve_moving_animation.fillMode = kCAFillModeForwards
-    trinity_curve_moving_animation.isRemovedOnCompletion = false
-    trinity_icon_for_animation.layer.add(trinity_curve_moving_animation, forKey: nil)
-    UIView.animate(withDuration: 1.5, animations: {
-        trinity_icon_for_animation.transform = CGAffineTransform(scaleX: 5.0, y: 5.0).rotated(by: 360)
-    }, completion: {
-        (finished) -> Void in
-        let spin_animation = CAKeyframeAnimation()
-        //CATransaction.begin()
-        spin_animation.keyPath = "transform.rotation.z"
-        spin_animation.isRemovedOnCompletion = false
-        spin_animation.fillMode = kCAFillModeForwards
-        spin_animation.duration = 0.5
-        spin_animation.repeatCount = 5.0
-        spin_animation.values = [0,fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
-        trinity_icon_for_animation.layer.add(spin_animation, forKey: nil)
-        let center_cgpoint = CGPoint(x: self.screen_width/2.0 - self.tri_0_0.frame.width/2.0, y: self.screen_height/2.0 - self.tri_0_0.frame.height/2.0)
-        var lack_tri_1 = UIImageView(frame: CGRect(origin: center_cgpoint , size: self.tri_0_0.frame.size))
-        var lack_tri_2 = UIImageView(frame: lack_tri_1.frame)
-        var lack_tri_3 = UIImageView(frame: lack_tri_1.frame)
-        let lack_tri_1_row = self.the_three_lack_tri[0][0]
-        let lack_tri_1_col = self.the_three_lack_tri[0][1]
-        let lack_tri_2_row = self.the_three_lack_tri[1][0]
-        let lack_tri_2_col = self.the_three_lack_tri[1][1]
-        let lack_tri_3_row = self.the_three_lack_tri[2][0]
-        let lack_tri_3_col = self.the_three_lack_tri[2][1]
-        if(self.single_tri_stored_type_index[lack_tri_1_row][lack_tri_1_col] == 7){
-            lack_tri_1.image = shape_color_up
-        }else{
-            lack_tri_1.image = shape_color_down
-        }
-        if(self.single_tri_stored_type_index[lack_tri_2_row][lack_tri_2_col] == 7){
-            lack_tri_2.image = shape_color_up
-        }else{
-            lack_tri_2.image = shape_color_down
-        }
-        if(self.single_tri_stored_type_index[lack_tri_3_row][lack_tri_3_col] == 7){
-            lack_tri_3.image = shape_color_up
-        }else{
-            lack_tri_3.image = shape_color_down
-        }
-        lack_tri_3.alpha = 0
-        lack_tri_2.alpha = 0
-        lack_tri_1.alpha = 0
-        self.view.addSubview(lack_tri_3)
-        self.view.addSubview(lack_tri_2)
-        self.view.addSubview(lack_tri_1)
-        self.view.bringSubview(toFront: trinity_icon_for_animation)
-        lack_tri_3.fadeInWithDisplacement()
-        lack_tri_2.fadeInWithDisplacement()
-        lack_tri_1.fadeInWithDisplacement()
-
-        //CATransaction.commit()
-
-        UIView.animate(withDuration: 1, animations: {
-            trinity_icon_for_animation.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+    lack_tri_3.fadeInWithDisplacement()
+    lack_tri_2.fadeInWithDisplacement()
+    lack_tri_1.fadeInWithDisplacement()
+    
+    //CATransaction.commit()
+    
+    UIView.animate(withDuration: 0.5, animations: {
+        //three lack tris
+        //now three tris move to its location
+        UIView.animate(withDuration: 0.3, animations: {
+            lack_tri_1.transform = CGAffineTransform(translationX: self.tri_location[lack_tri_1_row][lack_tri_1_col].x - lack_tri_1.frame.origin.x, y: self.tri_location[lack_tri_1_row][lack_tri_1_col].y - lack_tri_1.frame.origin.y).scaledBy(x: 0.8, y: 0.8).rotated(by: 360)
         }, completion: {
-            (finsihed) -> Void in
-            //three lack tris
-            trinity_icon_for_animation.removeFromSuperview()
-            //now three tris move to its location
+            (finished) -> Void in
+            lack_tri_1.removeFromSuperview()
+            self.Change_Corresponding_Color_With_Image(x: lack_tri_1_row, y: lack_tri_1_col, image: lack_tri_1.image)
             UIView.animate(withDuration: 0.3, animations: {
-                lack_tri_1.transform = CGAffineTransform(translationX: self.tri_location[lack_tri_1_row][lack_tri_1_col].x - lack_tri_1.frame.origin.x, y: self.tri_location[lack_tri_1_row][lack_tri_1_col].y - lack_tri_1.frame.origin.y).scaledBy(x: 0.8, y: 0.8).rotated(by: 360)
+                lack_tri_2.transform = CGAffineTransform(translationX: self.tri_location[lack_tri_2_row][lack_tri_2_col].x - lack_tri_2.frame.origin.x, y: self.tri_location[lack_tri_2_row][lack_tri_2_col].y - lack_tri_2.frame.origin.y).scaledBy(x: 0.8, y: 0.8).rotated(by: 360)
             }, completion: {
                 (finished) -> Void in
-                lack_tri_1.removeFromSuperview()
-                self.Change_Corresponding_Color_With_Image(x: lack_tri_1_row, y: lack_tri_1_col, image: lack_tri_1.image)
+                lack_tri_2.removeFromSuperview()
+                self.Change_Corresponding_Color_With_Image(x: lack_tri_2_row, y: lack_tri_2_col, image: lack_tri_2.image)
                 UIView.animate(withDuration: 0.3, animations: {
-                    lack_tri_2.transform = CGAffineTransform(translationX: self.tri_location[lack_tri_2_row][lack_tri_2_col].x - lack_tri_2.frame.origin.x, y: self.tri_location[lack_tri_2_row][lack_tri_2_col].y - lack_tri_2.frame.origin.y).scaledBy(x: 0.8, y: 0.8).rotated(by: 360)
+                    lack_tri_3.transform = CGAffineTransform(translationX: self.tri_location[lack_tri_3_row][lack_tri_3_col].x - lack_tri_3.frame.origin.x, y: self.tri_location[lack_tri_3_row][lack_tri_3_col].y - lack_tri_3.frame.origin.y).scaledBy(x: 0.8, y: 0.8).rotated(by: 360)
+                    
+                    
                 }, completion: {
                     (finished) -> Void in
-                    lack_tri_2.removeFromSuperview()
-                    self.Change_Corresponding_Color_With_Image(x: lack_tri_2_row, y: lack_tri_2_col, image: lack_tri_2.image)
-                    UIView.animate(withDuration: 0.3, animations: {
-                        lack_tri_3.transform = CGAffineTransform(translationX: self.tri_location[lack_tri_3_row][lack_tri_3_col].x - lack_tri_3.frame.origin.x, y: self.tri_location[lack_tri_3_row][lack_tri_3_col].y - lack_tri_3.frame.origin.y).scaledBy(x: 0.8, y: 0.8).rotated(by: 360)
-                        
-                        
-                    }, completion: {
-                        (finished) -> Void in
-                        lack_tri_3.removeFromSuperview()
-                        self.Change_Corresponding_Color_With_Image(x: lack_tri_3_row, y: lack_tri_3_col, image: lack_tri_3.image)
-                        let cond_before_erase = self.filled
-                        self.last_score = self.score
-                        self.modify_counter(before: self.cond_before_insert_trinity, after: cond_before_erase)
-                        self.current_score = self.score
-                        self.star_score_increment()
-                        self.Check_and_Erase()
-                        let cond_after_erase = self.filled
-                        self.last_score = self.score
-                        self.modify_counter_after_erase(before: cond_before_erase, after: cond_after_erase)
-                        self.current_score = self.score
-                        self.star_score_increment()
-                        
-                        
-                    })
+                    lack_tri_3.removeFromSuperview()
+                    self.Change_Corresponding_Color_With_Image(x: lack_tri_3_row, y: lack_tri_3_col, image: lack_tri_3.image)
+                    let cond_before_erase = self.filled
+                    self.last_score = self.score
+                    self.modify_counter(before: self.cond_before_insert_trinity, after: cond_before_erase)
+                    self.current_score = self.score
+                    self.star_score_increment()
+                    self.Check_and_Erase()
+                    let cond_after_erase = self.filled
+                    self.last_score = self.score
+                    self.modify_counter_after_erase(before: cond_before_erase, after: cond_after_erase)
+                    self.current_score = self.score
+                    self.star_score_increment()
+                    
                     
                 })
                 
             })
-
             
         })
+        
+        
     })
  
     
