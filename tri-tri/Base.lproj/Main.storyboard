@@ -74,11 +74,11 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="day_mode_star" translatesAutoresizingMaskIntoConstraints="NO" id="s2T-Fz-kax">
-                                <rect key="frame" x="139" y="428" width="97" height="41"/>
+                                <rect key="frame" x="139" y="428" width="103" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCj-NR-SnI">
-                                <rect key="frame" x="185" y="438" width="42" height="21"/>
+                                <rect key="frame" x="200" y="440" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -127,14 +127,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVy-u3-4Z8">
-                                <rect key="frame" x="191" y="491" width="93" height="24"/>
+                                <rect key="frame" x="200" y="491" width="93" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="day_mode_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="flZ-hs-ShH">
-                                <rect key="frame" x="139" y="480" width="49" height="46"/>
+                                <rect key="frame" x="151" y="486" width="36" height="35"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                         </subviews>
@@ -1052,7 +1052,7 @@
                                 </constraints>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="day_mode_star" translatesAutoresizingMaskIntoConstraints="NO" id="z4m-dG-Hks">
-                                <rect key="frame" x="16" y="68" width="97" height="41"/>
+                                <rect key="frame" x="13" y="68" width="102" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-yQ-OGd">
@@ -1247,10 +1247,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44c-a1-QJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="grey_tir_downwards" id="v0M-8F-PAv">
-                    <rect key="frame" x="0.0" y="0.0" width="49" height="43"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
             </objects>
             <point key="canvasLocation" x="0.80000000000000004" y="732.68365817091455"/>
         </scene>
@@ -12076,7 +12072,7 @@ zwAAAAAAAAQBAAAAAAAAAD4AAAAAAAAAAAAAAAAACdLRA
         <image name="return_button" width="23" height="29"/>
         <image name="revive_just_let_me_die" width="400" height="400"/>
         <image name="shopping_cart" width="198" height="172"/>
-        <image name="treasure_day_mode" width="428" height="427"/>
+        <image name="treasure_day_mode" width="400" height="400"/>
         <image name="tuto_bg" width="375" height="667"/>
         <image name="tuto_exit" width="130" height="130"/>
         <image name="tuto_icon_day_night" width="126" height="129"/>
