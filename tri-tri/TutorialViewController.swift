@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
+
 
 class TutorialViewController: UIViewController, UIScrollViewDelegate {
     
     
     var language = String()
     
-    
+    var button_player = AVAudioPlayer()
     
     let tuto_text = UIImageView()
     let tuto_case_1 = UIImageView()
@@ -43,6 +46,13 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet var exit_button: UIButton!
     @IBAction func exit(_ sender: Any) {
+        do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+            self.button_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        self.button_player.play()
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         nextViewController.modalTransitionStyle = .crossDissolve

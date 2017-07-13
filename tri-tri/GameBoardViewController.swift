@@ -1884,7 +1884,7 @@ class GameBoardViewController: UIViewController {
         let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(50)))
         let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(15), width: pause_screen_x_transform(155), height: pause_screen_y_transform(35)))
         white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
-        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(260), y:pause_screen_y_transform(9),width: pause_screen_x_transform(97), height: pause_screen_y_transform(41)))
+        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(9),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
         theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(285),y:pause_screen_y_transform(14),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
         theme_button_height = (screen_height - white_cover_y)/5.0
         let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
@@ -1939,7 +1939,7 @@ class GameBoardViewController: UIViewController {
             self.in_theme_menu = false
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
              self.starBoard.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
-            self.theme_star_counter.image = UIImage(named:"day_mode_star")
+            self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
             self.backpack_button_before_hit = #imageLiteral(resourceName: "day_mode_backup_before_hit")
             self.backpack_button_after_hit = #imageLiteral(resourceName: "backpack_day_after_hit")
@@ -2051,8 +2051,8 @@ self.remove_all_theme_star_counter_fragments()
             self.in_theme_menu = false
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
             self.starBoard.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
-            self.theme_star_counter.image = UIImage(named:"night_mode_star")
-            self.theme_star_board.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
+            self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
+            self.theme_star_board.textColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 1.0)
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
             self.BW_theme_button.fadeOut()
@@ -2195,7 +2195,7 @@ self.remove_all_theme_star_counter_fragments()
                 self.in_theme_menu = false
                 self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
                 self.starBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
-                self.theme_star_counter.image = UIImage(named:"BW_mode_star")
+                self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
                 self.theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
                 self.remove_all_theme_star_counter_fragments()
                 self.day_theme_button.fadeOut()
@@ -2428,7 +2428,7 @@ self.remove_all_theme_star_counter_fragments()
             
             self.starBoard.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
-            self.theme_star_counter.image = UIImage(named:"school_mode_star")
+            self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
             self.in_theme_menu = false
             self.day_theme_button.fadeOut()
@@ -2569,7 +2569,7 @@ self.remove_all_theme_star_counter_fragments()
             self.in_theme_menu = false
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
             self.starBoard.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
-            self.theme_star_counter.image = UIImage(named:"colors_mode_star")
+            self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
@@ -2656,18 +2656,9 @@ self.remove_all_theme_star_counter_fragments()
         triangle_text.fadeInWithDisplacement()
         
         //add star_counter in theme menu
-        if(ThemeType == 1){
-            theme_star_counter.image = UIImage(named:"day_mode_star")
-        }else if(ThemeType == 2){
-            theme_star_counter.image = UIImage(named:"night_mode_star")
-            
-        }else if(ThemeType == 3){
-            theme_star_counter.image = UIImage(named:"BW_mode_star")
-        }else if(ThemeType == 5){
-            theme_star_counter.image = UIImage(named:"school_mode_star")
-        }else if(ThemeType == 6){
-            theme_star_counter.image = UIImage(named:"colors_mode_star")
-        }
+        
+        theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
+        
         theme_star_counter.alpha = 1
         
         //theme_star_counter.fadeInWithDisplacement()
@@ -2681,7 +2672,7 @@ self.remove_all_theme_star_counter_fragments()
         if(ThemeType == 1){
             theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
         }else if(ThemeType == 2){
-            theme_star_board.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
+            theme_star_board.textColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 1.0)
         }else if(ThemeType == 3){
             theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
         }else if(ThemeType == 5){

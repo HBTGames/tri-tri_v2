@@ -181,7 +181,7 @@ class MenuViewController: UIViewController {
              highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
             shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
             continue_button.setImage(UIImage(named:"continue"), for: .normal)
-            star_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
+            star_board.textColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 1.0)
             star_counter.image = UIImage(named:"night_mode_star")
             gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
@@ -385,7 +385,7 @@ class MenuViewController: UIViewController {
         let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(50)))
         let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(15), width: pause_screen_x_transform(155), height: pause_screen_y_transform(35)))
         white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
-        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(260), y:pause_screen_y_transform(9),width: pause_screen_x_transform(97), height: pause_screen_y_transform(41)))
+        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(9),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
         theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(285),y:pause_screen_y_transform(14),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
         theme_button_height = (screen_height - white_cover_y)/5.0
         let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
@@ -432,7 +432,7 @@ class MenuViewController: UIViewController {
             self.shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
             self.star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
             self.star_counter.image = UIImage(named:"day_mode_star")
-            self.theme_star_counter.image = UIImage(named:"day_mode_star")
+            self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_day_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
@@ -534,8 +534,8 @@ class MenuViewController: UIViewController {
             self.shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
             self.star_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             self.star_counter.image = UIImage(named:"night_mode_star")
-            self.theme_star_counter.image = UIImage(named:"night_mode_star")
-            self.theme_star_board.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
+            self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
+            self.theme_star_board.textColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
             self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_night_mode"), for: .normal)
@@ -669,7 +669,7 @@ class MenuViewController: UIViewController {
             self.continue_button.setImage(UIImage(named:"BW_continue"), for: .normal)
             self.star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             self.star_counter.image = UIImage(named:"BW_mode_star")
-            self.theme_star_counter.image = UIImage(named:"BW_mode_star")
+            self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_BW_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_B&W"), for: .normal)
@@ -876,7 +876,7 @@ class MenuViewController: UIViewController {
             self.continue_button.setImage(UIImage(named:"school_start-icon"), for: .normal)
             self.star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
             self.star_counter.image = UIImage(named:"school_mode_star")
-            self.theme_star_counter.image = UIImage(named:"school_mode_star")
+            self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_school_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_school"), for: .normal)
@@ -1017,7 +1017,7 @@ class MenuViewController: UIViewController {
             self.continue_button.setImage(UIImage(named:"colors_start"), for: .normal)
             self.star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
             self.star_counter.image = UIImage(named:"colors_mode_star")
-            self.theme_star_counter.image = UIImage(named:"colors_mode_star")
+            self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_color_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_color"), for: .normal)
@@ -1106,19 +1106,8 @@ class MenuViewController: UIViewController {
         triangle_text.fadeInWithDisplacement()
         
         
-        //add star_counter in theme menu
-        if(ThemeType == 1){
-        theme_star_counter.image = UIImage(named:"day_mode_star")
-        }else if(ThemeType == 2){
-            theme_star_counter.image = UIImage(named:"night_mode_star")
-            
-        }else if(ThemeType == 3){
-            theme_star_counter.image = UIImage(named:"BW_mode_star")
-        }else if(ThemeType == 5){
-            theme_star_counter.image = UIImage(named:"school_mode_star")
-        }else if(ThemeType == 6){
-            theme_star_counter.image = UIImage(named:"colors_mode_star")
-        }
+        //set setheme star counter image
+        theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
         theme_star_counter.alpha = 1
         
         //theme_star_counter.fadeInWithDisplacement()
