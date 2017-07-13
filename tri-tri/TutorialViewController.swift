@@ -107,11 +107,14 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         tuto_case_4.frame = CGRect(x:3*mainScrollView.frame.width, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
         
-        tuto_reward.image = UIImage(named:"tuto_reward")
-        tuto_reward.frame = CGRect(x:4*mainScrollView.frame.width, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
+                tuto_reward.frame = CGRect(x:4*mainScrollView.frame.width, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
         
-        if (language != "English"){
+        if (language == "English"){
+            tuto_reward.image = #imageLiteral(resourceName: "tuto_reward")
+    
+        }else
+        {
             tuto_reward.image = #imageLiteral(resourceName: "tuto_reward_chinese")
         }
   
