@@ -689,8 +689,7 @@ class DailyGiftViewController: UIViewController {
                 CATransaction.commit()
                 
                 
-                let date = NSDate()
-                self.defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
+               
             }
             
             
