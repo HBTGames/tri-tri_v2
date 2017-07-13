@@ -106,7 +106,9 @@ class MenuViewController: UIViewController {
         like_button.frame =  CGRect(x: pause_screen_x_transform(Double(like_button.frame.origin.x)), y: pause_screen_y_transform(Double(like_button.frame.origin.y)), width: pause_screen_x_transform(Double(like_button.frame.width)), height: pause_screen_y_transform(Double(like_button.frame.height)))
         continue_button.frame = CGRect(x: pause_screen_x_transform(Double(continue_button.frame.origin.x)), y: pause_screen_y_transform(Double(continue_button.frame.origin.y)), width: pause_screen_x_transform(Double(continue_button.frame.width)), height: pause_screen_y_transform(Double(continue_button.frame.height)))
         star_counter.frame = CGRect(x: pause_screen_x_transform(Double(star_counter.frame.origin.x)), y: pause_screen_y_transform(Double(star_counter.frame.origin.y)), width: pause_screen_x_transform(Double(star_counter.frame.width)), height: pause_screen_y_transform(Double(star_counter.frame.height)))
+        trophy.contentMode = .scaleAspectFit
         trophy.frame = CGRect(x: pause_screen_x_transform(Double(trophy.frame.origin.x)), y: pause_screen_y_transform(Double(trophy.frame.origin.y)), width: pause_screen_x_transform(Double(trophy.frame.width)), height: pause_screen_y_transform(Double(trophy.frame.height)))
+        
         star_board.frame = CGRect(x: pause_screen_x_transform(Double(star_board.frame.origin.x)), y: pause_screen_y_transform(Double(star_board.frame.origin.y)), width: pause_screen_x_transform(Double(star_board.frame.width)), height: pause_screen_y_transform(Double(star_board.frame.height)))
         highest_score.frame = CGRect(x: pause_screen_x_transform(Double(highest_score.frame.origin.x)), y: pause_screen_y_transform(Double(highest_score.frame.origin.y)), width: pause_screen_x_transform(Double(highest_score.frame.width)), height: pause_screen_y_transform(Double(highest_score.frame.height)))
         gift_button.frame = CGRect(x: pause_screen_x_transform(Double(gift_button.frame.origin.x)), y: pause_screen_y_transform(Double(gift_button.frame.origin.y)), width: pause_screen_x_transform(Double(gift_button.frame.width)), height: pause_screen_y_transform(Double(gift_button.frame.height)))
@@ -158,7 +160,7 @@ class MenuViewController: UIViewController {
         
         language_button_image_decider()
         if(ThemeType == 1){
-            trophy.image = UIImage(named:"trophy_new")
+            trophy.image = #imageLiteral(resourceName: "day_mode_trophy")
             view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
             background_image.alpha = 0
             like_button.setBackgroundImage(UIImage(named: "day mode like"), for: .normal)
@@ -171,7 +173,7 @@ class MenuViewController: UIViewController {
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_day_mode"), for: .normal)
         }else if(ThemeType == 2){
-            trophy.image = UIImage(named:"night mode 奖杯")
+            trophy.image = #imageLiteral(resourceName: "night_mode_trophy")
             view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             background_image.alpha = 0
             triangle_title.image = UIImage(named:"night mode triangle title")
@@ -187,7 +189,7 @@ class MenuViewController: UIViewController {
         }else if(ThemeType == 3){
             like_button.setBackgroundImage(UIImage(named: "BW_like"), for: .normal)
             shopping_cart.setImage(UIImage(named:"BW_shopping"), for: .normal)
-            trophy.image = UIImage(named:"BW_trophy")
+            trophy.image = #imageLiteral(resourceName: "BW_mode_trophy")
             highest_score.textColor =  UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
             //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             background_image.alpha = 1
@@ -212,7 +214,7 @@ class MenuViewController: UIViewController {
         }else if(ThemeType == 5){
             like_button.setBackgroundImage(UIImage(named: "school_like-icon"), for: .normal)
             shopping_cart.setImage(UIImage(named:"school_theme-button"), for: .normal)
-            trophy.image = UIImage(named:"school_j-icon")
+            trophy.image = #imageLiteral(resourceName: "school_mode_trophy")
             highest_score.textColor = UIColor(red: 34.0/255, green: 61.0/255, blue: 128.0/255, alpha: 1.0)
             //view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
             background_image.alpha = 1
@@ -228,7 +230,7 @@ class MenuViewController: UIViewController {
 
             like_button.setBackgroundImage(UIImage(named:"colors_like-icon"), for: .normal)
             shopping_cart.setImage(UIImage(named:"colors_theme-button"), for: .normal)
-            trophy.image = UIImage(named:"colors_j-icon")
+            trophy.image = #imageLiteral(resourceName: "colors_mode_trophy")
             highest_score.textColor = UIColor(red: 255.0/255, green: 195.0/255, blue: 1.0/255, alpha: 1.0)
             continue_button.setImage(UIImage(named:"colors_start"), for: .normal)
             //view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
@@ -243,8 +245,7 @@ class MenuViewController: UIViewController {
         }
         triangle_title_image_decider()
       star_counter.sizeToFit()
-      trophy.sizeToFit()
-        star_board_original_width = star_board.frame.width
+     star_board_original_width = star_board.frame.width
         print("star board width is \(star_board.frame.width)")
     //spliti star counter
     split_star_counter()
@@ -418,7 +419,7 @@ class MenuViewController: UIViewController {
             defaults.set(1, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
             self.background_image.alpha = 0
-            self.trophy.image = UIImage(named:"trophy_new")
+            self.trophy.image = #imageLiteral(resourceName: "day_mode_trophy")
             if (self.language == "English"){
                 self.triangle_title.image = UIImage(named: "day mode triangle title")
             }
@@ -517,7 +518,7 @@ class MenuViewController: UIViewController {
             self.button_player.play()
             
             self.ThemeType = 2
-            self.trophy.image = UIImage(named:"night mode 奖杯")
+            self.trophy.image = #imageLiteral(resourceName: "night_mode_trophy")
             self.like_button.setBackgroundImage(UIImage(named: "night mode like button"), for: .normal)
             defaults.set(2, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -655,7 +656,7 @@ class MenuViewController: UIViewController {
            //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             self.background_image.alpha = 1
             self.background_image.image = #imageLiteral(resourceName: "BW_background")
-            self.trophy.image = UIImage(named:"BW_trophy")
+            self.trophy.image = #imageLiteral(resourceName: "BW_mode_trophy")
             if (self.language == "English"){
                 self.triangle_title.image = UIImage(named: "day mode triangle title")
             }
@@ -862,7 +863,7 @@ class MenuViewController: UIViewController {
             //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
             self.background_image.alpha = 1
             self.background_image.image = #imageLiteral(resourceName: "school_background")
-            self.trophy.image = UIImage(named:"school_j-icon")
+            self.trophy.image = #imageLiteral(resourceName: "school_mode_trophy")
             if (self.language == "English"){
                 self.triangle_title.image = UIImage(named: "school_triangle_title")
             }
@@ -1003,7 +1004,7 @@ class MenuViewController: UIViewController {
             //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
             self.background_image.alpha = 1
             self.background_image.image = #imageLiteral(resourceName: "colors_background")
-            self.trophy.image = UIImage(named:"colors_j-icon")
+            self.trophy.image = #imageLiteral(resourceName: "colors_mode_trophy")
             if (self.language == "English"){
                 self.triangle_title.image = UIImage(named: "night mode triangle title")
             }
