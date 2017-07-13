@@ -863,9 +863,9 @@ class DailyGiftViewController: UIViewController {
             //only one area
             if(valid_length == 1){
                 if(degree_angle_init > degree_angle_final){
-                    return 0
-                }else if(degree_angle_init < degree_angle_final){
                     return 1
+                }else if(degree_angle_init < degree_angle_final){
+                    return 0
                 }else{
                     return -1
                 }
