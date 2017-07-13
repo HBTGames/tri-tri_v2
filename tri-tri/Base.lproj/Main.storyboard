@@ -73,12 +73,12 @@
                                     <action selector="like_button_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d9S-0S-qnV"/>
                                 </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="day_mode_star" translatesAutoresizingMaskIntoConstraints="NO" id="s2T-Fz-kax">
-                                <rect key="frame" x="139" y="429" width="97" height="41"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="day_mode_star" translatesAutoresizingMaskIntoConstraints="NO" id="s2T-Fz-kax">
+                                <rect key="frame" x="139" y="428" width="97" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCj-NR-SnI">
-                                <rect key="frame" x="185" y="436" width="42" height="21"/>
+                                <rect key="frame" x="185" y="438" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -1313,7 +1313,7 @@
         <image name="continue" width="350" height="304"/>
         <image name="day mode like" width="198" height="172"/>
         <image name="day mode triangle title" width="360" height="82"/>
-        <image name="day_mode_star" width="97" height="41"/>
+        <image name="day_mode_star" width="451" height="162"/>
         <image name="day_mode_trophy" width="400" height="400"/>
         <image name="day_theme" width="177" height="177"/>
         <image name="gift_day_mode" width="429" height="430"/>
@@ -12088,7 +12088,7 @@ zwAAAAAAAAQBAAAAAAAAAD4AAAAAAAAAAAAAAAAACdLRA
         <image name="棕色tri" width="104" height="93"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jOH-pV-lXR"/>
+        <segue reference="Hkt-ax-Thn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

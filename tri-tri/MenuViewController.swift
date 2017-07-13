@@ -244,7 +244,6 @@ class MenuViewController: UIViewController {
             
         }
         triangle_title_image_decider()
-      star_counter.sizeToFit()
      star_board_original_width = star_board.frame.width
         print("star board width is \(star_board.frame.width)")
     //spliti star counter
