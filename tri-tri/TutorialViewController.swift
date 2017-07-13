@@ -24,7 +24,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     let tuto_case_3 = UIImageView()
     let tuto_case_4 = UIImageView()
     let tuto_reward = UIImageView()
-    let tuto_reward_text = UIImageView()
+
     
     var pageCount = Int()
     
@@ -76,13 +76,14 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         exit_button.setTitle("", for: .normal)
         exit_button.setBackgroundImage(UIImage(named:"tuto_exit"), for: .normal)
         exit_button.frame = CGRect(x:0, y: pause_screen_y_transform(537), width: pause_screen_x_transform(130), height: pause_screen_y_transform(130))
-        tuto_page_con.frame = CGRect(x:pause_screen_x_transform(168), y: pause_screen_y_transform(520), width: pause_screen_x_transform(39), height: 37)
+        tuto_page_con.frame = CGRect(x:pause_screen_x_transform(Double(tuto_page_con.frame.origin.x)), y: pause_screen_y_transform(Double(tuto_page_con.frame.origin.y)), width: pause_screen_x_transform(Double(tuto_page_con.frame.width)), height: pause_screen_y_transform(Double(tuto_page_con.frame.height)))
         self.view.bringSubview(toFront: exit_button)
         
         self.view.bringSubview(toFront: tuto_page_con)
         self.mainScrollView.frame = self.view.frame
-        
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "tuto_bg")!)
+        tuto_bg.frame = self.view.frame
+        tuto_bg.contentMode = .scaleAspectFill
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "tuto_bg")!)
         if (language == "English"){
             tuto_text.image = UIImage(named:"tuto_text")
         } else {
@@ -110,12 +111,10 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         tuto_reward.frame = CGRect(x:4*mainScrollView.frame.width, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
         
-        if (language == "English"){
-            tuto_reward_text.image = UIImage(named:"tuto_reward_text")
-        } else {
-            tuto_reward_text.image = UIImage(named:"tuto_reward_text_chinese")
+        if (language != "English"){
+            tuto_reward.image = #imageLiteral(resourceName: "tuto_reward_chinese")
         }
-        tuto_reward_text.frame = CGRect(x:4*mainScrollView.frame.width, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
+  
         
         mainScrollView.contentSize.width = mainScrollView.frame.width * 5
         mainScrollView.addSubview(tuto_case_1)
@@ -123,7 +122,6 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         mainScrollView.addSubview(tuto_case_3)
         mainScrollView.addSubview(tuto_case_4)
         mainScrollView.addSubview(tuto_reward)
-        mainScrollView.addSubview(tuto_reward_text)
         mainScrollView.addSubview(tuto_text)
         
         pageCount = 0
