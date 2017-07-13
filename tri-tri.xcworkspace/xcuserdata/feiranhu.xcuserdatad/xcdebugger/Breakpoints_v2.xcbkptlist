@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521611536.344212"
+            timestampString = "521612312.327731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13935"
-            endingLineNumber = "13935"
+            startingLineNumber = "13944"
+            endingLineNumber = "13944"
             landmarkName = "nova_boom_animation(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521611536.344212"
+            timestampString = "521612312.327731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12924"
-            endingLineNumber = "12924"
+            startingLineNumber = "12933"
+            endingLineNumber = "12933"
             landmarkName = "open_pack()"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521611536.344212"
+            timestampString = "521612312.327731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13596"
-            endingLineNumber = "13596"
+            startingLineNumber = "13605"
+            endingLineNumber = "13605"
             landmarkName = "tri_image_change(row:col:up:down:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521611536.344212"
+            timestampString = "521612312.327731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13039"
-            endingLineNumber = "13039"
+            startingLineNumber = "13048"
+            endingLineNumber = "13048"
             landmarkName = "GameBoardViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521611536.344212"
+            timestampString = "521612312.327731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13035"
-            endingLineNumber = "13035"
+            startingLineNumber = "13044"
+            endingLineNumber = "13044"
             landmarkName = "open_pack()"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521611536.344212"
+            timestampString = "521612312.327731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14451"
-            endingLineNumber = "14451"
+            startingLineNumber = "14460"
+            endingLineNumber = "14460"
             landmarkName = "nova_boom_animation(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521611536.344212"
+            timestampString = "521612312.327731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14529"
-            endingLineNumber = "14529"
+            startingLineNumber = "14538"
+            endingLineNumber = "14538"
             landmarkName = "nova_breaker(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -848,6 +848,38 @@
             startingLineNumber = "2253"
             endingLineNumber = "2253"
             landmarkName = "circle_pop_up(tool_index:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tri-tri/GameBoardViewController.swift"
+            timestampString = "521612312.327731"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "9100"
+            endingLineNumber = "9100"
+            landmarkName = "auto_random_generator()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tri-tri/GameBoardViewController.swift"
+            timestampString = "521612043.333353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "8972"
+            endingLineNumber = "8972"
+            landmarkName = "auto_random_generator()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
