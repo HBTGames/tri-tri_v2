@@ -181,7 +181,7 @@ class MenuViewController: UIViewController {
              highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
             shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
             continue_button.setImage(UIImage(named:"continue"), for: .normal)
-            star_board.textColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 1.0)
+            star_board.textColor = UIColor.white
             star_counter.image = UIImage(named:"night_mode_star")
             gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
@@ -535,7 +535,7 @@ class MenuViewController: UIViewController {
             self.star_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             self.star_counter.image = UIImage(named:"night_mode_star")
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
-            self.theme_star_board.textColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 1.0)
+            self.theme_star_board.textColor = UIColor.black
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
             self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_night_mode"), for: .normal)
@@ -1121,7 +1121,7 @@ class MenuViewController: UIViewController {
         if(ThemeType == 1){
             theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
         }else if(ThemeType == 2){
-            theme_star_board.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
+            theme_star_board.textColor = UIColor.black
         }else if(ThemeType == 3){
             theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
         }else if(ThemeType == 5){

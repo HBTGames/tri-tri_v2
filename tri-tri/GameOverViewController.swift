@@ -503,7 +503,7 @@ class GameOverViewController: UIViewController {
             self.share_button.setImage(UIImage(named:"link"), for: .normal)
             theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
-            self.theme_star_board.textColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 1.0)
+            self.theme_star_board.textColor = UIColor.black
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
             self.BW_theme_button.fadeOut()
@@ -1036,7 +1036,7 @@ class GameOverViewController: UIViewController {
         if(ThemeType == 1){
             theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
         }else if(ThemeType == 2){
-            theme_star_board.textColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 1.0)
+            theme_star_board.textColor = UIColor.black
         }else if(ThemeType == 3){
             theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
         }else if(ThemeType == 5){
