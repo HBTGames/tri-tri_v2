@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1276"
-            endingLineNumber = "1276"
+            startingLineNumber = "1277"
+            endingLineNumber = "1277"
             landmarkName = "panGestureRecognizerAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1851"
-            endingLineNumber = "1851"
+            startingLineNumber = "1852"
+            endingLineNumber = "1852"
             landmarkName = "language_button_image_decider()"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2038"
-            endingLineNumber = "2038"
+            startingLineNumber = "2039"
+            endingLineNumber = "2039"
             landmarkName = "tool_selected_scene()"
             landmarkType = "7">
             <Locations>
@@ -394,71 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2114"
-            endingLineNumber = "2114"
-            landmarkName = "tool_selected_scene()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2598"
-            endingLineNumber = "2598"
-            landmarkName = "combine_total_price_fragments()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2113"
-            endingLineNumber = "2113"
-            landmarkName = "tool_selected_scene()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2591"
-            endingLineNumber = "2591"
-            landmarkName = "combine_total_price_fragments()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2115"
@@ -474,11 +410,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2610"
-            endingLineNumber = "2610"
+            startingLineNumber = "2606"
+            endingLineNumber = "2606"
+            landmarkName = "combine_total_price_fragments()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tri-tri/MenuViewController.swift"
+            timestampString = "521724275.579002"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2114"
+            endingLineNumber = "2114"
+            landmarkName = "tool_selected_scene()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tri-tri/MenuViewController.swift"
+            timestampString = "521724275.579002"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2599"
+            endingLineNumber = "2599"
+            landmarkName = "combine_total_price_fragments()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tri-tri/MenuViewController.swift"
+            timestampString = "521724275.579002"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2116"
+            endingLineNumber = "2116"
+            landmarkName = "tool_selected_scene()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tri-tri/MenuViewController.swift"
+            timestampString = "521724275.579002"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2618"
+            endingLineNumber = "2618"
             landmarkName = "MenuViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1912"
-            endingLineNumber = "1912"
+            startingLineNumber = "1913"
+            endingLineNumber = "1913"
             landmarkName = "tool_selected_scene()"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1915"
-            endingLineNumber = "1915"
+            startingLineNumber = "1916"
+            endingLineNumber = "1916"
             landmarkName = "tool_selected_scene()"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2127"
-            endingLineNumber = "2127"
+            startingLineNumber = "2128"
+            endingLineNumber = "2128"
             landmarkName = "tool_selected_scene()"
             landmarkType = "7">
             <Locations>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2604"
-            endingLineNumber = "2604"
+            startingLineNumber = "2612"
+            endingLineNumber = "2612"
             landmarkName = "combine_total_price_fragments()"
             landmarkType = "7">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2541"
-            endingLineNumber = "2541"
+            startingLineNumber = "2549"
+            endingLineNumber = "2549"
             landmarkName = "remove_all_total_price_fragments()"
             landmarkType = "7">
          </BreakpointContent>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2520"
-            endingLineNumber = "2520"
+            startingLineNumber = "2528"
+            endingLineNumber = "2528"
             landmarkName = "split_total_price_counter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2517"
-            endingLineNumber = "2517"
+            startingLineNumber = "2525"
+            endingLineNumber = "2525"
             landmarkName = "split_total_price_counter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2518"
-            endingLineNumber = "2518"
+            startingLineNumber = "2526"
+            endingLineNumber = "2526"
             landmarkName = "split_total_price_counter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2685"
-            endingLineNumber = "2685"
+            startingLineNumber = "2693"
+            endingLineNumber = "2693"
             landmarkName = "generateImageFragmentsFrom(_:with:in:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2682"
-            endingLineNumber = "2682"
+            startingLineNumber = "2690"
+            endingLineNumber = "2690"
             landmarkName = "generateImageFragmentsFrom(_:with:in:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2612"
-            endingLineNumber = "2612"
+            startingLineNumber = "2620"
+            endingLineNumber = "2620"
             landmarkName = "MenuViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2618"
-            endingLineNumber = "2618"
+            startingLineNumber = "2626"
+            endingLineNumber = "2626"
             landmarkName = "like_button_action(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2617"
-            endingLineNumber = "2617"
+            startingLineNumber = "2625"
+            endingLineNumber = "2625"
             landmarkName = "like_button_action(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -730,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2624"
-            endingLineNumber = "2624"
+            startingLineNumber = "2632"
+            endingLineNumber = "2632"
             landmarkName = "like_button_action(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2160"
-            endingLineNumber = "2160"
+            startingLineNumber = "2161"
+            endingLineNumber = "2161"
             landmarkName = "tool_selected_scene()"
             landmarkType = "7">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2552"
-            endingLineNumber = "2552"
+            startingLineNumber = "2560"
+            endingLineNumber = "2560"
             landmarkName = "update_total_star_length_according_to_string_length()"
             landmarkType = "7">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2548"
-            endingLineNumber = "2548"
+            startingLineNumber = "2556"
+            endingLineNumber = "2556"
             landmarkName = "update_total_star_length_according_to_string_length()"
             landmarkType = "7">
          </BreakpointContent>
@@ -794,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2563"
-            endingLineNumber = "2563"
+            startingLineNumber = "2571"
+            endingLineNumber = "2571"
             landmarkName = "update_total_star_length_according_to_string_length()"
             landmarkType = "7">
          </BreakpointContent>
@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2214"
-            endingLineNumber = "2214"
+            startingLineNumber = "2215"
+            endingLineNumber = "2215"
             landmarkName = "tool_selected_scene()"
             landmarkType = "7">
          </BreakpointContent>
@@ -826,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2239"
-            endingLineNumber = "2239"
+            startingLineNumber = "2240"
+            endingLineNumber = "2240"
             landmarkName = "circle_pop_up(tool_index:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -842,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2265"
-            endingLineNumber = "2265"
+            startingLineNumber = "2266"
+            endingLineNumber = "2266"
             landmarkName = "circle_pop_up(tool_index:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -890,11 +890,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/MenuViewController.swift"
-            timestampString = "521723333.014517"
+            timestampString = "521724275.579002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2731"
-            endingLineNumber = "2731"
+            startingLineNumber = "2739"
+            endingLineNumber = "2739"
             landmarkName = "twoPointBounceOut(translation1_y:translation2_y:final_completetion:)"
             landmarkType = "7">
          </BreakpointContent>
