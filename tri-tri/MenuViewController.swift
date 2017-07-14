@@ -1088,7 +1088,7 @@ class MenuViewController: UIViewController {
         
         white_cover.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
         white_cover.alpha = 0
-        theme_menu.addSubview(white_cover)
+        self.view.addSubview(white_cover)
         white_cover.fadeInWithDisplacement()
         
         
@@ -1104,7 +1104,7 @@ class MenuViewController: UIViewController {
         
         //triangle_text.sizeToFit()
         triangle_text.alpha = 0
-        theme_menu.addSubview(triangle_text)
+        self.view.addSubview(triangle_text)
         triangle_text.fadeInWithDisplacement()
         
         
@@ -1133,7 +1133,7 @@ class MenuViewController: UIViewController {
         }
         theme_star_board_width = theme_star_board.frame.width
         theme_star_board.alpha = 0
-        theme_menu.addSubview(theme_star_board)
+        self.view.addSubview(theme_star_board)
         theme_star_board.fadeInWithDisplacement()
         
         split_theme_star_counter()
@@ -1189,7 +1189,7 @@ class MenuViewController: UIViewController {
         })
         
         return_button.alpha = 0
-        theme_menu.addSubview(return_button)
+        self.view.addSubview(return_button)
         return_button.fadeInWithDisplacement()
         
         
@@ -2432,10 +2432,10 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         theme_star_counter_fragments[3].frame.origin.x = theme_star_counter_fragments[2].frame.origin.x + theme_star_counter_fragments[2].frame.width
         //print("current_star_total_fragments 0 width is \(current_star_total_fragments[0].frame.width)")
         //print("0 x is \(current_star_total_fragments[0].frame.origin.x)")
-        theme_menu.addSubview(theme_star_counter_fragments[0])
-        theme_menu.addSubview(theme_star_counter_fragments[1])
-        theme_menu.addSubview(theme_star_counter_fragments[2])
-        theme_menu.addSubview(theme_star_counter_fragments[3])
+        self.view.addSubview(theme_star_counter_fragments[0])
+        self.view.addSubview(theme_star_counter_fragments[1])
+        self.view.addSubview(theme_star_counter_fragments[2])
+        self.view.addSubview(theme_star_counter_fragments[3])
         theme_star_counter_fragments[0].alpha = 0
         theme_star_counter_fragments[1].alpha = 0
         theme_star_counter_fragments[2].alpha = 0
