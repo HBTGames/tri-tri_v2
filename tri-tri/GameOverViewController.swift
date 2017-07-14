@@ -273,8 +273,8 @@ class GameOverViewController: UIViewController {
 
         
         //add pangesture
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
-        self.view.addGestureRecognizer(panGestureRecognizer)
+        //et panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
+        //self.view.addGestureRecognizer(panGestureRecognizer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -355,13 +355,14 @@ class GameOverViewController: UIViewController {
     var white_cover_y = CGFloat(0)
     var theme_button_height = CGFloat(0)
     
+    var theme_menu = UIScrollView()
     
     
     
     
     
     @IBAction func theme_menu_action(_ sender: UIButton) {
-        let theme_menu: UIView = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
+        theme_menu = UIScrollView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
         theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
         theme_menu.alpha = 0
         theme_menu.tag = 100
@@ -412,7 +413,7 @@ class GameOverViewController: UIViewController {
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
             self.share_button.setImage(UIImage(named:"link"), for: .normal)
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
             self.day_theme_button.fadeOut()
@@ -424,7 +425,7 @@ class GameOverViewController: UIViewController {
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
             
             self.remove_all_theme_star_counter_fragments()
                 
@@ -443,7 +444,7 @@ class GameOverViewController: UIViewController {
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
             }else{
@@ -457,10 +458,10 @@ class GameOverViewController: UIViewController {
             }
         })
         
-        self.view.addSubview(day_theme_button)
+        theme_menu.addSubview(day_theme_button)
         day_theme_button.fadeInWithDisplacement()
         
-        self.view.addSubview(day_apply_button)
+        theme_menu.addSubview(day_apply_button)
         day_apply_button.fadeInWithDisplacement()
         
         
@@ -501,7 +502,7 @@ class GameOverViewController: UIViewController {
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
             self.share_button.setImage(UIImage(named:"link"), for: .normal)
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor.black
             self.day_theme_button.fadeOut()
@@ -513,7 +514,7 @@ class GameOverViewController: UIViewController {
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
             self.remove_all_theme_star_counter_fragments()
                 
                 self.day_apply_button.removeFromSuperview()
@@ -531,7 +532,7 @@ class GameOverViewController: UIViewController {
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
             }else{
@@ -545,10 +546,10 @@ class GameOverViewController: UIViewController {
    
             }
         })
-        self.view.addSubview(night_theme_button)
+        theme_menu.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
         
-        self.view.addSubview(night_apply_button)
+        theme_menu.addSubview(night_apply_button)
         night_apply_button.fadeInWithDisplacement()
         
         
@@ -625,7 +626,7 @@ class GameOverViewController: UIViewController {
                 //self.trophy.image = UIImage(named:"trophy_new")
                 //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
                 // self.gameover_title.image = UIImage(named:"day mode gameover title")
-                theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+                self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
                 self.remove_all_theme_star_counter_fragments()
                 self.day_theme_button.fadeOut()
                 self.night_theme_button.fadeOut()
@@ -636,7 +637,7 @@ class GameOverViewController: UIViewController {
                 triangle_text.fadeOut()
                 return_button.fadeOut()
                 white_cover.fadeOut()
-                theme_menu.fadeOut()
+                self.theme_menu.fadeOut()
                 
                 self.day_apply_button.removeFromSuperview()
                 self.night_apply_button.removeFromSuperview()
@@ -653,7 +654,7 @@ class GameOverViewController: UIViewController {
                 triangle_text.removeFromSuperview()
                 return_button.removeFromSuperview()
                 white_cover.removeFromSuperview()
-                theme_menu.removeFromSuperview()
+                self.theme_menu.removeFromSuperview()
                 self.theme_star_counter.removeFromSuperview()
                 self.theme_star_board.removeFromSuperview()
             }else{
@@ -676,9 +677,9 @@ class GameOverViewController: UIViewController {
             
             
         })
-        self.view.addSubview(BW_theme_button)
+        theme_menu.addSubview(BW_theme_button)
         BW_theme_button.fadeInWithDisplacement()
-        self.view.addSubview(BW_apply_button)
+        theme_menu.addSubview(BW_apply_button)
         BW_apply_button.fadeInWithDisplacement()
         
         
@@ -817,7 +818,7 @@ class GameOverViewController: UIViewController {
                 self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
                 self.theme_star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
                 
-                theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+                self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
                 
                 self.day_theme_button.fadeOut()
                 self.night_theme_button.fadeOut()
@@ -828,7 +829,7 @@ class GameOverViewController: UIViewController {
                 triangle_text.fadeOut()
                 return_button.fadeOut()
                 white_cover.fadeOut()
-                theme_menu.fadeOut()
+                self.theme_menu.fadeOut()
                 self.remove_all_theme_star_counter_fragments()
                 self.day_apply_button.removeFromSuperview()
                 self.night_apply_button.removeFromSuperview()
@@ -845,7 +846,7 @@ class GameOverViewController: UIViewController {
                 triangle_text.removeFromSuperview()
                 return_button.removeFromSuperview()
                 white_cover.removeFromSuperview()
-                theme_menu.removeFromSuperview()
+                self.theme_menu.removeFromSuperview()
                 self.theme_star_counter.removeFromSuperview()
                 self.theme_star_board.removeFromSuperview()
                 
@@ -859,10 +860,10 @@ class GameOverViewController: UIViewController {
                 self.wrong_player.play()
             }
         })
-        self.view.addSubview(school_theme_button)
+        theme_menu.addSubview(school_theme_button)
         school_theme_button.fadeInWithDisplacement()
         
-        self.view.addSubview(school_apply_button)
+        theme_menu.addSubview(school_apply_button)
         school_apply_button.fadeInWithDisplacement()
         
         colors_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: school_theme_button.frame.origin.y + school_theme_button.frame.height, width: screen_width, height: theme_button_height))
@@ -942,7 +943,7 @@ class GameOverViewController: UIViewController {
                 //self.trophy.image = UIImage(named:"trophy_new")
                 //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
                 // self.gameover_title.image = UIImage(named:"day mode gameover title")
-                theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+                self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
                 self.remove_all_theme_star_counter_fragments()
                 self.day_theme_button.fadeOut()
                 self.night_theme_button.fadeOut()
@@ -953,7 +954,7 @@ class GameOverViewController: UIViewController {
                 triangle_text.fadeOut()
                 return_button.fadeOut()
                 white_cover.fadeOut()
-                theme_menu.fadeOut()
+                self.theme_menu.fadeOut()
                 
                 self.day_apply_button.removeFromSuperview()
                 self.night_apply_button.removeFromSuperview()
@@ -970,7 +971,7 @@ class GameOverViewController: UIViewController {
                 triangle_text.removeFromSuperview()
                 return_button.removeFromSuperview()
                 white_cover.removeFromSuperview()
-                theme_menu.removeFromSuperview()
+                self.theme_menu.removeFromSuperview()
                 self.theme_star_counter.removeFromSuperview()
                 self.theme_star_board.removeFromSuperview()
             }else{
@@ -991,17 +992,17 @@ class GameOverViewController: UIViewController {
             
         })
         
-        self.view.addSubview(colors_theme_button)
+        theme_menu.addSubview(colors_theme_button)
         colors_theme_button.fadeInWithDisplacement()
         
-        self.view.addSubview(colors_apply_button)
+        theme_menu.addSubview(colors_apply_button)
         colors_apply_button.fadeInWithDisplacement()
         
         //add white to 遮挡
         
         white_cover.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
         white_cover.alpha = 0
-        self.view.addSubview(white_cover)
+        theme_menu.addSubview(white_cover)
         white_cover.fadeInWithDisplacement()
         
         
@@ -1017,7 +1018,7 @@ class GameOverViewController: UIViewController {
         triangle_text.contentMode = .scaleAspectFit
         //triangle_text.sizeToFit()
         triangle_text.alpha = 0
-        self.view.addSubview(triangle_text)
+        theme_menu.addSubview(triangle_text)
         triangle_text.fadeInWithDisplacement()
         
         //add star_counter in theme menu
@@ -1045,13 +1046,13 @@ class GameOverViewController: UIViewController {
             theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
         }
         theme_star_board.alpha = 0
-        self.view.addSubview(theme_star_board)
+        theme_menu.addSubview(theme_star_board)
         theme_star_board.fadeInWithDisplacement()
         
         theme_star_board_width = theme_star_board.frame.width
         split_theme_star_counter()
         update_theme_star_length_according_to_string_length()
-        self.view.addSubview(theme_star_counter)
+        theme_menu.addSubview(theme_star_counter)
         theme_star_counter.alpha = 0
         
         //add  return button
@@ -1067,7 +1068,7 @@ class GameOverViewController: UIViewController {
                 
             }
             self.button_player.play()
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
@@ -1078,7 +1079,7 @@ class GameOverViewController: UIViewController {
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
             
             self.remove_all_theme_star_counter_fragments()
             self.day_apply_button.removeFromSuperview()
@@ -1097,15 +1098,16 @@ class GameOverViewController: UIViewController {
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
         })
         
         return_button.alpha = 0
-        self.view.addSubview(return_button)
+       theme_menu.addSubview(return_button)
         return_button.fadeInWithDisplacement()
-    
+        theme_menu.contentSize.height = colors_theme_button.frame.origin.y + theme_button_height
+        theme_menu.showsVerticalScrollIndicator = false
     }
     
     
@@ -1242,10 +1244,10 @@ class GameOverViewController: UIViewController {
         theme_star_counter_fragments[3].frame.origin.x = theme_star_counter_fragments[2].frame.origin.x + theme_star_counter_fragments[2].frame.width
         //print("current_star_total_fragments 0 width is \(current_star_total_fragments[0].frame.width)")
         //print("0 x is \(current_star_total_fragments[0].frame.origin.x)")
-        self.view.addSubview(theme_star_counter_fragments[0])
-        self.view.addSubview(theme_star_counter_fragments[1])
-        self.view.addSubview(theme_star_counter_fragments[2])
-        self.view.addSubview(theme_star_counter_fragments[3])
+        theme_menu.addSubview(theme_star_counter_fragments[0])
+        theme_menu.addSubview(theme_star_counter_fragments[1])
+        theme_menu.addSubview(theme_star_counter_fragments[2])
+        theme_menu.addSubview(theme_star_counter_fragments[3])
         theme_star_counter_fragments[0].alpha = 0
         theme_star_counter_fragments[1].alpha = 0
         theme_star_counter_fragments[2].alpha = 0

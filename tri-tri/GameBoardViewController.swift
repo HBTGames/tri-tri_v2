@@ -1880,10 +1880,10 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     
     
     
-    
+    var theme_menu = UIScrollView()
     func theme_menu_action() -> Void {
         in_theme_menu = true
-        let theme_menu: UIView = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
+        theme_menu = UIScrollView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
         theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
         theme_menu.alpha = 0
         theme_menu.tag = 100
@@ -1946,7 +1946,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.in_theme_menu = false
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
              self.starBoard.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
@@ -1971,7 +1971,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
            
                 self.day_apply_button.removeFromSuperview()
                 self.night_apply_button.removeFromSuperview()
@@ -1989,7 +1989,7 @@ self.remove_all_theme_star_counter_fragments()
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
             }else{
@@ -2003,9 +2003,9 @@ self.remove_all_theme_star_counter_fragments()
             }
         })
         
-        self.view.addSubview(day_theme_button)
+        theme_menu.addSubview(day_theme_button)
         day_theme_button.fadeInWithDisplacement()
-        self.view.addSubview(day_apply_button)
+        theme_menu.addSubview(day_apply_button)
         day_apply_button.fadeInWithDisplacement()
 
         
@@ -2058,7 +2058,7 @@ self.remove_all_theme_star_counter_fragments()
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.in_theme_menu = false
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
             self.starBoard.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
@@ -2073,7 +2073,7 @@ self.remove_all_theme_star_counter_fragments()
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
                 self.remove_all_fragments()
                self.split_star_counter()
                 self.reorder_star_counter()
@@ -2094,7 +2094,7 @@ self.remove_all_theme_star_counter_fragments()
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
             }else{
@@ -2107,9 +2107,9 @@ self.remove_all_theme_star_counter_fragments()
                 self.wrong_player.play()
             }
         })
-        self.view.addSubview(night_theme_button)
+        theme_menu.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
-        self.view.addSubview(night_apply_button)
+        theme_menu.addSubview(night_apply_button)
         night_apply_button.fadeInWithDisplacement()
         
         BW_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: night_theme_button.frame.origin.y + night_theme_button.frame.height, width: screen_width, height: theme_button_height))
@@ -2202,7 +2202,7 @@ self.remove_all_theme_star_counter_fragments()
                 self.change_current_shapes_according_to_theme()
                 self.change_current_board_according_to_theme()
                 self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
-                theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+                self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
                 self.in_theme_menu = false
                 self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
                 self.starBoard.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
@@ -2218,7 +2218,7 @@ self.remove_all_theme_star_counter_fragments()
                 triangle_text.fadeOut()
                 return_button.fadeOut()
                 white_cover.fadeOut()
-                theme_menu.fadeOut()
+                self.theme_menu.fadeOut()
                
                 self.day_apply_button.removeFromSuperview()
                 self.night_apply_button.removeFromSuperview()
@@ -2235,7 +2235,7 @@ self.remove_all_theme_star_counter_fragments()
                 triangle_text.removeFromSuperview()
                 return_button.removeFromSuperview()
                 white_cover.removeFromSuperview()
-                theme_menu.removeFromSuperview()
+                self.theme_menu.removeFromSuperview()
                 self.theme_star_counter.removeFromSuperview()
                 self.theme_star_board.removeFromSuperview()
     
@@ -2260,10 +2260,10 @@ self.remove_all_theme_star_counter_fragments()
             
             
         })
-        self.view.addSubview(BW_theme_button)
+        theme_menu.addSubview(BW_theme_button)
         BW_theme_button.fadeInWithDisplacement()
         
-        self.view.addSubview(BW_apply_button)
+        theme_menu.addSubview(BW_apply_button)
         BW_apply_button.fadeInWithDisplacement()
         
         /**chaos_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
@@ -2438,7 +2438,7 @@ self.remove_all_theme_star_counter_fragments()
 
             
             self.starBoard.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
             self.in_theme_menu = false
@@ -2451,7 +2451,7 @@ self.remove_all_theme_star_counter_fragments()
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
                 self.day_apply_button.removeFromSuperview()
                 self.night_apply_button.removeFromSuperview()
                 self.BW_apply_button.removeFromSuperview()
@@ -2468,7 +2468,7 @@ self.remove_all_theme_star_counter_fragments()
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
             }else{
@@ -2482,10 +2482,10 @@ self.remove_all_theme_star_counter_fragments()
             }
 
         })
-        self.view.addSubview(school_theme_button)
+        theme_menu.addSubview(school_theme_button)
         school_theme_button.fadeInWithDisplacement()
         
-        self.view.addSubview(school_apply_button)
+        theme_menu.addSubview(school_apply_button)
         school_apply_button.fadeInWithDisplacement()
         
         colors_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: school_theme_button.frame.origin.y + school_theme_button.frame.height, width: screen_width, height: theme_button_height))
@@ -2576,7 +2576,7 @@ self.remove_all_theme_star_counter_fragments()
             self.change_current_shapes_according_to_theme()
             self.change_current_board_according_to_theme()
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.in_theme_menu = false
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
             self.starBoard.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
@@ -2593,7 +2593,7 @@ self.remove_all_theme_star_counter_fragments()
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
                 self.remove_all_fragments()
                 self.split_star_counter()
                 self.reorder_star_counter()
@@ -2614,7 +2614,7 @@ self.remove_all_theme_star_counter_fragments()
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
             }else{
@@ -2636,17 +2636,17 @@ self.remove_all_theme_star_counter_fragments()
             
         })
 
-        self.view.addSubview(colors_theme_button)
+        theme_menu.addSubview(colors_theme_button)
         colors_theme_button.fadeInWithDisplacement()
         
-        self.view.addSubview(colors_apply_button)
+        theme_menu.addSubview(colors_apply_button)
         colors_apply_button.fadeInWithDisplacement()
         
         //add white to 遮挡
         
         white_cover.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
         white_cover.alpha = 0
-        self.view.addSubview(white_cover)
+        theme_menu.addSubview(white_cover)
         white_cover.fadeInWithDisplacement()
         
         
@@ -2663,7 +2663,7 @@ self.remove_all_theme_star_counter_fragments()
         triangle_text.contentMode = .scaleAspectFit
         //triangle_text.sizeToFit()
         triangle_text.alpha = 0
-        self.view.addSubview(triangle_text)
+        theme_menu.addSubview(triangle_text)
         triangle_text.fadeInWithDisplacement()
         
         //add star_counter in theme menu
@@ -2692,12 +2692,12 @@ self.remove_all_theme_star_counter_fragments()
             theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
         }
         theme_star_board.alpha = 0
-        self.view.addSubview(theme_star_board)
+       theme_menu.addSubview(theme_star_board)
         theme_star_board.fadeInWithDisplacement()
         theme_star_board_width = theme_star_board.frame.width
         split_theme_star_counter()
         update_theme_star_length_according_to_string_length()
-        self.view.addSubview(theme_star_counter)
+        theme_menu.addSubview(theme_star_counter)
         theme_star_counter.alpha = 0
         
         //add  return button
@@ -2716,7 +2716,7 @@ self.remove_all_theme_star_counter_fragments()
             
             self.button_player.play()
             
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
@@ -2727,7 +2727,7 @@ self.remove_all_theme_star_counter_fragments()
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
             
             self.day_apply_button.removeFromSuperview()
             self.night_apply_button.removeFromSuperview()
@@ -2745,16 +2745,19 @@ self.remove_all_theme_star_counter_fragments()
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
 
         })
         
         return_button.alpha = 0
-        self.view.addSubview(return_button)
+        theme_menu.addSubview(return_button)
         
         return_button.fadeInWithDisplacement()
+        
+        theme_menu.contentSize.height = colors_theme_button.frame.origin.y + theme_button_height
+        theme_menu.showsVerticalScrollIndicator = false
     }
 
     
@@ -3137,7 +3140,7 @@ self.remove_all_theme_star_counter_fragments()
             tool_quantity_array[2] += 1
             defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
         }
-        else if(in_theme_menu){
+        /**else if(in_theme_menu){
             let transition0 = gesture.translation(in: day_theme_button)
             //上1/3和下1/3的空间
             if(day_theme_button.frame.origin.y < (white_cover_y+day_theme_button.frame.height/3.5) && colors_theme_button.frame.origin.y > pause_screen_y_transform(493+144) - colors_theme_button.frame.height/3 - colors_theme_button.frame.height){
@@ -3203,7 +3206,7 @@ self.remove_all_theme_star_counter_fragments()
             
             
             
-        }
+        }**/
             
             
             
@@ -16665,10 +16668,10 @@ func trinity_animation() -> Void {
         theme_star_counter_fragments[3].frame.origin.x = theme_star_counter_fragments[2].frame.origin.x + theme_star_counter_fragments[2].frame.width
         //print("current_star_total_fragments 0 width is \(current_star_total_fragments[0].frame.width)")
         //print("0 x is \(current_star_total_fragments[0].frame.origin.x)")
-        self.view.addSubview(theme_star_counter_fragments[0])
-        self.view.addSubview(theme_star_counter_fragments[1])
-        self.view.addSubview(theme_star_counter_fragments[2])
-        self.view.addSubview(theme_star_counter_fragments[3])
+        theme_menu.addSubview(theme_star_counter_fragments[0])
+        theme_menu.addSubview(theme_star_counter_fragments[1])
+        theme_menu.addSubview(theme_star_counter_fragments[2])
+        theme_menu.addSubview(theme_star_counter_fragments[3])
         theme_star_counter_fragments[0].alpha = 0
         theme_star_counter_fragments[1].alpha = 0
         theme_star_counter_fragments[2].alpha = 0
