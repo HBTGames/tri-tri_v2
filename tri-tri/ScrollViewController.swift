@@ -26,9 +26,10 @@ class ScrollViewController: UIViewController {
         imageView.frame = CGRect(x: 0, y: y_position, width: self.view.frame.width, height: theme_height)
         mainScrollView.contentSize.height = theme_height*CGFloat(i+1)
         mainScrollView.addSubview(imageView)
-            
-        }
+        
+           
         // Do any additional setup after loading the view.
+    }
     }
 
     override func didReceiveMemoryWarning() {
