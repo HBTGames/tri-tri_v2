@@ -1892,11 +1892,11 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         self.view.addSubview(theme_menu)
         theme_menu.fadeIn()
         
-        let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(50)))
+        let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(53)))
         let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(15), width: pause_screen_x_transform(155), height: pause_screen_y_transform(35)))
         white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
-        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(15),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
-        theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(285),y:pause_screen_y_transform(18),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
+        theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(12),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
+        theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(285),y:pause_screen_y_transform(15),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
         theme_button_height = (screen_height - white_cover_y)/3.0
         let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
@@ -2646,7 +2646,7 @@ self.remove_all_theme_star_counter_fragments()
         
         white_cover.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
         white_cover.alpha = 0
-        theme_menu.addSubview(white_cover)
+        self.view.addSubview(white_cover)
         white_cover.fadeInWithDisplacement()
         
         
@@ -2663,7 +2663,7 @@ self.remove_all_theme_star_counter_fragments()
         triangle_text.contentMode = .scaleAspectFit
         //triangle_text.sizeToFit()
         triangle_text.alpha = 0
-        theme_menu.addSubview(triangle_text)
+        self.view.addSubview(triangle_text)
         triangle_text.fadeInWithDisplacement()
         
         //add star_counter in theme menu
@@ -2692,12 +2692,12 @@ self.remove_all_theme_star_counter_fragments()
             theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
         }
         theme_star_board.alpha = 0
-       theme_menu.addSubview(theme_star_board)
+       self.view.addSubview(theme_star_board)
         theme_star_board.fadeInWithDisplacement()
         theme_star_board_width = theme_star_board.frame.width
         split_theme_star_counter()
         update_theme_star_length_according_to_string_length()
-        theme_menu.addSubview(theme_star_counter)
+        self.view.addSubview(theme_star_counter)
         theme_star_counter.alpha = 0
         
         //add  return button
@@ -2752,7 +2752,7 @@ self.remove_all_theme_star_counter_fragments()
         })
         
         return_button.alpha = 0
-        theme_menu.addSubview(return_button)
+        self.view.addSubview(return_button)
         
         return_button.fadeInWithDisplacement()
         
@@ -16668,10 +16668,10 @@ func trinity_animation() -> Void {
         theme_star_counter_fragments[3].frame.origin.x = theme_star_counter_fragments[2].frame.origin.x + theme_star_counter_fragments[2].frame.width
         //print("current_star_total_fragments 0 width is \(current_star_total_fragments[0].frame.width)")
         //print("0 x is \(current_star_total_fragments[0].frame.origin.x)")
-        theme_menu.addSubview(theme_star_counter_fragments[0])
-        theme_menu.addSubview(theme_star_counter_fragments[1])
-        theme_menu.addSubview(theme_star_counter_fragments[2])
-        theme_menu.addSubview(theme_star_counter_fragments[3])
+        self.view.addSubview(theme_star_counter_fragments[0])
+        self.view.addSubview(theme_star_counter_fragments[1])
+        self.view.addSubview(theme_star_counter_fragments[2])
+        self.view.addSubview(theme_star_counter_fragments[3])
         theme_star_counter_fragments[0].alpha = 0
         theme_star_counter_fragments[1].alpha = 0
         theme_star_counter_fragments[2].alpha = 0
