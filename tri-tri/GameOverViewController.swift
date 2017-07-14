@@ -22,6 +22,8 @@ class GameOverViewController: UIViewController {
     var wrong_player = AVAudioPlayer()
     var cash_player = AVAudioPlayer()
     
+    var in_theme_menu = false
+    
     var language = String()
     let home_pic = UIImage(named:"home")
     let night_home_pic = UIImage(named:"night mode home")
@@ -357,11 +359,13 @@ class GameOverViewController: UIViewController {
     
     var theme_menu = UIScrollView()
     
-    
+    var white_cover = UIView()
     
     
     
     @IBAction func theme_menu_action(_ sender: UIButton) {
+        if(!in_theme_menu){
+            in_theme_menu = true
         theme_menu = UIScrollView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
         theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
         theme_menu.alpha = 0
@@ -370,7 +374,7 @@ class GameOverViewController: UIViewController {
         self.view.isUserInteractionEnabled = true
         self.view.addSubview(theme_menu)
         theme_menu.fadeIn()
-        let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(53)))
+        white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(53)))
         let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(15), width: pause_screen_x_transform(155), height: pause_screen_y_transform(35)))
         white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
         theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(12),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
@@ -413,40 +417,34 @@ class GameOverViewController: UIViewController {
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
             self.share_button.setImage(UIImage(named:"link"), for: .normal)
-            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
-            self.day_theme_button.fadeOut()
-            self.night_theme_button.fadeOut()
-            self.BW_theme_button.fadeOut()
-            //self.chaos_theme_button.fadeOut()
-            self.school_theme_button.fadeOut()
-            self.colors_theme_button.fadeOut()
-            triangle_text.fadeOut()
-            return_button.fadeOut()
-            white_cover.fadeOut()
-            self.theme_menu.fadeOut()
-            
-            self.remove_all_theme_star_counter_fragments()
-                
-                self.day_apply_button.removeFromSuperview()
-                self.night_apply_button.removeFromSuperview()
-                self.BW_apply_button.removeFromSuperview()
-                self.school_apply_button.removeFromSuperview()
-                self.colors_apply_button.removeFromSuperview()
-            
-            self.day_theme_button.removeFromSuperview()
-            self.night_theme_button.removeFromSuperview()
-            self.BW_theme_button.removeFromSuperview()
-            //self.chaos_theme_button.removeFromSuperview()
-            self.school_theme_button.removeFromSuperview()
-            self.colors_theme_button.removeFromSuperview()
-            triangle_text.removeFromSuperview()
-            return_button.removeFromSuperview()
-            white_cover.removeFromSuperview()
-            self.theme_menu.removeFromSuperview()
-            self.theme_star_counter.removeFromSuperview()
-            self.theme_star_board.removeFromSuperview()
+  
+                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                    
+                    self.day_apply_button.removeFromSuperview()
+                    self.night_apply_button.removeFromSuperview()
+                    self.BW_apply_button.removeFromSuperview()
+                    self.school_apply_button.removeFromSuperview()
+                    self.colors_apply_button.removeFromSuperview()
+                    
+                    self.day_theme_button.removeFromSuperview()
+                    self.night_theme_button.removeFromSuperview()
+                    self.BW_theme_button.removeFromSuperview()
+                    self.chaos_theme_button.removeFromSuperview()
+                    self.school_theme_button.removeFromSuperview()
+                    self.colors_theme_button.removeFromSuperview()
+                    self.in_theme_menu = false
+                    
+                })
+                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                    self.theme_star_counter.fadeOutandRemove()
+                    self.theme_star_board.fadeOutandRemove()
+                    triangle_text.fadeOutandRemove()
+                    return_button.fadeOutandRemove()
+                    self.remove_all_theme_star_counter_fragments()
+                })
             }else{
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
@@ -502,39 +500,34 @@ class GameOverViewController: UIViewController {
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
             self.share_button.setImage(UIImage(named:"link"), for: .normal)
-            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor.black
-            self.day_theme_button.fadeOut()
-            self.night_theme_button.fadeOut()
-            self.BW_theme_button.fadeOut()
-            //self.chaos_theme_button.fadeOut()
-            self.school_theme_button.fadeOut()
-            self.colors_theme_button.fadeOut()
-            triangle_text.fadeOut()
-            return_button.fadeOut()
-            white_cover.fadeOut()
-            self.theme_menu.fadeOut()
-            self.remove_all_theme_star_counter_fragments()
-                
-                self.day_apply_button.removeFromSuperview()
-                self.night_apply_button.removeFromSuperview()
-                self.BW_apply_button.removeFromSuperview()
-                self.school_apply_button.removeFromSuperview()
-                self.colors_apply_button.removeFromSuperview()
-                
-            self.day_theme_button.removeFromSuperview()
-            self.night_theme_button.removeFromSuperview()
-            self.BW_theme_button.removeFromSuperview()
-            //self.chaos_theme_button.removeFromSuperview()
-            self.school_theme_button.removeFromSuperview()
-            self.colors_theme_button.removeFromSuperview()
-            triangle_text.removeFromSuperview()
-            return_button.removeFromSuperview()
-            white_cover.removeFromSuperview()
-            self.theme_menu.removeFromSuperview()
-            self.theme_star_counter.removeFromSuperview()
-            self.theme_star_board.removeFromSuperview()
+
+                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                    
+                    self.day_apply_button.removeFromSuperview()
+                    self.night_apply_button.removeFromSuperview()
+                    self.BW_apply_button.removeFromSuperview()
+                    self.school_apply_button.removeFromSuperview()
+                    self.colors_apply_button.removeFromSuperview()
+                    
+                    self.day_theme_button.removeFromSuperview()
+                    self.night_theme_button.removeFromSuperview()
+                    self.BW_theme_button.removeFromSuperview()
+                    self.chaos_theme_button.removeFromSuperview()
+                    self.school_theme_button.removeFromSuperview()
+                    self.colors_theme_button.removeFromSuperview()
+                    self.in_theme_menu = false
+                    
+                })
+                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                    self.theme_star_counter.fadeOutandRemove()
+                    self.theme_star_board.fadeOutandRemove()
+                    triangle_text.fadeOutandRemove()
+                    return_button.fadeOutandRemove()
+                    self.remove_all_theme_star_counter_fragments()
+                })
             }else{
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
@@ -626,37 +619,33 @@ class GameOverViewController: UIViewController {
                 //self.trophy.image = UIImage(named:"trophy_new")
                 //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
                 // self.gameover_title.image = UIImage(named:"day mode gameover title")
-                self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
-                self.remove_all_theme_star_counter_fragments()
-                self.day_theme_button.fadeOut()
-                self.night_theme_button.fadeOut()
-                self.BW_theme_button.fadeOut()
-                //self.chaos_theme_button.fadeOut()
-                self.school_theme_button.fadeOut()
-                self.colors_theme_button.fadeOut()
-                triangle_text.fadeOut()
-                return_button.fadeOut()
-                white_cover.fadeOut()
-                self.theme_menu.fadeOut()
+                self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+
                 
-                self.day_apply_button.removeFromSuperview()
-                self.night_apply_button.removeFromSuperview()
-                self.BW_apply_button.removeFromSuperview()
-                self.school_apply_button.removeFromSuperview()
-                self.colors_apply_button.removeFromSuperview()
-                
-                self.day_theme_button.removeFromSuperview()
-                self.night_theme_button.removeFromSuperview()
-                self.BW_theme_button.removeFromSuperview()
-                //self.chaos_theme_button.removeFromSuperview()
-                self.school_theme_button.removeFromSuperview()
-                self.colors_theme_button.removeFromSuperview()
-                triangle_text.removeFromSuperview()
-                return_button.removeFromSuperview()
-                white_cover.removeFromSuperview()
-                self.theme_menu.removeFromSuperview()
-                self.theme_star_counter.removeFromSuperview()
-                self.theme_star_board.removeFromSuperview()
+                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                    
+                    self.day_apply_button.removeFromSuperview()
+                    self.night_apply_button.removeFromSuperview()
+                    self.BW_apply_button.removeFromSuperview()
+                    self.school_apply_button.removeFromSuperview()
+                    self.colors_apply_button.removeFromSuperview()
+                    
+                    self.day_theme_button.removeFromSuperview()
+                    self.night_theme_button.removeFromSuperview()
+                    self.BW_theme_button.removeFromSuperview()
+                    self.chaos_theme_button.removeFromSuperview()
+                    self.school_theme_button.removeFromSuperview()
+                    self.colors_theme_button.removeFromSuperview()
+                    self.in_theme_menu = false
+                    
+                })
+                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                    self.theme_star_counter.fadeOutandRemove()
+                    self.theme_star_board.fadeOutandRemove()
+                    triangle_text.fadeOutandRemove()
+                    return_button.fadeOutandRemove()
+                    self.remove_all_theme_star_counter_fragments()
+                })
             }else{
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
@@ -818,37 +807,32 @@ class GameOverViewController: UIViewController {
                 self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
                 self.theme_star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
                 
-                self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
-                
-                self.day_theme_button.fadeOut()
-                self.night_theme_button.fadeOut()
-                self.BW_theme_button.fadeOut()
-                //self.chaos_theme_button.fadeOut()
-                self.school_theme_button.fadeOut()
-                self.colors_theme_button.fadeOut()
-                triangle_text.fadeOut()
-                return_button.fadeOut()
-                white_cover.fadeOut()
-                self.theme_menu.fadeOut()
-                self.remove_all_theme_star_counter_fragments()
-                self.day_apply_button.removeFromSuperview()
-                self.night_apply_button.removeFromSuperview()
-                self.BW_apply_button.removeFromSuperview()
-                self.school_apply_button.removeFromSuperview()
-                self.colors_apply_button.removeFromSuperview()
-                
-                self.day_theme_button.removeFromSuperview()
-                self.night_theme_button.removeFromSuperview()
-                self.BW_theme_button.removeFromSuperview()
-                //self.chaos_theme_button.removeFromSuperview()
-                self.school_theme_button.removeFromSuperview()
-                self.colors_theme_button.removeFromSuperview()
-                triangle_text.removeFromSuperview()
-                return_button.removeFromSuperview()
-                white_cover.removeFromSuperview()
-                self.theme_menu.removeFromSuperview()
-                self.theme_star_counter.removeFromSuperview()
-                self.theme_star_board.removeFromSuperview()
+                self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+
+                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                    
+                    self.day_apply_button.removeFromSuperview()
+                    self.night_apply_button.removeFromSuperview()
+                    self.BW_apply_button.removeFromSuperview()
+                    self.school_apply_button.removeFromSuperview()
+                    self.colors_apply_button.removeFromSuperview()
+                    
+                    self.day_theme_button.removeFromSuperview()
+                    self.night_theme_button.removeFromSuperview()
+                    self.BW_theme_button.removeFromSuperview()
+                    self.chaos_theme_button.removeFromSuperview()
+                    self.school_theme_button.removeFromSuperview()
+                    self.colors_theme_button.removeFromSuperview()
+                    self.in_theme_menu = false
+                    
+                })
+                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                    self.theme_star_counter.fadeOutandRemove()
+                    self.theme_star_board.fadeOutandRemove()
+                    triangle_text.fadeOutandRemove()
+                    return_button.fadeOutandRemove()
+                    self.remove_all_theme_star_counter_fragments()
+                })
                 
             }else{
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
@@ -943,37 +927,32 @@ class GameOverViewController: UIViewController {
                 //self.trophy.image = UIImage(named:"trophy_new")
                 //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
                 // self.gameover_title.image = UIImage(named:"day mode gameover title")
-                self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
-                self.remove_all_theme_star_counter_fragments()
-                self.day_theme_button.fadeOut()
-                self.night_theme_button.fadeOut()
-                self.BW_theme_button.fadeOut()
-                //self.chaos_theme_button.fadeOut()
-                self.school_theme_button.fadeOut()
-                self.colors_theme_button.fadeOut()
-                triangle_text.fadeOut()
-                return_button.fadeOut()
-                white_cover.fadeOut()
-                self.theme_menu.fadeOut()
-                
-                self.day_apply_button.removeFromSuperview()
-                self.night_apply_button.removeFromSuperview()
-                self.BW_apply_button.removeFromSuperview()
-                self.school_apply_button.removeFromSuperview()
-                self.colors_apply_button.removeFromSuperview()
-                
-                self.day_theme_button.removeFromSuperview()
-                self.night_theme_button.removeFromSuperview()
-                self.BW_theme_button.removeFromSuperview()
-                //self.chaos_theme_button.removeFromSuperview()
-                self.school_theme_button.removeFromSuperview()
-                self.colors_theme_button.removeFromSuperview()
-                triangle_text.removeFromSuperview()
-                return_button.removeFromSuperview()
-                white_cover.removeFromSuperview()
-                self.theme_menu.removeFromSuperview()
-                self.theme_star_counter.removeFromSuperview()
-                self.theme_star_board.removeFromSuperview()
+                self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+
+                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                    
+                    self.day_apply_button.removeFromSuperview()
+                    self.night_apply_button.removeFromSuperview()
+                    self.BW_apply_button.removeFromSuperview()
+                    self.school_apply_button.removeFromSuperview()
+                    self.colors_apply_button.removeFromSuperview()
+                    
+                    self.day_theme_button.removeFromSuperview()
+                    self.night_theme_button.removeFromSuperview()
+                    self.BW_theme_button.removeFromSuperview()
+                    self.chaos_theme_button.removeFromSuperview()
+                    self.school_theme_button.removeFromSuperview()
+                    self.colors_theme_button.removeFromSuperview()
+                    self.in_theme_menu = false
+                    
+                })
+                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                    self.theme_star_counter.fadeOutandRemove()
+                    self.theme_star_board.fadeOutandRemove()
+                    triangle_text.fadeOutandRemove()
+                    return_button.fadeOutandRemove()
+                    self.remove_all_theme_star_counter_fragments()
+                })
             }else{
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
@@ -1018,8 +997,8 @@ class GameOverViewController: UIViewController {
         triangle_text.contentMode = .scaleAspectFit
         //triangle_text.sizeToFit()
         triangle_text.alpha = 0
-        self.view.addSubview(triangle_text)
-        triangle_text.fadeInWithDisplacement()
+        white_cover.addSubview(triangle_text)
+        triangle_text.fadeIn()
         
         //add star_counter in theme menu
         theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
@@ -1046,13 +1025,13 @@ class GameOverViewController: UIViewController {
             theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
         }
         theme_star_board.alpha = 0
-        self.view.addSubview(theme_star_board)
-        theme_star_board.fadeInWithDisplacement()
+        white_cover.addSubview(theme_star_board)
+        theme_star_board.fadeIn()
         
         theme_star_board_width = theme_star_board.frame.width
         split_theme_star_counter()
         update_theme_star_length_according_to_string_length()
-        self.view.addSubview(theme_star_counter)
+        white_cover.addSubview(theme_star_counter)
         theme_star_counter.alpha = 0
         
         //add  return button
@@ -1061,6 +1040,7 @@ class GameOverViewController: UIViewController {
         
         
         return_button.whenButtonIsClicked(action: {
+            
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1068,46 +1048,50 @@ class GameOverViewController: UIViewController {
                 
             }
             self.button_player.play()
-            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
+
+            self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                
+                self.day_apply_button.removeFromSuperview()
+                self.night_apply_button.removeFromSuperview()
+                self.BW_apply_button.removeFromSuperview()
+                self.school_apply_button.removeFromSuperview()
+                self.colors_apply_button.removeFromSuperview()
+                
+                self.day_theme_button.removeFromSuperview()
+                self.night_theme_button.removeFromSuperview()
+                self.BW_theme_button.removeFromSuperview()
+                self.chaos_theme_button.removeFromSuperview()
+                self.school_theme_button.removeFromSuperview()
+                self.colors_theme_button.removeFromSuperview()
+                self.in_theme_menu = false
+                
+            })
+            self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                self.theme_star_counter.fadeOutandRemove()
+                self.theme_star_board.fadeOutandRemove()
+                triangle_text.fadeOutandRemove()
+                return_button.fadeOutandRemove()
+                self.remove_all_theme_star_counter_fragments()
+            })
             
-            self.day_theme_button.fadeOut()
-            self.night_theme_button.fadeOut()
-            self.BW_theme_button.fadeOut()
-            //self.chaos_theme_button.fadeOut()
-            self.school_theme_button.fadeOut()
-            self.colors_theme_button.fadeOut()
-            triangle_text.fadeOut()
-            return_button.fadeOut()
-            white_cover.fadeOut()
-            self.theme_menu.fadeOut()
-            
-            self.remove_all_theme_star_counter_fragments()
-            self.day_apply_button.removeFromSuperview()
-            self.night_apply_button.removeFromSuperview()
-            self.BW_apply_button.removeFromSuperview()
-            self.school_apply_button.removeFromSuperview()
-            self.colors_apply_button.removeFromSuperview()
-            
-            
-            self.day_theme_button.removeFromSuperview()
-            self.night_theme_button.removeFromSuperview()
-            self.BW_theme_button.removeFromSuperview()
-            //self.chaos_theme_button.removeFromSuperview()
-            self.school_theme_button.removeFromSuperview()
-            self.colors_theme_button.removeFromSuperview()
-            triangle_text.removeFromSuperview()
-            return_button.removeFromSuperview()
-            white_cover.removeFromSuperview()
-            self.theme_menu.removeFromSuperview()
-            self.theme_star_counter.removeFromSuperview()
-            self.theme_star_board.removeFromSuperview()
         })
         
         return_button.alpha = 0
-       self.view.addSubview(return_button)
-        return_button.fadeInWithDisplacement()
+       white_cover.addSubview(return_button)
+        return_button.fadeIn()
         theme_menu.contentSize.height = colors_theme_button.frame.origin.y + theme_button_height
         theme_menu.showsVerticalScrollIndicator = false
+        
+            
+            //bounce in
+            theme_menu.transform = CGAffineTransform(translationX: 0, y: screen_height)
+            UIView.animate(withDuration: 0.7, delay: 00, usingSpringWithDamping: 0.75, initialSpringVelocity: 1.0, options: .curveLinear, animations: {
+                self.theme_menu.transform = .identity
+            }, completion: nil)
+            
+            
+        }
     }
     
     
@@ -1244,18 +1228,18 @@ class GameOverViewController: UIViewController {
         theme_star_counter_fragments[3].frame.origin.x = theme_star_counter_fragments[2].frame.origin.x + theme_star_counter_fragments[2].frame.width
         //print("current_star_total_fragments 0 width is \(current_star_total_fragments[0].frame.width)")
         //print("0 x is \(current_star_total_fragments[0].frame.origin.x)")
-        self.view.addSubview(theme_star_counter_fragments[0])
-        self.view.addSubview(theme_star_counter_fragments[1])
-        self.view.addSubview(theme_star_counter_fragments[2])
-        self.view.addSubview(theme_star_counter_fragments[3])
+        white_cover.addSubview(theme_star_counter_fragments[0])
+        white_cover.addSubview(theme_star_counter_fragments[1])
+        white_cover.addSubview(theme_star_counter_fragments[2])
+        white_cover.addSubview(theme_star_counter_fragments[3])
         theme_star_counter_fragments[0].alpha = 0
         theme_star_counter_fragments[1].alpha = 0
         theme_star_counter_fragments[2].alpha = 0
         theme_star_counter_fragments[3].alpha = 0
-        theme_star_counter_fragments[0].fadeInWithDisplacement()
-        theme_star_counter_fragments[1].fadeInWithDisplacement()
-        theme_star_counter_fragments[2].fadeInWithDisplacement()
-        theme_star_counter_fragments[3].fadeInWithDisplacement()
+        theme_star_counter_fragments[0].fadeIn()
+        theme_star_counter_fragments[1].fadeIn()
+        theme_star_counter_fragments[2].fadeIn()
+        theme_star_counter_fragments[3].fadeIn()
         theme_star_counter_fragments_width = theme_star_counter_fragments[2].frame.width
         self.view.bringSubview(toFront: theme_star_board)
         
