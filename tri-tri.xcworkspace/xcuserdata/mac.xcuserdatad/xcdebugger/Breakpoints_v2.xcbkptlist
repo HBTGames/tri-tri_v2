@@ -834,11 +834,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "521632362.355375"
+            timestampString = "521711793.19125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16964"
-            endingLineNumber = "16964">
+            startingLineNumber = "16968"
+            endingLineNumber = "16968">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
