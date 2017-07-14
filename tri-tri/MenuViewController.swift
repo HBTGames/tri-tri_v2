@@ -364,8 +364,10 @@ class MenuViewController: UIViewController {
     var white_cover_y = CGFloat(0)
     var theme_button_height = CGFloat(0)
     var theme_menu = UIScrollView()
-    
+    var in_theme_menu = false
     @IBAction func theme_menu_action(_ sender: UIButton) {
+        if(!in_theme_menu){
+            in_theme_menu = true
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -373,6 +375,10 @@ class MenuViewController: UIViewController {
             
         }
         self.button_player.play()
+        let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(53)))
+        white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
+        
+        theme_button_height = (screen_height - white_cover_y)/3.0
         theme_menu = UIScrollView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
         theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
         theme_menu.alpha = 0
@@ -380,16 +386,16 @@ class MenuViewController: UIViewController {
         super.view.isUserInteractionEnabled = false
         self.view.isUserInteractionEnabled = true
         self.view.addSubview(theme_menu)
-        theme_menu.fadeIn()
-        let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(53)))
+        //theme_menu.fadeIn()
+        
         
         
         
         let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(15), width: pause_screen_x_transform(155), height: pause_screen_y_transform(35)))
-        white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
+        
         theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(12),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
         theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(285),y:pause_screen_y_transform(15),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
-        theme_button_height = (screen_height - white_cover_y)/3.0
+        
         let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
         day_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: white_cover.frame.origin.y + white_cover.frame.height, width: screen_width, height: theme_button_height))
@@ -456,7 +462,7 @@ class MenuViewController: UIViewController {
             return_button.fadeOut()
             white_cover.fadeOut()
             self.theme_menu.fadeOut()
-            
+            self.in_theme_menu = false
             self.remove_all_theme_star_counter_fragments()
                 
             self.day_apply_button.removeFromSuperview()
@@ -548,7 +554,7 @@ class MenuViewController: UIViewController {
            // self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"night mode gameover title")
             self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
-            
+            self.in_theme_menu = false
             self.day_theme_button.fadeOut()
             
             self.night_theme_button.fadeOut()
@@ -694,7 +700,7 @@ class MenuViewController: UIViewController {
             return_button.fadeOut()
             white_cover.fadeOut()
             self.theme_menu.fadeOut()
-            
+            self.in_theme_menu = false
             self.day_apply_button.removeFromSuperview()
             self.night_apply_button.removeFromSuperview()
             self.BW_apply_button.removeFromSuperview()
@@ -891,7 +897,7 @@ class MenuViewController: UIViewController {
             self.split_star_counter()
             self.update_star_counter_length_according_to_string_length()
             
-            
+            self.in_theme_menu = false
             self.day_apply_button.removeFromSuperview()
             self.night_apply_button.removeFromSuperview()
             self.BW_apply_button.removeFromSuperview()
@@ -1055,7 +1061,7 @@ class MenuViewController: UIViewController {
             self.theme_star_counter.removeFromSuperview()
              self.theme_star_board.removeFromSuperview()
             
-            
+            self.in_theme_menu = false
             self.day_apply_button.removeFromSuperview()
             self.night_apply_button.removeFromSuperview()
             self.BW_apply_button.removeFromSuperview()
@@ -1186,6 +1192,7 @@ class MenuViewController: UIViewController {
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
             self.remove_all_theme_star_counter_fragments()
+            self.in_theme_menu = false
         })
         
         return_button.alpha = 0
@@ -1193,11 +1200,17 @@ class MenuViewController: UIViewController {
         return_button.fadeInWithDisplacement()
         
         
-        
+   theme_menu.alpha = 1
    theme_menu.contentSize.height = colors_theme_button.frame.origin.y + theme_button_height
    theme_menu.showsVerticalScrollIndicator = false
+   //bounce in
+   theme_menu.transform = CGAffineTransform(translationX: 0, y: screen_height)
+        UIView.animate(withDuration: 1.0, delay: 00, usingSpringWithDamping: 0.75, initialSpringVelocity: 3.0, options: .curveLinear, animations: {
+          self.theme_menu.transform = .identity
+        }, completion: nil)
+        
     }
-    
+    }
     
     
     
@@ -2711,6 +2724,7 @@ func generateFragmentsFrom(_ originView:UIView, with splitRatio:CGFloat, in cont
         self.layer.add(shakeGroup, forKey: "shakeIt")
     }
     
+  
     
    }
 

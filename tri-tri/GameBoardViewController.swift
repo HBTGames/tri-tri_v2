@@ -944,19 +944,19 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 UIView.animate(withDuration: 0.3, animations: {
                     self.green_drag_tri.frame.origin = self.green_drag_origin
                     
-                    self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
+                    self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                 })
             }else if(orange_drag_tri_orig_rec.contains(finalTouchLocation)){
                 self.orange_drag_origin = self.orange_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
                     self.orange_drag_tri.frame.origin = self.orange_drag_origin
-                    self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
+                    self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                 })
             }else if(light_brown_drag_tri_orig_rec.contains(finalTouchLocation)){
                 self.light_brown_drag_origin = self.light_brown_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
                     self.light_brown_drag_tri.frame.origin = self.light_brown_drag_origin
-                    self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
+                    self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                 })
         }
             }else {
@@ -1137,9 +1137,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
        
         light_brown_drag_tri_orig_rec = CGRect(x: light_brown_drag_tri.frame.origin.x - pause_screen_x_transform(20), y: light_brown_drag_tri.frame.origin.y - pause_screen_y_transform(15), width: light_brown_drag_tri.frame.width + pause_screen_x_transform(40), height: light_brown_drag_tri.frame.height + pause_screen_y_transform(45))
 
-        green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
-        orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
-        light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
+        green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+        orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+        light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
         
         
         pack_opened_frame = CGRect(x: pause_screen_x_transform(312), y: pause_screen_y_transform(165.5), width: pause_screen_x_transform(47), height: pause_screen_y_transform(306))
@@ -3057,15 +3057,15 @@ self.remove_all_theme_star_counter_fragments()
                //if the triangles are fit
                 if (position_in_use == 0){
                     green_drag_tri.frame.origin = green_drag_origin
-                    green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
+                    green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                     exist1 = false
                 }else if (position_in_use == 1){
                     orange_drag_tri.frame.origin = orange_drag_origin
-                    orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
+                    orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                     exist2 = false
                 }else if (position_in_use == 2){
                     light_brown_drag_tri.frame.origin = light_brown_drag_origin
-                    light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
+                    light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                     exist3 = false
                 }
                 position_in_use = 3
@@ -3115,11 +3115,11 @@ self.remove_all_theme_star_counter_fragments()
                     (finished) -> Void in
                     UIView.animate(withDuration: 0.3, animations: {
                         if(self.position_in_use == 0){
-                        self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
+                        self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                         }else if(self.position_in_use == 1){
-                        self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
+                        self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                         }else if(self.position_in_use == 2){
-                        self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.6), y: CGFloat(0.6))
+                        self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                         }
 
                     }, completion: {
