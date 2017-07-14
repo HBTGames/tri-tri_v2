@@ -118,8 +118,8 @@ class MenuViewController: UIViewController {
         language_button.frame = CGRect(x: pause_screen_x_transform(Double(language_button.frame.origin.x)), y: pause_screen_y_transform(Double(language_button.frame.origin.y)), width: pause_screen_x_transform(Double(language_button.frame.width)), height: pause_screen_y_transform(Double(language_button.frame.height)))
         background_image.frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
         
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
-        self.view.addGestureRecognizer(panGestureRecognizer)
+        //let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
+        //self.view.addGestureRecognizer(panGestureRecognizer)
         var HighestScore = 0
         // Do any additional setup after loading the view.
         if(defaults.value(forKey: "tritri_HighestScore") != nil ){
@@ -363,7 +363,7 @@ class MenuViewController: UIViewController {
     
     var white_cover_y = CGFloat(0)
     var theme_button_height = CGFloat(0)
-    
+    var theme_menu = UIScrollView()
     
     @IBAction func theme_menu_action(_ sender: UIButton) {
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -373,9 +373,8 @@ class MenuViewController: UIViewController {
             
         }
         self.button_player.play()
-        let theme_menu: UIView = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
+        theme_menu = UIScrollView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
         theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
- 
         theme_menu.alpha = 0
         theme_menu.tag = 100
         super.view.isUserInteractionEnabled = false
@@ -383,11 +382,14 @@ class MenuViewController: UIViewController {
         self.view.addSubview(theme_menu)
         theme_menu.fadeIn()
         let white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(50)))
+        
+        
+        
         let triangle_text = UIImageView(frame: CGRect(x: pause_screen_x_transform(110), y: pause_screen_y_transform(15), width: pause_screen_x_transform(155), height: pause_screen_y_transform(35)))
         white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
         theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(15),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
         theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(285),y:pause_screen_y_transform(18),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
-        theme_button_height = (screen_height - white_cover_y)/5.0
+        theme_button_height = (screen_height - white_cover_y)/3.0
         let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
         day_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: white_cover.frame.origin.y + white_cover.frame.height, width: screen_width, height: theme_button_height))
@@ -443,7 +445,7 @@ class MenuViewController: UIViewController {
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"day mode gameover title")
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
             self.BW_theme_button.fadeOut()
@@ -453,7 +455,7 @@ class MenuViewController: UIViewController {
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
             
             self.remove_all_theme_star_counter_fragments()
                 
@@ -472,7 +474,7 @@ class MenuViewController: UIViewController {
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
             }else{
@@ -486,10 +488,10 @@ class MenuViewController: UIViewController {
             }
         })
         
-        self.view.addSubview(day_theme_button)
+        theme_menu.addSubview(day_theme_button)
         day_theme_button.fadeInWithDisplacement()
         
-        self.view.addSubview(day_apply_button)
+        theme_menu.addSubview(day_apply_button)
         day_apply_button.fadeInWithDisplacement()
         
         night_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y:day_theme_button.frame.origin.y + day_theme_button.frame.height, width: screen_width, height: theme_button_height))
@@ -545,7 +547,7 @@ class MenuViewController: UIViewController {
            // self.trophy.image = UIImage(named:"night mode 奖杯")
            // self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"night mode gameover title")
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             
             self.day_theme_button.fadeOut()
             
@@ -557,7 +559,7 @@ class MenuViewController: UIViewController {
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
             self.remove_all_theme_star_counter_fragments()
                 
             self.day_apply_button.removeFromSuperview()
@@ -575,7 +577,7 @@ class MenuViewController: UIViewController {
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
           self.theme_star_board.removeFromSuperview()
             }else{
@@ -588,9 +590,9 @@ class MenuViewController: UIViewController {
                 self.wrong_player.play()
             }
         })
-        self.view.addSubview(night_theme_button)
+        theme_menu.addSubview(night_theme_button)
         night_theme_button.fadeInWithDisplacement()
-        self.view.addSubview(night_apply_button)
+        theme_menu.addSubview(night_apply_button)
         night_apply_button.fadeInWithDisplacement()
         
         BW_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: night_theme_button.frame.origin.y + night_theme_button.frame.height, width: screen_width, height: theme_button_height))
@@ -680,7 +682,7 @@ class MenuViewController: UIViewController {
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
         
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
@@ -691,7 +693,7 @@ class MenuViewController: UIViewController {
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
             
             self.day_apply_button.removeFromSuperview()
             self.night_apply_button.removeFromSuperview()
@@ -709,7 +711,7 @@ class MenuViewController: UIViewController {
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
              self.theme_star_board.removeFromSuperview()
             self.remove_all_theme_star_counter_fragments()
@@ -730,10 +732,10 @@ class MenuViewController: UIViewController {
             
             
         })
-        self.view.addSubview(BW_theme_button)
+        theme_menu.addSubview(BW_theme_button)
         BW_theme_button.fadeInWithDisplacement()
         
-        self.view.addSubview(BW_apply_button)
+        theme_menu.addSubview(BW_apply_button)
         BW_apply_button.fadeInWithDisplacement()
         chaos_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         chaos_theme_origin = chaos_theme_button.frame.origin
@@ -884,7 +886,7 @@ class MenuViewController: UIViewController {
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.remove_all_fragments()
             self.split_star_counter()
             self.update_star_counter_length_according_to_string_length()
@@ -906,7 +908,7 @@ class MenuViewController: UIViewController {
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
             
             self.day_theme_button.removeFromSuperview()
             self.night_theme_button.removeFromSuperview()
@@ -917,7 +919,7 @@ class MenuViewController: UIViewController {
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
            self.theme_star_board.removeFromSuperview()
             self.remove_all_theme_star_counter_fragments()
@@ -932,10 +934,10 @@ class MenuViewController: UIViewController {
                 self.wrong_player.play()
             }
         })
-        self.view.addSubview(school_theme_button)
+        theme_menu.addSubview(school_theme_button)
         school_theme_button.fadeInWithDisplacement()
         
-        self.view.addSubview(school_apply_button)
+        theme_menu.addSubview(school_apply_button)
         school_apply_button.fadeInWithDisplacement()
         
         colors_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: school_theme_button.frame.origin.y + school_theme_button.frame.height, width: screen_width, height: theme_button_height))
@@ -1028,7 +1030,7 @@ class MenuViewController: UIViewController {
             //self.trophy.image = UIImage(named:"trophy_new")
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
             self.BW_theme_button.fadeOut()
@@ -1038,7 +1040,7 @@ class MenuViewController: UIViewController {
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
             self.remove_all_theme_star_counter_fragments()
             self.day_theme_button.removeFromSuperview()
             self.night_theme_button.removeFromSuperview()
@@ -1049,7 +1051,7 @@ class MenuViewController: UIViewController {
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
              self.theme_star_board.removeFromSuperview()
             
@@ -1077,16 +1079,16 @@ class MenuViewController: UIViewController {
             }
         })
         
-        self.view.addSubview(colors_theme_button)
+        theme_menu.addSubview(colors_theme_button)
         colors_theme_button.fadeInWithDisplacement()
         
-        self.view.addSubview(colors_apply_button)
+        theme_menu.addSubview(colors_apply_button)
         colors_apply_button.fadeInWithDisplacement()
         //add white to 遮挡
         
         white_cover.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
         white_cover.alpha = 0
-        self.view.addSubview(white_cover)
+        theme_menu.addSubview(white_cover)
         white_cover.fadeInWithDisplacement()
         
         
@@ -1102,7 +1104,7 @@ class MenuViewController: UIViewController {
         
         //triangle_text.sizeToFit()
         triangle_text.alpha = 0
-        self.view.addSubview(triangle_text)
+        theme_menu.addSubview(triangle_text)
         triangle_text.fadeInWithDisplacement()
         
         
@@ -1131,7 +1133,7 @@ class MenuViewController: UIViewController {
         }
         theme_star_board_width = theme_star_board.frame.width
         theme_star_board.alpha = 0
-        self.view.addSubview(theme_star_board)
+        theme_menu.addSubview(theme_star_board)
         theme_star_board.fadeInWithDisplacement()
         
         split_theme_star_counter()
@@ -1152,7 +1154,7 @@ class MenuViewController: UIViewController {
                 
             }
             self.button_player.play()
-            theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
+            self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
             
             self.day_theme_button.fadeOut()
             self.night_theme_button.fadeOut()
@@ -1163,7 +1165,7 @@ class MenuViewController: UIViewController {
             triangle_text.fadeOut()
             return_button.fadeOut()
             white_cover.fadeOut()
-            theme_menu.fadeOut()
+            self.theme_menu.fadeOut()
             
             self.day_apply_button.removeFromSuperview()
             self.night_apply_button.removeFromSuperview()
@@ -1180,19 +1182,20 @@ class MenuViewController: UIViewController {
             triangle_text.removeFromSuperview()
             return_button.removeFromSuperview()
             white_cover.removeFromSuperview()
-            theme_menu.removeFromSuperview()
+            self.theme_menu.removeFromSuperview()
             self.theme_star_counter.removeFromSuperview()
             self.theme_star_board.removeFromSuperview()
             self.remove_all_theme_star_counter_fragments()
         })
         
         return_button.alpha = 0
-        self.view.addSubview(return_button)
+        theme_menu.addSubview(return_button)
         return_button.fadeInWithDisplacement()
         
         
         
-        
+   theme_menu.contentSize.height = colors_theme_button.frame.origin.y + theme_button_height
+   theme_menu.showsVerticalScrollIndicator = false
     }
     
     
@@ -1226,20 +1229,21 @@ class MenuViewController: UIViewController {
             
             
             if(gesture.state == .ended){
-                day_theme_origin.y = day_theme_button.frame.origin.y
-                night_theme_origin.y = night_theme_button.frame.origin.y
-                BW_theme_origin.y = BW_theme_button.frame.origin.y
-                chaos_theme_origin.y = chaos_theme_button.frame.origin.y
-                school_theme_origin.y = school_theme_button.frame.origin.y
-                colors_theme_origin.y = colors_theme_button.frame.origin.y
-                
-                day_apply_origin.y = day_apply_button.frame.origin.y
-                night_apply_origin.y = night_apply_button.frame.origin.y
-                BW_apply_origin.y = BW_apply_button.frame.origin.y
-                school_apply_origin.y = school_apply_button.frame.origin.y
-                colors_apply_origin.y = colors_apply_button.frame.origin.y
                 
                 
+                    
+                    self.day_theme_origin.y = self.day_theme_button.frame.origin.y
+                    self.night_theme_origin.y = self.night_theme_button.frame.origin.y
+                    self.BW_theme_origin.y = self.BW_theme_button.frame.origin.y
+                    self.chaos_theme_origin.y = self.chaos_theme_button.frame.origin.y
+                    self.school_theme_origin.y = self.school_theme_button.frame.origin.y
+                    self.colors_theme_origin.y = self.colors_theme_button.frame.origin.y
+                    
+                    self.day_apply_origin.y = self.day_apply_button.frame.origin.y
+                    self.night_apply_origin.y = self.night_apply_button.frame.origin.y
+                    self.BW_apply_origin.y = self.BW_apply_button.frame.origin.y
+                    self.school_apply_origin.y = self.school_apply_button.frame.origin.y
+                    self.colors_apply_origin.y = self.colors_apply_button.frame.origin.y
                 
             }
         }else{
@@ -2428,10 +2432,10 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         theme_star_counter_fragments[3].frame.origin.x = theme_star_counter_fragments[2].frame.origin.x + theme_star_counter_fragments[2].frame.width
         //print("current_star_total_fragments 0 width is \(current_star_total_fragments[0].frame.width)")
         //print("0 x is \(current_star_total_fragments[0].frame.origin.x)")
-        self.view.addSubview(theme_star_counter_fragments[0])
-        self.view.addSubview(theme_star_counter_fragments[1])
-        self.view.addSubview(theme_star_counter_fragments[2])
-        self.view.addSubview(theme_star_counter_fragments[3])
+        theme_menu.addSubview(theme_star_counter_fragments[0])
+        theme_menu.addSubview(theme_star_counter_fragments[1])
+        theme_menu.addSubview(theme_star_counter_fragments[2])
+        theme_menu.addSubview(theme_star_counter_fragments[3])
         theme_star_counter_fragments[0].alpha = 0
         theme_star_counter_fragments[1].alpha = 0
         theme_star_counter_fragments[2].alpha = 0

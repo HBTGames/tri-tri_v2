@@ -374,7 +374,7 @@ class GameOverViewController: UIViewController {
         white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
         theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(15),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
         theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(285),y:pause_screen_y_transform(18),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
-        theme_button_height = (screen_height - white_cover_y)/5.0
+        theme_button_height = (screen_height - white_cover_y)/3.0
         let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
         day_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: white_cover.frame.origin.y + white_cover.frame.height, width: screen_width, height: theme_button_height))

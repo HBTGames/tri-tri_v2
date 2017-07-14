@@ -1897,7 +1897,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
         theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(15),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
         theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(285),y:pause_screen_y_transform(18),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
-        theme_button_height = (screen_height - white_cover_y)/5.0
+        theme_button_height = (screen_height - white_cover_y)/3.0
         let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
         day_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: white_cover.frame.origin.y + white_cover.frame.height, width: screen_width, height: theme_button_height))
@@ -11543,8 +11543,8 @@ number_of_lines_erased += 1
     //star animation
     
     func star_score_increment() -> Void {
-        let current_times = Int(current_score / 20)
-        let last_times = Int(last_score / 20 )
+        let current_times = Int(current_score / 50)
+        let last_times = Int(last_score / 50 )
         star_score += (current_times - last_times)
         starBoard.text = String(star_score)
         defaults.set(star_score, forKey: "tritri_star_score")
