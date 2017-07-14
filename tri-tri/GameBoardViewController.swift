@@ -1143,8 +1143,6 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         
         
         pack_opened_frame = CGRect(x: pause_screen_x_transform(312), y: pause_screen_y_transform(165.5), width: pause_screen_x_transform(47), height: pause_screen_y_transform(306))
-        
-        
 
         // Do any additional setup after loading the view.
         //generate first group
@@ -1604,8 +1602,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             }
             self.button_player.play()
     
-            
-            
+            self.gameover_star_purchase = "ingame"
+            self.purchase_star_function()
             
             
             
@@ -1645,6 +1643,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         
     }
     
+    
+    
     func reorder_triangle_positions_during_loading_view() -> Void{
         
         pause.frame = CGRect(x: pause_screen_x_transform(Double(self.pause.frame.origin.x)) , y: pause_screen_y_transform(Double(self.pause.frame.origin.y)) , width: pause_screen_x_transform(Double(self.pause.frame.width)), height: pause_screen_y_transform(Double(self.pause.frame.height)))
@@ -1655,6 +1655,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
        
         star_counter.frame = CGRect(x: pause_screen_x_transform(Double(star_counter.frame.origin.x)) , y: pause_screen_y_transform(Double(star_counter.frame.origin.y)) , width: pause_screen_x_transform(Double(star_counter.frame.width)), height: pause_screen_y_transform(Double(star_counter.frame.height)))
         
+    
         starBoard.frame = CGRect(x: pause_screen_x_transform(Double(starBoard.frame.origin.x)) , y: pause_screen_y_transform(Double(starBoard.frame.origin.y)) , width: pause_screen_x_transform(Double(starBoard.frame.width)), height: pause_screen_y_transform(Double(starBoard.frame.height)))
         
         MarkBoard.frame = CGRect(x: pause_screen_x_transform(27) , y: pause_screen_y_transform(142) , width: pause_screen_x_transform(133), height: pause_screen_y_transform(41))
@@ -2725,8 +2726,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 }
                 self.button_player.play()
                 
-                
-                
+                self.gameover_star_purchase = "theme"
+                self.purchase_star_function()
                 
                 
                 
@@ -13427,6 +13428,7 @@ number_of_lines_erased += 1
                 }
                 else {  //star not enough
                     //currently gameover
+                    self.gameover_star_purchase = "gameover"
                     count_down_circle.send_stop_signal()
                     game_over_timer.invalidate()
                     self.purchase_star_function()
@@ -16727,7 +16729,6 @@ func trinity_animation() -> Void {
         theme_star_counter_fragments[3].fadeIn()
         theme_star_counter_fragments_width = theme_star_counter_fragments[2].frame.width
         self.view.bringSubview(toFront: theme_star_board)
-        
         //print(star_counter_fragment_width)
     }
     func remove_all_theme_star_counter_fragments() -> Void{
@@ -16786,6 +16787,7 @@ func trinity_animation() -> Void {
     var purchase_star_500_bg = UIImageView()
     var purchase_star_1000_button = MyButton()
     var purchase_star_500_button = MyButton()
+    var gameover_star_purchase = String()
     
     func purchase_star_function() -> Void{
         self.pause_screen.removeFromSuperview()
@@ -16826,6 +16828,7 @@ func trinity_animation() -> Void {
         close_button.setImage(#imageLiteral(resourceName: "revive_just_let_me_die"), for: .normal)
         close_button.alpha = 0
         self.view.addSubview(close_button)
+        if(gameover_star_purchase == "ingame"){
         close_button.whenButtonIsClicked{
             self.purchase_star_menu.removeFromSuperview()
             self.more_stars_label.removeFromSuperview()
@@ -16837,8 +16840,45 @@ func trinity_animation() -> Void {
             self.purchase_star_1000_button.removeFromSuperview()
             self.purchase_star_500_button.removeFromSuperview()
             
-            self.auto_random_generator()
             self.paused = false
+            }
+        }else if (gameover_star_purchase == "gameover"){
+            close_button.whenButtonIsClicked{
+            
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
+            nextViewController.final_score = self.MarkBoard.text!
+            nextViewController.ThemeType = self.ThemeType
+            nextViewController.modalTransitionStyle = .crossDissolve
+            if (Int(self.MarkBoard.text!) == self.HighestScore){
+                nextViewController.is_high_score = true
+            } else {
+                nextViewController.is_high_score = false
+            }
+            self.present(nextViewController, animated: true, completion: nil)
+            //self.audioPlayer.stop()
+            self.timer.invalidate()
+            do{self.game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
+                self.game_over_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.game_over_player.play()
+            }
+        }else if(gameover_star_purchase == "theme"){
+            close_button.whenButtonIsClicked{
+                self.purchase_star_menu.removeFromSuperview()
+                self.more_stars_label.removeFromSuperview()
+                self.close_button.removeFromSuperview()
+                
+                
+                self.purchase_star_1000_bg.removeFromSuperview()
+                self.purchase_star_500_bg.removeFromSuperview()
+                self.purchase_star_1000_button.removeFromSuperview()
+                self.purchase_star_500_button.removeFromSuperview()
+                self.paused = true
+            }
         }
         close_button.fadeIn()
         
