@@ -1353,8 +1353,8 @@
         <image name="day_mode_trophy" width="400" height="400"/>
         <image name="day_theme" width="177" height="177"/>
         <image name="gift_day_mode" width="400" height="400"/>
-        <image name="grey_tir_downwards" width="49" height="43"/>
-        <image name="grey_tri_upwards" width="49" height="43"/>
+        <image name="grey_tir_downwards" width="292" height="253"/>
+        <image name="grey_tri_upwards" width="292" height="253"/>
         <image name="home" width="198" height="172"/>
         <image name="imageView:zzE-NV-pET:image" width="400" height="400">
             <mutableData key="keyedArchiveRepresentation">
