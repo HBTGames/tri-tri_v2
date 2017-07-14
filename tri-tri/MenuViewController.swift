@@ -1205,7 +1205,7 @@ class MenuViewController: UIViewController {
    theme_menu.showsVerticalScrollIndicator = false
    //bounce in
    theme_menu.transform = CGAffineTransform(translationX: 0, y: screen_height)
-        UIView.animate(withDuration: 1.0, delay: 00, usingSpringWithDamping: 0.75, initialSpringVelocity: 3.0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 1.5, delay: 00, usingSpringWithDamping: 0.75, initialSpringVelocity: 1.0, options: .curveLinear, animations: {
           self.theme_menu.transform = .identity
         }, completion: nil)
         
