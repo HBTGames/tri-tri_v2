@@ -2333,6 +2333,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
     }
     
     func reorder_star_counter() -> Void{
+        self.view.sendSubview(toBack: background_image)
         self.view.sendSubview(toBack: self.star_board)
         self.view.sendSubview(toBack: self.star_counter_fragments[0])
         self.view.sendSubview(toBack: self.star_counter_fragments[1])
