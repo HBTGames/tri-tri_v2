@@ -10,7 +10,7 @@ import UIKit
 import Social
 import AVKit
 import AVFoundation
-
+import EggRating
 class GameOverViewController: UIViewController {
     
     
@@ -314,6 +314,7 @@ class GameOverViewController: UIViewController {
             
         }
         self.button_player.play()
+        EggRating.promptRateUs(viewController: self)
     }
     @IBAction func home_button_action(_ sender: UIButton) {
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -361,10 +362,17 @@ class GameOverViewController: UIViewController {
     
     var white_cover = UIView()
     
-    
+    var theme_menu_star_store_button = MyButton()
     
     @IBAction func theme_menu_action(_ sender: UIButton) {
         if(!in_theme_menu){
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
             in_theme_menu = true
         theme_menu = UIScrollView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
         theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
@@ -1030,7 +1038,38 @@ class GameOverViewController: UIViewController {
         
         theme_star_board_width = theme_star_board.frame.width
         split_theme_star_counter()
+         theme_menu_star_store_button.frame = theme_star_counter.frame
         update_theme_star_length_according_to_string_length()
+            
+        //add theme star store button
+         theme_menu_star_store_button.setImage(#imageLiteral(resourceName: "current_star_total"), for: .normal)
+         theme_menu_star_store_button.alpha = 0.02
+         self.view.addSubview(theme_menu_star_store_button)
+         self.view.bringSubview(toFront: theme_menu_star_store_button)
+        //theme_menu_star_store_button action
+            theme_menu_star_store_button.whenButtonIsClicked(action: {
+                do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                    self.button_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.button_player.play()
+                
+                
+                
+                
+                
+                
+               
+                
+                
+                
+                
+                
+            })
+            
+            
         white_cover.addSubview(theme_star_counter)
         theme_star_counter.alpha = 0
         
@@ -1246,6 +1285,7 @@ class GameOverViewController: UIViewController {
         //print(star_counter_fragment_width)
     }
     func remove_all_theme_star_counter_fragments() -> Void{
+        theme_menu_star_store_button.removeFromSuperview()
         theme_star_counter_fragments[0].removeFromSuperview()
         theme_star_counter_fragments[1].removeFromSuperview()
         theme_star_counter_fragments[2].removeFromSuperview()
@@ -1271,6 +1311,7 @@ class GameOverViewController: UIViewController {
         argument_integer = i - 2
         update_theme_star_counter_length(i: argument_integer)
     }
+    var theme_star_total_length = CGFloat(0)
     func update_theme_star_counter_length(i: Int) -> Void{
         //print("star_board_original_width: \(star_board_original_width)")
         theme_star_board.frame.size = CGSize(width: theme_star_board_width + (CGFloat(i)*pause_screen_x_transform(3)), height: theme_star_board.frame.height)
@@ -1278,6 +1319,9 @@ class GameOverViewController: UIViewController {
         theme_star_counter_fragments[2].frame.size = CGSize(width: theme_star_counter_fragments_width + CGFloat(i)*pause_screen_x_transform(3), height: theme_star_counter_fragments[2].frame.height)
         theme_star_counter_fragments[3].frame.origin.x = theme_star_counter_fragments[2].frame.origin.x + theme_star_counter_fragments[2].frame.width
         self.view.bringSubview(toFront: theme_star_board)
+        theme_star_total_length = theme_star_counter_fragments[0].frame.width + theme_star_counter_fragments[1].frame.width + theme_star_counter_fragments[2].frame.width + theme_star_counter_fragments[3].frame.width
+        theme_menu_star_store_button.frame.size = CGSize(width: theme_star_total_length, height: theme_star_counter_fragments[0].frame.height)
+
     }
     
 

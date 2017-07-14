@@ -31,9 +31,10 @@ class MenuViewController: UIViewController {
     var wrong_player = AVAudioPlayer()
     
     @IBOutlet weak var background_image: UIImageView!
+
+    @IBOutlet weak var star_counter: UIButton!
     
-    
-    @IBOutlet weak var star_counter: UIImageView!
+
     
     @IBOutlet weak var star_board: UILabel!
     @IBOutlet weak var continue_button: UIButton!
@@ -55,9 +56,13 @@ class MenuViewController: UIViewController {
 
     }
     
+
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    var star_store_button = MyButton()
     
     @IBAction func tutorial_button_sound(_ sender: Any) {
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -70,9 +75,11 @@ class MenuViewController: UIViewController {
     }
     
     
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         if (defaults.value(forKey: "language") == nil){
             language = "English"
@@ -108,7 +115,6 @@ class MenuViewController: UIViewController {
         star_counter.frame = CGRect(x: pause_screen_x_transform(Double(star_counter.frame.origin.x)), y: pause_screen_y_transform(Double(star_counter.frame.origin.y)), width: pause_screen_x_transform(Double(star_counter.frame.width)), height: pause_screen_y_transform(Double(star_counter.frame.height)))
         trophy.contentMode = .scaleAspectFit
         trophy.frame = CGRect(x: pause_screen_x_transform(Double(trophy.frame.origin.x)), y: pause_screen_y_transform(Double(trophy.frame.origin.y)), width: pause_screen_x_transform(Double(trophy.frame.width)), height: pause_screen_y_transform(Double(trophy.frame.height)))
-        
         star_board.frame = CGRect(x: pause_screen_x_transform(Double(star_board.frame.origin.x)), y: pause_screen_y_transform(Double(star_board.frame.origin.y)), width: pause_screen_x_transform(Double(star_board.frame.width)), height: pause_screen_y_transform(Double(star_board.frame.height)))
         highest_score.frame = CGRect(x: pause_screen_x_transform(Double(highest_score.frame.origin.x)), y: pause_screen_y_transform(Double(highest_score.frame.origin.y)), width: pause_screen_x_transform(Double(highest_score.frame.width)), height: pause_screen_y_transform(Double(highest_score.frame.height)))
         gift_button.frame = CGRect(x: pause_screen_x_transform(Double(gift_button.frame.origin.x)), y: pause_screen_y_transform(Double(gift_button.frame.origin.y)), width: pause_screen_x_transform(Double(gift_button.frame.width)), height: pause_screen_y_transform(Double(gift_button.frame.height)))
@@ -168,7 +174,7 @@ class MenuViewController: UIViewController {
             shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
             continue_button.setImage(UIImage(named:"continue"), for: .normal)
             star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
-            star_counter.image = UIImage(named:"day_mode_star")
+            star_counter.setImage(#imageLiteral(resourceName: "day_mode_star"), for: .normal)
             gift_button.setImage(#imageLiteral(resourceName: "gift_day_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_day_mode"), for: .normal)
@@ -182,7 +188,7 @@ class MenuViewController: UIViewController {
             shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
             continue_button.setImage(UIImage(named:"continue"), for: .normal)
             star_board.textColor = UIColor.white
-            star_counter.image = UIImage(named:"night_mode_star")
+            star_counter.setImage(#imageLiteral(resourceName: "night_mode_star"), for: .normal)
             gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_night_mode"), for: .normal)
@@ -196,7 +202,7 @@ class MenuViewController: UIViewController {
             background_image.image = #imageLiteral(resourceName: "BW_background")
             continue_button.setImage(UIImage(named:"BW_continue"), for: .normal)
             star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
-            star_counter.image = UIImage(named:"BW_mode_star")
+            star_counter.setImage(#imageLiteral(resourceName: "BW_mode_star"), for: .normal)
             gift_button.setImage(#imageLiteral(resourceName: "gift_BW_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_B&W"), for: .normal)
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_bw_mode"), for: .normal)
@@ -221,7 +227,7 @@ class MenuViewController: UIViewController {
             background_image.image = #imageLiteral(resourceName: "school_background")
             continue_button.setImage(UIImage(named:"school_start-icon"), for: .normal)
             star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
-            star_counter.image = UIImage(named:"school_mode_star")
+            star_counter.setImage(#imageLiteral(resourceName: "school_mode_star"), for: .normal)
             gift_button.setImage(#imageLiteral(resourceName: "gift_school_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_school"), for: .normal)
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_school_mode"), for: .normal)
@@ -237,7 +243,7 @@ class MenuViewController: UIViewController {
             background_image.alpha = 1
             background_image.image = #imageLiteral(resourceName: "colors_background")
             star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
-            star_counter.image = UIImage(named:"colors_mode_star")
+            star_counter.setImage(#imageLiteral(resourceName: "colors_mode_star"), for: .normal)
             gift_button.setImage(#imageLiteral(resourceName: "gift_color_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_color"), for: .normal)
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_color_mode"), for: .normal)
@@ -248,9 +254,26 @@ class MenuViewController: UIViewController {
         print("star board width is \(star_board.frame.width)")
     //spliti star counter
     split_star_counter()
+    star_store_button = MyButton(frame: star_counter.frame)
     update_star_counter_length_according_to_string_length()
+ 
     
+    //add star_store button Star Store Action
     
+    star_store_button.setImage(#imageLiteral(resourceName: "day_mode_star"), for: .normal)
+    star_store_button.alpha = 0.02
+    star_store_button.frame.size = CGSize(width: star_counter_total_length, height: star_counter_fragments[0].frame.height)
+    self.view.addSubview(star_store_button)
+        star_store_button.whenButtonIsClicked(action: {
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+        })
+        
     }
 
     @IBOutlet weak var like_button: UIButton!
@@ -366,6 +389,8 @@ class MenuViewController: UIViewController {
     var theme_menu = UIScrollView()
     var in_theme_menu = false
     var white_cover = UIView()
+    var theme_menu_star_store_button = MyButton()
+    
     @IBAction func theme_menu_action(_ sender: UIButton) {
         if(!in_theme_menu){
             in_theme_menu = true
@@ -440,7 +465,7 @@ class MenuViewController: UIViewController {
             self.continue_button.setImage(UIImage(named:"continue"), for: .normal)
             self.shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
             self.star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
-            self.star_counter.image = UIImage(named:"day_mode_star")
+            self.star_counter.setImage(#imageLiteral(resourceName: "day_mode_star"), for: .normal)
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_day_mode"), for: .normal)
@@ -542,7 +567,7 @@ class MenuViewController: UIViewController {
             self.continue_button.setImage(UIImage(named:"continue"), for: .normal)
             self.shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
             self.star_board.textColor = UIColor.black
-            self.star_counter.image = UIImage(named:"night_mode_star")
+            self.star_counter.setImage(#imageLiteral(resourceName: "night_mode_star"), for: .normal)
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor.black
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
@@ -677,7 +702,7 @@ class MenuViewController: UIViewController {
             self.shopping_cart.setImage(UIImage(named:"BW_shopping"), for: .normal)
             self.continue_button.setImage(UIImage(named:"BW_continue"), for: .normal)
             self.star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
-            self.star_counter.image = UIImage(named:"BW_mode_star")
+            self.star_counter.setImage(#imageLiteral(resourceName: "BW_mode_star"), for: .normal)
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_BW_mode"), for: .normal)
@@ -886,7 +911,7 @@ class MenuViewController: UIViewController {
             self.shopping_cart.setImage(UIImage(named:"school_theme-button"), for: .normal)
             self.continue_button.setImage(UIImage(named:"school_start-icon"), for: .normal)
             self.star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
-            self.star_counter.image = UIImage(named:"school_mode_star")
+            self.star_counter.setImage(#imageLiteral(resourceName: "school_mode_star"), for: .normal)
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_school_mode"), for: .normal)
@@ -1027,7 +1052,7 @@ class MenuViewController: UIViewController {
             self.shopping_cart.setImage(UIImage(named:"colors_theme-button"), for: .normal)
             self.continue_button.setImage(UIImage(named:"colors_start"), for: .normal)
             self.star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
-            self.star_counter.image = UIImage(named:"colors_mode_star")
+            self.star_counter.setImage(#imageLiteral(resourceName: "colors_mode_star"), for: .normal)
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_color_mode"), for: .normal)
@@ -1145,10 +1170,38 @@ class MenuViewController: UIViewController {
         theme_star_board.fadeIn()
         
         split_theme_star_counter()
+        theme_menu_star_store_button.frame = theme_star_counter.frame
         update_theme_star_length_according_to_string_length()
-        
+    //add theme menu star store button
+        theme_menu_star_store_button.alpha = 0.02
+        theme_menu_star_store_button.setImage(#imageLiteral(resourceName: "current_star_total"), for: .normal)
+        self.view.addSubview(theme_menu_star_store_button)
+        self.view.bringSubview(toFront: theme_menu_star_store_button)
+            theme_menu_star_store_button.whenButtonIsClicked(action: {
+                do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                    self.button_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.button_player.play()
+                
+               
+                
+                
+                
+                
+            })
+            
+            
+            
+            
+            
+            
+            
         theme_star_counter.alpha = 0
         white_cover.addSubview(theme_star_counter)
+            
         //add  return button
         
         return_button.setBackgroundImage(UIImage(named:"return_button"), for: .normal)
@@ -1187,7 +1240,7 @@ class MenuViewController: UIViewController {
                 return_button.fadeOutandRemove()
                 self.remove_all_theme_star_counter_fragments_with_fading()
             })
-        
+
            
         })
         
@@ -1359,6 +1412,8 @@ class MenuViewController: UIViewController {
     var clear_all_circle_text = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var current_star_total = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var current_star_total_text = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var treasuer_box_star_store_button = MyButton()
+    
     
     func treasure_box_function() -> Void {
     let treasure_menu = UIImageView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
@@ -1404,6 +1459,7 @@ current_star_total.alpha = 1
 //auto resizing 
 current_star_total_text_width = current_star_total_text.frame.width
 split_current_star_total()
+treasuer_box_star_store_button.frame = current_star_total.frame
 update_current_star_length_according_to_string_length()
 
 current_star_total.alpha = 0
@@ -1817,6 +1873,26 @@ self.view.addSubview(current_star_total)
         self.language_button.isEnabled = true
         self.tutorial_button.isEnabled = true
           })
+        
+//treasure box star store
+       
+       treasuer_box_star_store_button.setImage(#imageLiteral(resourceName: "current_star_total"), for: .normal)
+       treasuer_box_star_store_button.alpha = 0.02
+       self.view.addSubview(treasuer_box_star_store_button)
+        treasuer_box_star_store_button.whenButtonIsClicked(action: {
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+            
+            
+            
+            
+        })
+     
     }
    
     @IBOutlet weak var treasure_box_icon: UIButton!
@@ -2322,17 +2398,18 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         star_counter_fragments[2].frame.origin.x = star_counter_fragments[1].frame.origin.x + star_counter_fragments[1].frame.width
         star_counter_fragments[3].frame.origin.x = star_counter_fragments[2].frame.origin.x + star_counter_fragments[2].frame.width
         print("star counter fragment 0 width is \(star_counter_fragments[0].frame.width)")
-         self.view.addSubview(star_counter_fragments[0])
-        self.view.addSubview(star_counter_fragments[1])
-        self.view.addSubview(star_counter_fragments[2])
-        self.view.addSubview(star_counter_fragments[3])
+         //self.view.addSubview(star_counter_fragments[0])
+        //self.view.addSubview(star_counter_fragments[1])
+        //self.view.addSubview(star_counter_fragments[2])
+        //self.view.addSubview(star_counter_fragments[3])
         star_counter_fragment_width = star_counter_fragments[2].frame.width
         self.view.bringSubview(toFront: star_board)
-        
       print(star_counter_fragment_width)
     }
     
     func reorder_star_counter() -> Void{
+        
+        self.view.sendSubview(toBack: self.star_store_button)
         self.view.sendSubview(toBack: self.star_board)
         self.view.sendSubview(toBack: self.star_counter_fragments[0])
         self.view.sendSubview(toBack: self.star_counter_fragments[1])
@@ -2343,7 +2420,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
     
     var star_board_original_width = CGFloat(0)
     var star_counter_fragment_width = CGFloat(0)
-    
+    var star_counter_total_length = CGFloat(0)
     func update_star_counter_length(i: Int) -> Void{
     print("star_board_original_width: \(star_board_original_width)")
     
@@ -2351,6 +2428,9 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
     print("star_board width: \(star_board.frame.width)")
     star_counter_fragments[2].frame.size = CGSize(width: star_counter_fragment_width + CGFloat(i)*pause_screen_x_transform(5), height: star_counter_fragments[2].frame.height)
     star_counter_fragments[3].frame.origin.x = star_counter_fragments[2].frame.origin.x + star_counter_fragments[2].frame.width
+    star_counter_total_length = star_counter_fragments[0].frame.width + star_counter_fragments[1].frame.width + star_counter_fragments[2].frame.width + star_counter_fragments[3].frame.width
+    star_store_button.frame.size = CGSize(width: star_counter_total_length, height: star_counter_fragments[0].frame.height)
+    //star_counter.frame.size = CGSize(width: star_counter_total_length, height: star_counter_fragments[0].frame.height)
     }
     
     func update_star_counter_length_according_to_string_length() -> Void{
@@ -2377,7 +2457,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
     var current_star_total_fragments : Array<UIView> = []
     var current_star_total_text_width = CGFloat(0)
     var current_star_fragments_width = CGFloat(0)
-    
+    var current_star_total_length = CGFloat(0)
     func split_current_star_total() -> Void{
         current_star_total_fragments = []
         current_star_total.alpha = 1
@@ -2400,6 +2480,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         //print(star_counter_fragment_width)
     }
     func remove_all_current_star_fragments() -> Void{
+        treasuer_box_star_store_button.removeFromSuperview()
         current_star_total_fragments[0].removeFromSuperview()
         current_star_total_fragments[1].removeFromSuperview()
         current_star_total_fragments[2].removeFromSuperview()
@@ -2431,6 +2512,8 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
        // print("star_board width: \(star_board.frame.width)")
         current_star_total_fragments[2].frame.size = CGSize(width: current_star_fragments_width + CGFloat(i)*pause_screen_x_transform(2), height: current_star_total_fragments[2].frame.height)
         current_star_total_fragments[3].frame.origin.x = current_star_total_fragments[2].frame.origin.x + current_star_total_fragments[2].frame.width
+        current_star_total_length = current_star_total_fragments[0].frame.width + current_star_total_fragments[1].frame.width + current_star_total_fragments[2].frame.width + current_star_total_fragments[3].frame.width
+        treasuer_box_star_store_button.frame.size = CGSize(width: current_star_total_length, height: current_star_total_fragments[0].frame.height)
     }
  ///// theme star counter auto resize
     var theme_star_counter_fragments : Array<UIView> = []
@@ -2471,9 +2554,11 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         theme_star_counter_fragments[1].removeFromSuperview()
         theme_star_counter_fragments[2].removeFromSuperview()
         theme_star_counter_fragments[3].removeFromSuperview()
+        theme_menu_star_store_button.removeFromSuperview()
     }
     
     func remove_all_theme_star_counter_fragments_with_fading() -> Void{
+        theme_menu_star_store_button.fadeOutandRemove()
         theme_star_counter_fragments[0].fadeOutandRemove()
         theme_star_counter_fragments[1].fadeOutandRemove()
         theme_star_counter_fragments[2].fadeOutandRemove()
@@ -2481,6 +2566,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         
         
     }
+    
     func update_theme_star_length_according_to_string_length() -> Void{
         var i = 0
         var loop = true
@@ -2500,12 +2586,15 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         argument_integer = i - 2
         update_theme_star_counter_length(i: argument_integer)
     }
+    var theme_star_total_length = CGFloat(0)
     func update_theme_star_counter_length(i: Int) -> Void{
         //print("star_board_original_width: \(star_board_original_width)")
         theme_star_board.frame.size = CGSize(width: theme_star_board_width + (CGFloat(i)*pause_screen_x_transform(3)), height: theme_star_board.frame.height)
         // print("star_board width: \(star_board.frame.width)")
         theme_star_counter_fragments[2].frame.size = CGSize(width: theme_star_counter_fragments_width + CGFloat(i)*pause_screen_x_transform(3), height: theme_star_counter_fragments[2].frame.height)
         theme_star_counter_fragments[3].frame.origin.x = theme_star_counter_fragments[2].frame.origin.x + theme_star_counter_fragments[2].frame.width
+       theme_star_total_length = theme_star_counter_fragments[0].frame.width + theme_star_counter_fragments[1].frame.width + theme_star_counter_fragments[2].frame.width + theme_star_counter_fragments[3].frame.width
+        theme_menu_star_store_button.frame.size = CGSize(width: theme_star_total_length, height: theme_star_counter_fragments[0].frame.height)
 
     }
   
