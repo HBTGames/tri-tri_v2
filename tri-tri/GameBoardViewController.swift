@@ -1172,6 +1172,24 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         starBoard.text = String(star_score)
         
         
+        
+        
+        
+        
+        if(defaults.value(forKey: "tritri_single_tri_stored_type") != nil){
+            self.single_tri_stored_type_index = defaults.value(forKey: "tritri_single_tri_stored_type") as! Array<Array>
+        }else{
+            defaults.set(single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
+        }
+        
+        if(defaults.value(forKey: "tritri_single_tri_filled") != nil){
+            self.filled = defaults.value(forKey: "tritri_single_tri_filled") as! Array<Array>
+        }else{
+            defaults.set(filled, forKey: "tritri_single_tri_filled")
+        }
+        
+        
+        
         if(defaults.value(forKey: "tritri_tool_quantity_array") != nil){
             tool_quantity_array = defaults.value(forKey: "tritri_tool_quantity_array") as! Array
         }else{
@@ -1610,6 +1628,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             
             
         })
+        change_current_board_according_to_theme()
     }
     
     
@@ -3181,7 +3200,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 }
                 position_in_use = 3
                 
-                
+                defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
+                defaults.set(self.filled, forKey: "tritri_single_tri_filled")
                
 
                 //
