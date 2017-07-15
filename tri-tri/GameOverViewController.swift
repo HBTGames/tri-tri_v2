@@ -13,6 +13,7 @@ import AVFoundation
 import EggRating
 import SpriteKit
 import StoreKit
+import Social
 class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     
