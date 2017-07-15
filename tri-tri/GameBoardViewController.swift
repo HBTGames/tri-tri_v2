@@ -2998,6 +2998,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         home_button.fadeInWithDisplacement()
         shopping_button.fadeInWithDisplacement()
         restart_button.fadeInWithDisplacement()
+        //bounce in
         
         
         
