@@ -443,13 +443,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sampleFinalBoard" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-pt-dvg">
-                                <rect key="frame" x="35" y="486" width="140" height="128"/>
+                                <rect key="frame" x="30" y="486" width="149" height="132"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="share_button" translatesAutoresizingMaskIntoConstraints="NO" id="pSG-NO-Ou2">
-                                <rect key="frame" x="205" y="565" width="145" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yKB-B2-w5c">
+                                <rect key="frame" x="205" y="586" width="145" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="share_button"/>
+                                <connections>
+                                    <action selector="share_image_action:" destination="g9C-ac-axW" eventType="touchUpInside" id="0DL-qh-zoj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration" label="gameover">
@@ -469,7 +473,7 @@
                         <outlet property="restart_button" destination="efL-Nx-AeG" id="gFk-Sd-rwD"/>
                         <outlet property="score_board" destination="2PI-GQ-0zF" id="Zcu-7Y-RP4"/>
                         <outlet property="share_button" destination="ulY-n0-3X0" id="k00-xu-RYd"/>
-                        <outlet property="share_image_button" destination="pSG-NO-Ou2" id="gOS-N8-aFK"/>
+                        <outlet property="share_image_button" destination="yKB-B2-w5c" id="dxd-Zg-iwc"/>
                         <outlet property="share_image_scene" destination="aPT-0D-O4u" id="VAN-1F-YSl"/>
                         <outlet property="shopping_button" destination="BUo-5l-JKc" id="h9S-oU-V0K"/>
                         <outlet property="trophy" destination="jet-R1-2WH" id="KaY-OA-Fzp"/>
@@ -1081,6 +1085,14 @@
                                     <action selector="stop_music_when_pause:" destination="qxD-t8-ioY" eventType="touchUpInside" id="gVv-FO-08y"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZK-LB-QaZ">
+                                <rect key="frame" x="210" y="43" width="99" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="test gameover"/>
+                                <connections>
+                                    <action selector="test_gameover:" destination="qxD-t8-ioY" eventType="touchUpInside" id="uof-9i-aad"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="           " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDl-Da-Qca">
                                 <rect key="frame" x="163" y="323" width="49" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1146,24 +1158,16 @@
                                     <action selector="star_cheat_function:" destination="qxD-t8-ioY" eventType="touchUpInside" id="Tnq-ns-eo7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQP-ED-8jb">
-                                <rect key="frame" x="59" y="629" width="63" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="star_zero"/>
-                                <connections>
-                                    <action selector="star_zero_cheat:" destination="qxD-t8-ioY" eventType="touchUpInside" id="c9Y-gT-Jbu"/>
-                                </connections>
-                            </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="day_mode_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="P0M-hw-129">
                                 <rect key="frame" x="173" y="155" width="29" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZK-LB-QaZ">
-                                <rect key="frame" x="210" y="43" width="99" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQP-ED-8jb">
+                                <rect key="frame" x="227" y="85" width="63" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="test gameover"/>
+                                <state key="normal" title="star_zero"/>
                                 <connections>
-                                    <action selector="test_gameover:" destination="qxD-t8-ioY" eventType="touchUpInside" id="uof-9i-aad"/>
+                                    <action selector="star_zero_cheat:" destination="qxD-t8-ioY" eventType="touchUpInside" id="c9Y-gT-Jbu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1362,7 +1366,7 @@
         <image name="GameOver" width="243" height="52"/>
         <image name="School_Theme" width="177" height="177"/>
         <image name="Triangle_Text" width="111" height="29"/>
-        <image name="continue" width="350" height="304"/>
+        <image name="continue" width="1000" height="866"/>
         <image name="day mode like" width="198" height="172"/>
         <image name="day mode triangle title" width="360" height="82"/>
         <image name="day_mode_star" width="451" height="162"/>

@@ -36,7 +36,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     //final board image
     var final_board_image = UIImage()
     
-    @IBOutlet weak var share_image_button: UIImageView!
+    @IBOutlet weak var share_image_button: UIButton!
+
     @IBOutlet weak var share_image_scene: UIImageView!
     
     @IBOutlet weak var High_score_marker: UILabel!
@@ -1575,6 +1576,31 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
         }
     }
+
+    //share image button
+    
+    @IBAction func share_image_action(_ sender: UIButton) {
+        do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+            self.button_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        self.button_player.play()
+        let shareImage = final_board_image
+        let myWebsite = NSURL(string:"http://www.baidu.com/")
+        let shareItem = [shareImage,myWebsite,"Start Share"] as [Any]
+        
+        let activityViewController = UIActivityViewController(activityItems: shareItem, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        //share type
+        activityViewController.excludedActivityTypes = [ UIActivityType.copyToPasteboard , UIActivityType.assignToContact, UIActivityType.openInIBooks, UIActivityType.print, UIActivityType.airDrop]
+        //present view controller
+        self.present(activityViewController, animated: true, completion: nil)
+        
+        
+    }
+    
 
 }
 
