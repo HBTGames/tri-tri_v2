@@ -13,6 +13,7 @@ import UserNotifications
 import Lottie
 import SpriteKit
 import StoreKit
+import GameKit
 
 public extension UIView {
     func fadeIn(withDuration duration: TimeInterval = 0.5) {
@@ -11198,7 +11199,7 @@ number_of_lines_erased += 1
             var HighScoreDefault = UserDefaults.standard
             HighScoreDefault.set(HighestScore, forKey: "tritri_HighestScore")
             HighScoreDefault.synchronize()
-            
+            saveBestScore()
         }
         
     
@@ -11326,7 +11327,7 @@ number_of_lines_erased += 1
             var HighScoreDefault = UserDefaults.standard
             HighScoreDefault.set(HighestScore, forKey: "tritri_HighestScore")
             HighScoreDefault.synchronize()
-            
+            saveBestScore()
         }
         
     }
@@ -15328,7 +15329,7 @@ number_of_lines_erased += 1
             var HighScoreDefault = UserDefaults.standard
             HighScoreDefault.set(HighestScore, forKey: "tritri_HighestScore")
             HighScoreDefault.synchronize()
-            
+            saveBestScore()
         }
         
         current_score = score
@@ -17052,6 +17053,14 @@ func trinity_animation() -> Void {
             }
             
         }
+    }
+    
+    //update game center best score
+    func saveBestScore() {
+        let leaderboardID = "tri_tri_highest_score"
+        let sScore = GKScore(leaderboardIdentifier: leaderboardID)
+        sScore.value = Int64(HighestScore)
+        GKScore.report([sScore], withCompletionHandler: nil)
     }
     
 }

@@ -295,7 +295,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     //enablel gamecenter
     authPlayer()
     saveBestScore()
-    openGameCenter()
+    //openGameCenter()
         
         
         
@@ -2975,7 +2975,6 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
     var gcEnabled = Bool()
     var gcDefaultLeaderBoard = String()
     func openGameCenter() -> Void{
-    let root_controller = self.view.window?.rootViewController
     let game_center_controller = GKGameCenterViewController()
     game_center_controller.gameCenterDelegate = self
     self.present(game_center_controller, animated: true, completion: nil)
