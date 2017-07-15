@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "BW_background_full.png",
+      "filename" : "bw_background.png",
       "scale" : "1x"
     },
     {
