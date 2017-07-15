@@ -121,9 +121,9 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         //present alert 
         self.present(alert, animated: true, completion: nil)
  **/
-        let shareImage = #imageLiteral(resourceName: "BW_share")
+        let shareImage = #imageLiteral(resourceName: "share_pic")
         let myWebsite = NSURL(string:"http://www.baidu.com/")
-        let shareItem = [shareImage]
+        let shareItem = [shareImage,myWebsite,"Start Share"] as [Any]
         
         let activityViewController = UIActivityViewController(activityItems: shareItem, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
