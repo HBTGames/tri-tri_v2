@@ -164,7 +164,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
 
     //display final_board_image
     @IBOutlet weak var finalBoard: UIImageView!
-    
+    var share_scene_timer = Timer()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -198,14 +198,15 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         score_board.frame = CGRect(x: pause_screen_x_transform(Double(score_board.frame.origin.x)), y: pause_screen_y_transform(Double(score_board.frame.origin.y)), width: pause_screen_x_transform(Double(score_board.frame.width)), height: pause_screen_y_transform(Double(score_board.frame.height)))
 
         High_score_marker.frame = CGRect(x: pause_screen_x_transform(Double(High_score_marker.frame.origin.x)), y: pause_screen_y_transform(Double(High_score_marker.frame.origin.y)), width: pause_screen_x_transform(Double(High_score_marker.frame.width)), height: pause_screen_y_transform(Double(High_score_marker.frame.height)))
-        finalBoard.frame = CGRect(x: pause_screen_x_transform(Double(finalBoard.frame.origin.x)), y: pause_screen_y_transform(Double(finalBoard.frame.origin.y)), width: pause_screen_x_transform(Double(finalBoard.frame.width)), height: pause_screen_y_transform(Double(finalBoard.frame.height)))
-        share_image_scene.frame = CGRect(x: pause_screen_x_transform(Double(share_image_scene.frame.origin.x)), y: pause_screen_y_transform(Double(share_image_scene.frame.origin.y)), width: pause_screen_x_transform(Double(share_image_scene.frame.width)), height: pause_screen_y_transform(Double(share_image_scene.frame.height)))
-        share_image_button.frame =  CGRect(x: pause_screen_x_transform(Double(share_image_button.frame.origin.x)), y: pause_screen_y_transform(Double(share_image_button.frame.origin.y)), width: pause_screen_x_transform(Double(share_image_button.frame.width)), height: pause_screen_y_transform(Double(share_image_button.frame.height)))
+        finalBoard.frame = CGRect(x: pause_screen_x_transform(Double(finalBoard.frame.origin.x)), y: pause_screen_y_transform(Double(finalBoard.frame.origin.y))+screen_height/2.0, width: pause_screen_x_transform(Double(finalBoard.frame.width)), height: pause_screen_y_transform(Double(finalBoard.frame.height)))
+        share_image_scene.frame = CGRect(x: pause_screen_x_transform(Double(share_image_scene.frame.origin.x)), y: pause_screen_y_transform(Double(share_image_scene.frame.origin.y))+screen_height/2.0, width: pause_screen_x_transform(Double(share_image_scene.frame.width)), height: pause_screen_y_transform(Double(share_image_scene.frame.height)))
+        share_image_button.frame =  CGRect(x: pause_screen_x_transform(Double(share_image_button.frame.origin.x)), y: pause_screen_y_transform(Double(share_image_button.frame.origin.y))+screen_height/2.0, width: pause_screen_x_transform(Double(share_image_button.frame.width)), height: pause_screen_y_transform(Double(share_image_button.frame.height)))
         
         restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
         background_image.frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
        
-
+      
+        
         if (ThemeType == 1){
             home_button.setBackgroundImage(home_pic, for: .normal)
         } else if (ThemeType == 2){
@@ -309,12 +310,31 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
         }
 
-        
+        share_scene_timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(GameOverViewController.share_scene_bounce_in), userInfo: nil, repeats: false)
         //add pangesture
         //et panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
         //self.view.addGestureRecognizer(panGestureRecognizer)
     }
 
+    func share_scene_bounce_in() {
+        //share image scene bounce in
+        share_image_button.frame.origin.y -= screen_height/2.0
+        share_image_scene.frame.origin.y -= screen_height/2.0
+        finalBoard.frame.origin.y -= screen_height/2.0
+        
+        share_image_button.transform = CGAffineTransform(translationX: 0, y: screen_height/2.0)
+        share_image_scene.transform = CGAffineTransform(translationX: 0, y: screen_height/2.0)
+        finalBoard.transform = CGAffineTransform(translationX: 0, y: screen_height/2.0)
+        
+        UIView.animate(withDuration: 0.7, delay: 00, usingSpringWithDamping: 0.6, initialSpringVelocity: 3.0, options: .curveLinear, animations: {
+            self.share_image_button.transform = .identity
+            self.share_image_scene.transform = .identity
+            self.finalBoard.transform = .identity
+        }, completion: nil)
+        
+        share_scene_timer.invalidate()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -1588,8 +1608,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         }
         self.button_player.play()
         let shareImage = final_board_image
-        let myWebsite = NSURL(string:"http://www.baidu.com/")
-        let shareItem = [shareImage,myWebsite,"Start Share"] as [Any]
+        //let myWebsite = NSURL(string:"http://www.baidu.com/")
+        let shareItem = [shareImage] as [Any]
         
         let activityViewController = UIActivityViewController(activityItems: shareItem, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
