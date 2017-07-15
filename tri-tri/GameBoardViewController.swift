@@ -9554,7 +9554,7 @@ number_of_lines_erased += 1
     func Jump_to_Game_Over () -> Void {
         
         
-        
+        takeBoardScreenShot()
         
         
         
@@ -13447,6 +13447,7 @@ number_of_lines_erased += 1
             } else {
                 nextViewController.is_high_score = false
             }
+            nextViewController.final_board_image = self.starBoardScreenShot
             self.present(nextViewController, animated: true, completion: nil)
             //self.audioPlayer.stop()
             self.timer.invalidate()
@@ -17142,6 +17143,20 @@ func trinity_animation() -> Void {
         let sScore = GKScore(leaderboardIdentifier: leaderboardID)
         sScore.value = Int64(HighestScore)
         GKScore.report([sScore], withCompletionHandler: nil)
+    }
+    
+    
+    //take screen shot of starboard
+    var starBoardScreenShot = UIImage()
+    func takeBoardScreenShot() -> Void {
+    let size = CGSize(width: screen_width - pause_screen_x_transform(33) , height: screen_height/2.30)
+    UIGraphicsBeginImageContextWithOptions(size, false, 0)
+    let draw_rec = CGRect(x: -pause_screen_x_transform(18) , y: -pause_screen_y_transform(190) , width: view.bounds.size.width , height: view.bounds.size.height)
+    self.view.drawHierarchy(in: draw_rec, afterScreenUpdates: true)
+     var image = UIGraphicsGetImageFromCurrentImageContext()
+     starBoardScreenShot = image!
+
+        
     }
     
 }

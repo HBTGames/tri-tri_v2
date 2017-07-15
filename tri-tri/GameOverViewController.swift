@@ -33,6 +33,12 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     let chaos_home_pic = UIImage(named:"chaos_home_icon")
     let school_home_pic = UIImage(named:"school_home-icon")
     let colors_home_pic = UIImage(named:"colors_home-icon")
+    //final board image
+    var final_board_image = UIImage()
+    
+    @IBOutlet weak var share_image_button: UIImageView!
+    @IBOutlet weak var share_image_scene: UIImageView!
+    
     @IBOutlet weak var High_score_marker: UILabel!
 
     @IBOutlet weak var background_image: UIImageView!
@@ -155,6 +161,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         return CGFloat(new_y)
     }
 
+    //display final_board_image
+    @IBOutlet weak var finalBoard: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -165,6 +173,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         }else{
             theme_islocked_array = defaults.value(forKey: "tritri_theme_lock_array") as! Array<Bool>
         }
+        
+           finalBoard.image = final_board_image
 
         if (SKPaymentQueue.canMakePayments()){
             print ("In_app_purchase is enabled, loading")
@@ -187,6 +197,9 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         score_board.frame = CGRect(x: pause_screen_x_transform(Double(score_board.frame.origin.x)), y: pause_screen_y_transform(Double(score_board.frame.origin.y)), width: pause_screen_x_transform(Double(score_board.frame.width)), height: pause_screen_y_transform(Double(score_board.frame.height)))
 
         High_score_marker.frame = CGRect(x: pause_screen_x_transform(Double(High_score_marker.frame.origin.x)), y: pause_screen_y_transform(Double(High_score_marker.frame.origin.y)), width: pause_screen_x_transform(Double(High_score_marker.frame.width)), height: pause_screen_y_transform(Double(High_score_marker.frame.height)))
+        finalBoard.frame = CGRect(x: pause_screen_x_transform(Double(finalBoard.frame.origin.x)), y: pause_screen_y_transform(Double(finalBoard.frame.origin.y)), width: pause_screen_x_transform(Double(finalBoard.frame.width)), height: pause_screen_y_transform(Double(finalBoard.frame.height)))
+        share_image_scene.frame = CGRect(x: pause_screen_x_transform(Double(share_image_scene.frame.origin.x)), y: pause_screen_y_transform(Double(share_image_scene.frame.origin.y)), width: pause_screen_x_transform(Double(share_image_scene.frame.width)), height: pause_screen_y_transform(Double(share_image_scene.frame.height)))
+        share_image_button.frame =  CGRect(x: pause_screen_x_transform(Double(share_image_button.frame.origin.x)), y: pause_screen_y_transform(Double(share_image_button.frame.origin.y)), width: pause_screen_x_transform(Double(share_image_button.frame.width)), height: pause_screen_y_transform(Double(share_image_button.frame.height)))
         
         restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
         background_image.frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
