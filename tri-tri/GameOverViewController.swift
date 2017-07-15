@@ -13,14 +13,15 @@ import AVFoundation
 import EggRating
 import SpriteKit
 import StoreKit
+import Social
 import GameKit
+
+
 class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver, GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true, completion: nil)
     }
-    
-    
     
     
     //theme islocked array
