@@ -2826,17 +2826,17 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         button_player.play()
         self.pause_screen = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
         if (ThemeType == 1){
-            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1.0))
         } else if (ThemeType == 2){
-            self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(1.0))
         } else if (ThemeType == 3){
-            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1.0))
         } else if (ThemeType == 4){
-            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1.0))
         } else if (ThemeType == 5){
-            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
+            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1.0))
         }else if (ThemeType == 6){
-             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.8))
+             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1.0))
         }
         
         self.pause_screen.alpha = 0
@@ -2844,7 +2844,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         super.view.isUserInteractionEnabled = false
         self.view.isUserInteractionEnabled = true
         self.view.addSubview(pause_screen)
-        self.pause_screen.fadeIn()
+        self.pause_screen.fadeInTrans()
         paused = true
          continue_button = MyButton(frame: CGRect(x: pause_screen_x_transform(87.5), y: pause_screen_y_transform(283.5), width: pause_screen_x_transform(200), height: pause_screen_y_transform(170)))
         if(ThemeType == 1 || ThemeType == 2){
@@ -2921,15 +2921,6 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     
         
         continue_button.whenButtonIsClicked(action:{
-            self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0))
-            self.continue_button.removeFromSuperview()
-            self.home_button.removeFromSuperview()
-            self.shopping_button.removeFromSuperview()
-            self.restart_button.removeFromSuperview()
-            change_theme_button.removeFromSuperview()
-            self.pause_screen.removeFromSuperview()
-            self.paused = false
-            //self.audioPlayer.play()
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -2937,10 +2928,30 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+            let first_translation_y = self.pause_screen_y_transform(-30)
+            self.continue_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
+            self.continue_button.removeFromSuperview()
+            })
+            self.home_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
+                self.home_button.removeFromSuperview()
+            })
+            self.shopping_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
+                self.shopping_button.removeFromSuperview()
+            })
+            self.restart_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
+                self.restart_button.removeFromSuperview()
+                self.paused = false
+            })
+            change_theme_button.removeFromSuperview()
+          self.pause_screen.fadeOutandRemove()
+           
+            
+            //self.audioPlayer.play()
+           
             self.remove_all_fragments()
             self.split_star_counter()
             self.update_star_counter_length_according_to_string_length()
-
+            self.reorder_star_counter()
         })
         
         shopping_button.whenButtonIsClicked(action:{
@@ -2959,18 +2970,40 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             self.restart_player.play()
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameBoardViewController") as! GameBoardViewController
-            nextViewController.ThemeType = self.ThemeType
-            nextViewController.modalTransitionStyle = .crossDissolve
-            self.present(nextViewController, animated: true, completion: nil)
-            //self.timer.invalidate()
+            UIView.animate(withDuration: 0.4, animations: {
+               self.pause_screen.alpha = 0.9
+            }, completion: {
+                (finished) -> Void in
+                nextViewController.ThemeType = self.ThemeType
+                nextViewController.modalTransitionStyle = .crossDissolve
+                self.present(nextViewController, animated: true, completion: nil)
+                //self.timer.invalidate()
+                
+            })
+            let first_translation_y = self.pause_screen_y_transform(-30)
+            self.continue_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
+                self.continue_button.removeFromSuperview()
+                
+
+            })
+            self.home_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
+                self.home_button.removeFromSuperview()
+            })
+            self.shopping_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
+                self.shopping_button.removeFromSuperview()
+            })
+            self.restart_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
+                self.restart_button.removeFromSuperview()
+                self.paused = false
+            })
+            change_theme_button.removeFromSuperview()
+            
+
+            
 
         })
         
         self.home_button.whenButtonIsClicked(action:{
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-            nextViewController.modalTransitionStyle = .crossDissolve
-            self.present(nextViewController, animated: true, completion: nil)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -2978,31 +3011,63 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+            UIView.animate(withDuration: 0.4, animations: {
+                self.pause_screen.alpha = 0.9
+            }, completion: {
+                (finished) -> Void in
+                nextViewController.modalTransitionStyle = .crossDissolve
+                self.present(nextViewController, animated: true, completion: nil)
+
+                //self.timer.invalidate()
+                
+            })
+            let first_translation_y = self.pause_screen_y_transform(-30)
+            self.continue_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
+                self.continue_button.removeFromSuperview()
+                
+                
+            })
+            self.home_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
+                self.home_button.removeFromSuperview()
+            })
+            self.shopping_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
+                self.shopping_button.removeFromSuperview()
+            })
+            self.restart_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
+                self.restart_button.removeFromSuperview()
+                self.paused = false
+            })
+
 
            // self.timer.invalidate()
         })
         
         
-        continue_button.alpha = 0
-        self.home_button.alpha = 0
-        shopping_button.alpha = 0
-        restart_button.alpha = 0
+        //continue_button.alpha = 0
+        //self.home_button.alpha = 0
+        //shopping_button.alpha = 0
+        //restart_button.alpha = 0
         self.view.addSubview(continue_button)
         self.view.addSubview(home_button)
         self.view.addSubview(shopping_button)
         self.view.addSubview(restart_button)
         //self.view.addSubview(change_theme_button)
         
-        //fade in
-        continue_button.fadeInWithDisplacement()
-        home_button.fadeInWithDisplacement()
-        shopping_button.fadeInWithDisplacement()
-        restart_button.fadeInWithDisplacement()
         //bounce in
+        continue_button.transform = CGAffineTransform(translationX: 0, y: screen_height)
+        home_button.transform = CGAffineTransform(translationX: 0, y: screen_height)
+        shopping_button.transform = CGAffineTransform(translationX: 0, y: screen_height)
+        restart_button.transform = CGAffineTransform(translationX: 0, y: screen_height)
         
-        
-        
-        
+        UIView.animate(withDuration: 0.7, delay: 00, usingSpringWithDamping: 0.7, initialSpringVelocity: 3.0, options: .curveLinear, animations: {
+            self.continue_button.transform = .identity
+            self.home_button.transform = .identity
+            self.shopping_button.transform = .identity
+            self.restart_button.transform = .identity
+            
+        }, completion: nil)
     }
     
     
