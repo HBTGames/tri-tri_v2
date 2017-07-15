@@ -1577,8 +1577,13 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         self.view.addSubview(white_cover)
         //four times of the area
         let final_image_frame = UIImageView(frame: share_image_scene.frame)
-        final_image_frame.image = #imageLiteral(resourceName: "final_image_frame")
-        final_image_frame.contentMode = .scaleToFill
+        if (language == "English"){
+         final_image_frame.image = #imageLiteral(resourceName: "final_image_frame")
+        }else{
+         final_image_frame.image = #imageLiteral(resourceName: "final_share_frame_chinese")
+        }
+        
+        final_image_frame.contentMode = .scaleAspectFit
         self.view.addSubview(final_image_frame)
         //now add screen shot
       let temp_screenshot = UIImageView(frame: finalBoard.frame)
@@ -1594,9 +1599,9 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         temp_final_score.text = final_score
         self.view.addSubview(temp_final_score)
         
-        let size = CGSize(width: final_image_frame.frame.width , height: final_image_frame.frame.height)
+        let size = CGSize(width: final_image_frame.frame.width , height: final_image_frame.frame.height-pause_screen_y_transform(24))
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        let draw_rec = CGRect(x: -final_image_frame.frame.origin.x , y: -final_image_frame.frame.origin.y , width: view.bounds.size.width , height: view.bounds.size.height)
+        let draw_rec = CGRect(x: -final_image_frame.frame.origin.x , y: -final_image_frame.frame.origin.y-pause_screen_x_transform(12) , width: view.bounds.size.width , height: view.bounds.size.height)
         self.view.drawHierarchy(in: draw_rec, afterScreenUpdates: true)
         var image = UIGraphicsGetImageFromCurrentImageContext()
         temp_screenshot.removeFromSuperview()
