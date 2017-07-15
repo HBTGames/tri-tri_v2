@@ -1007,7 +1007,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.during_holy_nova = false
                         defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
                         defaults.set(self.filled, forKey: "tritri_single_tri_filled")
-                        
+                        defaults.set(self.score, forKey: "tritri_single_round_score")
                         
                     }
                     else/* if (contained_boxes.count == 1)*/{
@@ -1038,7 +1038,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     star_score_increment()
                 defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
                 defaults.set(self.filled, forKey: "tritri_single_tri_filled")
-                
+                defaults.set(self.score, forKey: "tritri_single_round_score")
                 }
             
         }
@@ -1184,15 +1184,21 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         
         
         if(defaults.value(forKey: "tritri_single_tri_stored_type") != nil){
-            self.single_tri_stored_type_index = defaults.value(forKey: "tritri_single_tri_stored_type") as! Array<Array>
+            self.single_tri_stored_type_index = defaults.value(forKey: "tritri_single_tri_stored_type") as! Array<Array<Int>>
         }else{
             defaults.set(single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
         }
         
         if(defaults.value(forKey: "tritri_single_tri_filled") != nil){
-            self.filled = defaults.value(forKey: "tritri_single_tri_filled") as! Array<Array>
+            self.filled = defaults.value(forKey: "tritri_single_tri_filled") as! Array<Array<Bool>>
         }else{
             defaults.set(filled, forKey: "tritri_single_tri_filled")
+        }
+        
+        if(defaults.value(forKey: "tritri_single_round_score") != nil){
+            self.score = defaults.value(forKey: "tritri_single_round_score") as! Int
+        }else{
+            defaults.set(self.score, forKey: "tritri_single_round_score")
         }
         
         
@@ -2992,8 +2998,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         })
         
         restart_button.whenButtonIsClicked(action:{
-            defaults.set(nil, forKey: "tritri_single_tri_stored_type")
-            defaults.set(nil, forKey: "tritri_single_tri_filled")
+            
             self.restart_player.play()
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameBoardViewController") as! GameBoardViewController
@@ -3025,9 +3030,10 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             })
             change_theme_button.removeFromSuperview()
             
-
-            
-
+            print("clear all datas stored for last round")
+            defaults.set([[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]], forKey: "tritri_single_tri_stored_type")
+            defaults.set([[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]], forKey: "tritri_single_tri_filled")
+            defaults.set(0, forKey: "tritri_single_round_score")
         })
         
         self.home_button.whenButtonIsClicked(action:{
@@ -3210,7 +3216,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
                 defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
                 defaults.set(self.filled, forKey: "tritri_single_tri_filled")
-               
+               defaults.set(self.score, forKey: "tritri_single_round_score")
 
                 //
                 if(Eligible_to_Generate()){
@@ -13464,8 +13470,9 @@ number_of_lines_erased += 1
         just_kill_me.setImage(UIImage(named:"revive_just_let_me_die"), for: .normal)
         
         just_kill_me.whenButtonIsClicked {
-            defaults.set(nil, forKey: "tritri_single_tri_stored_type")
-            defaults.set(nil, forKey: "tritri_single_tri_filled")
+            defaults.set([[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]], forKey: "tritri_single_tri_stored_type")
+            defaults.set([[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]], forKey: "tritri_single_tri_filled")
+            defaults.set(0, forKey: "tritri_single_round_score")
             count_down_circle.send_stop_signal()
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
@@ -13658,6 +13665,7 @@ number_of_lines_erased += 1
         self.close_pack()
             defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
             defaults.set(self.filled, forKey: "tritri_single_tri_filled")
+            defaults.set(self.score, forKey: "tritri_single_round_score")
         }
         else
         {
@@ -15437,6 +15445,7 @@ number_of_lines_erased += 1
         defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
         defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
         defaults.set(self.filled, forKey: "tritri_single_tri_filled")
+        defaults.set(self.score, forKey: "tritri_single_round_score")
     }
     
     func erase_animation_combination(row: Int, column: Int , duration: TimeInterval){
@@ -15914,6 +15923,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
             defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
         defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
         defaults.set(self.filled, forKey: "tritri_single_tri_filled")
+        defaults.set(self.score, forKey: "tritri_single_round_score")
         }
         else {
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
@@ -16976,8 +16986,9 @@ func trinity_animation() -> Void {
             self.paused = false
             }
         }else if (gameover_star_purchase == "gameover"){
-            defaults.set(nil, forKey: "tritri_single_tri_stored_type")
-            defaults.set(nil, forKey: "tritri_single_tri_filled")
+            defaults.set([[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]], forKey: "tritri_single_tri_stored_type")
+            defaults.set([[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]], forKey: "tritri_single_tri_filled")
+            defaults.set(0, forKey: "tritri_single_round_score")
             close_button.whenButtonIsClicked{
             
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
