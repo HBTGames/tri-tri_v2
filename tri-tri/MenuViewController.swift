@@ -1477,10 +1477,10 @@ current_star_total.alpha = 1
     
         
 //current star total text
-        current_star_total_text = UILabel(frame: CGRect(x: current_star_total.frame.origin.x + pause_screen_x_transform(20), y: current_star_total.frame.origin.y, width: current_star_total.frame.width, height: current_star_total.frame.height))
-        current_star_total_text.textColor = UIColor(red: 63.0/255, green: 70.0/255, blue: 82.0/255, alpha: 1)
+        current_star_total_text = UILabel(frame: CGRect(x: current_star_total.frame.origin.x + pause_screen_x_transform(17), y: current_star_total.frame.origin.y, width: current_star_total.frame.width, height: current_star_total.frame.height))
+        current_star_total_text.textColor = UIColor(red: 188.0/255, green: 177.0/255, blue: 177.0/255, alpha: 1)
         current_star_total_text.text = String(star_score)
-        current_star_total_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        current_star_total_text.font = UIFont(name: "Helvetica", size: CGFloat(21))
         current_star_total_text.textAlignment = .center
         current_star_total_text.alpha = 0
         self.view.addSubview(current_star_total_text)
