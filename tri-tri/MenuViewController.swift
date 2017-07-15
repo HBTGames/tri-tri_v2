@@ -296,11 +296,13 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     authPlayer()
     saveBestScore()
     //openGameCenter()
-        
+    //wechat
         
         
         
     }
+    
+
 
     @IBOutlet weak var like_button: UIButton!
     override func didReceiveMemoryWarning() {

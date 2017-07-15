@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         center.requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {
             (granted,erro) in
         })
+        //WXApi.registerApp("123456")
         return true
     }
     

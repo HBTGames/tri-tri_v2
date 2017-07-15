@@ -8,6 +8,7 @@ target 'tri-tri' do
   # Pods for tri-tri
 pod 'lottie-ios'
 pod 'EggRating'
+pod 'WechatOpenSDK'
   target 'tri-triTests' do
     inherit! :search_paths
     # Pods for testing

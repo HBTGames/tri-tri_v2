@@ -3,16 +3,19 @@ PODS:
     - RateView
   - lottie-ios (1.5.1)
   - RateView (1.2)
+  - WechatOpenSDK (1.7.7)
 
 DEPENDENCIES:
   - EggRating
   - lottie-ios
+  - WechatOpenSDK
 
 SPEC CHECKSUMS:
   EggRating: 633703d4be5c9938bfee58208966d75995f2cc21
   lottie-ios: f680a7c4cb7a567ecf258fde0f967913aff111b8
   RateView: d4d12e9bb76dc23a77a56f4e5c5fb530a3f3f998
+  WechatOpenSDK: cbd332148eb792d444ed4eec94f421d98f2046ee
 
-PODFILE CHECKSUM: e722e5f74d7a72ffb3561b4b13e9b14c94f8fb16
+PODFILE CHECKSUM: f00d61d953132527b4743461df46e46b5cf9ad7b
 
 COCOAPODS: 1.2.1
