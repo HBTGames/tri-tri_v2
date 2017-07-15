@@ -12,11 +12,12 @@ import AVFoundation
 import EggRating
 import SpriteKit
 import StoreKit
+import GameKit
 extension UIView:Explodable { }
 
 
 
-class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver, GKGameCenterControllerDelegate {
 
     
     //theme islocked array
@@ -59,6 +60,12 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     }
     
 
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -285,6 +292,13 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             self.button_player.play()
             self.purchase_star_function()
         })
+    //enablel gamecenter
+    authPlayer()
+    saveBestScore()
+    openGameCenter()
+        
+        
+        
         
     }
 
@@ -358,6 +372,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             self.language_button_image_decider()
             triangle_title_image_decider()
         }
+        
     }
     
     
@@ -1442,6 +1457,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     gift_button.isEnabled = false
     language_button.isEnabled = false
     tutorial_button.isEnabled = false
+    star_store_button.isEnabled = false
     let treasure_cancel = MyButton(frame: CGRect(x: treasure_menu.frame.origin.x, y: treasure_menu.frame.origin.y, width: pause_screen_x_transform(117), height: pause_screen_y_transform(117)))
     treasure_cancel.setImage(#imageLiteral(resourceName: "treasure_box_cancel"), for: .normal)
     treasure_cancel.contentMode = .scaleAspectFit
@@ -1884,6 +1900,7 @@ self.view.addSubview(current_star_total)
         self.gift_button.isEnabled = true
         self.language_button.isEnabled = true
         self.tutorial_button.isEnabled = true
+        self.star_store_button.isEnabled = true
           })
         
 //treasure box star store
@@ -2781,6 +2798,13 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         self.view.addSubview(close_button)
         
         close_button.whenButtonIsClicked{
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
             self.purchase_star_menu.removeFromSuperview()
             self.more_stars_label.removeFromSuperview()
             self.close_button.removeFromSuperview()
@@ -2945,6 +2969,76 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
             
         }
     }
+    
+    
+    //game center
+    var gcEnabled = Bool()
+    var gcDefaultLeaderBoard = String()
+    func openGameCenter() -> Void{
+    let root_controller = self.view.window?.rootViewController
+    let game_center_controller = GKGameCenterViewController()
+    game_center_controller.gameCenterDelegate = self
+    self.present(game_center_controller, animated: true, completion: nil)
+        
+        
+    }
+    
+    func saveBestScore() {
+        let leaderboardID = "tri_tri_highest_score"
+        let sScore = GKScore(leaderboardIdentifier: leaderboardID)
+        sScore.value = Int64(Int(highest_score.text!)!)
+        GKScore.report([sScore], withCompletionHandler: nil)
+    
+        
+        
+        
+        
+    }
+    
+    func authPlayer() {
+        let localPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {
+            (view,error) -> Void in
+            
+            if view != nil{
+                self.present(view!, animated: true, completion: nil)
+            }else if(GKLocalPlayer.localPlayer().isAuthenticated){
+                print(GKLocalPlayer.localPlayer().isAuthenticated)
+                self.gcEnabled = true
+                
+               // //get default leader board id
+                /**localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer: String?, error: NSError?) -> Void in
+                    if error != nil {
+                        print(error)
+                    } else {
+                        self.gcDefaultLeaderBoard = leaderboardIdentifer!
+                    }
+                } as! (String?, Error?) -> Void)  **/
+            }else{
+                //game center not enabled
+                self.gcEnabled = false
+                print("Local player could not be authenticated, disabling game center")
+                print(error)
+                
+            }
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+    }
+
+    
+    
+    @IBAction func openGC(_ sender: UIButton) {
+        openGameCenter()
+    }
+    
 }
 
 
@@ -3067,6 +3161,8 @@ func generateFragmentsFrom(_ originView:UIView, with splitRatio:CGFloat, in cont
                 final_completetion()
             })
         })
+     
+        
      
         
         

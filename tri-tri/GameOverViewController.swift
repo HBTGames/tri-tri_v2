@@ -1379,6 +1379,14 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         self.view.addSubview(close_button)
         
         close_button.whenButtonIsClicked{
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+            
                 self.purchase_star_menu.removeFromSuperview()
                 self.more_stars_label.removeFromSuperview()
                 self.close_button.removeFromSuperview()

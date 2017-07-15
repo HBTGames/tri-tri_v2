@@ -22,6 +22,8 @@
 		04E48D3F1EC0704000823F45 /* tri_triUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E48D3E1EC0704000823F45 /* tri_triUITests.swift */; };
 		04E48D4F1EC075FA00823F45 /* 540654.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04E48D4E1EC075FA00823F45 /* 540654.jpg */; };
 		5608C9BE1F186FEC0057A997 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608C9BD1F186FEC0057A997 /* ScrollViewController.swift */; };
+		5608C9C01F199C070057A997 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5608C9BF1F199C070057A997 /* GameKit.framework */; };
+		5608C9C21F199D1C0057A997 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5608C9C11F199D1C0057A997 /* StoreKit.framework */; };
 		5620A38A1ECAB89F0035E099 /* background_music_tony.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 5620A3891ECAB8930035E099 /* background_music_tony.m4a */; };
 		563230E81EC8A9F600EA49D9 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563230E71EC8A9F600EA49D9 /* GameOverViewController.swift */; };
 		563E7F5E1ED2EE50008F33C1 /* game over.wav in Resources */ = {isa = PBXBuildFile; fileRef = 563E7F5D1ED2EE50008F33C1 /* game over.wav */; };
@@ -108,6 +110,8 @@
 		04E48D4E1EC075FA00823F45 /* 540654.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 540654.jpg; path = pictures/540654.jpg; sourceTree = "<group>"; };
 		1852D7B9B7A02524B0A27FFE /* Pods-tri-triTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tri-triTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tri-triTests/Pods-tri-triTests.release.xcconfig"; sourceTree = "<group>"; };
 		5608C9BD1F186FEC0057A997 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
+		5608C9BF1F199C070057A997 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		5608C9C11F199D1C0057A997 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5620A3891ECAB8930035E099 /* background_music_tony.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = background_music_tony.m4a; sourceTree = "<group>"; };
 		563230E71EC8A9F600EA49D9 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		563E7F5D1ED2EE50008F33C1 /* game over.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "game over.wav"; sourceTree = "<group>"; };
@@ -166,7 +170,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5608C9C21F199D1C0057A997 /* StoreKit.framework in Frameworks */,
 				00B30D3C3C9B83F7F1855572 /* Pods_tri_tri.framework in Frameworks */,
+				5608C9C01F199C070057A997 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +326,8 @@
 		9BC16BF4EA8777728F8FB0F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5608C9C11F199D1C0057A997 /* StoreKit.framework */,
+				5608C9BF1F199C070057A997 /* GameKit.framework */,
 				71EE653BEA0021E2F147D2C3 /* Pods_tri_tri.framework */,
 				75CE8A342F12D783B129AFA0 /* Pods_tri_triTests.framework */,
 				D7FF444272BCFA86D0D6EEBF /* Pods_tri_triUITests.framework */,
@@ -422,6 +430,12 @@
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
+							};
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
 							};
 						};
 					};
