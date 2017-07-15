@@ -1671,7 +1671,13 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
 
         
         tri_boundary_distance_x = 2
-        tri_boundary_distance_y = 0.5
+        if (self.screen_width == 414){
+            tri_boundary_distance_y = 1
+        }
+        else{
+            tri_boundary_distance_y = 0.5
+        }
+        
         half_tri_distance_x = 49/2
         full_tri_distance_y = 43
         original_0_0_x = 85
