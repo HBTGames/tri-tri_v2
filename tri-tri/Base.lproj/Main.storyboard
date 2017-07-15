@@ -389,12 +389,12 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="crossDissolve" id="RSU-HG-reN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUo-5l-JKc">
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUo-5l-JKc">
                                 <rect key="frame" x="220" y="318" width="100" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="shopping_cart" backgroundImage="like"/>
+                                <state key="normal" image="day mode like" backgroundImage="like"/>
                                 <connections>
-                                    <action selector="theme_menu_action:" destination="g9C-ac-axW" eventType="touchUpInside" id="NB5-w4-3sK"/>
+                                    <action selector="like_action:" destination="g9C-ac-axW" eventType="touchUpInside" id="xoQ-0L-iyU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efL-Nx-AeG">
@@ -411,7 +411,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="link" backgroundImage="link"/>
                                 <connections>
-                                    <action selector="Share_Button_Action:" destination="g9C-ac-axW" eventType="touchUpInside" id="9xv-PD-hyD"/>
+                                    <action selector="Game_Center_Action:" destination="g9C-ac-axW" eventType="touchUpInside" id="9V2-I8-yBk"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="           " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySa-fe-eSb">
@@ -454,6 +454,13 @@
                                     <action selector="share_image_action:" destination="g9C-ac-axW" eventType="touchUpInside" id="0DL-qh-zoj"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJS-yY-WC5">
+                                <rect key="frame" x="297" y="474" width="83" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration" label="gameover">
@@ -468,14 +475,15 @@
                         <outlet property="High_score_marker" destination="aLK-G1-dsp" id="1gZ-io-QFp"/>
                         <outlet property="background_image" destination="QXr-wT-3n2" id="dj5-r3-Cg1"/>
                         <outlet property="finalBoard" destination="7fa-pt-dvg" id="gWq-4R-ngY"/>
+                        <outlet property="game_center_button" destination="ulY-n0-3X0" id="S2i-DL-adN"/>
                         <outlet property="gameover_title" destination="cor-IV-WdS" id="TKf-7m-V8L"/>
                         <outlet property="home_button" destination="J3e-WT-fYS" id="VHJ-dC-ziF"/>
+                        <outlet property="like_button" destination="BUo-5l-JKc" id="TxP-Ya-GqH"/>
                         <outlet property="restart_button" destination="efL-Nx-AeG" id="gFk-Sd-rwD"/>
                         <outlet property="score_board" destination="2PI-GQ-0zF" id="Zcu-7Y-RP4"/>
-                        <outlet property="share_button" destination="ulY-n0-3X0" id="k00-xu-RYd"/>
                         <outlet property="share_image_button" destination="yKB-B2-w5c" id="dxd-Zg-iwc"/>
                         <outlet property="share_image_scene" destination="aPT-0D-O4u" id="VAN-1F-YSl"/>
-                        <outlet property="shopping_button" destination="BUo-5l-JKc" id="h9S-oU-V0K"/>
+                        <outlet property="share_scene_score" destination="IJS-yY-WC5" id="iLZ-It-9GC"/>
                         <outlet property="trophy" destination="jet-R1-2WH" id="KaY-OA-Fzp"/>
                     </connections>
                 </viewController>
@@ -1367,7 +1375,7 @@
         <image name="School_Theme" width="177" height="177"/>
         <image name="Triangle_Text" width="111" height="29"/>
         <image name="continue" width="1000" height="866"/>
-        <image name="day mode like" width="198" height="172"/>
+        <image name="day mode like" width="1000" height="866"/>
         <image name="day mode triangle title" width="360" height="82"/>
         <image name="day_mode_star" width="451" height="162"/>
         <image name="day_mode_trophy" width="400" height="400"/>

@@ -13,7 +13,12 @@ import AVFoundation
 import EggRating
 import SpriteKit
 import StoreKit
-class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+import GameKit
+class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver, GKGameCenterControllerDelegate {
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
     
     
     
@@ -40,6 +45,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
 
     @IBOutlet weak var share_image_scene: UIImageView!
     
+    @IBOutlet weak var share_scene_score: UILabel!
     @IBOutlet weak var High_score_marker: UILabel!
 
     @IBOutlet weak var background_image: UIImageView!
@@ -54,11 +60,11 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     @IBOutlet weak var home_button: UIButton!
     
    
-    @IBOutlet weak var shopping_button: UIButton!
+    @IBOutlet weak var like_button: UIButton!
     
-    @IBOutlet weak var share_button: UIButton!
+    @IBOutlet weak var game_center_button: UIButton!
 
-    @IBAction func Share_Button_Action(_ sender: UIButton) {
+    @IBAction func Game_Center_Action(_ sender: UIButton) {
         
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
@@ -66,78 +72,11 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         catch{
             
         }
-        self.button_player.play()/**
-     let alert = UIAlertController(title: "Share", message: "Share Your Record!", preferredStyle: .actionSheet)
-        //first action
-        let action_one = UIAlertAction(title: "Share on Facebook", style: .default) { (action) in
-            //check whether user has facebook
-            if (SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook)){
-                let post = SLComposeViewController(forServiceType: SLServiceTypeFacebook)!
-                post.setInitialText("I have played tri-tri !")
-                post.add(UIImage(named: "share_pic"))
-                self.present(post, animated: true, completion: nil)
-            }else{
-            self.showAlert(service: "Facebook")
-            }
-        }
-    
-        //second action
-        let action_two = UIAlertAction(title: "Share on Twitter", style: .default) { (action) in
-            //check whether user has facebook
-            if (SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter)){
-                let post = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
-                post.setInitialText("I have played tri-tri !")
-                post.add(UIImage(named: "share_pic"))
-                self.present(post, animated: true, completion: nil)
-            }else{
-                self.showAlert(service: "Twitter")
-            }
-        }
-        
-        //third action
-        let action_three = UIAlertAction(title: "Share on Weibo", style: .default) { (action) in
-            //check whether user has facebook
-            if (SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTencentWeibo)){
-                let post = SLComposeViewController(forServiceType: SLServiceTypeTencentWeibo)!
-                post.setInitialText("I have played tri-tri !")
-                post.add(UIImage(named: "share_pic"))
-                self.present(post, animated: true, completion: nil)
-            }else{
-                self.showAlert(service: "Weibo")
-            }
-        }
-        
-        //fourth action
-        let action_four = UIAlertAction(title: "I have changed my mind", style: .cancel){ (action) in
-         //self.dismiss(animated: true, completion: nil)
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
-            nextViewController.final_score = self.final_score
-            nextViewController.ThemeType = self.ThemeType
-            nextViewController.is_high_score = self.is_high_score
-        self.present(nextViewController, animated: false, completion: nil)
-        }
-        
-        
-        //add action to action sheet
-        alert.addAction(action_one)
-        alert.addAction(action_two)
-        alert.addAction(action_three)
-        alert.addAction(action_four)
-        
-        //present alert 
-        self.present(alert, animated: true, completion: nil)
- **/
-        let shareImage = #imageLiteral(resourceName: "share_pic")
-        let myWebsite = NSURL(string:"http://www.baidu.com/")
-        let shareItem = [shareImage,myWebsite,"Start Share"] as [Any]
-        
-        let activityViewController = UIActivityViewController(activityItems: shareItem, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
-        //share type
-        activityViewController.excludedActivityTypes = [ UIActivityType.copyToPasteboard , UIActivityType.assignToContact, UIActivityType.openInIBooks, UIActivityType.print, UIActivityType.airDrop]
-        //present view controller
-        self.present(activityViewController, animated: true, completion: nil)
+        self.button_player.play()
+        let game_center_controller = GKGameCenterViewController()
+        game_center_controller.gameCenterDelegate = self
+        self.present(game_center_controller, animated: true, completion: nil)
+
     }
 
     var screen_width : CGFloat = 0
@@ -190,9 +129,9 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         screen_width = view.frame.width
         screen_height = view.frame.height
         gameover_title.frame = CGRect(x: pause_screen_x_transform(Double(gameover_title.frame.origin.x)), y: pause_screen_y_transform(Double(gameover_title.frame.origin.y)), width: pause_screen_x_transform(Double(gameover_title.frame.width)), height: pause_screen_y_transform(Double(gameover_title.frame.height)))
-        share_button.frame = CGRect(x: pause_screen_x_transform(Double(share_button.frame.origin.x)), y: pause_screen_y_transform(Double(share_button.frame.origin.y)), width: pause_screen_x_transform(Double(share_button.frame.width)), height: pause_screen_y_transform(Double(share_button.frame.height)))
+        game_center_button.frame = CGRect(x: pause_screen_x_transform(Double(game_center_button.frame.origin.x)), y: pause_screen_y_transform(Double(game_center_button.frame.origin.y)), width: pause_screen_x_transform(Double(game_center_button.frame.width)), height: pause_screen_y_transform(Double(game_center_button.frame.height)))
         restart_button.frame = CGRect(x: pause_screen_x_transform(Double(restart_button.frame.origin.x)), y: pause_screen_y_transform(Double(restart_button.frame.origin.y)), width: pause_screen_x_transform(Double(restart_button.frame.width)), height: pause_screen_y_transform(Double(restart_button.frame.height)))
-        shopping_button.frame = CGRect(x: pause_screen_x_transform(Double(shopping_button.frame.origin.x)), y: pause_screen_y_transform(Double(shopping_button.frame.origin.y)), width: pause_screen_x_transform(Double(shopping_button.frame.width)), height: pause_screen_y_transform(Double(shopping_button.frame.height)))
+        like_button.frame = CGRect(x: pause_screen_x_transform(Double(like_button.frame.origin.x)), y: pause_screen_y_transform(Double(like_button.frame.origin.y)), width: pause_screen_x_transform(Double(like_button.frame.width)), height: pause_screen_y_transform(Double(like_button.frame.height)))
         home_button.frame = CGRect(x: pause_screen_x_transform(Double(home_button.frame.origin.x)), y: pause_screen_y_transform(Double(home_button.frame.origin.y)), width: pause_screen_x_transform(Double(home_button.frame.width)), height: pause_screen_y_transform(Double(home_button.frame.height)))
         trophy.frame = CGRect(x: pause_screen_x_transform(Double(trophy.frame.origin.x)), y: pause_screen_y_transform(Double(trophy.frame.origin.y)), width: pause_screen_x_transform(Double(trophy.frame.width)), height: pause_screen_y_transform(Double(trophy.frame.height)))
         score_board.frame = CGRect(x: pause_screen_x_transform(Double(score_board.frame.origin.x)), y: pause_screen_y_transform(Double(score_board.frame.origin.y)), width: pause_screen_x_transform(Double(score_board.frame.width)), height: pause_screen_y_transform(Double(score_board.frame.height)))
@@ -201,6 +140,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         finalBoard.frame = CGRect(x: pause_screen_x_transform(Double(finalBoard.frame.origin.x)), y: pause_screen_y_transform(Double(finalBoard.frame.origin.y))+screen_height/2.0, width: pause_screen_x_transform(Double(finalBoard.frame.width)), height: pause_screen_y_transform(Double(finalBoard.frame.height)))
         share_image_scene.frame = CGRect(x: pause_screen_x_transform(Double(share_image_scene.frame.origin.x)), y: pause_screen_y_transform(Double(share_image_scene.frame.origin.y))+screen_height/2.0, width: pause_screen_x_transform(Double(share_image_scene.frame.width)), height: pause_screen_y_transform(Double(share_image_scene.frame.height)))
         share_image_button.frame =  CGRect(x: pause_screen_x_transform(Double(share_image_button.frame.origin.x)), y: pause_screen_y_transform(Double(share_image_button.frame.origin.y))+screen_height/2.0, width: pause_screen_x_transform(Double(share_image_button.frame.width)), height: pause_screen_y_transform(Double(share_image_button.frame.height)))
+        share_scene_score.frame = CGRect(x: pause_screen_x_transform(Double(share_scene_score.frame.origin.x)), y: pause_screen_y_transform(Double(share_scene_score.frame.origin.y))+screen_height/2.0, width: pause_screen_x_transform(Double(share_scene_score.frame.width)), height: pause_screen_y_transform(Double(share_scene_score.frame.height)))
+        
         
         restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
         background_image.frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
@@ -221,9 +162,10 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             home_button.setBackgroundImage(colors_home_pic, for: .normal)
         }
         home_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
-        shopping_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
-        share_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
+        like_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(25), bottom: 0, right: pause_screen_x_transform(25))
+        game_center_button.touchAreaEdgeInsets = UIEdgeInsets(top: pause_screen_y_transform(10), left: pause_screen_x_transform(15), bottom: pause_screen_y_transform(0), right: pause_screen_x_transform(15))
         score_board.text = final_score
+        share_scene_score.text = final_score
         do{restart_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "restart_soundeffect", ofType: "wav")!))
             restart_player.prepareToPlay()
         }
@@ -248,8 +190,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
-            self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
-            self.share_button.setImage(UIImage(named:"link"), for: .normal)
+            self.like_button.setImage(#imageLiteral(resourceName: "day mode like"), for: .normal)
+            self.game_center_button.setImage(UIImage(named:"link"), for: .normal)
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             background_image.alpha = 0
@@ -257,8 +199,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             self.score_board.textColor = UIColor(red: 255.0/255, green: 254.0/255, blue: 243.0/255, alpha: 1.0)
             
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
-            self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
-            self.share_button.setImage(UIImage(named:"link"), for: .normal)
+            self.like_button.setImage(#imageLiteral(resourceName: "night mode like"), for: .normal)
+            self.game_center_button.setImage(UIImage(named:"link"), for: .normal)
         }else if ThemeType == 3{
             //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             background_image.alpha = 1
@@ -267,8 +209,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             self.score_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
             
             self.restart_button.setImage(UIImage(named:"BW_restart_version2"), for: .normal)
-            self.shopping_button.setImage(UIImage(named:"BW_shopping"), for: .normal)
-            self.share_button.setImage(UIImage(named:"BW_share"), for: .normal)
+            self.like_button.setImage(#imageLiteral(resourceName: "BW_like"), for: .normal)
+            self.game_center_button.setImage(UIImage(named:"BW_share"), for: .normal)
             //self.home_button.setImage(UIImage(named:"BW_home"), for: .normal)
             
         }else if ThemeType == 4{
@@ -279,8 +221,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             self.score_board.textColor = UIColor(red: 236.0/255, green: 232.0/255, blue: 187.0/255, alpha: 1.0)
             
             self.restart_button.setImage(UIImage(named:"chaos_restart_big"), for: .normal)
-            self.shopping_button.setImage(UIImage(named:"chaos_theme_button"), for: .normal)
-            self.share_button.setImage(UIImage(named:"chaos_share_icon"), for: .normal)
+            self.like_button.setImage(UIImage(named:"chaos_theme_button"), for: .normal)
+            self.game_center_button.setImage(UIImage(named:"chaos_share_icon"), for: .normal)
             //self.home_button.setImage(UIImage(named:"BW_home"), for: .normal)
             
         }
@@ -292,8 +234,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             self.score_board.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
            
             self.restart_button.setImage(UIImage(named:"school_restart-big"), for: .normal)
-            self.shopping_button.setImage(UIImage(named:"school_theme-button"), for: .normal)
-            self.share_button.setImage(UIImage(named:"school_share-icon"), for: .normal)
+            self.like_button.setImage(#imageLiteral(resourceName: "school_like-icon"), for: .normal)
+            self.game_center_button.setImage(UIImage(named:"school_share-icon"), for: .normal)
             //self.home_button.setImage(UIImage(named:"BW_home"), for: .normal)
             
         }
@@ -305,8 +247,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             self.score_board.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.0)
             
             self.restart_button.setImage(UIImage(named:"colors_restart-big"), for: .normal)
-            self.shopping_button.setImage(UIImage(named:"colors_theme-button"), for: .normal)
-            self.share_button.setImage(UIImage(named:"colors_share-icon"), for: .normal)
+            self.like_button.setImage(#imageLiteral(resourceName: "colors_like-icon"), for: .normal)
+            self.game_center_button.setImage(UIImage(named:"colors_share-icon"), for: .normal)
             
         }
 
@@ -321,15 +263,17 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         share_image_button.frame.origin.y -= screen_height/2.0
         share_image_scene.frame.origin.y -= screen_height/2.0
         finalBoard.frame.origin.y -= screen_height/2.0
+         share_scene_score.frame.origin.y -= screen_height/2.0
         
         share_image_button.transform = CGAffineTransform(translationX: 0, y: screen_height/2.0)
         share_image_scene.transform = CGAffineTransform(translationX: 0, y: screen_height/2.0)
         finalBoard.transform = CGAffineTransform(translationX: 0, y: screen_height/2.0)
-        
+        share_scene_score.transform = CGAffineTransform(translationX: 0, y: screen_height/2.0)
         UIView.animate(withDuration: 0.7, delay: 00, usingSpringWithDamping: 0.6, initialSpringVelocity: 3.0, options: .curveLinear, animations: {
             self.share_image_button.transform = .identity
             self.share_image_scene.transform = .identity
             self.finalBoard.transform = .identity
+            self.share_scene_score.transform = .identity
         }, completion: nil)
         
         share_scene_timer.invalidate()
@@ -362,17 +306,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         
     }
     
-    @IBAction func like_action(_ sender: UIButton) {
-        do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
-            self.button_player.prepareToPlay()
-        }
-        catch{
-            
-        }
-        self.button_player.play()
-        EggRating.promptRateUs(viewController: self)
-    }
-    @IBAction func home_button_action(_ sender: UIButton) {
+      @IBAction func home_button_action(_ sender: UIButton) {
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -419,7 +353,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     var white_cover = UIView()
     
     var theme_menu_star_store_button = MyButton()
-    
+    /**
     @IBAction func theme_menu_action(_ sender: UIButton) {
         if(!in_theme_menu){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -480,7 +414,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             self.home_button.setBackgroundImage(self.home_pic, for: .normal)
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
-            self.share_button.setImage(UIImage(named:"link"), for: .normal)
+            self.game_center_button.setImage(UIImage(named:"link"), for: .normal)
             self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 46.0/255, green: 62.0/255, blue: 59.0/255, alpha: 1.0)
@@ -563,7 +497,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             self.home_button.setBackgroundImage(self.night_home_pic, for: .normal)
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
             self.shopping_button.setImage(UIImage(named:"shopping_cart"), for: .normal)
-            self.share_button.setImage(UIImage(named:"link"), for: .normal)
+            self.game_center_button.setImage(UIImage(named:"link"), for: .normal)
             self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor.black
@@ -676,7 +610,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
                 self.score_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
                 self.shopping_button.setImage(UIImage(named:"BW_shopping"), for: .normal)
                 self.restart_button.setImage(UIImage(named:"BW_restart_version2"), for: .normal)
-                self.share_button.setImage(UIImage(named:"BW_share"), for: .normal)
+                self.game_center_button.setImage(UIImage(named:"BW_share"), for: .normal)
                 self.home_button.setBackgroundImage(self.BW_home_pic, for: .normal)
                 self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
                 self.theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
@@ -866,7 +800,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
                 self.score_board.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
                 self.restart_button.setImage(UIImage(named:"school_restart-big"), for: .normal)
                 self.shopping_button.setImage(UIImage(named:"school_theme-button"), for: .normal)
-                self.share_button.setImage(UIImage(named:"school_share-icon"), for: .normal)
+                self.game_center_button.setImage(UIImage(named:"school_share-icon"), for: .normal)
                 self.home_button.setBackgroundImage(self.school_home_pic, for: .normal)
                 self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
                 self.theme_star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
@@ -984,7 +918,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
                 self.score_board.textColor = UIColor(red: 79.0/255, green: 168.0/255, blue: 248.0/255, alpha: 1.00)
                 self.restart_button.setImage(UIImage(named:"colors_restart-big"), for: .normal)
                 self.shopping_button.setImage(UIImage(named:"colors_theme-button"), for: .normal)
-                self.share_button.setImage(UIImage(named:"colors_share-icon"), for: .normal)
+                self.game_center_button.setImage(UIImage(named:"colors_share-icon"), for: .normal)
                 self.home_button.setBackgroundImage(self.colors_home_pic, for: .normal)
                 self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
                 self.theme_star_board.textColor = UIColor(red: 81.0/255, green: 195.0/255, blue: 247.0/255, alpha: 1.0)
@@ -1188,7 +1122,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
         }
     }
-    
+    **/
     
     
     func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
@@ -1607,7 +1541,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
         }
         self.button_player.play()
-        let shareImage = final_board_image
+        let shareImage = compose_final_share_image()
         //let myWebsite = NSURL(string:"http://www.baidu.com/")
         let shareItem = [shareImage] as [Any]
         
@@ -1620,6 +1554,59 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         
         
     }
+    
+    @IBAction func like_action(_ sender: UIButton) {
+        do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+            self.button_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        self.button_player.play()
+        EggRating.promptRateUs(viewController: self)
+        
+    }
+    
+    //handle the final image to share
+    func compose_final_share_image() -> UIImage{
+        //first add a white cover
+        let white_cover = UIView(frame: CGRect(x: -screen_width/2.0, y: -screen_height/2.0, width: 2.0*screen_width, height: 2.0*screen_height))
+        white_cover.backgroundColor = UIColor.white
+        white_cover.alpha = 1.0
+        self.view.addSubview(white_cover)
+        //four times of the area
+        let final_image_frame = UIImageView(frame: share_image_scene.frame)
+        final_image_frame.image = #imageLiteral(resourceName: "final_image_frame")
+        final_image_frame.contentMode = .scaleToFill
+        self.view.addSubview(final_image_frame)
+        //now add screen shot
+      let temp_screenshot = UIImageView(frame: finalBoard.frame)
+        temp_screenshot.image = finalBoard.image
+        self.view.addSubview(temp_screenshot)
+        temp_screenshot.contentMode = .scaleAspectFit
+        //take screen shot again
+        let temp_final_score = UILabel(frame: share_scene_score.frame)
+        temp_final_score.textAlignment = .left
+        temp_final_score.frame.origin.y -= pause_screen_y_transform(7)
+        temp_final_score.font = UIFont(name: "Helvetica Neue", size: 27.0)
+        temp_final_score.textColor = UIColor.white
+        temp_final_score.text = final_score
+        self.view.addSubview(temp_final_score)
+        
+        let size = CGSize(width: final_image_frame.frame.width , height: final_image_frame.frame.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        let draw_rec = CGRect(x: -final_image_frame.frame.origin.x , y: -final_image_frame.frame.origin.y , width: view.bounds.size.width , height: view.bounds.size.height)
+        self.view.drawHierarchy(in: draw_rec, afterScreenUpdates: true)
+        var image = UIGraphicsGetImageFromCurrentImageContext()
+        temp_screenshot.removeFromSuperview()
+        final_image_frame.removeFromSuperview()
+        white_cover.removeFromSuperview()
+        temp_final_score.removeFromSuperview()
+        return image!
+        
+    }
+    
+    
     
 
 }
