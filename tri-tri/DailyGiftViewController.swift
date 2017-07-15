@@ -222,7 +222,12 @@ class DailyGiftViewController: UIViewController {
         self.view.addSubview(lock_screen)
         lock_screen.fadeInTrans()
         grey_transparent_image = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
-        grey_transparent_image.image = #imageLiteral(resourceName: "grey_transparent")
+        if (defaults.value(forKey: "language") as! String == "English"){
+            grey_transparent_image.image = #imageLiteral(resourceName: "grey_transparent")        }
+        else {
+            grey_transparent_image.image = #imageLiteral(resourceName: "time_remaining_chinese")
+        }
+        
         grey_transparent_image.alpha = 0
         self.view.addSubview(grey_transparent_image)
         grey_transparent_image.fadeIn()
