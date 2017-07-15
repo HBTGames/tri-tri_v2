@@ -59,7 +59,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         catch{
             
         }
-        self.button_player.play()
+        self.button_player.play()/**
      let alert = UIAlertController(title: "Share", message: "Share Your Record!", preferredStyle: .actionSheet)
         //first action
         let action_one = UIAlertAction(title: "Share on Facebook", style: .default) { (action) in
@@ -120,6 +120,15 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         
         //present alert 
         self.present(alert, animated: true, completion: nil)
+ **/
+        let shareImage = #imageLiteral(resourceName: "share_pic")
+        let imageToShare = [shareImage]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        //share type
+        activityViewController.excludedActivityTypes = [ UIActivityType.copyToPasteboard , UIActivityType.assignToContact, UIActivityType.openInIBooks, UIActivityType.print, UIActivityType.airDrop]
+        //present view controller
+        self.present(activityViewController, animated: true, completion: nil)
     }
 
     var screen_width : CGFloat = 0

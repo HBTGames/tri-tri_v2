@@ -15669,9 +15669,12 @@ number_of_lines_erased += 1
     
     /***********************************************************************************/
     //amplifer function
+    var amplifier_in_use = false
     var amplify_base = 1
     var amplifier_count_down_timer = Timer()
     func amplifier_action() -> Void {
+        if(!amplifier_in_use){
+            amplifier_in_use = true
         if tool_quantity_array[3] > 0{
         do{amplifier_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "amplifier_sound", ofType: "wav")!))
             amplifier_player.prepareToPlay()
@@ -15697,14 +15700,26 @@ number_of_lines_erased += 1
             }
             not_fit_player.play()
         }
+        }else{
+            do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                not_fit_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            not_fit_player.play()
+            
+        }
     }
     
     func amplifier_completed() -> Void{
+    amplifier_in_use = false
      amplify_base = 1
     print("amplifier finished")
     amplifier_valide_icon.fadeOut()
     wave_animator_amplifier.fadeOutandRemove()
     wave_animator_amplifier_timer.invalidate()
+        
     }
     
     //amplifier animation
