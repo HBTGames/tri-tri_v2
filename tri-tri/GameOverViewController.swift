@@ -192,7 +192,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
             self.like_button.setImage(#imageLiteral(resourceName: "day mode like"), for: .normal)
-            self.game_center_button.setImage(UIImage(named:"link"), for: .normal)
+            self.game_center_button.setImage(#imageLiteral(resourceName: "day_leaderboard"), for: .normal)
         } else if ThemeType == 2{
             self.view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
             background_image.alpha = 0
@@ -201,7 +201,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
             self.restart_button.setImage(UIImage(named:"restart_big"), for: .normal)
             self.like_button.setImage(#imageLiteral(resourceName: "night mode like"), for: .normal)
-            self.game_center_button.setImage(UIImage(named:"link"), for: .normal)
+            self.game_center_button.setImage(#imageLiteral(resourceName: "day_leaderboard"), for: .normal)
         }else if ThemeType == 3{
             //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
             background_image.alpha = 1
@@ -211,7 +211,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
             self.restart_button.setImage(UIImage(named:"BW_restart_version2"), for: .normal)
             self.like_button.setImage(#imageLiteral(resourceName: "BW_like"), for: .normal)
-            self.game_center_button.setImage(UIImage(named:"BW_share"), for: .normal)
+            self.game_center_button.setImage(#imageLiteral(resourceName: "BW_leaderboard"), for: .normal)
             //self.home_button.setImage(UIImage(named:"BW_home"), for: .normal)
             
         }else if ThemeType == 4{
@@ -236,7 +236,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
            
             self.restart_button.setImage(UIImage(named:"school_restart-big"), for: .normal)
             self.like_button.setImage(#imageLiteral(resourceName: "school_like-icon"), for: .normal)
-            self.game_center_button.setImage(UIImage(named:"school_share-icon"), for: .normal)
+            self.game_center_button.setImage(#imageLiteral(resourceName: "school_leaderboard"), for: .normal)
             //self.home_button.setImage(UIImage(named:"BW_home"), for: .normal)
             
         }
@@ -249,7 +249,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
             self.restart_button.setImage(UIImage(named:"colors_restart-big"), for: .normal)
             self.like_button.setImage(#imageLiteral(resourceName: "colors_like-icon"), for: .normal)
-            self.game_center_button.setImage(UIImage(named:"colors_share-icon"), for: .normal)
+            self.game_center_button.setImage(#imageLiteral(resourceName: "color_leaderboard"), for: .normal)
             
         }
 

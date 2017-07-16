@@ -1991,6 +1991,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+            self.apply_button_restore()
             defaults.set(1, forKey: "tritri_Theme")
             self.ThemeType = 1
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
@@ -2027,31 +2028,40 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             self.split_star_counter()
             self.reorder_star_counter()
             self.update_star_counter_length_according_to_string_length()
-    
-                
-                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+            
+                //change apply button image first
+                UIView.transition(with: self.day_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                    self.day_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
+                    self.day_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
+                    self.day_apply_button.setImage(#imageLiteral(resourceName: "day_selected"), for: .normal)
+                }, completion: {
+                    (finished) -> Void in
                     
-                    self.day_apply_button.removeFromSuperview()
-                    self.night_apply_button.removeFromSuperview()
-                    self.BW_apply_button.removeFromSuperview()
-                    self.school_apply_button.removeFromSuperview()
-                    self.colors_apply_button.removeFromSuperview()
-                    
-                    self.day_theme_button.removeFromSuperview()
-                    self.night_theme_button.removeFromSuperview()
-                    self.BW_theme_button.removeFromSuperview()
-                    self.chaos_theme_button.removeFromSuperview()
-                    self.school_theme_button.removeFromSuperview()
-                    self.colors_theme_button.removeFromSuperview()
-                    self.in_theme_menu = false
-                    
-                })
-                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-                    self.theme_star_counter.fadeOutandRemove()
-                    self.theme_star_board.fadeOutandRemove()
-                    triangle_text.fadeOutandRemove()
-                    return_button.fadeOutandRemove()
-                    self.remove_all_theme_star_counter_fragments()
+                    self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                        
+                        self.day_apply_button.removeFromSuperview()
+                        self.night_apply_button.removeFromSuperview()
+                        self.BW_apply_button.removeFromSuperview()
+                        self.school_apply_button.removeFromSuperview()
+                        self.colors_apply_button.removeFromSuperview()
+                        
+                        self.day_theme_button.removeFromSuperview()
+                        self.night_theme_button.removeFromSuperview()
+                        self.BW_theme_button.removeFromSuperview()
+                        self.chaos_theme_button.removeFromSuperview()
+                        self.school_theme_button.removeFromSuperview()
+                        self.colors_theme_button.removeFromSuperview()
+                        self.in_theme_menu = false
+                        
+                    })
+                    self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        self.theme_star_counter.fadeOutandRemove()
+                        self.theme_star_board.fadeOutandRemove()
+                        triangle_text.fadeOutandRemove()
+                        return_button.fadeOutandRemove()
+                        self.remove_all_theme_star_counter_fragments()
+                    })
+
                 })
                 
             }else{
@@ -2094,6 +2104,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+            self.apply_button_restore()
             defaults.set(2, forKey: "tritri_Theme")
             self.ThemeType = 2
             self.background_image.alpha = 0
@@ -2130,29 +2141,38 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 self.reorder_star_counter()
                 self.update_star_counter_length_according_to_string_length()
   
-                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                UIView.transition(with: self.night_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                    self.night_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
+                    self.night_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
+                    self.night_apply_button.setImage(#imageLiteral(resourceName: "night_selected"), for: .normal)
+                }, completion: {
+                    (finished) -> Void in
                     
-                    self.day_apply_button.removeFromSuperview()
-                    self.night_apply_button.removeFromSuperview()
-                    self.BW_apply_button.removeFromSuperview()
-                    self.school_apply_button.removeFromSuperview()
-                    self.colors_apply_button.removeFromSuperview()
-                    
-                    self.day_theme_button.removeFromSuperview()
-                    self.night_theme_button.removeFromSuperview()
-                    self.BW_theme_button.removeFromSuperview()
-                    self.chaos_theme_button.removeFromSuperview()
-                    self.school_theme_button.removeFromSuperview()
-                    self.colors_theme_button.removeFromSuperview()
-                    self.in_theme_menu = false
-                    
-                })
-                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-                    self.theme_star_counter.fadeOutandRemove()
-                    self.theme_star_board.fadeOutandRemove()
-                    triangle_text.fadeOutandRemove()
-                    return_button.fadeOutandRemove()
-                    self.remove_all_theme_star_counter_fragments()
+                    self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                        
+                        self.day_apply_button.removeFromSuperview()
+                        self.night_apply_button.removeFromSuperview()
+                        self.BW_apply_button.removeFromSuperview()
+                        self.school_apply_button.removeFromSuperview()
+                        self.colors_apply_button.removeFromSuperview()
+                        
+                        self.day_theme_button.removeFromSuperview()
+                        self.night_theme_button.removeFromSuperview()
+                        self.BW_theme_button.removeFromSuperview()
+                        self.chaos_theme_button.removeFromSuperview()
+                        self.school_theme_button.removeFromSuperview()
+                        self.colors_theme_button.removeFromSuperview()
+                        self.in_theme_menu = false
+                        
+                    })
+                    self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        self.theme_star_counter.fadeOutandRemove()
+                        self.theme_star_board.fadeOutandRemove()
+                        triangle_text.fadeOutandRemove()
+                        return_button.fadeOutandRemove()
+                        self.remove_all_theme_star_counter_fragments()
+                    })
+    
                 })
                 
             }else{
@@ -2205,8 +2225,11 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     self.starBoard.text = String(self.star_score)
                     self.theme_islocked_array[2] = false
                     defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
-                    self.BW_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.BW_theme_button.frame.origin.y + self.BW_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                    self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                    UIView.transition(with: self.BW_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                        self.BW_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.BW_theme_button.frame.origin.y + self.BW_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                        self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                    })
+
                 }else{
                     do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         self.wrong_player.prepareToPlay()
@@ -2227,6 +2250,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     
                 }
                 self.button_player.play()
+                self.apply_button_restore()
                 defaults.set(3, forKey: "tritri_Theme")
                 self.ThemeType = 3
                 self.background_image.alpha = 1
@@ -2266,30 +2290,42 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
                 self.theme_star_board.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1.0)
 
-                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                //change apply button first
+                UIView.transition(with: self.BW_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                    self.BW_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
+                    self.BW_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
+                    self.BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
+                }, completion: {
+                    (finished) -> Void in
                     
-                    self.day_apply_button.removeFromSuperview()
-                    self.night_apply_button.removeFromSuperview()
-                    self.BW_apply_button.removeFromSuperview()
-                    self.school_apply_button.removeFromSuperview()
-                    self.colors_apply_button.removeFromSuperview()
-                    
-                    self.day_theme_button.removeFromSuperview()
-                    self.night_theme_button.removeFromSuperview()
-                    self.BW_theme_button.removeFromSuperview()
-                    self.chaos_theme_button.removeFromSuperview()
-                    self.school_theme_button.removeFromSuperview()
-                    self.colors_theme_button.removeFromSuperview()
-                    self.in_theme_menu = false
+                    self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                        
+                        self.day_apply_button.removeFromSuperview()
+                        self.night_apply_button.removeFromSuperview()
+                        self.BW_apply_button.removeFromSuperview()
+                        self.school_apply_button.removeFromSuperview()
+                        self.colors_apply_button.removeFromSuperview()
+                        
+                        self.day_theme_button.removeFromSuperview()
+                        self.night_theme_button.removeFromSuperview()
+                        self.BW_theme_button.removeFromSuperview()
+                        self.chaos_theme_button.removeFromSuperview()
+                        self.school_theme_button.removeFromSuperview()
+                        self.colors_theme_button.removeFromSuperview()
+                        self.in_theme_menu = false
+                        
+                    })
+                    self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        self.theme_star_counter.fadeOutandRemove()
+                        self.theme_star_board.fadeOutandRemove()
+                        triangle_text.fadeOutandRemove()
+                        return_button.fadeOutandRemove()
+                        self.remove_all_theme_star_counter_fragments()
+                    })
+    
                     
                 })
-                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-                    self.theme_star_counter.fadeOutandRemove()
-                    self.theme_star_board.fadeOutandRemove()
-                    triangle_text.fadeOutandRemove()
-                    return_button.fadeOutandRemove()
-                    self.remove_all_theme_star_counter_fragments()
-                })
+                
                 
     
             }else{
@@ -2429,10 +2465,13 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     self.theme_star_board.text = String(self.star_score)
                     self.starBoard.text = String(self.star_score)
                     self.theme_islocked_array[3] = false
-                    self.school_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.school_theme_button.frame.origin.y + self.school_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                    self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
-                    
                     defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
+                    UIView.transition(with: self.school_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                        self.school_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.school_theme_button.frame.origin.y + self.school_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                        self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+                    })
+                    
+                    
                 }else{
                     do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         self.wrong_player.prepareToPlay()
@@ -2454,6 +2493,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+            self.apply_button_restore()
             defaults.set(5, forKey: "tritri_Theme")
             self.ThemeType = 5
             //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
@@ -2494,32 +2534,41 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
             self.theme_star_board.textColor = UIColor(red: 68.0/255, green: 84.0/255, blue: 140.0/255, alpha: 1.0)
  
+                //change apply button first
+                UIView.transition(with: self.school_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                    self.school_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
+                    self.school_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
+                    self.school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
+                }, completion: {
+                    (finished) -> Void in
                 
+                    self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                        
+                        self.day_apply_button.removeFromSuperview()
+                        self.night_apply_button.removeFromSuperview()
+                        self.BW_apply_button.removeFromSuperview()
+                        self.school_apply_button.removeFromSuperview()
+                        self.colors_apply_button.removeFromSuperview()
+                        
+                        self.day_theme_button.removeFromSuperview()
+                        self.night_theme_button.removeFromSuperview()
+                        self.BW_theme_button.removeFromSuperview()
+                        self.chaos_theme_button.removeFromSuperview()
+                        self.school_theme_button.removeFromSuperview()
+                        self.colors_theme_button.removeFromSuperview()
+                        self.in_theme_menu = false
+                        
+                    })
+                    self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        self.theme_star_counter.fadeOutandRemove()
+                        self.theme_star_board.fadeOutandRemove()
+                        triangle_text.fadeOutandRemove()
+                        return_button.fadeOutandRemove()
+                        self.remove_all_theme_star_counter_fragments()
+                    })
+
+                })
                 
-                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
-                    
-                    self.day_apply_button.removeFromSuperview()
-                    self.night_apply_button.removeFromSuperview()
-                    self.BW_apply_button.removeFromSuperview()
-                    self.school_apply_button.removeFromSuperview()
-                    self.colors_apply_button.removeFromSuperview()
-                    
-                    self.day_theme_button.removeFromSuperview()
-                    self.night_theme_button.removeFromSuperview()
-                    self.BW_theme_button.removeFromSuperview()
-                    self.chaos_theme_button.removeFromSuperview()
-                    self.school_theme_button.removeFromSuperview()
-                    self.colors_theme_button.removeFromSuperview()
-                    self.in_theme_menu = false
-                    
-                })
-                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-                    self.theme_star_counter.fadeOutandRemove()
-                    self.theme_star_board.fadeOutandRemove()
-                    triangle_text.fadeOutandRemove()
-                    return_button.fadeOutandRemove()
-                    self.remove_all_theme_star_counter_fragments()
-                })
                 
             }else{
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
@@ -2576,8 +2625,10 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     self.theme_star_board.text = String(self.star_score)
                     self.theme_islocked_array[4] = false
                     defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
-                    self.colors_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.colors_theme_button.frame.origin.y + self.colors_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                    self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                    UIView.transition(with: self.colors_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                        self.colors_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.colors_theme_button.frame.origin.y + self.colors_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                        self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                    })
                     
                     
                 }else{
@@ -2600,6 +2651,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+            self.apply_button_restore()
             defaults.set(6, forKey: "tritri_Theme")
             self.ThemeType = 6
             //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"colors_background")!)
@@ -2639,34 +2691,43 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 self.split_star_counter()
                 self.reorder_star_counter()
                 self.update_star_counter_length_according_to_string_length()
-
+                UIView.transition(with: self.colors_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                    self.colors_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
+                    self.colors_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
+                    self.colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
+                }, completion: {
+                    (finished) -> Void in
+                
+                    self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
+                        
+                        self.day_apply_button.removeFromSuperview()
+                        self.night_apply_button.removeFromSuperview()
+                        self.BW_apply_button.removeFromSuperview()
+                        self.school_apply_button.removeFromSuperview()
+                        self.colors_apply_button.removeFromSuperview()
+                        
+                        self.day_theme_button.removeFromSuperview()
+                        self.night_theme_button.removeFromSuperview()
+                        self.BW_theme_button.removeFromSuperview()
+                        self.chaos_theme_button.removeFromSuperview()
+                        self.school_theme_button.removeFromSuperview()
+                        self.colors_theme_button.removeFromSuperview()
+                        self.in_theme_menu = false
+                        
+                    })
+                    self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        self.theme_star_counter.fadeOutandRemove()
+                        self.theme_star_board.fadeOutandRemove()
+                        triangle_text.fadeOutandRemove()
+                        return_button.fadeOutandRemove()
+                        self.remove_all_theme_star_counter_fragments()
+                    })
+   
+                    
+                })
 
    
-                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
-                    
-                    self.day_apply_button.removeFromSuperview()
-                    self.night_apply_button.removeFromSuperview()
-                    self.BW_apply_button.removeFromSuperview()
-                    self.school_apply_button.removeFromSuperview()
-                    self.colors_apply_button.removeFromSuperview()
-                    
-                    self.day_theme_button.removeFromSuperview()
-                    self.night_theme_button.removeFromSuperview()
-                    self.BW_theme_button.removeFromSuperview()
-                    self.chaos_theme_button.removeFromSuperview()
-                    self.school_theme_button.removeFromSuperview()
-                    self.colors_theme_button.removeFromSuperview()
-                    self.in_theme_menu = false
-                    
-                })
-                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-                    self.theme_star_counter.fadeOutandRemove()
-                    self.theme_star_board.fadeOutandRemove()
-                    triangle_text.fadeOutandRemove()
-                    return_button.fadeOutandRemove()
-                    self.remove_all_theme_star_counter_fragments()
-                })
- 
+                
                 
                 
                 
@@ -17207,6 +17268,49 @@ func trinity_animation() -> Void {
 
         
     }
+    
+    //theme menu restore select to use
+    func apply_button_restore(){
+        if(ThemeType == 1){
+            UIView.transition(with: self.day_apply_button, duration: 0.4, options: .transitionFlipFromLeft , animations: {
+                self.day_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
+                self.day_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                self.day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
+            })
+            
+            
+        }else if(ThemeType == 2){
+            UIView.transition(with: self.night_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
+                self.night_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
+                self.night_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                self.night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            })
+            
+        }else if(ThemeType == 3){
+            UIView.transition(with: self.BW_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
+                self.BW_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
+                self.BW_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            })
+            
+            
+        }else if(ThemeType == 5){
+            UIView.transition(with: self.school_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
+                self.school_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
+                self.school_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+            })
+            
+        }else if(ThemeType == 6){
+            UIView.transition(with: self.colors_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
+                self.colors_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
+                self.colors_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            })
+        }
+    }
+    
+
     
 }
 
