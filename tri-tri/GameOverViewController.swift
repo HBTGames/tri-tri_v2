@@ -1593,9 +1593,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         //take screen shot again
         let temp_final_score = UILabel(frame: share_scene_score.frame)
         temp_final_score.textAlignment = .left
-        temp_final_score.frame.origin.y -= pause_screen_y_transform(7)
         temp_final_score.font = UIFont(name: "Helvetica Neue", size: 27.0)
-        temp_final_score.textColor = UIColor.white
+        temp_final_score.textColor = UIColor.yellow
         temp_final_score.text = final_score
         self.view.addSubview(temp_final_score)
         

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "521810080.486668"
+            timestampString = "521884412.935623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "998"
-            endingLineNumber = "998"
+            startingLineNumber = "1018"
+            endingLineNumber = "1018"
             landmarkName = "DailyGiftViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "521810080.486668"
+            timestampString = "521884412.935623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "623"
-            endingLineNumber = "623"
+            startingLineNumber = "643"
+            endingLineNumber = "643"
             landmarkName = "DailyGiftViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "521810080.486668"
+            timestampString = "521884412.935623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "524"
-            endingLineNumber = "524"
+            startingLineNumber = "544"
+            endingLineNumber = "544"
             landmarkName = "spin_wheel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "521810080.486668"
+            timestampString = "521884412.935623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "517"
-            endingLineNumber = "517"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
             landmarkName = "spin_wheel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "521810080.486668"
+            timestampString = "521884412.935623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "533"
-            endingLineNumber = "533"
+            startingLineNumber = "553"
+            endingLineNumber = "553"
             landmarkName = "spin_wheel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "521810080.486668"
+            timestampString = "521884412.935623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "892"
-            endingLineNumber = "892"
+            startingLineNumber = "912"
+            endingLineNumber = "912"
             landmarkName = "determine_rotation_direction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "521810080.486668"
+            timestampString = "521884412.935623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "896"
-            endingLineNumber = "896"
+            startingLineNumber = "916"
+            endingLineNumber = "916"
             landmarkName = "determine_rotation_direction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "521810080.486668"
+            timestampString = "521884412.935623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "895"
-            endingLineNumber = "895"
+            startingLineNumber = "915"
+            endingLineNumber = "915"
             landmarkName = "determine_rotation_direction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "521810080.486668"
+            timestampString = "521884412.935623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "893"
-            endingLineNumber = "893"
+            startingLineNumber = "913"
+            endingLineNumber = "913"
             landmarkName = "determine_rotation_direction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "521810080.486668"
+            timestampString = "521884412.935623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "863"
-            endingLineNumber = "863"
+            startingLineNumber = "883"
+            endingLineNumber = "883"
             landmarkName = "determine_rotation_direction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/DailyGiftViewController.swift"
-            timestampString = "521810080.486668"
+            timestampString = "521884412.935623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "820"
-            endingLineNumber = "820"
+            startingLineNumber = "840"
+            endingLineNumber = "840"
             landmarkName = "determine_rotation_direction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -879,7 +879,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "9079"
             endingLineNumber = "9079"
-            landmarkName = "potentially_erased_line()"
+            landmarkName = "shape_to_erase_line()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1023,7 +1023,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "11743"
             endingLineNumber = "11743"
-            landmarkName = "customPath()"
+            landmarkName = "star_animation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1066,11 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameOverViewController.swift"
-            timestampString = "521823798.302535"
+            timestampString = "521824632.25318"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1602"
-            endingLineNumber = "1602"
+            startingLineNumber = "1601"
+            endingLineNumber = "1601"
             landmarkName = "compose_final_share_image()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1082,12 +1082,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameOverViewController.swift"
-            timestampString = "521823798.302535"
+            timestampString = "521824632.25318"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1598"
-            endingLineNumber = "1598"
+            startingLineNumber = "1597"
+            endingLineNumber = "1597"
             landmarkName = "compose_final_share_image()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tri-tri/DailyGiftViewController.swift"
+            timestampString = "521874734.700241"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
+            landmarkName = "spin_wheel()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

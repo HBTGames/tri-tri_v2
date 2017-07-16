@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import UserNotifications
 
 class DailyGiftViewController: UIViewController {
     //screen width and height
@@ -442,6 +443,25 @@ class DailyGiftViewController: UIViewController {
                     self.rewards_count_down.font = UIFont(name: "Helvetica", size: 30)
                     self.rewards_count_down.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
                     self.rewards_count_down.fadeIn()
+                    //add notification
+                    let dailyGiftNotification = UNMutableNotificationContent()
+                    dailyGiftNotification.title = NSString.localizedUserNotificationString(forKey: "Spin the Wheel", arguments: nil)
+                    dailyGiftNotification.body = NSString.localizedUserNotificationString(forKey: "Time for Daily Gift", arguments: nil)
+                    dailyGiftNotification.sound = UNNotificationSound.default()
+                    dailyGiftNotification.badge = 1
+                    //deliver the notification
+                    let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 20, repeats: false)
+                    let request = UNNotificationRequest.init(identifier: "DailyGift", content: dailyGiftNotification, trigger: trigger)
+                    //schedule notification
+                    let center = UNUserNotificationCenter.current()
+                    center.add(request){ (error) in
+                        if let error = error {
+                            print("Unable to Add Notification Request (\(error), \(error.localizedDescription))")
+                        }
+                    }
+                
+                    
+                    //
                     
                     self.count_down_timer_during_reward.invalidate()
                     if(!self.quit_during_spinning){
