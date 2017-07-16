@@ -477,6 +477,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             }
             self.button_player.play()
             
+            self.apply_button_restore()
+                
             self.ThemeType = 1
             defaults.set(1, forKey:"tritri_Theme")
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
@@ -508,9 +510,16 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
            // self.gameover_title.image = UIImage(named:"day mode gameover title")
             self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
-
+            
+           //change apply button image first
+            UIView.transition(with: self.day_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                    self.day_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
+                    self.day_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
+                    self.day_apply_button.setImage(#imageLiteral(resourceName: "day_selected"), for: .normal)
+            }, completion: {
+                (finished) -> Void in
                 
-
+                
                 self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
                     self.day_theme_button.removeFromSuperview()
                     self.night_theme_button.removeFromSuperview()
@@ -528,6 +537,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     
                     self.in_theme_menu = false
                 })
+                
                 self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
                     
                     
@@ -537,6 +547,14 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     self.theme_star_board.removeFromSuperview()
                     self.remove_all_theme_star_counter_fragments()
                 })
+                
+                
+                
+            })
+
+                
+
+                
                 
             }else{
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
@@ -578,7 +596,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
             }
             self.button_player.play()
-            
+            self.apply_button_restore()
             self.ThemeType = 2
             self.trophy.image = #imageLiteral(resourceName: "night_mode_trophy")
             self.like_button.setBackgroundImage(UIImage(named: "night mode like button"), for: .normal)
@@ -611,33 +629,44 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
            // self.gameover_title.image = UIImage(named:"night mode gameover title")
             self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
 
-          self.theme_star_board.removeFromSuperview()
-                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-                    self.day_theme_button.removeFromSuperview()
-                    self.night_theme_button.removeFromSuperview()
-                    self.BW_theme_button.removeFromSuperview()
-                    //self.chaos_theme_button.removeFromSuperview()
-                    self.school_theme_button.removeFromSuperview()
-                    self.colors_theme_button.removeFromSuperview()
-                    
-                    self.day_apply_button.removeFromSuperview()
-                    self.night_apply_button.removeFromSuperview()
-                    self.BW_apply_button.removeFromSuperview()
-                    self.school_apply_button.removeFromSuperview()
-                    self.colors_apply_button.removeFromSuperview()
-                    
-                    
-                    self.in_theme_menu = false
+           //change apply button first
+                UIView.transition(with: self.night_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                    self.night_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
+                    self.night_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
+                    self.night_apply_button.setImage(#imageLiteral(resourceName: "night_selected"), for: .normal)
+                }, completion: {
+                    (finished) -> Void in
+                    self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        self.day_theme_button.removeFromSuperview()
+                        self.night_theme_button.removeFromSuperview()
+                        self.BW_theme_button.removeFromSuperview()
+                        //self.chaos_theme_button.removeFromSuperview()
+                        self.school_theme_button.removeFromSuperview()
+                        self.colors_theme_button.removeFromSuperview()
+                        
+                        self.day_apply_button.removeFromSuperview()
+                        self.night_apply_button.removeFromSuperview()
+                        self.BW_apply_button.removeFromSuperview()
+                        self.school_apply_button.removeFromSuperview()
+                        self.colors_apply_button.removeFromSuperview()
+                        
+                        
+                        self.in_theme_menu = false
+                    })
+                    self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        
+                        
+                        triangle_text.removeFromSuperview()
+                        return_button.removeFromSuperview()
+                        self.theme_star_counter.removeFromSuperview()
+                        self.theme_star_board.removeFromSuperview()
+                        self.remove_all_theme_star_counter_fragments()
+                    })
+
+                
+                
                 })
-                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-                    
-                    
-                    triangle_text.removeFromSuperview()
-                    return_button.removeFromSuperview()
-                    self.theme_star_counter.removeFromSuperview()
-                    self.theme_star_board.removeFromSuperview()
-                    self.remove_all_theme_star_counter_fragments()
-                })
+                
                 
                 
                 
@@ -691,8 +720,14 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     self.star_board.text = String(self.star_score)
                     self.theme_islocked_array[2] = false
                     defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
-                    self.BW_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.BW_theme_button.frame.origin.y + self.BW_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                     self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                   
+                    UIView.transition(with: self.BW_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                        self.BW_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.BW_theme_button.frame.origin.y + self.BW_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                        self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                    })
+
+                    
+                    
                 }else{
                     do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         self.wrong_player.prepareToPlay()
@@ -713,6 +748,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
             }
             self.button_player.play()
+            self.apply_button_restore()
             self.ThemeType = 3
             defaults.set(3, forKey:"tritri_Theme")
            //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"BW_background")!)
@@ -745,37 +781,49 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
             self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
-        
-
             
+           
+                //change apply button first
+                UIView.transition(with: self.BW_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                    self.BW_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
+                    self.BW_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
+                    self.BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
+                }, completion: {
+                    (finished) -> Void in
+                    self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        self.day_theme_button.removeFromSuperview()
+                        self.night_theme_button.removeFromSuperview()
+                        self.BW_theme_button.removeFromSuperview()
+                        //self.chaos_theme_button.removeFromSuperview()
+                        self.school_theme_button.removeFromSuperview()
+                        self.colors_theme_button.removeFromSuperview()
+                        
+                        self.day_apply_button.removeFromSuperview()
+                        self.night_apply_button.removeFromSuperview()
+                        self.BW_apply_button.removeFromSuperview()
+                        self.school_apply_button.removeFromSuperview()
+                        self.colors_apply_button.removeFromSuperview()
+                        
+                        
+                        self.in_theme_menu = false
+                    })
+                    self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        
+                        
+                        triangle_text.removeFromSuperview()
+                        return_button.removeFromSuperview()
+                        self.theme_star_counter.removeFromSuperview()
+                        self.theme_star_board.removeFromSuperview()
+                        self.remove_all_theme_star_counter_fragments()
+                    })
+    
+                    
+                    
+                    
+                    
+                })
      
             
-                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-                    self.day_theme_button.removeFromSuperview()
-                    self.night_theme_button.removeFromSuperview()
-                    self.BW_theme_button.removeFromSuperview()
-                    //self.chaos_theme_button.removeFromSuperview()
-                    self.school_theme_button.removeFromSuperview()
-                    self.colors_theme_button.removeFromSuperview()
-                    
-                    self.day_apply_button.removeFromSuperview()
-                    self.night_apply_button.removeFromSuperview()
-                    self.BW_apply_button.removeFromSuperview()
-                    self.school_apply_button.removeFromSuperview()
-                    self.colors_apply_button.removeFromSuperview()
-                    
-                    
-                    self.in_theme_menu = false
-                })
-                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-                    
-                    
-                    triangle_text.removeFromSuperview()
-                    return_button.removeFromSuperview()
-                    self.theme_star_counter.removeFromSuperview()
-                    self.theme_star_board.removeFromSuperview()
-                    self.remove_all_theme_star_counter_fragments()
-                })
                 
                 
                 
@@ -898,11 +946,15 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     self.theme_star_board.text = String(self.star_score)
                     self.star_board.text = String(self.star_score)
                     self.theme_islocked_array[3] = false
-                    self.school_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.school_theme_button.frame.origin.y + self.school_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                    self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
-
                     defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
-                }else{
+
+                    
+                    UIView.transition(with: self.school_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                         self.school_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.school_theme_button.frame.origin.y + self.school_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                       self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+                    })
+
+                   }else{
                     do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         self.wrong_player.prepareToPlay()
                     }
@@ -922,6 +974,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
             }
             self.button_player.play()
+            self.apply_button_restore()
             self.ThemeType = 5
             defaults.set(5, forKey:"tritri_Theme")
             //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "school_background")!)
@@ -954,34 +1007,46 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 self.split_star_counter()
                 self.update_star_counter_length_according_to_string_length()
             self.reorder_star_counter()
-  
             
-            self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-                    self.day_theme_button.removeFromSuperview()
-                    self.night_theme_button.removeFromSuperview()
-                    self.BW_theme_button.removeFromSuperview()
-                    //self.chaos_theme_button.removeFromSuperview()
-                    self.school_theme_button.removeFromSuperview()
-                    self.colors_theme_button.removeFromSuperview()
+                //change apply button first
+                UIView.transition(with: self.school_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                    self.school_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
+                    self.school_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
+                    self.school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
+                }, completion: {
+                    (finished) -> Void in
+                    self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        self.day_theme_button.removeFromSuperview()
+                        self.night_theme_button.removeFromSuperview()
+                        self.BW_theme_button.removeFromSuperview()
+                        //self.chaos_theme_button.removeFromSuperview()
+                        self.school_theme_button.removeFromSuperview()
+                        self.colors_theme_button.removeFromSuperview()
+                        
+                        self.day_apply_button.removeFromSuperview()
+                        self.night_apply_button.removeFromSuperview()
+                        self.BW_apply_button.removeFromSuperview()
+                        self.school_apply_button.removeFromSuperview()
+                        self.colors_apply_button.removeFromSuperview()
+                        
+                        
+                        self.in_theme_menu = false
+                    })
+                    self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        
+                        
+                        triangle_text.removeFromSuperview()
+                        return_button.removeFromSuperview()
+                        self.theme_star_counter.removeFromSuperview()
+                        self.theme_star_board.removeFromSuperview()
+                        self.remove_all_theme_star_counter_fragments()
+                    })
                     
-                    self.day_apply_button.removeFromSuperview()
-                    self.night_apply_button.removeFromSuperview()
-                    self.BW_apply_button.removeFromSuperview()
-                    self.school_apply_button.removeFromSuperview()
-                    self.colors_apply_button.removeFromSuperview()
-                    
-
-                    self.in_theme_menu = false
                 })
-                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-               
-               
-                    triangle_text.removeFromSuperview()
-                    return_button.removeFromSuperview()
-                    self.theme_star_counter.removeFromSuperview()
-                    self.theme_star_board.removeFromSuperview()
-                    self.remove_all_theme_star_counter_fragments()
-                })
+                
+                
+            
+            
             
             
 
@@ -1041,9 +1106,12 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     self.theme_star_board.text = String(self.star_score)
                     self.theme_islocked_array[4] = false
                     defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
-                    self.colors_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.colors_theme_button.frame.origin.y + self.colors_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                    self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
-                }else{
+                    
+                    UIView.transition(with: self.colors_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                        self.colors_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.colors_theme_button.frame.origin.y + self.colors_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                        self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                    })
+                    }else{
                     do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         self.wrong_player.prepareToPlay()
                     }
@@ -1063,6 +1131,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
             }
             self.button_player.play()
+            self.apply_button_restore()
             self.ThemeType = 6
             defaults.set(6, forKey:"tritri_Theme")
             //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "colors_background")!)
@@ -1095,38 +1164,49 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             //self.score_board.textColor = UIColor(red: 59/255, green: 76/255, blue: 65/255, alpha: 1.0)
             // self.gameover_title.image = UIImage(named:"day mode gameover title")
             self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
-  
+                
+            //change apply button first
+                
+                UIView.transition(with: self.colors_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
+                    self.colors_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
+                    self.colors_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
+                    self.colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
+                }, completion: {
+                    (finished) -> Void in
+                    self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        self.day_theme_button.removeFromSuperview()
+                        self.night_theme_button.removeFromSuperview()
+                        self.BW_theme_button.removeFromSuperview()
+                        //self.chaos_theme_button.removeFromSuperview()
+                        self.school_theme_button.removeFromSuperview()
+                        self.colors_theme_button.removeFromSuperview()
+                        
+                        self.day_apply_button.removeFromSuperview()
+                        self.night_apply_button.removeFromSuperview()
+                        self.BW_apply_button.removeFromSuperview()
+                        self.school_apply_button.removeFromSuperview()
+                        self.colors_apply_button.removeFromSuperview()
+                        
+                        
+                        self.in_theme_menu = false
+                    })
+                    self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
+                        
+                        
+                        triangle_text.removeFromSuperview()
+                        return_button.removeFromSuperview()
+                        self.theme_star_counter.removeFromSuperview()
+                        self.theme_star_board.removeFromSuperview()
+                        self.remove_all_theme_star_counter_fragments()
+                    })
+                    
+   
+                    
+                })
 
             
             
-                self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-                    self.day_theme_button.removeFromSuperview()
-                    self.night_theme_button.removeFromSuperview()
-                    self.BW_theme_button.removeFromSuperview()
-                    //self.chaos_theme_button.removeFromSuperview()
-                    self.school_theme_button.removeFromSuperview()
-                    self.colors_theme_button.removeFromSuperview()
-                    
-                    self.day_apply_button.removeFromSuperview()
-                    self.night_apply_button.removeFromSuperview()
-                    self.BW_apply_button.removeFromSuperview()
-                    self.school_apply_button.removeFromSuperview()
-                    self.colors_apply_button.removeFromSuperview()
-                    
-                    
-                    self.in_theme_menu = false
-                })
-                self.white_cover.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
-                    
-                    
-                    triangle_text.removeFromSuperview()
-                    return_button.removeFromSuperview()
-                    self.theme_star_counter.removeFromSuperview()
-                    self.theme_star_board.removeFromSuperview()
-                    self.remove_all_theme_star_counter_fragments()
-                })
-
-            
+                
             
             
             
@@ -2746,10 +2826,9 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         catch{
             
         }
-        self.button_player.play()
-         
-         EggRating.promptRateUs(viewController: self)
         
+        self.button_player.play()
+        EggRating.promptRateUs(viewController: self)
         
     }
     
@@ -2989,11 +3068,6 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         let sScore = GKScore(leaderboardIdentifier: leaderboardID)
         sScore.value = Int64(Int(highest_score.text!)!)
         GKScore.report([sScore], withCompletionHandler: nil)
-    
-        
-        
-        
-        
     }
     
     func authPlayer() {
@@ -3040,6 +3114,52 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         openGameCenter()
     }
     
+    
+    //theme menu restore select to use
+    func apply_button_restore(){
+        if(ThemeType == 1){
+            UIView.transition(with: self.day_apply_button, duration: 0.4, options: .transitionFlipFromLeft , animations: {
+                self.day_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
+                self.day_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                self.day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
+            })
+            
+            
+        }else if(ThemeType == 2){
+            UIView.transition(with: self.night_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
+                self.night_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
+                self.night_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                self.night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            })
+            
+        }else if(ThemeType == 3){
+            UIView.transition(with: self.BW_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
+                self.BW_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
+                self.BW_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            })
+            
+            
+        }else if(ThemeType == 5){
+            UIView.transition(with: self.school_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
+                self.school_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
+                self.school_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+            })
+            
+        }else if(ThemeType == 6){
+            UIView.transition(with: self.colors_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
+                self.colors_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
+                self.colors_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
+                self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            })
+        }
+    }
+    
+ 
+    
+    
+    
 }
 
 
@@ -3049,7 +3169,7 @@ public extension UIView{
     
 //only horizontal gap
 func generateFragmentsFrom(_ originView:UIView, with splitRatio:CGFloat, in containerView:UIView) -> [UIView] {
-        
+    
         let size = originView.frame.size
         let snapshots = originView.snapshotView(afterScreenUpdates: true)
         var fragments = [UIView]()

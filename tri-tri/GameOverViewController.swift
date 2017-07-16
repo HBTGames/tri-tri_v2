@@ -253,6 +253,13 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
         }
 
+        if (language == "English"){
+            self.share_image_scene.image = #imageLiteral(resourceName: "image_share_scene")
+        } else {
+            self.share_image_scene.image = #imageLiteral(resourceName: "image_share_scene_Chinese")
+        }
+        share_image_scene.contentMode = .scaleAspectFit
+        
         share_scene_timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(GameOverViewController.share_scene_bounce_in), userInfo: nil, repeats: false)
         //add pangesture
         //et panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
