@@ -16809,6 +16809,7 @@ func trinity_animation() -> Void {
         } else {
             nextViewController.is_high_score = false
         }
+        nextViewController.final_board_image = self.starBoardScreenShot
         self.present(nextViewController, animated: true, completion: nil)
         //self.audioPlayer.stop()
         self.timer.invalidate()
@@ -17068,6 +17069,7 @@ func trinity_animation() -> Void {
             } else {
                 nextViewController.is_high_score = false
             }
+                nextViewController.final_board_image = self.starBoardScreenShot
             self.present(nextViewController, animated: true, completion: nil)
             //self.audioPlayer.stop()
             self.timer.invalidate()
