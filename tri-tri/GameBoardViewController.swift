@@ -1200,6 +1200,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         }else{
             defaults.set(self.score, forKey: "tritri_single_round_score")
         }
+        self.MarkBoard.text = String(self.score)
         
         
         
@@ -11343,6 +11344,7 @@ number_of_lines_erased += 1
         score = current_int
         current_str = String(current_int)
         MarkBoard.text = current_str
+        defaults.set(self.score, forKey: "tritri_single_round_score")
         //add animation
 
             UIView.animate(withDuration: 0.2, animations: {
@@ -11472,7 +11474,7 @@ number_of_lines_erased += 1
             })
 
         }
-        
+        defaults.set(self.score, forKey: "tritri_single_round_score")
         UIView.animate(withDuration: 0.2, animations: {
             self.MarkBoard.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
         }, completion: {
@@ -15482,6 +15484,7 @@ number_of_lines_erased += 1
         //print(score)
         
         MarkBoard.text = String(score)
+        defaults.set(self.score, forKey: "tritri_single_round_score")
         UIView.animate(withDuration: 0.2, animations: {
             self.MarkBoard.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         }, completion: {
@@ -16792,6 +16795,9 @@ func trinity_animation() -> Void {
     
     func game_over_after_counter_done() -> Void
     {
+        defaults.set([[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]], forKey: "tritri_single_tri_stored_type")
+        defaults.set([[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]], forKey: "tritri_single_tri_filled")
+        defaults.set(0, forKey: "tritri_single_round_score")
         print("time over boom")
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
