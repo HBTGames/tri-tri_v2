@@ -2791,7 +2791,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         
         
         //add text
-        theme_star_board.font = UIFont(name: "Helvetica", size: CGFloat(17))
+        theme_star_board.font = UIFont(name: "Fresca-Regular", size: CGFloat(20))
         theme_star_board.text = String(star_score)
         theme_star_board.textAlignment = .center
         if(ThemeType == 1){

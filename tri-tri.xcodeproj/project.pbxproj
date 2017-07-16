@@ -67,6 +67,7 @@
 		56D12A1E1F07EC4E00C047E1 /* door_open_and_reming.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D12A1D1F07EC4E00C047E1 /* door_open_and_reming.mp3 */; };
 		56D12A201F07F08200C047E1 /* spinning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D12A1F1F07F08200C047E1 /* spinning.mp3 */; };
 		56EBEA631F1B631500455119 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBEA621F1B631500455119 /* UIButtonExtension.swift */; };
+		56EBEA6C1F1BA8B500455119 /* Fresca-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56EBEA6B1F1BA8B500455119 /* Fresca-Regular.ttf */; };
 		56F66DEB1EDB1C2D001E1DB6 /* start.json in Resources */ = {isa = PBXBuildFile; fileRef = 56F66DEA1EDB1C2D001E1DB6 /* start.json */; };
 		B7476A082D7B9720D6CAA215 /* Pods_tri_triUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FF444272BCFA86D0D6EEBF /* Pods_tri_triUITests.framework */; };
 		EA0889133B078E2736D5E47B /* Pods_tri_triTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CE8A342F12D783B129AFA0 /* Pods_tri_triTests.framework */; };
@@ -157,6 +158,7 @@
 		56D12A1D1F07EC4E00C047E1 /* door_open_and_reming.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = door_open_and_reming.mp3; sourceTree = "<group>"; };
 		56D12A1F1F07F08200C047E1 /* spinning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spinning.mp3; sourceTree = "<group>"; };
 		56EBEA621F1B631500455119 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		56EBEA6B1F1BA8B500455119 /* Fresca-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fresca-Regular.ttf"; sourceTree = "<group>"; };
 		56F66DEA1EDB1C2D001E1DB6 /* start.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = start.json; sourceTree = "<group>"; };
 		6E3662C80E04A565E7C9DB9B /* Pods-tri-triUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tri-triUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tri-triUITests/Pods-tri-triUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		71EE653BEA0021E2F147D2C3 /* Pods_tri_tri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tri_tri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				5668B6EB1F03E093007BC5E3 /* Assets.xcassets */,
+				56EBEA6A1F1BA85700455119 /* Custom Font */,
 				566E64D51EDADC750034B1AA /* Animation */,
 				566A590C1EC944650056D665 /* Launch Animation */,
 				56A61C851EC5D68100A29B6F /* Music */,
@@ -326,6 +329,14 @@
 				56D12A1F1F07F08200C047E1 /* spinning.mp3 */,
 			);
 			name = Music;
+			sourceTree = "<group>";
+		};
+		56EBEA6A1F1BA85700455119 /* Custom Font */ = {
+			isa = PBXGroup;
+			children = (
+				56EBEA6B1F1BA8B500455119 /* Fresca-Regular.ttf */,
+			);
+			name = "Custom Font";
 			sourceTree = "<group>";
 		};
 		9BC16BF4EA8777728F8FB0F4 /* Frameworks */ = {
@@ -514,6 +525,7 @@
 				566E64D71EDADC810034B1AA /* star_appear_ani.json in Resources */,
 				5668B6E81F03C632007BC5E3 /* favourite_app_icon.json in Resources */,
 				042D870D1ED870FB007A329C /* servishero_loading.json in Resources */,
+				56EBEA6C1F1BA8B500455119 /* Fresca-Regular.ttf in Resources */,
 				5644A5F31EC428FC000066D6 /* Base.lproj in Resources */,
 				042F04A11F132BA6005DD0EC /* holy_nova.mp3 in Resources */,
 				5665D8FF1F12603D006853BF /* cash_register.wav in Resources */,

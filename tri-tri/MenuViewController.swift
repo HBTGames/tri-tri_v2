@@ -1259,7 +1259,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         
         
         //add text
-        theme_star_board.font = UIFont(name: "Helvetica", size: CGFloat(17))
+        theme_star_board.font = UIFont(name: "Fresca-Regular", size: CGFloat(20))
         theme_star_board.text = String(star_score)
         theme_star_board.textAlignment = .center
         if(ThemeType == 1){
@@ -1560,7 +1560,7 @@ current_star_total.alpha = 1
         current_star_total_text = UILabel(frame: CGRect(x: current_star_total.frame.origin.x + pause_screen_x_transform(17), y: current_star_total.frame.origin.y, width: current_star_total.frame.width, height: current_star_total.frame.height))
         current_star_total_text.textColor = UIColor(red: 188.0/255, green: 177.0/255, blue: 177.0/255, alpha: 1)
         current_star_total_text.text = String(star_score)
-        current_star_total_text.font = UIFont(name: "Helvetica", size: CGFloat(21))
+        current_star_total_text.font = UIFont(name: "Fresca-Regular", size: CGFloat(23))
         current_star_total_text.textAlignment = .center
         current_star_total_text.alpha = 0
         self.view.addSubview(current_star_total_text)
@@ -1622,7 +1622,7 @@ self.view.addSubview(current_star_total)
 //new life circle text
         new_life_circle_text = UILabel(frame: CGRect(x: new_life_circle.frame.origin.x, y: new_life_circle.frame.origin.y, width: new_life_circle.frame.width, height: new_life_circle.frame.height))
         new_life_circle_text.text = String(tool_quantity_array[0])
-        new_life_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        new_life_circle_text.font = UIFont(name: "Fresca-Regular", size: CGFloat(20))
         new_life_circle_text.textColor = UIColor(red: 208.0/255, green: 91.0/255, blue: 93.0/255, alpha: 1)
         new_life_circle_text.textAlignment = .center
         new_life_circle_text.adjustsFontSizeToFitWidth = true
@@ -1684,7 +1684,7 @@ self.view.addSubview(current_star_total)
 //same color eliminator circle text
         same_color_eliminator_circle_text = UILabel(frame: CGRect(x: same_color_eliminator_circle.frame.origin.x, y: same_color_eliminator_circle.frame.origin.y, width: same_color_eliminator_circle.frame.width, height: same_color_eliminator_circle.frame.height))
         same_color_eliminator_circle_text.text = String(tool_quantity_array[1])
-        same_color_eliminator_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        same_color_eliminator_circle_text.font = UIFont(name: "Fresca-Regular", size: CGFloat(20))
         same_color_eliminator_circle_text.textColor = UIColor(red: 77.0/255, green: 113.0/255, blue: 56.0/255, alpha: 1)
         same_color_eliminator_circle_text.textAlignment = .center
         same_color_eliminator_circle_text.adjustsFontSizeToFitWidth = true
@@ -1744,7 +1744,7 @@ self.view.addSubview(current_star_total)
     //shape bomb circle text
     shape_bomb_circle_text = UILabel(frame: CGRect(x: shape_bomb_circle.frame.origin.x, y: shape_bomb_circle.frame.origin.y, width: shape_bomb_circle.frame.width, height: shape_bomb_circle.frame.height))
         shape_bomb_circle_text.text = String(tool_quantity_array[2])
-        shape_bomb_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        shape_bomb_circle_text.font = UIFont(name: "Fresca-Regular", size: CGFloat(20))
         shape_bomb_circle_text.textColor = UIColor(red: 230.0/255, green: 157.0/255, blue: 68.0/255, alpha: 1)
         shape_bomb_circle_text.textAlignment = .center
         shape_bomb_circle_text.adjustsFontSizeToFitWidth = true
@@ -1805,7 +1805,7 @@ self.view.addSubview(current_star_total)
     //times two circle text 
         times_two_circle_text = UILabel(frame: CGRect(x: times_two_circle.frame.origin.x, y: times_two_circle.frame.origin.y, width: times_two_circle.frame.width, height: times_two_circle.frame.height))
         times_two_circle_text.text = String(tool_quantity_array[3])
-        times_two_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        times_two_circle_text.font = UIFont(name: "Fresca-Regular", size: CGFloat(20))
         times_two_circle_text.textColor = UIColor(red: 180.0/255, green: 134.0/255, blue: 161.0/255, alpha: 1)
         times_two_circle_text.textAlignment = .center
         times_two_circle_text.adjustsFontSizeToFitWidth = true
@@ -1865,7 +1865,7 @@ self.view.addSubview(current_star_total)
     //three tirangle circle text
         three_triangles_circle_text = UILabel(frame: CGRect(x: three_triangles_circle.frame.origin.x, y: three_triangles_circle.frame.origin.y, width: three_triangles_circle.frame.width, height: three_triangles_circle.frame.height))
         three_triangles_circle_text.text = String(tool_quantity_array[4])
-        three_triangles_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        three_triangles_circle_text.font = UIFont(name: "Fresca-Regular", size: CGFloat(20))
         three_triangles_circle_text.textColor = UIColor(red: 73.0/255, green: 159.0/255, blue: 192.0/255, alpha: 1)
         three_triangles_circle_text.textAlignment = .center
         three_triangles_circle_text.adjustsFontSizeToFitWidth = true
@@ -1924,7 +1924,7 @@ self.view.addSubview(current_star_total)
   //clear all circle text
         clear_all_circle_text = UILabel(frame: CGRect(x: clear_all_circle.frame.origin.x, y: clear_all_circle.frame.origin.y, width: clear_all_circle.frame.width, height: clear_all_circle.frame.height))
         clear_all_circle_text.text = String(tool_quantity_array[5])
-        clear_all_circle_text.font = UIFont(name: "Helvetica", size: CGFloat(18))
+        clear_all_circle_text.font = UIFont(name: "Fresca-Regular", size: CGFloat(20))
         clear_all_circle_text.textColor = UIColor(red: 56.0/255, green: 75.0/255, blue: 130.0/255, alpha: 1)
         clear_all_circle_text.textAlignment = .center
         clear_all_circle_text.adjustsFontSizeToFitWidth = true
@@ -2134,7 +2134,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         
         let tool_quantity_label = UILabel(frame: CGRect(x: (add_button.frame.origin.x + sub_button.frame.origin.x + sub_button.frame.width)/2 - pause_screen_x_transform(25), y: sub_button.frame.origin.y, width: pause_screen_x_transform(50), height: pause_screen_y_transform(45)))
         tool_quantity_label.text = String(tool_quantity)
-        tool_quantity_label.font = UIFont(name: "Helvetica", size: CGFloat(25))
+        tool_quantity_label.font = UIFont(name: "Fresca-Regular", size: CGFloat(28))
         tool_quantity_label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         tool_quantity_label.textAlignment = .center
         
@@ -2142,7 +2142,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
          total_star_need_label = UILabel(frame: CGRect(x: final_price_button.frame.origin.x + pause_screen_x_transform(20), y: final_price_button.frame.origin.y, width: final_price_button.frame.width, height: final_price_button.frame.height))
         total_star_need_label.text = String(self.star_quantiry_needed)
         
-        total_star_need_label.font = UIFont(name: "Helvetica", size: CGFloat(25))
+        total_star_need_label.font = UIFont(name: "Fresca-Regular", size: CGFloat(28))
         total_star_need_label.textAlignment = .center
         total_star_need_label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
 
