@@ -200,12 +200,13 @@ public class EggRating: NSObject {
             rateViewController.modalPresentationStyle = UIModalPresentationStyle.currentContext
         }
         
+        rateViewController.modalTransitionStyle = .crossDissolve
         if let tabbarController = viewController.tabBarController {
-            tabbarController.present(rateViewController, animated: false, completion: nil)
+            tabbarController.present(rateViewController, animated: true, completion: nil)
         } else if let navigationController = viewController.navigationController {
-            navigationController.present(rateViewController, animated: false, completion: nil)
+            navigationController.present(rateViewController, animated: true, completion: nil)
         } else {
-            viewController.present(rateViewController, animated: false, completion: nil)
+            viewController.present(rateViewController, animated: true, completion: nil)
         }
     }
     
