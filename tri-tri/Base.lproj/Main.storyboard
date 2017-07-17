@@ -74,7 +74,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCj-NR-SnI">
                                 <rect key="frame" x="200" y="442" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -378,6 +378,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QXr-wT-3n2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleAspectFit" fixedFrame="YES" image="day_mode_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="jet-R1-2WH">
                                 <rect key="frame" x="125" y="221" width="43" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -426,6 +430,13 @@
                                 <rect key="frame" x="50" y="63" width="275" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="         " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLK-G1-dsp">
+                                <rect key="frame" x="220" y="155" width="81" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2PI-GQ-0zF">
                                 <rect key="frame" x="106" y="95" width="162" height="94"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -456,10 +467,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="high_score_marker_icon" translatesAutoresizingMaskIntoConstraints="NO" id="QXr-wT-3n2" userLabel="high score marker">
-                                <rect key="frame" x="240" y="110" width="60" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration" label="gameover">
@@ -471,11 +478,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="High_score_marker" destination="aLK-G1-dsp" id="1gZ-io-QFp"/>
                         <outlet property="background_image" destination="QXr-wT-3n2" id="dj5-r3-Cg1"/>
                         <outlet property="finalBoard" destination="7fa-pt-dvg" id="gWq-4R-ngY"/>
                         <outlet property="game_center_button" destination="ulY-n0-3X0" id="S2i-DL-adN"/>
                         <outlet property="gameover_title" destination="cor-IV-WdS" id="TKf-7m-V8L"/>
-                        <outlet property="high_score_marker_icon" destination="QXr-wT-3n2" id="dds-bF-Cqd"/>
                         <outlet property="home_button" destination="J3e-WT-fYS" id="VHJ-dC-ziF"/>
                         <outlet property="like_button" destination="BUo-5l-JKc" id="TxP-Ya-GqH"/>
                         <outlet property="restart_button" destination="efL-Nx-AeG" id="gFk-Sd-rwD"/>
@@ -1382,7 +1389,6 @@
         <image name="gift_day_mode" width="400" height="400"/>
         <image name="grey_tir_downwards" width="292" height="253"/>
         <image name="grey_tri_upwards" width="292" height="253"/>
-        <image name="high_score_marker_icon" width="500" height="500"/>
         <image name="home" width="1000" height="866"/>
         <image name="imageView:zzE-NV-pET:image" width="400" height="400">
             <mutableData key="keyedArchiveRepresentation">
@@ -12154,7 +12160,7 @@ zwAAAAAAAAQBAAAAAAAAAD4AAAAAAAAAAAAAAAAACdLRA
         <image name="棕色tri" width="610" height="542"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jOH-pV-lXR"/>
+        <segue reference="Hkt-ax-Thn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

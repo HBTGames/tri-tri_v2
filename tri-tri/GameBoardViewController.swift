@@ -1320,7 +1320,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
 
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
-            self.HightestScoreBoard.textColor = UIColor(red: 34.0/255, green: 61.0/255, blue: 128.0/255, alpha: 1.0)
+            self.HightestScoreBoard.textColor = UIColor(red: 40.0/255, green: 60.0/255, blue: 133.0/255, alpha: 1.0)
             self.MarkBoard.textColor = UIColor(red: 40.0/255, green: 60.0/255, blue: 133.0/255, alpha: 1.0)
             self.trophy.image = #imageLiteral(resourceName: "school_mode_trophy")
             self.pause.setImage(UIImage(named: "school_pause-button"), for: .normal)
@@ -2506,7 +2506,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             self.upwards_tri = UIImage(named:"grey_tri_upwards")
             self.Restore_Grey_Tris()
             self.change_all_back_tris_image()
-            self.HightestScoreBoard.textColor = UIColor(red: 34.0/255, green: 61.0/255, blue: 128.0/255, alpha: 1.0)
+            self.HightestScoreBoard.textColor = UIColor(red: 40.0/255, green: 60.0/255, blue: 133.0/255, alpha: 1.0)
             self.MarkBoard.textColor = UIColor(red: 40.0/255, green: 60.0/255, blue: 133.0/255, alpha: 1.0)
             self.trophy.image = #imageLiteral(resourceName: "school_mode_trophy")
             self.pause.setImage(UIImage(named: "school_pause-button"), for: .normal)
@@ -17000,7 +17000,6 @@ func trinity_animation() -> Void {
         self.text_background_patch.removeFromSuperview()
         self.count_down_view.removeFromSuperview()
 
-        
         
         purchase_star_menu = UIImageView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
         purchase_star_menu.image = #imageLiteral(resourceName: "treasure_background")
