@@ -47,7 +47,6 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     @IBOutlet weak var share_image_scene: UIImageView!
     
     @IBOutlet weak var share_scene_score: UILabel!
-    @IBOutlet weak var High_score_marker: UILabel!
 
     @IBOutlet weak var background_image: UIImageView!
     @IBOutlet weak var score_board: UILabel!
@@ -102,6 +101,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         return CGFloat(new_y)
     }
 
+    @IBOutlet var high_score_marker_icon: UIImageView!
     //display final_board_image
     @IBOutlet weak var finalBoard: UIImageView!
     var share_scene_timer = Timer()
@@ -129,6 +129,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         language = defaults.value(forKey: "language") as! String
         screen_width = view.frame.width
         screen_height = view.frame.height
+        high_score_marker_icon.frame = CGRect(x: pause_screen_x_transform(Double(high_score_marker_icon.frame.origin.x)), y: pause_screen_y_transform(Double(high_score_marker_icon.frame.origin.y)), width: pause_screen_x_transform(Double(high_score_marker_icon.frame.width)), height: pause_screen_y_transform(Double(high_score_marker_icon.frame.height)))
         gameover_title.frame = CGRect(x: pause_screen_x_transform(Double(gameover_title.frame.origin.x)), y: pause_screen_y_transform(Double(gameover_title.frame.origin.y)), width: pause_screen_x_transform(Double(gameover_title.frame.width)), height: pause_screen_y_transform(Double(gameover_title.frame.height)))
         game_center_button.frame = CGRect(x: pause_screen_x_transform(Double(game_center_button.frame.origin.x)), y: pause_screen_y_transform(Double(game_center_button.frame.origin.y)), width: pause_screen_x_transform(Double(game_center_button.frame.width)), height: pause_screen_y_transform(Double(game_center_button.frame.height)))
         restart_button.frame = CGRect(x: pause_screen_x_transform(Double(restart_button.frame.origin.x)), y: pause_screen_y_transform(Double(restart_button.frame.origin.y)), width: pause_screen_x_transform(Double(restart_button.frame.width)), height: pause_screen_y_transform(Double(restart_button.frame.height)))
@@ -137,7 +138,6 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         trophy.frame = CGRect(x: pause_screen_x_transform(Double(trophy.frame.origin.x)), y: pause_screen_y_transform(Double(trophy.frame.origin.y)), width: pause_screen_x_transform(Double(trophy.frame.width)), height: pause_screen_y_transform(Double(trophy.frame.height)))
         score_board.frame = CGRect(x: pause_screen_x_transform(Double(score_board.frame.origin.x)), y: pause_screen_y_transform(Double(score_board.frame.origin.y)), width: pause_screen_x_transform(Double(score_board.frame.width)), height: pause_screen_y_transform(Double(score_board.frame.height)))
 
-        High_score_marker.frame = CGRect(x: pause_screen_x_transform(Double(High_score_marker.frame.origin.x)), y: pause_screen_y_transform(Double(High_score_marker.frame.origin.y)), width: pause_screen_x_transform(Double(High_score_marker.frame.width)), height: pause_screen_y_transform(Double(High_score_marker.frame.height)))
         finalBoard.frame = CGRect(x: pause_screen_x_transform(Double(finalBoard.frame.origin.x)), y: pause_screen_y_transform(Double(finalBoard.frame.origin.y))+screen_height/2.0, width: pause_screen_x_transform(Double(finalBoard.frame.width)), height: pause_screen_y_transform(Double(finalBoard.frame.height)))
         share_image_scene.frame = CGRect(x: pause_screen_x_transform(Double(share_image_scene.frame.origin.x)), y: pause_screen_y_transform(Double(share_image_scene.frame.origin.y))+screen_height/2.0, width: pause_screen_x_transform(Double(share_image_scene.frame.width)), height: pause_screen_y_transform(Double(share_image_scene.frame.height)))
         share_image_button.frame =  CGRect(x: pause_screen_x_transform(Double(share_image_button.frame.origin.x)), y: pause_screen_y_transform(Double(share_image_button.frame.origin.y))+screen_height/2.0, width: pause_screen_x_transform(Double(share_image_button.frame.width)), height: pause_screen_y_transform(Double(share_image_button.frame.height)))
@@ -173,9 +173,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         catch{
             
         }
-        if is_high_score{
-            High_score_marker.textColor = UIColor(red:CGFloat(100.0/255.0), green:CGFloat(20.0/255.0), blue:CGFloat(150.0/255.0), alpha:CGFloat(1))
-            High_score_marker.text = "New Record!"
+        if !is_high_score{
+            self.high_score_marker_icon.removeFromSuperview()
         }
         if(defaults.value(forKey: "tritri_star_score") != nil ){
             star_score = defaults.value(forKey: "tritri_star_score") as! NSInteger
