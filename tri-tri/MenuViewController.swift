@@ -616,7 +616,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             self.star_board.textColor = UIColor.black
             self.star_counter.setImage(#imageLiteral(resourceName: "night_mode_star"), for: .normal)
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
-            self.theme_star_board.textColor = UIColor.black
+            self.theme_star_board.textColor = UIColor.white
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
             self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_night_mode"), for: .normal)
@@ -2846,7 +2846,8 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
     
     func purchase_star_function() -> Void{
         
-        
+        super.view.isUserInteractionEnabled = false
+        self.view.isUserInteractionEnabled = true
         purchase_star_menu = UIImageView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
         purchase_star_menu.image = #imageLiteral(resourceName: "treasure_background")
         purchase_star_menu.alpha = 0

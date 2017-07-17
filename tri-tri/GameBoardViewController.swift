@@ -17001,6 +17001,7 @@ func trinity_animation() -> Void {
         self.count_down_view.removeFromSuperview()
 
         
+        
         purchase_star_menu = UIImageView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
         purchase_star_menu.image = #imageLiteral(resourceName: "treasure_background")
         purchase_star_menu.alpha = 0
