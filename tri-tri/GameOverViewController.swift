@@ -1541,7 +1541,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     }
 
     //share image button
-    
+    var final_image_to_share = UIImage()
     @IBAction func share_image_action(_ sender: UIButton) {
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
@@ -1551,6 +1551,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         }
         self.button_player.play()
         let shareImage = compose_final_share_image()
+        final_image_to_share = shareImage
         //let myWebsite = NSURL(string:"http://www.baidu.com/")
         let shareItem = [shareImage] as [Any]
         
@@ -1619,7 +1620,43 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         
     }
     
+    @IBAction func wechat_share(_ sender: UIButton) {
+    //var message =
+    let image = compose_final_share_image()
+        //if WXApi.isWXAppInstalled() && WXApi.isWXAppSupport() {
+        sendImage( image:image, inScene: WXSceneTimeline)
+          //  }
+        
+    }
+   
     
+    
+    ///分享图片
+    func sendImage(image:UIImage, inScene:WXScene)->Bool{
+        let ext=WXImageObject()
+        ext.imageData=UIImagePNGRepresentation(image)
+        
+        let message=WXMediaMessage()
+        message.title=nil
+        message.description=nil
+        message.mediaObject=ext
+        message.mediaTagName="MyPic"
+        //生成缩略图
+        UIGraphicsBeginImageContext(CGSize(width: 100, height: 100))
+        image.draw(in: CGRect(x: 0, y: 0, width: 100,height: 100))
+        let thumbImage=UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        message.thumbData=UIImagePNGRepresentation(thumbImage!)
+        
+        let req=SendMessageToWXReq()
+        req.text=nil
+        req.message=message
+        req.bText=false
+        req.scene=Int32(inScene.rawValue)
+        return WXApi.send(req)
+    }
+    
+   
     
 
 }

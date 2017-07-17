@@ -11,7 +11,7 @@ import UserNotifications
 import AVFoundation
 import EggRating
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate,WXApiDelegate{
 
     var window: UIWindow?
 
@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         center.requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {
             (granted,erro) in
         })
-        //WXApi.registerApp("123456")
+        WXApi.registerApp("wxb3b370fd374d0862")
+    
         return true
     }
     
@@ -76,6 +77,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        return WXApi.handleOpen(url as URL!, delegate: self)
+    }
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return WXApi.handleOpen(url as URL!, delegate: self)
+    }
+    
 
 
 }
