@@ -13537,6 +13537,10 @@ number_of_lines_erased += 1
             defaults.set([[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]], forKey: "tritri_single_tri_filled")
             defaults.set(0, forKey: "tritri_single_round_score")
             count_down_circle.send_stop_signal()
+            var background_cover = UIImageView(frame: self.background_image.frame)
+            background_cover.image = self.background_image.image
+            background_cover.alpha = 0
+            self.view.addSubview(background_cover)
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
             nextViewController.final_score = self.MarkBoard.text!
@@ -13548,7 +13552,11 @@ number_of_lines_erased += 1
                 nextViewController.is_high_score = false
             }
             nextViewController.final_board_image = self.starBoardScreenShot
+  
             self.present(nextViewController, animated: true, completion: nil)
+
+            
+            
             //self.audioPlayer.stop()
             self.timer.invalidate()
             game_over_timer.invalidate()

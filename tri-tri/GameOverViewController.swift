@@ -261,6 +261,17 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         }
         share_image_scene.contentMode = .scaleAspectFit
         
+        //change button location
+        home_button.frame.origin.y -= screen_height/2.0
+        restart_button.frame.origin.y -= screen_height/2.0
+        game_center_button.frame.origin.y -= screen_height/2.0
+        gameover_title.frame.origin.y -= screen_height/2.0
+        like_button.frame.origin.y -= screen_height/2.0
+        score_board.frame.origin.y -= screen_height/2.0
+        high_score_marker_icon.frame.origin.y -= screen_height/2.0
+        High_score_marker.frame.origin.y -= screen_height/2.0
+        
+        
         share_scene_timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(GameOverViewController.share_scene_bounce_in), userInfo: nil, repeats: false)
         //add pangesture
         //et panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
@@ -284,6 +295,41 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             self.finalBoard.transform = .identity
             self.share_scene_score.transform = .identity
         }, completion: nil)
+        
+        //buttons bounce in
+        
+        home_button.frame.origin.y += screen_height/2.0
+        restart_button.frame.origin.y += screen_height/2.0
+        game_center_button.frame.origin.y += screen_height/2.0
+        gameover_title.frame.origin.y += screen_height/2.0
+        like_button.frame.origin.y += screen_height/2.0
+        score_board.frame.origin.y += screen_height/2.0
+        high_score_marker_icon.frame.origin.y += screen_height/2.0
+        High_score_marker.frame.origin.y += screen_height/2.0
+        
+        
+        
+        home_button.transform = CGAffineTransform(translationX: 0, y: -screen_height/2.0)
+        restart_button.transform = CGAffineTransform(translationX: 0, y: -screen_height/2.0)
+        game_center_button.transform = CGAffineTransform(translationX: 0, y: -screen_height/2.0)
+        gameover_title.transform = CGAffineTransform(translationX: 0, y: -screen_height/2.0)
+        like_button.transform = CGAffineTransform(translationX: 0, y: -screen_height/2.0)
+        score_board.transform = CGAffineTransform(translationX: 0, y: -screen_height/2.0)
+        high_score_marker_icon.transform = CGAffineTransform(translationX: 0, y: -screen_height/2.0)
+        High_score_marker.transform = CGAffineTransform(translationX: 0, y: -screen_height/2.0)
+        UIView.animate(withDuration: 0.7, delay: 00, usingSpringWithDamping: 0.6, initialSpringVelocity: 3.0, options: .curveLinear, animations: {
+            self.home_button.transform = .identity
+            self.restart_button.transform = .identity
+            self.game_center_button.transform = .identity
+            self.gameover_title.transform = .identity
+            self.like_button.transform = .identity
+            self.score_board.transform = .identity
+            self.high_score_marker_icon.transform = .identity
+            self.High_score_marker.transform = .identity
+            
+        }, completion: nil)
+        
+        
         
         share_scene_timer.invalidate()
     }
