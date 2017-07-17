@@ -613,10 +613,10 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             self.highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
             self.continue_button.setImage(UIImage(named:"continue"), for: .normal)
             self.shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
-            self.star_board.textColor = UIColor.black
+            self.star_board.textColor = UIColor.white
             self.star_counter.setImage(#imageLiteral(resourceName: "night_mode_star"), for: .normal)
             self.theme_star_counter.image = #imageLiteral(resourceName: "current_star_total")
-            self.theme_star_board.textColor = UIColor.white
+            self.theme_star_board.textColor = UIColor.black
             self.gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
             self.tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
             self.treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_night_mode"), for: .normal)
