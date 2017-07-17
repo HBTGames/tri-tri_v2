@@ -141,7 +141,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         treasure_box_icon.frame = CGRect(x: pause_screen_x_transform(Double(treasure_box_icon.frame.origin.x)), y: pause_screen_y_transform(Double(treasure_box_icon.frame.origin.y)), width: pause_screen_x_transform(Double(treasure_box_icon.frame.width)), height: pause_screen_y_transform(Double(treasure_box_icon.frame.height)))
         language_button.frame = CGRect(x: pause_screen_x_transform(Double(language_button.frame.origin.x)), y: pause_screen_y_transform(Double(language_button.frame.origin.y)), width: pause_screen_x_transform(Double(language_button.frame.width)), height: pause_screen_y_transform(Double(language_button.frame.height)))
         background_image.frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
-        
+        star_board.font = UIFont(name: "Fresca-Regular", size: CGFloat(22))
         //let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
         //self.view.addGestureRecognizer(panGestureRecognizer)
         var HighestScore = 0
