@@ -232,7 +232,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             background_image.alpha = 1
             background_image.image = #imageLiteral(resourceName: "school_background")
             self.trophy.image = #imageLiteral(resourceName: "school_mode_trophy")
-            self.score_board.textColor = UIColor(red: 113.0/255, green: 113.0/255, blue: 142.0/255, alpha: 1.0)
+            self.score_board.textColor = UIColor(red: 40.0/255, green: 60.0/255, blue: 133.0/255, alpha: 1.0)
            
             self.restart_button.setImage(UIImage(named:"school_restart-big"), for: .normal)
             self.like_button.setImage(#imageLiteral(resourceName: "school_like-icon"), for: .normal)
