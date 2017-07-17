@@ -42,6 +42,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     //final board image
     var final_board_image = UIImage()
     
+    @IBOutlet var high_score_marker_icon: UIImageView!
     @IBOutlet weak var share_image_button: UIButton!
 
     @IBOutlet weak var share_image_scene: UIImageView!
@@ -107,7 +108,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     var share_scene_timer = Timer()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.high_score_marker_icon.contentMode = .scaleAspectFit
         if(defaults.value(forKey: "tritri_theme_lock_array") == nil){
             theme_islocked_array = [false,false,true,true,true]
             defaults.set(theme_islocked_array, forKey: "tritri_theme_lock_array")
@@ -173,9 +174,9 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         catch{
             
         }
-        if is_high_score{
-            High_score_marker.textColor = UIColor(red:CGFloat(100.0/255.0), green:CGFloat(20.0/255.0), blue:CGFloat(150.0/255.0), alpha:CGFloat(1))
-            High_score_marker.text = "New Record!"
+        if !is_high_score{
+            
+            high_score_marker_icon.removeFromSuperview()
         }
         if(defaults.value(forKey: "tritri_star_score") != nil ){
             star_score = defaults.value(forKey: "tritri_star_score") as! NSInteger
