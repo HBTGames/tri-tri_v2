@@ -1944,7 +1944,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     
     
     
-    
+   var return_button = MyButton()
    var white_cover = UIView()
     var theme_menu_star_store_button = MyButton()
     
@@ -1967,7 +1967,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(12),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
         theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(285),y:pause_screen_y_transform(15),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
         theme_button_height = (screen_height - white_cover_y)/3.0
-        let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
+        return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
         day_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: white_cover.frame.origin.y + white_cover.frame.height, width: screen_width, height: theme_button_height))
         day_theme_origin = day_theme_button.frame.origin
@@ -2059,7 +2059,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.theme_star_counter.fadeOutandRemove()
                         self.theme_star_board.fadeOutandRemove()
                         triangle_text.fadeOutandRemove()
-                        return_button.fadeOutandRemove()
+                        self.return_button.fadeOutandRemove()
                         self.remove_all_theme_star_counter_fragments()
                     })
 
@@ -2170,7 +2170,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.theme_star_counter.fadeOutandRemove()
                         self.theme_star_board.fadeOutandRemove()
                         triangle_text.fadeOutandRemove()
-                        return_button.fadeOutandRemove()
+                        self.return_button.fadeOutandRemove()
                         self.remove_all_theme_star_counter_fragments()
                     })
     
@@ -2320,7 +2320,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.theme_star_counter.fadeOutandRemove()
                         self.theme_star_board.fadeOutandRemove()
                         triangle_text.fadeOutandRemove()
-                        return_button.fadeOutandRemove()
+                        self.return_button.fadeOutandRemove()
                         self.remove_all_theme_star_counter_fragments()
                     })
     
@@ -2564,7 +2564,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.theme_star_counter.fadeOutandRemove()
                         self.theme_star_board.fadeOutandRemove()
                         triangle_text.fadeOutandRemove()
-                        return_button.fadeOutandRemove()
+                        self.return_button.fadeOutandRemove()
                         self.remove_all_theme_star_counter_fragments()
                     })
 
@@ -2720,7 +2720,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.theme_star_counter.fadeOutandRemove()
                         self.theme_star_board.fadeOutandRemove()
                         triangle_text.fadeOutandRemove()
-                        return_button.fadeOutandRemove()
+                        self.return_button.fadeOutandRemove()
                         self.remove_all_theme_star_counter_fragments()
                     })
    
@@ -2882,7 +2882,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 self.theme_star_counter.fadeOutandRemove()
                 self.theme_star_board.fadeOutandRemove()
                 triangle_text.fadeOutandRemove()
-                return_button.fadeOutandRemove()
+                self.return_button.fadeOutandRemove()
                 self.remove_all_theme_star_counter_fragments()
             })
 
@@ -17009,6 +17009,25 @@ func trinity_animation() -> Void {
         self.count_down_view.removeFromSuperview()
 
         
+        self.paused = true
+        self.star_store_button.isEnabled = false
+        self.backpack_button.isEnabled = false
+        self.pause.isEnabled = false
+        
+        self.day_apply_button.isEnabled = false
+        self.night_apply_button.isEnabled = false
+        self.BW_apply_button.isEnabled = false
+        self.school_apply_button.isEnabled = false
+        self.colors_apply_button.isEnabled = false
+        self.theme_menu_star_store_button.isEnabled = false
+        self.return_button.isEnabled = false
+        
+        
+        
+        
+        
+        
+        
         purchase_star_menu = UIImageView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
         purchase_star_menu.image = #imageLiteral(resourceName: "treasure_background")
         purchase_star_menu.alpha = 0
@@ -17048,7 +17067,18 @@ func trinity_animation() -> Void {
                 
             }
             self.button_player.play()
+            self.paused = false
+            self.star_store_button.isEnabled = true
+            self.backpack_button.isEnabled = true
+            self.pause.isEnabled = true
             
+            self.day_apply_button.isEnabled = true
+            self.night_apply_button.isEnabled = true
+            self.BW_apply_button.isEnabled = true
+            self.school_apply_button.isEnabled = true
+            self.colors_apply_button.isEnabled = true
+            self.theme_menu_star_store_button.isEnabled = true
+            self.return_button.isEnabled = true
             self.purchase_star_menu.removeFromSuperview()
             self.more_stars_label.removeFromSuperview()
             self.close_button.removeFromSuperview()
@@ -17091,6 +17121,15 @@ func trinity_animation() -> Void {
             }
         }else if(gameover_star_purchase == "theme"){
             close_button.whenButtonIsClicked{
+                self.paused = true
+                
+                self.day_apply_button.isEnabled = true
+                self.night_apply_button.isEnabled = true
+                self.BW_apply_button.isEnabled = true
+                self.school_apply_button.isEnabled = true
+                self.colors_apply_button.isEnabled = true
+                self.theme_menu_star_store_button.isEnabled = true
+                self.return_button.isEnabled = true
                 self.purchase_star_menu.removeFromSuperview()
                 self.more_stars_label.removeFromSuperview()
                 self.close_button.removeFromSuperview()
