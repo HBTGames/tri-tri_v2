@@ -1712,6 +1712,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
 class MyButton: UIButton {
     var action: (()->())?
     var highlight_action: (()->())?
+    var escapeHighlight_action: (()->())?
     func whenButtonIsClicked(action: @escaping ()->()) {
         self.action = action
         self.addTarget(self, action: #selector(MyButton.clicked), for: .touchUpInside)
@@ -1722,11 +1723,20 @@ class MyButton: UIButton {
         
     }
     
+    func whenButtonEscapeHighlight(action: @escaping () -> ()) {
+        self.escapeHighlight_action = action
+        self.addTarget(self, action: #selector(MyButton.escape_highlight), for: .touchDragExit)
+    }
+    
     func clicked() {
         action?()
     }
     
     func highlighted() {
         highlight_action?()
+    }
+    
+    func escape_highlight(){
+        escapeHighlight_action?()
     }
 }

@@ -1602,6 +1602,12 @@ self.view.addSubview(current_star_total)
             self.new_life_button.setImage(#imageLiteral(resourceName: "new_life"), for: .normal)
             self.new_life_button.frame.origin.y += self.pause_screen_y_transform(2)
         })
+        //new_life_button.whenButtonEs
+        new_life_button.whenButtonEscapeHighlight(action: {
+            self.new_life_button.frame.origin.y -= self.pause_screen_y_transform(2)
+            self.new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button"), for: .normal)
+    
+        })
         new_life_button.whenButtonIsClicked(action: {
             self.new_life_button.frame.origin.y -= self.pause_screen_y_transform(2)
             self.new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button"), for: .normal)
@@ -1658,6 +1664,10 @@ self.view.addSubview(current_star_total)
         same_color_eliminator.whenButtonIsHighlighted(action: {
         self.same_color_eliminator.setImage(#imageLiteral(resourceName: "same_color_eliminator"), for: .normal)
         self.same_color_eliminator.frame.origin.y += self.pause_screen_y_transform(2)
+        })
+        same_color_eliminator.whenButtonEscapeHighlight(action: {
+            self.same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
+            self.same_color_eliminator.frame.origin.y -= self.pause_screen_y_transform(2)
         })
     
     same_color_eliminator.alpha = 0
@@ -1721,6 +1731,10 @@ self.view.addSubview(current_star_total)
             self.shape_bomb.frame.origin.y += self.pause_screen_y_transform(2)
         })
     
+        shape_bomb.whenButtonEscapeHighlight(action: {
+            self.shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
+            self.shape_bomb.frame.origin.y -= self.pause_screen_y_transform(2)
+        })
     shape_bomb.alpha = 0
     self.view.addSubview(shape_bomb)
     shape_bomb.fadeIn()
@@ -1781,6 +1795,10 @@ self.view.addSubview(current_star_total)
             self.times_two.frame.origin.y += self.pause_screen_y_transform(2)
        
         })
+        times_two.whenButtonEscapeHighlight(action: {
+            self.times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
+            self.times_two.frame.origin.y -= self.pause_screen_y_transform(2)
+        })
         times_two.alpha = 0
     self.view.addSubview(times_two)
     times_two.fadeIn()
@@ -1839,6 +1857,11 @@ self.view.addSubview(current_star_total)
         three_triangles.whenButtonIsHighlighted(action: {
             self.three_triangles.setImage(#imageLiteral(resourceName: "three_triangle"), for: .normal)
             self.three_triangles.frame.origin.y += self.pause_screen_y_transform(2)
+        })
+        
+        three_triangles.whenButtonEscapeHighlight(action: {
+            self.three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
+            self.three_triangles.frame.origin.y -= self.pause_screen_y_transform(2)
         })
     three_triangles.alpha = 0
     self.view.addSubview(three_triangles)
@@ -1904,6 +1927,11 @@ self.view.addSubview(current_star_total)
        clear_all.alpha = 0
     self.view.addSubview(clear_all)
     clear_all.fadeIn()
+        clear_all.whenButtonEscapeHighlight(action: {
+            self.clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
+            self.clear_all.frame.origin.y -= self.pause_screen_y_transform(2)
+            
+        })
         clear_all.whenButtonIsClicked(action: {
             self.clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
             self.clear_all.frame.origin.y -= self.pause_screen_y_transform(2)
@@ -3462,7 +3490,10 @@ extension UIImage{
 }
 **/
 
-/**class MyButton: UIButton {
+/**class 
+ 
+ 
+ : UIButton {
     var action: (()->())?
     
     func whenButtonIsClicked(action: @escaping ()->()) {
