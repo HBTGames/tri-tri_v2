@@ -2854,7 +2854,13 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         self.like_button.isEnabled = false
         self.continue_button.isEnabled = false
         self.shopping_cart.isEnabled = false
-        
+        self.day_apply_button.isEnabled = false
+        self.night_apply_button.isEnabled = false
+        self.BW_apply_button.isEnabled = false
+        self.school_apply_button.isEnabled = false
+        self.colors_apply_button.isEnabled = false
+        self.theme_menu_star_store_button.isEnabled = false
+
         
         
         
@@ -2906,6 +2912,12 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
             self.like_button.isEnabled = true
             self.continue_button.isEnabled = true
             self.shopping_cart.isEnabled = true
+            self.day_apply_button.isEnabled = true
+            self.night_apply_button.isEnabled = true
+            self.BW_apply_button.isEnabled = true
+            self.school_apply_button.isEnabled = true
+            self.colors_apply_button.isEnabled = true
+            self.theme_menu_star_store_button.isEnabled = true
             self.purchase_star_menu.removeFromSuperview()
             self.more_stars_label.removeFromSuperview()
             self.close_button.removeFromSuperview()
