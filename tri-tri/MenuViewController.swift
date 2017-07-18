@@ -2846,9 +2846,19 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
     var gameover_star_purchase = String()
     
     func purchase_star_function() -> Void{
+        self.treasure_box_icon.isEnabled = false
+        self.tutorial_button.isEnabled = false
+        self.language_button.isEnabled = false
+        self.gift_button.isEnabled = false
+        self.star_counter.isEnabled = false
+        self.like_button.isEnabled = false
+        self.continue_button.isEnabled = false
+        self.shopping_cart.isEnabled = false
         
-        super.view.isUserInteractionEnabled = false
-        self.view.isUserInteractionEnabled = true
+        
+        
+        
+        
         purchase_star_menu = UIImageView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
         purchase_star_menu.image = #imageLiteral(resourceName: "treasure_background")
         purchase_star_menu.alpha = 0
@@ -2888,6 +2898,14 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
                 
             }
             self.button_player.play()
+            self.treasure_box_icon.isEnabled = true
+            self.tutorial_button.isEnabled = true
+            self.language_button.isEnabled = true
+            self.gift_button.isEnabled = true
+            self.star_counter.isEnabled = true
+            self.like_button.isEnabled = true
+            self.continue_button.isEnabled = true
+            self.shopping_cart.isEnabled = true
             self.purchase_star_menu.removeFromSuperview()
             self.more_stars_label.removeFromSuperview()
             self.close_button.removeFromSuperview()
