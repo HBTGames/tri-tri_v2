@@ -42,7 +42,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
 
     
     @IBOutlet weak var star_board: UILabel!
-    @IBOutlet weak var continue_button: FlatButton!
+    @IBOutlet weak var continue_button: UIButton!
     var button_player = AVAudioPlayer()
     var opening_player = AVAudioPlayer()
     var star_score = 0
@@ -90,21 +90,28 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      let device_language = NSLocale.current.languageCode!
+       print("device language: \(device_language)")
         
         //like_button.prepare()
         //like_button.setTitleColor(UIColor.clear, for: .highlighted)
-       
-        like_button.pulseColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 0.7)
-        shopping_cart.pulseColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 0.7)
-        continue_button.pulseColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 0.7)
-
-        
         if (defaults.value(forKey: "language") == nil){
-            language = "English"
-            defaults.set("English", forKey: "language")
-            print("System language initializes to English")
+            if(device_language == "zh"){
+               language = "Chinese"
+               defaults.set("Chinese", forKey: "language")
+                print("System language initializes to Chinese")
+                
+            }else{
+                language = "English"
+                defaults.set("English", forKey: "language")
+                print("System language initializes to English")
+            }
+            
+            
+           
             
         }
+        
         
         if (defaults.value(forKey: "language") as! String == "English"){
             language = "English"
@@ -314,7 +321,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     
 
 
-    @IBOutlet weak var like_button: FlatButton!
+    @IBOutlet weak var like_button: UIButton!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -392,7 +399,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     
     
     
-    @IBOutlet weak var shopping_cart: FlatButton!
+    @IBOutlet weak var shopping_cart: UIButton!
     //origin
     var day_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var night_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
