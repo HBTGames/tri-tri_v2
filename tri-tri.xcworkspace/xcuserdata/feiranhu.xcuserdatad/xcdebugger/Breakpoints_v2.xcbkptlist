@@ -207,7 +207,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2028"
             endingLineNumber = "2028"
-            landmarkName = "language_button_image_decider()"
+            landmarkName = "treasure_box_action(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -415,7 +415,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2796"
             endingLineNumber = "2796"
-            landmarkName = "combine_total_price_fragments()"
+            landmarkName = "update_total_star_length(i:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -447,7 +447,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2789"
             endingLineNumber = "2789"
-            landmarkName = "combine_total_price_fragments()"
+            landmarkName = "update_total_star_length_according_to_string_length()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -495,8 +495,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2089"
             endingLineNumber = "2089"
-            landmarkName = "tool_selected_scene()"
-            landmarkType = "7">
+            landmarkName = "MenuViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -511,8 +511,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2092"
             endingLineNumber = "2092"
-            landmarkName = "tool_selected_scene()"
-            landmarkType = "7">
+            landmarkName = "MenuViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -607,7 +607,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2718"
             endingLineNumber = "2718"
-            landmarkName = "split_total_price_counter()"
+            landmarkName = "update_theme_star_counter_length(i:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -623,8 +623,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2715"
             endingLineNumber = "2715"
-            landmarkName = "MenuViewController"
-            landmarkType = "3">
+            landmarkName = "update_theme_star_length_according_to_string_length()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -735,8 +735,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2822"
             endingLineNumber = "2822"
-            landmarkName = "MenuViewController"
-            landmarkType = "3">
+            landmarkName = "combine_total_price_fragments()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -767,7 +767,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2750"
             endingLineNumber = "2750"
-            landmarkName = "remove_all_total_price_fragments()"
+            landmarkName = "split_total_price_counter()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -799,7 +799,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2761"
             endingLineNumber = "2761"
-            landmarkName = "update_total_star_length_according_to_string_length()"
+            landmarkName = "split_total_price_counter()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -927,8 +927,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3060"
             endingLineNumber = "3060"
-            landmarkName = "MenuViewController"
-            landmarkType = "3">
+            landmarkName = "add_1000_stars()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -943,8 +943,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3094"
             endingLineNumber = "3094"
-            landmarkName = "authPlayer()"
-            landmarkType = "7">
+            landmarkName = "MenuViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -959,7 +959,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2942"
             endingLineNumber = "2942"
-            landmarkName = "buyProduct()"
+            landmarkName = "purchase_star_function()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1119,7 +1119,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2828"
             endingLineNumber = "2828"
-            landmarkName = "like_button_action(_:)"
+            landmarkName = "combine_total_price_fragments()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1146,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/TutorialViewController.swift"
-            timestampString = "522062234.914602"
+            timestampString = "522063091.345347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "about_us_action(_:)"
             landmarkType = "7">
             <Locations>
@@ -1194,11 +1194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/TutorialViewController.swift"
-            timestampString = "522062234.914602"
+            timestampString = "522063091.345347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "about_us_action(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1210,11 +1210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/TutorialViewController.swift"
-            timestampString = "522062234.914602"
+            timestampString = "522063542.141749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "about_us_action(_:)"
             landmarkType = "7">
             <Locations>
@@ -1258,11 +1258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/TutorialViewController.swift"
-            timestampString = "522062234.914602"
+            timestampString = "522063091.345347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "about_us_action(_:)"
             landmarkType = "7">
          </BreakpointContent>

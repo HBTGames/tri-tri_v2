@@ -96,10 +96,12 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         if (language == "English"){
             tuto_text.image = UIImage(named:"tuto_text")
             current_about_us_image = #imageLiteral(resourceName: "about_us_english")
+            about_us_text.image = #imageLiteral(resourceName: "about_us_text_english")
             
         } else {
             tuto_text.image = UIImage(named:"tuto_text_chinese")
             current_about_us_image = #imageLiteral(resourceName: "about_us_chinese")
+            about_us_text.image = #imageLiteral(resourceName: "about_us_text_chinese")
         }
         about_us_button.setImage(current_about_us_image, for: .normal)
         tuto_text.frame = CGRect(x:0, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
@@ -190,6 +192,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     var about_us_back0 = UIImageView()
     var about_us_back1 = UIImageView()
     var about_us_back2 = UIImageView()
+    var about_us_text = UIImageView()
     @IBAction func about_us_action(_ sender: UIButton) {
         if(!about_page_open && !in_about_us_animation){
             about_page_open = true
@@ -223,15 +226,19 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
             self.view.addSubview(self.about_us_back0)
             self.view.addSubview(self.about_us_back1)
             self.view.addSubview(self.about_us_back2)
+            self.view.addSubview(self.about_us_text)
             self.view.bringSubview(toFront: self.about_us_button)
             
              //self.about_us_back0.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/3.0))
+            self.about_us_text.contentMode = .scaleAspectFit
+            self.about_us_text.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(220), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(203), width: self.pause_screen_x_transform(292), height: self.pause_screen_y_transform(292))
+            self.about_us_text.alpha = 0
             
           UIView.animate(withDuration: 0.3, animations: {
-            self.about_us_back0.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(200), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(190), width: self.pause_screen_x_transform(380), height: self.pause_screen_y_transform(380))
-            self.about_us_back1.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(220), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(210), width: self.pause_screen_x_transform(420), height: self.pause_screen_y_transform(420))
-            self.about_us_back2.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(240), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(230), width: self.pause_screen_x_transform(460), height: self.pause_screen_y_transform(460))
- 
+            self.about_us_back0.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(180), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(170), width: self.pause_screen_x_transform(380), height: self.pause_screen_y_transform(380))
+            self.about_us_back1.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(200), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(190), width: self.pause_screen_x_transform(420), height: self.pause_screen_y_transform(420))
+            self.about_us_back2.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(220), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(210), width: self.pause_screen_x_transform(460), height: self.pause_screen_y_transform(460))
+          self.about_us_text.fadeIn()
             })
            
             
@@ -267,12 +274,13 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
                    self.about_us_back0.frame = self.about_us_button.frame
                     self.about_us_back1.frame = self.about_us_button.frame
                     self.about_us_back2.frame = self.about_us_button.frame
-                
+                   self.about_us_text.fadeOutandRemove()
                 }, completion: {
                    (finished) -> Void in
                    self.about_us_back0.removeFromSuperview()
                    self.about_us_back1.removeFromSuperview()
                    self.about_us_back2.removeFromSuperview()
+                    
                    self.in_about_us_animation = false
                 })
                 
