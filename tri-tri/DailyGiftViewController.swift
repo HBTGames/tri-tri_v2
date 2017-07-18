@@ -300,6 +300,7 @@ class DailyGiftViewController: UIViewController {
     
     //pan gesture recognizer
     func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
+        if(!during_spinning){
         if(wheel.frame.contains(spin_initial_point) && !display_reward && count_down_end){
             let velocity = gesture.velocity(in: view)
             //print("velocity x: \(velocity.x), velocity y: \(velocity.y)")
@@ -365,6 +366,7 @@ class DailyGiftViewController: UIViewController {
                 //print("\(translation.y)")
             }
             
+        }
         }
     }
     
