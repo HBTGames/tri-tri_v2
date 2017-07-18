@@ -19,7 +19,7 @@ class waveAnimator: UIView {
     fileprivate var term = 60.0// recalculate in layoutSubviews
     fileprivate var phasePosition = 0.0//phase Must be 0
     fileprivate var amplitude = 16.0//wave amplitude
-    fileprivate var position = 40.0//where the x axis of wave position
+    fileprivate var wave_position = 40.0//where the x axis of wave position
     
     fileprivate let waveMoveSpan = 5.0//the span wave move in a unit time
     fileprivate let animationUnitTime = 0.08//redraw unit time
@@ -54,7 +54,7 @@ class waveAnimator: UIView {
         }
     }
     
-    var borderWidth: CGFloat {
+    var waveborderWidth: CGFloat {
         get { return clipCircleLineWidth }
         set {
             clipCircleLineWidth = newValue
@@ -86,7 +86,7 @@ class waveAnimator: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        position =  (1 - progress) * Double(rect.height)
+        wave_position =  (1 - progress) * Double(rect.height)
         
         //circle clip
         clipWithCircle()
@@ -128,7 +128,7 @@ class waveAnimator: UIView {
     
     func drawWaveWater(_ originX: Double, fillColor: UIColor) {
         let curvePath = UIBezierPath()
-        curvePath.move(to: CGPoint(x: originX, y: position))
+        curvePath.move(to: CGPoint(x: originX, y: wave_position))
         
         //wave path
         var tempPoint = originX
@@ -179,7 +179,7 @@ class waveAnimator: UIView {
     func columnYPoint(_ x: Double) -> Double {
         //sine function
         let result = amplitude * sin((2 * M_PI / term) * x + phasePosition)
-        return result + position
+        return result + wave_position
     }
     
     //round

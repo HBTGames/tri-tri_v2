@@ -9,6 +9,13 @@ target 'tri-tri' do
 pod 'lottie-ios'
 pod 'EggRating'
 pod 'WechatOpenSDK'
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'Material', '~> 2.0'
+
+
   target 'tri-triTests' do
     inherit! :search_paths
     # Pods for testing

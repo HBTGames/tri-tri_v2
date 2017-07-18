@@ -13,6 +13,8 @@ import EggRating
 import SpriteKit
 import StoreKit
 import GameKit
+import Material
+
 extension UIView:Explodable { }
 
 
@@ -40,7 +42,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
 
     
     @IBOutlet weak var star_board: UILabel!
-    @IBOutlet weak var continue_button: UIButton!
+    @IBOutlet weak var continue_button: FlatButton!
     var button_player = AVAudioPlayer()
     var opening_player = AVAudioPlayer()
     var star_score = 0
@@ -89,6 +91,13 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //like_button.prepare()
+        //like_button.setTitleColor(UIColor.clear, for: .highlighted)
+       
+        like_button.pulseColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 0.7)
+        shopping_cart.pulseColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 0.7)
+        continue_button.pulseColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 0.7)
+
         
         if (defaults.value(forKey: "language") == nil){
             language = "English"
@@ -305,7 +314,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     
 
 
-    @IBOutlet weak var like_button: UIButton!
+    @IBOutlet weak var like_button: FlatButton!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -383,7 +392,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     
     
     
-    @IBOutlet weak var shopping_cart: UIButton!
+    @IBOutlet weak var shopping_cart: FlatButton!
     //origin
     var day_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var night_theme_button = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
