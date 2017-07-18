@@ -251,10 +251,10 @@ class DailyGiftViewController: UIViewController {
             self.present(nextViewController, animated: true, completion: nil)
             
         })
-        count_down_label = UILabel(frame: CGRect(x: screen_width/2 - screen_x_transform(140), y: screen_height/2 - screen_y_transform(10), width: screen_x_transform(330), height: screen_y_transform(100)))
+        count_down_label = UILabel(frame: CGRect(x: screen_width/2 - screen_x_transform(115), y: screen_height/2 - screen_y_transform(10), width: screen_x_transform(330), height: screen_y_transform(100)))
         self.view.addSubview(count_down_label)
         count_down_label.text = count_down_time_string
-        count_down_label.font = UIFont(name: "Helvetica", size: 60)
+        count_down_label.font = UIFont(name: "Fresca-Regular", size: 63)
         count_down_label.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
         
         
@@ -437,10 +437,10 @@ class DailyGiftViewController: UIViewController {
                     self.total_seconds = 20
                     
                     self.during_spinning = false
-                    self.rewards_count_down = UILabel(frame: CGRect(x: self.screen_width/2 - self.screen_x_transform(65), y: self.screen_height/2 - self.screen_y_transform(85), width: self.screen_x_transform(330), height: self.screen_y_transform(100)))
+                    self.rewards_count_down = UILabel(frame: CGRect(x: self.screen_width/2 - self.screen_x_transform(39), y: self.screen_height/2 - self.screen_y_transform(89), width: self.screen_x_transform(330), height: self.screen_y_transform(100)))
                     self.view.addSubview(self.rewards_count_down)
                     self.rewards_count_down.text = self.count_down_time_string
-                    self.rewards_count_down.font = UIFont(name: "Helvetica", size: 30)
+                    self.rewards_count_down.font = UIFont(name: "Fresca-Regular", size: 23)
                     self.rewards_count_down.textColor = UIColor(red: 255.0/255, green: 255.0/255, blue: 255.0/255, alpha: 1.0)
                     self.rewards_count_down.fadeIn()
                     //add notification

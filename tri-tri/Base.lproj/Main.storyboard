@@ -193,6 +193,14 @@
                                 <rect key="frame" x="168" y="558" width="39" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pageControl>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Osj-Ji-Fdf">
+                                <rect key="frame" x="310" y="601" width="65" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="about_us_chinese"/>
+                                <connections>
+                                    <action selector="about_us_action:" destination="dWF-Fv-J3W" eventType="touchUpInside" id="hrk-OC-abe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -203,6 +211,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="about_us_button" destination="Osj-Ji-Fdf" id="5Pm-Zm-H0w"/>
                         <outlet property="exit_button" destination="4JW-82-v6x" id="PEq-vg-X90"/>
                         <outlet property="mainScrollView" destination="meP-AV-r9s" id="Tf3-f2-VQc"/>
                         <outlet property="tuto_bg" destination="1Zr-fJ-SPD" id="v2I-Oc-yEf"/>
@@ -211,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gpn-Rm-yBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="1"/>
+            <point key="canvasLocation" x="776.79999999999995" y="0.44977511244377816"/>
         </scene>
         <!--Theme Menu View Controller-->
         <scene sceneID="4Ji-yD-aLf">
@@ -1345,6 +1354,7 @@
         <image name="GameOver" width="243" height="52"/>
         <image name="School_Theme" width="177" height="177"/>
         <image name="Triangle_Text" width="111" height="29"/>
+        <image name="about_us_chinese" width="300" height="300"/>
         <image name="continue" width="1000" height="866"/>
         <image name="day mode like" width="1000" height="866"/>
         <image name="day mode triangle title" width="360" height="82"/>

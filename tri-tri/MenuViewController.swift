@@ -299,7 +299,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     //openGameCenter()
     //wechat
         
-        
+         
         
     }
     
@@ -2845,6 +2845,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         
         self.button_player.play()
         EggRating.promptRateUs(viewController: self)
+        //sender.materialAnimation()
         
     }
     
@@ -3407,6 +3408,48 @@ func generateFragmentsFrom(_ originView:UIView, with splitRatio:CGFloat, in cont
   
     
    }
+
+
+extension UIButton{
+  
+    func materialAnimation(){
+    
+    let mask = UIView(frame: self.frame)
+    mask.backgroundColor = UIColor.white
+    mask.alpha = 0.4
+    self.addSubview(mask)
+        
+    //add UIBenzier Path
+    var intialRec = CGRect(x: self.center.x, y: self.center.y, width: 0.01, height: 0.01)
+    var circleMaskPathInit = UIBezierPath(ovalIn: intialRec)
+    var circleMaskPathFinal = UIBezierPath(ovalIn: self.frame)
+    var radius = sqrt(Double(self.frame.width*self.frame.width + self.frame.height*self.frame.height))
+        
+        
+    var maskLayer = CAShapeLayer()
+    maskLayer.path = circleMaskPathFinal.cgPath
+    self.layer.mask = maskLayer
+        
+    CATransaction.begin()
+    var maskLayerAnimation = CABasicAnimation(keyPath: "path")
+        CATransaction.setCompletionBlock({
+            mask.removeFromSuperview()
+        })
+    maskLayerAnimation.fromValue = circleMaskPathInit
+    maskLayerAnimation.toValue = circleMaskPathFinal
+    maskLayerAnimation.duration = 0.5
+    //maskLayerAnimation.delegate = self
+    maskLayer.add(maskLayerAnimation, forKey: "path")
+    CATransaction.commit()
+    }
+    
+    
+    
+    
+    
+    
+    
+}
 
 
 

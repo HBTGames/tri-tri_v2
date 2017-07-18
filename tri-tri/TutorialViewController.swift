@@ -14,6 +14,7 @@ import AVFoundation
 class TutorialViewController: UIViewController, UIScrollViewDelegate {
     
     
+    @IBOutlet weak var about_us_button: UIButton!
     var language = String()
     
     var button_player = AVAudioPlayer()
@@ -73,12 +74,20 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         
         mainScrollView.delegate = self
         
+        
+        
+        
         exit_button.setTitle("", for: .normal)
         exit_button.setBackgroundImage(UIImage(named:"tuto_exit"), for: .normal)
         exit_button.frame = CGRect(x:0, y: pause_screen_y_transform(537), width: pause_screen_x_transform(130), height: pause_screen_y_transform(130))
         tuto_page_con.frame = CGRect(x:pause_screen_x_transform(Double(tuto_page_con.frame.origin.x)), y: pause_screen_y_transform(Double(tuto_page_con.frame.origin.y)), width: pause_screen_x_transform(Double(tuto_page_con.frame.width)), height: pause_screen_y_transform(Double(tuto_page_con.frame.height)))
         self.view.bringSubview(toFront: exit_button)
         
+        about_us_button.frame = CGRect(x:pause_screen_x_transform(Double(about_us_button.frame.origin.x)), y: pause_screen_y_transform(Double(about_us_button.frame.origin.y)), width: pause_screen_x_transform(Double(about_us_button.frame.width)), height: pause_screen_y_transform(Double(about_us_button.frame.height)))
+        
+       
+        
+
         self.view.bringSubview(toFront: tuto_page_con)
         self.mainScrollView.frame = self.view.frame
         tuto_bg.frame = self.view.frame
@@ -86,9 +95,13 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "tuto_bg")!)
         if (language == "English"){
             tuto_text.image = UIImage(named:"tuto_text")
+            current_about_us_image = #imageLiteral(resourceName: "about_us_english")
+            
         } else {
             tuto_text.image = UIImage(named:"tuto_text_chinese")
+            current_about_us_image = #imageLiteral(resourceName: "about_us_chinese")
         }
+        about_us_button.setImage(current_about_us_image, for: .normal)
         tuto_text.frame = CGRect(x:0, y:0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
         
         
@@ -170,5 +183,107 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    var about_page_open = false
+    var in_about_us_animation = false
+    var current_about_us_image = UIImage()
+    var about_us_back0 = UIImageView()
+    var about_us_back1 = UIImageView()
+    var about_us_back2 = UIImageView()
+    @IBAction func about_us_action(_ sender: UIButton) {
+        if(!about_page_open && !in_about_us_animation){
+            about_page_open = true
+            in_about_us_animation = true
+    about_us_button.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        UIView.animate(withDuration: 0.3, delay: 00, usingSpringWithDamping: 0.5, initialSpringVelocity: 4.0, options: .curveLinear, animations: {
+       self.about_us_button.transform = CGAffineTransform(translationX: 1, y: 1).rotated(by: CGFloat(Double.pi))
+        }, completion: {
+            (finished) -> Void in
+            //set backs
+            self.about_us_back0.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(200), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(190), width: self.pause_screen_x_transform(380), height: self.pause_screen_y_transform(380))
+            self.about_us_back1.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(220), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(210), width: self.pause_screen_x_transform(420), height: self.pause_screen_y_transform(420))
+            self.about_us_back2.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(240), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(230), width: self.pause_screen_x_transform(460), height: self.pause_screen_y_transform(460))
+                
+            self.about_us_back0.image = #imageLiteral(resourceName: " white_circle")
+            self.about_us_back1.image = #imageLiteral(resourceName: " white_circle")
+            self.about_us_back2.image = #imageLiteral(resourceName: " white_circle")
+            self.about_us_back0.contentMode = .scaleAspectFit
+            self.about_us_back1.contentMode = .scaleAspectFit
+            self.about_us_back2.contentMode = .scaleAspectFit
+            self.about_us_back0.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+            self.about_us_back1.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+            self.about_us_back2.transform =  CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+            self.about_us_back0.alpha = 1.0
+            self.about_us_back1.alpha = 0.57
+            self.about_us_back2.alpha = 0.35
+            self.view.addSubview(self.about_us_back0)
+            self.view.addSubview(self.about_us_back1)
+            self.view.addSubview(self.about_us_back2)
+            self.view.bringSubview(toFront: self.about_us_button)
+            
+             //self.about_us_back0.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/3.0))
+            
+          UIView.animate(withDuration: 0.3, animations: {
+                self.about_us_back0.transform = CGAffineTransform(scaleX: 1.0, y: 1.0).rotated(by: CGFloat(Double.pi/3.5))
+                self.about_us_back1.transform = CGAffineTransform(scaleX: 1.0, y: 1.0).rotated(by: CGFloat(Double.pi/3.5))
+                self.about_us_back2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0).rotated(by: CGFloat(Double.pi/3.5))
+             
+            })
+           
+            
+            
+            UIView.transition(with: self.about_us_button, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                self.about_us_button.setImage(#imageLiteral(resourceName: "about_us_cancel"), for: .normal)
+            }, completion: {
+                (finished) -> Void in
+                self.view.bringSubview(toFront: self.about_us_button)
+                self.in_about_us_animation = false
+            })
+           
+            
+            
+            
+        })
+        
+        
+        }else if(about_page_open && !in_about_us_animation){
+            about_page_open = false
+            in_about_us_animation = true
+        about_us_button.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+            UIView.animate(withDuration: 0.3, delay: 00, usingSpringWithDamping: 0.5, initialSpringVelocity: 4.0, options: .curveLinear, animations: {
+            self.about_us_button.transform = CGAffineTransform(translationX: 1, y: 1).rotated(by: CGFloat(Double.pi))
+            }, completion: {
+                (finished) -> Void in
+                self.about_us_button.transform = .identity
+                UIView.transition(with: self.about_us_button, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                    self.about_us_button.setImage(self.current_about_us_image, for: .normal)
+                }, completion: nil)
+                
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.about_us_back0.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+                    self.about_us_back1.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+                    self.about_us_back2.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)                }, completion: {
+                   (finished) -> Void in
+                    self.about_us_back0.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                    self.about_us_back1.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                    self.about_us_back2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                   self.about_us_back0.removeFromSuperview()
+                   self.about_us_back1.removeFromSuperview()
+                   self.about_us_back2.removeFromSuperview()
+                   self.in_about_us_animation = false
+                })
+                
+                
+            })
+            
+            
+            
+            
+        }
+    }
+    
+    
+    
+    
 
 }
