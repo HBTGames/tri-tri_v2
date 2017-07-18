@@ -1009,38 +1009,6 @@
             endingLineNumber = "2910"
             landmarkName = "purchase_star_function()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "tri_tri.MenuViewController.purchase_star_function () -&gt; ()"
-                  moduleName = "tri-tri"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/feiranhu/Documents/tri-tri_v2/tri-tri/MenuViewController.swift"
-                  timestampString = "522061957.295826"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "2910"
-                  endingLineNumber = "2910"
-                  offsetFromSymbolStart = "5248">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "tri_tri.MenuViewController.(purchase_star_function () -&gt; ()).(closure #2)"
-                  moduleName = "tri-tri"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/feiranhu/Documents/tri-tri_v2/tri-tri/MenuViewController.swift"
-                  timestampString = "522061957.297892"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "2911"
-                  endingLineNumber = "2911"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1178,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/TutorialViewController.swift"
-            timestampString = "522050589.632855"
+            timestampString = "522062234.914602"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "about_us_action(_:)"
             landmarkType = "7">
             <Locations>
@@ -1226,11 +1194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/TutorialViewController.swift"
-            timestampString = "522050589.632855"
+            timestampString = "522062234.914602"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "about_us_action(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1242,27 +1210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/TutorialViewController.swift"
-            timestampString = "522050589.632855"
+            timestampString = "522062234.914602"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
-            landmarkName = "about_us_action(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/TutorialViewController.swift"
-            timestampString = "522050589.632855"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "about_us_action(_:)"
             landmarkType = "7">
             <Locations>
@@ -1306,11 +1258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/TutorialViewController.swift"
-            timestampString = "522050589.632855"
+            timestampString = "522062234.914602"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "about_us_action(_:)"
             landmarkType = "7">
          </BreakpointContent>

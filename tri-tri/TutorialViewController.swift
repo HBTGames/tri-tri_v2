@@ -200,10 +200,14 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         }, completion: {
             (finished) -> Void in
             //set backs
+            self.about_us_back0.frame = self.about_us_button.frame
+            self.about_us_back1.frame = self.about_us_button.frame
+            self.about_us_back2.frame = self.about_us_button.frame
+           /**
             self.about_us_back0.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(200), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(190), width: self.pause_screen_x_transform(380), height: self.pause_screen_y_transform(380))
             self.about_us_back1.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(220), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(210), width: self.pause_screen_x_transform(420), height: self.pause_screen_y_transform(420))
             self.about_us_back2.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(240), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(230), width: self.pause_screen_x_transform(460), height: self.pause_screen_y_transform(460))
-                
+            **/
             self.about_us_back0.image = #imageLiteral(resourceName: " white_circle")
             self.about_us_back1.image = #imageLiteral(resourceName: " white_circle")
             self.about_us_back2.image = #imageLiteral(resourceName: " white_circle")
@@ -224,10 +228,10 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
              //self.about_us_back0.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/3.0))
             
           UIView.animate(withDuration: 0.3, animations: {
-                self.about_us_back0.transform = CGAffineTransform(scaleX: 1.0, y: 1.0).rotated(by: CGFloat(Double.pi/3.5))
-                self.about_us_back1.transform = CGAffineTransform(scaleX: 1.0, y: 1.0).rotated(by: CGFloat(Double.pi/3.5))
-                self.about_us_back2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0).rotated(by: CGFloat(Double.pi/3.5))
-             
+            self.about_us_back0.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(200), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(190), width: self.pause_screen_x_transform(380), height: self.pause_screen_y_transform(380))
+            self.about_us_back1.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(220), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(210), width: self.pause_screen_x_transform(420), height: self.pause_screen_y_transform(420))
+            self.about_us_back2.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(240), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(230), width: self.pause_screen_x_transform(460), height: self.pause_screen_y_transform(460))
+ 
             })
            
             
@@ -260,13 +264,12 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
                 }, completion: nil)
                 
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.about_us_back0.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
-                    self.about_us_back1.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
-                    self.about_us_back2.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)                }, completion: {
+                   self.about_us_back0.frame = self.about_us_button.frame
+                    self.about_us_back1.frame = self.about_us_button.frame
+                    self.about_us_back2.frame = self.about_us_button.frame
+                
+                }, completion: {
                    (finished) -> Void in
-                    self.about_us_back0.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                    self.about_us_back1.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                    self.about_us_back2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                    self.about_us_back0.removeFromSuperview()
                    self.about_us_back1.removeFromSuperview()
                    self.about_us_back2.removeFromSuperview()
