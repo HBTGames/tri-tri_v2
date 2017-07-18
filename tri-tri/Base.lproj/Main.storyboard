@@ -131,27 +131,11 @@
                                 <rect key="frame" x="151" y="486" width="36" height="35"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNK-d0-ZYB">
-                                <rect key="frame" x="151" y="579" width="72" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="scroll"/>
-                                <connections>
-                                    <segue destination="wGw-gX-hhJ" kind="show" id="s2N-H6-203"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6N-bW-Qey">
                                 <rect key="frame" x="139" y="434" width="103" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Fresca-Regular" family="Fresca" pointSize="18"/>
                                 <state key="normal" title="Button" image="day_mode_star"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obo-MO-5CQ">
-                                <rect key="frame" x="173" y="579" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="GC"/>
-                                <connections>
-                                    <action selector="openGC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="58Q-xI-hYm"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -593,38 +577,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTQ-RL-A8z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="25" y="1509"/>
-        </scene>
-        <!--Scroll View Controller-->
-        <scene sceneID="Ero-w8-Fbp">
-            <objects>
-                <viewController id="wGw-gX-hhJ" customClass="ScrollViewController" customModule="tri_tri" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NUw-2g-P9O"/>
-                        <viewControllerLayoutGuide type="bottom" id="Od0-2j-AyB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JnC-zj-Eyl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8N-gY-Ir5">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="N8N-gY-Ir5" firstAttribute="height" secondItem="JnC-zj-Eyl" secondAttribute="height" id="5m9-9d-vP8"/>
-                            <constraint firstItem="N8N-gY-Ir5" firstAttribute="centerY" secondItem="JnC-zj-Eyl" secondAttribute="centerY" id="6oH-CF-Z8t"/>
-                            <constraint firstItem="N8N-gY-Ir5" firstAttribute="centerX" secondItem="JnC-zj-Eyl" secondAttribute="centerX" id="jlv-E7-JuK"/>
-                            <constraint firstItem="N8N-gY-Ir5" firstAttribute="width" secondItem="JnC-zj-Eyl" secondAttribute="width" id="zDt-dX-Vdm"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="mainScrollView" destination="N8N-gY-Ir5" id="iPJ-Oa-m8K"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xGi-ej-QRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="828" y="1412"/>
         </scene>
         <!--Game Board View Controller-->
         <scene sceneID="4ge-HZ-FD8">
@@ -12174,7 +12126,7 @@ zwAAAAAAAAQBAAAAAAAAAD4AAAAAAAAAAAAAAAAACdLRA
         <image name="棕色tri" width="610" height="542"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jOH-pV-lXR"/>
+        <segue reference="Hkt-ax-Thn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
