@@ -14,6 +14,14 @@ import AVFoundation
 class TutorialViewController: UIViewController, UIScrollViewDelegate {
     
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let location = touch.location(in: self.view)
+    
+    }
+    
+   
+    
     @IBOutlet weak var about_us_button: UIButton!
     var language = String()
     
@@ -132,8 +140,15 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         {
             tuto_reward.image = #imageLiteral(resourceName: "tuto_reward_chinese")
         }
-  
-        
+      
+        tuto_text.isUserInteractionEnabled = true
+        tuto_case_1.isUserInteractionEnabled = true
+        tuto_case_2.isUserInteractionEnabled = true
+        tuto_case_3.isUserInteractionEnabled = true
+        tuto_case_4.isUserInteractionEnabled = true
+        tuto_reward.isUserInteractionEnabled = true
+        tuto_bg.isUserInteractionEnabled = true
+        mainScrollView.isUserInteractionEnabled = true
         mainScrollView.contentSize.width = mainScrollView.frame.width * 5
         mainScrollView.addSubview(tuto_case_1)
         mainScrollView.addSubview(tuto_case_2)
@@ -144,8 +159,38 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         
         pageCount = 0
         // Do any additional setup after loading the view.
+        
+        let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
+        scrollViewTap.numberOfTapsRequired = 1
+        mainScrollView.addGestureRecognizer(scrollViewTap)
+        
+        
     }
-
+   
+    func scrollViewTapped(_ gesture: UITapGestureRecognizer ) {
+    let location = gesture.location(in: mainScrollView)
+        if(about_page_open && !in_about_us_animation){
+            
+            if(!about_us_back2.frame.contains(location)){
+            close_about_us()
+        }
+        }
+        
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+      let  location = scrollView.panGestureRecognizer.location(in: mainScrollView)
+        if(about_page_open && !in_about_us_animation){
+            
+            if(!about_us_back2.frame.contains(location)){
+                close_about_us()
+            }
+        }
+        
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -195,22 +240,34 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     var about_us_text = UIImageView()
     @IBAction func about_us_action(_ sender: UIButton) {
         if(!about_page_open && !in_about_us_animation){
-            about_page_open = true
-            in_about_us_animation = true
-    about_us_button.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+            
+        open_about_us()
+        
+        
+        }else if(about_page_open && !in_about_us_animation){
+            
+        close_about_us()
+            
+        }
+    }
+
+    func open_about_us(){
+        about_page_open = true
+        in_about_us_animation = true
+        about_us_button.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         UIView.animate(withDuration: 0.3, delay: 00, usingSpringWithDamping: 0.5, initialSpringVelocity: 4.0, options: .curveLinear, animations: {
-       self.about_us_button.transform = CGAffineTransform(translationX: 1, y: 1).rotated(by: CGFloat(Double.pi))
+            self.about_us_button.transform = CGAffineTransform(translationX: 1, y: 1).rotated(by: CGFloat(Double.pi))
         }, completion: {
             (finished) -> Void in
             //set backs
             self.about_us_back0.frame = self.about_us_button.frame
             self.about_us_back1.frame = self.about_us_button.frame
             self.about_us_back2.frame = self.about_us_button.frame
-           /**
-            self.about_us_back0.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(200), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(190), width: self.pause_screen_x_transform(380), height: self.pause_screen_y_transform(380))
-            self.about_us_back1.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(220), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(210), width: self.pause_screen_x_transform(420), height: self.pause_screen_y_transform(420))
-            self.about_us_back2.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(240), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(230), width: self.pause_screen_x_transform(460), height: self.pause_screen_y_transform(460))
-            **/
+            /**
+             self.about_us_back0.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(200), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(190), width: self.pause_screen_x_transform(380), height: self.pause_screen_y_transform(380))
+             self.about_us_back1.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(220), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(210), width: self.pause_screen_x_transform(420), height: self.pause_screen_y_transform(420))
+             self.about_us_back2.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(240), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(230), width: self.pause_screen_x_transform(460), height: self.pause_screen_y_transform(460))
+             **/
             self.about_us_back0.image = #imageLiteral(resourceName: " white_circle")
             self.about_us_back1.image = #imageLiteral(resourceName: " white_circle")
             self.about_us_back2.image = #imageLiteral(resourceName: " white_circle")
@@ -229,18 +286,18 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
             self.view.addSubview(self.about_us_text)
             self.view.bringSubview(toFront: self.about_us_button)
             
-             //self.about_us_back0.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/3.0))
+            //self.about_us_back0.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/3.0))
             self.about_us_text.contentMode = .scaleAspectFit
             self.about_us_text.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(220), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(203), width: self.pause_screen_x_transform(292), height: self.pause_screen_y_transform(292))
             self.about_us_text.alpha = 0
             
-          UIView.animate(withDuration: 0.3, animations: {
-            self.about_us_back0.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(180), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(170), width: self.pause_screen_x_transform(380), height: self.pause_screen_y_transform(380))
-            self.about_us_back1.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(200), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(190), width: self.pause_screen_x_transform(420), height: self.pause_screen_y_transform(420))
-            self.about_us_back2.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(220), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(210), width: self.pause_screen_x_transform(460), height: self.pause_screen_y_transform(460))
-          self.about_us_text.fadeIn()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.about_us_back0.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(180), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(170), width: self.pause_screen_x_transform(380), height: self.pause_screen_y_transform(380))
+                self.about_us_back1.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(200), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(190), width: self.pause_screen_x_transform(420), height: self.pause_screen_y_transform(420))
+                self.about_us_back2.frame = CGRect(x: self.about_us_button.frame.origin.x - self.pause_screen_x_transform(220), y: self.about_us_button.frame.origin.y - self.pause_screen_y_transform(210), width: self.pause_screen_x_transform(460), height: self.pause_screen_y_transform(460))
+                self.about_us_text.fadeIn()
             })
-           
+            
             
             
             UIView.transition(with: self.about_us_button, duration: 0.3, options: .transitionCrossDissolve, animations: {
@@ -250,51 +307,45 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
                 self.view.bringSubview(toFront: self.about_us_button)
                 self.in_about_us_animation = false
             })
-           
-            
-            
-            
-        })
-        
-        
-        }else if(about_page_open && !in_about_us_animation){
-            about_page_open = false
-            in_about_us_animation = true
+    })
+    
+}
+    
+    func close_about_us() {
+        about_page_open = false
+        in_about_us_animation = true
         about_us_button.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
-            UIView.animate(withDuration: 0.3, delay: 00, usingSpringWithDamping: 0.5, initialSpringVelocity: 4.0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.3, delay: 00, usingSpringWithDamping: 0.5, initialSpringVelocity: 4.0, options: .curveLinear, animations: {
             self.about_us_button.transform = CGAffineTransform(translationX: 1, y: 1).rotated(by: CGFloat(Double.pi))
+        }, completion: {
+            (finished) -> Void in
+            self.about_us_button.transform = .identity
+            UIView.transition(with: self.about_us_button, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                self.about_us_button.setImage(self.current_about_us_image, for: .normal)
+            }, completion: nil)
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.about_us_back0.frame = self.about_us_button.frame
+                self.about_us_back1.frame = self.about_us_button.frame
+                self.about_us_back2.frame = self.about_us_button.frame
+                self.about_us_text.fadeOutandRemove()
             }, completion: {
                 (finished) -> Void in
-                self.about_us_button.transform = .identity
-                UIView.transition(with: self.about_us_button, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                    self.about_us_button.setImage(self.current_about_us_image, for: .normal)
-                }, completion: nil)
+                self.about_us_back0.removeFromSuperview()
+                self.about_us_back1.removeFromSuperview()
+                self.about_us_back2.removeFromSuperview()
                 
-                UIView.animate(withDuration: 0.3, animations: {
-                   self.about_us_back0.frame = self.about_us_button.frame
-                    self.about_us_back1.frame = self.about_us_button.frame
-                    self.about_us_back2.frame = self.about_us_button.frame
-                   self.about_us_text.fadeOutandRemove()
-                }, completion: {
-                   (finished) -> Void in
-                   self.about_us_back0.removeFromSuperview()
-                   self.about_us_back1.removeFromSuperview()
-                   self.about_us_back2.removeFromSuperview()
-                    
-                   self.in_about_us_animation = false
-                })
-                
-                
+                self.in_about_us_animation = false
             })
             
             
-            
-            
-        }
+        })
     }
     
-    
-    
-    
 
+    
+    
+    
 }
+
+

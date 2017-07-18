@@ -178,6 +178,7 @@
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meP-AV-r9s">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <gestureRecognizers/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JW-82-v6x" userLabel="exit">
                                 <rect key="frame" x="95" y="268" width="130" height="130"/>
@@ -219,6 +220,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gpn-Rm-yBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bQY-v5-YmM"/>
             </objects>
             <point key="canvasLocation" x="776.79999999999995" y="0.44977511244377816"/>
         </scene>

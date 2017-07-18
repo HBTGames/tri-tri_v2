@@ -251,7 +251,7 @@ class DailyGiftViewController: UIViewController {
             self.present(nextViewController, animated: true, completion: nil)
             
         })
-        count_down_label = UILabel(frame: CGRect(x: screen_width/2 - screen_x_transform(115), y: screen_height/2 - screen_y_transform(10), width: screen_x_transform(330), height: screen_y_transform(100)))
+        count_down_label = UILabel(frame: CGRect(x: screen_width/2 - screen_x_transform(120), y: screen_height/2 - screen_y_transform(10), width: screen_x_transform(330), height: screen_y_transform(100)))
         self.view.addSubview(count_down_label)
         count_down_label.text = count_down_time_string
         count_down_label.font = UIFont(name: "Fresca-Regular", size: 63)
