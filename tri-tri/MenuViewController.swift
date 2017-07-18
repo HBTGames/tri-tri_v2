@@ -421,6 +421,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     var white_cover = UIView()
     var theme_menu_star_store_button = MyButton()
     
+    var return_button = MyButton()
+    
     @IBAction func theme_menu_action(_ sender: UIButton) {
         if(!in_theme_menu){
             in_theme_menu = true
@@ -452,7 +454,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         theme_star_counter = UIImageView(frame: CGRect(x:pause_screen_x_transform(255), y:pause_screen_y_transform(12),width: pause_screen_x_transform(102), height: pause_screen_y_transform(38)))
         theme_star_board = UILabel(frame: CGRect(x:pause_screen_x_transform(285),y:pause_screen_y_transform(15),width: pause_screen_x_transform(80),height:pause_screen_y_transform(30)))
         
-        let return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
+        self.return_button = MyButton(frame: CGRect(x: pause_screen_x_transform(20), y: pause_screen_y_transform(15), width: pause_screen_x_transform(30), height: pause_screen_y_transform(30)))
         //add buttons
         day_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: white_cover.frame.origin.y + white_cover.frame.height, width: screen_width, height: theme_button_height))
         day_theme_origin = day_theme_button.frame.origin
@@ -543,7 +545,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     
                     
                     triangle_text.removeFromSuperview()
-                    return_button.removeFromSuperview()
+                    self.return_button.removeFromSuperview()
                     self.theme_star_counter.removeFromSuperview()
                     self.theme_star_board.removeFromSuperview()
                     self.remove_all_theme_star_counter_fragments()
@@ -658,7 +660,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                         
                         triangle_text.removeFromSuperview()
-                        return_button.removeFromSuperview()
+                        self.return_button.removeFromSuperview()
                         self.theme_star_counter.removeFromSuperview()
                         self.theme_star_board.removeFromSuperview()
                         self.remove_all_theme_star_counter_fragments()
@@ -812,7 +814,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                         
                         triangle_text.removeFromSuperview()
-                        return_button.removeFromSuperview()
+                        self.return_button.removeFromSuperview()
                         self.theme_star_counter.removeFromSuperview()
                         self.theme_star_board.removeFromSuperview()
                         self.remove_all_theme_star_counter_fragments()
@@ -1037,7 +1039,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                         
                         triangle_text.removeFromSuperview()
-                        return_button.removeFromSuperview()
+                        self.return_button.removeFromSuperview()
                         self.theme_star_counter.removeFromSuperview()
                         self.theme_star_board.removeFromSuperview()
                         self.remove_all_theme_star_counter_fragments()
@@ -1195,7 +1197,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                         
                         triangle_text.removeFromSuperview()
-                        return_button.removeFromSuperview()
+                        self.return_button.removeFromSuperview()
                         self.theme_star_counter.removeFromSuperview()
                         self.theme_star_board.removeFromSuperview()
                         self.remove_all_theme_star_counter_fragments()
@@ -1347,7 +1349,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 self.theme_star_counter.fadeOutandRemove()
                 self.theme_star_board.fadeOutandRemove()
                 triangle_text.fadeOutandRemove()
-                return_button.fadeOutandRemove()
+                self.return_button.fadeOutandRemove()
                 self.remove_all_theme_star_counter_fragments_with_fading()
             })
 
@@ -1525,6 +1527,21 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     var treasuer_box_star_store_button = MyButton()
     
     
+    
+    var new_life_button = MyButton()
+    var same_color_eliminator = MyButton()
+    var shape_bomb = MyButton()
+    var times_two = MyButton()
+    var three_triangles = MyButton()
+    var clear_all = MyButton()
+    var treasure_cancel = MyButton()
+    
+    
+    
+    
+    
+    
+    
     func treasure_box_function() -> Void {
     let treasure_menu = UIImageView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
     treasure_menu.image = #imageLiteral(resourceName: "treasure_background")
@@ -1541,7 +1558,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     language_button.isEnabled = false
     tutorial_button.isEnabled = false
     star_store_button.isEnabled = false
-    let treasure_cancel = MyButton(frame: CGRect(x: treasure_menu.frame.origin.x, y: treasure_menu.frame.origin.y, width: pause_screen_x_transform(117), height: pause_screen_y_transform(117)))
+    treasure_cancel = MyButton(frame: CGRect(x: treasure_menu.frame.origin.x, y: treasure_menu.frame.origin.y, width: pause_screen_x_transform(117), height: pause_screen_y_transform(117)))
     treasure_cancel.setImage(#imageLiteral(resourceName: "treasure_box_cancel"), for: .normal)
     treasure_cancel.contentMode = .scaleAspectFit
     treasure_cancel.alpha = 0
@@ -1576,18 +1593,18 @@ update_current_star_length_according_to_string_length()
 current_star_total.alpha = 0
 self.view.addSubview(current_star_total)
 //new  life button
-    let new_life_button = MyButton(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+    new_life_button = MyButton(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button") , for: .normal)
     new_life_button.alpha = 0
     self.view.addSubview(new_life_button)
     new_life_button.fadeIn()
         new_life_button.whenButtonIsHighlighted(action: {
-            new_life_button.setImage(#imageLiteral(resourceName: "new_life"), for: .normal)
-            new_life_button.frame.origin.y += self.pause_screen_y_transform(2)
+            self.new_life_button.setImage(#imageLiteral(resourceName: "new_life"), for: .normal)
+            self.new_life_button.frame.origin.y += self.pause_screen_y_transform(2)
         })
         new_life_button.whenButtonIsClicked(action: {
-            new_life_button.frame.origin.y -= self.pause_screen_y_transform(2)
-            new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button"), for: .normal)
+            self.new_life_button.frame.origin.y -= self.pause_screen_y_transform(2)
+            self.new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button"), for: .normal)
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1636,19 +1653,19 @@ self.view.addSubview(current_star_total)
         
     
 //same color eliminator button
-    let same_color_eliminator = MyButton(frame: CGRect(x: new_life_button.frame.origin.x + new_life_button.frame.width + pause_screen_x_transform(50), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+    same_color_eliminator = MyButton(frame: CGRect(x: new_life_button.frame.origin.x + new_life_button.frame.width + pause_screen_x_transform(50), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
         same_color_eliminator.whenButtonIsHighlighted(action: {
-        same_color_eliminator.setImage(#imageLiteral(resourceName: "same_color_eliminator"), for: .normal)
-        same_color_eliminator.frame.origin.y += self.pause_screen_y_transform(2)
+        self.same_color_eliminator.setImage(#imageLiteral(resourceName: "same_color_eliminator"), for: .normal)
+        self.same_color_eliminator.frame.origin.y += self.pause_screen_y_transform(2)
         })
     
     same_color_eliminator.alpha = 0
     self.view.addSubview(same_color_eliminator)
     same_color_eliminator.fadeIn()
         same_color_eliminator.whenButtonIsClicked(action: {
-            same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
-            same_color_eliminator.frame.origin.y -= self.pause_screen_y_transform(2)
+            self.same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
+            self.same_color_eliminator.frame.origin.y -= self.pause_screen_y_transform(2)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1697,11 +1714,11 @@ self.view.addSubview(current_star_total)
 
         
     //shape bomb button
-    let shape_bomb = MyButton(frame: CGRect(x: new_life_button.frame.origin.x, y: new_life_button.frame.origin.y + new_life_button.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+    shape_bomb = MyButton(frame: CGRect(x: new_life_button.frame.origin.x, y: new_life_button.frame.origin.y + new_life_button.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
         shape_bomb.whenButtonIsHighlighted(action: {
-            shape_bomb.setImage(#imageLiteral(resourceName: "shape_bomb"), for: .normal)
-            shape_bomb.frame.origin.y += self.pause_screen_y_transform(2)
+            self.shape_bomb.setImage(#imageLiteral(resourceName: "shape_bomb"), for: .normal)
+            self.shape_bomb.frame.origin.y += self.pause_screen_y_transform(2)
         })
     
     shape_bomb.alpha = 0
@@ -1709,8 +1726,8 @@ self.view.addSubview(current_star_total)
     shape_bomb.fadeIn()
     
         shape_bomb.whenButtonIsClicked(action: {
-            shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
-            shape_bomb.frame.origin.y -= self.pause_screen_y_transform(2)
+            self.shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
+            self.shape_bomb.frame.origin.y -= self.pause_screen_y_transform(2)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1757,19 +1774,19 @@ self.view.addSubview(current_star_total)
     
         
     //times two button
-    let times_two = MyButton(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: shape_bomb.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+    times_two = MyButton(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: shape_bomb.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
         times_two.whenButtonIsHighlighted(action: {
-            times_two.setImage(#imageLiteral(resourceName: "times_two"), for: .normal)
-            times_two.frame.origin.y += self.pause_screen_y_transform(2)
+            self.times_two.setImage(#imageLiteral(resourceName: "times_two"), for: .normal)
+            self.times_two.frame.origin.y += self.pause_screen_y_transform(2)
        
         })
         times_two.alpha = 0
     self.view.addSubview(times_two)
     times_two.fadeIn()
         times_two.whenButtonIsClicked(action: {
-            times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
-            times_two.frame.origin.y -= self.pause_screen_y_transform(2)
+            self.times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
+            self.times_two.frame.origin.y -= self.pause_screen_y_transform(2)
 
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
@@ -1817,18 +1834,18 @@ self.view.addSubview(current_star_total)
         }
         
     //three triangles button
-    let three_triangles = MyButton(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y + shape_bomb.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+    three_triangles = MyButton(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y + shape_bomb.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
         three_triangles.whenButtonIsHighlighted(action: {
-            three_triangles.setImage(#imageLiteral(resourceName: "three_triangle"), for: .normal)
-            three_triangles.frame.origin.y += self.pause_screen_y_transform(2)
+            self.three_triangles.setImage(#imageLiteral(resourceName: "three_triangle"), for: .normal)
+            self.three_triangles.frame.origin.y += self.pause_screen_y_transform(2)
         })
     three_triangles.alpha = 0
     self.view.addSubview(three_triangles)
     three_triangles.fadeIn()
         three_triangles.whenButtonIsClicked(action: {
-            three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
-            three_triangles.frame.origin.y -= self.pause_screen_y_transform(2)
+            self.three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
+            self.three_triangles.frame.origin.y -= self.pause_screen_y_transform(2)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1878,18 +1895,18 @@ self.view.addSubview(current_star_total)
         
         
     //clear all button
-    let clear_all = MyButton(frame: CGRect(x: times_two.frame.origin.x, y: three_triangles.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
+    clear_all = MyButton(frame: CGRect(x: times_two.frame.origin.x, y: three_triangles.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
     clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
         clear_all.whenButtonIsHighlighted(action: {
-            clear_all.setImage(#imageLiteral(resourceName: "clear_all"), for: .normal)
-            clear_all.frame.origin.y += self.pause_screen_y_transform(2)
+            self.clear_all.setImage(#imageLiteral(resourceName: "clear_all"), for: .normal)
+            self.clear_all.frame.origin.y += self.pause_screen_y_transform(2)
         })
        clear_all.alpha = 0
     self.view.addSubview(clear_all)
     clear_all.fadeIn()
         clear_all.whenButtonIsClicked(action: {
-            clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
-            clear_all.frame.origin.y -= self.pause_screen_y_transform(2)
+            self.clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
+            self.clear_all.frame.origin.y -= self.pause_screen_y_transform(2)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1946,14 +1963,14 @@ self.view.addSubview(current_star_total)
                 
             }
             self.button_player.play()
-            treasure_cancel.fadeOutandRemove()
+            self.treasure_cancel.fadeOutandRemove()
             treasure_menu.fadeOutandRemove()
-            new_life_button.fadeOutandRemove()
-            same_color_eliminator.fadeOutandRemove()
-            shape_bomb.fadeOutandRemove()
-            times_two.fadeOutandRemove()
-            three_triangles.fadeOutandRemove()
-            clear_all.fadeOutandRemove()
+            self.new_life_button.fadeOutandRemove()
+            self.same_color_eliminator.fadeOutandRemove()
+            self.shape_bomb.fadeOutandRemove()
+            self.times_two.fadeOutandRemove()
+            self.three_triangles.fadeOutandRemove()
+            self.clear_all.fadeOutandRemove()
             new_life_text.fadeOutandRemove()
             same_color_eliminator_text.fadeOutandRemove()
             shape_bomb_text.fadeOutandRemove()
@@ -1999,10 +2016,8 @@ self.view.addSubview(current_star_total)
                 
             }
             self.button_player.play()
+            
             self.purchase_star_function()
-            
-            
-            
         })
      
     }
@@ -2854,14 +2869,26 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         self.like_button.isEnabled = false
         self.continue_button.isEnabled = false
         self.shopping_cart.isEnabled = false
+        
         self.day_apply_button.isEnabled = false
         self.night_apply_button.isEnabled = false
         self.BW_apply_button.isEnabled = false
         self.school_apply_button.isEnabled = false
         self.colors_apply_button.isEnabled = false
         self.theme_menu_star_store_button.isEnabled = false
-
+        self.return_button.isEnabled = false
         
+        
+        self.treasuer_box_star_store_button.isEnabled = false
+        self.new_life_button.isEnabled = false
+        self.same_color_eliminator.isEnabled = false
+        self.shape_bomb.isEnabled = false
+        self.times_two.isEnabled = false
+        self.three_triangles.isEnabled = false
+        self.clear_all.isEnabled = false
+        
+        
+        self.treasure_cancel.isEnabled = false
         
         
         
@@ -2918,6 +2945,16 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
             self.school_apply_button.isEnabled = true
             self.colors_apply_button.isEnabled = true
             self.theme_menu_star_store_button.isEnabled = true
+            self.treasuer_box_star_store_button.isEnabled = true
+            self.new_life_button.isEnabled = true
+            self.same_color_eliminator.isEnabled = true
+            self.shape_bomb.isEnabled = true
+            self.times_two.isEnabled = true
+            self.three_triangles.isEnabled = true
+            self.clear_all.isEnabled = true
+            self.return_button.isEnabled = true
+            
+            self.treasure_cancel.isEnabled = true
             self.purchase_star_menu.removeFromSuperview()
             self.more_stars_label.removeFromSuperview()
             self.close_button.removeFromSuperview()
@@ -2983,7 +3020,29 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         self.purchase_star_menu.removeFromSuperview()
         self.more_stars_label.removeFromSuperview()
         self.close_button.removeFromSuperview()
-        
+        self.treasure_box_icon.isEnabled = true
+        self.tutorial_button.isEnabled = true
+        self.language_button.isEnabled = true
+        self.gift_button.isEnabled = true
+        self.star_counter.isEnabled = true
+        self.like_button.isEnabled = true
+        self.continue_button.isEnabled = true
+        self.shopping_cart.isEnabled = true
+        self.day_apply_button.isEnabled = true
+        self.night_apply_button.isEnabled = true
+        self.BW_apply_button.isEnabled = true
+        self.school_apply_button.isEnabled = true
+        self.colors_apply_button.isEnabled = true
+        self.theme_menu_star_store_button.isEnabled = true
+        self.treasuer_box_star_store_button.isEnabled = true
+        self.new_life_button.isEnabled = true
+        self.same_color_eliminator.isEnabled = true
+        self.shape_bomb.isEnabled = true
+        self.times_two.isEnabled = true
+        self.three_triangles.isEnabled = true
+        self.clear_all.isEnabled = true
+         self.return_button.isEnabled = true
+        self.treasure_cancel.isEnabled = true
         
         self.purchase_star_1000_bg.removeFromSuperview()
         self.purchase_star_500_bg.removeFromSuperview()
@@ -3000,7 +3059,29 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         self.purchase_star_menu.removeFromSuperview()
         self.more_stars_label.removeFromSuperview()
         self.close_button.removeFromSuperview()
-        
+        self.treasure_box_icon.isEnabled = true
+        self.tutorial_button.isEnabled = true
+        self.language_button.isEnabled = true
+        self.gift_button.isEnabled = true
+        self.star_counter.isEnabled = true
+        self.like_button.isEnabled = true
+        self.continue_button.isEnabled = true
+        self.shopping_cart.isEnabled = true
+        self.day_apply_button.isEnabled = true
+        self.night_apply_button.isEnabled = true
+        self.BW_apply_button.isEnabled = true
+        self.school_apply_button.isEnabled = true
+        self.colors_apply_button.isEnabled = true
+        self.theme_menu_star_store_button.isEnabled = true
+        self.treasuer_box_star_store_button.isEnabled = true
+        self.new_life_button.isEnabled = true
+        self.same_color_eliminator.isEnabled = true
+        self.shape_bomb.isEnabled = true
+        self.times_two.isEnabled = true
+        self.three_triangles.isEnabled = true
+        self.clear_all.isEnabled = true
+         self.return_button.isEnabled = true
+        self.treasure_cancel.isEnabled = true
         
         self.purchase_star_1000_bg.removeFromSuperview()
         self.purchase_star_500_bg.removeFromSuperview()
