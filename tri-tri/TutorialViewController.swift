@@ -90,7 +90,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         exit_button.frame = CGRect(x:0, y: pause_screen_y_transform(537), width: pause_screen_x_transform(130), height: pause_screen_y_transform(130))
         tuto_page_con.frame = CGRect(x:pause_screen_x_transform(Double(tuto_page_con.frame.origin.x)), y: pause_screen_y_transform(Double(tuto_page_con.frame.origin.y)), width: pause_screen_x_transform(Double(tuto_page_con.frame.width)), height: pause_screen_y_transform(Double(tuto_page_con.frame.height)))
         self.view.bringSubview(toFront: exit_button)
-        
+        tuto_page_con.isUserInteractionEnabled = false
         about_us_button.frame = CGRect(x:pause_screen_x_transform(Double(about_us_button.frame.origin.x)), y: pause_screen_y_transform(Double(about_us_button.frame.origin.y)), width: pause_screen_x_transform(Double(about_us_button.frame.width)), height: pause_screen_y_transform(Double(about_us_button.frame.height)))
         
        
@@ -185,7 +185,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
             if(!about_us_back2.frame.contains(location)){
                 close_about_us()
             }
-        }
+        }   
         
     }
     
