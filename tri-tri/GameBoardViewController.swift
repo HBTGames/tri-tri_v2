@@ -3346,10 +3346,165 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         }
         }
         else if (during_holy_nova){
+            
             tri_image_change(row: self.nova_row, col: self.nova_col, up: nova_tri_recorder, down: nova_tri_recorder)
-            during_holy_nova = false
             tool_quantity_array[2] += 1
             defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
+            
+            
+            print("nova_touches_moving")
+            var contained_boxes: Array<CGRect> = []
+            var candidates: Array<Array<Int>> = []
+            //let before = filled
+            //last_score = score
+            var i = 0
+            for row in tri_boxes{
+                var j = 0
+                for tri_frame in row{
+                    if (tri_frame.contains(gesture.location(in: self.view))){
+                        contained_boxes.append(tri_frame)
+                        candidates.append([i, j])
+                    }
+                    j+=1
+                }
+                i += 1
+            }
+            if contained_boxes.count == 0{
+                //self.during_holy_nova = false
+                
+            }else if (contained_boxes.count == 1){
+                print("reach nova else")
+                
+                
+                let row = candidates[0][0]
+                let col = candidates[0][1]
+                self.nova_row = row
+                self.nova_col = col
+                self.nova_tri_recorder_helper(row: row, col: col)
+                self.tri_image_change(row: row, col: col, up: UIImage(named:"colors_gold_up")!, down: UIImage(named:"colors_gold_down")!)
+                
+                //self.nova_breaker(row: row, col: col)
+                //self.during_holy_nova = false
+            }
+            else/* if (contained_boxes.count == 1)*/{
+                print("reach nova else")
+                var row = Int()
+                var col = Int()
+                let someFloat = Float(initialTouchLocation.x)
+                if (someFloat < Float(contained_boxes[1].origin.x)){
+                    row = candidates[0][0]
+                    col = candidates[0][1]
+                } else {
+                    row = candidates[1][0]
+                    col = candidates[1][1]
+                }
+                self.nova_row = row
+                self.nova_col = col
+                self.nova_tri_recorder_helper(row: row, col: col)
+                self.tri_image_change(row: row, col: col, up: UIImage(named:"colors_gold_up")!, down: UIImage(named:"colors_gold_down")!)
+                
+                //self.nova_breaker(row: row, col: col)
+                //self.during_holy_nova = false
+            }
+            
+            
+            
+            if(gesture.state == .ended){
+                print("nova_touches_end")
+                var contained_boxes: Array<CGRect> = []
+                var candidates: Array<Array<Int>> = []
+                let before = filled
+                last_score = score
+                var i = 0
+                for row in tri_boxes{
+                    var j = 0
+                    for tri_frame in row{
+                        if (tri_frame.contains(gesture.location(in: self.view))){
+                            contained_boxes.append(tri_frame)
+                            candidates.append([i, j])
+                        }
+                        j+=1
+                    }
+                    i += 1
+                }
+                if contained_boxes.count == 0{
+                    do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                        not_fit_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    not_fit_player.play()
+                    self.during_holy_nova = false
+                    
+                }else if (contained_boxes.count == 1){
+                    print("reach nova else")
+                    
+                    
+                    let row = candidates[0][0]
+                    let col = candidates[0][1]
+                    
+                    do{holy_nova_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "holy_nova", ofType: "mp3")!))
+                        holy_nova_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    holy_nova_player.play()
+                    self.nova_breaker(row: row, col: col)
+                    self.during_holy_nova = false
+                    defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
+                    defaults.set(self.filled, forKey: "tritri_single_tri_filled")
+                    defaults.set(self.score, forKey: "tritri_single_round_score")
+                    
+                }
+                else/* if (contained_boxes.count == 1)*/{
+                    print("reach nova else")
+                    var row = Int()
+                    var col = Int()
+                    let someFloat = Float(initialTouchLocation.x)
+                    if (someFloat < Float(contained_boxes[1].origin.x)){
+                        row = candidates[0][0]
+                        col = candidates[0][1]
+                    } else {
+                        row = candidates[1][0]
+                        col = candidates[1][1]
+                    }
+                    do{holy_nova_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "holy_nova", ofType: "mp3")!))
+                        holy_nova_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    holy_nova_player.play()
+                    self.nova_breaker(row: row, col: col)
+                    self.during_holy_nova = false
+                }
+                let after = filled
+                current_score = score
+                modify_counter(before: before, after: after)
+                star_score_increment()
+                defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
+                defaults.set(self.filled, forKey: "tritri_single_tri_filled")
+                defaults.set(self.score, forKey: "tritri_single_round_score")
+            }
+            
+        
+        
+        
+        
+        
+        
+            /*tri_image_change(row: self.nova_row, col: self.nova_col, up: nova_tri_recorder, down: nova_tri_recorder)
+            during_holy_nova = false
+            tool_quantity_array[2] += 1
+            defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")*/
+            
+            
+            
+            
+            
+            
         }
         /**else if(in_theme_menu){
             let transition0 = gesture.translation(in: day_theme_button)
