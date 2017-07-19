@@ -963,6 +963,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             }else {
                   //during holy nova
                 print("nova_touches_end")
+                self.star_store_button.isEnabled = true
+                self.backpack_button.isEnabled = true
+                self.pause.isEnabled = true
                 self.nova_mask.removeFromSuperview()
                     var contained_boxes: Array<CGRect> = []
                     var candidates: Array<Array<Int>> = []
@@ -3411,6 +3414,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             
             
             if(gesture.state == .ended){
+                self.star_store_button.isEnabled = true
+                self.backpack_button.isEnabled = true
+                self.pause.isEnabled = true
                 self.nova_mask.removeFromSuperview()
                 print("nova_touches_end")
                 var contained_boxes: Array<CGRect> = []
@@ -14110,6 +14116,9 @@ number_of_lines_erased += 1
             self.view.bringSubview(toFront: self.tri_5_5)
             self.view.bringSubview(toFront: self.tri_5_6_back)
             self.view.bringSubview(toFront: self.tri_5_6)
+            self.star_store_button.isEnabled = false
+            self.backpack_button.isEnabled = false
+            self.pause.isEnabled = false
         during_holy_nova = true
         self.close_pack()
             self.tool_quantity_array[2] -= 1
