@@ -11530,6 +11530,28 @@ number_of_lines_erased += 1
         
     
     }
+    
+    func update_multiply_marker_pos_to_string_length() -> CGFloat{
+        var i = 0
+        var loop = true
+        if(score != 0){
+            while(loop){
+                let first_pow = pow(10, Double(i))
+                let second_pow = pow(10, Double(i+1))
+                if(Double(score) >= first_pow && Double(score) < second_pow){
+                    loop = false
+                }
+                i += 1
+            }
+        }else{
+            i = 0
+        }
+        let part0 = (CGFloat(i) * pause_screen_x_transform(3))
+        let final_x = MarkBoard.frame.midX - pause_screen_x_transform(10)  + part0
+        return final_x
+        
+    }
+    
     func modify_counter_after_erase(before: Array<Array<Bool>>, after: Array<Array<Bool>>) -> Void{
         if  number_of_lines_erased  == 0{
             return
@@ -11555,7 +11577,7 @@ number_of_lines_erased += 1
         current_str = String(current_int)
         MarkBoard.text = current_str
         //add animation
-        multiple_marker.frame = CGRect(x: MarkBoard.frame.minX + 80, y: MarkBoard.frame.midY, width: 30, height: 21)
+        multiple_marker.frame = CGRect(x: update_multiply_marker_pos_to_string_length(), y: MarkBoard.frame.midY, width: pause_screen_x_transform(40), height: pause_screen_y_transform(21))
         multiple_marker.text = "x\(number_of_lines_erased)"
         multiple_marker.alpha = 1
         self.view.addSubview(multiple_marker)
