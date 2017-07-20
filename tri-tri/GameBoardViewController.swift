@@ -995,6 +995,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.backpack_button.isEnabled = true
                         self.pause.isEnabled = true
                         self.nova_mask.removeFromSuperview()
+                        self.holy_nova_instruction.removeFromSuperview()
+                        
                         print("reach nova else")
                         
                         
@@ -1024,6 +1026,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.backpack_button.isEnabled = true
                         self.pause.isEnabled = true
                         self.nova_mask.removeFromSuperview()
+                        self.holy_nova_instruction.removeFromSuperview()
+                        
                         print("reach nova else")
                         var row = Int()
                         var col = Int()
@@ -3466,7 +3470,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     self.backpack_button.isEnabled = true
                     self.pause.isEnabled = true
                     self.nova_mask.removeFromSuperview()
-                    
+                    self.holy_nova_instruction.removeFromSuperview()
                     let row = candidates[0][0]
                     let col = candidates[0][1]
                     
@@ -3493,6 +3497,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     self.backpack_button.isEnabled = true
                     self.pause.isEnabled = true
                     self.nova_mask.removeFromSuperview()
+                    
+                    self.holy_nova_instruction.removeFromSuperview()
                     var row = Int()
                     var col = Int()
                     let someFloat = Float(initialTouchLocation.x)
@@ -14058,8 +14064,15 @@ number_of_lines_erased += 1
     func holy_nova() -> Void{
         if self.tool_quantity_array[2] > 0{
             self.nova_mask.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
+            if (self.language == "English"){
+            self.holy_nova_instruction.image = UIImage(named:"holy_nova_instruction_text_en")
+            } else {
+                self.holy_nova_instruction.image = UIImage(named:"holy_nova_instruction_text_ch")
+            }
             self.nova_mask.frame = CGRect(x:0, y:0, width:pause_screen_x_transform(375),height:pause_screen_y_transform(667))
+            self.holy_nova_instruction.frame = CGRect(x:0, y:pause_screen_y_transform(460), width:pause_screen_x_transform(375),height:pause_screen_y_transform(167))
             self.view.addSubview(self.nova_mask)
+            self.view.addSubview(self.holy_nova_instruction)
             self.view.bringSubview(toFront: self.tri_0_0_back)
             self.view.bringSubview(toFront: self.tri_0_0)
             self.view.bringSubview(toFront: self.tri_0_1_back)
