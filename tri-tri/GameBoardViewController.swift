@@ -16409,9 +16409,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
         trinity_animation()
         self.tool_quantity_array[4] -= 1
             defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
-        defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
-        defaults.set(self.filled, forKey: "tritri_single_tri_filled")
-        defaults.set(self.score, forKey: "tritri_single_round_score")
+        
         }
         else {
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
@@ -17188,7 +17186,9 @@ func trinity_animation() -> Void {
                     self.modify_counter_after_erase(before: cond_before_erase, after: cond_after_erase)
                     self.current_score = self.score
                     self.star_score_increment()
-                    
+                    defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
+                    defaults.set(self.filled, forKey: "tritri_single_tri_filled")
+                    defaults.set(self.score, forKey: "tritri_single_round_score")
                     
                 })
                 
