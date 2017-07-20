@@ -963,10 +963,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             }else {
                   //during holy nova
                 print("nova_touches_end")
-                self.star_store_button.isEnabled = true
-                self.backpack_button.isEnabled = true
-                self.pause.isEnabled = true
-                self.nova_mask.removeFromSuperview()
+                
                     var contained_boxes: Array<CGRect> = []
                     var candidates: Array<Array<Int>> = []
                     let before = filled
@@ -991,9 +988,13 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                             
                         }
                         not_fit_player.play()
-                        self.during_holy_nova = false
+                        
                         
                     }else if (contained_boxes.count == 1){
+                        self.star_store_button.isEnabled = true
+                        self.backpack_button.isEnabled = true
+                        self.pause.isEnabled = true
+                        self.nova_mask.removeFromSuperview()
                         print("reach nova else")
                         
                         
@@ -1012,9 +1013,17 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
                         defaults.set(self.filled, forKey: "tritri_single_tri_filled")
                         defaults.set(self.score, forKey: "tritri_single_round_score")
+                        self.view.bringSubview(toFront: self.green_drag_tri)
+                        self.view.bringSubview(toFront: self.orange_drag_tri)
+                        self.view.bringSubview(toFront: self.light_brown_drag_tri)
+                        
                         
                     }
                     else/* if (contained_boxes.count == 1)*/{
+                        self.star_store_button.isEnabled = true
+                        self.backpack_button.isEnabled = true
+                        self.pause.isEnabled = true
+                        self.nova_mask.removeFromSuperview()
                         print("reach nova else")
                         var row = Int()
                         var col = Int()
@@ -1035,6 +1044,10 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         holy_nova_player.play()
                         self.nova_breaker(row: row, col: col)
                         self.during_holy_nova = false
+                        self.view.bringSubview(toFront: self.green_drag_tri)
+                        self.view.bringSubview(toFront: self.orange_drag_tri)
+                        self.view.bringSubview(toFront: self.light_brown_drag_tri)
+                        
                     }
                     let after = filled
                     current_score = score
@@ -1043,6 +1056,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
                 defaults.set(self.filled, forKey: "tritri_single_tri_filled")
                 defaults.set(self.score, forKey: "tritri_single_round_score")
+                
                 }
             
         }
@@ -3416,10 +3430,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             
             
             if(gesture.state == .ended){
-                self.star_store_button.isEnabled = true
-                self.backpack_button.isEnabled = true
-                self.pause.isEnabled = true
-                self.nova_mask.removeFromSuperview()
+                
                 print("nova_touches_end")
                 var contained_boxes: Array<CGRect> = []
                 var candidates: Array<Array<Int>> = []
@@ -3449,7 +3460,10 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     
                 }else if (contained_boxes.count == 1){
                     print("reach nova else")
-                    
+                    self.star_store_button.isEnabled = true
+                    self.backpack_button.isEnabled = true
+                    self.pause.isEnabled = true
+                    self.nova_mask.removeFromSuperview()
                     
                     let row = candidates[0][0]
                     let col = candidates[0][1]
@@ -3466,10 +3480,17 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
                     defaults.set(self.filled, forKey: "tritri_single_tri_filled")
                     defaults.set(self.score, forKey: "tritri_single_round_score")
+                    self.view.bringSubview(toFront: self.green_drag_tri)
+                    self.view.bringSubview(toFront: self.orange_drag_tri)
+                    self.view.bringSubview(toFront: self.light_brown_drag_tri)
                     
                 }
                 else/* if (contained_boxes.count == 1)*/{
                     print("reach nova else")
+                    self.star_store_button.isEnabled = true
+                    self.backpack_button.isEnabled = true
+                    self.pause.isEnabled = true
+                    self.nova_mask.removeFromSuperview()
                     var row = Int()
                     var col = Int()
                     let someFloat = Float(initialTouchLocation.x)
@@ -3489,6 +3510,10 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     holy_nova_player.play()
                     self.nova_breaker(row: row, col: col)
                     self.during_holy_nova = false
+                    self.view.bringSubview(toFront: self.green_drag_tri)
+                    self.view.bringSubview(toFront: self.orange_drag_tri)
+                    self.view.bringSubview(toFront: self.light_brown_drag_tri)
+                    
                 }
                 let after = filled
                 current_score = score
@@ -3497,6 +3522,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
                 defaults.set(self.filled, forKey: "tritri_single_tri_filled")
                 defaults.set(self.score, forKey: "tritri_single_round_score")
+                
             }
             
         
@@ -13389,6 +13415,12 @@ number_of_lines_erased += 1
         self.view.addSubview(pack_line_1)
         self.view.addSubview(pack_line_2)
         
+        
+        
+        self.view.bringSubview(toFront: self.lower_half_pack_ring)
+        self.view.bringSubview(toFront: self.backpack_button)
+        self.view.bringSubview(toFront: self.upper_half_pack_ring)
+        
         self.view.addSubview(resurrection_button)
         self.view.addSubview(purification_button)
         self.view.addSubview(holy_nova_button)
@@ -13409,12 +13441,6 @@ number_of_lines_erased += 1
         self.view.addSubview(amplifier_circle_text)
         self.view.addSubview(trinity_circle_text)
         self.view.addSubview(doom_day_circle_text)
-        
-        
-        self.view.bringSubview(toFront: self.backpack_button)
-        self.view.bringSubview(toFront: self.upper_half_pack_ring)
-        
-        
         
         
         
@@ -14140,6 +14166,7 @@ number_of_lines_erased += 1
             self.view.bringSubview(toFront: self.tri_5_5)
             self.view.bringSubview(toFront: self.tri_5_6_back)
             self.view.bringSubview(toFront: self.tri_5_6)
+            
             self.star_store_button.isEnabled = false
             self.backpack_button.isEnabled = false
             self.pause.isEnabled = false
