@@ -14070,7 +14070,7 @@ number_of_lines_erased += 1
                 self.holy_nova_instruction.image = UIImage(named:"holy_nova_instruction_text_ch")
             }
             self.nova_mask.frame = CGRect(x:0, y:0, width:pause_screen_x_transform(375),height:pause_screen_y_transform(667))
-            self.holy_nova_instruction.frame = CGRect(x:0, y:pause_screen_y_transform(460), width:pause_screen_x_transform(375),height:pause_screen_y_transform(167))
+            self.holy_nova_instruction.frame = CGRect(x:0, y:pause_screen_y_transform(460), width:pause_screen_x_transform(375),height:pause_screen_y_transform(200))
             self.view.addSubview(self.nova_mask)
             self.view.addSubview(self.holy_nova_instruction)
             self.view.bringSubview(toFront: self.tri_0_0_back)
@@ -17582,7 +17582,8 @@ func trinity_animation() -> Void {
         purchase_star_1000_button.whenButtonIsClicked{
             for product in self.purchase_product_list{
                 let productID = product.productIdentifier
-                if productID == "tritri.add_1000_stars"{
+                if productID == "tritri.test.add_1000_stars"{
+                    print("find equality")
                     self.present_product = product
                     self.buyProduct()
                 }
@@ -17600,10 +17601,12 @@ func trinity_animation() -> Void {
         purchase_star_500_button.whenButtonIsClicked{
             for product in self.purchase_product_list{
                 let productID = product.productIdentifier
-                if productID == "tritri.add_500_stars"{
+                if (productID == "tritri.test.add_500_stars"){
+                    print("find equality")
                     self.present_product = product
                     self.buyProduct()
                 }
+                print(productID)
             }
         }
         
@@ -17625,18 +17628,100 @@ func trinity_animation() -> Void {
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
         update_star_counter_length_according_to_string_length()
-        self.purchase_star_menu.removeFromSuperview()
-        self.more_stars_label.removeFromSuperview()
-        self.close_button.removeFromSuperview()
         
         
-        self.purchase_star_1000_bg.removeFromSuperview()
-        self.purchase_star_500_bg.removeFromSuperview()
-        self.purchase_star_1000_button.removeFromSuperview()
-        self.purchase_star_500_button.removeFromSuperview()
+        if(gameover_star_purchase == "ingame"){
+            
+                do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                    self.button_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.button_player.play()
+                self.paused = false
+                self.star_store_button.isEnabled = true
+                self.backpack_button.isEnabled = true
+                self.pause.isEnabled = true
+                
+                self.day_apply_button.isEnabled = true
+                self.night_apply_button.isEnabled = true
+                self.BW_apply_button.isEnabled = true
+                self.school_apply_button.isEnabled = true
+                self.colors_apply_button.isEnabled = true
+                self.theme_menu_star_store_button.isEnabled = true
+                self.return_button.isEnabled = true
+                self.purchase_star_menu.removeFromSuperview()
+                self.more_stars_label.removeFromSuperview()
+                self.close_button.removeFromSuperview()
+                
+                
+                self.purchase_star_1000_bg.removeFromSuperview()
+                self.purchase_star_500_bg.removeFromSuperview()
+                self.purchase_star_1000_button.removeFromSuperview()
+                self.purchase_star_500_button.removeFromSuperview()
+                
+                self.paused = false
+            
+        }else if (gameover_star_purchase == "gameover"){
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+            self.paused = false
+            self.star_store_button.isEnabled = true
+            self.backpack_button.isEnabled = true
+            self.pause.isEnabled = true
+            
+            self.day_apply_button.isEnabled = true
+            self.night_apply_button.isEnabled = true
+            self.BW_apply_button.isEnabled = true
+            self.school_apply_button.isEnabled = true
+            self.colors_apply_button.isEnabled = true
+            self.theme_menu_star_store_button.isEnabled = true
+            self.return_button.isEnabled = true
+            self.purchase_star_menu.removeFromSuperview()
+            self.more_stars_label.removeFromSuperview()
+            self.close_button.removeFromSuperview()
+            
+            
+            self.purchase_star_1000_bg.removeFromSuperview()
+            self.purchase_star_500_bg.removeFromSuperview()
+            self.purchase_star_1000_button.removeFromSuperview()
+            self.purchase_star_500_button.removeFromSuperview()
+            self.auto_random_generator()
+            self.paused = false
+        }else if(gameover_star_purchase == "theme"){
+            
+                self.paused = true
+                
+                self.day_apply_button.isEnabled = true
+                self.night_apply_button.isEnabled = true
+                self.BW_apply_button.isEnabled = true
+                self.school_apply_button.isEnabled = true
+                self.colors_apply_button.isEnabled = true
+                self.theme_menu_star_store_button.isEnabled = true
+                self.return_button.isEnabled = true
+                self.purchase_star_menu.removeFromSuperview()
+                self.more_stars_label.removeFromSuperview()
+                self.close_button.removeFromSuperview()
+                
+                
+                self.purchase_star_1000_bg.removeFromSuperview()
+                self.purchase_star_500_bg.removeFromSuperview()
+                self.purchase_star_1000_button.removeFromSuperview()
+                self.purchase_star_500_button.removeFromSuperview()
+                self.paused = true
+            
+        }
+        
+        
         
         self.auto_random_generator()
-        self.paused = false
+        
     }
     
     func add_1000_stars() -> Void{
@@ -17645,18 +17730,93 @@ func trinity_animation() -> Void {
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
         update_star_counter_length_according_to_string_length()
-        self.purchase_star_menu.removeFromSuperview()
-        self.more_stars_label.removeFromSuperview()
-        self.close_button.removeFromSuperview()
-        
-        
-        self.purchase_star_1000_bg.removeFromSuperview()
-        self.purchase_star_500_bg.removeFromSuperview()
-        self.purchase_star_1000_button.removeFromSuperview()
-        self.purchase_star_500_button.removeFromSuperview()
-        
-        self.auto_random_generator()
-        self.paused = false
+        if(gameover_star_purchase == "ingame"){
+            
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+            self.paused = false
+            self.star_store_button.isEnabled = true
+            self.backpack_button.isEnabled = true
+            self.pause.isEnabled = true
+            
+            self.day_apply_button.isEnabled = true
+            self.night_apply_button.isEnabled = true
+            self.BW_apply_button.isEnabled = true
+            self.school_apply_button.isEnabled = true
+            self.colors_apply_button.isEnabled = true
+            self.theme_menu_star_store_button.isEnabled = true
+            self.return_button.isEnabled = true
+            self.purchase_star_menu.removeFromSuperview()
+            self.more_stars_label.removeFromSuperview()
+            self.close_button.removeFromSuperview()
+            
+            
+            self.purchase_star_1000_bg.removeFromSuperview()
+            self.purchase_star_500_bg.removeFromSuperview()
+            self.purchase_star_1000_button.removeFromSuperview()
+            self.purchase_star_500_button.removeFromSuperview()
+            
+            self.paused = false
+            
+        }else if (gameover_star_purchase == "gameover"){
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
+            self.paused = false
+            self.star_store_button.isEnabled = true
+            self.backpack_button.isEnabled = true
+            self.pause.isEnabled = true
+            
+            self.day_apply_button.isEnabled = true
+            self.night_apply_button.isEnabled = true
+            self.BW_apply_button.isEnabled = true
+            self.school_apply_button.isEnabled = true
+            self.colors_apply_button.isEnabled = true
+            self.theme_menu_star_store_button.isEnabled = true
+            self.return_button.isEnabled = true
+            self.purchase_star_menu.removeFromSuperview()
+            self.more_stars_label.removeFromSuperview()
+            self.close_button.removeFromSuperview()
+            
+            
+            self.purchase_star_1000_bg.removeFromSuperview()
+            self.purchase_star_500_bg.removeFromSuperview()
+            self.purchase_star_1000_button.removeFromSuperview()
+            self.purchase_star_500_button.removeFromSuperview()
+            self.auto_random_generator()
+            self.paused = false
+        }else if(gameover_star_purchase == "theme"){
+            
+            self.paused = true
+            
+            self.day_apply_button.isEnabled = true
+            self.night_apply_button.isEnabled = true
+            self.BW_apply_button.isEnabled = true
+            self.school_apply_button.isEnabled = true
+            self.colors_apply_button.isEnabled = true
+            self.theme_menu_star_store_button.isEnabled = true
+            self.return_button.isEnabled = true
+            self.purchase_star_menu.removeFromSuperview()
+            self.more_stars_label.removeFromSuperview()
+            self.close_button.removeFromSuperview()
+            
+            
+            self.purchase_star_1000_bg.removeFromSuperview()
+            self.purchase_star_500_bg.removeFromSuperview()
+            self.purchase_star_1000_button.removeFromSuperview()
+            self.purchase_star_500_button.removeFromSuperview()
+            self.paused = true
+            
+        }
     }
     
     var purchase_product_list = [SKProduct]()
@@ -17684,10 +17844,10 @@ func trinity_animation() -> Void {
             let productID = t.payment.productIdentifier as String
             
             switch productID{
-            case "tritri.add_500_stars":
+            case "tritri.test.add_500_stars":
                 print ("add 500 stars")
                 add_500_stars()
-            case "tritri.add_1000_stars":
+            case "tritri.test.add_1000_stars":
                 print ("add 1000 stars")
                 add_1000_stars()
             default:
@@ -17711,10 +17871,10 @@ func trinity_animation() -> Void {
                 let productID = present_product.productIdentifier
                 
                 switch productID{
-                case "tritri.add_500_stars":
+                case "tritri.test.add_500_stars":
                     print ("add 500 stars")
                     add_500_stars()
-                case "tritri.add_1000_stars":
+                case "tritri.test.add_1000_stars":
                     print ("add 1000 stars")
                     add_1000_stars()
                 default:
