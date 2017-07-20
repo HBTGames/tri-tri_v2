@@ -3371,8 +3371,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         else if (during_holy_nova){
             
             tri_image_change(row: self.nova_row, col: self.nova_col, up: nova_tri_recorder, down: nova_tri_recorder)
-            tool_quantity_array[2] += 1
-            defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
+           
             
             
             print("nova_touches_moving")
