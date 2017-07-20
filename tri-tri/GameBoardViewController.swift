@@ -14063,14 +14063,20 @@ number_of_lines_erased += 1
     let holy_nova_instruction = UIImageView()
     func holy_nova() -> Void{
         if self.tool_quantity_array[2] > 0{
-            self.nova_mask.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
+            if (self.ThemeType == 2){
+                self.nova_mask.backgroundColor = UIColor(red:CGFloat(255/255.0), green:CGFloat(255/255.0), blue:CGFloat(255/255.0), alpha:CGFloat(0.3))
+            }
+            else {
+                self.nova_mask.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
+            }
+            
             if (self.language == "English"){
             self.holy_nova_instruction.image = UIImage(named:"holy_nova_instruction_text_en")
             } else {
                 self.holy_nova_instruction.image = UIImage(named:"holy_nova_instruction_text_ch")
             }
             self.nova_mask.frame = CGRect(x:0, y:0, width:pause_screen_x_transform(375),height:pause_screen_y_transform(667))
-            self.holy_nova_instruction.frame = CGRect(x:0, y:pause_screen_y_transform(460), width:pause_screen_x_transform(375),height:pause_screen_y_transform(200))
+            self.holy_nova_instruction.frame = CGRect(x:0, y:pause_screen_y_transform(460), width:pause_screen_x_transform(375),height:pause_screen_y_transform(150))
             self.view.addSubview(self.nova_mask)
             self.view.addSubview(self.holy_nova_instruction)
             self.view.bringSubview(toFront: self.tri_0_0_back)
