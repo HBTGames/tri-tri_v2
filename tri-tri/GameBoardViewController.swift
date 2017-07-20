@@ -3191,6 +3191,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     //
     //function in response to drag movement
     func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
+        if (during_holy_nova){
+        print("holy nova is true")
+        }
         if (!paused && !in_theme_menu && !during_holy_nova){
             
         
@@ -3390,7 +3393,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 i += 1
             }
             if contained_boxes.count == 0{
-                //self.during_holy_nova = false
+                self.during_holy_nova = true
                 
             }else if (contained_boxes.count == 1){
                 print("reach nova else")
@@ -3404,7 +3407,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 self.tri_image_change(row: row, col: col, up: UIImage(named:"colors_gold_up")!, down: UIImage(named:"colors_gold_down")!)
                 
                 //self.nova_breaker(row: row, col: col)
-                //self.during_holy_nova = false
+                self.during_holy_nova = true
             }
             else/* if (contained_boxes.count == 1)*/{
                 print("reach nova else")
@@ -3424,7 +3427,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 self.tri_image_change(row: row, col: col, up: UIImage(named:"colors_gold_up")!, down: UIImage(named:"colors_gold_down")!)
                 
                 //self.nova_breaker(row: row, col: col)
-                //self.during_holy_nova = false
+                self.during_holy_nova = true
             }
             
             
@@ -3456,7 +3459,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     not_fit_player.play()
-                    self.during_holy_nova = false
+                    self.during_holy_nova = true
                     
                 }else if (contained_boxes.count == 1){
                     print("reach nova else")
@@ -14052,7 +14055,7 @@ number_of_lines_erased += 1
     }
         
     let nova_mask = UIImageView()
-    
+    let holy_nova_instruction = UIImageView()
     func holy_nova() -> Void{
         if self.tool_quantity_array[2] > 0{
             self.nova_mask.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.8))
