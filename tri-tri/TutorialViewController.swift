@@ -240,12 +240,24 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     var about_us_text = UIImageView()
     @IBAction func about_us_action(_ sender: UIButton) {
         if(!about_page_open && !in_about_us_animation){
-            
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
         open_about_us()
         
         
         }else if(about_page_open && !in_about_us_animation){
-            
+            do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                self.button_player.prepareToPlay()
+            }
+            catch{
+                
+            }
+            self.button_player.play()
         close_about_us()
             
         }
