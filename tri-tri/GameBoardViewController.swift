@@ -3187,7 +3187,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             if (exist1 == false){
                 return
             }
-  
+            self.view.bringSubview(toFront: green_drag_tri)
             position_in_use = 0
             //alternative_drag_tri = green_drag_tri
             let transition0 = gesture.translation(in: green_drag_tri)
@@ -3198,6 +3198,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             if (exist2 == false){
                 return
             }
+            self.view.bringSubview(toFront: orange_drag_tri)
             position_in_use = 1
             //alternative_drag_tri = orange_drag_tri
             let transition1 = gesture.translation(in: orange_drag_tri)
@@ -3208,6 +3209,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             if (exist3 == false){
                 return
             }
+            self.view.bringSubview(toFront: light_brown_drag_tri)
             position_in_use = 2
             //alternative_drag_tri = *light_brown_drag_tri
             let transition2 = gesture.translation(in: light_brown_drag_tri)
