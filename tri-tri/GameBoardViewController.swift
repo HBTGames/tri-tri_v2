@@ -1997,11 +1997,23 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         day_apply_button.contentMode = .scaleAspectFit
         day_theme_button.alpha = 0
         day_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: day_theme_button.frame.origin.y + day_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
-        day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
+            if (self.language == "English"){
+                self.day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
+            }
+            else {
+                self.day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use_ch"), for: .normal)
+            }
+        
         if(ThemeType == 1){
             day_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             day_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
-            day_apply_button.setImage( #imageLiteral(resourceName: "day_selected"), for: .normal)
+            if (self.language == "English"){
+                self.day_apply_button.setImage(#imageLiteral(resourceName: "day_selected"), for: .normal)
+            }
+            else {
+                self.day_apply_button.setImage(#imageLiteral(resourceName: "day_selected_ch"), for: .normal)
+            }
+            
         }
         day_apply_origin = day_apply_button.frame.origin
         
@@ -2056,7 +2068,13 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 UIView.transition(with: self.day_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                     self.day_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
                     self.day_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
-                    self.day_apply_button.setImage(#imageLiteral(resourceName: "day_selected"), for: .normal)
+                    if (self.language == "English"){
+                        self.day_apply_button.setImage(#imageLiteral(resourceName: "day_selected"), for: .normal)
+                    }
+                    else {
+                        self.day_apply_button.setImage(#imageLiteral(resourceName: "day_selected_ch"), for: .normal)
+                    }
+                    
                 }, completion: {
                     (finished) -> Void in
                     
@@ -2110,12 +2128,22 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         night_theme_button.contentMode = .scaleAspectFill
         night_theme_button.alpha = 0
         night_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: night_theme_button.frame.origin.y + night_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
-        night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            if (self.language == "English"){
+                self.night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            }
+            else {
+                self.night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+            }
         
         if(ThemeType == 2){
             night_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             night_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
-            night_apply_button.setImage( #imageLiteral(resourceName: "night_selected"), for: .normal)
+            if (self.language == "English"){
+                self.night_apply_button.setImage(#imageLiteral(resourceName: "night_selected"), for: .normal)
+            }
+            else {
+                self.night_apply_button.setImage(#imageLiteral(resourceName: "night_selected_ch"), for: .normal)
+            }
         }
         night_apply_origin = night_apply_button.frame.origin
         night_apply_button.whenButtonIsClicked(action:{
@@ -2167,7 +2195,12 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 UIView.transition(with: self.night_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                     self.night_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
                     self.night_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
-                    self.night_apply_button.setImage(#imageLiteral(resourceName: "night_selected"), for: .normal)
+                    if (self.language == "English"){
+                        self.night_apply_button.setImage(#imageLiteral(resourceName: "night_selected"), for: .normal)
+                    }
+                    else {
+                        self.night_apply_button.setImage(#imageLiteral(resourceName: "night_selected_ch"), for: .normal)
+                    }
                 }, completion: {
                     (finished) -> Void in
                     
@@ -2226,10 +2259,22 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         }else if(ThemeType == 3){
             BW_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
-            BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
+            if (self.language == "English"){
+                BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
+            }
+            else {
+                BW_apply_button.setImage(#imageLiteral(resourceName: "B&W_selected_ch"), for: .normal)
+            }
+            
         }
         else{
-            BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            if (self.language == "English"){
+                self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            }
+            else {
+                self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+            }
+            
         }
         BW_apply_origin = BW_apply_button.frame.origin
         BW_apply_button.whenButtonIsClicked(action:{
@@ -2250,7 +2295,13 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
                     UIView.transition(with: self.BW_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                         self.BW_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.BW_theme_button.frame.origin.y + self.BW_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                        self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                        if (self.language == "English"){
+                            self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                        }
+                        else {
+                            self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+                        }
+                        
                     })
 
                 }else{
@@ -2317,7 +2368,12 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 UIView.transition(with: self.BW_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                     self.BW_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
                     self.BW_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
-                    self.BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
+                    if (self.language == "English"){
+                        self.BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
+                    }
+                    else {
+                        self.BW_apply_button.setImage(#imageLiteral(resourceName: "B&W_selected_ch"), for: .normal)
+                    }
                 }, completion: {
                     (finished) -> Void in
                     
@@ -2466,10 +2522,22 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         }else if(ThemeType == 5){
             school_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
-            school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
+            if (self.language == "English"){
+                self.school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
+            }
+            else {
+                self.school_apply_button.setImage(#imageLiteral(resourceName: "school_selected_ch"), for: .normal)
+            }
         }
         else{
-            school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+            if (self.language == "English"){
+                school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+            }
+            else {
+                school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use_ch"), for: .normal)
+            }
+            
+            
         }
         
         school_apply_origin = school_apply_button.frame.origin
@@ -2491,7 +2559,13 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
                     UIView.transition(with: self.school_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                         self.school_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.school_theme_button.frame.origin.y + self.school_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                        self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+                        if (self.language == "English"){
+                            self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+                        }
+                        else {
+                            self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use_ch"), for: .normal)
+                        }
+                        
                     })
                     
                     
@@ -2561,7 +2635,12 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 UIView.transition(with: self.school_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                     self.school_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
                     self.school_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
-                    self.school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
+                    if (self.language == "English"){
+                        self.school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
+                    }
+                    else {
+                        self.school_apply_button.setImage(#imageLiteral(resourceName: "school_selected_ch"), for: .normal)
+                    }
                 }, completion: {
                     (finished) -> Void in
                 
@@ -2624,10 +2703,22 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         }else if(ThemeType == 6){
             colors_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             colors_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
-            colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
+            if (self.language == "English"){
+                self.colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
+            }
+            else {
+                self.colors_apply_button.setImage(#imageLiteral(resourceName: "color_selected_ch"), for: .normal)
+            }
+            
         }
         else{
-            colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            if (self.language == "English"){
+                self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            }
+            else {
+                self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+            }
+            
         }
         
         
@@ -2650,7 +2741,12 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     defaults.set(self.theme_islocked_array, forKey: "tritri_theme_lock_array")
                     UIView.transition(with: self.colors_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                         self.colors_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.colors_theme_button.frame.origin.y + self.colors_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                        self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                        if (self.language == "English"){
+                            self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                        }
+                        else {
+                            self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+                        }
                     })
                     
                     
@@ -2717,7 +2813,12 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 UIView.transition(with: self.colors_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                     self.colors_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
                     self.colors_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
-                    self.colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
+                    if (self.language == "English"){
+                        self.colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
+                    }
+                    else {
+                        self.colors_apply_button.setImage(#imageLiteral(resourceName: "color_selected_ch"), for: .normal)
+                    }
                 }, completion: {
                     (finished) -> Void in
                 
@@ -17477,13 +17578,17 @@ func trinity_animation() -> Void {
         self.view.addSubview(more_stars_label)
         more_stars_label.fadeIn()
         
-        purchase_star_1000_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(162), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
+        purchase_star_500_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(162), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
+        purchase_star_1000_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(314), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
+        
         purchase_star_1000_bg.image = #imageLiteral(resourceName: "purchase_star_1000")
         purchase_star_1000_bg.alpha = 0
         self.view.addSubview(purchase_star_1000_bg)
         purchase_star_1000_bg.fadeIn()
+        
 
-        purchase_star_500_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(314), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
+        
+        
         purchase_star_500_bg.image = #imageLiteral(resourceName: "purchase_star_500")
         purchase_star_500_bg.alpha = 0
         self.view.addSubview(purchase_star_500_bg)
@@ -17581,7 +17686,8 @@ func trinity_animation() -> Void {
         }
         close_button.fadeIn()
         
-        purchase_star_1000_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(196), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
+        purchase_star_500_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(196), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
+        purchase_star_1000_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(348), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
         purchase_star_1000_button.setImage(#imageLiteral(resourceName: "purchase_star_1000_price"), for: .normal)
         purchase_star_1000_button.alpha = 0
         self.view.addSubview(purchase_star_1000_button)
@@ -17600,7 +17706,7 @@ func trinity_animation() -> Void {
         
         purchase_star_1000_button.fadeIn()
         
-        purchase_star_500_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(348), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
+        
         purchase_star_500_button.setImage(#imageLiteral(resourceName: "purchase_star_500_price"), for: .normal)
         purchase_star_500_button.alpha = 0
         self.view.addSubview(purchase_star_500_button)
@@ -17927,7 +18033,13 @@ func trinity_animation() -> Void {
             UIView.transition(with: self.day_apply_button, duration: 0.4, options: .transitionFlipFromLeft , animations: {
                 self.day_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
                 self.day_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                self.day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
+                if (self.language == "English"){
+                    self.day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
+                }
+                else {
+                    self.day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use_ch"), for: .normal)
+                }
+                
             })
             
             
@@ -17935,14 +18047,26 @@ func trinity_animation() -> Void {
             UIView.transition(with: self.night_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
                 self.night_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
                 self.night_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                self.night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                if (self.language == "English"){
+                    self.night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                }
+                else {
+                    self.night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+                }
+                
             })
             
         }else if(ThemeType == 3){
             UIView.transition(with: self.BW_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
                 self.BW_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
                 self.BW_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                if (self.language == "English"){
+                    self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                }
+                else {
+                    self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+                }
+                
             })
             
             
@@ -17950,14 +18074,26 @@ func trinity_animation() -> Void {
             UIView.transition(with: self.school_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
                 self.school_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
                 self.school_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+                if (self.language == "English"){
+                    self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+                }
+                else {
+                    self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use_ch"), for: .normal)
+                }
+                
             })
             
         }else if(ThemeType == 6){
             UIView.transition(with: self.colors_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
                 self.colors_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
                 self.colors_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                if (self.language == "English"){
+                    self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                }
+                else {
+                    self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+                }
+                
             })
         }
     }

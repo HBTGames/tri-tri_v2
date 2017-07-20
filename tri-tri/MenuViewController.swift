@@ -159,8 +159,6 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         language_button.frame = CGRect(x: pause_screen_x_transform(Double(language_button.frame.origin.x)), y: pause_screen_y_transform(Double(language_button.frame.origin.y)), width: pause_screen_x_transform(Double(language_button.frame.width)), height: pause_screen_y_transform(Double(language_button.frame.height)))
         background_image.frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
         star_board.font = UIFont(name: "Fresca-Regular", size: CGFloat(22))
-        //let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction(_:)))
-        //self.view.addGestureRecognizer(panGestureRecognizer)
         var HighestScore = 0
         // Do any additional setup after loading the view.
         if(defaults.value(forKey: "tritri_HighestScore") != nil ){
@@ -356,15 +354,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     }
 
     @IBOutlet weak var triangle_title: UIImageView!
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
     
     
     @IBOutlet var language_button: UIButton!
@@ -478,12 +468,24 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         day_apply_button.contentMode = .scaleAspectFit
         day_theme_button.alpha = 0
         day_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: day_theme_button.frame.origin.y + day_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
-        day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
+            if (self.language == "English"){
+                self.day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
+            }
+            else {
+                self.day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use_ch"), for: .normal)
+            }
         
         if(ThemeType == 1){
             day_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             day_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
-            day_apply_button.setImage( #imageLiteral(resourceName: "day_selected"), for: .normal)
+            if (self.language == "English"){
+                self.day_apply_button.setImage(#imageLiteral(resourceName: "day_selected"), for: .normal)
+            }
+            else {
+                self.day_apply_button.setImage(#imageLiteral(resourceName: "day_selected_ch"), for: .normal)
+            }
+
+            
         }
         day_apply_origin = day_apply_button.frame.origin
         day_apply_button.whenButtonIsClicked(action:{
@@ -534,7 +536,14 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             UIView.transition(with: self.day_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                     self.day_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
                     self.day_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
+                if (self.language == "English"){
                     self.day_apply_button.setImage(#imageLiteral(resourceName: "day_selected"), for: .normal)
+                }
+                else {
+                    self.day_apply_button.setImage(#imageLiteral(resourceName: "day_selected_ch"), for: .normal)
+                }
+
+                
             }, completion: {
                 (finished) -> Void in
                 
@@ -598,12 +607,23 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         night_theme_button.contentMode = .scaleAspectFill
         night_theme_button.alpha = 0
         night_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: night_theme_button.frame.origin.y + night_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
-        night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            if (self.language == "English"){
+                self.night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            }
+            else {
+                self.night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+            }
         
         if(ThemeType == 2){
             night_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             night_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
-            night_apply_button.setImage( #imageLiteral(resourceName: "night_selected"), for: .normal)
+            if (self.language == "English"){
+                self.night_apply_button.setImage( #imageLiteral(resourceName: "night_selected"), for: .normal)
+            }
+            else {
+                self.night_apply_button.setImage( #imageLiteral(resourceName: "night_selected_ch"), for: .normal)
+            }
+            
         }
         night_apply_origin = night_apply_button.frame.origin
         night_apply_button.whenButtonIsClicked(action:{
@@ -652,7 +672,12 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 UIView.transition(with: self.night_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                     self.night_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
                     self.night_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
-                    self.night_apply_button.setImage(#imageLiteral(resourceName: "night_selected"), for: .normal)
+                    if (self.language == "English"){
+                        self.night_apply_button.setImage( #imageLiteral(resourceName: "night_selected"), for: .normal)
+                    }
+                    else {
+                        self.night_apply_button.setImage( #imageLiteral(resourceName: "night_selected_ch"), for: .normal)
+                    }
                 }, completion: {
                     (finished) -> Void in
                     self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
@@ -717,10 +742,21 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         }else if(ThemeType == 3){
             BW_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
-        BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
+            if (self.language == "English"){
+                self.BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
+            }
+            else {
+                self.BW_apply_button.setImage(#imageLiteral(resourceName: "B&W_selected_ch"), for: .normal)
+            }
+        
         }
         else{
-        BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            if (self.language == "English"){
+                self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            }
+            else {
+                self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+            }
         }
         BW_apply_origin = BW_apply_button.frame.origin
         BW_apply_button.whenButtonIsClicked(action:{
@@ -742,7 +778,12 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                    
                     UIView.transition(with: self.BW_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                         self.BW_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.BW_theme_button.frame.origin.y + self.BW_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                        self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                        if (self.language == "English"){
+                            self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                        }
+                        else {
+                            self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+                        }
                     })
 
                     
@@ -806,7 +847,12 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 UIView.transition(with: self.BW_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                     self.BW_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
                     self.BW_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
-                    self.BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
+                    if (self.language == "English"){
+                        self.BW_apply_button.setImage(#imageLiteral(resourceName: "BW_selected"), for: .normal)
+                    }
+                    else {
+                        self.BW_apply_button.setImage(#imageLiteral(resourceName: "B&W_selected_ch"), for: .normal)
+                    }
                 }, completion: {
                     (finished) -> Void in
                     self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
@@ -943,10 +989,21 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         }else if(ThemeType == 5){
             school_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
-            school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
+            if (self.language == "English"){
+                self.school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
+            }
+            else {
+                self.school_apply_button.setImage(#imageLiteral(resourceName: "school_selected_ch"), for: .normal)
+            }
+            
         }
         else{
-         school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+            if (self.language == "English"){
+                self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+            }
+            else {
+                self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use_ch"), for: .normal)
+            }
         }
         
         school_apply_origin = school_apply_button.frame.origin
@@ -970,7 +1027,12 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     
                     UIView.transition(with: self.school_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                          self.school_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.school_theme_button.frame.origin.y + self.school_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                       self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+                        if (self.language == "English"){
+                            self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+                        }
+                        else {
+                            self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use_ch"), for: .normal)
+                        }
                     })
 
                    }else{
@@ -1031,7 +1093,12 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 UIView.transition(with: self.school_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                     self.school_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
                     self.school_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
-                    self.school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
+                    if (self.language == "English"){
+                        self.school_apply_button.setImage(#imageLiteral(resourceName: "school_selected"), for: .normal)
+                    }
+                    else {
+                        self.school_apply_button.setImage(#imageLiteral(resourceName: "school_selected_ch"), for: .normal)
+                    }
                 }, completion: {
                     (finished) -> Void in
                     self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
@@ -1101,10 +1168,22 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         }else if(ThemeType == 6){
             colors_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             colors_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
-         colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
+            if (self.language == "English"){
+                self.colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
+            }
+            else {
+                self.colors_apply_button.setImage(#imageLiteral(resourceName: "color_selected_ch"), for: .normal)
+            }
+         
         }
         else{
-        colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            if (self.language == "English"){
+                self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+            }
+            else {
+                self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+            }
+            
         }
         
             
@@ -1128,7 +1207,13 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     
                     UIView.transition(with: self.colors_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                         self.colors_apply_button.frame = CGRect(x: self.screen_width - self.pause_screen_y_transform(130), y: self.colors_theme_button.frame.origin.y + self.colors_theme_button.frame.height/2.0 - self.pause_screen_y_transform(18), width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                        self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                        if (self.language == "English"){
+                            self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                        }
+                        else {
+                            self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+                        }
+                        
                     })
                     }else{
                     do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
@@ -1189,7 +1274,12 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 UIView.transition(with: self.colors_apply_button, duration: 0.4, options: .transitionFlipFromRight, animations: {
                     self.colors_apply_button.frame.origin.x -= self.pause_screen_x_transform(16)
                     self.colors_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(132), height: self.pause_screen_y_transform(36))
-                    self.colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
+                    if (self.language == "English"){
+                        self.colors_apply_button.setImage(#imageLiteral(resourceName: "colors_selected"), for: .normal)
+                    }
+                    else {
+                        self.colors_apply_button.setImage(#imageLiteral(resourceName: "color_selected_ch"), for: .normal)
+                    }
                 }, completion: {
                     (finished) -> Void in
                     self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y: self.screen_height, final_completetion: {
@@ -2949,13 +3039,14 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         self.view.addSubview(more_stars_label)
         more_stars_label.fadeIn()
         
-        purchase_star_1000_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(162), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
+        purchase_star_500_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(162), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
+        purchase_star_1000_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(314), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
         purchase_star_1000_bg.image = #imageLiteral(resourceName: "purchase_star_1000")
         purchase_star_1000_bg.alpha = 0
         self.view.addSubview(purchase_star_1000_bg)
         purchase_star_1000_bg.fadeIn()
         
-        purchase_star_500_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(314), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
+        
         purchase_star_500_bg.image = #imageLiteral(resourceName: "purchase_star_500")
         purchase_star_500_bg.alpha = 0
         self.view.addSubview(purchase_star_500_bg)
@@ -3014,7 +3105,8 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         
         close_button.fadeIn()
         
-        purchase_star_1000_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(196), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
+        purchase_star_500_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(196), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
+        purchase_star_1000_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(348), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
         purchase_star_1000_button.setImage(#imageLiteral(resourceName: "purchase_star_1000_price"), for: .normal)
         purchase_star_1000_button.alpha = 0
         self.view.addSubview(purchase_star_1000_button)
@@ -3032,7 +3124,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         
         purchase_star_1000_button.fadeIn()
         
-        purchase_star_500_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(348), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
+        
         purchase_star_500_button.setImage(#imageLiteral(resourceName: "purchase_star_500_price"), for: .normal)
         purchase_star_500_button.alpha = 0
         self.view.addSubview(purchase_star_500_button)
@@ -3272,14 +3364,19 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         openGameCenter()
     }
     
-    
-    //theme menu restore select to use
+  
     func apply_button_restore(){
         if(ThemeType == 1){
             UIView.transition(with: self.day_apply_button, duration: 0.4, options: .transitionFlipFromLeft , animations: {
                 self.day_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
                 self.day_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                self.day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
+                if (self.language == "English"){
+                    self.day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use"), for: .normal)
+                }
+                else {
+                    self.day_apply_button.setImage(#imageLiteral(resourceName: "day_mode_use_ch"), for: .normal)
+                }
+                
             })
             
             
@@ -3287,14 +3384,24 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
             UIView.transition(with: self.night_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
                 self.night_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
                 self.night_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                self.night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                if (self.language == "English"){
+                    self.night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                }
+                else {
+                    self.night_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+                }
             })
             
         }else if(ThemeType == 3){
             UIView.transition(with: self.BW_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
                 self.BW_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
                 self.BW_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                if (self.language == "English"){
+                    self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                }
+                else {
+                    self.BW_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+                }
             })
             
             
@@ -3302,14 +3409,24 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
             UIView.transition(with: self.school_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
                 self.school_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
                 self.school_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+                if (self.language == "English"){
+                    self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use"), for: .normal)
+                }
+                else {
+                    self.school_apply_button.setImage(#imageLiteral(resourceName: "school_mode_use_ch"), for: .normal)
+                }
             })
             
         }else if(ThemeType == 6){
             UIView.transition(with: self.colors_apply_button, duration: 0.4, options: .transitionFlipFromLeft, animations: {
                 self.colors_apply_button.frame.origin.x += self.pause_screen_x_transform(16)
                 self.colors_apply_button.frame.size = CGSize(width: self.pause_screen_x_transform(100), height: self.pause_screen_y_transform(36))
-                self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                if (self.language == "English"){
+                    self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use"), for: .normal)
+                }
+                else {
+                    self.colors_apply_button.setImage(#imageLiteral(resourceName: "night_mode_use_ch"), for: .normal)
+                }
             })
         }
     }
@@ -3497,27 +3614,3 @@ extension UIButton{
 
 
 
-/**
-extension UIImage{
-    convenience init(view: UIView) {
-        
-        
-    }
-}
-**/
-
-/**class 
- 
- 
- : UIButton {
-    var action: (()->())?
-    
-    func whenButtonIsClicked(action: @escaping ()->()) {
-        self.action = action
-        self.addTarget(self, action: #selector(MyButton.clicked), for: .touchUpInside)
-    }
-    
-    func clicked() {
-        action?()
-    }
-}**/

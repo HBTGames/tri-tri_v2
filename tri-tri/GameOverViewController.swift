@@ -1399,13 +1399,14 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         self.view.addSubview(more_stars_label)
         more_stars_label.fadeIn()
         
-        purchase_star_1000_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(162), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
+        purchase_star_500_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(162), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
+        purchase_star_1000_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(314), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
         purchase_star_1000_bg.image = #imageLiteral(resourceName: "purchase_star_1000")
         purchase_star_1000_bg.alpha = 0
         self.view.addSubview(purchase_star_1000_bg)
         purchase_star_1000_bg.fadeIn()
         
-        purchase_star_500_bg = UIImageView(frame: CGRect(x: self.pause_screen_x_transform(35), y: self.pause_screen_y_transform(314), width: self.pause_screen_x_transform(305), height: self.pause_screen_y_transform(115)))
+        
         purchase_star_500_bg.image = #imageLiteral(resourceName: "purchase_star_500")
         purchase_star_500_bg.alpha = 0
         self.view.addSubview(purchase_star_500_bg)
@@ -1441,7 +1442,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         
         close_button.fadeIn()
         
-        purchase_star_1000_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(196), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
+        purchase_star_500_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(196), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
+        purchase_star_1000_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(348), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
         purchase_star_1000_button.setImage(#imageLiteral(resourceName: "purchase_star_1000_price"), for: .normal)
         purchase_star_1000_button.alpha = 0
         self.view.addSubview(purchase_star_1000_button)
@@ -1459,7 +1461,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         
         purchase_star_1000_button.fadeIn()
         
-        purchase_star_500_button.frame = CGRect(x: self.pause_screen_x_transform(208), y: self.pause_screen_y_transform(348), width: self.pause_screen_x_transform(118), height: self.pause_screen_y_transform(47))
+        
         purchase_star_500_button.setImage(#imageLiteral(resourceName: "purchase_star_500_price"), for: .normal)
         purchase_star_500_button.alpha = 0
         self.view.addSubview(purchase_star_500_button)
