@@ -148,7 +148,13 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         restart_button.touchAreaEdgeInsets = UIEdgeInsets(top: 0, left: pause_screen_x_transform(40), bottom: pause_screen_y_transform(40), right: pause_screen_x_transform(40))
         background_image.frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
        
-      
+        if (self.language == "English") {
+            self.share_image_outlet.setImage(UIImage(named:"share_button"), for: .normal)
+        }
+        else {
+            self.share_image_outlet.setImage(UIImage(named:"share_button_ch"), for: .normal)
+
+        }
         
         if (ThemeType == 1){
             home_button.setBackgroundImage(home_pic, for: .normal)
@@ -1586,6 +1592,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         }
     }
 
+    @IBOutlet var share_image_outlet: UIButton!
     //share image button
     var final_image_to_share = UIImage()
     @IBAction func share_image_action(_ sender: UIButton) {

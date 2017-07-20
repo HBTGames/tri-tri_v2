@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -498,6 +498,7 @@
                         <outlet property="restart_button" destination="efL-Nx-AeG" id="gFk-Sd-rwD"/>
                         <outlet property="score_board" destination="2PI-GQ-0zF" id="Zcu-7Y-RP4"/>
                         <outlet property="share_image_button" destination="yKB-B2-w5c" id="dxd-Zg-iwc"/>
+                        <outlet property="share_image_outlet" destination="yKB-B2-w5c" id="nSK-A7-BdV"/>
                         <outlet property="share_image_scene" destination="aPT-0D-O4u" id="VAN-1F-YSl"/>
                         <outlet property="share_scene_score" destination="IJS-yY-WC5" id="iLZ-It-9GC"/>
                         <outlet property="trophy" destination="jet-R1-2WH" id="KaY-OA-Fzp"/>
@@ -12140,7 +12141,7 @@ zwAAAAAAAAQBAAAAAAAAAD4AAAAAAAAAAAAAAAAACdLRA
         <image name="棕色tri" width="610" height="542"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hkt-ax-Thn"/>
+        <segue reference="jOH-pV-lXR"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
