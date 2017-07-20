@@ -1293,8 +1293,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16364"
             endingLineNumber = "16364"
-            landmarkName = "trinity_action()"
-            landmarkType = "7">
+            landmarkName = "GameBoardViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
