@@ -777,7 +777,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 close_pack()
                 pack_open = false
                 }
-        if(green_drag_tri_orig_rec.contains(initialTouchLocation)){
+        if(green_drag_tri_orig_rec.contains(initialTouchLocation) && exist1){
             self.green_drag_origin.y = self.green_drag_origin.y - self.pause_screen_y_transform(70)
             self.green_drag_origin.x = self.green_drag_origin.x - self.pause_screen_x_transform(10)
         UIView.animate(withDuration: 0.3, animations: {
@@ -785,7 +785,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             self.green_drag_tri.frame.origin.x = self.green_drag_tri.frame.origin.x - self.pause_screen_x_transform(10)
             self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
         })
-        }else if(orange_drag_tri_orig_rec.contains(initialTouchLocation)){
+        }else if(orange_drag_tri_orig_rec.contains(initialTouchLocation) && exist2){
             self.orange_drag_origin.y = self.orange_drag_origin.y - self.pause_screen_y_transform(70)
             self.orange_drag_origin.x = self.orange_drag_origin.x - self.pause_screen_x_transform(10)
 
@@ -794,7 +794,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 self.orange_drag_tri.frame.origin.x = self.orange_drag_tri.frame.origin.x - self.pause_screen_x_transform(10)
                 self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
             })
-        }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation)){
+        }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation) && exist3){
              self.light_brown_drag_origin.y = self.light_brown_drag_origin.y - self.pause_screen_y_transform(70)
             self.light_brown_drag_origin.x = self.light_brown_drag_origin.x - self.pause_screen_x_transform(10)
             
@@ -940,20 +940,20 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let finalTouchLocation = touches.first!.location(in: view)
         if(!paused){
             if (!during_holy_nova){
-            if(green_drag_tri_orig_rec.contains(finalTouchLocation)){
+            if(green_drag_tri_orig_rec.contains(finalTouchLocation) && exist1){
                 self.green_drag_origin = self.green_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
                     self.green_drag_tri.frame.origin = self.green_drag_origin
                     
                     self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                 })
-            }else if(orange_drag_tri_orig_rec.contains(finalTouchLocation)){
+            }else if(orange_drag_tri_orig_rec.contains(finalTouchLocation) && exist2){
                 self.orange_drag_origin = self.orange_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
                     self.orange_drag_tri.frame.origin = self.orange_drag_origin
                     self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                 })
-            }else if(light_brown_drag_tri_orig_rec.contains(finalTouchLocation)){
+            }else if(light_brown_drag_tri_orig_rec.contains(finalTouchLocation) && exist3){
                 self.light_brown_drag_origin = self.light_brown_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
                     self.light_brown_drag_tri.frame.origin = self.light_brown_drag_origin
@@ -1251,7 +1251,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         exist1 = exist_array[0]
         exist2 = exist_array[1]
         exist3 = exist_array[2]
-        print("exist1: \(exist1), exist2: \(exist2), exist3: \(exist3)")
+        //print("exist1: \(exist1), exist2: \(exist2), exist3: \(exist3)")
         
         if(defaults.value(forKey: "tritri_shape_type_index") == nil){
             auto_random_generator()
@@ -3348,16 +3348,13 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         }
         if (!paused && !in_theme_menu && !during_holy_nova){
             
-        
+        //print("exist1: \(exist1), exist2: \(exist2), exist3: \(exist3)")
             
         var actual_type_index = 0
         var actual_location = CGPoint(x:0, y:0)
         //if original frame contains the initial point
-        if(green_drag_tri_orig_rec.contains(initialTouchLocation)){
-            if (exist1 == false){
-                return
-            }
-            self.view.bringSubview(toFront: green_drag_tri)
+        if(green_drag_tri_orig_rec.contains(initialTouchLocation) && exist1){
+           self.view.bringSubview(toFront: green_drag_tri)
             UIView.animate(withDuration: 0.3, animations: {
             self.green_drag_tri.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             })
@@ -3367,10 +3364,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             green_drag_tri.frame.origin = CGPoint(x: green_drag_origin.x+transition0.x , y: green_drag_origin.y+transition0.y)
             actual_type_index = shape_type_index[0]
             actual_location = green_drag_tri.frame.origin
-        } else if(orange_drag_tri_orig_rec.contains(initialTouchLocation)){
-            if (exist2 == false){
-                return
-            }
+        } else if(orange_drag_tri_orig_rec.contains(initialTouchLocation) && exist2){
             self.view.bringSubview(toFront: orange_drag_tri)
             UIView.animate(withDuration: 0.3, animations: {
                 self.orange_drag_tri.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
@@ -3381,10 +3375,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             orange_drag_tri.frame.origin = CGPoint(x:orange_drag_origin.x+transition1.x , y:orange_drag_origin.y+transition1.y)
             actual_type_index = shape_type_index[1]
             actual_location = orange_drag_tri.frame.origin
-          }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation)){
-            if (exist3 == false){
-                return
-            }
+          }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation) && exist3){
             self.view.bringSubview(toFront: light_brown_drag_tri)
             UIView.animate(withDuration: 0.3, animations: {
                 self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
