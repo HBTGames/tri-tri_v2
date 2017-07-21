@@ -17214,8 +17214,8 @@ func trinity_animation() -> Void {
     var shape_color_down = UIImage(named:"purple_downwards")!
     //if Themetype == 1 doesnt change
     if (ThemeType == 2){
-        shape_color_up = UIImage(named: "小肉 up")!
-        shape_color_down = UIImage(named: "小肉 down")!
+        shape_color_up = #imageLiteral(resourceName: "purple_upwards")
+        shape_color_down = #imageLiteral(resourceName: "purple_downwards")
     }else if(ThemeType == 3){
         shape_color_up = UIImage(named: "BW_black_tri_up")!
         shape_color_down = UIImage(named: "BW_black_tri_down")!
