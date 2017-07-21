@@ -1251,15 +1251,18 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         exist1 = exist_array[0]
         exist2 = exist_array[1]
         exist3 = exist_array[2]
+        print("exist1: \(exist1), exist2: \(exist2), exist3: \(exist3)")
         
         if(defaults.value(forKey: "tritri_shape_type_index") == nil){
             auto_random_generator()
             defaults.set(shape_type_index, forKey: "tritri_shape_type_index")
         }else{
-            shape_type_index = defaults.value(forKey: "tritri_shape_type_index") as! Array<Int>
             if(Eligible_to_Generate()){
                 auto_random_generator()
-            }else{
+            }
+            else{
+            shape_type_index = defaults.value(forKey: "tritri_shape_type_index") as! Array<Int>
+         
                 green_drag_tri.image = generator_array[shape_type_index[0]]
                 orange_drag_tri.image = generator_array[shape_type_index[1]]
                 light_brown_drag_tri.image = generator_array[shape_type_index[2]]
@@ -1272,8 +1275,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 if(!exist_array[2]){
                     make_transparent_with_index(index: 2)
                 }
-            }
             
+            
+        }
         }
 
       
@@ -9225,6 +9229,8 @@ number_of_lines_erased += 1
             exist1 = true
             exist2 = true
             exist3 = true
+            exist_array = [true,true,true]
+            defaults.set(exist_array, forKey: "tritri_exist_array")
             return true
         }else{
             return false
@@ -9721,7 +9727,6 @@ number_of_lines_erased += 1
         /**exist1 = true
         exist2 = true
         exist3 = true**/
-        defaults.set(exist_array, forKey: "tritri_exist_array")
         defaults.set(shape_type_index, forKey: "tritri_shape_type_index")
     }
 
