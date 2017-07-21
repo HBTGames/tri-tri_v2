@@ -7294,6 +7294,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
       //duplicates_array = Check_and_Erase_Create_Array()
         //situation one - row
         //eliminate first row
+        
+         print("in erase animation now")
          situation0 = false
         situation1 = false
          situation2 = false
@@ -8720,7 +8722,7 @@ number_of_lines_erased += 1
     
     func Check_And_Erase_Fix_Filled() -> Void {
         
-
+      print("in fix filled right now")
         if(situation0){
            // erase_player.play()
             filled[0][0] = false
@@ -9197,7 +9199,7 @@ number_of_lines_erased += 1
             single_tri_stored_type_index[4][6] = -1
             
         }
-        
+   print("quit fix filled right now")
     }
     
     
@@ -12231,6 +12233,11 @@ number_of_lines_erased += 1
     }
     
     @IBAction func random_generator(_ sender: UIButton) {
+        exist1 = true
+        exist2 = true
+        exist3 = true
+        exist_array = [true,true,true]
+        defaults.set(exist_array, forKey: "tritri_exist_array")
         auto_random_generator()
     }
     
@@ -14062,7 +14069,11 @@ number_of_lines_erased += 1
                 self.count_down_view.removeFromSuperview()
                 self.tool_quantity_array[0] -= 1
                 defaults.set(self.tool_quantity_array, forKey: "tritri_tool_quantity_array")
-                
+                self.exist1 = true
+                self.exist2 = true
+                self.exist3 = true
+                self.exist_array = [true,true,true]
+                defaults.set(self.exist_array, forKey: "tritri_exist_array")
                 self.auto_random_generator()
                 self.paused = false
                 game_over_timer.invalidate()
@@ -14083,6 +14094,11 @@ number_of_lines_erased += 1
                     self.revive_text.removeFromSuperview()
                     self.text_background_patch.removeFromSuperview()
                     self.count_down_view.removeFromSuperview()
+                    self.exist1 = true
+                    self.exist2 = true
+                    self.exist3 = true
+                    self.exist_array = [true,true,true]
+                    defaults.set(self.exist_array, forKey: "tritri_exist_array")
                     self.auto_random_generator()
                     self.paused = false
                     game_over_timer.invalidate()
