@@ -3302,6 +3302,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         if (!paused && !in_theme_menu && !during_holy_nova){
             
         
+            
         var actual_type_index = 0
         var actual_location = CGPoint(x:0, y:0)
         //if original frame contains the initial point
@@ -3310,6 +3311,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 return
             }
             self.view.bringSubview(toFront: green_drag_tri)
+            UIView.animate(withDuration: 0.3, animations: {
+            self.green_drag_tri.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            })
             position_in_use = 0
             //alternative_drag_tri = green_drag_tri
             let transition0 = gesture.translation(in: green_drag_tri)
@@ -3321,6 +3325,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 return
             }
             self.view.bringSubview(toFront: orange_drag_tri)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.orange_drag_tri.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            })
             position_in_use = 1
             //alternative_drag_tri = orange_drag_tri
             let transition1 = gesture.translation(in: orange_drag_tri)
@@ -3332,6 +3339,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 return
             }
             self.view.bringSubview(toFront: light_brown_drag_tri)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            })
             position_in_use = 2
             //alternative_drag_tri = *light_brown_drag_tri
             let transition2 = gesture.translation(in: light_brown_drag_tri)
@@ -12115,7 +12125,7 @@ number_of_lines_erased += 1
         moving_star.layer.add(animation, forKey: nil)
         self.view.addSubview(moving_star)
         UIView.animate(withDuration: 1.3, animations: {
-            self.moving_star.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            self.moving_star.transform = CGAffineTransform(scaleX: CGFloat(0.7), y: CGFloat(0.7))
 
         }, completion: {
             (finished) -> Void in
@@ -12134,7 +12144,7 @@ number_of_lines_erased += 1
     func customPath() -> UIBezierPath {
     let path = UIBezierPath()
         path.move(to: CGPoint(x: screen_width/2 , y: screen_height/2))
-        let endPoint = CGPoint(x: star_counter.frame.origin.x + CGFloat(28), y:  star_counter.frame.origin.y + CGFloat(20))
+        let endPoint = CGPoint(x: star_counter.frame.origin.x + CGFloat(32), y:  star_counter.frame.origin.y + CGFloat(20))
         let cp1 = CGPoint(x: 100, y: 300)
         let cp2 = CGPoint(x: 100, y: 300)
         path.addCurve(to: endPoint, controlPoint1: cp1, controlPoint2: cp2)
@@ -18099,6 +18109,11 @@ func trinity_animation() -> Void {
         }
     }
     
+    @IBAction func star_animation_test(_ sender: UIButton) {
+        
+    star_animation()
+        
+    }
 
     
 }
