@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522235183.725788"
+            timestampString = "522333889.499534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "8242"
-            endingLineNumber = "8242"
+            startingLineNumber = "8244"
+            endingLineNumber = "8244"
             landmarkName = "Check_and_Erase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -295,11 +295,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522235183.725788"
+            timestampString = "522333889.499534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "10558"
-            endingLineNumber = "10558"
+            startingLineNumber = "10560"
+            endingLineNumber = "10560"
             landmarkName = "Find_Any_Available_Brown_Left_Downwards_Tri(row:column:)"
             landmarkType = "7">
          </BreakpointContent>

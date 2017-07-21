@@ -7270,44 +7270,46 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         erase_situation_17 = []
         erase_situation_18 = []
         
+        let single_tri_erase_time_duration = 0.04
+        
         number_of_lines_erased = 0
         if(filled[0][0]&&filled[0][1]&&filled[0][2]&&filled[0][3]&&filled[0][4]&&filled[0][5]&&filled[0][6]){
           situation0 = true
             number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 0)
             reorder(loc: center_loc, index: 0)
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                self.erase_animation_by_row_col(row: self.erase_situation_0[0][0], col: self.erase_situation_0[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_0[0][0], col: self.erase_situation_0[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_0[1][0], col: self.erase_situation_0[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_0[1][0], col: self.erase_situation_0[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_0[2][0], col: self.erase_situation_0[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_0[2][0], col: self.erase_situation_0[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_0[3][0], col: self.erase_situation_0[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_0[3][0], col: self.erase_situation_0[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                               self.erase_animation_by_row_col(row: self.erase_situation_0[4][0], col: self.erase_situation_0[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_0[4][0], col: self.erase_situation_0[4][1])
 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_0[5][0], col: self.erase_situation_0[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_0[5][0], col: self.erase_situation_0[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                          self.erase_animation_by_row_col(row: self.erase_situation_0[6][0], col: self.erase_situation_0[6][1])
                                     }, completion: {
                                         (finished) -> Void in
@@ -7334,48 +7336,48 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 1)
             reorder(loc: center_loc, index: 1)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_1[0][0], col: self.erase_situation_1[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_1[0][0], col: self.erase_situation_1[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_1[1][0], col: self.erase_situation_1[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_1[1][0], col: self.erase_situation_1[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_1[2][0], col: self.erase_situation_1[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_1[2][0], col: self.erase_situation_1[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_1[3][0], col: self.erase_situation_1[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_1[3][0], col: self.erase_situation_1[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_1[4][0], col: self.erase_situation_1[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_1[4][0], col: self.erase_situation_1[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_1[5][0], col: self.erase_situation_1[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_1[5][0], col: self.erase_situation_1[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_1[6][0], col: self.erase_situation_1[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_1[6][0], col: self.erase_situation_1[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_1[7][0], col: self.erase_situation_1[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_1[7][0], col: self.erase_situation_1[7][1])
-                                            UIView.animate(withDuration: 0.1, animations: {
+                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                 self.erase_animation_by_row_col(row: self.erase_situation_1[8][0], col: self.erase_situation_1[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
@@ -7405,58 +7407,58 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 2)
             reorder(loc: center_loc, index: 2)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_2[0][0], col: self.erase_situation_2[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_2[0][0], col: self.erase_situation_2[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_2[1][0], col: self.erase_situation_2[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_2[1][0], col: self.erase_situation_2[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_2[2][0], col: self.erase_situation_2[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_2[2][0], col: self.erase_situation_2[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_2[3][0], col: self.erase_situation_2[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_2[3][0], col: self.erase_situation_2[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_2[4][0], col: self.erase_situation_2[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_2[4][0], col: self.erase_situation_2[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_2[5][0], col: self.erase_situation_2[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_2[5][0], col: self.erase_situation_2[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_2[6][0], col: self.erase_situation_2[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_2[6][0], col: self.erase_situation_2[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_2[7][0], col: self.erase_situation_2[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_2[7][0], col: self.erase_situation_2[7][1])
-                                            UIView.animate(withDuration: 0.1, animations: {
+                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                 self.erase_animation_by_row_col(row: self.erase_situation_2[8][0], col: self.erase_situation_2[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_2[8][0], col: self.erase_situation_2[8][1])
-                                                UIView.animate(withDuration: 0.1, animations: {
+                                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                     self.erase_animation_by_row_col(row: self.erase_situation_2[9][0], col: self.erase_situation_2[9][1])
                                                 }, completion: {
                                                     (finished) -> Void in
                                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_2[9][0], col: self.erase_situation_2[9][1])
-                                                    UIView.animate(withDuration: 0.1, animations: {
+                                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                         self.erase_animation_by_row_col(row: self.erase_situation_2[10][0], col: self.erase_situation_2[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
@@ -7486,57 +7488,57 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 3)
             reorder(loc: center_loc, index: 3)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_3[0][0], col: self.erase_situation_3[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_3[0][0], col: self.erase_situation_3[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_3[1][0], col: self.erase_situation_3[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_3[1][0], col: self.erase_situation_3[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_3[2][0], col: self.erase_situation_3[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_3[2][0], col: self.erase_situation_3[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_3[3][0], col: self.erase_situation_3[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_3[3][0], col: self.erase_situation_3[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_3[4][0], col: self.erase_situation_3[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_3[4][0], col: self.erase_situation_3[4][1])
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_3[5][0], col: self.erase_situation_3[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_3[5][0], col: self.erase_situation_3[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_3[6][0], col: self.erase_situation_3[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_3[6][0], col: self.erase_situation_3[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_3[7][0], col: self.erase_situation_3[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_3[7][0], col: self.erase_situation_3[7][1])
-                                            UIView.animate(withDuration: 0.1, animations: {
+                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                 self.erase_animation_by_row_col(row: self.erase_situation_3[8][0], col: self.erase_situation_3[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_3[8][0], col: self.erase_situation_3[8][1])
-                                                UIView.animate(withDuration: 0.1, animations: {
+                                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                     self.erase_animation_by_row_col(row: self.erase_situation_3[9][0], col: self.erase_situation_3[9][1])
                                                 }, completion: {
                                                     (finished) -> Void in
                                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_3[9][0], col: self.erase_situation_3[9][1])
-                                                    UIView.animate(withDuration: 0.1, animations: {
+                                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                         self.erase_animation_by_row_col(row: self.erase_situation_3[10][0], col: self.erase_situation_3[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
@@ -7566,48 +7568,48 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 4)
             reorder(loc: center_loc, index: 4)
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_4[0][0], col: self.erase_situation_4[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_4[0][0], col: self.erase_situation_4[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_4[1][0], col: self.erase_situation_4[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_4[1][0], col: self.erase_situation_4[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_4[2][0], col: self.erase_situation_4[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_4[2][0], col: self.erase_situation_4[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_4[3][0], col: self.erase_situation_4[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_4[3][0], col: self.erase_situation_4[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_4[4][0], col: self.erase_situation_4[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_4[4][0], col: self.erase_situation_4[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_4[5][0], col: self.erase_situation_4[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_4[5][0], col: self.erase_situation_4[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_4[6][0], col: self.erase_situation_4[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_4[6][0], col: self.erase_situation_4[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_4[7][0], col: self.erase_situation_4[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_4[7][0], col: self.erase_situation_4[7][1])
-                                            UIView.animate(withDuration: 0.1, animations: {
+                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                 self.erase_animation_by_row_col(row: self.erase_situation_4[8][0], col: self.erase_situation_4[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
@@ -7634,38 +7636,38 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 5)
             reorder(loc: center_loc, index: 5)
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_5[0][0], col: self.erase_situation_5[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_5[0][0], col: self.erase_situation_5[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_5[1][0], col: self.erase_situation_5[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_5[1][0], col: self.erase_situation_5[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_5[2][0], col: self.erase_situation_5[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_5[2][0], col: self.erase_situation_5[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_5[3][0], col: self.erase_situation_5[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_5[3][0], col: self.erase_situation_5[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_5[4][0], col: self.erase_situation_5[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_5[4][0], col: self.erase_situation_5[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_5[5][0], col: self.erase_situation_5[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_5[5][0], col: self.erase_situation_5[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_5[6][0], col: self.erase_situation_5[6][1])
                                     }, completion: {
                                         (finished) -> Void in
@@ -7692,37 +7694,37 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 6)
             reorder(loc: center_loc, index: 6)
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_6[0][0], col: self.erase_situation_6[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_6[0][0], col: self.erase_situation_6[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_6[1][0], col: self.erase_situation_6[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_6[1][0], col: self.erase_situation_6[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_6[2][0], col: self.erase_situation_6[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_6[2][0], col: self.erase_situation_6[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_6[3][0], col: self.erase_situation_6[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_6[3][0], col: self.erase_situation_6[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_6[4][0], col: self.erase_situation_6[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_6[4][0], col: self.erase_situation_6[4][1])
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_6[5][0], col: self.erase_situation_6[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_6[5][0], col: self.erase_situation_6[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_6[6][0], col: self.erase_situation_6[6][1])
                                     }, completion: {
                                         (finished) -> Void in
@@ -7747,47 +7749,47 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 7)
             reorder(loc: center_loc, index: 7)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_7[0][0], col: self.erase_situation_7[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_7[0][0], col: self.erase_situation_7[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_7[1][0], col: self.erase_situation_7[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_7[1][0], col: self.erase_situation_7[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_7[2][0], col: self.erase_situation_7[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_7[2][0], col: self.erase_situation_7[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_7[3][0], col: self.erase_situation_7[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_7[3][0], col: self.erase_situation_7[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_7[4][0], col: self.erase_situation_7[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_7[4][0], col: self.erase_situation_7[4][1])
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_7[5][0], col: self.erase_situation_7[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_7[5][0], col: self.erase_situation_7[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_7[6][0], col: self.erase_situation_7[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_7[6][0], col: self.erase_situation_7[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_7[7][0], col: self.erase_situation_7[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_7[7][0], col: self.erase_situation_7[7][1])
-                                            UIView.animate(withDuration: 0.1, animations: {
+                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                 self.erase_animation_by_row_col(row: self.erase_situation_7[8][0], col: self.erase_situation_7[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
@@ -7819,58 +7821,58 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 8)
             reorder(loc: center_loc, index: 8)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_8[0][0], col: self.erase_situation_8[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_8[0][0], col: self.erase_situation_8[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_8[1][0], col: self.erase_situation_8[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_8[1][0], col: self.erase_situation_8[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_8[2][0], col: self.erase_situation_8[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_8[2][0], col: self.erase_situation_8[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_8[3][0], col: self.erase_situation_8[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_8[3][0], col: self.erase_situation_8[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_8[4][0], col: self.erase_situation_8[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_8[4][0], col: self.erase_situation_8[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_8[5][0], col: self.erase_situation_8[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_8[5][0], col: self.erase_situation_8[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_8[6][0], col: self.erase_situation_8[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_8[6][0], col: self.erase_situation_8[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_8[7][0], col: self.erase_situation_8[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_8[7][0], col: self.erase_situation_8[7][1])
-                                            UIView.animate(withDuration: 0.1, animations: {
+                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                 self.erase_animation_by_row_col(row: self.erase_situation_8[8][0], col: self.erase_situation_8[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_8[8][0], col: self.erase_situation_8[8][1])
-                                                UIView.animate(withDuration: 0.1, animations: {
+                                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                     self.erase_animation_by_row_col(row: self.erase_situation_8[9][0], col: self.erase_situation_8[9][1])
                                                 }, completion: {
                                                     (finished) -> Void in
                                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_8[9][0], col: self.erase_situation_8[9][1])
-                                                    UIView.animate(withDuration: 0.1, animations: {
+                                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                         self.erase_animation_by_row_col(row: self.erase_situation_8[10][0], col: self.erase_situation_8[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
@@ -7906,58 +7908,58 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 9)
             reorder(loc: center_loc, index: 9)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_9[0][0], col: self.erase_situation_9[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_9[0][0], col: self.erase_situation_9[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_9[1][0], col: self.erase_situation_9[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_9[1][0], col: self.erase_situation_9[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_9[2][0], col: self.erase_situation_9[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_9[2][0], col: self.erase_situation_9[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_9[3][0], col: self.erase_situation_9[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_9[3][0], col: self.erase_situation_9[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_9[4][0], col: self.erase_situation_9[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_9[4][0], col: self.erase_situation_9[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_9[5][0], col: self.erase_situation_9[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_9[5][0], col: self.erase_situation_9[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_9[6][0], col: self.erase_situation_9[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_9[6][0], col: self.erase_situation_9[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_9[7][0], col: self.erase_situation_9[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_9[7][0], col: self.erase_situation_9[7][1])
-                                            UIView.animate(withDuration: 0.1, animations: {
+                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                 self.erase_animation_by_row_col(row: self.erase_situation_9[8][0], col: self.erase_situation_9[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_9[8][0], col: self.erase_situation_9[8][1])
-                                                UIView.animate(withDuration: 0.1, animations: {
+                                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                     self.erase_animation_by_row_col(row: self.erase_situation_9[9][0], col: self.erase_situation_9[9][1])
                                                 }, completion: {
                                                     (finished) -> Void in
                                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_9[9][0], col: self.erase_situation_9[9][1])
-                                                    UIView.animate(withDuration: 0.1, animations: {
+                                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                         self.erase_animation_by_row_col(row: self.erase_situation_9[10][0], col: self.erase_situation_9[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
@@ -7991,48 +7993,48 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 10)
             reorder(loc: center_loc, index: 10)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_10[0][0], col: self.erase_situation_10[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_10[0][0], col: self.erase_situation_10[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_10[1][0], col: self.erase_situation_10[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_10[1][0], col: self.erase_situation_10[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_10[2][0], col: self.erase_situation_10[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_10[2][0], col: self.erase_situation_10[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_10[3][0], col: self.erase_situation_10[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_10[3][0], col: self.erase_situation_10[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_10[4][0], col: self.erase_situation_10[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_10[4][0], col: self.erase_situation_10[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_10[5][0], col: self.erase_situation_10[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_10[5][0], col: self.erase_situation_10[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_10[6][0], col: self.erase_situation_10[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_10[6][0], col: self.erase_situation_10[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_10[7][0], col: self.erase_situation_10[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_10[7][0], col: self.erase_situation_10[7][1])
-                                            UIView.animate(withDuration: 0.1, animations: {
+                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                 self.erase_animation_by_row_col(row: self.erase_situation_10[8][0], col: self.erase_situation_10[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
@@ -8060,37 +8062,37 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 11)
             reorder(loc: center_loc, index: 11)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_11[0][0], col: self.erase_situation_11[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_11[0][0], col: self.erase_situation_11[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_11[1][0], col: self.erase_situation_11[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_11[1][0], col: self.erase_situation_11[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_11[2][0], col: self.erase_situation_11[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_11[2][0], col: self.erase_situation_11[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_11[3][0], col: self.erase_situation_11[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_11[3][0], col: self.erase_situation_11[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_11[4][0], col: self.erase_situation_11[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_11[4][0], col: self.erase_situation_11[4][1])
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_11[5][0], col: self.erase_situation_11[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_11[5][0], col: self.erase_situation_11[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_11[6][0], col: self.erase_situation_11[6][1])
                                     }, completion: {
                                         (finished) -> Void in
@@ -8118,38 +8120,38 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 12)
             reorder(loc: center_loc, index: 12)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_12[0][0], col: self.erase_situation_12[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_12[0][0], col: self.erase_situation_12[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_12[1][0], col: self.erase_situation_12[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_12[1][0], col: self.erase_situation_12[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_12[2][0], col: self.erase_situation_12[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_12[2][0], col: self.erase_situation_12[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_12[3][0], col: self.erase_situation_12[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_12[3][0], col: self.erase_situation_12[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_12[4][0], col: self.erase_situation_12[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_12[4][0], col: self.erase_situation_12[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_12[5][0], col: self.erase_situation_12[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_12[5][0], col: self.erase_situation_12[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_12[6][0], col: self.erase_situation_12[6][1])
                                     }, completion: {
                                         (finished) -> Void in
@@ -8175,48 +8177,48 @@ number_of_lines_erased += 1
             //animation
             let center_loc = get_center_tri(index: 13)
             reorder(loc: center_loc, index: 13)
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_13[0][0], col: self.erase_situation_13[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_13[0][0], col: self.erase_situation_13[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_13[1][0], col: self.erase_situation_13[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_13[1][0], col: self.erase_situation_13[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_13[2][0], col: self.erase_situation_13[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_13[2][0], col: self.erase_situation_13[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_13[3][0], col: self.erase_situation_13[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_13[3][0], col: self.erase_situation_13[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_13[4][0], col: self.erase_situation_13[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_13[4][0], col: self.erase_situation_13[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_13[5][0], col: self.erase_situation_13[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_13[5][0], col: self.erase_situation_13[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_13[6][0], col: self.erase_situation_13[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_13[6][0], col: self.erase_situation_13[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_13[7][0], col: self.erase_situation_13[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_13[7][0], col: self.erase_situation_13[7][1])
-                                                UIView.animate(withDuration: 0.1, animations: {
+                                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                     self.erase_animation_by_row_col(row: self.erase_situation_13[8][0], col: self.erase_situation_13[8][1])
                                                 }, completion: {
                                                     (finished) -> Void in
@@ -8245,58 +8247,58 @@ number_of_lines_erased += 1
             reorder(loc: center_loc, index: 14)
         
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_14[0][0], col: self.erase_situation_14[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_14[0][0], col: self.erase_situation_14[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_14[1][0], col: self.erase_situation_14[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_14[1][0], col: self.erase_situation_14[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_14[2][0], col: self.erase_situation_14[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_14[2][0], col: self.erase_situation_14[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_14[3][0], col: self.erase_situation_14[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_14[3][0], col: self.erase_situation_14[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_14[4][0], col: self.erase_situation_14[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_14[4][0], col: self.erase_situation_14[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_14[5][0], col: self.erase_situation_14[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_14[5][0], col: self.erase_situation_14[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_14[6][0], col: self.erase_situation_14[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_14[6][0], col: self.erase_situation_14[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_14[7][0], col: self.erase_situation_14[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_14[7][0], col: self.erase_situation_14[7][1])
-                                            UIView.animate(withDuration: 0.1, animations: {
+                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                 self.erase_animation_by_row_col(row: self.erase_situation_14[8][0], col: self.erase_situation_14[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_14[8][0], col: self.erase_situation_14[8][1])
-                                                UIView.animate(withDuration: 0.1, animations: {
+                                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                     self.erase_animation_by_row_col(row: self.erase_situation_14[9][0], col: self.erase_situation_14[9][1])
                                                 }, completion: {
                                                     (finished) -> Void in
                                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_14[9][0], col: self.erase_situation_14[9][1])
-                                                    UIView.animate(withDuration: 0.1, animations: {
+                                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                         self.erase_animation_by_row_col(row: self.erase_situation_14[10][0], col: self.erase_situation_14[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
@@ -8324,58 +8326,58 @@ number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 15)
             reorder(loc: center_loc, index: 15)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_15[0][0], col: self.erase_situation_15[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_15[0][0], col: self.erase_situation_15[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_15[1][0], col: self.erase_situation_15[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_15[1][0], col: self.erase_situation_15[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_15[2][0], col: self.erase_situation_15[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_15[2][0], col: self.erase_situation_15[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_15[3][0], col: self.erase_situation_15[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_15[3][0], col: self.erase_situation_15[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_15[4][0], col: self.erase_situation_15[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_15[4][0], col: self.erase_situation_15[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_15[5][0], col: self.erase_situation_15[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_15[5][0], col: self.erase_situation_15[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_15[6][0], col: self.erase_situation_15[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_15[6][0], col: self.erase_situation_15[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_15[7][0], col: self.erase_situation_15[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_15[7][0], col: self.erase_situation_15[7][1])
-                                            UIView.animate(withDuration: 0.1, animations: {
+                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                 self.erase_animation_by_row_col(row: self.erase_situation_15[8][0], col: self.erase_situation_15[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_15[8][0], col: self.erase_situation_15[8][1])
-                                                UIView.animate(withDuration: 0.1, animations: {
+                                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                     self.erase_animation_by_row_col(row: self.erase_situation_15[9][0], col: self.erase_situation_15[9][1])
                                                 }, completion: {
                                                     (finished) -> Void in
                                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_15[9][0], col: self.erase_situation_15[9][1])
-                                                    UIView.animate(withDuration: 0.1, animations: {
+                                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                         self.erase_animation_by_row_col(row: self.erase_situation_15[10][0], col: self.erase_situation_15[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
@@ -8407,48 +8409,48 @@ number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 16)
             reorder(loc: center_loc, index: 16)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_16[0][0], col: self.erase_situation_16[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_16[0][0], col: self.erase_situation_16[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_16[1][0], col: self.erase_situation_16[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_16[1][0], col: self.erase_situation_16[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_16[2][0], col: self.erase_situation_16[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_16[2][0], col: self.erase_situation_16[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_16[3][0], col: self.erase_situation_16[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_16[3][0], col: self.erase_situation_16[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_16[4][0], col: self.erase_situation_16[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_16[4][0], col: self.erase_situation_16[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_16[5][0], col: self.erase_situation_16[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_16[5][0], col: self.erase_situation_16[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_16[6][0], col: self.erase_situation_16[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_16[6][0], col: self.erase_situation_16[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_16[7][0], col: self.erase_situation_16[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_16[7][0], col: self.erase_situation_16[7][1])
-                                            UIView.animate(withDuration: 0.1, animations: {
+                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                 self.erase_animation_by_row_col(row: self.erase_situation_16[8][0], col: self.erase_situation_16[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
@@ -8474,38 +8476,38 @@ number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 17)
             reorder(loc: center_loc, index: 17)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_17[0][0], col: self.erase_situation_17[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_17[0][0], col: self.erase_situation_17[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_17[1][0], col: self.erase_situation_17[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_17[1][0], col: self.erase_situation_17[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_17[2][0], col: self.erase_situation_17[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_17[2][0], col: self.erase_situation_17[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_17[3][0], col: self.erase_situation_17[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_17[3][0], col: self.erase_situation_17[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_17[4][0], col: self.erase_situation_17[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_17[4][0], col: self.erase_situation_17[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_17[5][0], col: self.erase_situation_17[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_17[5][0], col: self.erase_situation_17[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_17[6][0], col: self.erase_situation_17[6][1])
                                     }, completion: {
                                         (finished) -> Void in
@@ -8530,98 +8532,98 @@ number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 18)
             reorder(loc: center_loc, index: 18)
             //animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_18[0][0], col: self.erase_situation_18[0][1])
             }, completion: {
                 (finished) -> Void in
                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[0][0], col: self.erase_situation_18[0][1])
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                     self.erase_animation_by_row_col(row: self.erase_situation_18[1][0], col: self.erase_situation_18[1][1])
                 }, completion: {
                     (finished) -> Void in
                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[1][0], col: self.erase_situation_18[1][1])
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                         self.erase_animation_by_row_col(row: self.erase_situation_18[2][0], col: self.erase_situation_18[2][1])
                     }, completion: {
                         (finished) -> Void in
                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[2][0], col: self.erase_situation_18[2][1])
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                             self.erase_animation_by_row_col(row: self.erase_situation_18[3][0], col: self.erase_situation_18[3][1])
                         }, completion: {
                             (finished) -> Void in
                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[3][0], col: self.erase_situation_18[3][1])
-                            UIView.animate(withDuration: 0.1, animations: {
+                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                 self.erase_animation_by_row_col(row: self.erase_situation_18[4][0], col: self.erase_situation_18[4][1])
                             }, completion: {
                                 (finished) -> Void in
                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[4][0], col: self.erase_situation_18[4][1])
                                 
-                                UIView.animate(withDuration: 0.1, animations: {
+                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                     self.erase_animation_by_row_col(row: self.erase_situation_18[5][0], col: self.erase_situation_18[5][1])
                                 }, completion: {
                                     (finished) -> Void in
                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[5][0], col: self.erase_situation_18[5][1])
-                                    UIView.animate(withDuration: 0.1, animations: {
+                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                         self.erase_animation_by_row_col(row: self.erase_situation_18[6][0], col: self.erase_situation_18[6][1])
                                     }, completion: {
                                         (finished) -> Void in
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[6][0], col: self.erase_situation_18[6][1])
-                                        UIView.animate(withDuration: 0.1, animations: {
+                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                             self.erase_animation_by_row_col(row: self.erase_situation_18[7][0], col: self.erase_situation_18[7][1])
                                         }, completion: {
                                             (finished) -> Void in
                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[7][0], col: self.erase_situation_18[7][1])
-                                            UIView.animate(withDuration: 0.1, animations: {
+                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                 self.erase_animation_by_row_col(row: self.erase_situation_18[8][0], col: self.erase_situation_18[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[8][0], col: self.erase_situation_18[8][1])
-                                                UIView.animate(withDuration: 0.1, animations: {
+                                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                     self.erase_animation_by_row_col(row: self.erase_situation_18[9][0], col: self.erase_situation_18[9][1])
                                                 }, completion: {
                                                     (finished) -> Void in
                                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[9][0], col: self.erase_situation_18[9][1])
-                                                    UIView.animate(withDuration: 0.1, animations: {
+                                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                         self.erase_animation_by_row_col(row: self.erase_situation_18[10][0], col: self.erase_situation_18[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
                                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[10][0], col: self.erase_situation_18[10][1])
-                                                        UIView.animate(withDuration: 0.1, animations: {
+                                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                             self.erase_animation_by_row_col(row: self.erase_situation_18[11][0], col: self.erase_situation_18[11][1])
                                                         }, completion: {
                                                             (finished) -> Void in
                                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[11][0], col: self.erase_situation_18[11][1])
-                                                            UIView.animate(withDuration: 0.1, animations: {
+                                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                                 self.erase_animation_by_row_col(row: self.erase_situation_18[12][0], col: self.erase_situation_18[12][1])
                                                             }, completion: {
                                                                 (finished) -> Void in
                                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[12][0], col: self.erase_situation_18[12][1])
-                                                                UIView.animate(withDuration: 0.1, animations: {
+                                                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                                     self.erase_animation_by_row_col(row: self.erase_situation_18[13][0], col: self.erase_situation_18[13][1])
                                                                 }, completion: {
                                                                     (finished) -> Void in
                                                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[13][0], col: self.erase_situation_18[13][1])
-                                                                    UIView.animate(withDuration: 0.1, animations: {
+                                                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                                         self.erase_animation_by_row_col(row: self.erase_situation_18[14][0], col: self.erase_situation_18[14][1])
                                                                     }, completion: {
                                                                         (finished) -> Void in
                                                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[14][0], col: self.erase_situation_18[14][1])
-                                                                        UIView.animate(withDuration: 0.1, animations: {
+                                                                        UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                                             self.erase_animation_by_row_col(row: self.erase_situation_18[15][0], col: self.erase_situation_18[15][1])
                                                                         }, completion: {
                                                                             (finished) -> Void in
                                                                             self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[15][0], col: self.erase_situation_18[15][1])
-                                                                            UIView.animate(withDuration: 0.1, animations: {
+                                                                            UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                                                 self.erase_animation_by_row_col(row: self.erase_situation_18[16][0], col: self.erase_situation_18[16][1])
                                                                             }, completion: {
                                                                                 (finished) -> Void in
                                                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[16][0], col: self.erase_situation_18[16][1])
-                                                                                UIView.animate(withDuration: 0.1, animations: {
+                                                                                UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                                                     self.erase_animation_by_row_col(row: self.erase_situation_18[17][0], col: self.erase_situation_18[17][1])
                                                                                 }, completion: {
                                                                                     (finished) -> Void in
                                                                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[17][0], col: self.erase_situation_18[17][1])
-                                                                                    UIView.animate(withDuration: 0.1, animations: {
+                                                                                    UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                                                                                         self.erase_animation_by_row_col(row: self.erase_situation_18[18][0], col: self.erase_situation_18[18][1])
                                                                                     }, completion: {
                                                                                         (finished) -> Void in
