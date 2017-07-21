@@ -417,7 +417,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     var exist1 = true
     var exist2 = true
     var exist3 = true
-    
+    var exist_array : Array<Bool> = [true,true,true]
     //original location (origin and original recs) of three shapes
     var green_drag_origin = CGPoint(x: 0, y:0 )
     var orange_drag_origin = CGPoint(x: 0, y:0 )
@@ -1176,9 +1176,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
 
         // Do any additional setup after loading the view.
         //generate first group
-        if(score == 0){
-            auto_random_generator()
-        }
+        
+     
         //
         
         var HighScoreDefault = UserDefaults.standard
@@ -1240,6 +1239,44 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         }
         
         
+        //this default must be here to set transparent if needed
+        //exist_array
+        if(defaults.value(forKey: "tritri_exist_array") == nil){
+            exist_array = [true,true,true]
+            defaults.set(exist_array, forKey: "tritri_exist_array")
+        }else{
+            exist_array = defaults.value(forKey: "tritri_exist_array") as! Array<Bool>
+        }
+        
+        exist1 = exist_array[0]
+        exist2 = exist_array[1]
+        exist3 = exist_array[2]
+        
+        if(defaults.value(forKey: "tritri_shape_type_index") == nil){
+            auto_random_generator()
+            defaults.set(shape_type_index, forKey: "tritri_shape_type_index")
+        }else{
+            shape_type_index = defaults.value(forKey: "tritri_shape_type_index") as! Array<Int>
+            if(Eligible_to_Generate()){
+                auto_random_generator()
+            }else{
+                green_drag_tri.image = generator_array[shape_type_index[0]]
+                orange_drag_tri.image = generator_array[shape_type_index[1]]
+                light_brown_drag_tri.image = generator_array[shape_type_index[2]]
+                if(!exist_array[0]){
+                    make_transparent_with_index(index: 0)
+                }
+                if(!exist_array[1]){
+                    make_transparent_with_index(index: 1)
+                }
+                if(!exist_array[2]){
+                    make_transparent_with_index(index: 2)
+                }
+            }
+            
+        }
+
+      
         
         //---------------------------------------------------------------------------
         //var to decide various theme type
@@ -1373,6 +1410,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         change_current_shapes_according_to_theme()
         
         reorder_triangle_positions_during_loading_view()
+        
+        
         
         //update tris origin
 
@@ -3219,6 +3258,10 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             defaults.set([[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]], forKey: "tritri_single_tri_stored_type")
             defaults.set([[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]], forKey: "tritri_single_tri_filled")
             defaults.set(0, forKey: "tritri_single_round_score")
+            defaults.set([true,true,true], forKey: "tritri_exist_array")
+            defaults.removeObject(forKey: "tritri_shape_type_index")
+    
+            
         })
         
         self.home_button.whenButtonIsClicked(action:{
@@ -3412,6 +3455,13 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                     exist3 = false
                 }
+                //now set exist
+                exist_array[0] = exist1
+                exist_array[1] = exist2
+                exist_array[2] = exist3
+                defaults.set(exist_array, forKey: "tritri_exist_array")
+                
+                
                 position_in_use = 3
                 
                 defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
@@ -5082,7 +5132,16 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         
     }
     
-    
+    func make_transparent_with_index(index: Int) -> Void{
+        if(index == 0){
+            green_drag_tri.image = UIImage(named:"绿色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+        }else if(index == 1){
+            orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+        }else if(index == 2){
+            light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+        }
+        
+    }
     
     
 
@@ -9659,9 +9718,11 @@ number_of_lines_erased += 1
         green_drag_tri.fadeInWithDisplacement()
         orange_drag_tri.fadeInWithDisplacement()
         light_brown_drag_tri.fadeInWithDisplacement()
-        exist1 = true
+        /**exist1 = true
         exist2 = true
-        exist3 = true
+        exist3 = true**/
+        defaults.set(exist_array, forKey: "tritri_exist_array")
+        defaults.set(shape_type_index, forKey: "tritri_shape_type_index")
     }
 
     func generate_a_non_dark_green_dri_random() -> Int {
@@ -13956,6 +14017,8 @@ number_of_lines_erased += 1
             defaults.set([[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]], forKey: "tritri_single_tri_stored_type")
             defaults.set([[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]], forKey: "tritri_single_tri_filled")
             defaults.set(0, forKey: "tritri_single_round_score")
+            defaults.set([true,true,true], forKey: "tritri_exist_array")
+             defaults.removeObject(forKey: "tritri_shape_type_index")
             count_down_circle.send_stop_signal()
             var background_cover = UIImageView(frame: self.background_image.frame)
             background_cover.image = self.background_image.image
