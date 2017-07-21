@@ -3338,8 +3338,77 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     
     
     
+    var handler_cond_before_insert : Array<Array<Bool>> = []
+    var exam_erase_animation_timer = Timer()
+    func fit_after_erasre_handler(){
+        if(!in_erase_animation){
+            
+            exam_erase_animation_timer.invalidate()
+            print("erase timer invalidate")
+            
+            let cond_before_erase = filled
+            last_score = score
+            modify_counter(before: handler_cond_before_insert, after: cond_before_erase)
+            current_score = score
+            star_score_increment()
+            Check_and_Erase()
+            let cond_after_erase = filled
+            last_score = score
+            modify_counter_after_erase(before: cond_before_erase, after: cond_after_erase)
+            current_score = score
+            star_score_increment()
+            //if the triangles are fit
+            if (position_in_use == 0){
+                green_drag_tri.frame.origin = green_drag_origin
+                green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                exist1 = false
+            }else if (position_in_use == 1){
+                orange_drag_tri.frame.origin = orange_drag_origin
+                orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                exist2 = false
+            }else if (position_in_use == 2){
+                light_brown_drag_tri.frame.origin = light_brown_drag_origin
+                light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                exist3 = false
+            }
+            //now set exist
+            exist_array[0] = exist1
+            exist_array[1] = exist2
+            exist_array[2] = exist3
+            defaults.set(exist_array, forKey: "tritri_exist_array")
+            
+            
+            position_in_use = 3
+            
+            defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
+            defaults.set(self.filled, forKey: "tritri_single_tri_filled")
+            defaults.set(self.score, forKey: "tritri_single_round_score")
+            
+            //
+            if(Eligible_to_Generate()){
+                auto_random_generator()
+                
+                
+            }
+            
+            if(Check_for_Gameover()){
+                // here code perfomed with delay
+                
+                self.Jump_to_Game_Over ()
+                
+                //print("haaaaaaaaaaaaaaaaa")
+                //let subView = UIView.init(frame: CGRect(origin: CGPoint(x: 0, y:0 ), size: CGSize(width: 200, height: 100)))
+                // subView.backgroundColor = UIColor.yellow
+                // self.view.addSubview(subView)
+                
+                
+            }
     
+            
+            
+        }
     
+    }
     //
     //function in response to drag movement
     func panGestureRecognizerAction(_ gesture: UIPanGestureRecognizer){
@@ -3413,6 +3482,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             light_brown_drag_origin = light_brown_drag_origin_backup
             
             let cond_before_insert = filled
+            handler_cond_before_insert = cond_before_insert
             if (Shape_fitting(Shape_Type: actual_type_index, position: actual_location)){
                 //play fit in sound effect
                 do{
@@ -3425,11 +3495,14 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     //print("error")
                 }
                 fit_in_player.play()
+                exam_erase_animation_timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(GameBoardViewController.fit_after_erasre_handler), userInfo: nil, repeats: true)
+                /**
                 let cond_before_erase = filled
                 last_score = score
                 modify_counter(before: cond_before_insert, after: cond_before_erase)
                 current_score = score
                 star_score_increment()
+               
                 Check_and_Erase()
                 let cond_after_erase = filled
                 last_score = score
@@ -3482,7 +3555,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             
                 }
-
+**/
                 
             } else {
                 do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
@@ -7289,7 +7362,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             }
         }
     }
-    
+    var in_erase_animation = false
     func Check_and_Erase() -> Void {
       //duplicates_array = Check_and_Erase_Create_Array()
         //situation one - row
@@ -7344,6 +7417,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 0)
             reorder(loc: center_loc, index: 0)
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                self.erase_animation_by_row_col(row: self.erase_situation_0[0][0], col: self.erase_situation_0[0][1])
             }, completion: {
@@ -7379,7 +7453,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                          self.erase_animation_by_row_col(row: self.erase_situation_0[6][0], col: self.erase_situation_0[6][1])
                                     }, completion: {
                                         (finished) -> Void in
-                                        
+                                        self.in_erase_animation = false
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_0[6][0], col: self.erase_situation_0[6][1])
                                     
                                     })
@@ -7402,6 +7476,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 1)
             reorder(loc: center_loc, index: 1)
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_1[0][0], col: self.erase_situation_1[0][1])
             }, completion: {
@@ -7447,6 +7522,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                                 self.erase_animation_by_row_col(row: self.erase_situation_1[8][0], col: self.erase_situation_1[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
+                                                self.in_erase_animation = false
                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_1[8][0], col: self.erase_situation_1[8][1])
                                             })
                                         })
@@ -7473,6 +7549,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 2)
             reorder(loc: center_loc, index: 2)
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_2[0][0], col: self.erase_situation_2[0][1])
             }, completion: {
@@ -7528,6 +7605,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                                         self.erase_animation_by_row_col(row: self.erase_situation_2[10][0], col: self.erase_situation_2[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
+                                                        self.in_erase_animation = false
                                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_2[10][0], col: self.erase_situation_2[10][1])
                                                     })
                                                 })
@@ -7554,6 +7632,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 3)
             reorder(loc: center_loc, index: 3)
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_3[0][0], col: self.erase_situation_3[0][1])
             }, completion: {
@@ -7608,6 +7687,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                                         self.erase_animation_by_row_col(row: self.erase_situation_3[10][0], col: self.erase_situation_3[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
+                                                        self.in_erase_animation = false
                                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_3[10][0], col: self.erase_situation_3[10][1])
                                                     })
                                                 })
@@ -7629,7 +7709,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         if(filled[4][0]&&filled[4][1]&&filled[4][2]&&filled[4][3]&&filled[4][4]&&filled[4][5]&&filled[4][6]&&filled[4][7]&&filled[4][8]){
 
             
-
+in_erase_animation = true
            situation4 = true
             number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 4)
@@ -7679,6 +7759,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                                 self.erase_animation_by_row_col(row: self.erase_situation_4[8][0], col: self.erase_situation_4[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
+                                                self.in_erase_animation = false
                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_4[8][0], col: self.erase_situation_4[8][1])
                                             })
                                         })
@@ -7697,7 +7778,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         ////eliminate sixth row
         if(filled[5][0]&&filled[5][1]&&filled[5][2]&&filled[5][3]&&filled[5][4]&&filled[5][5]&&filled[5][6]){
 
- 
+ in_erase_animation = true
             situation5 = true
             number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 5)
@@ -7737,6 +7818,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                         self.erase_animation_by_row_col(row: self.erase_situation_5[6][0], col: self.erase_situation_5[6][1])
                                     }, completion: {
                                         (finished) -> Void in
+                                        self.in_erase_animation = false
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_5[6][0], col: self.erase_situation_5[6][1])
                                         
                                     })
@@ -7755,7 +7837,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         //situation two - 右下斜
         if(filled[2][0]&&filled[3][0]&&filled[3][1]&&filled[4][0]&&filled[4][1]&&filled[5][0]&&filled[5][1]){
 
-
+in_erase_animation = true
             situation6 = true
             number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 6)
@@ -7794,6 +7876,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                         self.erase_animation_by_row_col(row: self.erase_situation_6[6][0], col: self.erase_situation_6[6][1])
                                     }, completion: {
                                         (finished) -> Void in
+                                        self.in_erase_animation = false
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_6[6][0], col: self.erase_situation_6[6][1])
                                     })
                                 })
@@ -7809,7 +7892,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         
         if(filled[1][0]&&filled[2][1]&&filled[2][2]&&filled[3][2]&&filled[3][3]&&filled[4][2]&&filled[4][3]&&filled[5][2]&&filled[5][3]){
 
-
+in_erase_animation = true
  situation7 = true
             number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 7)
@@ -7859,6 +7942,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                                 self.erase_animation_by_row_col(row: self.erase_situation_7[8][0], col: self.erase_situation_7[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
+                                                self.in_erase_animation = false
                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_7[8][0], col: self.erase_situation_7[8][1])
                                             })
                                         })
@@ -7887,6 +7971,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 8)
             reorder(loc: center_loc, index: 8)
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_8[0][0], col: self.erase_situation_8[0][1])
             }, completion: {
@@ -7942,6 +8027,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                                         self.erase_animation_by_row_col(row: self.erase_situation_8[10][0], col: self.erase_situation_8[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
+                                                        self.in_erase_animation = false
                                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_8[10][0], col: self.erase_situation_8[10][1])
                                                     })
                                                 })
@@ -7974,6 +8060,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 9)
             reorder(loc: center_loc, index: 9)
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_9[0][0], col: self.erase_situation_9[0][1])
             }, completion: {
@@ -8029,6 +8116,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                                         self.erase_animation_by_row_col(row: self.erase_situation_9[10][0], col: self.erase_situation_9[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
+                                                        self.in_erase_animation = false
                                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_9[10][0], col: self.erase_situation_9[10][1])
                                                     })
                                                 })
@@ -8059,6 +8147,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 10)
             reorder(loc: center_loc, index: 10)
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_10[0][0], col: self.erase_situation_10[0][1])
             }, completion: {
@@ -8104,6 +8193,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                                 self.erase_animation_by_row_col(row: self.erase_situation_10[8][0], col: self.erase_situation_10[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
+                                                self.in_erase_animation = false
                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_10[8][0], col: self.erase_situation_10[8][1])
                                             })
                                         })
@@ -8128,6 +8218,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 11)
             reorder(loc: center_loc, index: 11)
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_11[0][0], col: self.erase_situation_11[0][1])
             }, completion: {
@@ -8162,6 +8253,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                         self.erase_animation_by_row_col(row: self.erase_situation_11[6][0], col: self.erase_situation_11[6][1])
                                     }, completion: {
                                         (finished) -> Void in
+                                        self.in_erase_animation = false
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_11[6][0], col: self.erase_situation_11[6][1])
                                         
                                     })
@@ -8186,6 +8278,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let center_loc = get_center_tri(index: 12)
             reorder(loc: center_loc, index: 12)
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_12[0][0], col: self.erase_situation_12[0][1])
             }, completion: {
@@ -8221,6 +8314,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                                         self.erase_animation_by_row_col(row: self.erase_situation_12[6][0], col: self.erase_situation_12[6][1])
                                     }, completion: {
                                         (finished) -> Void in
+                                        self.in_erase_animation = false
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_12[6][0], col: self.erase_situation_12[6][1])
                                         
                                     })
@@ -8241,6 +8335,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
  situation13 = true
 number_of_lines_erased += 1
             //animation
+            in_erase_animation = true
             let center_loc = get_center_tri(index: 13)
             reorder(loc: center_loc, index: 13)
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
@@ -8288,6 +8383,7 @@ number_of_lines_erased += 1
                                                     self.erase_animation_by_row_col(row: self.erase_situation_13[8][0], col: self.erase_situation_13[8][1])
                                                 }, completion: {
                                                     (finished) -> Void in
+                                                    self.in_erase_animation = false
                                                     self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_13[8][0], col: self.erase_situation_13[8][1])
                                                 })
                                             
@@ -8313,6 +8409,7 @@ number_of_lines_erased += 1
             reorder(loc: center_loc, index: 14)
         
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_14[0][0], col: self.erase_situation_14[0][1])
             }, completion: {
@@ -8368,6 +8465,7 @@ number_of_lines_erased += 1
                                                         self.erase_animation_by_row_col(row: self.erase_situation_14[10][0], col: self.erase_situation_14[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
+                                                        self.in_erase_animation = false
                                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_14[10][0], col: self.erase_situation_14[10][1])
                                                     })
                                                 })
@@ -8392,6 +8490,7 @@ number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 15)
             reorder(loc: center_loc, index: 15)
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_15[0][0], col: self.erase_situation_15[0][1])
             }, completion: {
@@ -8447,6 +8546,7 @@ number_of_lines_erased += 1
                                                         self.erase_animation_by_row_col(row: self.erase_situation_15[10][0], col: self.erase_situation_15[10][1])
                                                     }, completion: {
                                                         (finished) -> Void in
+                                                        self.in_erase_animation = false
                                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_15[10][0], col: self.erase_situation_15[10][1])
                                                     })
                                                 })
@@ -8475,6 +8575,7 @@ number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 16)
             reorder(loc: center_loc, index: 16)
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_16[0][0], col: self.erase_situation_16[0][1])
             }, completion: {
@@ -8520,6 +8621,7 @@ number_of_lines_erased += 1
                                                 self.erase_animation_by_row_col(row: self.erase_situation_16[8][0], col: self.erase_situation_16[8][1])
                                             }, completion: {
                                                 (finished) -> Void in
+                                                self.in_erase_animation = false
                                                 self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_16[8][0], col: self.erase_situation_16[8][1])
                                             })
                                             
@@ -8542,6 +8644,7 @@ number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 17)
             reorder(loc: center_loc, index: 17)
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_17[0][0], col: self.erase_situation_17[0][1])
             }, completion: {
@@ -8577,6 +8680,7 @@ number_of_lines_erased += 1
                                         self.erase_animation_by_row_col(row: self.erase_situation_17[6][0], col: self.erase_situation_17[6][1])
                                     }, completion: {
                                         (finished) -> Void in
+                                        self.in_erase_animation = false
                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_17[6][0], col: self.erase_situation_17[6][1])
                                         
                                     })
@@ -8598,6 +8702,7 @@ number_of_lines_erased += 1
             let center_loc = get_center_tri(index: 18)
             reorder(loc: center_loc, index: 18)
             //animation
+            in_erase_animation = true
             UIView.animate(withDuration: single_tri_erase_time_duration, animations: {
                 self.erase_animation_by_row_col(row: self.erase_situation_18[0][0], col: self.erase_situation_18[0][1])
             }, completion: {
@@ -8693,6 +8798,7 @@ number_of_lines_erased += 1
                                                                                         self.erase_animation_by_row_col(row: self.erase_situation_18[18][0], col: self.erase_situation_18[18][1])
                                                                                     }, completion: {
                                                                                         (finished) -> Void in
+                                                                                        self.in_erase_animation = false
                                                                                         self.erase_animation_with_grey_tri_restore_by_row_col(row: self.erase_situation_18[18][0], col: self.erase_situation_18[18][1])
                                                                                         
                                                                                     })
