@@ -436,7 +436,7 @@ class DailyGiftViewController: UIViewController {
                     }
                     let date = NSDate()
                     self.defaults.set(date, forKey: "tritri_wheel_last_access_time_new")
-                    self.total_seconds = 20
+                    self.total_seconds = 12*60*60
                     
                     self.during_spinning = false
                     self.rewards_count_down = UILabel(frame: CGRect(x: self.screen_width/2 - self.screen_x_transform(39), y: self.screen_height/2 - self.screen_y_transform(89), width: self.screen_x_transform(330), height: self.screen_y_transform(100)))
@@ -452,7 +452,7 @@ class DailyGiftViewController: UIViewController {
                     dailyGiftNotification.sound = UNNotificationSound.default()
                     dailyGiftNotification.badge = 1
                     //deliver the notification
-                    let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 20, repeats: false)
+                    let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 12*60*60, repeats: false)
                     let request = UNNotificationRequest.init(identifier: "DailyGift", content: dailyGiftNotification, trigger: trigger)
                     //schedule notification
                     let center = UNUserNotificationCenter.current()
@@ -1030,9 +1030,9 @@ class DailyGiftViewController: UIViewController {
             let elapsed = Date().timeIntervalSince(previous_date as Date)
             passed_seconds = Int(elapsed)
             print("passed_seconds: \(elapsed)")
-            if(passed_seconds < 20){
+            if(passed_seconds < 43200){
                 count_down_end = false
-                total_seconds = 20 - passed_seconds
+                total_seconds = 43200 - passed_seconds
             }else{
                 total_seconds = 0
                 count_down_end = true

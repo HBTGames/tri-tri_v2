@@ -417,7 +417,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     var exist1 = true
     var exist2 = true
     var exist3 = true
-    
+    var exist_array : Array<Bool> = [true,true,true]
     //original location (origin and original recs) of three shapes
     var green_drag_origin = CGPoint(x: 0, y:0 )
     var orange_drag_origin = CGPoint(x: 0, y:0 )
@@ -777,7 +777,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 close_pack()
                 pack_open = false
                 }
-        if(green_drag_tri_orig_rec.contains(initialTouchLocation)){
+        if(green_drag_tri_orig_rec.contains(initialTouchLocation) && exist1){
             self.green_drag_origin.y = self.green_drag_origin.y - self.pause_screen_y_transform(70)
             self.green_drag_origin.x = self.green_drag_origin.x - self.pause_screen_x_transform(10)
         UIView.animate(withDuration: 0.3, animations: {
@@ -785,7 +785,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             self.green_drag_tri.frame.origin.x = self.green_drag_tri.frame.origin.x - self.pause_screen_x_transform(10)
             self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
         })
-        }else if(orange_drag_tri_orig_rec.contains(initialTouchLocation)){
+        }else if(orange_drag_tri_orig_rec.contains(initialTouchLocation) && exist2){
             self.orange_drag_origin.y = self.orange_drag_origin.y - self.pause_screen_y_transform(70)
             self.orange_drag_origin.x = self.orange_drag_origin.x - self.pause_screen_x_transform(10)
 
@@ -794,7 +794,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 self.orange_drag_tri.frame.origin.x = self.orange_drag_tri.frame.origin.x - self.pause_screen_x_transform(10)
                 self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
             })
-        }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation)){
+        }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation) && exist3){
              self.light_brown_drag_origin.y = self.light_brown_drag_origin.y - self.pause_screen_y_transform(70)
             self.light_brown_drag_origin.x = self.light_brown_drag_origin.x - self.pause_screen_x_transform(10)
             
@@ -940,20 +940,20 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let finalTouchLocation = touches.first!.location(in: view)
         if(!paused){
             if (!during_holy_nova){
-            if(green_drag_tri_orig_rec.contains(finalTouchLocation)){
+            if(green_drag_tri_orig_rec.contains(finalTouchLocation) && exist1){
                 self.green_drag_origin = self.green_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
                     self.green_drag_tri.frame.origin = self.green_drag_origin
                     
                     self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                 })
-            }else if(orange_drag_tri_orig_rec.contains(finalTouchLocation)){
+            }else if(orange_drag_tri_orig_rec.contains(finalTouchLocation) && exist2){
                 self.orange_drag_origin = self.orange_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
                     self.orange_drag_tri.frame.origin = self.orange_drag_origin
                     self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                 })
-            }else if(light_brown_drag_tri_orig_rec.contains(finalTouchLocation)){
+            }else if(light_brown_drag_tri_orig_rec.contains(finalTouchLocation) && exist3){
                 self.light_brown_drag_origin = self.light_brown_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
                     self.light_brown_drag_tri.frame.origin = self.light_brown_drag_origin
@@ -1176,9 +1176,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
 
         // Do any additional setup after loading the view.
         //generate first group
-        if(score == 0){
-            auto_random_generator()
-        }
+        
+     
         //
         
         var HighScoreDefault = UserDefaults.standard
@@ -1240,6 +1239,48 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         }
         
         
+        //this default must be here to set transparent if needed
+        //exist_array
+        if(defaults.value(forKey: "tritri_exist_array") == nil){
+            exist_array = [true,true,true]
+            defaults.set(exist_array, forKey: "tritri_exist_array")
+        }else{
+            exist_array = defaults.value(forKey: "tritri_exist_array") as! Array<Bool>
+        }
+        
+        exist1 = exist_array[0]
+        exist2 = exist_array[1]
+        exist3 = exist_array[2]
+        //print("exist1: \(exist1), exist2: \(exist2), exist3: \(exist3)")
+        
+        if(defaults.value(forKey: "tritri_shape_type_index") == nil){
+            auto_random_generator()
+            defaults.set(shape_type_index, forKey: "tritri_shape_type_index")
+        }else{
+            if(Eligible_to_Generate()){
+                auto_random_generator()
+            }
+            else{
+            shape_type_index = defaults.value(forKey: "tritri_shape_type_index") as! Array<Int>
+         
+                green_drag_tri.image = generator_array[shape_type_index[0]]
+                orange_drag_tri.image = generator_array[shape_type_index[1]]
+                light_brown_drag_tri.image = generator_array[shape_type_index[2]]
+                if(!exist_array[0]){
+                    make_transparent_with_index(index: 0)
+                }
+                if(!exist_array[1]){
+                    make_transparent_with_index(index: 1)
+                }
+                if(!exist_array[2]){
+                    make_transparent_with_index(index: 2)
+                }
+            
+            
+        }
+        }
+
+      
         
         //---------------------------------------------------------------------------
         //var to decide various theme type
@@ -1373,6 +1414,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         change_current_shapes_according_to_theme()
         
         reorder_triangle_positions_during_loading_view()
+        
+        
         
         //update tris origin
 
@@ -3219,6 +3262,10 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             defaults.set([[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]], forKey: "tritri_single_tri_stored_type")
             defaults.set([[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]], forKey: "tritri_single_tri_filled")
             defaults.set(0, forKey: "tritri_single_round_score")
+            defaults.set([true,true,true], forKey: "tritri_exist_array")
+            defaults.removeObject(forKey: "tritri_shape_type_index")
+    
+            
         })
         
         self.home_button.whenButtonIsClicked(action:{
@@ -3301,37 +3348,38 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         }
         if (!paused && !in_theme_menu && !during_holy_nova){
             
-        
+        //print("exist1: \(exist1), exist2: \(exist2), exist3: \(exist3)")
+            
         var actual_type_index = 0
         var actual_location = CGPoint(x:0, y:0)
         //if original frame contains the initial point
-        if(green_drag_tri_orig_rec.contains(initialTouchLocation)){
-            if (exist1 == false){
-                return
-            }
-            self.view.bringSubview(toFront: green_drag_tri)
+        if(green_drag_tri_orig_rec.contains(initialTouchLocation) && exist1){
+           self.view.bringSubview(toFront: green_drag_tri)
+            UIView.animate(withDuration: 0.3, animations: {
+            self.green_drag_tri.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            })
             position_in_use = 0
             //alternative_drag_tri = green_drag_tri
             let transition0 = gesture.translation(in: green_drag_tri)
             green_drag_tri.frame.origin = CGPoint(x: green_drag_origin.x+transition0.x , y: green_drag_origin.y+transition0.y)
             actual_type_index = shape_type_index[0]
             actual_location = green_drag_tri.frame.origin
-        } else if(orange_drag_tri_orig_rec.contains(initialTouchLocation)){
-            if (exist2 == false){
-                return
-            }
+        } else if(orange_drag_tri_orig_rec.contains(initialTouchLocation) && exist2){
             self.view.bringSubview(toFront: orange_drag_tri)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.orange_drag_tri.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            })
             position_in_use = 1
             //alternative_drag_tri = orange_drag_tri
             let transition1 = gesture.translation(in: orange_drag_tri)
             orange_drag_tri.frame.origin = CGPoint(x:orange_drag_origin.x+transition1.x , y:orange_drag_origin.y+transition1.y)
             actual_type_index = shape_type_index[1]
             actual_location = orange_drag_tri.frame.origin
-          }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation)){
-            if (exist3 == false){
-                return
-            }
+          }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation) && exist3){
             self.view.bringSubview(toFront: light_brown_drag_tri)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            })
             position_in_use = 2
             //alternative_drag_tri = *light_brown_drag_tri
             let transition2 = gesture.translation(in: light_brown_drag_tri)
@@ -3402,6 +3450,13 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                     exist3 = false
                 }
+                //now set exist
+                exist_array[0] = exist1
+                exist_array[1] = exist2
+                exist_array[2] = exist3
+                defaults.set(exist_array, forKey: "tritri_exist_array")
+                
+                
                 position_in_use = 3
                 
                 defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
@@ -5072,7 +5127,16 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         
     }
     
-    
+    func make_transparent_with_index(index: Int) -> Void{
+        if(index == 0){
+            green_drag_tri.image = UIImage(named:"绿色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+        }else if(index == 1){
+            orange_drag_tri.image = UIImage(named:"橙色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+        }else if(index == 2){
+            light_brown_drag_tri.image = UIImage(named:"棕色tri")?.tint(color: tri_color_5, blendMode: .destinationIn)
+        }
+        
+    }
     
     
 
@@ -7230,6 +7294,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
       //duplicates_array = Check_and_Erase_Create_Array()
         //situation one - row
         //eliminate first row
+        
+         print("in erase animation now")
          situation0 = false
         situation1 = false
          situation2 = false
@@ -8658,7 +8724,7 @@ number_of_lines_erased += 1
     
     func Check_And_Erase_Fix_Filled() -> Void {
         
-
+      print("in fix filled right now")
         if(situation0){
            // erase_player.play()
             filled[0][0] = false
@@ -9135,7 +9201,7 @@ number_of_lines_erased += 1
             single_tri_stored_type_index[4][6] = -1
             
         }
-        
+   print("quit fix filled right now")
     }
     
     
@@ -9158,6 +9224,8 @@ number_of_lines_erased += 1
             exist1 = true
             exist2 = true
             exist3 = true
+            exist_array = [true,true,true]
+            defaults.set(exist_array, forKey: "tritri_exist_array")
             return true
         }else{
             return false
@@ -9651,9 +9719,10 @@ number_of_lines_erased += 1
         green_drag_tri.fadeInWithDisplacement()
         orange_drag_tri.fadeInWithDisplacement()
         light_brown_drag_tri.fadeInWithDisplacement()
-        exist1 = true
+        /**exist1 = true
         exist2 = true
-        exist3 = true
+        exist3 = true**/
+        defaults.set(shape_type_index, forKey: "tritri_shape_type_index")
     }
 
     func generate_a_non_dark_green_dri_random() -> Int {
@@ -12117,7 +12186,7 @@ number_of_lines_erased += 1
         moving_star.layer.add(animation, forKey: nil)
         self.view.addSubview(moving_star)
         UIView.animate(withDuration: 1.3, animations: {
-            self.moving_star.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            self.moving_star.transform = CGAffineTransform(scaleX: CGFloat(0.7), y: CGFloat(0.7))
 
         }, completion: {
             (finished) -> Void in
@@ -12136,7 +12205,7 @@ number_of_lines_erased += 1
     func customPath() -> UIBezierPath {
     let path = UIBezierPath()
         path.move(to: CGPoint(x: screen_width/2 , y: screen_height/2))
-        let endPoint = CGPoint(x: star_counter.frame.origin.x + CGFloat(28), y:  star_counter.frame.origin.y + CGFloat(20))
+        let endPoint = CGPoint(x: star_counter.frame.origin.x + CGFloat(32), y:  star_counter.frame.origin.y + CGFloat(20))
         let cp1 = CGPoint(x: 100, y: 300)
         let cp2 = CGPoint(x: 100, y: 300)
         path.addCurve(to: endPoint, controlPoint1: cp1, controlPoint2: cp2)
@@ -12166,6 +12235,11 @@ number_of_lines_erased += 1
     }
     
     @IBAction func random_generator(_ sender: UIButton) {
+        exist1 = true
+        exist2 = true
+        exist3 = true
+        exist_array = [true,true,true]
+        defaults.set(exist_array, forKey: "tritri_exist_array")
         auto_random_generator()
     }
     
@@ -13948,6 +14022,8 @@ number_of_lines_erased += 1
             defaults.set([[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]], forKey: "tritri_single_tri_stored_type")
             defaults.set([[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]], forKey: "tritri_single_tri_filled")
             defaults.set(0, forKey: "tritri_single_round_score")
+            defaults.set([true,true,true], forKey: "tritri_exist_array")
+             defaults.removeObject(forKey: "tritri_shape_type_index")
             count_down_circle.send_stop_signal()
             var background_cover = UIImageView(frame: self.background_image.frame)
             background_cover.image = self.background_image.image
@@ -13995,7 +14071,11 @@ number_of_lines_erased += 1
                 self.count_down_view.removeFromSuperview()
                 self.tool_quantity_array[0] -= 1
                 defaults.set(self.tool_quantity_array, forKey: "tritri_tool_quantity_array")
-                
+                self.exist1 = true
+                self.exist2 = true
+                self.exist3 = true
+                self.exist_array = [true,true,true]
+                defaults.set(self.exist_array, forKey: "tritri_exist_array")
                 self.auto_random_generator()
                 self.paused = false
                 game_over_timer.invalidate()
@@ -14016,6 +14096,11 @@ number_of_lines_erased += 1
                     self.revive_text.removeFromSuperview()
                     self.text_background_patch.removeFromSuperview()
                     self.count_down_view.removeFromSuperview()
+                    self.exist1 = true
+                    self.exist2 = true
+                    self.exist3 = true
+                    self.exist_array = [true,true,true]
+                    defaults.set(self.exist_array, forKey: "tritri_exist_array")
                     self.auto_random_generator()
                     self.paused = false
                     game_over_timer.invalidate()
@@ -16515,17 +16600,18 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
         var index = 0
         while(remaining_tri > 0 && index < situation_lack_tri_number.count ){
         var smallest_lack = sorted_situation_lack_tri_number[index]
-        //print("smallest_lack is \(smallest_lack)")
+        print("smallest_lack is \(smallest_lack)")
         var smallest_lack_situation = situation_lack_tri_number.index(of: smallest_lack)!
         //print("smallest_lack_situation is \(smallest_lack_situation)")
             if(smallest_lack > 3){
-                smallest_lack = 3
+                smallest_lack = remaining_tri
             }
         situation_lack_tri_number[smallest_lack_situation] -= smallest_lack
         sorted_situation_lack_tri_number = situation_lack_tri_number
         sorted_situation_lack_tri_number.sort()
         fill_tris_to_situation(situation_index: smallest_lack_situation, tri_number: smallest_lack)
         remaining_tri -= smallest_lack
+        print("remaining_tri: \(remaining_tri)")
         index += 1
         }
         print("lacks are")
@@ -16571,7 +16657,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 }
                 i += 1
             }
-            
+            print("filled_number: \(filled_number)")
             
         }else if(situation_index == 1){
             var filled_number = 0
@@ -16596,7 +16682,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+            print("filled_number: \(filled_number)")
         }else if(situation_index == 2){
             var filled_number = 0
             var i = 0
@@ -16620,7 +16706,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+          print("filled_number: \(filled_number)")
         }else if(situation_index == 3){
             var filled_number = 0
             var i = 0
@@ -16644,7 +16730,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 4){
             var filled_number = 0
             var i = 0
@@ -16668,7 +16754,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 5){
             var filled_number = 0
             var i = 0
@@ -16692,7 +16778,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 6){
             var filled_number = 0
             var i = 0
@@ -16716,7 +16802,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 7){
             var filled_number = 0
             var i = 0
@@ -16740,7 +16826,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+        print("filled_number: \(filled_number)")
         }else if(situation_index == 8){
             var filled_number = 0
             var i = 0
@@ -16764,7 +16850,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 9){
             var filled_number = 0
             var i = 0
@@ -16788,7 +16874,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+          print("filled_number: \(filled_number)")
         }else if(situation_index == 10){
             var filled_number = 0
             var i = 0
@@ -16812,7 +16898,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+          print("filled_number: \(filled_number)")
         }else if(situation_index == 11){
             var filled_number = 0
             var i = 0
@@ -16836,7 +16922,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 12){
             var filled_number = 0
             var i = 0
@@ -16859,7 +16945,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 }
                 i += 1
             }
-
+ print("filled_number: \(filled_number)")
             
         }else if(situation_index == 13){
             var filled_number = 0
@@ -16884,7 +16970,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 14){
             var filled_number = 0
             var i = 0
@@ -16908,7 +16994,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 15){
             var filled_number = 0
             var i = 0
@@ -16932,7 +17018,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 16){
             var filled_number = 0
             var i = 0
@@ -16956,7 +17042,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 17){
             var filled_number = 0
             var i = 0
@@ -16979,7 +17065,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 }
                 i += 1
             }
-
+ print("filled_number: \(filled_number)")
             
         }else if(situation_index == 18){
             var filled_number = 0
@@ -17004,7 +17090,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }
         
         
@@ -17216,8 +17302,8 @@ func trinity_animation() -> Void {
     var shape_color_down = UIImage(named:"purple_downwards")!
     //if Themetype == 1 doesnt change
     if (ThemeType == 2){
-        shape_color_up = UIImage(named: "小肉 up")!
-        shape_color_down = UIImage(named: "小肉 down")!
+        shape_color_up = #imageLiteral(resourceName: "purple_upwards")
+        shape_color_down = #imageLiteral(resourceName: "purple_downwards")
     }else if(ThemeType == 3){
         shape_color_up = UIImage(named: "BW_black_tri_up")!
         shape_color_down = UIImage(named: "BW_black_tri_down")!
@@ -18100,6 +18186,11 @@ func trinity_animation() -> Void {
         }
     }
     
+    @IBAction func star_animation_test(_ sender: UIButton) {
+        
+    star_animation()
+        
+    }
 
     
 }
