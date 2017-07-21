@@ -16513,17 +16513,18 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
         var index = 0
         while(remaining_tri > 0 && index < situation_lack_tri_number.count ){
         var smallest_lack = sorted_situation_lack_tri_number[index]
-        //print("smallest_lack is \(smallest_lack)")
+        print("smallest_lack is \(smallest_lack)")
         var smallest_lack_situation = situation_lack_tri_number.index(of: smallest_lack)!
         //print("smallest_lack_situation is \(smallest_lack_situation)")
             if(smallest_lack > 3){
-                smallest_lack = 3
+                smallest_lack = remaining_tri
             }
         situation_lack_tri_number[smallest_lack_situation] -= smallest_lack
         sorted_situation_lack_tri_number = situation_lack_tri_number
         sorted_situation_lack_tri_number.sort()
         fill_tris_to_situation(situation_index: smallest_lack_situation, tri_number: smallest_lack)
         remaining_tri -= smallest_lack
+        print("remaining_tri: \(remaining_tri)")
         index += 1
         }
         print("lacks are")
@@ -16569,7 +16570,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 }
                 i += 1
             }
-            
+            print("filled_number: \(filled_number)")
             
         }else if(situation_index == 1){
             var filled_number = 0
@@ -16594,7 +16595,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+            print("filled_number: \(filled_number)")
         }else if(situation_index == 2){
             var filled_number = 0
             var i = 0
@@ -16618,7 +16619,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+          print("filled_number: \(filled_number)")
         }else if(situation_index == 3){
             var filled_number = 0
             var i = 0
@@ -16642,7 +16643,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 4){
             var filled_number = 0
             var i = 0
@@ -16666,7 +16667,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 5){
             var filled_number = 0
             var i = 0
@@ -16690,7 +16691,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 6){
             var filled_number = 0
             var i = 0
@@ -16714,7 +16715,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 7){
             var filled_number = 0
             var i = 0
@@ -16738,7 +16739,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+        print("filled_number: \(filled_number)")
         }else if(situation_index == 8){
             var filled_number = 0
             var i = 0
@@ -16762,7 +16763,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 9){
             var filled_number = 0
             var i = 0
@@ -16786,7 +16787,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+          print("filled_number: \(filled_number)")
         }else if(situation_index == 10){
             var filled_number = 0
             var i = 0
@@ -16810,7 +16811,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+          print("filled_number: \(filled_number)")
         }else if(situation_index == 11){
             var filled_number = 0
             var i = 0
@@ -16834,7 +16835,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 12){
             var filled_number = 0
             var i = 0
@@ -16857,7 +16858,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 }
                 i += 1
             }
-
+ print("filled_number: \(filled_number)")
             
         }else if(situation_index == 13){
             var filled_number = 0
@@ -16882,7 +16883,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 14){
             var filled_number = 0
             var i = 0
@@ -16906,7 +16907,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 15){
             var filled_number = 0
             var i = 0
@@ -16930,7 +16931,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 16){
             var filled_number = 0
             var i = 0
@@ -16954,7 +16955,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }else if(situation_index == 17){
             var filled_number = 0
             var i = 0
@@ -16977,7 +16978,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 }
                 i += 1
             }
-
+ print("filled_number: \(filled_number)")
             
         }else if(situation_index == 18){
             var filled_number = 0
@@ -17002,7 +17003,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 i += 1
             }
 
-            
+         print("filled_number: \(filled_number)")
         }
         
         
