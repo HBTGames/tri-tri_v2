@@ -47,24 +47,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         //add notification
+        /**
         let notification_content = UNMutableNotificationContent()
         notification_content.title = NSString.localizedUserNotificationString(forKey: "Time is now!", arguments: nil)
         notification_content.body = NSString.localizedUserNotificationString(forKey: "客官可别忘了俺", arguments: nil)
         notification_content.sound = UNNotificationSound.default()
         notification_content.badge = 1
         //deliver the notification
-        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 600, repeats: false)
-        let request = UNNotificationRequest.init(identifier: "FiveSeconds", content: notification_content, trigger: trigger)
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1800, repeats: false)
+        let request = UNNotificationRequest.init(identifier: "Time_Now", content: notification_content, trigger: trigger)
         //schedule notification
         let center = UNUserNotificationCenter.current()
         center.add(request)
         //
+ **/
         
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+        /**
         let center = UNUserNotificationCenter.current()
-        center.removePendingNotificationRequests(withIdentifiers: ["FiveSeconds"])
+        center.removePendingNotificationRequests(withIdentifiers: ["Time's Now"])
+ **/
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 

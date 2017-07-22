@@ -10,8 +10,6 @@
 		00B30D3C3C9B83F7F1855572 /* Pods_tri_tri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EE653BEA0021E2F147D2C3 /* Pods_tri_tri.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		042B79691F0E5EC700F3E81D /* purification.wav in Resources */ = {isa = PBXBuildFile; fileRef = 042B79681F0E5EC700F3E81D /* purification.wav */; };
 		042D870B1ED8707D007A329C /* LottieTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D870A1ED8707D007A329C /* LottieTestViewController.swift */; };
-		042D870D1ED870FB007A329C /* servishero_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 042D870C1ED870FB007A329C /* servishero_loading.json */; };
-		042D87151ED99CC0007A329C /* tst.json in Resources */ = {isa = PBXBuildFile; fileRef = 042D87141ED99CC0007A329C /* tst.json */; };
 		042F04A11F132BA6005DD0EC /* holy_nova.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 042F04A01F132BA6005DD0EC /* holy_nova.mp3 */; };
 		0453BA7F1F0A255300E2D724 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453BA7E1F0A255300E2D724 /* TutorialViewController.swift */; };
 		04DFBD621F148D4700266144 /* resurrectCountDownCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFBD611F148D4700266144 /* resurrectCountDownCircle.swift */; };
@@ -40,13 +38,10 @@
 		5665D9011F12630F006853BF /* add.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5665D9001F12630F006853BF /* add.wav */; };
 		5665D9031F12631E006853BF /* sub.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5665D9021F12631E006853BF /* sub.wav */; };
 		5665D9051F126394006853BF /* sub_not_allowed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5665D9041F126394006853BF /* sub_not_allowed.wav */; };
-		5668B6E41F03507E007BC5E3 /* crown.json in Resources */ = {isa = PBXBuildFile; fileRef = 5668B6E31F03507E007BC5E3 /* crown.json */; };
-		5668B6E81F03C632007BC5E3 /* favourite_app_icon.json in Resources */ = {isa = PBXBuildFile; fileRef = 5668B6E71F03C632007BC5E3 /* favourite_app_icon.json */; };
 		5668B6EA1F03CA54007BC5E3 /* star.json in Resources */ = {isa = PBXBuildFile; fileRef = 5668B6E91F03CA54007BC5E3 /* star.json */; };
 		5668B6EC1F03E093007BC5E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5668B6EB1F03E093007BC5E3 /* Assets.xcassets */; };
 		5668B6EE1F048475007BC5E3 /* DailyGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5668B6ED1F048475007BC5E3 /* DailyGiftViewController.swift */; };
 		566A590A1EC942DD0056D665 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A59091EC942DD0056D665 /* LaunchViewController.swift */; };
-		566E64D71EDADC810034B1AA /* star_appear_ani.json in Resources */ = {isa = PBXBuildFile; fileRef = 566E64D61EDADC810034B1AA /* star_appear_ani.json */; };
 		566ED38A1F0EFFFF006A0BBF /* doom_day_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 566ED3891F0EFFFF006A0BBF /* doom_day_sound.wav */; };
 		566ED38C1F0F0140006A0BBF /* amplifier_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 566ED38B1F0F0140006A0BBF /* amplifier_sound.wav */; };
 		566ED38E1F0F01DF006A0BBF /* trinity_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 566ED38D1F0F01DF006A0BBF /* trinity_sound.wav */; };
@@ -54,7 +49,6 @@
 		569D0F451F0907F700264D3C /* spin_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 569D0F441F0907F700264D3C /* spin_2.mp3 */; };
 		56A61C841EC5D30500A29B6F /* GameBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEBEA51EC3254E008BBD04 /* GameBoardViewController.swift */; };
 		56A61C8B1EC5DA2400A29B6F /* background music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56A61C8A1EC5DA2400A29B6F /* background music.mp3 */; };
-		56BB16E61EDC693D00EB5826 /* star_appear.json in Resources */ = {isa = PBXBuildFile; fileRef = 56BB16E51EDC693D00EB5826 /* star_appear.json */; };
 		56BEBEA81EC32C25008BBD04 /* UIImageTintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEBEA71EC32C25008BBD04 /* UIImageTintExtension.swift */; };
 		56C3F4271ED276F200DE21BD /* restart_soundeffect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F4261ED276F200DE21BD /* restart_soundeffect.wav */; };
 		56C3F4291ED279D200DE21BD /* erase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56C3F4281ED279D200DE21BD /* erase.wav */; };
@@ -67,7 +61,6 @@
 		56D12A201F07F08200C047E1 /* spinning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D12A1F1F07F08200C047E1 /* spinning.mp3 */; };
 		56EBEA631F1B631500455119 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBEA621F1B631500455119 /* UIButtonExtension.swift */; };
 		56EBEA6C1F1BA8B500455119 /* Fresca-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56EBEA6B1F1BA8B500455119 /* Fresca-Regular.ttf */; };
-		56F66DEB1EDB1C2D001E1DB6 /* start.json in Resources */ = {isa = PBXBuildFile; fileRef = 56F66DEA1EDB1C2D001E1DB6 /* start.json */; };
 		B7476A082D7B9720D6CAA215 /* Pods_tri_triUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FF444272BCFA86D0D6EEBF /* Pods_tri_triUITests.framework */; };
 		EA0889133B078E2736D5E47B /* Pods_tri_triTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CE8A342F12D783B129AFA0 /* Pods_tri_triTests.framework */; };
 /* End PBXBuildFile section */
@@ -92,8 +85,6 @@
 /* Begin PBXFileReference section */
 		042B79681F0E5EC700F3E81D /* purification.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = purification.wav; sourceTree = "<group>"; };
 		042D870A1ED8707D007A329C /* LottieTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieTestViewController.swift; sourceTree = "<group>"; };
-		042D870C1ED870FB007A329C /* servishero_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servishero_loading.json; sourceTree = "<group>"; };
-		042D87141ED99CC0007A329C /* tst.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tst.json; sourceTree = "<group>"; };
 		042F04A01F132BA6005DD0EC /* holy_nova.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = holy_nova.mp3; sourceTree = "<group>"; };
 		0453BA7E1F0A255300E2D724 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		04DFBD611F148D4700266144 /* resurrectCountDownCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resurrectCountDownCircle.swift; sourceTree = "<group>"; };
@@ -129,13 +120,10 @@
 		5665D9001F12630F006853BF /* add.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = add.wav; sourceTree = "<group>"; };
 		5665D9021F12631E006853BF /* sub.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sub.wav; sourceTree = "<group>"; };
 		5665D9041F126394006853BF /* sub_not_allowed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sub_not_allowed.wav; sourceTree = "<group>"; };
-		5668B6E31F03507E007BC5E3 /* crown.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crown.json; sourceTree = "<group>"; };
-		5668B6E71F03C632007BC5E3 /* favourite_app_icon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = favourite_app_icon.json; sourceTree = "<group>"; };
 		5668B6E91F03CA54007BC5E3 /* star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star.json; sourceTree = "<group>"; };
 		5668B6EB1F03E093007BC5E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5668B6ED1F048475007BC5E3 /* DailyGiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyGiftViewController.swift; sourceTree = "<group>"; };
 		566A59091EC942DD0056D665 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
-		566E64D61EDADC810034B1AA /* star_appear_ani.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star_appear_ani.json; sourceTree = "<group>"; };
 		566ED3891F0EFFFF006A0BBF /* doom_day_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = doom_day_sound.wav; sourceTree = "<group>"; };
 		566ED38B1F0F0140006A0BBF /* amplifier_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = amplifier_sound.wav; sourceTree = "<group>"; };
 		566ED38D1F0F01DF006A0BBF /* trinity_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trinity_sound.wav; sourceTree = "<group>"; };
@@ -143,7 +131,6 @@
 		569D0F421F08F37200264D3C /* spin_new.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spin_new.mp3; sourceTree = "<group>"; };
 		569D0F441F0907F700264D3C /* spin_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spin_2.mp3; sourceTree = "<group>"; };
 		56A61C8A1EC5DA2400A29B6F /* background music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "background music.mp3"; sourceTree = "<group>"; };
-		56BB16E51EDC693D00EB5826 /* star_appear.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star_appear.json; sourceTree = "<group>"; };
 		56BEBEA51EC3254E008BBD04 /* GameBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoardViewController.swift; sourceTree = "<group>"; };
 		56BEBEA71EC32C25008BBD04 /* UIImageTintExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageTintExtension.swift; sourceTree = "<group>"; };
 		56C3F4261ED276F200DE21BD /* restart_soundeffect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = restart_soundeffect.wav; sourceTree = "<group>"; };
@@ -157,7 +144,6 @@
 		56D12A1F1F07F08200C047E1 /* spinning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spinning.mp3; sourceTree = "<group>"; };
 		56EBEA621F1B631500455119 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		56EBEA6B1F1BA8B500455119 /* Fresca-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fresca-Regular.ttf"; sourceTree = "<group>"; };
-		56F66DEA1EDB1C2D001E1DB6 /* start.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = start.json; sourceTree = "<group>"; };
 		6E3662C80E04A565E7C9DB9B /* Pods-tri-triUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tri-triUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tri-triUITests/Pods-tri-triUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		71EE653BEA0021E2F147D2C3 /* Pods_tri_tri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tri_tri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75CE8A342F12D783B129AFA0 /* Pods_tri_triTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tri_triTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,8 +214,6 @@
 				566A590C1EC944650056D665 /* Launch Animation */,
 				56A61C851EC5D68100A29B6F /* Music */,
 				04E48D4E1EC075FA00823F45 /* 540654.jpg */,
-				042D87141ED99CC0007A329C /* tst.json */,
-				042D870C1ED870FB007A329C /* servishero_loading.json */,
 				04E48D1E1EC0704000823F45 /* AppDelegate.swift */,
 				04E48D201EC0704000823F45 /* ViewController.swift */,
 				564542D01EC95C2300BFBD0C /* MenuViewController.swift */,
@@ -285,11 +269,6 @@
 		566E64D51EDADC750034B1AA /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				56BB16E51EDC693D00EB5826 /* star_appear.json */,
-				566E64D61EDADC810034B1AA /* star_appear_ani.json */,
-				56F66DEA1EDB1C2D001E1DB6 /* start.json */,
-				5668B6E31F03507E007BC5E3 /* crown.json */,
-				5668B6E71F03C632007BC5E3 /* favourite_app_icon.json */,
 				5668B6E91F03CA54007BC5E3 /* star.json */,
 			);
 			name = Animation;
@@ -489,10 +468,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5668B6E41F03507E007BC5E3 /* crown.json in Resources */,
 				5620A38A1ECAB89F0035E099 /* background_music_tony.m4a in Resources */,
 				566ED38A1F0EFFFF006A0BBF /* doom_day_sound.wav in Resources */,
-				56F66DEB1EDB1C2D001E1DB6 /* start.json in Resources */,
 				563E7F601ED2EE5A008F33C1 /* not_fit.wav in Resources */,
 				042B79691F0E5EC700F3E81D /* purification.wav in Resources */,
 				56C3F4271ED276F200DE21BD /* restart_soundeffect.wav in Resources */,
@@ -504,9 +481,7 @@
 				5665D9031F12631E006853BF /* sub.wav in Resources */,
 				569D0F431F08F37200264D3C /* spin_new.mp3 in Resources */,
 				563E7F641ED474DA008F33C1 /* 3_times_erase.wav in Resources */,
-				56BB16E61EDC693D00EB5826 /* star_appear.json in Resources */,
 				56C3F42D1ED27CC400DE21BD /* opening.wav in Resources */,
-				042D87151ED99CC0007A329C /* tst.json in Resources */,
 				564542CF1EC9591A00BFBD0C /* anim.mp4 in Resources */,
 				56D12A1E1F07EC4E00C047E1 /* door_open_and_reming.mp3 in Resources */,
 				04E48D291EC0704000823F45 /* LaunchScreen.storyboard in Resources */,
@@ -519,9 +494,6 @@
 				04E48D4F1EC075FA00823F45 /* 540654.jpg in Resources */,
 				563E7F621ED47352008F33C1 /* 1_time_erase.mp3 in Resources */,
 				56A61C8B1EC5DA2400A29B6F /* background music.mp3 in Resources */,
-				566E64D71EDADC810034B1AA /* star_appear_ani.json in Resources */,
-				5668B6E81F03C632007BC5E3 /* favourite_app_icon.json in Resources */,
-				042D870D1ED870FB007A329C /* servishero_loading.json in Resources */,
 				56EBEA6C1F1BA8B500455119 /* Fresca-Regular.ttf in Resources */,
 				5644A5F31EC428FC000066D6 /* Base.lproj in Resources */,
 				042F04A11F132BA6005DD0EC /* holy_nova.mp3 in Resources */,
@@ -866,6 +838,7 @@
 				DEVELOPMENT_TEAM = 79J3C467UK;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "tri-tri/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tritri.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -883,6 +856,7 @@
 				DEVELOPMENT_TEAM = 79J3C467UK;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "tri-tri/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tritri.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
