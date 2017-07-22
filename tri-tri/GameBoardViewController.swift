@@ -2074,7 +2074,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             self.ThemeType = 1
             self.view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
             self.background_image.alpha = 0
-            
+            self.triangle_title_image_decider()
             self.downwards_tri = UIImage(named:"grey_tir_downwards")
             self.upwards_tri = UIImage(named:"grey_tri_upwards")
             self.star_counter.image = UIImage(named:"day_mode_star")
@@ -7409,7 +7409,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         erase_situation_17 = []
         erase_situation_18 = []
         
-        let single_tri_erase_time_duration = 0.04
+        let single_tri_erase_time_duration = 0.07
         
         number_of_lines_erased = 0
         if(filled[0][0]&&filled[0][1]&&filled[0][2]&&filled[0][3]&&filled[0][4]&&filled[0][5]&&filled[0][6]){
@@ -14182,6 +14182,7 @@ number_of_lines_erased += 1
                 self.exist3 = true
                 self.exist_array = [true,true,true]
                 defaults.set(self.exist_array, forKey: "tritri_exist_array")
+                
                 self.auto_random_generator()
                 self.paused = false
                 game_over_timer.invalidate()
@@ -17831,6 +17832,9 @@ func trinity_animation() -> Void {
             defaults.set([[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]], forKey: "tritri_single_tri_stored_type")
             defaults.set([[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]], forKey: "tritri_single_tri_filled")
             defaults.set(0, forKey: "tritri_single_round_score")
+            defaults.set([true,true,true], forKey: "tritri_exist_array")
+            defaults.removeObject(forKey: "tritri_shape_type_index")
+
             close_button.whenButtonIsClicked{
             
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
