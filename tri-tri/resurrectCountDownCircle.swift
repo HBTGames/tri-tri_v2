@@ -26,7 +26,12 @@ class resurrectCountDownCircle: SKScene{
     override func didMove(to:SKView) {
         
         let circle = SKShapeNode(circleOfRadius: pause_screen_x_transform(125))
-        circle.fillColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.5))
+        if (defaults.value(forKey: "tritri_Theme") as! Int != 2){
+            circle.fillColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0.5))
+        }
+        else {
+            circle.fillColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(0.1))
+        }
         circle.strokeColor = SKColor.clear
         circle.zRotation = CGFloat.pi / 2
         addChild(circle)
