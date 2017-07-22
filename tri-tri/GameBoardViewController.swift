@@ -17816,15 +17816,15 @@ func trinity_animation() -> Void {
             self.colors_apply_button.isEnabled = true
             self.theme_menu_star_store_button.isEnabled = true
             self.return_button.isEnabled = true
-            self.purchase_star_menu.removeFromSuperview()
-            self.more_stars_label.removeFromSuperview()
-            self.close_button.removeFromSuperview()
+            self.purchase_star_menu.fadeOutandRemove()
+            self.more_stars_label.fadeOutandRemove()
+            self.close_button.fadeOutandRemove()
             
             
-            self.purchase_star_1000_bg.removeFromSuperview()
-            self.purchase_star_500_bg.removeFromSuperview()
-            self.purchase_star_1000_button.removeFromSuperview()
-            self.purchase_star_500_button.removeFromSuperview()
+            self.purchase_star_1000_bg.fadeOutandRemove()
+            self.purchase_star_500_bg.fadeOutandRemove()
+            self.purchase_star_1000_button.fadeOutandRemove()
+            self.purchase_star_500_button.fadeOutandRemove()
             
             self.paused = false
             }
@@ -17870,15 +17870,15 @@ func trinity_animation() -> Void {
                 self.colors_apply_button.isEnabled = true
                 self.theme_menu_star_store_button.isEnabled = true
                 self.return_button.isEnabled = true
-                self.purchase_star_menu.removeFromSuperview()
-                self.more_stars_label.removeFromSuperview()
-                self.close_button.removeFromSuperview()
+                self.purchase_star_menu.fadeOutandRemove()
+                self.more_stars_label.fadeOutandRemove()
+                self.close_button.fadeOutandRemove()
                 
                 
-                self.purchase_star_1000_bg.removeFromSuperview()
-                self.purchase_star_500_bg.removeFromSuperview()
-                self.purchase_star_1000_button.removeFromSuperview()
-                self.purchase_star_500_button.removeFromSuperview()
+                self.purchase_star_1000_bg.fadeOutandRemove()
+                self.purchase_star_500_bg.fadeOutandRemove()
+                self.purchase_star_1000_button.fadeOutandRemove()
+                self.purchase_star_500_button.fadeOutandRemove()
                 self.paused = true
             }
         }
@@ -17961,15 +17961,15 @@ func trinity_animation() -> Void {
                 self.colors_apply_button.isEnabled = true
                 self.theme_menu_star_store_button.isEnabled = true
                 self.return_button.isEnabled = true
-                self.purchase_star_menu.removeFromSuperview()
-                self.more_stars_label.removeFromSuperview()
-                self.close_button.removeFromSuperview()
+                self.purchase_star_menu.fadeOutandRemove()
+                self.more_stars_label.fadeOutandRemove()
+                self.close_button.fadeOutandRemove()
                 
                 
-                self.purchase_star_1000_bg.removeFromSuperview()
-                self.purchase_star_500_bg.removeFromSuperview()
-                self.purchase_star_1000_button.removeFromSuperview()
-                self.purchase_star_500_button.removeFromSuperview()
+                self.purchase_star_1000_bg.fadeOutandRemove()
+                self.purchase_star_500_bg.fadeOutandRemove()
+                self.purchase_star_1000_button.fadeOutandRemove()
+                self.purchase_star_500_button.fadeOutandRemove()
                 
                 self.paused = false
             
@@ -17993,15 +17993,15 @@ func trinity_animation() -> Void {
             self.colors_apply_button.isEnabled = true
             self.theme_menu_star_store_button.isEnabled = true
             self.return_button.isEnabled = true
-            self.purchase_star_menu.removeFromSuperview()
-            self.more_stars_label.removeFromSuperview()
-            self.close_button.removeFromSuperview()
+            self.purchase_star_menu.fadeOutandRemove()
+            self.more_stars_label.fadeOutandRemove()
+            self.close_button.fadeOutandRemove()
             
             
-            self.purchase_star_1000_bg.removeFromSuperview()
-            self.purchase_star_500_bg.removeFromSuperview()
-            self.purchase_star_1000_button.removeFromSuperview()
-            self.purchase_star_500_button.removeFromSuperview()
+            self.purchase_star_1000_bg.fadeOutandRemove()
+            self.purchase_star_500_bg.fadeOutandRemove()
+            self.purchase_star_1000_button.fadeOutandRemove()
+            self.purchase_star_500_button.fadeOutandRemove()
             self.auto_random_generator()
             self.paused = false
         }else if(gameover_star_purchase == "theme"){
@@ -18015,15 +18015,15 @@ func trinity_animation() -> Void {
                 self.colors_apply_button.isEnabled = true
                 self.theme_menu_star_store_button.isEnabled = true
                 self.return_button.isEnabled = true
-                self.purchase_star_menu.removeFromSuperview()
-                self.more_stars_label.removeFromSuperview()
-                self.close_button.removeFromSuperview()
+                self.purchase_star_menu.fadeOutandRemove()
+                self.more_stars_label.fadeOutandRemove()
+                self.close_button.fadeOutandRemove()
                 
                 
-                self.purchase_star_1000_bg.removeFromSuperview()
-                self.purchase_star_500_bg.removeFromSuperview()
-                self.purchase_star_1000_button.removeFromSuperview()
-                self.purchase_star_500_button.removeFromSuperview()
+                self.purchase_star_1000_bg.fadeOutandRemove()
+                self.purchase_star_500_bg.fadeOutandRemove()
+                self.purchase_star_1000_button.fadeOutandRemove()
+                self.purchase_star_500_button.fadeOutandRemove()
                 self.paused = true
             
         }
@@ -18061,15 +18061,15 @@ func trinity_animation() -> Void {
             self.colors_apply_button.isEnabled = true
             self.theme_menu_star_store_button.isEnabled = true
             self.return_button.isEnabled = true
-            self.purchase_star_menu.removeFromSuperview()
-            self.more_stars_label.removeFromSuperview()
-            self.close_button.removeFromSuperview()
+            self.purchase_star_menu.fadeOutandRemove()
+            self.more_stars_label.fadeOutandRemove()
+            self.close_button.fadeOutandRemove()
             
             
-            self.purchase_star_1000_bg.removeFromSuperview()
-            self.purchase_star_500_bg.removeFromSuperview()
-            self.purchase_star_1000_button.removeFromSuperview()
-            self.purchase_star_500_button.removeFromSuperview()
+            self.purchase_star_1000_bg.fadeOutandRemove()
+            self.purchase_star_500_bg.fadeOutandRemove()
+            self.purchase_star_1000_button.fadeOutandRemove()
+            self.purchase_star_500_button.fadeOutandRemove()
             
             self.paused = false
             
@@ -18093,15 +18093,15 @@ func trinity_animation() -> Void {
             self.colors_apply_button.isEnabled = true
             self.theme_menu_star_store_button.isEnabled = true
             self.return_button.isEnabled = true
-            self.purchase_star_menu.removeFromSuperview()
-            self.more_stars_label.removeFromSuperview()
-            self.close_button.removeFromSuperview()
+            self.purchase_star_menu.fadeOutandRemove()
+            self.more_stars_label.fadeOutandRemove()
+            self.close_button.fadeOutandRemove()
             
             
-            self.purchase_star_1000_bg.removeFromSuperview()
-            self.purchase_star_500_bg.removeFromSuperview()
-            self.purchase_star_1000_button.removeFromSuperview()
-            self.purchase_star_500_button.removeFromSuperview()
+            self.purchase_star_1000_bg.fadeOutandRemove()
+            self.purchase_star_500_bg.fadeOutandRemove()
+            self.purchase_star_1000_button.fadeOutandRemove()
+            self.purchase_star_500_button.fadeOutandRemove()
             self.auto_random_generator()
             self.paused = false
         }else if(gameover_star_purchase == "theme"){
@@ -18115,15 +18115,15 @@ func trinity_animation() -> Void {
             self.colors_apply_button.isEnabled = true
             self.theme_menu_star_store_button.isEnabled = true
             self.return_button.isEnabled = true
-            self.purchase_star_menu.removeFromSuperview()
-            self.more_stars_label.removeFromSuperview()
-            self.close_button.removeFromSuperview()
+            self.purchase_star_menu.fadeOutandRemove()
+            self.more_stars_label.fadeOutandRemove()
+            self.close_button.fadeOutandRemove()
             
             
-            self.purchase_star_1000_bg.removeFromSuperview()
-            self.purchase_star_500_bg.removeFromSuperview()
-            self.purchase_star_1000_button.removeFromSuperview()
-            self.purchase_star_500_button.removeFromSuperview()
+            self.purchase_star_1000_bg.fadeOutandRemove()
+            self.purchase_star_500_bg.fadeOutandRemove()
+            self.purchase_star_1000_button.fadeOutandRemove()
+            self.purchase_star_500_button.fadeOutandRemove()
             self.paused = true
             
         }

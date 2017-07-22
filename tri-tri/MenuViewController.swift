@@ -3091,15 +3091,15 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
             self.return_button.isEnabled = true
             
             self.treasure_cancel.isEnabled = true
-            self.purchase_star_menu.removeFromSuperview()
-            self.more_stars_label.removeFromSuperview()
-            self.close_button.removeFromSuperview()
+            self.purchase_star_menu.fadeOutandRemove()
+            self.more_stars_label.fadeOutandRemove()
+            self.close_button.fadeOutandRemove()
             
             
-            self.purchase_star_1000_bg.removeFromSuperview()
-            self.purchase_star_500_bg.removeFromSuperview()
-            self.purchase_star_1000_button.removeFromSuperview()
-            self.purchase_star_500_button.removeFromSuperview()
+            self.purchase_star_1000_bg.fadeOutandRemove()
+            self.purchase_star_500_bg.fadeOutandRemove()
+            self.purchase_star_1000_button.fadeOutandRemove()
+            self.purchase_star_500_button.fadeOutandRemove()
             
         }
         
@@ -3154,9 +3154,9 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         star_score += 500
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
-        self.purchase_star_menu.removeFromSuperview()
-        self.more_stars_label.removeFromSuperview()
-        self.close_button.removeFromSuperview()
+        self.purchase_star_menu.fadeOutandRemove()
+        self.more_stars_label.fadeOutandRemove()
+        self.close_button.fadeOutandRemove()
         self.treasure_box_icon.isEnabled = true
         self.tutorial_button.isEnabled = true
         self.language_button.isEnabled = true
@@ -3181,10 +3181,10 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
          self.return_button.isEnabled = true
         self.treasure_cancel.isEnabled = true
         
-        self.purchase_star_1000_bg.removeFromSuperview()
-        self.purchase_star_500_bg.removeFromSuperview()
-        self.purchase_star_1000_button.removeFromSuperview()
-        self.purchase_star_500_button.removeFromSuperview()
+        self.purchase_star_1000_bg.fadeOutandRemove()
+        self.purchase_star_500_bg.fadeOutandRemove()
+        self.purchase_star_1000_button.fadeOutandRemove()
+        self.purchase_star_500_button.fadeOutandRemove()
         
     }
     
@@ -3193,9 +3193,9 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
         
-        self.purchase_star_menu.removeFromSuperview()
-        self.more_stars_label.removeFromSuperview()
-        self.close_button.removeFromSuperview()
+        self.purchase_star_menu.fadeOutandRemove()
+        self.more_stars_label.fadeOutandRemove()
+        self.close_button.fadeOutandRemove()
         self.treasure_box_icon.isEnabled = true
         self.tutorial_button.isEnabled = true
         self.language_button.isEnabled = true
@@ -3220,10 +3220,10 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
          self.return_button.isEnabled = true
         self.treasure_cancel.isEnabled = true
         
-        self.purchase_star_1000_bg.removeFromSuperview()
-        self.purchase_star_500_bg.removeFromSuperview()
-        self.purchase_star_1000_button.removeFromSuperview()
-        self.purchase_star_500_button.removeFromSuperview()
+        self.purchase_star_1000_bg.fadeOutandRemove()
+        self.purchase_star_500_bg.fadeOutandRemove()
+        self.purchase_star_1000_button.fadeOutandRemove()
+        self.purchase_star_500_button.fadeOutandRemove()
         
     }
     

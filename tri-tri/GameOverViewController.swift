@@ -1428,15 +1428,15 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             }
             self.button_player.play()
             
-                self.purchase_star_menu.removeFromSuperview()
-                self.more_stars_label.removeFromSuperview()
-                self.close_button.removeFromSuperview()
+                self.purchase_star_menu.fadeOutandRemove()
+                self.more_stars_label.fadeOutandRemove()
+                self.close_button.fadeOutandRemove()
                 
                 
-                self.purchase_star_1000_bg.removeFromSuperview()
-                self.purchase_star_500_bg.removeFromSuperview()
-                self.purchase_star_1000_button.removeFromSuperview()
-                self.purchase_star_500_button.removeFromSuperview()
+                self.purchase_star_1000_bg.fadeOutandRemove()
+                self.purchase_star_500_bg.fadeOutandRemove()
+                self.purchase_star_1000_button.fadeOutandRemove()
+                self.purchase_star_500_button.fadeOutandRemove()
             
             }
         
@@ -1491,15 +1491,15 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         star_score += 500
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
-        self.purchase_star_menu.removeFromSuperview()
-        self.more_stars_label.removeFromSuperview()
-        self.close_button.removeFromSuperview()
+        self.purchase_star_menu.fadeOutandRemove()
+        self.more_stars_label.fadeOutandRemove()
+        self.close_button.fadeOutandRemove()
         
         
-        self.purchase_star_1000_bg.removeFromSuperview()
-        self.purchase_star_500_bg.removeFromSuperview()
-        self.purchase_star_1000_button.removeFromSuperview()
-        self.purchase_star_500_button.removeFromSuperview()
+        self.purchase_star_1000_bg.fadeOutandRemove()
+        self.purchase_star_500_bg.fadeOutandRemove()
+        self.purchase_star_1000_button.fadeOutandRemove()
+        self.purchase_star_500_button.fadeOutandRemove()
         
     }
     
@@ -1508,15 +1508,15 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
         
-        self.purchase_star_menu.removeFromSuperview()
-        self.more_stars_label.removeFromSuperview()
-        self.close_button.removeFromSuperview()
+        self.purchase_star_menu.fadeOutandRemove()
+        self.more_stars_label.fadeOutandRemove()
+        self.close_button.fadeOutandRemove()
         
         
-        self.purchase_star_1000_bg.removeFromSuperview()
-        self.purchase_star_500_bg.removeFromSuperview()
-        self.purchase_star_1000_button.removeFromSuperview()
-        self.purchase_star_500_button.removeFromSuperview()
+        self.purchase_star_1000_bg.fadeOutandRemove()
+        self.purchase_star_500_bg.fadeOutandRemove()
+        self.purchase_star_1000_button.fadeOutandRemove()
+        self.purchase_star_500_button.fadeOutandRemove()
         
     }
     
