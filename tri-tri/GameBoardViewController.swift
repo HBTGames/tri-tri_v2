@@ -17608,9 +17608,9 @@ func trinity_animation() -> Void {
     var star_counter_total_length = CGFloat(0)
     func update_star_counter_length(i: Int) -> Void{
         print("star_board_original_width: \(starBoard_width)")
-        starBoard.frame.size = CGSize(width: starBoard_width + (CGFloat(i)*pause_screen_x_transform(10)), height: starBoard.frame.height)
+        starBoard.frame.size = CGSize(width: starBoard_width + (CGFloat(i)*pause_screen_x_transform(6)), height: starBoard.frame.height)
         print("star_board width: \(starBoard.frame.width)")
-        star_counter_fragments[2].frame.size = CGSize(width: star_counter_fragment_width + CGFloat(i)*pause_screen_x_transform(8), height: star_counter_fragments[2].frame.height)
+        star_counter_fragments[2].frame.size = CGSize(width: star_counter_fragment_width + CGFloat(i)*pause_screen_x_transform(5), height: star_counter_fragments[2].frame.height)
         star_counter_fragments[3].frame.origin.x = star_counter_fragments[2].frame.origin.x + star_counter_fragments[2].frame.width
         star_counter_total_length = star_counter_fragments[0].frame.width +  star_counter_fragments[1].frame.width +  star_counter_fragments[2].frame.width + star_counter_fragments[3].frame.width
         star_store_button.frame.size = CGSize(width: star_counter_total_length, height: star_counter_fragments[0].frame.height)
