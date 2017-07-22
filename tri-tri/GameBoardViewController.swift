@@ -17637,6 +17637,7 @@ func trinity_animation() -> Void {
         argument_integer = i - 2
        update_star_counter_length(i: argument_integer)
         amplifier_valide_icon.frame.origin.x = star_counter_fragments[3].frame.origin.x + star_counter_fragment_width + pause_screen_x_transform(5)
+        wave_animator_amplifier.frame.origin.x = amplifier_valide_icon.frame.origin.x
         
             }
 
