@@ -959,7 +959,20 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     self.light_brown_drag_tri.frame.origin = self.light_brown_drag_origin
                     self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
                 })
-        }
+            }else{
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.green_drag_tri.frame.origin = self.green_drag_origin
+                    
+                    self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                    
+                    self.orange_drag_tri.frame.origin = self.orange_drag_origin
+                    self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                    
+                    self.light_brown_drag_tri.frame.origin = self.light_brown_drag_origin
+                    self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                })
+                
+                }
             }else {
                   //during holy nova
                 print("nova_touches_end")
@@ -10132,23 +10145,30 @@ number_of_lines_erased += 1
     }
    
     func resetDragTriLocation(){
-    green_drag_tri.frame.origin = green_drag_origin
-    orange_drag_tri.frame.origin = orange_drag_origin
-    light_brown_drag_tri.frame.origin = light_brown_drag_origin
+   
     }
     
     
     func gameOverBody(){
         if(!in_star_animation && !in_erase_animation){
-            resetDragTriLocation()
+            
             
             gameOverTimer.invalidate()
             
-            takeBoardScreenShot()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.green_drag_tri.frame.origin = self.green_drag_origin
+                self.orange_drag_tri.frame.origin = self.orange_drag_origin
+                self.light_brown_drag_tri.frame.origin = self.light_brown_drag_origin
+            }, completion: {
+                (finished) -> Void in
+            self.takeBoardScreenShot()
+            self.resurrection_when_dead()
+            })
             
             
             
-            resurrection_when_dead()
+            
+            
     
         }
         
