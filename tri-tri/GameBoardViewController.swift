@@ -18322,11 +18322,2108 @@ func trinity_animation() -> Void {
     star_animation()
         
     }
+    //shape 0
+    func Find_Any_Green_Tri_to_Erase_Line(row: Int, column: Int){
+         let previous_filled = filled
+        var green_temp_location : Array<Array<Int>> = []
+        //upper row
+        if(row == 0 || row == 1 || row == 2){
+            //upwards tri (pos0 or pos2)
+            if(column % 2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2]){
+                    green_temp_location = []
+                    filled[row][column] = true
+                    green_temp_location.append([row,column])
+                    filled[row][column+1] = true
+                    green_temp_location.append([row,column+1])
+                    filled[row][column+2] = true
+                    Check_and_Erase_Return_Bool()
+                    green_temp_location.append([row,column+2])
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                     green_tri_hint_all_location.append(green_temp_location)
+                        
+                    }
+                }
+                if(column != 0 && !filled[row][column-2] && !filled[row][column-1] && !filled[row][column]){
+                    green_temp_location = []
+                    filled[row][column-2] = true
+                    green_temp_location.append([row,column-2])
+                    filled[row][column-1] = true
+                    green_temp_location.append([row,column-1])
+                    filled[row][column] = true
+                    green_temp_location.append([row,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        green_tri_hint_all_location.append(green_temp_location)
+                        
+                    }
+                }
+            }
+                //downwards tri (pos1)
+            else{
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row][column+1]){
+                    green_temp_location = []
+                    filled[row][column] = true
+                    green_temp_location.append([row,column])
+                    filled[row][column-1] = true
+                    green_temp_location.append([row,column-1])
+                    filled[row][column+1] = true
+                    green_temp_location.append([row,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        green_tri_hint_all_location.append(green_temp_location)
+                        
+                    }
+                }
+                
+            }
+            
+            
+            
+        }
+        else if(row == 3 || row == 4 || row == 5    ){
+            //upwards tri (pos0 and pos2)
+            if(column % 2 != 0){
+                if(column != 1 && !filled[row][column-2] && !filled[row][column-1] && !filled[row][column]){
+                    green_temp_location = []
+                    filled[row][column-2]  = true
+                    green_temp_location.append([row,column-2])
+                    filled[row][column-1] = true
+                    green_temp_location.append([row,column-1])
+                    filled[row][column] = true
+                    green_temp_location.append([row,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        green_tri_hint_all_location.append(green_temp_location)
+                        
+                    }
 
+                    
+                }
+                else if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2]){
+                    green_temp_location = []
+                    filled[row][column] = true
+                    green_temp_location.append([row,column])
+                    filled[row][column+1] = true
+                    green_temp_location.append([row,column+1])
+                    filled[row][column+2] = true
+                    green_temp_location.append([row,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        green_tri_hint_all_location.append(green_temp_location)
+                        
+                    }
+                }
+            }
+            
+            
+            
+        }
+
+    
+    }
+    //shape 1
+    func Find_Any_Orange_Tri_to_Erase_Line(row: Int, column: Int){
+        let previous_filled = filled
+        var orange_temp_location : Array<Array<Int>> = []
+        if(row == 0 || row == 1){
+            //upwards tri
+            if(column % 2 == 0){
+                if(!filled[row][column] && !filled[row+1][column+1]){
+                    orange_temp_location = []
+                    filled[row][column] = true
+                    filled[row+1][column+1] = true
+                    orange_temp_location.append([row,column])
+                    orange_temp_location.append([row+1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        orange_tri_hint_all_location.append(orange_temp_location)
+                        
+                    }
+                    
+                }
+            }
+                //downwards tri
+            else{
+                if(row == 1 && !filled[row][column] && !filled[row-1][column-1]){
+                    orange_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column-1] = true
+                    orange_temp_location.append([row,column])
+                    orange_temp_location.append([row-1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        orange_tri_hint_all_location.append(orange_temp_location)
+                        
+                    }
+                }
+            }
+            
+        }
+            
+        else if(row == 2){
+            //upwards tri
+            if(column%2 == 0){
+                if(!filled[row][column] && !filled[row+1][column]){
+                    orange_temp_location = []
+                    filled[row][column] = true
+                    filled[row+1][column] = true
+                    orange_temp_location.append([row,column])
+                    orange_temp_location.append([row+1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        orange_tri_hint_all_location.append(orange_temp_location)
+                        
+                    }
+                }
+            }
+                //downwards tri
+            else{
+                if(!filled[row][column] && !filled[row-1][column-1]){
+                    orange_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column-1] = true
+                    orange_temp_location.append([row,column])
+                    orange_temp_location.append([row-1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        orange_tri_hint_all_location.append(orange_temp_location)
+                        
+                    }
+                }
+                
+            }
+        }
+        else if(row == 3){
+            //downwards tri
+            if(column%2 == 0){
+                if(!filled[row][column] && !filled[row-1][column]){
+                    orange_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column] = true
+                    orange_temp_location.append([row,column])
+                    orange_temp_location.append([row-1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        orange_tri_hint_all_location.append(orange_temp_location)
+                        
+                    }
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column] && !filled[row+1][column-1]){
+                    orange_temp_location = []
+                    filled[row][column] = true
+                    filled[row+1][column-1] = true
+                    orange_temp_location.append([row,column])
+                    orange_temp_location.append([row+1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        orange_tri_hint_all_location.append(orange_temp_location)
+                        
+                    }
+                }
+                
+            }
+        }
+        else if(row == 4 || row == 5){
+            //downwards tri
+            if(column%2 == 0){
+                if(!filled[row][column] && !filled[row-1][column+1]){
+                    orange_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column+1] = true
+                    orange_temp_location.append([row,column])
+                    orange_temp_location.append([row-1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        orange_tri_hint_all_location.append(orange_temp_location)
+                        
+                    }
+                }
+            }
+                //upwards tri
+            else{
+                if(row == 4 && !filled[row][column] && !filled[row+1][column-1]){
+                    orange_temp_location = []
+                    filled[row][column] = true
+                    filled[row+1][column-1] = true
+                    orange_temp_location.append([row,column])
+                    orange_temp_location.append([row+1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        orange_tri_hint_all_location.append(orange_temp_location)
+                        
+                    }
+                }
+                
+                
+            }
+        }
+        
+    }
+   
+ //shape 2
+    func Find_Any_Light_Brown_Tri_to_Erase_line(row:Int, column: Int){
+        let previous_filled = filled
+        var light_brown_temp_location : Array<Array<Int>> = []
+        if(row == 0){
+            //upwards tri
+            if(column%2 == 0 && !filled[row][column] && !filled[row+1][column] && !filled[row+1][column+1]){
+                light_brown_temp_location = []
+                filled[row][column] = true
+                filled[row+1][column] = true
+                filled[row+1][column+1] = true
+                light_brown_temp_location.append([row,column])
+                light_brown_temp_location.append([row+1,column])
+                light_brown_temp_location.append([row+1,column+1])
+                Check_and_Erase_Return_Bool()
+                filled = previous_filled
+                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                    light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                    
+                }
+            }
+        }
+        else if(row == 1){
+            //upwards tri
+            if(column%2 == 0){
+                if(!filled[row][column] && !filled[row+1][column] && !filled[row+1][column+1]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row+1][column] = true
+                    filled[row+1][column+1] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row+1,column])
+                    light_brown_temp_location.append([row+1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row-1][column]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row,column+1])
+                    light_brown_temp_location.append([row-1,column])
+                    
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+            }
+                //downwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row-1][column-1]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row-1][column-1] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row,column-1])
+                    light_brown_temp_location.append([row-1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+            }
+        }
+        else if(row == 2){
+            //upwards tri
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row-1][column]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row,column+1])
+                    light_brown_temp_location.append([row-1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+                if(column != 0 && !filled[row][column] && !filled[row+1][column] && !filled[row+1][column-1]){
+                     light_brown_temp_location = []
+                    filled[row][column]  = true
+                    filled[row+1][column] = true
+                    filled[row+1][column-1] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row+1,column])
+                    light_brown_temp_location.append([row+1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+            }
+                //downwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row-1][column-1]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row-1][column-1] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row,column-1])
+                    light_brown_temp_location.append([row-1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+            }
+        }
+            
+        else if(row == 3){
+            //downwards tri
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row-1][column]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row-1][column] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row,column-1])
+                    light_brown_temp_location.append([row-1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row-1][column+1]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column+1] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row,column+1])
+                    light_brown_temp_location.append([row-1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+                if(column != 1 && !filled[row][column] && !filled[row+1][column-1] && !filled[row+1][column-2]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row+1][column-1] = true
+                    filled[row+1][column-2] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row+1,column-1])
+                    light_brown_temp_location.append([row+1,column-2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+            }
+        }
+        else if(row == 4){
+            //downwards tri
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row-1][column+1]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row-1][column+1] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row,column-1])
+                    light_brown_temp_location.append([row-1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row-1][column+2]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column+2] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row,column+1])
+                    light_brown_temp_location.append([row-1,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+                if(column != 1 && !filled[row][column] && !filled[row+1][column-1] && !filled[row+1][column-2]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row+1][column-1] = true
+                    filled[row+1][column-2] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row+1,column-1])
+                    light_brown_temp_location.append([row+1,column-2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+            }
+        }
+        else if(row == 5 ){
+            //downwards tri
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row-1][column+1]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row-1][column+1] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row,column-1])
+                    light_brown_temp_location.append([row-1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row-1][column+2]){
+                     light_brown_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column+2] = true
+                    light_brown_temp_location.append([row,column])
+                    light_brown_temp_location.append([row,column+1])
+                    light_brown_temp_location.append([row-1,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        light_brown_tri_hint_all_location.append(light_brown_temp_location)
+                        
+                    }
+                }
+            }
+        }
+        
+        
+    
+        
+    }
+    
+    
+ //shape 3
+    func Find_Any_Brown_Downwards_Tri_to_Erase_Line(row:Int, column: Int){
+        let previous_filled = filled
+        var brown_downwards_temp_location : Array<Array<Int>> = []
+
+        if(row == 0 || row == 1 || row == 2){
+            //upwards tri
+            if(column%2 == 0){
+                if(column != 0 && column != filled[row].count-1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column+1]){
+                    brown_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column+1] = true
+                    brown_downwards_temp_location.append([row,column])
+                    brown_downwards_temp_location.append([row,column-1])
+                    brown_downwards_temp_location.append([row,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_downwards_tri_hint_all_location.append(brown_downwards_temp_location)
+                        
+                    }
+                }
+            }
+                //downwards tri
+            else{
+                if(column != 1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2]){
+                    brown_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column-2] = true
+                    brown_downwards_temp_location.append([row,column])
+                    brown_downwards_temp_location.append([row,column-1])
+                    brown_downwards_temp_location.append([row,column-2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_downwards_tri_hint_all_location.append(brown_downwards_temp_location)
+                        
+                    }
+
+                }
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2]){
+                    brown_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row][column+2] = true
+                    brown_downwards_temp_location.append([row,column])
+                    brown_downwards_temp_location.append([row,column+1])
+                    brown_downwards_temp_location.append([row,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_downwards_tri_hint_all_location.append(brown_downwards_temp_location)
+                        
+                    }
+
+                }
+            }
+        }
+        else if(row == 3 || row == 4 || row == 5){
+            //downwards tri
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2]){
+                    brown_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row][column+2] = true
+                    brown_downwards_temp_location.append([row,column])
+                    brown_downwards_temp_location.append([row,column+1])
+                    brown_downwards_temp_location.append([row,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_downwards_tri_hint_all_location.append(brown_downwards_temp_location)
+                        
+                    }
+
+                }
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2]){
+                    brown_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column-2] = true
+                    brown_downwards_temp_location.append([row,column])
+                    brown_downwards_temp_location.append([row,column-1])
+                    brown_downwards_temp_location.append([row,column-2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_downwards_tri_hint_all_location.append(brown_downwards_temp_location)
+                        
+                    }
+
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column-1] && !filled[row][column] && !filled[row][column+1]){brown_downwards_temp_location = []
+                    filled[row][column-1] = true
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    brown_downwards_temp_location.append([row,column])
+                    brown_downwards_temp_location.append([row,column-1])
+                    brown_downwards_temp_location.append([row,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_downwards_tri_hint_all_location.append(brown_downwards_temp_location)
+                        
+                    }
+
+                }
+            }
+        }
+    
+        
+    }
+    
+    //shape 4
+    func Find_Any_Brown_Left_Tri_to_Erase_Line(row:Int, column: Int){
+        let previous_filled = filled
+        var brown_left_temp_location : Array<Array<Int>> = []
+
+        if(row == 0 || row == 1 || row == 2){            //upwards tri
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1]){
+                    brown_left_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    brown_left_temp_location.append([row,column])
+                    brown_left_temp_location.append([row,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_tri_hint_all_location.append(brown_left_temp_location)
+                        
+                    }
+                }
+            }
+                //downwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column+1]){
+                    brown_left_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    brown_left_temp_location.append([row,column])
+                    brown_left_temp_location.append([row,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_tri_hint_all_location.append(brown_left_temp_location)
+                        
+                    }
+
+                }
+            }
+        }
+        else if(row == 3 || row == 4 || row == 5){
+            //downwards tri
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1]){
+                    brown_left_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    brown_left_temp_location.append([row,column])
+                    brown_left_temp_location.append([row,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_tri_hint_all_location.append(brown_left_temp_location)
+                        
+                    }
+
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column-1]){
+                    brown_left_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    brown_left_temp_location.append([row,column])
+                    brown_left_temp_location.append([row,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_tri_hint_all_location.append(brown_left_temp_location)
+                        
+                    }
+
+                }
+            }
+        }
+        
+        
+    }
+    
+    
+   //shape 5
+    func Find_Any_Dark_Green_Tri_to_Erase_Line(row:Int, column: Int){
+        let previous_filled = filled
+        var dark_green_temp_location : Array<Array<Int>> = []
+        if(row == 0){
+            //upwards tri
+            if(column%2 == 0){
+                
+                //left to right
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column+1] && !filled[row+1][column+2] && !filled[row+1][column+3]){
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+2] = true
+                    filled[row+1][column+1] = true
+                    filled[row+1][column+2] = true
+                    filled[row+1][column+3] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column+2])
+                    dark_green_temp_location.append([row+1,column+1])
+                    dark_green_temp_location.append([row+1,column+2])
+                    dark_green_temp_location.append([row+1,column+3])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
+                }
+                //right to left
+                if(column != 0 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column] && !filled[row+1][column-1] && !filled[row+1][column+1]){
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-2] = true
+                    filled[row+1][column] = true
+                    filled[row+1][column-1] = true
+                    filled[row+1][column+1] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-2])
+                    dark_green_temp_location.append([row+1,column])
+                    dark_green_temp_location.append([row+1,column-1])
+                    dark_green_temp_location.append([row+1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
+                }
+                //center not possible
+                
+            }
+            //downwards tri not possible
+            
+        }
+        else if(row == 1){
+            //upwards tri
+            if(column%2 == 0){
+                //left to right
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column+1] && !filled[row+1][column+2] && !filled[row+1][column+3]){
+                    return
+                }
+                //right to left
+                if(column != 0 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column] && !filled[row+1][column-1] && !filled[row+1][column+1]){
+                    return
+                }
+                //as center
+                if(column != 0 && column != filled[row].count-1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column-2] && !filled[row-1][column]){
+                    return
+                }
+            }
+                //downwards tri
+            else{
+                //bottom left to right
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2] && !filled[row-1][column-1] && !filled[row-1][column+1]){
+                    return
+                }
+                //bottom right to left
+                if(column != 1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column-1] && !filled[row-1][column-3]){
+                    return
+                }
+            }
+        }
+            
+        else if(row == 2){
+            //upwards tri
+            if(column%2 == 0){
+                //left to right
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column] && !filled[row+1][column+1] && !filled[row+1][column+2] ){
+                    return
+                }
+                //right to left
+                if(column != 0 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column] && !filled[row+1][column-1] && !filled[row+1][column-2]){
+                    return
+                }
+                //as center
+                if(column != 0 && column != filled[row].count-1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column-2] && !filled[row-1][column]){
+                    return
+                }
+            }
+                //downwards tri
+            else{
+                //bottom left to right
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2]  && !filled[row-1][column-1] && !filled[row-1][column+1]){
+                    return
+                }
+                //bottom right to left
+                if(column != 1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column-1] && !filled[row-1][column-3]){
+                    return
+                }
+                
+            }
+        }
+        else if(row == 3){
+            //downwards tri
+            if(column%2 == 0){
+                //bottom left to right
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2] && !filled[row-1][column] && !filled[row-1][column+2]){
+                    return
+                }
+                //bottom right to left
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column] && !filled[row-1][column-2]){
+                    return
+                }
+            }
+                //upwards tri
+            else{
+                //left to right
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column-1] && !filled[row+1][column] && !filled[row+1][column+1]){
+                    return
+                }
+                //right to left
+                if(column != 1 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column-1] && !filled[row+1][column-2] && !filled[row+1][column-3]){
+                    return
+                }
+                //as center
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column-1] && !filled[row-1][column+1]){
+                    return
+                }
+            }
+        }
+        else if(row == 4){
+            //downwards tri
+            if(column%2 == 0){
+                //bottom left to right
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2] && !filled[row-1][column+1] && !filled[row-1][column+3]){
+                    return
+                }
+                //bottom right to left
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column-1] && !filled[row-1][column+1]){
+                    return
+                }
+            }
+                //upwards tri
+            else{
+                //left to right
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column-1] && !filled[row+1][column] && !filled[row+1][column+1]){
+                    return
+                }
+                //right to left
+                if(column != 1 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column-1] && !filled[row+1][column-2] && !filled[row+1][column-3]){
+                    return
+                }
+                //as center
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column] && !filled[row-1][column+2]){
+                    return
+                }
+                
+            }
+        }
+        else if(row == 5){
+            //downwards tri
+            if(column%2 == 0){
+                //bottom left to right
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2] && !filled[row-1][column+1] && !filled[row-1][column+3]){
+                    return
+                }
+                //bottom right to left
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column-1] && !filled[row-1][column+1]){
+                    return
+                }
+                
+            }
+                //upwards tri
+            else{
+                //left to right & right to left not possible
+                //as center
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column] && !filled[row-1][column+2]){
+                    return
+                }
+                
+            }
+        }
+        return
+    
+    }
+   
+  //shape 6
+    func Find_Any_Pink_Right_Tri_to_Erase_Line(row:Int, column: Int){
+        let previous_filled = filled
+        var pink_right_temp_location : Array<Array<Int>> = []
+        if(row == 0 || row == 1 || row == 2){
+            //upwards tri
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] ){
+                    pink_right_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    pink_right_temp_location.append([row,column])
+                    pink_right_temp_location.append([row,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        pink_right_tri_hint_all_location.append(pink_right_temp_location)
+                        
+                    }
+                }
+            }//downwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column-1]){
+                    pink_right_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    pink_right_temp_location.append([row,column])
+                    pink_right_temp_location.append([row,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        pink_right_tri_hint_all_location.append(pink_right_temp_location)
+                        
+                    }
+                }
+            }
+        }else if( row == 3 || row == 4 || row == 5 ){
+            //downwards tri
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1]){
+                    pink_right_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    pink_right_temp_location.append([row,column])
+                    pink_right_temp_location.append([row,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        pink_right_tri_hint_all_location.append(pink_right_temp_location)
+                        
+                    }
+                }
+            }
+                //upwards tri
+            else{
+                if(!filled[row][column] && !filled[row][column+1]){
+                    pink_right_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    pink_right_temp_location.append([row,column])
+                    pink_right_temp_location.append([row,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        pink_right_tri_hint_all_location.append(pink_right_temp_location)
+                        
+                    }
+                }
+            }
+        }
+        
+        
+
+    }
+
+    //shape 7
+    func Find_Any_Purple_Upwards_Tri_to_Erase_Line(row:Int, column: Int){
+        let previous_filled = filled
+        var purple_upwards_temp_location : Array<Array<Int>> = []
+    
+        if(row == 0 || row == 1 || row == 2){
+            //upwards tri
+            if(column%2 == 0 && !filled[row][column]){
+                purple_upwards_temp_location = []
+                filled[row][column] = true
+                purple_upwards_temp_location.append([row,column])
+                Check_and_Erase_Return_Bool()
+                filled = previous_filled
+                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                    purple_upwards_tri_hint_all_location.append(purple_upwards_temp_location)
+                    
+                }
+
+            }
+        }else if(row == 3 || row == 4 || row == 5){
+            //upwards tri
+            if(column%2 != 0 && !filled[row][column]){
+                purple_upwards_temp_location = []
+                filled[row][column] = true
+                purple_upwards_temp_location.append([row,column])
+                Check_and_Erase_Return_Bool()
+                filled = previous_filled
+                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                    purple_upwards_tri_hint_all_location.append(purple_upwards_temp_location)
+                    
+                }
+
+                
+            }
+        }
+        
+        
+        
+
+    }
+    
+    
+   //shape 8
+    func Find_Any_Purple_Downwards_Tri_to_Erase_Line(row: Int, column: Int){
+        let previous_filled = filled
+        var purple_downwards_temp_location : Array<Array<Int>> = []
+        if(row == 0 || row == 1 || row == 2){
+            //downwards
+            if(column%2 != 0 && !filled[row][column]){
+                purple_downwards_temp_location = []
+                filled[row][column] = true
+                purple_downwards_temp_location.append([row,column])
+                Check_and_Erase_Return_Bool()
+                filled = previous_filled
+                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                    purple_downwards_tri_hint_all_location.append(purple_downwards_temp_location)
+                    
+                }
+
+            }
+            
+        }else if(row == 3 || row == 4 || row == 5 ){
+            if(column%2 == 0 && !filled[row][column]){
+                purple_downwards_temp_location = []
+                filled[row][column] = true
+                purple_downwards_temp_location.append([row,column])
+                Check_and_Erase_Return_Bool()
+                filled = previous_filled
+                if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                    purple_downwards_tri_hint_all_location.append(purple_downwards_temp_location)
+                    
+                }
+
+            }
+        }
+        
+        
+        
+    }
+    
+ //shape 9
+    
+    func Find_Any_Brown_Left_Downwards_Tri_to_Erase_Line(row: Int, column: Int){
+        let previous_filled = filled
+        var brown_left_downwards_temp_location : Array<Array<Int>> = []
+        if(row == 0){
+            //upwards tri
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row+1][column+1]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column+1] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row,column+1])
+                    brown_left_downwards_temp_location.append([row+1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+
+                }
+            }else{
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row+1][column]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column]  = true
+                    filled[row][column-1] = true
+                    filled[row+1][column] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row,column-1])
+                    brown_left_downwards_temp_location.append([row+1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+            }
+        }
+        else if (row == 1){
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row+1][column+1]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1]  = true
+                    filled[row+1][column+1] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row,column+1])
+                    brown_left_downwards_temp_location.append([row+1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+            }else{
+                //up to down
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row+1][column]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row,column-1])
+                    brown_left_downwards_temp_location.append([row+1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+                //down to up
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row-1][column-1] && !filled[row-1][column]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column-1]  = true
+                    filled[row-1][column] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row-1,column-1])
+                    brown_left_downwards_temp_location.append([row-1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+                
+                
+            }
+        }
+        else if (row == 2){
+            if(column%2 == 0){
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row+1][column]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row,column+1])
+                    brown_left_downwards_temp_location.append([row+1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+            }else{
+                //up to down
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row+1][column-1]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    
+                    filled[row][column-1] = true
+                    
+                    filled[row+1][column-1] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row,column-1])
+                    brown_left_downwards_temp_location.append([row+1,column-1])
+                    
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+                if(column != filled[row].count-2 && !filled[row][column] && !filled[row-1][column-1] && !filled[row-1][column]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column-1] = true
+                    filled[row-1][column] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row-1,column-1])
+                    brown_left_downwards_temp_location.append([row-1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+                
+            }
+            
+            
+        }
+        else if (row == 3){
+            //downwards tri
+            if(column%2 == 0){
+                //up to down
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row+1][column-2]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column-2] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row,column-1])
+                    brown_left_downwards_temp_location.append([row+1,column-2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row-1][column] && !filled[row-1][column+1]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column] = true
+                    filled[row-1][column+1] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row-1,column])
+                    brown_left_downwards_temp_location.append([row-1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+            }else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row+1][column-1]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column-1] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row,column+1])
+                    brown_left_downwards_temp_location.append([row+1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+                
+            }
+        }
+        else if (row == 4){
+            if(column%2 == 0){
+                //up to down
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row+1][column-2]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column-2] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row,column-1])
+                    brown_left_downwards_temp_location.append([row+1,column-2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+                if(!filled[row][column] && !filled[row-1][column+1] && !filled[row-1][column+2]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column+1] = true
+                    filled[row-1][column+2] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row-1,column+1])
+                    brown_left_downwards_temp_location.append([row-1,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+                
+                
+            }else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row+1][column-1]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column-1] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row,column+1])
+                    brown_left_downwards_temp_location.append([row+1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+                
+            }
+            
+            
+        }
+        else if (row == 5){
+            if(column%2 == 0 ){
+                if(!filled[row][column] && !filled[row-1][column+1] && !filled[row-1][column+2]){
+                    brown_left_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column+1] = true
+                    filled[row-1][column+2] = true
+                    brown_left_downwards_temp_location.append([row,column])
+                    brown_left_downwards_temp_location.append([row-1,column+1])
+                    brown_left_downwards_temp_location.append([row-1,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_left_downwards_tri_hint_all_location.append(brown_left_downwards_temp_location)
+                        
+                    }
+                }
+            }
+        }
+        
+    
+    }
+  
+    
+   //shape 10
+    func Find_Any_Brown_Right_Downwards_Tri_to_Erase_Line(row: Int , column: Int){
+        let previous_filled = filled
+        var brown_right_downwards_temp_location : Array<Array<Int>> = []
+        if(row == 0){
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row+1][column+1]){
+                    brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1]  = true
+                    filled[row+1][column+1] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row,column-1])
+                    brown_right_downwards_temp_location.append([row+1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                    
+                    }
+                }
+            }else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row+1][column+2]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column+2] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row,column+1])
+                    brown_right_downwards_temp_location.append([row+1,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                        
+                    }
+                }
+            }
+        }
+        else if (row == 1){
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row+1][column+1]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column+1] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row,column-1])
+                    brown_right_downwards_temp_location.append([row+1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                        
+                    }
+                }
+            }else{
+                //up to down
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row+1][column+2]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column+2] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row,column+1])
+                    brown_right_downwards_temp_location.append([row+1,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                    }
+
+                }
+                if(column != 1 && !filled[row][column] && !filled[row-1][column-2] && !filled[row-1][column-1]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column-2] = true
+                    filled[row-1][column-1] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row-1,column-2])
+                    brown_right_downwards_temp_location.append([row-1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                    }
+
+                }
+                
+            }
+        }
+        else if(row == 2){
+            if(column%2 == 0){
+                if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row+1][column]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row,column-1])
+                    brown_right_downwards_temp_location.append([row+1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                        
+                    }
+                }
+            }else{
+                if(!filled[row][column] && !filled[row][column+1] && !filled[row+1][column+1]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1]  = true
+                    filled[row+1][column+1] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row,column+1])
+                    brown_right_downwards_temp_location.append([row+1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                        
+                    }
+                }
+                if(column != 1 && !filled[row][column] && !filled[row-1][column-2] && !filled[row-1][column-1]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column]  = true
+                    filled[row-1][column-2] = true
+                    filled[row-1][column-1] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row-1,column-2])
+                    brown_right_downwards_temp_location.append([row-1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                        
+                    }
+                }
+            }
+        }
+        else if(row == 3){
+            //downwards tri
+            if(column%2 == 0){
+                //up to down
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row+1][column]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row,column+1])
+                    brown_right_downwards_temp_location.append([row+1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                    }
+
+                }
+                //down to up
+                if(column != 0 && !filled[row][column] && !filled[row-1][column-1] && !filled[row-1][column]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column-1] = true
+                    filled[row-1][column] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row-1,column-1])
+                    brown_right_downwards_temp_location.append([row-1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                        
+                    }
+                }
+            }else{
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row+1][column-1]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column-1] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row,column-1])
+                    brown_right_downwards_temp_location.append([row+1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                        
+                    }
+                }
+            }
+            
+        }
+        else if(row == 4){
+            //upwards
+            if(column%2 == 0){
+                //up to down
+                if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row+1][column]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row+1][column] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row,column+1])
+                    brown_right_downwards_temp_location.append([row+1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                    }
+
+                }
+                //down to up
+                if(!filled[row][column] && !filled[row-1][column] && !filled[row-1][column+1]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column] = true
+                    filled[row-1][column+1] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row-1,column])
+                    brown_right_downwards_temp_location.append([row-1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                    }
+
+                }
+                
+            }else{
+                if(!filled[row][column] && !filled[row][column-1] && !filled[row+1][column-1]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row+1][column-1] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row,column-1])
+                    brown_right_downwards_temp_location.append([row+1,column-1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                        
+                    }
+                }
+                
+            }
+        }
+        else if(row == 5){
+            //upwards
+            if(column%2 == 0){
+                //down to up
+                if(!filled[row][column] && !filled[row-1][column] && !filled[row-1][column+1]){
+                     brown_right_downwards_temp_location = []
+                    filled[row][column] = true
+                    filled[row-1][column] = true
+                    filled[row-1][column+1] = true
+                    brown_right_downwards_temp_location.append([row,column])
+                    brown_right_downwards_temp_location.append([row-1,column])
+                    brown_right_downwards_temp_location.append([row-1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        brown_right_downwards_tri_hint_all_location.append(brown_right_downwards_temp_location)
+                        
+                    }
+                }
+            }
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    @IBAction func hint_action(_ sender: UIButton) {
+        gameBoardHint()
+    }
+    var hint_locations : Array<Array<Array<Array<Int>>>> = []
+    var green_tri_hint_all_location : Array<Array<Array<Int>>> = []
+    var orange_tri_hint_all_location : Array<Array<Array<Int>>> = []
+    var light_brown_tri_hint_all_location : Array<Array<Array<Int>>> = []
+    var brown_downwards_tri_hint_all_location: Array<Array<Array<Int>>> = []
+    var brown_left_tri_hint_all_location: Array<Array<Array<Int>>> = []
+    var dark_green_tri_hint_all_location: Array<Array<Array<Int>>> = []
+    var pink_right_tri_hint_all_location: Array<Array<Array<Int>>> = []
+    var purple_upwards_tri_hint_all_location: Array<Array<Array<Int>>> = []
+    var purple_downwards_tri_hint_all_location: Array<Array<Array<Int>>> = []
+    var brown_left_downwards_tri_hint_all_location: Array<Array<Array<Int>>> = []
+    var brown_right_downwards_tri_hint_all_location: Array<Array<Array<Int>>> = []
+    func gameBoardHint(){
+        hint_locations = []
+   green_tri_hint_all_location  = []
+orange_tri_hint_all_location = []
+ light_brown_tri_hint_all_location = []
+brown_downwards_tri_hint_all_location = []
+brown_left_tri_hint_all_location = []
+dark_green_tri_hint_all_location = []
+pink_right_tri_hint_all_location = []
+purple_upwards_tri_hint_all_location = []
+purple_downwards_tri_hint_all_location = []
+brown_left_downwards_tri_hint_all_location = []
+brown_right_downwards_tri_hint_all_location = []
+ 
+var chess_remain_array = [false, false, false, false, false,false,false,false,false, false, false]
+//we have to see which type of chess remains unmoved
+        if(exist1){
+            chess_remain_array[shape_type_index[0]] = true
+        }
+        if(exist2){
+            chess_remain_array[shape_type_index[1]] = true
+        }
+        if(exist1){
+            chess_remain_array[shape_type_index[2]] = true
+        }
+        
+//first append locations that is able to eras e line
+    var row = 0
+        
+        for subject in filled{
+        var column = 0
+            for point in subject{
+            //green tri
+                if(chess_remain_array[0]){
+            Find_Any_Green_Tri_to_Erase_Line(row: row, column: column)
+                }
+                if(chess_remain_array[1]){
+            Find_Any_Orange_Tri_to_Erase_Line(row: row, column: column)
+                    }
+                if(chess_remain_array[2]){
+            Find_Any_Light_Brown_Tri_to_Erase_line(row: row, column: column)
+                }
+                if(chess_remain_array[3]){
+            Find_Any_Brown_Downwards_Tri_to_Erase_Line(row: row, column: column)
+                }
+                if(chess_remain_array[4]){
+             Find_Any_Brown_Left_Tri_to_Erase_Line(row: row, column: column)
+                }
+                if(chess_remain_array[5]){
+            Find_Any_Dark_Green_Tri_to_Erase_Line(row: row, column: column)
+                }
+                if(chess_remain_array[6]){
+             Find_Any_Pink_Right_Tri_to_Erase_Line(row: row, column: column)
+                }
+                if(chess_remain_array[7]){
+              Find_Any_Purple_Upwards_Tri_to_Erase_Line(row: row, column: column)
+                }
+                if(chess_remain_array[8]){
+             Find_Any_Purple_Downwards_Tri_to_Erase_Line(row: row, column: column)
+                }
+                if(chess_remain_array[9]){
+                    Find_Any_Brown_Left_Downwards_Tri_to_Erase_Line(row: row, column: column)
+       
+                }
+                if(chess_remain_array[10]){
+                      Find_Any_Brown_Right_Downwards_Tri_to_Erase_Line(row: row, column: column)
+                }
+            
+                
+            column += 1
+                
+            }
+            
+        row += 1
+            
+            
+        }
+
+//actually no need to eliminate duplicate in each array since we randomly give the locations as long as the count isn't 0
+// now randomly choose a position to blink
+//find number of chess can erase 
+var chess_have_solution = [false, false, false]
+var potential_chess_number = 0
+        if(green_tri_hint_all_location.count != 0){
+            if(shape_type_index[0] == 0){
+            chess_have_solution[0] = true
+            }
+            if(shape_type_index[1] == 0){
+                chess_have_solution[1] = true
+            }
+            if(shape_type_index[2] == 0){
+                chess_have_solution[2] = true
+            }
+            potential_chess_number += 1
+        }
+        if(orange_tri_hint_all_location.count != 0){
+            if(shape_type_index[0] == 1){
+                chess_have_solution[0] = true
+            }
+            if(shape_type_index[1] == 1){
+                chess_have_solution[1] = true
+            }
+            if(shape_type_index[2] == 1){
+                chess_have_solution[2] = true
+            }
+            potential_chess_number += 1
+        }
+        if(light_brown_tri_hint_all_location.count != 0){
+            if(shape_type_index[0] == 2){
+                chess_have_solution[0] = true
+            }
+            if(shape_type_index[1] == 2){
+                chess_have_solution[1] = true
+            }
+            if(shape_type_index[2] == 2){
+                chess_have_solution[2] = true
+            }
+            potential_chess_number += 1
+        }
+        if(brown_downwards_tri_hint_all_location.count != 0){
+            if(shape_type_index[0] == 3){
+                chess_have_solution[0] = true
+            }
+            if(shape_type_index[1] == 3){
+                chess_have_solution[1] = true
+            }
+            if(shape_type_index[2] == 3){
+                chess_have_solution[2] = true
+            }
+            potential_chess_number += 1
+        }
+        if(brown_left_tri_hint_all_location.count != 0){
+            if(shape_type_index[0] == 4){
+                chess_have_solution[0] = true
+            }
+            if(shape_type_index[1] == 4){
+                chess_have_solution[1] = true
+            }
+            if(shape_type_index[2] == 4){
+                chess_have_solution[2] = true
+            }
+            potential_chess_number += 1
+        }
+        if(dark_green_tri_hint_all_location.count != 0){
+            if(shape_type_index[0] == 5){
+                chess_have_solution[0] = true
+            }
+            if(shape_type_index[1] == 5){
+                chess_have_solution[1] = true
+            }
+            if(shape_type_index[2] == 5){
+                chess_have_solution[2] = true
+            }
+            potential_chess_number += 1
+        }
+        if(pink_right_tri_hint_all_location.count != 0){
+            if(shape_type_index[0] == 6){
+                chess_have_solution[0] = true
+            }
+            if(shape_type_index[1] == 6){
+                chess_have_solution[1] = true
+            }
+            if(shape_type_index[2] == 6){
+                chess_have_solution[2] = true
+            }
+            potential_chess_number += 1
+        }
+        
+        if(purple_upwards_tri_hint_all_location.count != 0){
+            if(shape_type_index[0] == 7){
+                chess_have_solution[0] = true
+            }
+            if(shape_type_index[1] == 7){
+                chess_have_solution[1] = true
+            }
+            if(shape_type_index[2] == 7){
+                chess_have_solution[2] = true
+            }
+            potential_chess_number += 1
+        }
+        if(purple_downwards_tri_hint_all_location.count != 0){
+            if(shape_type_index[0] == 8){
+                chess_have_solution[0] = true
+            }
+            if(shape_type_index[1] == 8){
+                chess_have_solution[1] = true
+            }
+            if(shape_type_index[2] == 8){
+                chess_have_solution[2] = true
+            }
+            potential_chess_number += 1
+        }
+        if(brown_left_downwards_tri_hint_all_location.count != 0){
+            if(shape_type_index[0] == 9){
+                chess_have_solution[0] = true
+            }
+            if(shape_type_index[1] == 9){
+                chess_have_solution[1] = true
+            }
+            if(shape_type_index[2] == 9){
+                chess_have_solution[2] = true
+            }
+            potential_chess_number += 1
+        }
+        if(brown_right_downwards_tri_hint_all_location.count != 0){
+            if(shape_type_index[0] == 10){
+                chess_have_solution[0] = true
+            }
+            if(shape_type_index[1] == 10){
+                chess_have_solution[1] = true
+            }
+            if(shape_type_index[2] == 10){
+                chess_have_solution[2] = true
+            }
+            potential_chess_number += 1
+        }
+        
+        if(!exist1){
+         chess_have_solution[0] = false
+        }
+        if(!exist2){
+        chess_have_solution[1] = false
+        }
+        if(!exist3){
+        chess_have_solution[2] = false
+        }
+
+//if potential number equals 0
+        let temp_exist_array = [exist1, exist2, exist3]
+        if(potential_chess_number == 0 || (!chess_have_solution[0] && !chess_have_solution[1] && !chess_have_solution[2])){
+            print("No Hint")
+        }else{
+         var randomIndex = Int(arc4random_uniform(UInt32(3)))
+            while(!temp_exist_array[randomIndex] || !chess_have_solution[randomIndex] ){
+            randomIndex = Int(arc4random_uniform(UInt32(3)))
+            }
+         //choose the correct array
+            if(shape_type_index[randomIndex] == 0){
+            blink_at_lacking_location(hint_array: green_tri_hint_all_location, shape_id: 0)
+            }else if(shape_type_index[randomIndex] == 1){
+                blink_at_lacking_location(hint_array: orange_tri_hint_all_location, shape_id: 1)
+                
+            }else if(shape_type_index[randomIndex] == 2){
+                blink_at_lacking_location(hint_array: light_brown_tri_hint_all_location, shape_id: 2)
+                
+            }else if(shape_type_index[randomIndex] == 3){
+                blink_at_lacking_location(hint_array: brown_downwards_tri_hint_all_location, shape_id: 3)
+                
+            }else if(shape_type_index[randomIndex] == 4){
+                blink_at_lacking_location(hint_array: brown_left_tri_hint_all_location, shape_id: 4)
+                
+            }else if(shape_type_index[randomIndex] == 5){
+                blink_at_lacking_location(hint_array: dark_green_tri_hint_all_location, shape_id: 5)
+                
+            }else if(shape_type_index[randomIndex] == 6){
+                blink_at_lacking_location(hint_array: pink_right_tri_hint_all_location, shape_id: 6)
+                
+            }else if(shape_type_index[randomIndex] == 7){
+                blink_at_lacking_location(hint_array: purple_upwards_tri_hint_all_location, shape_id: 7)
+                
+            }else if(shape_type_index[randomIndex] == 8){
+                blink_at_lacking_location(hint_array: purple_downwards_tri_hint_all_location, shape_id: 8)
+                
+            }else if(shape_type_index[randomIndex] == 9){
+                blink_at_lacking_location(hint_array: brown_left_downwards_tri_hint_all_location, shape_id: 9)
+                
+            }else if(shape_type_index[randomIndex] == 10){
+                blink_at_lacking_location(hint_array: brown_right_downwards_tri_hint_all_location, shape_id: 10)
+                
+            }
+            
+            
+            
+            
+            
+            
+        }
+ 
+        
+    }
+
+    
+
+
+func blink_at_lacking_location(hint_array : Array<Array<Array<Int>>> , shape_id: Int) {
+    var shape_color_up = [UIImage(named:"super_light_green_up")!,UIImage(named:"pink_upwards")!,UIImage(named:"light_brown_up")!,UIImage(named:"light_brown_up")!,UIImage(named:"super_light_green_up")!,UIImage(named:"green_up")!,UIImage(named:"pink_upwards")!,UIImage(named:"purple_upwards")!,UIImage(named:"purple_upwards")!, UIImage(named:"light_brown_up")!, UIImage(named: "light_brown_up")!]
+    var shape_color_down = [UIImage(named:"super_light_green_down")!,UIImage(named:"pink_downwards")!,UIImage(named:"light_brown_down")!,UIImage(named:"light_brown_down")!,UIImage(named:"super_light_green_down")!,UIImage(named:"green_down")!,UIImage(named:"pink_downwards")!,UIImage(named:"purple_downwards")!,UIImage(named:"purple_downwards")!, UIImage(named:"light_brown_down")!, UIImage(named: "light_brown_down")!]
+    //if Themetype == 1 doesnt change
+    if (ThemeType == 2){
+        shape_color_up[5] = UIImage(named: "小肉 up")!
+        shape_color_down[5] = UIImage(named: "小肉 down")!
+    }else if(ThemeType == 3){
+        shape_color_up[0] = UIImage(named: "BW_black_tri_up")!
+        shape_color_up[1] = UIImage(named: "BW_black_tri_up")!
+        shape_color_up[2] = UIImage(named: "BW_black_tri_up")!
+        shape_color_up[3] = UIImage(named: "BW_black_tri_up")!
+        shape_color_up[4] = UIImage(named: "BW_black_tri_up")!
+        shape_color_up[5] = UIImage(named: "BW_black_tri_up")!
+        shape_color_up[6] = UIImage(named: "BW_black_tri_up")!
+        shape_color_up[7] = UIImage(named: "BW_black_tri_up")!
+        shape_color_up[8] = UIImage(named: "BW_black_tri_up")!
+        shape_color_up[9] = UIImage(named: "BW_black_tri_up")!
+        shape_color_up[10] = UIImage(named: "BW_black_tri_up")!
+        
+        
+        shape_color_down[0] = UIImage(named: "BW_black_tri_down")!
+        shape_color_down[1] = UIImage(named: "BW_black_tri_down")!
+        shape_color_down[2] = UIImage(named: "BW_black_tri_down")!
+        shape_color_down[3] = UIImage(named: "BW_black_tri_down")!
+        shape_color_down[4] = UIImage(named: "BW_black_tri_down")!
+        shape_color_down[5] = UIImage(named: "BW_black_tri_down")!
+        shape_color_down[6] = UIImage(named: "BW_black_tri_down")!
+        shape_color_down[7] = UIImage(named: "BW_black_tri_down")!
+        shape_color_down[8] = UIImage(named: "BW_black_tri_down")!
+        shape_color_down[9] = UIImage(named: "BW_black_tri_down")!
+        shape_color_down[10] = UIImage(named: "BW_black_tri_down")!
+    }else if(ThemeType == 4){
+        shape_color_up[0] = UIImage(named: "chaos_up")!
+        shape_color_up[1] = UIImage(named: "chaos_up")!
+        shape_color_up[2] = UIImage(named: "chaos_up_5")!
+        shape_color_up[3] = UIImage(named: "chaos_up_right")!
+        shape_color_up[4] = UIImage(named: "chaos_up_3")!
+        shape_color_up[5] = UIImage(named: "chaos_up_right")!
+        shape_color_up[6] = UIImage(named: "chaos_up")!
+        shape_color_up[7] = UIImage(named: "chaos_up")!
+        shape_color_up[8] = UIImage(named: "chaos_up")!
+        shape_color_up[9] = UIImage(named: "chaos_up_right")!
+        shape_color_up[10] = UIImage(named: "chaos_up_5")!
+        
+        
+        shape_color_down[0] = UIImage(named: "chaos_down")!
+        shape_color_down[1] = UIImage(named: "chaos_down")!
+        shape_color_down[2] = UIImage(named: "chaos_down")!
+        shape_color_down[3] = UIImage(named: "chaos_down")!
+        shape_color_down[4] = UIImage(named: "chaos_down")!
+        shape_color_down[5] = UIImage(named: "chaos_down")!
+        shape_color_down[6] = UIImage(named: "chaos_down")!
+        shape_color_down[7] = UIImage(named: "chaos_down")!
+        shape_color_down[8] = UIImage(named: "chaos_down")!
+        shape_color_down[9] = UIImage(named: "chaos_down")!
+        shape_color_down[10] = UIImage(named: "chaos_down")!
+        
+    }else if(ThemeType == 5){
+        shape_color_up[0] = UIImage(named: "school_up")!
+        shape_color_up[1] = UIImage(named: "school_up")!
+        shape_color_up[2] = UIImage(named: "school_up-right")!
+        shape_color_up[3] = UIImage(named: "school_up-right")!
+        shape_color_up[4] = UIImage(named: "school_up")!
+        shape_color_up[5] = UIImage(named: "school_up-left")!
+        shape_color_up[6] = UIImage(named: "school_up")!
+        shape_color_up[7] = UIImage(named: "school_up")!
+        shape_color_up[8] = UIImage(named: "school_up")!
+        shape_color_up[9] = UIImage(named: "school_up-right")!
+        shape_color_up[10] = UIImage(named: "school_up-right")!
+        
+        
+        shape_color_down[0] = UIImage(named: "school_down")!
+        shape_color_down[1] = UIImage(named: "school_down")!
+        shape_color_down[2] = UIImage(named: "school_down")!
+        shape_color_down[3] = UIImage(named: "school_down")!
+        shape_color_down[4] = UIImage(named: "school_down")!
+        shape_color_down[5] = UIImage(named: "school_down")!
+        shape_color_down[6] = UIImage(named: "school_down")!
+        shape_color_down[7] = UIImage(named: "school_down")!
+        shape_color_down[8] = UIImage(named: "school_down")!
+        shape_color_down[9] = UIImage(named: "school_down")!
+        shape_color_down[10] = UIImage(named: "school_down")!
+        
+    }else if(ThemeType == 6){
+        shape_color_up[0] = UIImage(named: "colors_green_up")!
+        shape_color_up[1] = UIImage(named: "colors_green_up")!
+        shape_color_up[2] = UIImage(named: "colors_gold_up")!
+        shape_color_up[3] = UIImage(named: "colors_green_up")!
+        shape_color_up[4] = UIImage(named: "colors_blue_up")!
+        shape_color_up[5] = UIImage(named: "colors_blue_up")!
+        shape_color_up[6] = UIImage(named: "colors_blue_up")!
+        shape_color_up[7] = UIImage(named: "colors_pink_up")!
+        shape_color_up[8] = UIImage(named: "colors_pink_up")!
+        shape_color_up[9] = UIImage(named: "colors_gold_up")!
+        shape_color_up[10] = UIImage(named: "colors_gold_up")!
+        
+        
+        shape_color_down[0] = UIImage(named: "colors_green_down")!
+        shape_color_down[1] = UIImage(named: "colors_green_down")!
+        shape_color_down[2] = UIImage(named: "colors_gold_down")!
+        shape_color_down[3] = UIImage(named: "colors_green_down")!
+        shape_color_down[4] = UIImage(named: "colors_blue_down")!
+        shape_color_down[5] = UIImage(named: "colors_blue_down")!
+        shape_color_down[6] = UIImage(named: "colors_blue_down")!
+        shape_color_down[7] = UIImage(named: "colors_pink_down")!
+        shape_color_down[8] = UIImage(named: "colors_pink_down")!
+        shape_color_down[9] = UIImage(named: "colors_gold_down")!
+        shape_color_down[10] = UIImage(named: "colors_gold_down")!
+        
+    }
+    
+let randomCondition = Int(arc4random_uniform(UInt32(hint_array.count)))
+let hint_condition = hint_array[randomCondition]
+    for location in hint_condition{
+        let row = location[0]
+        let column = location[1]
+        if(true_if_up(i: row, j: column)){
+        Change_Corresponding_Color_With_Image(x: row, y: column, image: shape_color_up[shape_id])
+        }else{
+        Change_Corresponding_Color_With_Image(x: row, y: column, image: shape_color_down[shape_id])
+        }
+        
+    }
+    
+    
+}
+
+    
     
 }
 
 
+
+//equal symbol extension (important!)
+func ==<E : Equatable>(lhs: [[E]], rhs: [[E]]) -> Bool {
+    guard lhs.count == rhs.count else { return false }
+    
+    for i in 0..<lhs.count {
+        guard lhs[i] == rhs[i] else { return false }
+    }
+    return true
+}
 
 
 
