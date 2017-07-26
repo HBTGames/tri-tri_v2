@@ -3587,7 +3587,46 @@ func generateFragmentsFrom(_ originView:UIView, with splitRatio:CGFloat, in cont
         
     }
     
-  
+    
+    func blink(final_completetion:  @escaping ()->()){
+        self.alpha = 1
+        UIView.animate(withDuration: 0.2, animations: {
+            
+            self.alpha = 0
+        }, completion: {
+            (finished) -> Void in
+            UIView.animate(withDuration: 0.2, animations: {
+             self.alpha = 1
+                
+            }, completion: {
+                (finished) -> Void in
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.alpha = 0
+                }, completion: {
+                    (finished) -> Void in
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.alpha = 1
+                    }, completion: {
+                        (finished) -> Void in
+                        UIView.animate(withDuration: 0.2, animations: {
+                            self.alpha = 0
+                        }, completion: {
+                            (finished) -> Void in
+                            UIView.animate(withDuration: 0.2, animations: {
+                                self.alpha = 1
+                                final_completetion()
+                            })//
+                        })//
+                    })
+                })
+                
+            })
+       
+        })
+        
+        
+    }
+    
   
     
    }

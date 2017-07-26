@@ -3403,7 +3403,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
                 
             }
-    
+            gameBoardHint()
             
             
         }
@@ -20399,9 +20399,9 @@ let hint_condition = hint_array[randomCondition]
         let row = location[0]
         let column = location[1]
         if(true_if_up(i: row, j: column)){
-        Change_Corresponding_Color_With_Image(x: row, y: column, image: shape_color_up[shape_id])
+        Triangle_Blink_With_Image(x: row, y: column, image: shape_color_up[shape_id])
         }else{
-        Change_Corresponding_Color_With_Image(x: row, y: column, image: shape_color_down[shape_id])
+        Triangle_Blink_With_Image(x: row, y: column, image: shape_color_down[shape_id])
         }
         
     }
@@ -20409,6 +20409,566 @@ let hint_condition = hint_array[randomCondition]
     
 }
 
+    
+    //change color with image
+    func Triangle_Blink_With_Image(x:Int, y:Int, image: UIImage?) -> (){
+        //row NO 0
+        if (x == 0 && y == 0){
+            tri_0_0.image = image
+            tri_0_0.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_0.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_0_0.blink(final_completetion: {
+            self.Restore_A_Grey_Tri(i: 0, j: 0)
+                
+            })
+        }else if(x == 0 && y == 1) {
+            tri_0_1.image = image
+            tri_0_1.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_1.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_0_1.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 0, j: 1)
+                
+            })
+        }else if (x == 0 && y == 2){
+            tri_0_2.image = image
+            tri_0_2.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_2.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_0_2.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 0, j: 2)
+                
+            })
+        }else if(x == 0 && y == 3) {
+            tri_0_3.image = image
+            tri_0_3.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_3.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_0_3.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 0, j: 3)
+                
+            })
+        }else if (x == 0 && y == 4){
+            tri_0_4.image = image
+            tri_0_4.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_4.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_0_4.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 0, j: 4)
+                
+            })
+        }else if(x == 0 && y == 5) {
+            tri_0_5.image = image
+            tri_0_5.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_5.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_0_5.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 0, j: 5)
+                
+            })
+        }else if (x == 0 && y == 6){
+            tri_0_6.image = image
+            tri_0_6.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_0_6.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_0_6.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 0, j: 6)
+                
+            })
+        }
+            //row NO 1
+        else if (x == 1 && y == 0){
+            tri_1_0.image = image
+            tri_1_0.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_0.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_1_0.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 1, j: 0)
+                
+            })
+
+        }else if(x == 1 && y == 1) {
+            tri_1_1.image = image
+            tri_1_1.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_1.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_1_1.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 1, j: 1)
+                
+            })
+        }else if (x == 1 && y == 2){
+            tri_1_2.image = image
+            tri_1_2.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_2.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_1_2.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 1, j: 2)
+                
+            })
+        }else if(x == 1 && y == 3) {
+            tri_1_3.image = image
+            tri_1_3.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_3.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_1_3.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 1, j: 3)
+                
+            })
+        }else if (x == 1 && y == 4){
+            tri_1_4.image = image
+            tri_1_4.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_4.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_1_4.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 1, j: 4)
+                
+            })
+        }else if(x == 1 && y == 5) {
+            tri_1_5.image = image
+            tri_1_5.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_5.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_1_5.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 1, j: 5)
+                
+            })
+        }else if (x == 1 && y == 6){
+            tri_1_6.image = image
+            tri_1_6.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_6.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_1_6.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 1, j: 6)
+                
+            })
+        }else if(x == 1 && y == 7) {
+            tri_1_7.image = image
+            tri_1_7.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_7.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_1_7.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 1, j: 7)
+                
+            })
+        }else if (x == 1 && y == 8){
+            tri_1_8.image = image
+            tri_1_8.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_1_8.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_1_8.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 1, j: 8)
+                
+            })
+        }
+            //row NO 2
+        else if(x == 2 && y == 0) {
+            tri_2_0.image = image
+            tri_2_0.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_0.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_2_0.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 2, j: 0)
+                
+            })
+        }else if(x == 2 && y == 1) {
+            tri_2_1.image = image
+            tri_2_1.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_1.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_2_1.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 2, j: 1)
+                
+            })
+        }else if(x == 2 && y == 2) {
+            tri_2_2.image = image
+            tri_2_2.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_2.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_2_2.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 2, j: 2)
+                
+            })
+        }else if(x == 2 && y == 3) {
+            tri_2_3.image = image
+            tri_2_3.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_3.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_2_3.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 2, j: 3)
+                
+            })
+        }else if(x == 2 && y == 4) {
+            tri_2_4.image = image
+            tri_2_4.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_4.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_2_4.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 2, j: 4)
+                
+            })
+        }else if(x == 2 && y == 5) {
+            tri_2_5.image = image
+            tri_2_5.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_5.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_2_5.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 2, j: 5)
+                
+            })
+        }else if(x == 2 && y == 6) {
+            tri_2_6.image = image
+            tri_2_6.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_6.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_2_6.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 2, j: 6)
+                
+            })
+        }else if(x == 2 && y == 7) {
+            tri_2_7.image = image
+            tri_2_7.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_7.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_2_7.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 2, j: 7)
+                
+            })
+        }else if(x == 2 && y == 8) {
+            tri_2_8.image = image
+            tri_2_8.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_8.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_2_8.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 2, j: 8)
+                
+            })
+        }else if(x == 2 && y == 9) {
+            tri_2_9.image = image
+            tri_2_9.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_9.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_2_9.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 2, j: 9)
+                
+            })
+        }else if(x == 2 && y == 10) {
+            tri_2_10.image = image
+            tri_2_10.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_2_10.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_2_10.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 2, j: 10)
+                
+            })
+        }
+            //row NO 3
+        else if(x == 3 && y == 0) {
+            tri_3_0.image = image
+            tri_3_0.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_0.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_3_0.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 3, j: 0)
+                
+            })
+        }else if(x == 3 && y == 1) {
+            tri_3_1.image = image
+            tri_3_1.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_1.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_3_1.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 3, j: 1)
+                
+            })
+        }else if(x == 3 && y == 2) {
+            tri_3_2.image = image
+            tri_3_2.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_2.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_3_2.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 3, j: 2)
+                
+            })
+        }else if(x == 3 && y == 3) {
+            tri_3_3.image = image
+            tri_3_3.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_3.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_3_3.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 3, j: 3)
+                
+            })
+        }else if(x == 3 && y == 4) {
+            tri_3_4.image = image
+            tri_3_4.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_4.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_3_4.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 3, j: 4)
+                
+            })
+        }else if(x == 3 && y == 5) {
+            tri_3_5.image = image
+            tri_3_5.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_5.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_3_5.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 3, j: 5)
+                
+            })
+        }else if(x == 3 && y == 6) {
+            tri_3_6.image = image
+            tri_3_6.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_6.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_3_6.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 3, j: 6)
+                
+            })
+        }else if(x == 3 && y == 7) {
+            tri_3_7.image = image
+            tri_3_7.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_7.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_3_7.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 3, j: 7)
+                
+            })
+        }else if(x == 3 && y == 8) {
+            tri_3_8.image = image
+            tri_3_8.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_8.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_3_8.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 3, j: 8)
+                
+            })
+        }else if(x == 3 && y == 9) {
+            tri_3_9.image = image
+            tri_3_9.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_9.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_3_9.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 3, j: 9)
+                
+            })
+        }else if(x == 3 && y == 10) {
+            tri_3_10.image = image
+            tri_3_10.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_3_10.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_3_10.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 3, j: 10)
+                
+            })
+        }
+            //row NO 4
+        else if (x == 4 && y == 0){
+            tri_4_0.image = image
+            tri_4_0.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_0.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_4_0.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 4, j: 0)
+                
+            })
+        }else if(x == 4 && y == 1) {
+            tri_4_1.image = image
+            tri_4_1.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_1.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_4_1.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 4, j: 1)
+                
+            })
+        }else if (x == 4 && y == 2){
+            tri_4_2.image = image
+            tri_4_2.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_2.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_4_2.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 4, j: 2)
+                
+            })
+        }else if(x == 4 && y == 3) {
+            tri_4_3.image = image
+            tri_4_3.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_3.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_4_3.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 4, j: 3)
+                
+            })
+        }else if (x == 4 && y == 4){
+            tri_4_4.image = image
+            tri_4_4.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_4.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_4_4.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 4, j: 4)
+                
+            })
+        }else if(x == 4 && y == 5) {
+            tri_4_5.image = image
+            tri_4_5.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_5.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_4_5.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 4, j: 5)
+                
+            })
+        }else if (x == 4 && y == 6){
+            tri_4_6.image = image
+            tri_4_6.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_6.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_4_6.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 4, j: 6)
+                
+            })
+        }else if(x == 4 && y == 7) {
+            tri_4_7.image = image
+            tri_4_7.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_7.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_4_7.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 4, j: 7)
+                
+            })
+        }else if (x == 4 && y == 8){
+            tri_4_8.image = image
+            tri_4_8.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_4_8.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_4_8.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 4, j: 8)
+                
+            })
+        }
+            //row NO 5
+        else if (x == 5 && y == 0){
+            tri_5_0.image = image
+            tri_5_0.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_0.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_5_0.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 5, j: 0)
+                
+            })
+        }else if(x == 5 && y == 1) {
+            tri_5_1.image = image
+            tri_5_1.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_1.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_5_1.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 5, j: 1)
+                
+            })
+        }else if (x == 5 && y == 2){
+            tri_5_2.image = image
+            tri_5_2.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_2.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_5_2.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 5, j: 2)
+                
+            })
+        }else if(x == 5 && y == 3) {
+            tri_5_3.image = image
+            tri_5_3.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_3.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_5_3.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 5, j: 3)
+                
+            })
+        }else if (x == 5 && y == 4){
+            tri_5_4.image = image
+            tri_5_4.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_4.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_5_4.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 5, j: 4)
+                
+            })
+        }else if(x == 5 && y == 5) {
+            tri_5_5.image = image
+            tri_5_5.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_5.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_5_5.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 5, j: 5)
+                
+            })
+        }else if (x == 5 && y == 6){
+            tri_5_6.image = image
+            tri_5_6.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tri_5_6.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
+            })
+            tri_5_6.blink(final_completetion: {
+                self.Restore_A_Grey_Tri(i: 5, j: 6)
+                
+            })
+        }
+        
+        
+        
+    }
     
     
 }
