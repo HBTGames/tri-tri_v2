@@ -1066,11 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameOverViewController.swift"
-            timestampString = "521985667.90013"
+            timestampString = "522644557.963612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1655"
-            endingLineNumber = "1655"
+            startingLineNumber = "1658"
+            endingLineNumber = "1658"
             landmarkName = "compose_final_share_image()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1082,11 +1082,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameOverViewController.swift"
-            timestampString = "521985667.90013"
+            timestampString = "522644557.963612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1651"
-            endingLineNumber = "1651"
+            startingLineNumber = "1654"
+            endingLineNumber = "1654"
             landmarkName = "compose_final_share_image()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1130,11 +1130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameOverViewController.swift"
-            timestampString = "521985667.90013"
+            timestampString = "522644557.963612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1692"
-            endingLineNumber = "1692"
+            startingLineNumber = "1700"
+            endingLineNumber = "1700"
             landmarkName = "sendImage(image:inScene:)"
             landmarkType = "7">
          </BreakpointContent>

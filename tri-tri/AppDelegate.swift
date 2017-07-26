@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().delegate = self
         // Override point for customization after application launch.
         EggRating.rateButtonTitleText = "Cheers"
-        EggRating.itunesId = "123456789"
+        EggRating.itunesId = "1259058860"
         EggRating.minRatingToAppStore = 3.5
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {

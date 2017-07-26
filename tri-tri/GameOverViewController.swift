@@ -363,6 +363,9 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     */
     @IBAction func Restart_Sound_Action(_ sender: UIButton) {
         
+        defaults.set([true,true,true], forKey: "tritri_exist_array")
+        defaults.removeObject(forKey: "tritri_shape_type_index")
+
        restart_player.play()
         
     }
@@ -1655,6 +1658,10 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         self.view.addSubview(temp_screenshot)
         temp_screenshot.contentMode = .scaleAspectFit
         //take screen shot again
+        let share_QR = generateQRCode()!
+        let share_QR_view = UIImageView(frame: CGRect(x: share_scene_score.frame.origin.x , y: share_scene_score.frame.origin.y + pause_screen_y_transform(98), width: pause_screen_x_transform(60), height: pause_screen_y_transform(60)))
+        share_QR_view.image = share_QR
+        self.view.addSubview(share_QR_view)
         let temp_final_score = UILabel(frame: share_scene_score.frame)
         temp_final_score.textAlignment = .left
         temp_final_score.font = UIFont(name: "Fresca-Regular", size: 30.0)
@@ -1671,6 +1678,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         final_image_frame.removeFromSuperview()
         white_cover.removeFromSuperview()
         temp_final_score.removeFromSuperview()
+        share_QR_view.removeFromSuperview()
         return image!
         
     }
@@ -1711,6 +1719,23 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         return WXApi.send(req)
     }
     
+    func generateQRCode() -> UIImage?{
+   let share_string = "https://itunes.apple.com/ca/app/tri-tri/id1259058860?mt=8"
+   let data = share_string.data(using: String.Encoding.ascii)
+    if let filter = CIFilter(name: "CIQRCodeGenerator") {
+        filter.setValue(data, forKey: "inputMessage")
+        let transform = CGAffineTransform(scaleX: 3, y: 3)
+            
+ if let output = filter.outputImage?.applying(transform) {
+                return UIImage(ciImage: output)
+            }
+        }
+        
+        return nil
+        
+        
+        
+    }
    
     
 
