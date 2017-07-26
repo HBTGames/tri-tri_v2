@@ -10123,20 +10123,37 @@ number_of_lines_erased += 1
 
         }
     
-
+    var gameOverTimer = Timer()
     func Jump_to_Game_Over () -> Void {
         
-        
-        takeBoardScreenShot()
-        
-        
-        
-        resurrection_when_dead()
-            
+    gameOverTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(GameBoardViewController.gameOverBody), userInfo: nil, repeats: true)
                 
         
     }
+   
+    func resetDragTriLocation(){
+    green_drag_tri.frame.origin = green_drag_origin
+    orange_drag_tri.frame.origin = orange_drag_origin
+    light_brown_drag_tri.frame.origin = light_brown_drag_origin
+    }
     
+    
+    func gameOverBody(){
+        if(!in_star_animation && !in_erase_animation){
+            resetDragTriLocation()
+            
+            gameOverTimer.invalidate()
+            
+            takeBoardScreenShot()
+            
+            
+            
+            resurrection_when_dead()
+    
+        }
+        
+        
+    }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     //sup functions used by check for regenerate and check for gameover
@@ -12255,7 +12272,7 @@ number_of_lines_erased += 1
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //star functions
     //star animation
-    
+    var in_star_animation = false
     func star_score_increment() -> Void {
         let current_times = Int(current_score / 50)
         let last_times = Int(last_score / 50 )
@@ -12264,6 +12281,7 @@ number_of_lines_erased += 1
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
         if((current_times - last_times) != 0){
+            
             star_animation()
         }
     }
@@ -12271,6 +12289,7 @@ number_of_lines_erased += 1
     var moving_star = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
     func star_animation() -> Void {
+        in_star_animation = true
         moving_star = UIImageView(frame: CGRect(x: screen_width/2, y: screen_height/2, width: pause_screen_x_transform(29), height: pause_screen_y_transform(34)))
         if(ThemeType == 1){
         moving_star.image = UIImage(named:"day_mode_moving_star")
@@ -12303,6 +12322,7 @@ number_of_lines_erased += 1
             self.view.addSubview(crown_animation)
             crown_animation.play()
             self.moving_star.removeFromSuperview()
+            self.in_star_animation = false
         })
         
     
