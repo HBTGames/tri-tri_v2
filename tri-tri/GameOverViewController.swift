@@ -1631,6 +1631,28 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
         }
         self.button_player.play()
+        if(language == "English"){
+            EggRating.rateButtonTitleText = "Cheers"
+            EggRating.titleLabelText = "Rate Our App"
+            EggRating.dismissButtonTitleText = "Not Now"
+            EggRating.descriptionLabelText = "This is our first app. If you love our app, please take a moment to rate it."
+            EggRating.appStoreTitleLabelText = "Write a review on the App Store"
+            EggRating.appStoreDescriptionLabelText = "Would you mind taking a moment to rate it on the App Store? It won't take more than a minute. Thanks for your support!"
+            EggRating.appStoreDismissButtonTitleText = "Not Right Now"
+            EggRating.appStoreRateButtonTitleText = "Rate tri-tri Now"
+            
+        }else{
+            EggRating.rateButtonTitleText = "打分"
+            EggRating.dismissButtonTitleText = "离开"
+            EggRating.titleLabelText = "为tri-tri打分"
+            EggRating.descriptionLabelText = "客官您好！这是我们团队的第一个app。如果您喜欢tri-tri，劳烦客官为她评分并支持我们！"
+            EggRating.appStoreTitleLabelText = "在App Store点评"
+            EggRating.appStoreDescriptionLabelText = "麻烦占用客官一点时间在app store上为我们点评。整个过程不会超过一分钟。HBT Games感谢您的支持！"
+            EggRating.appStoreDismissButtonTitleText = "残忍地拒绝"
+            EggRating.appStoreRateButtonTitleText = "现在开始评论"
+            
+            
+        }
         EggRating.promptRateUs(viewController: self)
         
     }
