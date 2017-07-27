@@ -832,11 +832,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522333889.499534"
+            timestampString = "522855365.024696"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17528"
-            endingLineNumber = "17528"
+            startingLineNumber = "17600"
+            endingLineNumber = "17600"
             landmarkName = "trinity_animation()"
             landmarkType = "7">
          </BreakpointContent>

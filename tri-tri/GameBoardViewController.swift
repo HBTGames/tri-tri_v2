@@ -14125,7 +14125,7 @@ number_of_lines_erased += 1
         
        
         
-        if (/*tool_quantity_array[0] == 0*/self.star_score < 25 && (self.tool_quantity_array[0] == 0)){   //all not enough
+        /*if (/*tool_quantity_array[0] == 0*/self.star_score < 25 && (self.tool_quantity_array[0] == 0)){   //all not enough
             if (self.language == "English"){
                 revive_text.image = UIImage(named: "revive_purchase_text_en")
             }
@@ -14133,8 +14133,8 @@ number_of_lines_erased += 1
                 revive_text.image = UIImage(named: "revive_purchase_text_ch")
             }
             resu_activate_button.setImage(UIImage(named:"revive_star_icon"), for: .normal)
-        }
-        else{
+        }*/
+    
             resu_activate_button.setImage(UIImage(named:"item_round_resurrection"), for: .normal)
             if (self.tool_quantity_array[0] > 0){
             if (self.language == "English"){
@@ -14152,7 +14152,7 @@ number_of_lines_erased += 1
                     revive_text.image = UIImage(named: "purchase_heart_when_gameover_ch")
                 }
             }
-        }
+        
         revive_text.frame = CGRect(x: 0, y: 0, width: self.pause_screen_x_transform(375), height: self.pause_screen_y_transform(200))
         
         
@@ -14254,12 +14254,84 @@ number_of_lines_erased += 1
                 }
                 else {  //star not enough
                     //currently gameover
-                    self.gameover_star_purchase = "gameover"
+                    
                     count_down_circle.send_stop_signal()
                     game_over_timer.invalidate()
-                    self.purchase_star_function()
+                    count_down_circle.removeFromParent()
+                    
+                    if (self.language == "English"){
+                        self.revive_text.image = UIImage(named: "revive_purchase_text_en")
+                    }
+                    else {
+                        self.revive_text.image = UIImage(named: "revive_purchase_text_ch")
+                    }
+                    self.resu_activate_button.setImage(UIImage(named:"revive_star_icon"), for: .normal)
+                    
+                    game_over_timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(GameBoardViewController.game_over_after_counter_done), userInfo: nil, repeats: false)
+                    
+                    let new_count_down_circle = resurrectCountDownCircle(size: CGSize(width: self.pause_screen_x_transform(250), height: self.pause_screen_y_transform(250)))
+                    new_count_down_circle.backgroundColor = UIColor(red:CGFloat(0/255.0), green:CGFloat(0/255.0), blue:CGFloat(0/255.0), alpha:CGFloat(0))
+                    
+                    new_count_down_circle.scaleMode = .aspectFill
+                    
+                    self.count_down_view.presentScene(new_count_down_circle)
+                    
+                    self.just_kill_me.whenButtonIsClicked {
+                        new_count_down_circle.send_stop_signal()
+                        game_over_timer.invalidate()
+                        defaults.set([[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1, -1,-1, -1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]], forKey: "tritri_single_tri_stored_type")
+                        defaults.set([[false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false,false, false],[false,false,false,false,false,false,false,false, false],[false,false,false,false,false,false,false]], forKey: "tritri_single_tri_filled")
+                        defaults.set(0, forKey: "tritri_single_round_score")
+                        defaults.set([true,true,true], forKey: "tritri_exist_array")
+                        defaults.removeObject(forKey: "tritri_shape_type_index")
+                        count_down_circle.send_stop_signal()
+                        var background_cover = UIImageView(frame: self.background_image.frame)
+                        background_cover.image = self.background_image.image
+                        background_cover.alpha = 0
+                        self.view.addSubview(background_cover)
+                        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
+                        nextViewController.final_score = self.MarkBoard.text!
+                        nextViewController.ThemeType = self.ThemeType
+                        nextViewController.modalTransitionStyle = .crossDissolve
+                        if (Int(self.MarkBoard.text!) == self.HighestScore){
+                            nextViewController.is_high_score = true
+                        } else {
+                            nextViewController.is_high_score = false
+                        }
+                        nextViewController.final_board_image = self.starBoardScreenShot
+                        
+                        self.present(nextViewController, animated: true, completion: nil)
+                        
+                        
+                        
+                        //self.audioPlayer.stop()
+                        self.timer.invalidate()
+                        game_over_timer.invalidate()
+                        do{self.game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
+                            self.game_over_player.prepareToPlay()
+                        }
+                        catch{
+                            
+                        }
+                        self.game_over_player.play()
+                        
+                    }
+                    self.resu_activate_button.whenButtonIsClicked {
+                        self.gameover_star_purchase = "gameover"
+                        new_count_down_circle.send_stop_signal()
+                        game_over_timer.invalidate()
+                        
+                        self.purchase_star_function()
+                        
+                        
+                    }
+                    
+                    
+                    
+                    
                     /*let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
+                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameOverV 9  iewController") as! GameOverViewController
                     nextViewController.final_score = self.MarkBoard.text!
                     nextViewController.ThemeType = self.ThemeType
                     nextViewController.modalTransitionStyle = .crossDissolve
