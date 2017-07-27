@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14498"
-            endingLineNumber = "14498"
+            startingLineNumber = "14626"
+            endingLineNumber = "14626"
             landmarkName = "holy_nova()"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13383"
-            endingLineNumber = "13383"
+            startingLineNumber = "13511"
+            endingLineNumber = "13511"
             landmarkName = "Duplicate_Tri_Animate(i:j:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14147"
-            endingLineNumber = "14147"
+            startingLineNumber = "14275"
+            endingLineNumber = "14275"
             landmarkName = "resurrection_when_dead()"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13506"
-            endingLineNumber = "13506"
+            startingLineNumber = "13634"
+            endingLineNumber = "13634"
             landmarkName = "Duplicate_Tri_Animate(i:j:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13502"
-            endingLineNumber = "13502"
+            startingLineNumber = "13630"
+            endingLineNumber = "13630"
             landmarkName = "Duplicate_Tri_Animate(i:j:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15014"
-            endingLineNumber = "15014"
+            startingLineNumber = "15142"
+            endingLineNumber = "15142"
             landmarkName = "nova_boom_animation(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15092"
-            endingLineNumber = "15092"
+            startingLineNumber = "15220"
+            endingLineNumber = "15220"
             landmarkName = "nova_boom_animation(row:col:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -858,11 +858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "9488"
-            endingLineNumber = "9488"
+            startingLineNumber = "9490"
+            endingLineNumber = "9490"
             landmarkName = "shape_to_erase_line()"
             landmarkType = "7">
          </BreakpointContent>
@@ -874,11 +874,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "9358"
-            endingLineNumber = "9358"
+            startingLineNumber = "9360"
+            endingLineNumber = "9360"
             landmarkName = "shape_to_erase_line()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1018,11 +1018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12073"
-            endingLineNumber = "12073"
+            startingLineNumber = "12075"
+            endingLineNumber = "12075"
             landmarkName = "randomShape_for_Difficulty_Level()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1256,11 +1256,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16625"
-            endingLineNumber = "16625"
+            startingLineNumber = "16753"
+            endingLineNumber = "16753"
             landmarkName = "GameBoardViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1272,11 +1272,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16626"
-            endingLineNumber = "16626"
+            startingLineNumber = "16754"
+            endingLineNumber = "16754"
             landmarkName = "GameBoardViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1288,11 +1288,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16616"
-            endingLineNumber = "16616"
+            startingLineNumber = "16744"
+            endingLineNumber = "16744"
             landmarkName = "tri_explosion_animation_and_restore(row:col:duration:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1304,11 +1304,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16839"
-            endingLineNumber = "16839"
+            startingLineNumber = "16967"
+            endingLineNumber = "16967"
             landmarkName = "fill_tris_to_situation(situation_index:tri_number:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1320,11 +1320,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16840"
-            endingLineNumber = "16840"
+            startingLineNumber = "16968"
+            endingLineNumber = "16968"
             landmarkName = "fill_tris_to_situation(situation_index:tri_number:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1352,11 +1352,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16805"
-            endingLineNumber = "16805"
+            startingLineNumber = "16933"
+            endingLineNumber = "16933"
             landmarkName = "fill_tris_to_situation(situation_index:tri_number:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1368,11 +1368,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16806"
-            endingLineNumber = "16806"
+            startingLineNumber = "16934"
+            endingLineNumber = "16934"
             landmarkName = "fill_tris_to_situation(situation_index:tri_number:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1384,11 +1384,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16803"
-            endingLineNumber = "16803"
+            startingLineNumber = "16931"
+            endingLineNumber = "16931"
             landmarkName = "fill_tris_to_situation(situation_index:tri_number:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1400,11 +1400,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3540"
-            endingLineNumber = "3540"
+            startingLineNumber = "3542"
+            endingLineNumber = "3542"
             landmarkName = "panGestureRecognizerAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1416,27 +1416,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3441"
+            endingLineNumber = "3441"
+            landmarkName = "panGestureRecognizerAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tri-tri/GameBoardViewController.swift"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3439"
             endingLineNumber = "3439"
-            landmarkName = "panGestureRecognizerAction(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3437"
-            endingLineNumber = "3437"
             landmarkName = "panGestureRecognizerAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1480,11 +1480,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "8863"
-            endingLineNumber = "8863"
+            startingLineNumber = "8865"
+            endingLineNumber = "8865"
             landmarkName = "Check_And_Erase_Fix_Filled()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1514,11 +1514,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18447"
-            endingLineNumber = "18447"
+            startingLineNumber = "18575"
+            endingLineNumber = "18575"
             landmarkName = "Find_Any_Green_Tri_to_Erase_Line(row:column:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1530,11 +1530,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18361"
-            endingLineNumber = "18361"
+            startingLineNumber = "18489"
+            endingLineNumber = "18489"
             landmarkName = "Find_Any_Green_Tri_to_Erase_Line(row:column:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1546,11 +1546,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522774278.010847"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18360"
-            endingLineNumber = "18360"
+            startingLineNumber = "18488"
+            endingLineNumber = "18488"
             landmarkName = "Find_Any_Green_Tri_to_Erase_Line(row:column:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1562,11 +1562,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20390"
-            endingLineNumber = "20390"
+            startingLineNumber = "20518"
+            endingLineNumber = "20518"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1578,11 +1578,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20461"
-            endingLineNumber = "20461"
+            startingLineNumber = "20589"
+            endingLineNumber = "20589"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1594,11 +1594,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21388"
-            endingLineNumber = "21388">
+            startingLineNumber = "21570"
+            endingLineNumber = "21570">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1608,11 +1608,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20397"
-            endingLineNumber = "20397"
+            startingLineNumber = "20525"
+            endingLineNumber = "20525"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1624,11 +1624,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20406"
-            endingLineNumber = "20406"
+            startingLineNumber = "20534"
+            endingLineNumber = "20534"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1640,11 +1640,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20472"
-            endingLineNumber = "20472"
+            startingLineNumber = "20600"
+            endingLineNumber = "20600"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1656,11 +1656,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20614"
-            endingLineNumber = "20614"
+            startingLineNumber = "20742"
+            endingLineNumber = "20742"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1672,11 +1672,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20786"
-            endingLineNumber = "20786"
+            startingLineNumber = "20914"
+            endingLineNumber = "20914"
             landmarkName = "blink_at_lacking_location(hint_array:shape_id:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1688,11 +1688,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20785"
-            endingLineNumber = "20785"
+            startingLineNumber = "20913"
+            endingLineNumber = "20913"
             landmarkName = "blink_at_lacking_location(hint_array:shape_id:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1704,11 +1704,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20622"
-            endingLineNumber = "20622"
+            startingLineNumber = "20750"
+            endingLineNumber = "20750"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1720,11 +1720,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20621"
-            endingLineNumber = "20621"
+            startingLineNumber = "20749"
+            endingLineNumber = "20749"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1736,11 +1736,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20623"
-            endingLineNumber = "20623"
+            startingLineNumber = "20751"
+            endingLineNumber = "20751"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1752,11 +1752,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20624"
-            endingLineNumber = "20624"
+            startingLineNumber = "20752"
+            endingLineNumber = "20752"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1768,11 +1768,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20620"
-            endingLineNumber = "20620"
+            startingLineNumber = "20748"
+            endingLineNumber = "20748"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1784,11 +1784,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20450"
-            endingLineNumber = "20450"
+            startingLineNumber = "20578"
+            endingLineNumber = "20578"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1800,11 +1800,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21379"
-            endingLineNumber = "21379">
+            startingLineNumber = "21561"
+            endingLineNumber = "21561">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1814,11 +1814,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20454"
-            endingLineNumber = "20454"
+            startingLineNumber = "20582"
+            endingLineNumber = "20582"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1830,11 +1830,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20445"
-            endingLineNumber = "20445"
+            startingLineNumber = "20573"
+            endingLineNumber = "20573"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1846,11 +1846,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20422"
-            endingLineNumber = "20422"
+            startingLineNumber = "20550"
+            endingLineNumber = "20550"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1862,11 +1862,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20466"
-            endingLineNumber = "20466"
+            startingLineNumber = "20594"
+            endingLineNumber = "20594"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1878,11 +1878,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tri-tri/GameBoardViewController.swift"
-            timestampString = "522808698.136127"
+            timestampString = "522891816.898082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20616"
-            endingLineNumber = "20616"
+            startingLineNumber = "20744"
+            endingLineNumber = "20744"
             landmarkName = "gameBoardHint()"
             landmarkType = "7">
          </BreakpointContent>
