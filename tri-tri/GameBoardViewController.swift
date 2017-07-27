@@ -19142,26 +19142,106 @@ func trinity_animation() -> Void {
             if(column%2 == 0){
                 //left to right
                 if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column+1] && !filled[row+1][column+2] && !filled[row+1][column+3]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+2] = true
+                    filled[row+1][column+1] = true
+                    filled[row+1][column+2] = true
+                    filled[row+1][column+3] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column+2])
+                    dark_green_temp_location.append([row+1,column+1])
+                    dark_green_temp_location.append([row+1,column+2])
+                    dark_green_temp_location.append([row+1,column+3])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //right to left
                 if(column != 0 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column] && !filled[row+1][column-1] && !filled[row+1][column+1]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-2] = true
+                    filled[row+1][column] = true
+                    filled[row+1][column-1] = true
+                    filled[row+1][column+1] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-2])
+                    dark_green_temp_location.append([row+1,column])
+                    dark_green_temp_location.append([row+1,column-1])
+                    dark_green_temp_location.append([row+1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //as center
                 if(column != 0 && column != filled[row].count-1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column-2] && !filled[row-1][column]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column-2] = true
+                    filled[row-1][column] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-1])
+                    dark_green_temp_location.append([row,column+1])
+                    dark_green_temp_location.append([row-1,column-2])
+                    dark_green_temp_location.append([row-1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
             }
                 //downwards tri
             else{
                 //bottom left to right
                 if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2] && !filled[row-1][column-1] && !filled[row-1][column+1]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row][column+2] = true
+                    filled[row-1][column-1] = true
+                    filled[row-1][column+1] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column+1])
+                    dark_green_temp_location.append([row+1,column+2])
+                    dark_green_temp_location.append([row-1,column-1])
+                    dark_green_temp_location.append([row-1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //bottom right to left
                 if(column != 1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column-1] && !filled[row-1][column-3]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column-2] = true
+                    filled[row-1][column-1] = true
+                    filled[row-1][column-3] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-1])
+                    dark_green_temp_location.append([row,column-2])
+                    dark_green_temp_location.append([row-1,column-1])
+                    dark_green_temp_location.append([row-1,column-3])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
             }
         }
@@ -19171,26 +19251,106 @@ func trinity_animation() -> Void {
             if(column%2 == 0){
                 //left to right
                 if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column] && !filled[row+1][column+1] && !filled[row+1][column+2] ){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+2] = true
+                    filled[row+1][column] = true
+                    filled[row+1][column+1] = true
+                    filled[row+1][column+2] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column+2])
+                    dark_green_temp_location.append([row+1,column])
+                    dark_green_temp_location.append([row+1,column+1])
+                    dark_green_temp_location.append([row+1,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //right to left
                 if(column != 0 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column] && !filled[row+1][column-1] && !filled[row+1][column-2]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-2] = true
+                    filled[row+1][column] = true
+                    filled[row+1][column-1] = true
+                    filled[row+1][column-2] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-2])
+                    dark_green_temp_location.append([row+1,column])
+                    dark_green_temp_location.append([row+1,column-1])
+                    dark_green_temp_location.append([row+1,column-2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //as center
                 if(column != 0 && column != filled[row].count-1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column-2] && !filled[row-1][column]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column-2] = true
+                    filled[row-1][column] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-1])
+                    dark_green_temp_location.append([row,column+1])
+                    dark_green_temp_location.append([row-1,column-2])
+                    dark_green_temp_location.append([row-1,column])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
             }
                 //downwards tri
             else{
                 //bottom left to right
                 if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2]  && !filled[row-1][column-1] && !filled[row-1][column+1]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row][column+2] = true
+                    filled[row-1][column-1] = true
+                    filled[row-1][column+1] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column+1])
+                    dark_green_temp_location.append([row,column+2])
+                    dark_green_temp_location.append([row-1,column-1])
+                    dark_green_temp_location.append([row-1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //bottom right to left
                 if(column != 1 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column-1] && !filled[row-1][column-3]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column-2] = true
+                    filled[row-1][column-1] = true
+                    filled[row-1][column-3] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-1])
+                    dark_green_temp_location.append([row,column-2])
+                    dark_green_temp_location.append([row-1,column-1])
+                    dark_green_temp_location.append([row-1,column-3])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 
             }
@@ -19200,26 +19360,106 @@ func trinity_animation() -> Void {
             if(column%2 == 0){
                 //bottom left to right
                 if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2] && !filled[row-1][column] && !filled[row-1][column+2]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row][column+2] = true
+                    filled[row-1][column] = true
+                    filled[row-1][column+2] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column+1])
+                    dark_green_temp_location.append([row,column+2])
+                    dark_green_temp_location.append([row-1,column])
+                    dark_green_temp_location.append([row-1,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //bottom right to left
                 if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column] && !filled[row-1][column-2]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column-2] = true
+                    filled[row-1][column] = true
+                    filled[row-1][column-2] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-1])
+                    dark_green_temp_location.append([row,column-2])
+                    dark_green_temp_location.append([row-1,column])
+                    dark_green_temp_location.append([row-1,column-2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
             }
                 //upwards tri
             else{
                 //left to right
                 if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column-1] && !filled[row+1][column] && !filled[row+1][column+1]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+2] = true
+                    filled[row+1][column-1] = true
+                    filled[row+1][column] = true
+                    filled[row+1][column+1] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column+2])
+                    dark_green_temp_location.append([row+1,column-1])
+                    dark_green_temp_location.append([row+1,column])
+                    dark_green_temp_location.append([row+1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //right to left
                 if(column != 1 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column-1] && !filled[row+1][column-2] && !filled[row+1][column-3]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-2] = true
+                    filled[row+1][column-1] = true
+                    filled[row+1][column-2] = true
+                    filled[row+1][column-3] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-2])
+                    dark_green_temp_location.append([row+1,column-1])
+                    dark_green_temp_location.append([row+1,column-2])
+                    dark_green_temp_location.append([row+1,column-3])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //as center
                 if(!filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column-1] && !filled[row-1][column+1]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column-1] = true
+                    filled[row-1][column+1] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-1])
+                    dark_green_temp_location.append([row,column+1])
+                    dark_green_temp_location.append([row-1,column-1])
+                    dark_green_temp_location.append([row-1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
             }
         }
@@ -19228,26 +19468,106 @@ func trinity_animation() -> Void {
             if(column%2 == 0){
                 //bottom left to right
                 if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2] && !filled[row-1][column+1] && !filled[row-1][column+3]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row][column+2] = true
+                    filled[row-1][column+1] = true
+                    filled[row-1][column+3] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column+1])
+                    dark_green_temp_location.append([row,column+2])
+                    dark_green_temp_location.append([row-1,column+1])
+                    dark_green_temp_location.append([row-1,column+3])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //bottom right to left
                 if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column-1] && !filled[row-1][column+1]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column-2] = true
+                    filled[row-1][column-1] = true
+                    filled[row-1][column+1] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-1])
+                    dark_green_temp_location.append([row,column-2])
+                    dark_green_temp_location.append([row-1,column-1])
+                    dark_green_temp_location.append([row-1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
             }
                 //upwards tri
             else{
                 //left to right
                 if(column != filled[row].count-2 && !filled[row][column] && !filled[row][column+2] && !filled[row+1][column-1] && !filled[row+1][column] && !filled[row+1][column+1]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+2] = true
+                    filled[row+1][column-1] = true
+                    filled[row+1][column] = true
+                    filled[row+1][column+1] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column+2])
+                    dark_green_temp_location.append([row+1,column-1])
+                    dark_green_temp_location.append([row+1,column])
+                    dark_green_temp_location.append([row+1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //right to left
                 if(column != 1 && !filled[row][column] && !filled[row][column-2] && !filled[row+1][column-1] && !filled[row+1][column-2] && !filled[row+1][column-3]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-2] = true
+                    filled[row+1][column-1] = true
+                    filled[row+1][column-2] = true
+                    filled[row+1][column-3] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-2])
+                    dark_green_temp_location.append([row+1,column-1])
+                    dark_green_temp_location.append([row+1,column-2])
+                    dark_green_temp_location.append([row+1,column-3])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //as center
                 if(!filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column] && !filled[row-1][column+2]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column] = true
+                    filled[row-1][column+2] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-1])
+                    dark_green_temp_location.append([row,column+1])
+                    dark_green_temp_location.append([row-1,column])
+                    dark_green_temp_location.append([row-1,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 
             }
@@ -19257,11 +19577,43 @@ func trinity_animation() -> Void {
             if(column%2 == 0){
                 //bottom left to right
                 if(column != filled[row].count-1 && !filled[row][column] && !filled[row][column+1] && !filled[row][column+2] && !filled[row-1][column+1] && !filled[row-1][column+3]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column+1] = true
+                    filled[row][column+2] = true
+                    filled[row-1][column+1] = true
+                    filled[row-1][column+3] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column+1])
+                    dark_green_temp_location.append([row,column+2])
+                    dark_green_temp_location.append([row-1,column+1])
+                    dark_green_temp_location.append([row-1,column+3])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 //bottom right to left
                 if(column != 0 && !filled[row][column] && !filled[row][column-1] && !filled[row][column-2] && !filled[row-1][column-1] && !filled[row-1][column+1]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column-2] = true
+                    filled[row-1][column-1] = true
+                    filled[row-1][column+1] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-1])
+                    dark_green_temp_location.append([row,column-2])
+                    dark_green_temp_location.append([row-1,column-1])
+                    dark_green_temp_location.append([row-1,column+1])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 
             }
@@ -19270,12 +19622,28 @@ func trinity_animation() -> Void {
                 //left to right & right to left not possible
                 //as center
                 if(!filled[row][column] && !filled[row][column-1] && !filled[row][column+1] && !filled[row-1][column] && !filled[row-1][column+2]){
-                    return
+                    dark_green_temp_location = []
+                    filled[row][column] = true
+                    filled[row][column-1] = true
+                    filled[row][column+1] = true
+                    filled[row-1][column] = true
+                    filled[row-1][column+2] = true
+                    dark_green_temp_location.append([row,column])
+                    dark_green_temp_location.append([row,column-1])
+                    dark_green_temp_location.append([row,column+1])
+                    dark_green_temp_location.append([row-1,column])
+                    dark_green_temp_location.append([row-1,column+2])
+                    Check_and_Erase_Return_Bool()
+                    filled = previous_filled
+                    if(subsituation0||subsituation1||subsituation2||subsituation3||subsituation4||subsituation5||subsituation6||subsituation7||subsituation8||subsituation9||subsituation10||subsituation11||subsituation12||subsituation13||subsituation14||subsituation15||subsituation16||subsituation17||subsituation18){
+                        dark_green_tri_hint_all_location.append(dark_green_temp_location)
+                        
+                    }
                 }
                 
             }
         }
-        return
+        
     
     }
    
