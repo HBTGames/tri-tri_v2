@@ -10155,7 +10155,7 @@ number_of_lines_erased += 1
     func gameOverBody(){
         if(!in_star_animation && !in_erase_animation){
             gameOverTimer.invalidate()
-<<<<<<< HEAD
+
             
             /*UIView.animate(withDuration: 0.3, animations: {
                 self.green_drag_tri.frame.origin = self.green_drag_origin
@@ -10168,10 +10168,10 @@ number_of_lines_erased += 1
             })*/
             
             
-            self.takeBoardScreenShot()
-            self.resurrection_when_dead()
+            //self.takeBoardScreenShot()
+            //self.resurrection_when_dead()
             
-=======
+
             if(position_in_use == 3){
             //do nothing
             self.takeBoardScreenShot()
@@ -10208,7 +10208,7 @@ number_of_lines_erased += 1
                 
                 
             }
->>>>>>> origin/master
+
             
         }
         
