@@ -10147,11 +10147,8 @@ number_of_lines_erased += 1
         
     }
    
-    func resetDragTriLocation(){
-   
-    }
-    
-    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //game over body
     func gameOverBody(){
         if(!in_star_animation && !in_erase_animation){
             gameOverTimer.invalidate()

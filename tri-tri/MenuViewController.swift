@@ -25,7 +25,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     //theme islocked array
     //if locked : true , unlocked : false
     var theme_islocked_array : Array<Bool> = []
-    
+    //to show whether first time to enter sale
+    var first_enter_sale = false
     
     var language = String()
     
@@ -312,10 +313,60 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     saveBestScore()
     //openGameCenter()
     //wechat
-        
-         
+        if (defaults.value(forKey: "tritri_firstTimerEnterSale") == nil){
+             first_enter_sale = true
+            defaults.set(first_enter_sale, forKey: "tritri_firstTimerEnterSale")
+        }
+        else {
+            first_enter_sale = defaults.value(forKey: "tritri_firstTimerEnterSale") as! Bool
+        }
+        if(first_enter_sale){
+        first_time_enter_sale_action()
+        let saleViewTap = UITapGestureRecognizer(target: self, action: #selector(saleView_tapped))
+            saleViewTap.numberOfTapsRequired = 1
+            self.view.addGestureRecognizer(saleViewTap)
+        }
+    
         
     }
+    
+    var in_first_sale_scene = false
+    var first_time_enter_sale_scene = UIImageView()
+    func first_time_enter_sale_action(){
+     in_first_sale_scene = true
+     first_time_enter_sale_scene.frame = self.view.frame
+     first_time_enter_sale_scene.image = #imageLiteral(resourceName: "first_time_enter_sale")
+     self.view.addSubview(first_time_enter_sale_scene)
+     first_time_enter_sale_scene.alpha = 0
+    first_time_enter_sale_scene.fadeIn()
+    gift_button.isUserInteractionEnabled = false
+    continue_button.isUserInteractionEnabled = false
+    treasure_box_icon.isUserInteractionEnabled = false
+    tutorial_button.isUserInteractionEnabled = false
+    shopping_cart.isUserInteractionEnabled = false
+    like_button.isUserInteractionEnabled = false
+    language_button.isUserInteractionEnabled = false
+    }
+    
+    func saleView_tapped(_ gesture: UITapGestureRecognizer ) {
+        if(in_first_sale_scene){
+        let location = gesture.location(in: self.view)
+            if(first_time_enter_sale_scene.frame.contains(location)){
+                first_time_enter_sale_scene.fadeOutandRemove()
+                gift_button.isUserInteractionEnabled = true
+                continue_button.isUserInteractionEnabled = true
+                treasure_box_icon.isUserInteractionEnabled = true
+                tutorial_button.isUserInteractionEnabled = true
+                shopping_cart.isUserInteractionEnabled = true
+                like_button.isUserInteractionEnabled = true
+                language_button.isUserInteractionEnabled = true
+                first_enter_sale = false
+                defaults.set(first_enter_sale, forKey: "tritri_firstTimerEnterSale")
+                
+            }
+        }
+    }
+    
     
 
 
@@ -1700,23 +1751,31 @@ current_star_total.alpha = 0
 self.view.addSubview(current_star_total)
 //new  life button
     new_life_button = MyButton(frame: CGRect(x: pause_screen_x_transform(30), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-    new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button") , for: .normal)
+    //new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button") , for: .normal)
+    //sale
+    new_life_button.setImage( #imageLiteral(resourceName: "resurrection_up_sale"), for: .normal)
     new_life_button.alpha = 0
     self.view.addSubview(new_life_button)
     new_life_button.fadeIn()
         new_life_button.whenButtonIsHighlighted(action: {
-            self.new_life_button.setImage(#imageLiteral(resourceName: "new_life"), for: .normal)
+            //self.new_life_button.setImage(#imageLiteral(resourceName: "new_life"), for: .normal)
+            //sale
+            self.new_life_button.setImage(#imageLiteral(resourceName: "resurrection_down_sale"), for: .normal)
             self.new_life_button.frame.origin.y += self.pause_screen_y_transform(2)
         })
         //new_life_button.whenButtonEs
         new_life_button.whenButtonEscapeHighlight(action: {
             self.new_life_button.frame.origin.y -= self.pause_screen_y_transform(2)
-            self.new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button"), for: .normal)
+            //self.new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button"), for: .normal)
+            //sale
+            self.new_life_button.setImage( #imageLiteral(resourceName: "resurrection_up_sale"), for: .normal)
     
         })
         new_life_button.whenButtonIsClicked(action: {
             self.new_life_button.frame.origin.y -= self.pause_screen_y_transform(2)
-            self.new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button"), for: .normal)
+            //self.new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button"), for: .normal)
+            //sale
+            self.new_life_button.setImage( #imageLiteral(resourceName: "resurrection_up_sale"), for: .normal)
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1766,13 +1825,19 @@ self.view.addSubview(current_star_total)
     
 //same color eliminator button
     same_color_eliminator = MyButton(frame: CGRect(x: new_life_button.frame.origin.x + new_life_button.frame.width + pause_screen_x_transform(50), y: pause_screen_y_transform(100), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-    same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
+    //same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
+    //sale
+    same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_up_sale"), for: .normal)
         same_color_eliminator.whenButtonIsHighlighted(action: {
-        self.same_color_eliminator.setImage(#imageLiteral(resourceName: "same_color_eliminator"), for: .normal)
+        //self.same_color_eliminator.setImage(#imageLiteral(resourceName: "same_color_eliminator"), for: .normal)
+        //sale
+        self.same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_down_sale"), for: .normal)
         self.same_color_eliminator.frame.origin.y += self.pause_screen_y_transform(2)
         })
         same_color_eliminator.whenButtonEscapeHighlight(action: {
-            self.same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
+            //self.same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
+            //sale
+            self.same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_up_sale"), for: .normal)
             self.same_color_eliminator.frame.origin.y -= self.pause_screen_y_transform(2)
         })
     
@@ -1780,7 +1845,9 @@ self.view.addSubview(current_star_total)
     self.view.addSubview(same_color_eliminator)
     same_color_eliminator.fadeIn()
         same_color_eliminator.whenButtonIsClicked(action: {
-            self.same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
+            //self.same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_button"), for: .normal)
+            //sale
+            self.same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_up_sale"), for: .normal)
             self.same_color_eliminator.frame.origin.y -= self.pause_screen_y_transform(2)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
@@ -1831,14 +1898,19 @@ self.view.addSubview(current_star_total)
         
     //shape bomb button
     shape_bomb = MyButton(frame: CGRect(x: new_life_button.frame.origin.x, y: new_life_button.frame.origin.y + new_life_button.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-    shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
+    //shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
+    //sale
+    shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_up_sale"), for: .normal)
         shape_bomb.whenButtonIsHighlighted(action: {
-            self.shape_bomb.setImage(#imageLiteral(resourceName: "shape_bomb"), for: .normal)
+            //self.shape_bomb.setImage(#imageLiteral(resourceName: "shape_bomb"), for: .normal)
+            self.shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_down_sale"), for: .normal)
             self.shape_bomb.frame.origin.y += self.pause_screen_y_transform(2)
         })
     
         shape_bomb.whenButtonEscapeHighlight(action: {
-            self.shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
+            //self.shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
+            //sale
+            self.shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_up_sale"), for: .normal)
             self.shape_bomb.frame.origin.y -= self.pause_screen_y_transform(2)
         })
     shape_bomb.alpha = 0
@@ -1846,7 +1918,9 @@ self.view.addSubview(current_star_total)
     shape_bomb.fadeIn()
     
         shape_bomb.whenButtonIsClicked(action: {
-            self.shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
+            //self.shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_button"), for: .normal)
+            //sale
+            self.shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_up_sale"), for: .normal)
             self.shape_bomb.frame.origin.y -= self.pause_screen_y_transform(2)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
@@ -1895,21 +1969,29 @@ self.view.addSubview(current_star_total)
         
     //times two button
     times_two = MyButton(frame: CGRect(x: same_color_eliminator.frame.origin.x, y: shape_bomb.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-    times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
+    //times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
+    //sale
+        times_two.setImage(#imageLiteral(resourceName: "amplifier_up_sale"), for: .normal)
         times_two.whenButtonIsHighlighted(action: {
-            self.times_two.setImage(#imageLiteral(resourceName: "times_two"), for: .normal)
+            //self.times_two.setImage(#imageLiteral(resourceName: "times_two"), for: .normal)
+            //sale
+            self.times_two.setImage(#imageLiteral(resourceName: "amplifier_down_sale"), for: .normal)
             self.times_two.frame.origin.y += self.pause_screen_y_transform(2)
        
         })
         times_two.whenButtonEscapeHighlight(action: {
-            self.times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
+           //self.times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
+           //sale
+            self.times_two.setImage(#imageLiteral(resourceName: "amplifier_up_sale"), for: .normal)
             self.times_two.frame.origin.y -= self.pause_screen_y_transform(2)
         })
         times_two.alpha = 0
     self.view.addSubview(times_two)
     times_two.fadeIn()
         times_two.whenButtonIsClicked(action: {
-            self.times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
+            //self.times_two.setImage(#imageLiteral(resourceName: "amplifier_button"), for: .normal)
+            //sale
+            self.times_two.setImage(#imageLiteral(resourceName: "amplifier_up_sale"), for: .normal)
             self.times_two.frame.origin.y -= self.pause_screen_y_transform(2)
 
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -1959,21 +2041,29 @@ self.view.addSubview(current_star_total)
         
     //three triangles button
     three_triangles = MyButton(frame: CGRect(x: shape_bomb.frame.origin.x, y: shape_bomb.frame.origin.y + shape_bomb.frame.height + pause_screen_y_transform(50), width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-    three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
+    //three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
+    //sale
+    three_triangles.setImage(#imageLiteral(resourceName: "trinity_up_sale"), for: .normal)
         three_triangles.whenButtonIsHighlighted(action: {
-            self.three_triangles.setImage(#imageLiteral(resourceName: "three_triangle"), for: .normal)
+            //self.three_triangles.setImage(#imageLiteral(resourceName: "three_triangle"), for: .normal)
+            //sale
+            self.three_triangles.setImage(#imageLiteral(resourceName: "trinity_down_sale"), for: .normal)
             self.three_triangles.frame.origin.y += self.pause_screen_y_transform(2)
         })
         
         three_triangles.whenButtonEscapeHighlight(action: {
-            self.three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
+            //self.three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
+            //sale
+            self.three_triangles.setImage(#imageLiteral(resourceName: "trinity_up_sale"), for: .normal)
             self.three_triangles.frame.origin.y -= self.pause_screen_y_transform(2)
         })
     three_triangles.alpha = 0
     self.view.addSubview(three_triangles)
     three_triangles.fadeIn()
         three_triangles.whenButtonIsClicked(action: {
-            self.three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
+            //self.three_triangles.setImage(#imageLiteral(resourceName: "trinity_button"), for: .normal)
+            //sale
+            self.three_triangles.setImage(#imageLiteral(resourceName: "trinity_up_sale"), for: .normal)
             self.three_triangles.frame.origin.y -= self.pause_screen_y_transform(2)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
@@ -2025,21 +2115,29 @@ self.view.addSubview(current_star_total)
         
     //clear all button
     clear_all = MyButton(frame: CGRect(x: times_two.frame.origin.x, y: three_triangles.frame.origin.y, width: pause_screen_x_transform(140), height: pause_screen_y_transform(140)))
-    clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
+    //clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
+    //sale
+    clear_all.setImage(#imageLiteral(resourceName: "doomday_up_sale"), for: .normal)
         clear_all.whenButtonIsHighlighted(action: {
-            self.clear_all.setImage(#imageLiteral(resourceName: "clear_all"), for: .normal)
+            //self.clear_all.setImage(#imageLiteral(resourceName: "clear_all"), for: .normal)
+            //sale
+            self.clear_all.setImage(#imageLiteral(resourceName: "doomday_down_sale"), for: .normal)
             self.clear_all.frame.origin.y += self.pause_screen_y_transform(2)
         })
        clear_all.alpha = 0
     self.view.addSubview(clear_all)
     clear_all.fadeIn()
         clear_all.whenButtonEscapeHighlight(action: {
-            self.clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
+            //self.clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
+            //sale
+             self.clear_all.setImage(#imageLiteral(resourceName: "doomday_up_sale"), for: .normal)
             self.clear_all.frame.origin.y -= self.pause_screen_y_transform(2)
             
         })
         clear_all.whenButtonIsClicked(action: {
-            self.clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
+            //self.clear_all.setImage(#imageLiteral(resourceName: "doom_day_button"), for: .normal)
+            //sale
+             self.clear_all.setImage(#imageLiteral(resourceName: "doomday_up_sale"), for: .normal)
             self.clear_all.frame.origin.y -= self.pause_screen_y_transform(2)
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
@@ -2301,48 +2399,70 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         
         if (self.language == "English"){
         if(tool_selected == 0){
-            treasure_icon_selected.image = #imageLiteral(resourceName: "new_life")
+            //treasure_icon_selected.image = #imageLiteral(resourceName: "new_life")
+            //sale
+            treasure_icon_selected.image = #imageLiteral(resourceName: "resurrection_down_sale")
             treasure_text.image = #imageLiteral(resourceName: "resurrection_text")
             final_price_button.setImage(#imageLiteral(resourceName: "new_life_star_total"), for: .normal)
             explaination_text.image =  #imageLiteral(resourceName: "new_life_en")
             total_star_need_label.textColor = UIColor(red: 208.0/255, green: 91.0/255, blue: 93.0/255, alpha: 1)
-            star_base = 25
+            //star_base = 25
+            //sale
+            star_base = 10
         }else if(tool_selected == 1){
-            treasure_icon_selected.image = #imageLiteral(resourceName: "same_color_eliminator")
+            //treasure_icon_selected.image = #imageLiteral(resourceName: "same_color_eliminator")
+            //sale
+            treasure_icon_selected.image = #imageLiteral(resourceName: "purification_down_sale")
             treasure_text.image = #imageLiteral(resourceName: "purification_text_en")
             final_price_button.setImage(#imageLiteral(resourceName: "same_color_eliminator_star_total-1"), for: .normal)
             explaination_text.image = #imageLiteral(resourceName: "same_color_eliminator_en")
             total_star_need_label.textColor = UIColor(red: 77.0/255, green: 113.0/255, blue: 56.0/255, alpha: 1)
-            star_base = 100
+            //star_base = 100
+            //sale
+            star_base = 50
         }else if(tool_selected == 2){
-            treasure_icon_selected.image = #imageLiteral(resourceName: "shape_bomb")
+            //treasure_icon_selected.image = #imageLiteral(resourceName: "shape_bomb")
+            treasure_icon_selected.image = #imageLiteral(resourceName: "holy_nova_down_sale")
             treasure_text.image = #imageLiteral(resourceName: "holy_nova_text_en")
             final_price_button.setImage(#imageLiteral(resourceName: "shape_bomb_star_total"), for: .normal)
             total_star_need_label.textColor = UIColor(red: 230.0/255, green: 157.0/255, blue: 68.0/255, alpha: 1)
             explaination_text.image = #imageLiteral(resourceName: "shape_bomb_en")
-            star_base = 150
+            //star_base = 150
+            //sale
+            star_base = 75
         }else if(tool_selected == 3){
-            treasure_icon_selected.image = #imageLiteral(resourceName: "times_two")
+            //treasure_icon_selected.image = #imageLiteral(resourceName: "times_two")
+            //sale
+            treasure_icon_selected.image = #imageLiteral(resourceName: "amplifier_down_sale")
             treasure_text.image = #imageLiteral(resourceName: "amplifier_en")
             final_price_button.setImage(#imageLiteral(resourceName: "double_score_star_total"), for: .normal)
             explaination_text.image = #imageLiteral(resourceName: "double_score_en")
             total_star_need_label.textColor = UIColor(red: 180.0/255, green: 134.0/255, blue: 161.0/255, alpha: 1)
-            star_base = 50
+            //star_base = 50
+            //sale
+            star_base = 25
         }else if(tool_selected == 4){
-            treasure_icon_selected.image =  #imageLiteral(resourceName: "three_triangle")
+            //treasure_icon_selected.image =  #imageLiteral(resourceName: "three_triangle")
+            //sale
+            treasure_icon_selected.image = #imageLiteral(resourceName: "trinity_down_sale")
             treasure_text.image = #imageLiteral(resourceName: "trinity_text_en")
             final_price_button.setImage(#imageLiteral(resourceName: "three_triangles_star_total"), for: .normal)
             explaination_text.image = #imageLiteral(resourceName: "three_triangles_en")
             total_star_need_label.textColor = UIColor(red: 73.0/255, green: 159.0/255, blue: 192.0/255, alpha: 1)
-            star_base = 75
+            //star_base = 75
+            //sale
+            star_base = 40
         }else if(tool_selected == 5){
-            treasure_icon_selected.image = #imageLiteral(resourceName: "clear_all")
+            //treasure_icon_selected.image = #imageLiteral(resourceName: "clear_all")
+            treasure_icon_selected.image = #imageLiteral(resourceName: "doomday_down_sale")
             treasure_text.image = #imageLiteral(resourceName: "doom_day_text_en")
             final_price_button.setImage(#imageLiteral(resourceName: "clear_all_star_total"), for: .normal)
             explaination_text.image = #imageLiteral(resourceName: "clear_all_en")
             total_star_need_label.textColor = UIColor(red: 56.0/255, green: 75.0/255, blue: 130.0/255, alpha: 1)
 
-            star_base = 999
+            //star_base = 999
+            //sale
+            star_base = 500
         }
         }
         else {
