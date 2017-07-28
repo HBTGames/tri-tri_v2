@@ -1108,9 +1108,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     
     
     
-    
-   
-    
+    var green_drag_tri_inital_point = CGPoint()
+   var orange_drag_tri_inital_point = CGPoint()
+    var lightbrown_drag_tri_inital_point = CGPoint()
     
     override func viewDidLoad() {
        // print("Green tri x constraint is\(green_drag_tri_x_constraint.constant), y is \(green_drag_tri_y_constraint.constant)")
@@ -1151,17 +1151,18 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         //34
        orange_drag_origin = orange_drag_tri.frame.origin
         orange_drag_origin_backup = orange_drag_origin
-        
+        orange_drag_tri_inital_point = orange_drag_origin
         green_drag_tri.frame = CGRect(x: pause_screen_x_transform(Double(green_drag_tri.frame.origin.x)), y: pause_screen_y_transform(Double(green_drag_tri.frame.origin.y)), width: pause_screen_x_transform(Double(green_drag_tri.frame.width)), height: pause_screen_y_transform(Double(green_drag_tri.frame.height)))
         //34
         green_drag_origin = green_drag_tri.frame.origin
         green_drag_origin_backup = green_drag_origin
-        
+        green_drag_tri_inital_point  = green_drag_origin
         
         light_brown_drag_tri.frame = CGRect(x: pause_screen_x_transform(Double(light_brown_drag_tri.frame.origin.x)), y: pause_screen_y_transform(Double(light_brown_drag_tri.frame.origin.y)), width: pause_screen_x_transform(Double(light_brown_drag_tri.frame.width)), height: pause_screen_y_transform(Double(light_brown_drag_tri.frame.height)))
         //34
         light_brown_drag_origin = light_brown_drag_tri.frame.origin
         light_brown_drag_origin_backup = light_brown_drag_origin
+        lightbrown_drag_tri_inital_point = light_brown_drag_origin
         //set backpack button frame
         backpack_button.frame = CGRect(x: pause_screen_x_transform(Double(backpack_button.frame.origin.x)), y: pause_screen_y_transform(Double(backpack_button.frame.origin.y)), width: pause_screen_x_transform(Double(backpack_button.frame.width)), height: pause_screen_y_transform(Double(backpack_button.frame.height)))
         lower_half_pack_ring.frame = CGRect(x: pause_screen_x_transform(Double(lower_half_pack_ring.frame.origin.x)), y: pause_screen_y_transform(Double(lower_half_pack_ring.frame.origin.y)), width: pause_screen_x_transform(Double(lower_half_pack_ring.frame.width)), height: pause_screen_y_transform(Double(lower_half_pack_ring.frame.height)))
@@ -3416,7 +3417,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
                 
             }
+            if(score<=600){
             gameBoardHint()
+            }
             
             
         }
@@ -10151,9 +10154,8 @@ number_of_lines_erased += 1
     
     func gameOverBody(){
         if(!in_star_animation && !in_erase_animation){
-            
-            
             gameOverTimer.invalidate()
+<<<<<<< HEAD
             
             /*UIView.animate(withDuration: 0.3, animations: {
                 self.green_drag_tri.frame.origin = self.green_drag_origin
@@ -10169,8 +10171,45 @@ number_of_lines_erased += 1
             self.takeBoardScreenShot()
             self.resurrection_when_dead()
             
+=======
+            if(position_in_use == 3){
+            //do nothing
+            self.takeBoardScreenShot()
+            self.resurrection_when_dead()
+            }else{
+                    UIView.animate(withDuration: 0.3, animations: {
+                        if(self.position_in_use == 0){
+                         self.green_drag_tri.frame.origin = self.green_drag_tri_inital_point
+                        }
+                        if(self.position_in_use == 1){
+                        self.orange_drag_tri.frame.origin = self.orange_drag_tri_inital_point
+                        }
+                        if(self.position_in_use == 2){
+                        self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                        }
+                    }, completion: {
+                        (finished) -> Void in
+                        UIView.animate(withDuration: 0.3, animations: {
+                        if(self.position_in_use == 0){
+                            self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                            }
+                         if(self.position_in_use == 1){
+                            self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                            }
+                        if(self.position_in_use == 2){
+                            self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                            }
+                        }, completion: {
+                            (finished) -> Void in
+                            self.takeBoardScreenShot()
+                            self.resurrection_when_dead()
+                        })
+                    })
+                
+                
+            }
+>>>>>>> origin/master
             
-    
         }
         
         
@@ -12101,6 +12140,132 @@ number_of_lines_erased += 1
         
     }
 
+    func change_a_current_board_tri_according_to_theme(i: Int, j:Int){
+        //default set as themetype 1
+        var shape_color_up = [UIImage(named:"super_light_green_up")!,UIImage(named:"pink_upwards")!,UIImage(named:"light_brown_up")!,UIImage(named:"light_brown_up")!,UIImage(named:"super_light_green_up")!,UIImage(named:"green_up")!,UIImage(named:"pink_upwards")!,UIImage(named:"purple_upwards")!,UIImage(named:"purple_upwards")!, UIImage(named:"light_brown_up")!, UIImage(named: "light_brown_up")!]
+        var shape_color_down = [UIImage(named:"super_light_green_down")!,UIImage(named:"pink_downwards")!,UIImage(named:"light_brown_down")!,UIImage(named:"light_brown_down")!,UIImage(named:"super_light_green_down")!,UIImage(named:"green_down")!,UIImage(named:"pink_downwards")!,UIImage(named:"purple_downwards")!,UIImage(named:"purple_downwards")!, UIImage(named:"light_brown_down")!, UIImage(named: "light_brown_down")!]
+        //if Themetype == 1 doesnt change
+        if (ThemeType == 2){
+            shape_color_up[5] = UIImage(named: "小肉 up")!
+            shape_color_down[5] = UIImage(named: "小肉 down")!
+        }else if(ThemeType == 3){
+            shape_color_up[0] = UIImage(named: "BW_black_tri_up")!
+            shape_color_up[1] = UIImage(named: "BW_black_tri_up")!
+            shape_color_up[2] = UIImage(named: "BW_black_tri_up")!
+            shape_color_up[3] = UIImage(named: "BW_black_tri_up")!
+            shape_color_up[4] = UIImage(named: "BW_black_tri_up")!
+            shape_color_up[5] = UIImage(named: "BW_black_tri_up")!
+            shape_color_up[6] = UIImage(named: "BW_black_tri_up")!
+            shape_color_up[7] = UIImage(named: "BW_black_tri_up")!
+            shape_color_up[8] = UIImage(named: "BW_black_tri_up")!
+            shape_color_up[9] = UIImage(named: "BW_black_tri_up")!
+            shape_color_up[10] = UIImage(named: "BW_black_tri_up")!
+            
+            
+            shape_color_down[0] = UIImage(named: "BW_black_tri_down")!
+            shape_color_down[1] = UIImage(named: "BW_black_tri_down")!
+            shape_color_down[2] = UIImage(named: "BW_black_tri_down")!
+            shape_color_down[3] = UIImage(named: "BW_black_tri_down")!
+            shape_color_down[4] = UIImage(named: "BW_black_tri_down")!
+            shape_color_down[5] = UIImage(named: "BW_black_tri_down")!
+            shape_color_down[6] = UIImage(named: "BW_black_tri_down")!
+            shape_color_down[7] = UIImage(named: "BW_black_tri_down")!
+            shape_color_down[8] = UIImage(named: "BW_black_tri_down")!
+            shape_color_down[9] = UIImage(named: "BW_black_tri_down")!
+            shape_color_down[10] = UIImage(named: "BW_black_tri_down")!
+        }else if(ThemeType == 4){
+            shape_color_up[0] = UIImage(named: "chaos_up")!
+            shape_color_up[1] = UIImage(named: "chaos_up")!
+            shape_color_up[2] = UIImage(named: "chaos_up_5")!
+            shape_color_up[3] = UIImage(named: "chaos_up_right")!
+            shape_color_up[4] = UIImage(named: "chaos_up_3")!
+            shape_color_up[5] = UIImage(named: "chaos_up_right")!
+            shape_color_up[6] = UIImage(named: "chaos_up")!
+            shape_color_up[7] = UIImage(named: "chaos_up")!
+            shape_color_up[8] = UIImage(named: "chaos_up")!
+            shape_color_up[9] = UIImage(named: "chaos_up_right")!
+            shape_color_up[10] = UIImage(named: "chaos_up_5")!
+            
+            
+            shape_color_down[0] = UIImage(named: "chaos_down")!
+            shape_color_down[1] = UIImage(named: "chaos_down")!
+            shape_color_down[2] = UIImage(named: "chaos_down")!
+            shape_color_down[3] = UIImage(named: "chaos_down")!
+            shape_color_down[4] = UIImage(named: "chaos_down")!
+            shape_color_down[5] = UIImage(named: "chaos_down")!
+            shape_color_down[6] = UIImage(named: "chaos_down")!
+            shape_color_down[7] = UIImage(named: "chaos_down")!
+            shape_color_down[8] = UIImage(named: "chaos_down")!
+            shape_color_down[9] = UIImage(named: "chaos_down")!
+            shape_color_down[10] = UIImage(named: "chaos_down")!
+            
+        }else if(ThemeType == 5){
+            shape_color_up[0] = UIImage(named: "school_up")!
+            shape_color_up[1] = UIImage(named: "school_up")!
+            shape_color_up[2] = UIImage(named: "school_up-right")!
+            shape_color_up[3] = UIImage(named: "school_up-right")!
+            shape_color_up[4] = UIImage(named: "school_up")!
+            shape_color_up[5] = UIImage(named: "school_up-left")!
+            shape_color_up[6] = UIImage(named: "school_up")!
+            shape_color_up[7] = UIImage(named: "school_up")!
+            shape_color_up[8] = UIImage(named: "school_up")!
+            shape_color_up[9] = UIImage(named: "school_up-right")!
+            shape_color_up[10] = UIImage(named: "school_up-right")!
+            
+            
+            shape_color_down[0] = UIImage(named: "school_down")!
+            shape_color_down[1] = UIImage(named: "school_down")!
+            shape_color_down[2] = UIImage(named: "school_down")!
+            shape_color_down[3] = UIImage(named: "school_down")!
+            shape_color_down[4] = UIImage(named: "school_down")!
+            shape_color_down[5] = UIImage(named: "school_down")!
+            shape_color_down[6] = UIImage(named: "school_down")!
+            shape_color_down[7] = UIImage(named: "school_down")!
+            shape_color_down[8] = UIImage(named: "school_down")!
+            shape_color_down[9] = UIImage(named: "school_down")!
+            shape_color_down[10] = UIImage(named: "school_down")!
+            
+        }else if(ThemeType == 6){
+            shape_color_up[0] = UIImage(named: "colors_green_up")!
+            shape_color_up[1] = UIImage(named: "colors_green_up")!
+            shape_color_up[2] = UIImage(named: "colors_gold_up")!
+            shape_color_up[3] = UIImage(named: "colors_green_up")!
+            shape_color_up[4] = UIImage(named: "colors_blue_up")!
+            shape_color_up[5] = UIImage(named: "colors_blue_up")!
+            shape_color_up[6] = UIImage(named: "colors_blue_up")!
+            shape_color_up[7] = UIImage(named: "colors_pink_up")!
+            shape_color_up[8] = UIImage(named: "colors_pink_up")!
+            shape_color_up[9] = UIImage(named: "colors_gold_up")!
+            shape_color_up[10] = UIImage(named: "colors_gold_up")!
+            
+            
+            shape_color_down[0] = UIImage(named: "colors_green_down")!
+            shape_color_down[1] = UIImage(named: "colors_green_down")!
+            shape_color_down[2] = UIImage(named: "colors_gold_down")!
+            shape_color_down[3] = UIImage(named: "colors_green_down")!
+            shape_color_down[4] = UIImage(named: "colors_blue_down")!
+            shape_color_down[5] = UIImage(named: "colors_blue_down")!
+            shape_color_down[6] = UIImage(named: "colors_blue_down")!
+            shape_color_down[7] = UIImage(named: "colors_pink_down")!
+            shape_color_down[8] = UIImage(named: "colors_pink_down")!
+            shape_color_down[9] = UIImage(named: "colors_gold_down")!
+            shape_color_down[10] = UIImage(named: "colors_gold_down")!
+            
+        }
+        let type = single_tri_stored_type_index[i][j]
+        if(single_tri_stored_type_index[i][j] == -1){
+            //do nothing
+            return
+        }else if(true_if_up(i: i, j: j)){
+         Change_Corresponding_Color_With_Image(x: i, y: j, image: shape_color_up[type])
+        }else{
+        Change_Corresponding_Color_With_Image(x: i, y: j, image: shape_color_down[type])
+        }
+        
+    }
+    
+    
+    
     func change_current_board_according_to_theme(){
         //default set as themetype 1
         var shape_color_up = [UIImage(named:"super_light_green_up")!,UIImage(named:"pink_upwards")!,UIImage(named:"light_brown_up")!,UIImage(named:"light_brown_up")!,UIImage(named:"super_light_green_up")!,UIImage(named:"green_up")!,UIImage(named:"pink_upwards")!,UIImage(named:"purple_upwards")!,UIImage(named:"purple_upwards")!, UIImage(named:"light_brown_up")!, UIImage(named: "light_brown_up")!]
@@ -20881,7 +21046,8 @@ let hint_condition = hint_array[randomCondition]
                 self.tri_0_0.transform =  CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
             })
             tri_0_0.blink(final_completetion: {
-            self.Restore_A_Grey_Tri(i: 0, j: 0)
+            self.Restore_A_Grey_Tri(i:0, j: 0)
+            self.change_a_current_board_tri_according_to_theme(i:0, j: 0)
                 
             })
         }else if(x == 0 && y == 1) {
@@ -20892,6 +21058,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_0_1.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 0, j: 1)
+                self.change_a_current_board_tri_according_to_theme(i:0, j: 1)
                 
             })
         }else if (x == 0 && y == 2){
@@ -20902,6 +21069,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_0_2.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 0, j: 2)
+                self.change_a_current_board_tri_according_to_theme(i:0, j: 2)
                 
             })
         }else if(x == 0 && y == 3) {
@@ -20912,6 +21080,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_0_3.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 0, j: 3)
+                self.change_a_current_board_tri_according_to_theme(i:0, j: 3)
                 
             })
         }else if (x == 0 && y == 4){
@@ -20922,6 +21091,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_0_4.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 0, j: 4)
+                self.change_a_current_board_tri_according_to_theme(i:0, j: 4)
                 
             })
         }else if(x == 0 && y == 5) {
@@ -20932,6 +21102,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_0_5.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 0, j: 5)
+                self.change_a_current_board_tri_according_to_theme(i:0, j: 5)
                 
             })
         }else if (x == 0 && y == 6){
@@ -20942,6 +21113,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_0_6.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 0, j: 6)
+                self.change_a_current_board_tri_according_to_theme(i:0, j: 6)
                 
             })
         }
@@ -20954,6 +21126,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_1_0.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 1, j: 0)
+                self.change_a_current_board_tri_according_to_theme(i:1, j: 0)
                 
             })
 
@@ -20965,6 +21138,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_1_1.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 1, j: 1)
+                self.change_a_current_board_tri_according_to_theme(i:1, j: 1)
                 
             })
         }else if (x == 1 && y == 2){
@@ -20975,6 +21149,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_1_2.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 1, j: 2)
+                self.change_a_current_board_tri_according_to_theme(i:1, j: 2)
                 
             })
         }else if(x == 1 && y == 3) {
@@ -20985,6 +21160,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_1_3.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 1, j: 3)
+                self.change_a_current_board_tri_according_to_theme(i:1, j: 3)
                 
             })
         }else if (x == 1 && y == 4){
@@ -20995,6 +21171,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_1_4.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 1, j: 4)
+                self.change_a_current_board_tri_according_to_theme(i:1, j: 4)
                 
             })
         }else if(x == 1 && y == 5) {
@@ -21005,6 +21182,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_1_5.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 1, j: 5)
+                self.change_a_current_board_tri_according_to_theme(i:1, j: 5)
                 
             })
         }else if (x == 1 && y == 6){
@@ -21015,6 +21193,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_1_6.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 1, j: 6)
+                self.change_a_current_board_tri_according_to_theme(i:1, j: 6)
                 
             })
         }else if(x == 1 && y == 7) {
@@ -21025,6 +21204,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_1_7.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 1, j: 7)
+                self.change_a_current_board_tri_according_to_theme(i:1, j: 7)
                 
             })
         }else if (x == 1 && y == 8){
@@ -21035,6 +21215,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_1_8.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 1, j: 8)
+                self.change_a_current_board_tri_according_to_theme(i:1, j: 8)
                 
             })
         }
@@ -21047,6 +21228,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_2_0.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 2, j: 0)
+                self.change_a_current_board_tri_according_to_theme(i:2, j: 0)
                 
             })
         }else if(x == 2 && y == 1) {
@@ -21057,6 +21239,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_2_1.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 2, j: 1)
+                self.change_a_current_board_tri_according_to_theme(i:2, j: 1)
                 
             })
         }else if(x == 2 && y == 2) {
@@ -21067,6 +21250,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_2_2.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 2, j: 2)
+                self.change_a_current_board_tri_according_to_theme(i:2, j: 2)
                 
             })
         }else if(x == 2 && y == 3) {
@@ -21077,6 +21261,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_2_3.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 2, j: 3)
+                self.change_a_current_board_tri_according_to_theme(i:2, j: 3)
                 
             })
         }else if(x == 2 && y == 4) {
@@ -21087,6 +21272,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_2_4.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 2, j: 4)
+                self.change_a_current_board_tri_according_to_theme(i:2, j: 4)
                 
             })
         }else if(x == 2 && y == 5) {
@@ -21097,6 +21283,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_2_5.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 2, j: 5)
+                self.change_a_current_board_tri_according_to_theme(i:2, j: 5)
                 
             })
         }else if(x == 2 && y == 6) {
@@ -21107,6 +21294,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_2_6.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 2, j: 6)
+                self.change_a_current_board_tri_according_to_theme(i:2, j: 6)
                 
             })
         }else if(x == 2 && y == 7) {
@@ -21117,6 +21305,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_2_7.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 2, j: 7)
+                self.change_a_current_board_tri_according_to_theme(i:2, j: 7)
                 
             })
         }else if(x == 2 && y == 8) {
@@ -21127,6 +21316,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_2_8.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 2, j: 8)
+                self.change_a_current_board_tri_according_to_theme(i:2, j: 8)
                 
             })
         }else if(x == 2 && y == 9) {
@@ -21137,6 +21327,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_2_9.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 2, j: 9)
+                self.change_a_current_board_tri_according_to_theme(i:2, j: 9)
                 
             })
         }else if(x == 2 && y == 10) {
@@ -21147,6 +21338,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_2_10.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 2, j: 10)
+                self.change_a_current_board_tri_according_to_theme(i:2, j: 10)
                 
             })
         }
@@ -21159,6 +21351,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_3_0.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 3, j: 0)
+                self.change_a_current_board_tri_according_to_theme(i:3, j: 0)
                 
             })
         }else if(x == 3 && y == 1) {
@@ -21169,6 +21362,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_3_1.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 3, j: 1)
+                self.change_a_current_board_tri_according_to_theme(i:3, j: 1)
                 
             })
         }else if(x == 3 && y == 2) {
@@ -21179,6 +21373,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_3_2.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 3, j: 2)
+                self.change_a_current_board_tri_according_to_theme(i:3, j: 2)
                 
             })
         }else if(x == 3 && y == 3) {
@@ -21189,6 +21384,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_3_3.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 3, j: 3)
+                self.change_a_current_board_tri_according_to_theme(i:3, j: 3)
                 
             })
         }else if(x == 3 && y == 4) {
@@ -21199,6 +21395,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_3_4.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 3, j: 4)
+                self.change_a_current_board_tri_according_to_theme(i:3, j: 4)
                 
             })
         }else if(x == 3 && y == 5) {
@@ -21209,6 +21406,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_3_5.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 3, j: 5)
+                self.change_a_current_board_tri_according_to_theme(i:3, j: 5)
                 
             })
         }else if(x == 3 && y == 6) {
@@ -21219,6 +21417,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_3_6.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 3, j: 6)
+                self.change_a_current_board_tri_according_to_theme(i:3, j: 6)
                 
             })
         }else if(x == 3 && y == 7) {
@@ -21229,6 +21428,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_3_7.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 3, j: 7)
+                self.change_a_current_board_tri_according_to_theme(i:3, j: 7)
                 
             })
         }else if(x == 3 && y == 8) {
@@ -21239,6 +21439,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_3_8.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 3, j: 8)
+                self.change_a_current_board_tri_according_to_theme(i:3, j: 8)
                 
             })
         }else if(x == 3 && y == 9) {
@@ -21249,6 +21450,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_3_9.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 3, j: 9)
+                self.change_a_current_board_tri_according_to_theme(i:3, j: 9)
                 
             })
         }else if(x == 3 && y == 10) {
@@ -21259,6 +21461,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_3_10.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 3, j: 10)
+                self.change_a_current_board_tri_according_to_theme(i:3, j: 10)
                 
             })
         }
@@ -21271,6 +21474,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_4_0.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 4, j: 0)
+                self.change_a_current_board_tri_according_to_theme(i:4, j: 0)
                 
             })
         }else if(x == 4 && y == 1) {
@@ -21281,6 +21485,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_4_1.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 4, j: 1)
+                 self.change_a_current_board_tri_according_to_theme(i:4, j: 1)
                 
             })
         }else if (x == 4 && y == 2){
@@ -21291,6 +21496,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_4_2.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 4, j: 2)
+                 self.change_a_current_board_tri_according_to_theme(i:4, j: 2)
                 
             })
         }else if(x == 4 && y == 3) {
@@ -21301,6 +21507,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_4_3.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 4, j: 3)
+                 self.change_a_current_board_tri_according_to_theme(i:4, j: 3)
                 
             })
         }else if (x == 4 && y == 4){
@@ -21311,6 +21518,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_4_4.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 4, j: 4)
+                 self.change_a_current_board_tri_according_to_theme(i:4, j: 4)
                 
             })
         }else if(x == 4 && y == 5) {
@@ -21321,6 +21529,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_4_5.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 4, j: 5)
+                 self.change_a_current_board_tri_according_to_theme(i:4, j: 5)
                 
             })
         }else if (x == 4 && y == 6){
@@ -21331,6 +21540,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_4_6.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 4, j: 6)
+                 self.change_a_current_board_tri_according_to_theme(i:4, j: 6)
                 
             })
         }else if(x == 4 && y == 7) {
@@ -21341,6 +21551,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_4_7.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 4, j: 7)
+                 self.change_a_current_board_tri_according_to_theme(i:4, j: 7)
                 
             })
         }else if (x == 4 && y == 8){
@@ -21351,6 +21562,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_4_8.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 4, j: 8)
+                 self.change_a_current_board_tri_according_to_theme(i:4, j: 8)
                 
             })
         }
@@ -21363,6 +21575,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_5_0.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 5, j: 0)
+                 self.change_a_current_board_tri_according_to_theme(i:5, j: 0)
                 
             })
         }else if(x == 5 && y == 1) {
@@ -21373,6 +21586,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_5_1.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 5, j: 1)
+                self.change_a_current_board_tri_according_to_theme(i:5, j: 1)
                 
             })
         }else if (x == 5 && y == 2){
@@ -21383,6 +21597,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_5_2.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 5, j: 2)
+                self.change_a_current_board_tri_according_to_theme(i:5, j: 2)
                 
             })
         }else if(x == 5 && y == 3) {
@@ -21393,6 +21608,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_5_3.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 5, j: 3)
+                self.change_a_current_board_tri_according_to_theme(i:5, j: 3)
                 
             })
         }else if (x == 5 && y == 4){
@@ -21403,6 +21619,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_5_4.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 5, j: 4)
+                self.change_a_current_board_tri_according_to_theme(i:5, j: 4)
                 
             })
         }else if(x == 5 && y == 5) {
@@ -21413,6 +21630,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_5_5.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 5, j: 5)
+                self.change_a_current_board_tri_according_to_theme(i:5, j: 5)
                 
             })
         }else if (x == 5 && y == 6){
@@ -21423,6 +21641,7 @@ let hint_condition = hint_array[randomCondition]
             })
             tri_5_6.blink(final_completetion: {
                 self.Restore_A_Grey_Tri(i: 5, j: 6)
+                self.change_a_current_board_tri_according_to_theme(i:5, j: 6)
                 
             })
         }
