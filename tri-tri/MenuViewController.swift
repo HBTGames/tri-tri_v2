@@ -838,7 +838,9 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                     }
                     self.cash_player.play()
-                    self.star_score -= 2000
+                    //self.star_score -= 1000
+                    //sale
+                    self.star_score -= 500
                     defaults.set(self.star_score, forKey: "tritri_star_score")
                     self.theme_star_board.text = String(self.star_score)
                     self.star_board.text = String(self.star_score)
@@ -1102,7 +1104,9 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                     }
                     self.cash_player.play()
-                    self.star_score -= 1000
+                    //self.star_score -= 1000
+                    //sale
+                     self.star_score -= 500
                     defaults.set(self.star_score, forKey: "tritri_star_score")
                     self.theme_star_board.text = String(self.star_score)
                     self.star_board.text = String(self.star_score)
@@ -1299,7 +1303,9 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                     }
                     self.cash_player.play()
-                    self.star_score -= 1000
+                    //self.star_score -= 1000
+                    //sale
+                     self.star_score -= 500
                     defaults.set(self.star_score, forKey: "tritri_star_score")
                     self.star_board.text = String(self.star_score)
                     self.theme_star_board.text = String(self.star_score)
