@@ -1108,9 +1108,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     
     
     
-    
-   
-    
+    var green_drag_tri_inital_point = CGPoint()
+   var orange_drag_tri_inital_point = CGPoint()
+    var lightbrown_drag_tri_inital_point = CGPoint()
     
     override func viewDidLoad() {
        // print("Green tri x constraint is\(green_drag_tri_x_constraint.constant), y is \(green_drag_tri_y_constraint.constant)")
@@ -1151,17 +1151,18 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         //34
        orange_drag_origin = orange_drag_tri.frame.origin
         orange_drag_origin_backup = orange_drag_origin
-        
+        orange_drag_tri_inital_point = orange_drag_origin
         green_drag_tri.frame = CGRect(x: pause_screen_x_transform(Double(green_drag_tri.frame.origin.x)), y: pause_screen_y_transform(Double(green_drag_tri.frame.origin.y)), width: pause_screen_x_transform(Double(green_drag_tri.frame.width)), height: pause_screen_y_transform(Double(green_drag_tri.frame.height)))
         //34
         green_drag_origin = green_drag_tri.frame.origin
         green_drag_origin_backup = green_drag_origin
-        
+        green_drag_tri_inital_point  = green_drag_origin
         
         light_brown_drag_tri.frame = CGRect(x: pause_screen_x_transform(Double(light_brown_drag_tri.frame.origin.x)), y: pause_screen_y_transform(Double(light_brown_drag_tri.frame.origin.y)), width: pause_screen_x_transform(Double(light_brown_drag_tri.frame.width)), height: pause_screen_y_transform(Double(light_brown_drag_tri.frame.height)))
         //34
         light_brown_drag_origin = light_brown_drag_tri.frame.origin
         light_brown_drag_origin_backup = light_brown_drag_origin
+        lightbrown_drag_tri_inital_point = light_brown_drag_origin
         //set backpack button frame
         backpack_button.frame = CGRect(x: pause_screen_x_transform(Double(backpack_button.frame.origin.x)), y: pause_screen_y_transform(Double(backpack_button.frame.origin.y)), width: pause_screen_x_transform(Double(backpack_button.frame.width)), height: pause_screen_y_transform(Double(backpack_button.frame.height)))
         lower_half_pack_ring.frame = CGRect(x: pause_screen_x_transform(Double(lower_half_pack_ring.frame.origin.x)), y: pause_screen_y_transform(Double(lower_half_pack_ring.frame.origin.y)), width: pause_screen_x_transform(Double(lower_half_pack_ring.frame.width)), height: pause_screen_y_transform(Double(lower_half_pack_ring.frame.height)))
@@ -10153,25 +10154,44 @@ number_of_lines_erased += 1
     
     func gameOverBody(){
         if(!in_star_animation && !in_erase_animation){
-            
-            
             gameOverTimer.invalidate()
-            
-            UIView.animate(withDuration: 0.3, animations: {
-                self.green_drag_tri.frame.origin = self.green_drag_origin
-                self.orange_drag_tri.frame.origin = self.orange_drag_origin
-                self.light_brown_drag_tri.frame.origin = self.light_brown_drag_origin
-            }, completion: {
-                (finished) -> Void in
+            if(position_in_use == 3){
+            //do nothing
             self.takeBoardScreenShot()
             self.resurrection_when_dead()
-            })
+            }else{
+                    UIView.animate(withDuration: 0.3, animations: {
+                        if(self.position_in_use == 0){
+                         self.green_drag_tri.frame.origin = self.green_drag_tri_inital_point
+                        }
+                        if(self.position_in_use == 1){
+                        self.orange_drag_tri.frame.origin = self.orange_drag_tri_inital_point
+                        }
+                        if(self.position_in_use == 2){
+                        self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                        }
+                    }, completion: {
+                        (finished) -> Void in
+                        UIView.animate(withDuration: 0.3, animations: {
+                        if(self.position_in_use == 0){
+                            self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                            }
+                         if(self.position_in_use == 1){
+                            self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                            }
+                        if(self.position_in_use == 2){
+                            self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                            }
+                        }, completion: {
+                            (finished) -> Void in
+                            self.takeBoardScreenShot()
+                            self.resurrection_when_dead()
+                        })
+                    })
+                
+                
+            }
             
-            
-            
-            
-            
-    
         }
         
         
