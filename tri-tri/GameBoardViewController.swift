@@ -2021,7 +2021,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     }
     
     
-    
+   var BW_saleCorner = UIImageView()
+   var school_saleCorner = UIImageView()
+   var colors_saleCorner = UIImageView()
     
    var return_button = MyButton()
    var white_cover = UIView()
@@ -2149,6 +2151,11 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.chaos_theme_button.removeFromSuperview()
                         self.school_theme_button.removeFromSuperview()
                         self.colors_theme_button.removeFromSuperview()
+                        
+                        self.BW_saleCorner.removeFromSuperview()
+                        self.school_saleCorner.removeFromSuperview()
+                        self.colors_saleCorner.removeFromSuperview()
+                        
                         self.in_theme_menu = false
                         
                     })
@@ -2275,6 +2282,11 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.chaos_theme_button.removeFromSuperview()
                         self.school_theme_button.removeFromSuperview()
                         self.colors_theme_button.removeFromSuperview()
+                        
+                        self.BW_saleCorner.removeFromSuperview()
+                        self.school_saleCorner.removeFromSuperview()
+                        self.colors_saleCorner.removeFromSuperview()
+                        
                         self.in_theme_menu = false
                         
                     })
@@ -2305,14 +2317,22 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         
         BW_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: night_theme_button.frame.origin.y + night_theme_button.frame.height, width: screen_width, height: theme_button_height))
         BW_theme_origin = BW_theme_button.frame.origin
+        BW_saleCorner.frame = CGRect(origin: BW_theme_button.frame.origin, size: CGSize(width: screen_width/4.5, height: screen_width/4.5))
         BW_theme_button.image = #imageLiteral(resourceName: "BW_theme_menu_button")
+        BW_saleCorner.image = #imageLiteral(resourceName: "salecorner")
         BW_theme_button.contentMode = .scaleAspectFill
         BW_theme_button.alpha = 0
+        BW_saleCorner.alpha = 0
         BW_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: BW_theme_button.frame.origin.y + BW_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
         if(theme_islocked_array[2]){
-            BW_apply_button.frame.origin.x -= pause_screen_x_transform(7)
-            BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
-            BW_apply_button.setImage(#imageLiteral(resourceName: "BW_price"), for: .normal)
+            //BW_apply_button.frame.origin.x -= pause_screen_x_transform(7)
+            //BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
+            //BW_apply_button.setImage(#imageLiteral(resourceName: "BW_price"), for: .normal)
+            //sale
+            BW_apply_button.frame.origin.x -= pause_screen_x_transform(3)
+            BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(106), height: pause_screen_y_transform(36))
+            BW_apply_button.setImage(#imageLiteral(resourceName: "colors_price_sale"), for: .normal)
+
         }else if(ThemeType == 3){
             BW_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             BW_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
@@ -2344,7 +2364,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     self.cash_player.play()
-                    self.star_score -= 2000
+                    //self.star_score -= 1000
+                    self.star_score -= 500
                     defaults.set(self.star_score, forKey: "tritri_star_score")
                     self.theme_star_board.text = String(self.star_score)
                     self.starBoard.text = String(self.star_score)
@@ -2369,6 +2390,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     self.wrong_player.play()
+                    self.BW_apply_button.imageView?.shake(duration: 0.3)
                 }
    
                 
@@ -2448,6 +2470,11 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.chaos_theme_button.removeFromSuperview()
                         self.school_theme_button.removeFromSuperview()
                         self.colors_theme_button.removeFromSuperview()
+                        
+                        self.BW_saleCorner.removeFromSuperview()
+                        self.school_saleCorner.removeFromSuperview()
+                        self.colors_saleCorner.removeFromSuperview()
+                        
                         self.in_theme_menu = false
                         
                     })
@@ -2490,6 +2517,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         
         theme_menu.addSubview(BW_apply_button)
         BW_apply_button.fadeInWithDisplacement()
+            
+        theme_menu.addSubview(BW_saleCorner)
+        BW_saleCorner.fadeInWithDisplacement()
         
         /**chaos_theme_button = MyButton(frame: CGRect(x: pause_screen_x_transform(206), y: pause_screen_y_transform(319), width: pause_screen_x_transform(144), height: pause_screen_y_transform(144)))
         chaos_theme_origin = chaos_theme_button.frame.origin
@@ -2568,14 +2598,21 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         **/
         school_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: BW_theme_button.frame.origin.y + BW_theme_button.frame.height, width: screen_width, height: theme_button_height))
         school_theme_origin = school_theme_button.frame.origin
+        school_saleCorner.frame = CGRect(origin: school_theme_button.frame.origin, size: CGSize(width: screen_width/4.5, height: screen_width/4.5))
         school_theme_button.image = #imageLiteral(resourceName: "school_mode_theme_menu_button")
+        school_saleCorner.image = #imageLiteral(resourceName: "salecorner")
         school_theme_button.contentMode = .scaleAspectFit
         school_theme_button.alpha = 0
+        school_saleCorner.alpha = 0
         school_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: school_theme_button.frame.origin.y + school_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
         if(theme_islocked_array[3]){
-            school_apply_button.frame.origin.x -= pause_screen_x_transform(7)
-            school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
-            school_apply_button.setImage(#imageLiteral(resourceName: "school_price"), for: .normal)
+            //school_apply_button.frame.origin.x -= pause_screen_x_transform(7)
+            //school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
+            //school_apply_button.setImage(#imageLiteral(resourceName: "school_price"), for: .normal)
+            //sale
+            school_apply_button.frame.origin.x -= pause_screen_x_transform(3)
+            school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(106), height: pause_screen_y_transform(36))
+            school_apply_button.setImage(#imageLiteral(resourceName: "school_price_sale"), for: .normal)
         }else if(ThemeType == 5){
             school_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             school_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
@@ -2608,7 +2645,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     self.cash_player.play()
-                    self.star_score -= 1000
+                    //self.star_score -= 1000
+                    self.star_score -= 500
                     defaults.set(self.star_score, forKey: "tritri_star_score")
                     self.theme_star_board.text = String(self.star_score)
                     self.starBoard.text = String(self.star_score)
@@ -2634,6 +2672,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     self.wrong_player.play()
+                    self.school_apply_button.imageView?.shake(duration: 0.3)
                 }
                 
                 
@@ -2715,6 +2754,11 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.chaos_theme_button.removeFromSuperview()
                         self.school_theme_button.removeFromSuperview()
                         self.colors_theme_button.removeFromSuperview()
+                        
+                        self.BW_saleCorner.removeFromSuperview()
+                        self.school_saleCorner.removeFromSuperview()
+                        self.colors_saleCorner.removeFromSuperview()
+                        
                         self.in_theme_menu = false
                         
                     })
@@ -2745,18 +2789,31 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         
         theme_menu.addSubview(school_apply_button)
         school_apply_button.fadeInWithDisplacement()
+            
+        theme_menu.addSubview(school_saleCorner)
+        school_saleCorner.fadeInWithDisplacement()
         
         colors_theme_button = UIImageView(frame: CGRect(x: pause_screen_x_transform(0), y: school_theme_button.frame.origin.y + school_theme_button.frame.height, width: screen_width, height: theme_button_height))
         colors_theme_origin = colors_theme_button.frame.origin
+        colors_saleCorner.frame = CGRect(origin: colors_theme_button.frame.origin, size: CGSize(width: screen_width/4.5, height: screen_width/4.5))
+
         colors_theme_button.image = #imageLiteral(resourceName: "colors_theme_menu_button")
+        colors_saleCorner.image = #imageLiteral(resourceName: "salecorner")
         colors_theme_button.contentMode = .scaleAspectFit
         colors_theme_button.alpha = 0
+        colors_saleCorner.alpha = 0
         colors_apply_button.frame = CGRect(x: screen_width - pause_screen_y_transform(130), y: colors_theme_button.frame.origin.y + colors_theme_button.frame.height/2.0 - pause_screen_y_transform(18), width: pause_screen_x_transform(100), height: pause_screen_y_transform(36))
         if(theme_islocked_array[4]){
-            colors_apply_button.frame.origin.x -= pause_screen_x_transform(7)
-            colors_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
+            //colors_apply_button.frame.origin.x -= pause_screen_x_transform(7)
+            //colors_apply_button.frame.size = CGSize(width: pause_screen_x_transform(114), height: pause_screen_y_transform(36))
             
-            colors_apply_button.setImage(#imageLiteral(resourceName: "colors_price"), for: .normal)
+            //colors_apply_button.setImage(#imageLiteral(resourceName: "colors_price"), for: .normal)
+            //sale
+            
+            colors_apply_button.frame.origin.x -= pause_screen_x_transform(3)
+            colors_apply_button.frame.size = CGSize(width: pause_screen_x_transform(106), height: pause_screen_y_transform(36))
+            
+            colors_apply_button.setImage(#imageLiteral(resourceName: "colors_price_sale"), for: .normal)
         }else if(ThemeType == 6){
             colors_apply_button.frame.origin.x -= pause_screen_x_transform(16)
             colors_apply_button.frame.size = CGSize(width: pause_screen_x_transform(132), height: pause_screen_y_transform(36))
@@ -2790,7 +2847,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     self.cash_player.play()
-                    self.star_score -= 1000
+                    //self.star_score -= 1000
+                    self.star_score -= 500
                     defaults.set(self.star_score, forKey: "tritri_star_score")
                     self.starBoard.text = String(self.star_score)
                     self.theme_star_board.text = String(self.star_score)
@@ -2815,6 +2873,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     self.wrong_player.play()
+                    self.colors_apply_button.imageView?.shake(duration: 0.3)
                 }
                 
                 
@@ -2893,6 +2952,11 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         self.chaos_theme_button.removeFromSuperview()
                         self.school_theme_button.removeFromSuperview()
                         self.colors_theme_button.removeFromSuperview()
+                        
+                        self.BW_saleCorner.removeFromSuperview()
+                        self.school_saleCorner.removeFromSuperview()
+                        self.colors_saleCorner.removeFromSuperview()
+                        
                         self.in_theme_menu = false
                         
                     })
@@ -2937,6 +3001,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         theme_menu.addSubview(colors_apply_button)
         colors_apply_button.fadeInWithDisplacement()
         
+        theme_menu.addSubview(colors_saleCorner)
+        colors_saleCorner.fadeInWithDisplacement()
         //add white to 遮挡
         
         white_cover.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
@@ -3055,6 +3121,11 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 self.chaos_theme_button.removeFromSuperview()
                 self.school_theme_button.removeFromSuperview()
                 self.colors_theme_button.removeFromSuperview()
+                
+                self.BW_saleCorner.removeFromSuperview()
+                self.school_saleCorner.removeFromSuperview()
+                self.colors_saleCorner.removeFromSuperview()
+                
                 self.in_theme_menu = false
                 
             })
