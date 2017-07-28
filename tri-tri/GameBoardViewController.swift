@@ -144,8 +144,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     //theme islocked array
     //if locked : true , unlocked : false
     var theme_islocked_array : Array<Bool> = []
-    
-    
+
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //2.
@@ -931,9 +930,10 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 star_score_increment()*/
             }
         }
-    }
-        //print("Touche at x: \(initialTouchLocation.x), y:\(initialTouchLocation.y)")
+        print("Touche at x: \(initialTouchLocation.x), y:\(initialTouchLocation.y)")
 
+    }
+    
     override func touchesEnded( _ touches: Set<UITouch>, with event: UIEvent?){
         super.touchesEnded(touches, with: event)
         
@@ -3502,10 +3502,11 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         if (during_holy_nova){
         print("holy nova is true")
         }
+        
         if (!paused && !in_theme_menu && !during_holy_nova){
             
         //print("exist1: \(exist1), exist2: \(exist2), exist3: \(exist3)")
-            
+        if(initialTouchLocation != nil){
         var actual_type_index = 0
         var actual_location = CGPoint(x:0, y:0)
         //if original frame contains the initial point
@@ -3686,6 +3687,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             }
             
 
+        }
         }
         }
         else if (during_holy_nova){
