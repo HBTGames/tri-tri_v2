@@ -10155,7 +10155,7 @@ number_of_lines_erased += 1
             
             gameOverTimer.invalidate()
             
-            UIView.animate(withDuration: 0.3, animations: {
+            /*UIView.animate(withDuration: 0.3, animations: {
                 self.green_drag_tri.frame.origin = self.green_drag_origin
                 self.orange_drag_tri.frame.origin = self.orange_drag_origin
                 self.light_brown_drag_tri.frame.origin = self.light_brown_drag_origin
@@ -10163,10 +10163,11 @@ number_of_lines_erased += 1
                 (finished) -> Void in
             self.takeBoardScreenShot()
             self.resurrection_when_dead()
-            })
+            })*/
             
             
-            
+            self.takeBoardScreenShot()
+            self.resurrection_when_dead()
             
             
     
