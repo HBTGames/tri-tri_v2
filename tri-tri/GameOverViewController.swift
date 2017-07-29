@@ -67,7 +67,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     @IBOutlet weak var game_center_button: UIButton!
 
     @IBAction func Game_Center_Action(_ sender: UIButton) {
-        
+        if(!sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -75,6 +75,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
         }
         self.button_player.play()
+        }
         let game_center_controller = GKGameCenterViewController()
         game_center_controller.gameCenterDelegate = self
         self.present(game_center_controller, animated: true, completion: nil)
@@ -103,6 +104,9 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         return CGFloat(new_y)
     }
 
+    var sound_is_muted = false
+    
+    
     //display final_board_image
     @IBOutlet weak var finalBoard: UIImageView!
     var share_scene_timer = Timer()
@@ -189,6 +193,15 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         }else{
             defaults.set(0, forKey: "tritri_star_score")
         }
+        
+        if (defaults.value(forKey: "tri_tri_sound_is_muted") == nil){
+            sound_is_muted = false
+            defaults.set(sound_is_muted, forKey: "tri_tri_sound_is_muted")
+        }
+        else {
+            sound_is_muted = defaults.value(forKey: "tri_tri_sound_is_muted") as! Bool
+        }
+        
         // Do any additional setup after loading the view.
         gameover_title_image_decider()
         if ThemeType == 1{
@@ -365,12 +378,14 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         
         defaults.set([true,true,true], forKey: "tritri_exist_array")
         defaults.removeObject(forKey: "tritri_shape_type_index")
-
+        if(!sound_is_muted){
        restart_player.play()
+        }
         
     }
     
       @IBAction func home_button_action(_ sender: UIButton) {
+        if(!sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -378,6 +393,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
         }
         self.button_player.play()
+        }
     }
     
     //origin
@@ -1423,6 +1439,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         self.view.addSubview(close_button)
         
         close_button.whenButtonIsClicked{
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1430,6 +1447,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
                 
             }
             self.button_player.play()
+            }
             
                 self.purchase_star_menu.fadeOutandRemove()
                 self.more_stars_label.fadeOutandRemove()
@@ -1601,6 +1619,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     //share image button
     var final_image_to_share = UIImage()
     @IBAction func share_image_action(_ sender: UIButton) {
+        if(!sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -1608,6 +1627,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
         }
         self.button_player.play()
+        }
         let shareImage = compose_final_share_image()
         final_image_to_share = shareImage
         //let myWebsite = NSURL(string:"http://www.baidu.com/")
@@ -1624,6 +1644,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     }
     
     @IBAction func like_action(_ sender: UIButton) {
+        if(!sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -1631,6 +1652,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             
         }
         self.button_player.play()
+        }
         if(language == "English"){
             EggRating.rateButtonTitleText = "Cheers"
             EggRating.titleLabelText = "Rate Our App"

@@ -881,6 +881,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     i += 1
                 }
                 if contained_boxes.count == 0{
+                    if(!sound_is_muted){
                     do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         not_fit_player.prepareToPlay()
                     }
@@ -888,6 +889,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     not_fit_player.play()
+                    }
                     //self.during_holy_nova = false
                     
                 }else if (contained_boxes.count == 1){
@@ -994,13 +996,15 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         i += 1
                     }
                     if contained_boxes.count == 0{
+                        if(!sound_is_muted){
                         do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                             not_fit_player.prepareToPlay()
                         }
                         catch{
                             
                         }
-                        not_fit_player.play()
+                            not_fit_player.play()
+                        }
                         
                         
                     }else if (contained_boxes.count == 1){
@@ -1015,7 +1019,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                         let row = candidates[0][0]
                         let col = candidates[0][1]
-                        
+                        if(!sound_is_muted){
                         do{holy_nova_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "holy_nova", ofType: "mp3")!))
                             holy_nova_player.prepareToPlay()
                         }
@@ -1023,6 +1027,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                             
                         }
                         holy_nova_player.play()
+                        }
                         self.nova_breaker(row: row, col: col)
                         self.during_holy_nova = false
                         defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
@@ -1052,6 +1057,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                             row = candidates[1][0]
                             col = candidates[1][1]
                         }
+                        if(!sound_is_muted){
                         do{holy_nova_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "holy_nova", ofType: "mp3")!))
                             holy_nova_player.prepareToPlay()
                         }
@@ -1059,6 +1065,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                             
                         }
                         holy_nova_player.play()
+                        }
                         self.nova_breaker(row: row, col: col)
                         self.during_holy_nova = false
                         self.view.bringSubview(toFront: self.green_drag_tri)
@@ -1106,7 +1113,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
 
 
     
-    
+    var sound_is_muted = false
     
     var green_drag_tri_inital_point = CGPoint()
    var orange_drag_tri_inital_point = CGPoint()
@@ -1134,7 +1141,13 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             print("please enable IAPs")
         }
         
-        
+        if (defaults.value(forKey: "tri_tri_sound_is_muted") == nil){
+            sound_is_muted = false
+            defaults.set(sound_is_muted, forKey: "tri_tri_sound_is_muted")
+        }
+        else {
+            sound_is_muted = defaults.value(forKey: "tri_tri_sound_is_muted") as! Bool
+        }
         
     
         language = defaults.value(forKey: "language") as! String
@@ -1706,6 +1719,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         star_store_button.alpha = 0.02
         self.view.addSubview(star_store_button)
         star_store_button.whenButtonIsClicked(action: {
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1713,7 +1727,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
-    
+            }
             self.gameover_star_purchase = "ingame"
             self.purchase_star_function()
             
@@ -2078,6 +2092,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         
         day_apply_button.whenButtonIsClicked(action:{
             if(self.ThemeType != 1){
+                if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -2085,6 +2100,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+            }
             self.apply_button_restore()
             defaults.set(1, forKey: "tritri_Theme")
             self.ThemeType = 1
@@ -2170,13 +2186,15 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 })
                 
             }else{
-                do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
+                if(!self.sound_is_muted)
+                {                do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
                 }
                 catch{
                     
                 }
                 self.wrong_player.play()
+                }
             }
         })
         
@@ -2212,6 +2230,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         night_apply_origin = night_apply_button.frame.origin
         night_apply_button.whenButtonIsClicked(action:{
             if(self.ThemeType != 2){
+                if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -2219,6 +2238,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+                }
             self.apply_button_restore()
             defaults.set(2, forKey: "tritri_Theme")
             self.ThemeType = 2
@@ -2301,6 +2321,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 })
                 
             }else{
+                if(!self.sound_is_muted){
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
                 }
@@ -2308,6 +2329,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     
                 }
                 self.wrong_player.play()
+                }
             }
         })
         theme_menu.addSubview(night_theme_button)
@@ -2356,7 +2378,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         BW_apply_origin = BW_apply_button.frame.origin
         BW_apply_button.whenButtonIsClicked(action:{
             if(self.theme_islocked_array[2]){
-                if(self.star_score >= 2000){
+                if(self.star_score >= 500){
+                    if(!self.sound_is_muted){
                     do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
                         self.cash_player.prepareToPlay()
                     }
@@ -2364,6 +2387,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     self.cash_player.play()
+                    }
                     //self.star_score -= 1000
                     self.star_score -= 500
                     defaults.set(self.star_score, forKey: "tritri_star_score")
@@ -2383,6 +2407,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     })
 
                 }else{
+                    if(!self.sound_is_muted){
                     do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         self.wrong_player.prepareToPlay()
                     }
@@ -2390,12 +2415,14 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     self.wrong_player.play()
+                    }
                     self.BW_apply_button.imageView?.shake(duration: 0.3)
                 }
    
                 
                 
             }else if(self.ThemeType != 3){
+                if(!self.sound_is_muted){
                 do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                     self.button_player.prepareToPlay()
                 }
@@ -2403,6 +2430,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     
                 }
                 self.button_player.play()
+                }
                 self.apply_button_restore()
                 defaults.set(3, forKey: "tritri_Theme")
                 self.ThemeType = 3
@@ -2492,6 +2520,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
     
             }else{
+                if(!self.sound_is_muted){
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
                 }
@@ -2499,6 +2528,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     
                 }
                 self.wrong_player.play()
+                }
             }
             
             
@@ -2637,7 +2667,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         school_apply_origin = school_apply_button.frame.origin
         school_apply_button.whenButtonIsClicked(action:{
             if(self.theme_islocked_array[3]){
-                if(self.star_score >= 1000){
+                if(self.star_score >= 500){
+                    if(!self.sound_is_muted){
                     do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
                         self.cash_player.prepareToPlay()
                     }
@@ -2645,6 +2676,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     self.cash_player.play()
+                    }
                     //self.star_score -= 1000
                     self.star_score -= 500
                     defaults.set(self.star_score, forKey: "tritri_star_score")
@@ -2665,6 +2697,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     
                     
                 }else{
+                    if(!self.sound_is_muted){
                     do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         self.wrong_player.prepareToPlay()
                     }
@@ -2672,13 +2705,14 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     self.wrong_player.play()
+                    }
                     self.school_apply_button.imageView?.shake(duration: 0.3)
                 }
                 
                 
             }
             else if(self.ThemeType != 5){
-            
+                if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -2686,6 +2720,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+                }
             self.apply_button_restore()
             defaults.set(5, forKey: "tritri_Theme")
             self.ThemeType = 5
@@ -2774,6 +2809,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
                 
             }else{
+                if(!self.sound_is_muted){
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
                 }
@@ -2781,6 +2817,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     
                 }
                 self.wrong_player.play()
+                }
             }
 
         })
@@ -2839,7 +2876,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         colors_apply_origin = colors_apply_button.frame.origin
         colors_apply_button.whenButtonIsClicked(action:{
             if(self.theme_islocked_array[4]){
-                if(self.star_score >= 1000){
+                if(self.star_score >= 500){
+                    if(!self.sound_is_muted){
                     do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
                         self.cash_player.prepareToPlay()
                     }
@@ -2847,6 +2885,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     self.cash_player.play()
+                    }
                     //self.star_score -= 1000
                     self.star_score -= 500
                     defaults.set(self.star_score, forKey: "tritri_star_score")
@@ -2866,6 +2905,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     
                     
                 }else{
+                    if(!self.sound_is_muted){
                     do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         self.wrong_player.prepareToPlay()
                     }
@@ -2873,12 +2913,14 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     self.wrong_player.play()
+                    }
                     self.colors_apply_button.imageView?.shake(duration: 0.3)
                 }
                 
                 
             }
             else if(self.ThemeType != 6){
+                if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -2886,6 +2928,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+                }
             self.apply_button_restore()
             defaults.set(6, forKey: "tritri_Theme")
             self.ThemeType = 6
@@ -2977,6 +3020,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
                 
             }else{
+                if(!self.sound_is_muted){
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
                 }
@@ -2984,6 +3028,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     
                 }
                 self.wrong_player.play()
+                }
             }
             
             
@@ -3065,6 +3110,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             self.view.addSubview(theme_menu_star_store_button)
             self.view.bringSubview(toFront: theme_menu_star_store_button)
             theme_menu_star_store_button.whenButtonIsClicked(action: {
+                if(!self.sound_is_muted){
                 do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                     self.button_player.prepareToPlay()
                 }
@@ -3072,7 +3118,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     
                 }
                 self.button_player.play()
-                
+                }
                 self.gameover_star_purchase = "theme"
                 self.purchase_star_function()
                 
@@ -3094,7 +3140,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         
         
         return_button.whenButtonIsClicked(action: {
-        
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -3103,6 +3149,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             }
             
             self.button_player.play()
+            }
             
             self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
             
@@ -3162,6 +3209,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     
     
     @IBAction func pause_button(_ sender: UIButton) {
+        if(!self.sound_is_muted){
         do{button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             button_player.prepareToPlay()
         }
@@ -3169,6 +3217,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             
         }
         button_player.play()
+        }
         self.pause_screen = UIView(frame: CGRect(origin: CGPoint(x: 0, y:0),size: CGSize(width: screen_width, height: screen_height)))
         if (ThemeType == 1){
             self.pause_screen.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1.0))
@@ -3266,6 +3315,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     
         
         continue_button.whenButtonIsClicked(action:{
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -3273,6 +3323,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+            }
             let first_translation_y = self.pause_screen_y_transform(-30)
             self.continue_button.twoPointBounceOut(translation1_y: first_translation_y, translation2_y: self.screen_height, final_completetion: {
             self.continue_button.removeFromSuperview()
@@ -3300,6 +3351,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         })
         
         shopping_button.whenButtonIsClicked(action:{
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -3307,12 +3359,14 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+            }
             self.theme_menu_action()
         })
         
         restart_button.whenButtonIsClicked(action:{
-            
+            if(!self.sound_is_muted){
             self.restart_player.play()
+            }
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GameBoardViewController") as! GameBoardViewController
             UIView.animate(withDuration: 0.4, animations: {
@@ -3354,6 +3408,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         })
         
         self.home_button.whenButtonIsClicked(action:{
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -3361,6 +3416,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 
             }
             self.button_player.play()
+            }
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
             UIView.animate(withDuration: 0.4, animations: {
@@ -3573,6 +3629,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             handler_cond_before_insert = cond_before_insert
             if (Shape_fitting(Shape_Type: actual_type_index, position: actual_location)){
                 //play fit in sound effect
+                if(!sound_is_muted){
                 do{
                     fit_in_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Fit_In", ofType: "aif")!))
                     fit_in_player.prepareToPlay()
@@ -3583,6 +3640,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     //print("error")
                 }
                 fit_in_player.play()
+                }
                 exam_erase_animation_timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(GameBoardViewController.fit_after_erasre_handler), userInfo: nil, repeats: true)
                 /**
                 let cond_before_erase = filled
@@ -3646,6 +3704,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
 **/
                 
             } else {
+                if(!sound_is_muted){
                 do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     not_fit_player.prepareToPlay()
                 }
@@ -3653,7 +3712,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     
                 }
                 not_fit_player.play()
-                
+                }
                 UIView.animate(withDuration: 0.3, animations: {
                     if(self.position_in_use == 0){
                     self.green_drag_tri.frame.origin = self.green_drag_origin
@@ -3773,6 +3832,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     i += 1
                 }
                 if contained_boxes.count == 0{
+                    if(!sound_is_muted){
                     do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         not_fit_player.prepareToPlay()
                     }
@@ -3780,6 +3840,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     not_fit_player.play()
+                        }
                     self.during_holy_nova = true
                     
                 }else if (contained_boxes.count == 1){
@@ -3791,7 +3852,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                     self.holy_nova_instruction.removeFromSuperview()
                     let row = candidates[0][0]
                     let col = candidates[0][1]
-                    
+                    if(!sound_is_muted){
                     do{holy_nova_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "holy_nova", ofType: "mp3")!))
                         holy_nova_player.prepareToPlay()
                     }
@@ -3799,6 +3860,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     holy_nova_player.play()
+                    }
                     self.nova_breaker(row: row, col: col)
                     self.during_holy_nova = false
                     defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
@@ -3827,6 +3889,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         row = candidates[1][0]
                         col = candidates[1][1]
                     }
+                    if(!sound_is_muted){
                     do{holy_nova_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "holy_nova", ofType: "mp3")!))
                         holy_nova_player.prepareToPlay()
                     }
@@ -3834,6 +3897,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                         
                     }
                     holy_nova_player.play()
+                    }
                     self.nova_breaker(row: row, col: col)
                     self.during_holy_nova = false
                     self.view.bringSubview(toFront: self.green_drag_tri)
@@ -12043,6 +12107,7 @@ number_of_lines_erased += 1
         multiple_marker.alpha = 1
         self.view.addSubview(multiple_marker)
         if (number_of_lines_erased == 1){
+            if(!sound_is_muted){
             do{erase_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "1_time_erase", ofType: "mp3")!))
                 erase_player.prepareToPlay()
             }
@@ -12050,6 +12115,7 @@ number_of_lines_erased += 1
                 
             }
             erase_player.play()
+            }
             multiple_marker.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
             UIView.animate(withDuration: 0.2, animations: {
                 self.multiple_marker.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
@@ -12065,6 +12131,7 @@ number_of_lines_erased += 1
                 })
             })
         } else if (number_of_lines_erased == 2){
+            if(!sound_is_muted){
             do{erase_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "erase", ofType: "wav")!))
                 erase_player.prepareToPlay()
             }
@@ -12072,6 +12139,7 @@ number_of_lines_erased += 1
                 
             }
             erase_player.play()
+            }
             multiple_marker.textColor = .orange
             UIView.animate(withDuration: 0.2, animations: {
                 self.multiple_marker.transform = CGAffineTransform(scaleX: 3.0, y: 3.0)
@@ -12092,6 +12160,7 @@ number_of_lines_erased += 1
             })
         })
         }else {
+            if(!sound_is_muted){
             do{erase_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "3_times_erase", ofType: "wav")!))
                 erase_player.prepareToPlay()
             }
@@ -12099,6 +12168,7 @@ number_of_lines_erased += 1
                 
             }
             erase_player.play()
+            }
             multiple_marker.textColor = .red
             UIView.animate(withDuration: 0.4, animations: {
                 self.multiple_marker.transform = CGAffineTransform(scaleX: 4.0, y: 4.0)
@@ -14430,6 +14500,7 @@ number_of_lines_erased += 1
             //self.audioPlayer.stop()
             self.timer.invalidate()
             game_over_timer.invalidate()
+            if(!self.sound_is_muted){
             do{self.game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
                 self.game_over_player.prepareToPlay()
             }
@@ -14437,6 +14508,7 @@ number_of_lines_erased += 1
                 
             }
             self.game_over_player.play()
+            }
             
         }
 
@@ -14544,6 +14616,7 @@ number_of_lines_erased += 1
                         //self.audioPlayer.stop()
                         self.timer.invalidate()
                         game_over_timer.invalidate()
+                        if(!self.sound_is_muted){
                         do{self.game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
                             self.game_over_player.prepareToPlay()
                         }
@@ -14551,7 +14624,7 @@ number_of_lines_erased += 1
                             
                         }
                         self.game_over_player.play()
-                        
+                        }
                     }
                     self.resu_activate_button.whenButtonIsClicked {
                         self.gameover_star_purchase = "gameover"
@@ -14622,6 +14695,7 @@ number_of_lines_erased += 1
     
     func resurrection_when_alive() -> Void {
         print("resurrection when alive")
+        if(!sound_is_muted){
         do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
             not_fit_player.prepareToPlay()
         }
@@ -14629,6 +14703,7 @@ number_of_lines_erased += 1
             
         }
         not_fit_player.play()
+        }
     }
     
     
@@ -14636,6 +14711,7 @@ number_of_lines_erased += 1
     
     func purification() -> Void{
         if (self.tool_quantity_array[1] > 0){
+            if(!sound_is_muted){
         do{purification_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "purification", ofType: "wav")!))
             purification_player.prepareToPlay()
         }
@@ -14643,6 +14719,7 @@ number_of_lines_erased += 1
             
         }
         purification_player.play()
+            }
             let cond_before_insert = filled
             last_score = score
         var purification_list : Array<Array<Int>> = []
@@ -14691,7 +14768,7 @@ number_of_lines_erased += 1
             defaults.set(self.score, forKey: "tritri_single_round_score")
         }
         else
-        {
+        {  if(!sound_is_muted){
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                 not_fit_player.prepareToPlay()
             }
@@ -14699,6 +14776,7 @@ number_of_lines_erased += 1
                 
             }
             not_fit_player.play()
+            }
         }
     }
         
@@ -14840,6 +14918,7 @@ number_of_lines_erased += 1
             defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
     }
         else {
+            if(!sound_is_muted){
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                 not_fit_player.prepareToPlay()
             }
@@ -14847,6 +14926,7 @@ number_of_lines_erased += 1
                 
             }
             not_fit_player.play()
+            }
         }
     }
     
@@ -16079,6 +16159,7 @@ number_of_lines_erased += 1
             defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")**/
         }
         else {
+            if(!sound_is_muted){
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                 not_fit_player.prepareToPlay()
             }
@@ -16086,6 +16167,7 @@ number_of_lines_erased += 1
                 
             }
             not_fit_player.play()
+            }
         }
     }
     
@@ -16097,6 +16179,7 @@ number_of_lines_erased += 1
     
     
     func doom_day_real_action() -> Void {
+        if(!sound_is_muted){
         do{doom_day_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "doom_day_sound", ofType: "wav")!))
             doom_day_player.prepareToPlay()
         }
@@ -16104,6 +16187,7 @@ number_of_lines_erased += 1
             
         }
         doom_day_player.play()
+        }
         var score_increment_number = 0
         //fix all filled first
         var i = 0 //row
@@ -16938,6 +17022,7 @@ number_of_lines_erased += 1
         if(!amplifier_in_use){
             amplifier_in_use = true
         if tool_quantity_array[3] > 0{
+            if(!sound_is_muted){
         do{amplifier_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "amplifier_sound", ofType: "wav")!))
             amplifier_player.prepareToPlay()
         }
@@ -16945,6 +17030,7 @@ number_of_lines_erased += 1
             
         }
         amplifier_player.play()
+            }
     amplifier_animation()
     close_pack()
     print("amplifier start")
@@ -16954,6 +17040,7 @@ number_of_lines_erased += 1
             defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
         }
         else {
+            if(!sound_is_muted){
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                 not_fit_player.prepareToPlay()
             }
@@ -16961,8 +17048,10 @@ number_of_lines_erased += 1
                 
             }
             not_fit_player.play()
+            }
         }
         }else{
+            if(!sound_is_muted){
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                 not_fit_player.prepareToPlay()
             }
@@ -16970,7 +17059,7 @@ number_of_lines_erased += 1
                 
             }
             not_fit_player.play()
-            
+            }
         }
     }
     
@@ -17034,6 +17123,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
        if (tool_quantity_array[4] > 0){
         the_three_lack_tri = []
         //trinity_animation()
+        if(!sound_is_muted){
         do{trinity_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "trinity_sound", ofType: "wav")!))
             trinity_player.prepareToPlay()
         }
@@ -17041,6 +17131,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
             
         }
         trinity_player.play()
+        }
      close_pack()
     exam_each_situation_lack_tri_number()
     var sorted_situation_lack_tri_number = situation_lack_tri_number
@@ -17077,6 +17168,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
         
         }
         else {
+        if(!sound_is_muted){
             do{not_fit_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                 not_fit_player.prepareToPlay()
             }
@@ -17084,6 +17176,7 @@ self.amplifier_valide_icon.image = #imageLiteral(resourceName: "item_round_ampli
                 
             }
             not_fit_player.play()
+        }
         }
         
     }
@@ -17902,6 +17995,7 @@ func trinity_animation() -> Void {
         self.present(nextViewController, animated: true, completion: nil)
         //self.audioPlayer.stop()
         self.timer.invalidate()
+        if(!sound_is_muted){
         do{self.game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
             self.game_over_player.prepareToPlay()
         }
@@ -17909,6 +18003,7 @@ func trinity_animation() -> Void {
             
         }
         self.game_over_player.play()
+        }
     }
 
 //functions to auto resize star_counter
@@ -18146,6 +18241,7 @@ func trinity_animation() -> Void {
         self.view.addSubview(close_button)
         if(gameover_star_purchase == "ingame"){
         close_button.whenButtonIsClicked{
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -18153,6 +18249,7 @@ func trinity_animation() -> Void {
                 
             }
             self.button_player.play()
+            }
             self.paused = false
             self.star_store_button.isEnabled = true
             self.backpack_button.isEnabled = true
@@ -18200,6 +18297,7 @@ func trinity_animation() -> Void {
             self.present(nextViewController, animated: true, completion: nil)
             //self.audioPlayer.stop()
             self.timer.invalidate()
+                if(!self.sound_is_muted){
             do{self.game_over_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "game over", ofType: "wav")!))
                 self.game_over_player.prepareToPlay()
             }
@@ -18207,6 +18305,7 @@ func trinity_animation() -> Void {
                 
             }
             self.game_over_player.play()
+                }
             }
         }else if(gameover_star_purchase == "theme"){
             close_button.whenButtonIsClicked{
@@ -18290,7 +18389,7 @@ func trinity_animation() -> Void {
         
         
         if(gameover_star_purchase == "ingame"){
-            
+            if(!sound_is_muted){
                 do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                     self.button_player.prepareToPlay()
                 }
@@ -18298,6 +18397,7 @@ func trinity_animation() -> Void {
                     
                 }
                 self.button_player.play()
+            }
                 self.paused = false
                 self.star_store_button.isEnabled = true
                 self.backpack_button.isEnabled = true
@@ -18323,6 +18423,7 @@ func trinity_animation() -> Void {
                 self.paused = false
             
         }else if (gameover_star_purchase == "gameover"){
+            if(!sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -18330,6 +18431,7 @@ func trinity_animation() -> Void {
                 
             }
             self.button_player.play()
+            }
             self.paused = false
             self.star_store_button.isEnabled = true
             self.backpack_button.isEnabled = true
@@ -18390,7 +18492,7 @@ func trinity_animation() -> Void {
         defaults.synchronize()
         update_star_counter_length_according_to_string_length()
         if(gameover_star_purchase == "ingame"){
-            
+            if(!sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -18398,6 +18500,7 @@ func trinity_animation() -> Void {
                 
             }
             self.button_player.play()
+            }
             self.paused = false
             self.star_store_button.isEnabled = true
             self.backpack_button.isEnabled = true
@@ -18423,6 +18526,7 @@ func trinity_animation() -> Void {
             self.paused = false
             
         }else if (gameover_star_purchase == "gameover"){
+            if(!sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -18430,6 +18534,7 @@ func trinity_animation() -> Void {
                 
             }
             self.button_player.play()
+            }
             self.paused = false
             self.star_store_button.isEnabled = true
             self.backpack_button.isEnabled = true
