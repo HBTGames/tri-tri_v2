@@ -40,7 +40,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
 
     @IBOutlet weak var star_counter: UIButton!
     
-
+    //sound state
+    var sound_is_muted = false
     
     @IBOutlet weak var star_board: UILabel!
     @IBOutlet weak var continue_button: UIButton!
@@ -52,6 +53,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     @IBOutlet weak var gift_button: UIButton!
     
     @IBAction func gift_sound_effect(_ sender: UIButton) {
+        if(!sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -59,6 +61,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             
         }
         self.button_player.play()
+        }
 
     }
     
@@ -77,6 +80,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     var star_store_button = MyButton()
     
     @IBAction func tutorial_button_sound(_ sender: Any) {
+        if(!sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -84,6 +88,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             
         }
         self.button_player.play()
+        }
     }
     
     
@@ -138,6 +143,15 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             print("please enable IAPs")
         }
 
+        if (defaults.value(forKey: "tri_tri_sound_is_muted") == nil){
+            sound_is_muted = false
+            defaults.set(sound_is_muted, forKey: "tri_tri_sound_is_muted")
+        }
+        else {
+            sound_is_muted = defaults.value(forKey: "tri_tri_sound_is_muted") as! Bool
+        }
+        
+        
         
         screen_width = view.frame.width
         screen_height = view.frame.height
@@ -157,8 +171,13 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         tutorial_button.frame = CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(538), width: pause_screen_x_transform(128), height: pause_screen_y_transform(129))
         tutorial_button.contentMode = .scaleAspectFit
         treasure_box_icon.frame = CGRect(x: pause_screen_x_transform(Double(treasure_box_icon.frame.origin.x)), y: pause_screen_y_transform(Double(treasure_box_icon.frame.origin.y)), width: pause_screen_x_transform(Double(treasure_box_icon.frame.width)), height: pause_screen_y_transform(Double(treasure_box_icon.frame.height)))
-        language_button.frame = CGRect(x: pause_screen_x_transform(Double(language_button.frame.origin.x)), y: pause_screen_y_transform(Double(language_button.frame.origin.y)), width: pause_screen_x_transform(Double(language_button.frame.width)), height: pause_screen_y_transform(Double(language_button.frame.height)))
+        settings_button.frame = CGRect(x: pause_screen_x_transform(Double(settings_button.frame.origin.x)), y: pause_screen_y_transform(Double(settings_button.frame.origin.y)), width: pause_screen_x_transform(Double(settings_button.frame.width)), height: pause_screen_y_transform(Double(settings_button.frame.height)))
         background_image.frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
+        settings_scene.frame = settings_button.frame
+        settings_scene.contentMode = .scaleAspectFit
+        self.view.addSubview(settings_scene)
+        self.view.bringSubview(toFront: settings_button)
+        
         star_board.font = UIFont(name: "Fresca-Regular", size: CGFloat(22))
         var HighestScore = 0
         // Do any additional setup after loading the view.
@@ -198,7 +217,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             ThemeType = defaults.integer(forKey: "tritri_Theme")
         }
         
-        language_button_image_decider()
+
+        //language_button_image_decider()
         if(ThemeType == 1){
             trophy.image = #imageLiteral(resourceName: "day_mode_trophy")
             view.backgroundColor = UIColor(red: 254.0/255, green: 253.0/255, blue: 252.0/255, alpha: 1.0)
@@ -212,6 +232,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             gift_button.setImage(#imageLiteral(resourceName: "gift_day_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_day_mode"), for: .normal)
+            settings_button.setImage(#imageLiteral(resourceName: "settings_day"), for: .normal)
+             settings_scene.image = #imageLiteral(resourceName: "settings_scene_day&night")
         }else if(ThemeType == 2){
             trophy.image = #imageLiteral(resourceName: "night_mode_trophy")
             view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -226,6 +248,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             gift_button.setImage(#imageLiteral(resourceName: "gift_night_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_day_night"), for: .normal)
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_night_mode"), for: .normal)
+            settings_button.setImage(#imageLiteral(resourceName: "settings_day"), for: .normal)
+            settings_scene.image = #imageLiteral(resourceName: "settings_scene_day&night")
         }else if(ThemeType == 3){
             like_button.setBackgroundImage(UIImage(named: "BW_like"), for: .normal)
             shopping_cart.setImage(UIImage(named:"BW_shopping"), for: .normal)
@@ -240,6 +264,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             gift_button.setImage(#imageLiteral(resourceName: "gift_BW_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_B&W"), for: .normal)
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_bw_mode"), for: .normal)
+            settings_button.setImage(#imageLiteral(resourceName: "settings_bw"), for: .normal)
+            settings_scene.image = #imageLiteral(resourceName: "settings_scene_bw")
         }else if(ThemeType == 4){
             triangle_title.image = UIImage(named: "night mode triangle title")
             like_button.setBackgroundImage(UIImage(named: "chaos_like_icon"), for: .normal)
@@ -250,7 +276,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             background_image.image = #imageLiteral(resourceName: "chaos_background")
             //view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
             continue_button.setImage(UIImage(named:"chaos_start_icon"), for: .normal)
-            
+            settings_button.setImage(#imageLiteral(resourceName: "settings_day"), for: .normal)
         }else if(ThemeType == 5){
             like_button.setBackgroundImage(UIImage(named: "school_like-icon"), for: .normal)
             shopping_cart.setImage(UIImage(named:"school_theme-button"), for: .normal)
@@ -265,6 +291,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             gift_button.setImage(#imageLiteral(resourceName: "gift_school_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_school"), for: .normal)
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_school_mode"), for: .normal)
+            settings_button.setImage(#imageLiteral(resourceName: "settings_school"), for: .normal)
+            settings_scene.image = #imageLiteral(resourceName: "settings_scene_school")
         }
         else if(ThemeType == 6){
 
@@ -281,7 +309,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             gift_button.setImage(#imageLiteral(resourceName: "gift_color_mode"), for: .normal)
             tutorial_button.setBackgroundImage(#imageLiteral(resourceName: "tuto_icon_color"), for: .normal)
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_color_mode"), for: .normal)
-            
+            settings_button.setImage(#imageLiteral(resourceName: "settings_colors"), for: .normal)
+            settings_scene.image = #imageLiteral(resourceName: "settings_scene_colors")
         }
         triangle_title_image_decider()
      star_board_original_width = star_board.frame.width
@@ -299,6 +328,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     star_store_button.frame.size = CGSize(width: star_counter_total_length, height: star_counter_fragments[0].frame.height)
     self.view.addSubview(star_store_button)
         star_store_button.whenButtonIsClicked(action: {
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -306,6 +336,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
             }
             self.button_player.play()
+            }
             self.purchase_star_function()
         })
     //enablel gamecenter
@@ -345,7 +376,11 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     tutorial_button.isUserInteractionEnabled = false
     shopping_cart.isUserInteractionEnabled = false
     like_button.isUserInteractionEnabled = false
-    language_button.isUserInteractionEnabled = false
+    settings_button.isUserInteractionEnabled = false
+        
+        
+    
+        
     }
     
     func saleView_tapped(_ gesture: UITapGestureRecognizer ) {
@@ -359,7 +394,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 tutorial_button.isUserInteractionEnabled = true
                 shopping_cart.isUserInteractionEnabled = true
                 like_button.isUserInteractionEnabled = true
-                language_button.isUserInteractionEnabled = true
+                settings_button.isUserInteractionEnabled = true
                 first_enter_sale = false
                 defaults.set(first_enter_sale, forKey: "tritri_firstTimerEnterSale")
                 
@@ -395,6 +430,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     }
 
     @IBAction func start_action(_ sender: UIButton) {
+        if(!sound_is_muted){
         do{self.opening_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "opening", ofType: "wav")!))
             self.opening_player.prepareToPlay()
         }
@@ -402,16 +438,28 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             
         }
         self.opening_player.play()
+        }
     }
 
     @IBOutlet weak var triangle_title: UIImageView!
     
     
+    //settings button
+    @IBOutlet var settings_button: UIButton!
+    //settings functional buttons
+    var language_button = MyButton()
+    var mute_button = MyButton()
+    var gameCenter_button = MyButton()
+    var settings_scene = UIImageView()
     
-    @IBOutlet var language_button: UIButton!
+    
+    
+    
+    
     
     
     @IBAction func language_changing(_ sender: Any) {
+        if(!sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -419,7 +467,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             
         }
         self.button_player.play()
-        if (defaults.value(forKey: "language") as! String == "English"){
+        }
+        /**if (defaults.value(forKey: "language") as! String == "English"){
             language = "Chinese"
             defaults.set("Chinese", forKey: "language")
             print("System language change to Chinese")
@@ -431,7 +480,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             print("System language change to English")
             self.language_button_image_decider()
             triangle_title_image_decider()
-        }
+        }**/
         
     }
     
@@ -486,6 +535,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     @IBAction func theme_menu_action(_ sender: UIButton) {
         if(!in_theme_menu){
             in_theme_menu = true
+        if(!sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -493,6 +543,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             
         }
         self.button_player.play()
+            }
         white_cover = UIView(frame: CGRect(x: pause_screen_x_transform(0), y: pause_screen_y_transform(0), width: pause_screen_x_transform(400), height: pause_screen_y_transform(53)))
         white_cover_y = white_cover.frame.origin.y + white_cover.frame.height
         
@@ -544,6 +595,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         day_apply_origin = day_apply_button.frame.origin
         day_apply_button.whenButtonIsClicked(action:{
             if(self.ThemeType != 1){
+                if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -551,6 +603,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
             }
             self.button_player.play()
+                }
             
             self.apply_button_restore()
                 
@@ -565,7 +618,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             else {
                 self.triangle_title.image = UIImage(named: "san_title_day")
             }
-            self.language_button_image_decider()
+            //self.language_button_image_decider()
+            self.settings_button.setImage(#imageLiteral(resourceName: "settings_day"), for: .normal)
             self.like_button.setBackgroundImage(UIImage(named: "day mode like"), for: .normal)
             self.highest_score.textColor = UIColor(red: 26.0/255, green: 58.0/255, blue: 49.0/255, alpha: 1)
             self.continue_button.setImage(UIImage(named:"continue"), for: .normal)
@@ -642,6 +696,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
                 
             }else{
+                if(!self.sound_is_muted){
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
                 }
@@ -649,6 +704,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     
                 }
                 self.wrong_player.play()
+                }
             }
         })
         
@@ -685,13 +741,16 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         night_apply_origin = night_apply_button.frame.origin
         night_apply_button.whenButtonIsClicked(action:{
             if(self.ThemeType != 2){
+                if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
             catch{
                 
             }
+                
             self.button_player.play()
+                }
             self.apply_button_restore()
             self.ThemeType = 2
             self.trophy.image = #imageLiteral(resourceName: "night_mode_trophy")
@@ -705,7 +764,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             else {
                 self.triangle_title.image = UIImage(named: "san_title_night")
             }
-            self.language_button_image_decider()
+            //self.language_button_image_decider()
+            self.settings_button.setImage(#imageLiteral(resourceName: "settings_day"), for: .normal)
             self.highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
             self.continue_button.setImage(UIImage(named:"continue"), for: .normal)
             self.shopping_cart.setImage(UIImage(named:"shopping_cart"), for: .normal)
@@ -775,6 +835,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
                 
             }else{
+                if(!self.sound_is_muted){
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
                 }
@@ -782,6 +843,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     
                 }
                 self.wrong_player.play()
+                }
             }
         })
         theme_menu.addSubview(night_theme_button)
@@ -831,6 +893,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         BW_apply_button.whenButtonIsClicked(action:{
             if(self.theme_islocked_array[2]){
                 if(self.star_score >= 2000){
+                    if(!self.sound_is_muted){
                     do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
                         self.cash_player.prepareToPlay()
                     }
@@ -838,6 +901,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                     }
                     self.cash_player.play()
+                    }
                     //self.star_score -= 1000
                     //sale
                     self.star_score -= 500
@@ -860,6 +924,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     
                     
                 }else{
+                    if(!self.sound_is_muted){
                     do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         self.wrong_player.prepareToPlay()
                     }
@@ -867,12 +932,14 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                     }
                     self.wrong_player.play()
+                    }
                     self.BW_apply_button.imageView?.shake(duration: 0.3)
                 }
                 
                 
             }
             else if(self.ThemeType != 3){
+                if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -880,6 +947,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
             }
             self.button_player.play()
+                }
             self.apply_button_restore()
             self.ThemeType = 3
             defaults.set(3, forKey:"tritri_Theme")
@@ -893,7 +961,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             else {
                 self.triangle_title.image = UIImage(named: "san_title_day")
             }
-            self.language_button_image_decider()
+            //self.language_button_image_decider()
+            self.settings_button.setImage(#imageLiteral(resourceName: "settings_bw"), for: .normal)
             self.like_button.setBackgroundImage(UIImage(named: "BW_like"), for: .normal)
             self.highest_score.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
             self.shopping_cart.setImage(UIImage(named:"BW_shopping"), for: .normal)
@@ -968,6 +1037,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
                 
             }else{
+                if(!self.sound_is_muted){
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
                 }
@@ -975,6 +1045,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     
                 }
                 self.wrong_player.play()
+                }
             }
             
             
@@ -1096,7 +1167,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         school_apply_origin = school_apply_button.frame.origin
         school_apply_button.whenButtonIsClicked(action:{
             if(self.theme_islocked_array[3]){
-                if(self.star_score >= 1000){
+                if(self.star_score >= 500){
+                    if(!self.sound_is_muted){
                     do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
                         self.cash_player.prepareToPlay()
                     }
@@ -1104,6 +1176,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                     }
                     self.cash_player.play()
+                    }
                     //self.star_score -= 1000
                     //sale
                      self.star_score -= 500
@@ -1125,6 +1198,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     })
 
                    }else{
+                    if(!self.sound_is_muted){
                     do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         self.wrong_player.prepareToPlay()
                     }
@@ -1132,12 +1206,14 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                     }
                     self.wrong_player.play()
+                    }
                     self.school_apply_button.imageView?.shake(duration: 0.3)
                 }
                 
                 
             }
             else if(self.ThemeType != 5){
+                if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1145,6 +1221,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
             }
             self.button_player.play()
+                }
             self.apply_button_restore()
             self.ThemeType = 5
             defaults.set(5, forKey:"tritri_Theme")
@@ -1158,7 +1235,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             else {
                 self.triangle_title.image = UIImage(named: "san_title_school")
             }
-            self.language_button_image_decider()
+            //self.language_button_image_decider()
+            self.settings_button.setImage(#imageLiteral(resourceName: "settings_school"), for: .normal)
             self.like_button.setBackgroundImage(UIImage(named: "school_like-icon"), for: .normal)
             self.highest_score.textColor = UIColor(red: 34.0/255, green: 61.0/255, blue: 128.0/255, alpha: 1.0)
             self.shopping_cart.setImage(UIImage(named:"school_theme-button"), for: .normal)
@@ -1232,6 +1310,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             
                 
             }else{
+                if(!self.sound_is_muted){
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
                 }
@@ -1239,6 +1318,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     
                 }
                 self.wrong_player.play()
+                }
             }
         })
         theme_menu.addSubview(school_theme_button)
@@ -1295,7 +1375,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         colors_apply_origin = colors_apply_button.frame.origin
         colors_apply_button.whenButtonIsClicked(action:{
             if(self.theme_islocked_array[4]){
-                if(self.star_score >= 1000){
+                if(self.star_score >= 500){
+                    if(!self.sound_is_muted){
                     do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
                         self.cash_player.prepareToPlay()
                     }
@@ -1303,6 +1384,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                     }
                     self.cash_player.play()
+                    }
                     //self.star_score -= 1000
                     //sale
                      self.star_score -= 500
@@ -1323,6 +1405,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                     })
                     }else{
+                    if(!self.sound_is_muted){
                     do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                         self.wrong_player.prepareToPlay()
                     }
@@ -1330,12 +1413,14 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                         
                     }
                     self.wrong_player.play()
+                    }
                     self.colors_apply_button.imageView?.shake(duration: 0.3)
                 }
                 
                 
             }
             else if(self.ThemeType != 6){
+                if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1343,6 +1428,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
             }
             self.button_player.play()
+                }
             self.apply_button_restore()
             self.ThemeType = 6
             defaults.set(6, forKey:"tritri_Theme")
@@ -1356,7 +1442,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             else {
                 self.triangle_title.image = UIImage(named: "san_title_night")
             }
-            self.language_button_image_decider()
+            //self.language_button_image_decider()
+            self.settings_button.setImage(#imageLiteral(resourceName: "settings_colors"), for: .normal)
             self.like_button.setBackgroundImage(UIImage(named: "colors_like-icon"), for: .normal)
             self.highest_score.textColor = UIColor(red: 255.0/255, green: 195.0/255, blue: 1.0/255, alpha: 1.0)
             self.shopping_cart.setImage(UIImage(named:"colors_theme-button"), for: .normal)
@@ -1431,6 +1518,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             
             
             }else{
+                if(!self.sound_is_muted){
                 do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                     self.wrong_player.prepareToPlay()
                 }
@@ -1438,6 +1526,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     
                 }
                 self.wrong_player.play()
+                }
             }
         })
         
@@ -1511,6 +1600,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         self.view.addSubview(theme_menu_star_store_button)
         self.view.bringSubview(toFront: theme_menu_star_store_button)
             theme_menu_star_store_button.whenButtonIsClicked(action: {
+                if(!self.sound_is_muted){
                 do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                     self.button_player.prepareToPlay()
                 }
@@ -1518,7 +1608,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     
                 }
                 self.button_player.play()
-                
+                }
                self.purchase_star_function()
                 
                 
@@ -1541,6 +1631,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         
         
         return_button.whenButtonIsClicked(action: {
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1548,6 +1639,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 
             }
             self.button_player.play()
+            }
             self.theme_menu.backgroundColor = UIColor(red:CGFloat(255.0/255.0), green:CGFloat(255.0/255.0), blue:CGFloat(255.0/255.0), alpha:CGFloat(1))
             self.theme_menu.twoPointBounceOut(translation1_y: -self.white_cover_y, translation2_y:  self.screen_height, final_completetion: {
                 
@@ -1780,7 +1872,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     like_button.isEnabled = false
     shopping_cart.isEnabled = false
     gift_button.isEnabled = false
-    language_button.isEnabled = false
+    settings_button.isEnabled = false
     tutorial_button.isEnabled = false
     star_store_button.isEnabled = false
     treasure_cancel = MyButton(frame: CGRect(x: treasure_menu.frame.origin.x, y: treasure_menu.frame.origin.y, width: pause_screen_x_transform(117), height: pause_screen_y_transform(117)))
@@ -1844,6 +1936,7 @@ self.view.addSubview(current_star_total)
             //self.new_life_button.setImage(#imageLiteral(resourceName: "resurrection_button"), for: .normal)
             //sale
             self.new_life_button.setImage( #imageLiteral(resourceName: "resurrection_up_sale"), for: .normal)
+            if(!self.sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1851,8 +1944,10 @@ self.view.addSubview(current_star_total)
                 
             }
             self.button_player.play()
+            }
             self.tool_selected = 0
             self.tool_selected_scene()
+                
         })
         
 //new life text
@@ -1917,6 +2012,7 @@ self.view.addSubview(current_star_total)
             //sale
             self.same_color_eliminator.setImage(#imageLiteral(resourceName: "purification_up_sale"), for: .normal)
             self.same_color_eliminator.frame.origin.y -= self.pause_screen_y_transform(2)
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1924,6 +2020,7 @@ self.view.addSubview(current_star_total)
                 
             }
             self.button_player.play()
+            }
             self.tool_selected = 1
             self.tool_selected_scene()
         })
@@ -1990,6 +2087,7 @@ self.view.addSubview(current_star_total)
             //sale
             self.shape_bomb.setImage(#imageLiteral(resourceName: "holy_nova_up_sale"), for: .normal)
             self.shape_bomb.frame.origin.y -= self.pause_screen_y_transform(2)
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -1997,6 +2095,7 @@ self.view.addSubview(current_star_total)
                 
             }
             self.button_player.play()
+            }
             self.tool_selected = 2
             self.tool_selected_scene()
         })
@@ -2061,7 +2160,7 @@ self.view.addSubview(current_star_total)
             //sale
             self.times_two.setImage(#imageLiteral(resourceName: "amplifier_up_sale"), for: .normal)
             self.times_two.frame.origin.y -= self.pause_screen_y_transform(2)
-
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -2069,6 +2168,7 @@ self.view.addSubview(current_star_total)
                 
             }
             self.button_player.play()
+            }
             self.tool_selected = 3
             self.tool_selected_scene()
         })
@@ -2133,6 +2233,7 @@ self.view.addSubview(current_star_total)
             //sale
             self.three_triangles.setImage(#imageLiteral(resourceName: "trinity_up_sale"), for: .normal)
             self.three_triangles.frame.origin.y -= self.pause_screen_y_transform(2)
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -2140,6 +2241,7 @@ self.view.addSubview(current_star_total)
                 
             }
             self.button_player.play()
+            }
             self.tool_selected = 4
             self.tool_selected_scene()
         })
@@ -2207,6 +2309,7 @@ self.view.addSubview(current_star_total)
             //sale
              self.clear_all.setImage(#imageLiteral(resourceName: "doomday_up_sale"), for: .normal)
             self.clear_all.frame.origin.y -= self.pause_screen_y_transform(2)
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -2214,8 +2317,10 @@ self.view.addSubview(current_star_total)
                 
             }
             self.button_player.play()
+            }
             self.tool_selected = 5
             self.tool_selected_scene()
+            
         })
     
     //clear all text
@@ -2256,6 +2361,7 @@ self.view.addSubview(current_star_total)
         
     //treasure cancel action
     treasure_cancel.whenButtonIsClicked(action: {
+        if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -2263,6 +2369,7 @@ self.view.addSubview(current_star_total)
                 
             }
             self.button_player.play()
+        }
             self.treasure_cancel.fadeOutandRemove()
             treasure_menu.fadeOutandRemove()
             self.new_life_button.fadeOutandRemove()
@@ -2298,7 +2405,7 @@ self.view.addSubview(current_star_total)
         self.like_button.isEnabled = true
         self.shopping_cart.isEnabled = true
         self.gift_button.isEnabled = true
-        self.language_button.isEnabled = true
+        self.settings_button.isEnabled = true
         self.tutorial_button.isEnabled = true
         self.star_store_button.isEnabled = true
           })
@@ -2309,6 +2416,7 @@ self.view.addSubview(current_star_total)
        treasuer_box_star_store_button.alpha = 0.02
        self.view.addSubview(treasuer_box_star_store_button)
         treasuer_box_star_store_button.whenButtonIsClicked(action: {
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -2316,6 +2424,7 @@ self.view.addSubview(current_star_total)
                 
             }
             self.button_player.play()
+            }
             
             self.purchase_star_function()
         })
@@ -2324,6 +2433,7 @@ self.view.addSubview(current_star_total)
    
     @IBOutlet weak var treasure_box_icon: UIButton!
     @IBAction func treasure_box_action(_ sender: UIButton) {
+        if(!sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -2331,6 +2441,7 @@ self.view.addSubview(current_star_total)
             
         }
         self.button_player.play()
+        }
         treasure_box_function()
     }
 
@@ -2371,6 +2482,7 @@ self.view.addSubview(current_star_total)
             }
         }
     }
+
 
     //tool selected:
     // 0 - new life  1 - same color eliminator 2 - shape bomb 3 - score*2 4 - three triangles 5 - clear all
@@ -2442,7 +2554,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
          self.tool_quantity = 0
         //quantity of star needed
         self.star_quantiry_needed = 0
-        var previous_star_quantity_fontsize = CGFloat(25)
+        _ = CGFloat(25)
         
       
         
@@ -2666,6 +2778,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
             explaination_text.fadeOutandRemove()
             self.total_price_image.fadeOutandRemove()
             self.remove_all_total_price_fragments()
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -2673,10 +2786,12 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
                 
             }
             self.button_player.play()
+            }
             
         })
        
         add_button.whenButtonIsClicked(action: {
+            if(!self.sound_is_muted){
             do{self.add_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "add", ofType: "wav")!))
                 self.add_player.prepareToPlay()
             }
@@ -2684,6 +2799,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
                 
             }
             self.add_player.play()
+            }
             self.tool_quantity = self.tool_quantity + 1
             tool_quantity_label.text = String(self.tool_quantity)
             self.star_quantiry_needed = self.tool_quantity * self.star_base
@@ -2694,6 +2810,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         sub_button.whenButtonIsClicked(action: {
             if(self.tool_quantity == 0){
                 self.tool_quantity = 0
+                if(!self.sound_is_muted){
                 do{self.sub_not_allowed_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "sub_not_allowed", ofType: "wav")!))
                     self.sub_not_allowed_player.prepareToPlay()
                 }
@@ -2701,8 +2818,10 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
                     
                 }
                 self.sub_not_allowed_player.play()
+                }
      
             }else{
+                if(!self.sound_is_muted){
                 do{self.sub_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "sub", ofType: "wav")!))
                     self.sub_player.prepareToPlay()
                 }
@@ -2710,6 +2829,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
                     
                 }
                 self.sub_player.play()
+                }
                 self.tool_quantity = self.tool_quantity - 1
                 tool_quantity_label.text = String(self.tool_quantity)
             }
@@ -2802,6 +2922,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         if(star_score >= star_needed && star_needed != 0){
         star_score -= star_needed
         defaults.set(tool_quantity_array, forKey: "tritri_tool_quantity_array")
+            if(!sound_is_muted){
             do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
                 self.cash_player.prepareToPlay()
             }
@@ -2809,8 +2930,10 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
                 
             }
             self.cash_player.play()
+            }
         }else{
             star_score = star_score - 0
+            if(!sound_is_muted){
             do{self.wrong_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "not_fit", ofType: "wav")!))
                 self.wrong_player.prepareToPlay()
             }
@@ -2818,6 +2941,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
                 
             }
             self.wrong_player.play()
+            }
 
         }
         defaults.set(star_score, forKey: "tritri_star_score")
@@ -2840,7 +2964,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         star_counter_fragments = []
         star_counter.alpha = 1
         star_counter_fragments = star_counter.generateFragmentsFrom(star_counter, with: 4.0, in: self.view)
-        var i = 0
+        _ = 0
         star_counter.alpha = 0
         star_counter_fragments[0].frame.origin.x = star_counter.frame.origin.x
         star_counter_fragments[1].frame.origin.x = star_counter_fragments[0].frame.origin.x + star_counter_fragments[0].frame.width
@@ -2911,7 +3035,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         current_star_total_fragments = []
         current_star_total.alpha = 1
         current_star_total_fragments = current_star_total.generateFragmentsFrom(current_star_total, with: 4.0, in: self.view)
-        var i = 0
+        _ = 0
         current_star_total.alpha = 0
         current_star_total_fragments[0].frame.origin.x = current_star_total.frame.origin.x
         current_star_total_fragments[1].frame.origin.x = current_star_total_fragments[0].frame.origin.x + current_star_total_fragments[0].frame.width
@@ -2973,7 +3097,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         theme_star_counter_fragments = []
         theme_star_counter.alpha = 1
         theme_star_counter_fragments = theme_star_counter.generateFragmentsFrom(theme_star_counter, with: 4.0, in: self.view)
-        var i = 0
+        _ = 0
         theme_star_counter.alpha = 0
         theme_star_counter_fragments[0].frame.origin.x = theme_star_counter.frame.origin.x
         theme_star_counter_fragments[1].frame.origin.x = theme_star_counter_fragments[0].frame.origin.x + theme_star_counter_fragments[0].frame.width
@@ -3158,6 +3282,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
 //like button action
     
     @IBAction func like_button_action(_ sender: UIButton) {
+        if(!sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -3166,6 +3291,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         }
         
         self.button_player.play()
+        }
         if(language == "English"){
          EggRating.rateButtonTitleText = "Cheers"
         EggRating.titleLabelText = "Rate Our App"
@@ -3208,7 +3334,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
     func purchase_star_function() -> Void{
         self.treasure_box_icon.isEnabled = false
         self.tutorial_button.isEnabled = false
-        self.language_button.isEnabled = false
+        self.settings_button.isEnabled = false
         self.gift_button.isEnabled = false
         self.star_counter.isEnabled = false
         self.like_button.isEnabled = false
@@ -3271,6 +3397,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         self.view.addSubview(close_button)
         
         close_button.whenButtonIsClicked{
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -3278,9 +3405,10 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
                 
             }
             self.button_player.play()
+            }
             self.treasure_box_icon.isEnabled = true
             self.tutorial_button.isEnabled = true
-            self.language_button.isEnabled = true
+            self.settings_button.isEnabled = true
             self.gift_button.isEnabled = true
             self.star_counter.isEnabled = true
             self.like_button.isEnabled = true
@@ -3371,7 +3499,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         self.close_button.fadeOutandRemove()
         self.treasure_box_icon.isEnabled = true
         self.tutorial_button.isEnabled = true
-        self.language_button.isEnabled = true
+        self.settings_button.isEnabled = true
         self.gift_button.isEnabled = true
         self.star_counter.isEnabled = true
         self.like_button.isEnabled = true
@@ -3411,7 +3539,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         self.close_button.fadeOutandRemove()
         self.treasure_box_icon.isEnabled = true
         self.tutorial_button.isEnabled = true
-        self.language_button.isEnabled = true
+        self.settings_button.isEnabled = true
         self.gift_button.isEnabled = true
         self.star_counter.isEnabled = true
         self.like_button.isEnabled = true
@@ -3483,7 +3611,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         print ("add payment")
         for transaction: AnyObject in transactions{
             let trans = transaction as! SKPaymentTransaction
-            print (trans.error)
+            print (trans.error as Any)
             
             switch trans.transactionState{
             case .purchased:
@@ -3558,7 +3686,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
                 //game center not enabled
                 self.gcEnabled = false
                 print("Local player could not be authenticated, disabling game center")
-                print(error)
+                print(error as Any)
                 
             }
             
@@ -3645,8 +3773,107 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         }
     }
     
- 
+   var settings_scene_is_opened = false
     
+    @IBAction func settings_action(_ sender: UIButton) {
+    
+        if(!sound_is_muted){
+        do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+            self.button_player.prepareToPlay()
+        }
+        catch{
+            
+        }
+        self.button_player.play()
+        }
+        if(!settings_scene_is_opened){
+            open_settings_scene()
+        }else{
+            close_settings_scene()
+        }
+        
+        
+        
+    }
+    
+    func open_settings_scene(){
+        UIView.animate(withDuration: 0.5, animations: {
+        self.settings_scene.frame = CGRect(x: self.settings_button.frame.origin.x - self.pause_screen_x_transform(100), y: self.settings_button.frame.origin.y, width: self.pause_screen_x_transform(100) + self.settings_button.frame.width, height: self.pause_screen_x_transform(100) + self.settings_button.frame.width)
+        }, completion: {
+            (finished) -> Void in
+        self.settings_scene_is_opened = true
+        })
+    }
+    
+    func close_settings_scene(){
+        UIView.animate(withDuration: 0.5, animations: {
+            self.settings_scene.frame = self.settings_button.frame
+        }, completion: {
+            (finished) -> Void in
+            self.settings_scene_is_opened = false
+        })
+        
+    }
+    
+    
+
+    func settings_functional_button_image_decider(){
+    //settings scene
+    settings_scene.contentMode = .scaleAspectFit
+        
+    //language button
+    language_button.contentMode = .scaleAspectFit
+    language_button_image_decider()
+    //now decide mute button
+    mute_button.contentMode = .scaleAspectFit
+     mute_image_decider()
+    //now gamecenter button
+    gameCenter_button.contentMode = .scaleAspectFit
+        if(ThemeType == 1){
+        gameCenter_button.setImage(#imageLiteral(resourceName: "gameCenter_day&night"), for: .normal)
+        }else if(ThemeType == 2){
+        gameCenter_button.setImage(#imageLiteral(resourceName: "gameCenter_day&night"), for: .normal)
+        }else if(ThemeType == 3){
+        gameCenter_button.setImage(#imageLiteral(resourceName: "gameCenter_colors&BW"), for: .normal)
+        }else if(ThemeType == 5){
+        gameCenter_button.setImage(#imageLiteral(resourceName: "gameCenter_school"), for: .normal)
+        }else if(ThemeType == 6){
+        gameCenter_button.setImage(#imageLiteral(resourceName: "gameCenter_colors&BW"), for: .normal)
+        }
+    }
+    
+    func mute_image_decider(){
+        //all sound is on
+        if(!sound_is_muted){
+            if(ThemeType == 1){
+                
+            }else if(ThemeType == 2){
+                
+            }else if(ThemeType == 3){
+                mute_button.setImage(#imageLiteral(resourceName: "mute_bw"), for: .normal)
+            }else if(ThemeType == 5){
+                
+            }else if(ThemeType == 6){
+                mute_button.setImage(#imageLiteral(resourceName: "mute_colors"), for: .normal)
+                
+            }
+        }else{
+        //all sound is off
+            if(ThemeType == 1){
+                
+            }else if(ThemeType == 2){
+                
+            }else if(ThemeType == 3){
+                mute_button.setImage(#imageLiteral(resourceName: "unmute_bw"), for: .normal)
+            }else if(ThemeType == 5){
+                
+            }else if(ThemeType == 6){
+                mute_button.setImage(#imageLiteral(resourceName: "unmute_colors"), for: .normal)
+                
+            }
+           
+        }
+    }
     
     
 }
@@ -3834,18 +4061,18 @@ extension UIButton{
     self.addSubview(mask)
         
     //add UIBenzier Path
-    var intialRec = CGRect(x: self.center.x, y: self.center.y, width: 0.01, height: 0.01)
-    var circleMaskPathInit = UIBezierPath(ovalIn: intialRec)
-    var circleMaskPathFinal = UIBezierPath(ovalIn: self.frame)
-    var radius = sqrt(Double(self.frame.width*self.frame.width + self.frame.height*self.frame.height))
+    let intialRec = CGRect(x: self.center.x, y: self.center.y, width: 0.01, height: 0.01)
+    let circleMaskPathInit = UIBezierPath(ovalIn: intialRec)
+    let circleMaskPathFinal = UIBezierPath(ovalIn: self.frame)
+    _ = sqrt(Double(self.frame.width*self.frame.width + self.frame.height*self.frame.height))
         
         
-    var maskLayer = CAShapeLayer()
+    let maskLayer = CAShapeLayer()
     maskLayer.path = circleMaskPathFinal.cgPath
     self.layer.mask = maskLayer
         
     CATransaction.begin()
-    var maskLayerAnimation = CABasicAnimation(keyPath: "path")
+    let maskLayerAnimation = CABasicAnimation(keyPath: "path")
         CATransaction.setCompletionBlock({
             mask.removeFromSuperview()
         })
