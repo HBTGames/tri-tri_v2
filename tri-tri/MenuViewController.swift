@@ -28,6 +28,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     //to show whether first time to enter sale
     var first_enter_sale = false
     
+    @IBOutlet weak var gear_icon: UIImageView!
     var language = String()
     
     var cash_player = AVAudioPlayer()
@@ -92,7 +93,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     }
     
     
- 
+ var settings_scene_original = CGRect()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,11 +173,19 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         tutorial_button.contentMode = .scaleAspectFit
         treasure_box_icon.frame = CGRect(x: pause_screen_x_transform(Double(treasure_box_icon.frame.origin.x)), y: pause_screen_y_transform(Double(treasure_box_icon.frame.origin.y)), width: pause_screen_x_transform(Double(treasure_box_icon.frame.width)), height: pause_screen_y_transform(Double(treasure_box_icon.frame.height)))
         settings_button.frame = CGRect(x: pause_screen_x_transform(Double(settings_button.frame.origin.x)), y: pause_screen_y_transform(Double(settings_button.frame.origin.y)), width: pause_screen_x_transform(Double(settings_button.frame.width)), height: pause_screen_y_transform(Double(settings_button.frame.height)))
+        gear_icon.frame = CGRect(x: pause_screen_x_transform(Double(gear_icon.frame.origin.x)), y: pause_screen_y_transform(Double(gear_icon.frame.origin.y)), width: pause_screen_x_transform(Double(gear_icon.frame.width)), height: pause_screen_y_transform(Double(gear_icon.frame.height)))
         background_image.frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
-        settings_scene.frame = settings_button.frame
+        settings_scene.frame = CGRect(x: pause_screen_x_transform(Double(settings_scene.frame.origin.x)), y: pause_screen_y_transform(Double(settings_scene.frame.origin.y)), width: pause_screen_x_transform(Double(settings_scene.frame.width)), height: pause_screen_y_transform(Double(settings_scene.frame.height)))
+       settings_scene_original = settings_scene.frame
         settings_scene.contentMode = .scaleAspectFit
-        self.view.addSubview(settings_scene)
+        settings_button.alpha = 0.02
+        self.view.bringSubview(toFront: gear_icon)
         self.view.bringSubview(toFront: settings_button)
+         self.view.isUserInteractionEnabled = true
+        let menu_tap_gesture = UITapGestureRecognizer(target: self, action: #selector(menu_tapped))
+        menu_tap_gesture.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(menu_tap_gesture)
+
         
         star_board.font = UIFont(name: "Fresca-Regular", size: CGFloat(22))
         var HighestScore = 0
@@ -234,6 +243,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_day_mode"), for: .normal)
             settings_button.setImage(#imageLiteral(resourceName: "settings_day"), for: .normal)
              settings_scene.image = #imageLiteral(resourceName: "settings_scene_day&night")
+            gear_icon.image = #imageLiteral(resourceName: "gear_day&night")
         }else if(ThemeType == 2){
             trophy.image = #imageLiteral(resourceName: "night_mode_trophy")
             view.backgroundColor = UIColor(red: 23.0/255, green: 53.0/255, blue: 52.0/255, alpha: 1.0)
@@ -250,6 +260,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_night_mode"), for: .normal)
             settings_button.setImage(#imageLiteral(resourceName: "settings_day"), for: .normal)
             settings_scene.image = #imageLiteral(resourceName: "settings_scene_day&night")
+            gear_icon.image = #imageLiteral(resourceName: "gear_day&night")
         }else if(ThemeType == 3){
             like_button.setBackgroundImage(UIImage(named: "BW_like"), for: .normal)
             shopping_cart.setImage(UIImage(named:"BW_shopping"), for: .normal)
@@ -266,6 +277,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_bw_mode"), for: .normal)
             settings_button.setImage(#imageLiteral(resourceName: "settings_bw"), for: .normal)
             settings_scene.image = #imageLiteral(resourceName: "settings_scene_bw")
+            gear_icon.image = #imageLiteral(resourceName: "gear_bw&colors")
         }else if(ThemeType == 4){
             triangle_title.image = UIImage(named: "night mode triangle title")
             like_button.setBackgroundImage(UIImage(named: "chaos_like_icon"), for: .normal)
@@ -277,6 +289,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             //view.backgroundColor = UIColor(patternImage: UIImage(named: "chaos_background")!)
             continue_button.setImage(UIImage(named:"chaos_start_icon"), for: .normal)
             settings_button.setImage(#imageLiteral(resourceName: "settings_day"), for: .normal)
+            
         }else if(ThemeType == 5){
             like_button.setBackgroundImage(UIImage(named: "school_like-icon"), for: .normal)
             shopping_cart.setImage(UIImage(named:"school_theme-button"), for: .normal)
@@ -293,6 +306,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_school_mode"), for: .normal)
             settings_button.setImage(#imageLiteral(resourceName: "settings_school"), for: .normal)
             settings_scene.image = #imageLiteral(resourceName: "settings_scene_school")
+            gear_icon.image = #imageLiteral(resourceName: "gear_school")
         }
         else if(ThemeType == 6){
 
@@ -311,6 +325,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             treasure_box_icon.setImage(#imageLiteral(resourceName: "treasure_color_mode"), for: .normal)
             settings_button.setImage(#imageLiteral(resourceName: "settings_colors"), for: .normal)
             settings_scene.image = #imageLiteral(resourceName: "settings_scene_colors")
+            gear_icon.image = #imageLiteral(resourceName: "gear_bw&colors")
         }
         triangle_title_image_decider()
      star_board_original_width = star_board.frame.width
@@ -379,9 +394,28 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     settings_button.isUserInteractionEnabled = false
         
         
-    
-        
     }
+    
+    func menu_tapped(_ gesture: UITapGestureRecognizer ){
+        if(settings_scene_is_opened){
+         let location = gesture.location(in: self.view)
+            if(!settings_scene.frame.contains((location))){
+                if(!sound_is_muted){
+                    do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                        self.button_player.prepareToPlay()
+                    }
+                    catch{
+                        
+                    }
+                    self.button_player.play()
+                }
+
+            close_settings_scene()
+            }
+            
+        }
+    }
+    
     
     func saleView_tapped(_ gesture: UITapGestureRecognizer ) {
         if(in_first_sale_scene){
@@ -450,10 +484,11 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     var language_button = MyButton()
     var mute_button = MyButton()
     var gameCenter_button = MyButton()
-    var settings_scene = UIImageView()
+ 
     
     
     
+    @IBOutlet weak var settings_scene: UIImageView!
     
     
     
@@ -620,6 +655,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             }
             //self.language_button_image_decider()
             self.settings_scene.image = #imageLiteral(resourceName: "settings_scene_day&night")
+            self.gear_icon.image = #imageLiteral(resourceName: "gear_day&night")
             self.settings_functional_button_image_decider()
             self.settings_button.setImage(#imageLiteral(resourceName: "settings_day"), for: .normal)
             self.like_button.setBackgroundImage(UIImage(named: "day mode like"), for: .normal)
@@ -768,6 +804,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             }
             //self.language_button_image_decider()
             self.settings_scene.image = #imageLiteral(resourceName: "settings_scene_day&night")
+            self.gear_icon.image = #imageLiteral(resourceName: "gear_day&night")
             self.settings_functional_button_image_decider()
             self.settings_button.setImage(#imageLiteral(resourceName: "settings_day"), for: .normal)
             self.highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
@@ -967,6 +1004,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             }
             //self.language_button_image_decider()
             self.settings_scene.image = #imageLiteral(resourceName: "settings_scene_bw")
+            self.gear_icon.image = #imageLiteral(resourceName: "gear_bw&colors")
             self.settings_functional_button_image_decider()
             self.settings_button.setImage(#imageLiteral(resourceName: "settings_bw"), for: .normal)
             self.like_button.setBackgroundImage(UIImage(named: "BW_like"), for: .normal)
@@ -1243,6 +1281,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             }
             //self.language_button_image_decider()
             self.settings_scene.image = #imageLiteral(resourceName: "settings_scene_school")
+            self.gear_icon.image = #imageLiteral(resourceName: "gear_school")
             self.settings_functional_button_image_decider()
             self.settings_button.setImage(#imageLiteral(resourceName: "settings_school"), for: .normal)
             self.like_button.setBackgroundImage(UIImage(named: "school_like-icon"), for: .normal)
@@ -1452,6 +1491,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             }
             //self.language_button_image_decider()
             self.settings_scene.image = #imageLiteral(resourceName: "settings_scene_colors")
+            self.gear_icon.image = #imageLiteral(resourceName: "gear_bw&colors")
             self.settings_functional_button_image_decider()
             self.settings_button.setImage(#imageLiteral(resourceName: "settings_colors"), for: .normal)
             self.like_button.setBackgroundImage(UIImage(named: "colors_like-icon"), for: .normal)
@@ -3813,18 +3853,23 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         self.view.addSubview(language_button)
         self.view.addSubview(mute_button)
         self.view.addSubview(gameCenter_button)
+        settings_button.isUserInteractionEnabled = false
         language_button.alpha = 0
         mute_button.alpha = 0
         gameCenter_button.alpha = 0
         language_button.fadeIn()
         mute_button.fadeIn()
         gameCenter_button.fadeIn()
+        UIView.animate(withDuration: 0.5, delay: 00, usingSpringWithDamping: 0.5, initialSpringVelocity: 3.0, options: .curveLinear, animations: {
+        self.gear_icon.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2.0))
+        }, completion: nil)
         UIView.animate(withDuration: 0.5, animations: {
         self.settings_scene.frame = CGRect(x: self.settings_button.frame.origin.x - self.pause_screen_x_transform(100), y: self.settings_button.frame.origin.y, width: self.pause_screen_x_transform(100) + self.settings_button.frame.width, height: self.pause_screen_x_transform(100) + self.settings_button.frame.width)
         }, completion: {
             (finished) -> Void in
         self.settings_scene_is_opened = true
         self.set_settings_functional_button_functionality()
+        self.settings_button.isUserInteractionEnabled = true
         })
     }
     
@@ -3832,11 +3877,17 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         language_button.fadeOutandRemove()
         mute_button.fadeOutandRemove()
         gameCenter_button.fadeOutandRemove()
+        self.settings_button.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.5, delay: 00, usingSpringWithDamping: 0.5, initialSpringVelocity: 3.0, options: .curveLinear, animations: {
+            self.gear_icon.transform = .identity
+        }, completion: nil)
+        
         UIView.animate(withDuration: 0.5, animations: {
-            self.settings_scene.frame = self.settings_button.frame
+            self.settings_scene.frame = self.settings_scene_original
         }, completion: {
             (finished) -> Void in
             self.settings_scene_is_opened = false
+            self.settings_button.isUserInteractionEnabled = true
         })
         
     }

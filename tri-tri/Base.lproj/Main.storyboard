@@ -47,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agn-1P-t3k">
-                                <rect key="frame" x="0.0" y="-2" width="375" height="669"/>
+                                <rect key="frame" x="0.0" y="-1" width="375" height="669"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABN-yi-CDb">
@@ -106,12 +106,12 @@
                                     <segue destination="dWF-Fv-J3W" kind="show" id="Hp1-xL-aW9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfQ-f9-bqe">
-                                <rect key="frame" x="265" y="0.0" width="110" height="114"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cy2-vD-TsN">
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="settings_day"/>
+                                <state key="normal" title="treasure" image="treasure_day_mode"/>
                                 <connections>
-                                    <action selector="settings_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TQK-ry-Xhc"/>
+                                    <action selector="treasure_box_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xXO-lj-8MB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVy-u3-4Z8">
@@ -131,12 +131,20 @@
                                 <fontDescription key="fontDescription" name="Fresca-Regular" family="Fresca" pointSize="18"/>
                                 <state key="normal" title="Button" image="day_mode_star"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cy2-vD-TsN">
-                                <rect key="frame" x="0.0" y="0.0" width="110" height="114"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="settings_scene_day&amp;night" translatesAutoresizingMaskIntoConstraints="NO" id="y7R-oV-Pde">
+                                <rect key="frame" x="260" y="-3" width="115" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="treasure" image="treasure_day_mode"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gear_day&amp;night" translatesAutoresizingMaskIntoConstraints="NO" id="Mlb-CG-335">
+                                <rect key="frame" x="321" y="8" width="46" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfQ-f9-bqe">
+                                <rect key="frame" x="265" y="0.0" width="110" height="114"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="settings_day"/>
                                 <connections>
-                                    <action selector="treasure_box_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xXO-lj-8MB"/>
+                                    <action selector="settings_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TQK-ry-Xhc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -145,10 +153,12 @@
                     <connections>
                         <outlet property="background_image" destination="agn-1P-t3k" id="KIB-P4-jru"/>
                         <outlet property="continue_button" destination="ABN-yi-CDb" id="JyS-hV-8Wy"/>
+                        <outlet property="gear_icon" destination="Mlb-CG-335" id="cuh-k4-PEn"/>
                         <outlet property="gift_button" destination="9Ry-HC-PbG" id="lef-PA-nv2"/>
                         <outlet property="highest_score" destination="jVy-u3-4Z8" id="cFj-tW-Ygh"/>
                         <outlet property="like_button" destination="PFh-NN-dAa" id="Fc8-Ys-Kas"/>
                         <outlet property="settings_button" destination="XfQ-f9-bqe" id="xVH-1B-TYG"/>
+                        <outlet property="settings_scene" destination="y7R-oV-Pde" id="LM4-FG-xOf"/>
                         <outlet property="shopping_cart" destination="L5u-Zg-LxX" id="kqg-hZ-5f9"/>
                         <outlet property="star_board" destination="tCj-NR-SnI" id="0EN-fO-kW6"/>
                         <outlet property="star_counter" destination="G6N-bW-Qey" id="hho-hf-oVV"/>
@@ -1300,6 +1310,7 @@
         <image name="day_mode_star" width="451" height="162"/>
         <image name="day_mode_trophy" width="400" height="400"/>
         <image name="day_theme" width="177" height="177"/>
+        <image name="gear_day&amp;night" width="167" height="168"/>
         <image name="gift_day_mode" width="400" height="400"/>
         <image name="grey_tir_downwards" width="292" height="253"/>
         <image name="grey_tri_upwards" width="292" height="253"/>
@@ -12062,6 +12073,7 @@ zwAAAAAAAAQBAAAAAAAAAD4AAAAAAAAAAAAAAAAACdLRA
         <image name="revive_just_let_me_die" width="400" height="400"/>
         <image name="sampleFinalBoard" width="1133" height="960"/>
         <image name="settings_day" width="400" height="400"/>
+        <image name="settings_scene_day&amp;night" width="1000" height="1000"/>
         <image name="share_button" width="379" height="97"/>
         <image name="shopping_cart" width="1000" height="866"/>
         <image name="treasure_background" width="375" height="667"/>
