@@ -132,15 +132,15 @@
                                 <state key="normal" title="Button" image="day_mode_star"/>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="settings_scene_day&amp;night" translatesAutoresizingMaskIntoConstraints="NO" id="y7R-oV-Pde">
-                                <rect key="frame" x="260" y="-3" width="115" height="114"/>
+                                <rect key="frame" x="258" y="-1" width="121" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gear_day&amp;night" translatesAutoresizingMaskIntoConstraints="NO" id="Mlb-CG-335">
-                                <rect key="frame" x="321" y="8" width="46" height="49"/>
+                                <rect key="frame" x="318" y="8" width="47" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfQ-f9-bqe">
-                                <rect key="frame" x="265" y="0.0" width="110" height="114"/>
+                                <rect key="frame" x="265" y="-1" width="110" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="settings_day"/>
                                 <connections>
@@ -170,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.80000000000000004" y="0.44977511244377816"/>
+            <point key="canvasLocation" x="-39.200000000000003" y="52.623688155922046"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="MC9-HO-gJJ">
