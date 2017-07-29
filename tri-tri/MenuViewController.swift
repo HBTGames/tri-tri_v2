@@ -619,6 +619,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 self.triangle_title.image = UIImage(named: "san_title_day")
             }
             //self.language_button_image_decider()
+            self.settings_scene.image = #imageLiteral(resourceName: "settings_scene_day&night")
+            self.settings_functional_button_image_decider()
             self.settings_button.setImage(#imageLiteral(resourceName: "settings_day"), for: .normal)
             self.like_button.setBackgroundImage(UIImage(named: "day mode like"), for: .normal)
             self.highest_score.textColor = UIColor(red: 26.0/255, green: 58.0/255, blue: 49.0/255, alpha: 1)
@@ -765,6 +767,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 self.triangle_title.image = UIImage(named: "san_title_night")
             }
             //self.language_button_image_decider()
+            self.settings_scene.image = #imageLiteral(resourceName: "settings_scene_day&night")
+            self.settings_functional_button_image_decider()
             self.settings_button.setImage(#imageLiteral(resourceName: "settings_day"), for: .normal)
             self.highest_score.textColor = UIColor(red: 167.0/255, green: 157.0/255, blue: 124.0/255, alpha: 1)
             self.continue_button.setImage(UIImage(named:"continue"), for: .normal)
@@ -962,6 +966,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 self.triangle_title.image = UIImage(named: "san_title_day")
             }
             //self.language_button_image_decider()
+            self.settings_scene.image = #imageLiteral(resourceName: "settings_scene_bw")
+            self.settings_functional_button_image_decider()
             self.settings_button.setImage(#imageLiteral(resourceName: "settings_bw"), for: .normal)
             self.like_button.setBackgroundImage(UIImage(named: "BW_like"), for: .normal)
             self.highest_score.textColor = UIColor(red: 1.0/255, green: 1.0/255, blue: 1.0/255, alpha: 1)
@@ -1236,6 +1242,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 self.triangle_title.image = UIImage(named: "san_title_school")
             }
             //self.language_button_image_decider()
+            self.settings_scene.image = #imageLiteral(resourceName: "settings_scene_school")
+            self.settings_functional_button_image_decider()
             self.settings_button.setImage(#imageLiteral(resourceName: "settings_school"), for: .normal)
             self.like_button.setBackgroundImage(UIImage(named: "school_like-icon"), for: .normal)
             self.highest_score.textColor = UIColor(red: 34.0/255, green: 61.0/255, blue: 128.0/255, alpha: 1.0)
@@ -1443,6 +1451,8 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 self.triangle_title.image = UIImage(named: "san_title_night")
             }
             //self.language_button_image_decider()
+            self.settings_scene.image = #imageLiteral(resourceName: "settings_scene_colors")
+            self.settings_functional_button_image_decider()
             self.settings_button.setImage(#imageLiteral(resourceName: "settings_colors"), for: .normal)
             self.like_button.setBackgroundImage(UIImage(named: "colors_like-icon"), for: .normal)
             self.highest_score.textColor = UIColor(red: 255.0/255, green: 195.0/255, blue: 1.0/255, alpha: 1.0)
@@ -2449,36 +2459,36 @@ self.view.addSubview(current_star_total)
     func language_button_image_decider() -> Void{
         if (ThemeType == 1){
             if (language == "Chinese"){
-                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_day_night"), for: .normal)
+                self.language_button.setBackgroundImage(#imageLiteral(resourceName: "en_day&night"), for: .normal)
             } else {
-                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_day_night"), for: .normal)
+                self.language_button.setBackgroundImage(#imageLiteral(resourceName: "cn_day&night"), for: .normal)
             }
         } else if (ThemeType == 2){
             if (language == "Chinese"){
-                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_day_night"), for: .normal)
+                self.language_button.setBackgroundImage(#imageLiteral(resourceName: "en_day&night"), for: .normal)
             } else {
-                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_day_night"), for: .normal)
+                self.language_button.setBackgroundImage(#imageLiteral(resourceName: "cn_day&night"), for: .normal)
             }
         } else if (ThemeType == 3){
             if (language == "Chinese"){
-                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_B&W"), for: .normal)
+                self.language_button.setBackgroundImage(#imageLiteral(resourceName: "en_bw&colors"), for: .normal)
             } else {
-                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_B&W"), for: .normal)
+                self.language_button.setBackgroundImage(#imageLiteral(resourceName: "cn_bw&colors"), for: .normal)
             }
         } else if (ThemeType == 4){
             //chaos
         }
         else if (ThemeType == 5){
             if (language == "Chinese"){
-                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_school"), for: .normal)
+                self.language_button.setBackgroundImage(#imageLiteral(resourceName: "en_school"), for: .normal)
             } else {
-                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_school"), for: .normal)
+                self.language_button.setBackgroundImage(#imageLiteral(resourceName: "cn_school"), for: .normal)
             }
         } else if (ThemeType == 6){
             if (language == "Chinese"){
-                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_english_color"), for: .normal)
+                self.language_button.setBackgroundImage(#imageLiteral(resourceName: "en_bw&colors"), for: .normal)
             } else {
-                self.language_button.setBackgroundImage(UIImage(named:"lang_icon_chinese_color"), for: .normal)
+                self.language_button.setBackgroundImage(#imageLiteral(resourceName: "cn_bw&colors"), for: .normal)
             }
         }
     }
@@ -3786,6 +3796,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         }
         self.button_player.play()
         }
+
         if(!settings_scene_is_opened){
             open_settings_scene()
         }else{
@@ -3797,15 +3808,30 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
     }
     
     func open_settings_scene(){
+        settings_functional_button_location_decider()
+        settings_functional_button_image_decider()
+        self.view.addSubview(language_button)
+        self.view.addSubview(mute_button)
+        self.view.addSubview(gameCenter_button)
+        language_button.alpha = 0
+        mute_button.alpha = 0
+        gameCenter_button.alpha = 0
+        language_button.fadeIn()
+        mute_button.fadeIn()
+        gameCenter_button.fadeIn()
         UIView.animate(withDuration: 0.5, animations: {
         self.settings_scene.frame = CGRect(x: self.settings_button.frame.origin.x - self.pause_screen_x_transform(100), y: self.settings_button.frame.origin.y, width: self.pause_screen_x_transform(100) + self.settings_button.frame.width, height: self.pause_screen_x_transform(100) + self.settings_button.frame.width)
         }, completion: {
             (finished) -> Void in
         self.settings_scene_is_opened = true
+        self.set_settings_functional_button_functionality()
         })
     }
     
     func close_settings_scene(){
+        language_button.fadeOutandRemove()
+        mute_button.fadeOutandRemove()
+        gameCenter_button.fadeOutandRemove()
         UIView.animate(withDuration: 0.5, animations: {
             self.settings_scene.frame = self.settings_button.frame
         }, completion: {
@@ -3815,12 +3841,68 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         
     }
     
+    func set_settings_functional_button_functionality(){
+        //language button
+        language_button.whenButtonIsClicked(action: {
+            if(!self.sound_is_muted){
+                do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                    self.button_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.button_player.play()
+            }
+            
+            if(self.language == "English"){
+                self.language = "Chinese"
+            }else{
+                self.language = "English"
+            }
+            defaults.set(self.language, forKey: "language")
+            self.language_button_image_decider()
+            self.triangle_title_image_decider()
+        })
+        //mute button
+        mute_button.whenButtonIsClicked(action: {
+            if(!self.sound_is_muted){
+                do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                    self.button_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.button_player.play()
+            }
+            
+            if(self.sound_is_muted){
+                self.sound_is_muted = false
+            }else{
+                self.sound_is_muted = true
+            }
+            defaults.set(self.sound_is_muted, forKey: "tri_tri_sound_is_muted")
+            self.mute_image_decider()
+        })
+        //gamecenter button
+        gameCenter_button.whenButtonIsClicked(action: {
+            if(!self.sound_is_muted){
+                do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
+                    self.button_player.prepareToPlay()
+                }
+                catch{
+                    
+                }
+                self.button_player.play()
+            }
+
+            self.openGameCenter()
+        })
+        
+        
+    }
     
 
     func settings_functional_button_image_decider(){
-    //settings scene
-    settings_scene.contentMode = .scaleAspectFit
-        
     //language button
     language_button.contentMode = .scaleAspectFit
     language_button_image_decider()
@@ -3842,33 +3924,39 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         }
     }
     
+    func settings_functional_button_location_decider(){
+     language_button.frame = CGRect(x: settings_button.frame.origin.x - pause_screen_x_transform(40), y: pause_screen_y_transform(6), width: pause_screen_x_transform(45), height: pause_screen_y_transform(45))
+        mute_button.frame = CGRect(x: settings_button.frame.origin.x + pause_screen_x_transform(12) , y: pause_screen_y_transform(61), width: pause_screen_x_transform(45), height: pause_screen_y_transform(45))
+    gameCenter_button.frame = CGRect(x: settings_button.frame.origin.x + pause_screen_x_transform(60) , y: pause_screen_y_transform(116), width: pause_screen_x_transform(45), height: pause_screen_y_transform(45))
+    }
+    
     func mute_image_decider(){
         //all sound is on
         if(!sound_is_muted){
             if(ThemeType == 1){
-                
+            mute_button.setImage(#imageLiteral(resourceName: "mute_day&night"), for: .normal)
             }else if(ThemeType == 2){
-                
+            mute_button.setImage(#imageLiteral(resourceName: "mute_day&night"), for: .normal)
             }else if(ThemeType == 3){
-                mute_button.setImage(#imageLiteral(resourceName: "mute_bw"), for: .normal)
+            mute_button.setImage(#imageLiteral(resourceName: "mute_bw&colors"), for: .normal)
             }else if(ThemeType == 5){
-                
+           mute_button.setImage(#imageLiteral(resourceName: "mute_school"), for: .normal)
             }else if(ThemeType == 6){
-                mute_button.setImage(#imageLiteral(resourceName: "mute_colors"), for: .normal)
+                mute_button.setImage(#imageLiteral(resourceName: "mute_bw&colors"), for: .normal)
                 
             }
         }else{
         //all sound is off
             if(ThemeType == 1){
-                
+            mute_button.setImage(#imageLiteral(resourceName: "unmute_day&night"), for: .normal)
             }else if(ThemeType == 2){
-                
+            mute_button.setImage(#imageLiteral(resourceName: "unmute_day&night"), for: .normal)
             }else if(ThemeType == 3){
-                mute_button.setImage(#imageLiteral(resourceName: "unmute_bw"), for: .normal)
+                mute_button.setImage(#imageLiteral(resourceName: "unmute_bw&colors"), for: .normal)
             }else if(ThemeType == 5){
-                
+            mute_button.setImage(#imageLiteral(resourceName: "unmute_school"), for: .normal)
             }else if(ThemeType == 6){
-                mute_button.setImage(#imageLiteral(resourceName: "unmute_colors"), for: .normal)
+                mute_button.setImage(#imageLiteral(resourceName: "unmute_bw&colors"), for: .normal)
                 
             }
            
