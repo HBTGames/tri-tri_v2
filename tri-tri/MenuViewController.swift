@@ -746,6 +746,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 }
                 self.wrong_player.play()
                 }
+                self.day_apply_button.imageView?.shake(duration: 0.3)
             }
         })
         
@@ -888,6 +889,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 }
                 self.wrong_player.play()
                 }
+                 self.night_apply_button.imageView?.shake(duration: 0.3)
             }
         })
         theme_menu.addSubview(night_theme_button)
@@ -1093,6 +1095,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 }
                 self.wrong_player.play()
                 }
+                self.BW_apply_button.imageView?.shake(duration: 0.3)
             }
             
             
@@ -1369,6 +1372,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 }
                 self.wrong_player.play()
                 }
+                self.school_apply_button.imageView?.shake(duration: 0.3)
             }
         })
         theme_menu.addSubview(school_theme_button)
@@ -1580,6 +1584,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                 }
                 self.wrong_player.play()
                 }
+                self.colors_apply_button.imageView?.shake(duration: 0.3)
             }
         })
         

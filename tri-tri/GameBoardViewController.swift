@@ -2195,6 +2195,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 }
                 self.wrong_player.play()
                 }
+                self.day_apply_button.imageView?.shake(duration: 0.3)
             }
         })
         
@@ -2330,6 +2331,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 }
                 self.wrong_player.play()
                 }
+                self.night_apply_button.imageView?.shake(duration: 0.3)
             }
         })
         theme_menu.addSubview(night_theme_button)
@@ -2529,6 +2531,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 }
                 self.wrong_player.play()
                 }
+                self.BW_apply_button.imageView?.shake(duration: 0.3)
             }
             
             
@@ -2818,6 +2821,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 }
                 self.wrong_player.play()
                 }
+                self.school_apply_button.imageView?.shake(duration: 0.3)
             }
 
         })
@@ -3029,6 +3033,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 }
                 self.wrong_player.play()
                 }
+                self.colors_apply_button.imageView?.shake(duration: 0.3)
             }
             
             
