@@ -568,6 +568,9 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     var return_button = MyButton()
     
     @IBAction func theme_menu_action(_ sender: UIButton) {
+        if(settings_scene_is_opened){
+            close_settings_scene()
+        }
         if(!in_theme_menu){
             in_theme_menu = true
         if(!sound_is_muted){
@@ -1910,6 +1913,9 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     
     
     func treasure_box_function() -> Void {
+        if(settings_scene_is_opened){
+            close_settings_scene()
+        }
     let treasure_menu = UIImageView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height))
     treasure_menu.image = #imageLiteral(resourceName: "treasure_background")
     treasure_menu.alpha = 0
@@ -3332,6 +3338,9 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
 //like button action
     
     @IBAction func like_button_action(_ sender: UIButton) {
+        if(settings_scene_is_opened){
+            close_settings_scene()
+        }
         if(!sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
