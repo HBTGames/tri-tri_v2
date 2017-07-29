@@ -20,7 +20,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     
     }
     
-   
+   var sound_is_muted = false
     
     @IBOutlet weak var about_us_button: UIButton!
     var language = String()
@@ -55,6 +55,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet var exit_button: UIButton!
     @IBAction func exit(_ sender: Any) {
+        if(!sound_is_muted){
         do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
             self.button_player.prepareToPlay()
         }
@@ -62,6 +63,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
             
         }
         self.button_player.play()
+        }
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         nextViewController.modalTransitionStyle = .crossDissolve
@@ -93,7 +95,13 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         tuto_page_con.isUserInteractionEnabled = false
         about_us_button.frame = CGRect(x:pause_screen_x_transform(Double(about_us_button.frame.origin.x)), y: pause_screen_y_transform(Double(about_us_button.frame.origin.y)), width: pause_screen_x_transform(Double(about_us_button.frame.width)), height: pause_screen_y_transform(Double(about_us_button.frame.height)))
         
-       
+        if (defaults.value(forKey: "tri_tri_sound_is_muted") == nil){
+            sound_is_muted = false
+            defaults.set(sound_is_muted, forKey: "tri_tri_sound_is_muted")
+        }
+        else {
+            sound_is_muted = defaults.value(forKey: "tri_tri_sound_is_muted") as! Bool
+        }
         
 
         self.view.bringSubview(toFront: tuto_page_con)
@@ -240,6 +248,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     var about_us_text = UIImageView()
     @IBAction func about_us_action(_ sender: UIButton) {
         if(!about_page_open && !in_about_us_animation){
+            if(!sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -247,10 +256,12 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
                 
             }
             self.button_player.play()
+            }
         open_about_us()
         
         
         }else if(about_page_open && !in_about_us_animation){
+            if(!sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -258,6 +269,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
                 
             }
             self.button_player.play()
+            }
         close_about_us()
             
         }

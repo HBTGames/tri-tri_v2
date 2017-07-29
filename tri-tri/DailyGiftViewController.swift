@@ -131,7 +131,7 @@ class DailyGiftViewController: UIViewController {
         
     }
     
-    
+    var sound_is_muted = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,6 +152,7 @@ class DailyGiftViewController: UIViewController {
         self.view.addSubview(cancel_button)
         // Do any additional setup after loading the view.
         cancel_button.whenButtonIsClicked(action: {
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -159,6 +160,7 @@ class DailyGiftViewController: UIViewController {
                 
             }
             self.button_player.play()
+            }
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
             nextViewController.modalTransitionStyle = .crossDissolve
@@ -206,6 +208,13 @@ class DailyGiftViewController: UIViewController {
             
             //
         }
+        if (defaults.value(forKey: "tri_tri_sound_is_muted") == nil){
+            sound_is_muted = false
+            defaults.set(sound_is_muted, forKey: "tri_tri_sound_is_muted")
+        }
+        else {
+            sound_is_muted = defaults.value(forKey: "tri_tri_sound_is_muted") as! Bool
+        }
         
     }
     
@@ -236,6 +245,7 @@ class DailyGiftViewController: UIViewController {
         cancel_button_lock.setImage(UIImage(named: "wheel_cancel"), for: .normal)
         self.view.addSubview(cancel_button_lock)
         cancel_button_lock.whenButtonIsClicked(action: {
+            if(!self.sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
                 self.button_player.prepareToPlay()
             }
@@ -243,6 +253,7 @@ class DailyGiftViewController: UIViewController {
                 
             }
             self.button_player.play()
+            }
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
             nextViewController.modalTransitionStyle = .crossDissolve
@@ -372,6 +383,7 @@ class DailyGiftViewController: UIViewController {
     
     
     func spin_wheel () -> Void {
+        
         do{spinning_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "spin_new", ofType: "mp3")!))
             spinning_player.prepareToPlay()
             
@@ -653,6 +665,7 @@ class DailyGiftViewController: UIViewController {
                 
                 unlock_player_played_time = 0
                 if(clock_sound_effect_should_on){
+                    if(!sound_is_muted){
                     do{clock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "clock_sound", ofType: "mp3")!))
                         clock_player.prepareToPlay()
                         
@@ -660,6 +673,7 @@ class DailyGiftViewController: UIViewController {
                     catch{
                     }
                     clock_player.play()
+                    }
                 }
                 count_down_end = false
                 total_seconds = total_seconds - 1
@@ -672,6 +686,7 @@ class DailyGiftViewController: UIViewController {
             }else if(total_seconds == 0){
                 
                 count_down_timer_during_reward.invalidate()
+                
                 do{unlock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "door_open_and_reming", ofType: "mp3")!))
                     unlock_player.prepareToPlay()
                     
@@ -679,8 +694,11 @@ class DailyGiftViewController: UIViewController {
                 catch{
                 }
                 if(unlock_sound_effect_should_on){
+                    if(!sound_is_muted){
                     unlock_player.play()
+                    }
                 }
+                
                 unlock_player_played_time = unlock_player_played_time + 1
                 
                 display_reward = false
@@ -728,12 +746,16 @@ class DailyGiftViewController: UIViewController {
     func spinning_sound_effect() -> Void {
         if(!display_reward){
             if(spin_sound_effect_should_on){
+                if(!sound_is_muted){
                 spinning_player.play()
+                }
             }
             if(spinning_player.currentTime == spinning_player.duration){
                 spinning_player.currentTime = 0
                 if(spin_sound_effect_should_on){
+                    if(!sound_is_muted){
                     spinning_player.play()
+                    }
                 }
             }
         }else{
@@ -979,6 +1001,7 @@ class DailyGiftViewController: UIViewController {
         if(total_seconds > 0){
             unlock_player_played_time = 0
             if(clock_sound_effect_should_on){
+                if(!sound_is_muted){
                 do{clock_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "clock_sound", ofType: "mp3")!))
                     clock_player.prepareToPlay()
                     
@@ -986,6 +1009,7 @@ class DailyGiftViewController: UIViewController {
                 catch{
                 }
                 clock_player.play()
+                }
             }
             count_down_end = false
             total_seconds = total_seconds - 1
@@ -1004,7 +1028,9 @@ class DailyGiftViewController: UIViewController {
                 catch{
                 }
                 if(unlock_sound_effect_should_on){
+                    if(!sound_is_muted){
                     unlock_player.play()
+                    }
                 }
                 unlock_player_played_time = unlock_player_played_time + 1
             }
