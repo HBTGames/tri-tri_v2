@@ -14484,10 +14484,12 @@ number_of_lines_erased += 1
             }
             else{
                 if (self.language == "English"){
-                    revive_text.image = UIImage(named: "purchase_heart_when_gameover_en")
+                    //revive_text.image = UIImage(named: "purchase_heart_when_gameover_en")
+                    revive_text.image = #imageLiteral(resourceName: "purchase_resurrection_when_dead_sale_eng")
                 }
                 else {
-                    revive_text.image = UIImage(named: "purchase_heart_when_gameover_ch")
+                    //revive_text.image = UIImage(named: "purchase_heart_when_gameover_ch")
+                    revive_text.image = #imageLiteral(resourceName: "purchase_resurrection_when_dead_cn")
                 }
             }
         
@@ -14571,8 +14573,9 @@ number_of_lines_erased += 1
         }
         else {  //no resu left
             resu_activate_button.whenButtonIsClicked {
-                if (self.star_score >= 25){
-                    self.star_score -= 25
+                if (self.star_score >= 10){
+                    //sale
+                    self.star_score -= 10
                     self.starBoard.text = String(self.star_score)
                     defaults.set(self.star_score, forKey: "tritri_star_score")
                     defaults.synchronize()

@@ -473,6 +473,9 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         }
         self.opening_player.play()
         }
+        if(settings_scene_is_opened){
+            close_settings_scene()
+        }
     }
 
     @IBOutlet weak var triangle_title: UIImageView!
@@ -2708,48 +2711,66 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         }
         else {
             if(tool_selected == 0){
-                treasure_icon_selected.image = #imageLiteral(resourceName: "new_life")
+                //treasure_icon_selected.image = #imageLiteral(resourceName: "new_life")
+                treasure_icon_selected.image = #imageLiteral(resourceName: "resurrection_down_sale")
                 treasure_text.image = #imageLiteral(resourceName: "resurrection_ch")
                 final_price_button.setImage(#imageLiteral(resourceName: "new_life_star_total"), for: .normal)
                 explaination_text.image =  #imageLiteral(resourceName: "resurrection_explain_ch")
                 total_star_need_label.textColor = UIColor(red: 208.0/255, green: 91.0/255, blue: 93.0/255, alpha: 1)
-                star_base = 25
+                //star_base = 25
+                //sale
+                star_base = 10
             }else if(tool_selected == 1){
-                treasure_icon_selected.image = #imageLiteral(resourceName: "same_color_eliminator")
+                //treasure_icon_selected.image = #imageLiteral(resourceName: "same_color_eliminator")
+                treasure_icon_selected.image = #imageLiteral(resourceName: "purification_down_sale")
                 treasure_text.image = #imageLiteral(resourceName: "purification_ch")
                 final_price_button.setImage(#imageLiteral(resourceName: "same_color_eliminator_star_total-1"), for: .normal)
                 explaination_text.image = #imageLiteral(resourceName: "purification_explain_ch")
                 total_star_need_label.textColor = UIColor(red: 77.0/255, green: 113.0/255, blue: 56.0/255, alpha: 1)
-                star_base = 100
+                //star_base = 100
+                //sale
+                star_base = 50
             }else if(tool_selected == 2){
-                treasure_icon_selected.image = #imageLiteral(resourceName: "shape_bomb")
+                //treasure_icon_selected.image = #imageLiteral(resourceName: "shape_bomb")
+                treasure_icon_selected.image = #imageLiteral(resourceName: "holy_nova_down_sale")
                 treasure_text.image = #imageLiteral(resourceName: "holy_nova_text_ch")
                 final_price_button.setImage(#imageLiteral(resourceName: "shape_bomb_star_total"), for: .normal)
                 total_star_need_label.textColor = UIColor(red: 230.0/255, green: 157.0/255, blue: 68.0/255, alpha: 1)
                 explaination_text.image = #imageLiteral(resourceName: "holy_nova_explain_ch")
-                star_base = 150
+                //star_base = 150
+                //sale
+                star_base = 75
             }else if(tool_selected == 3){
-                treasure_icon_selected.image = #imageLiteral(resourceName: "times_two")
+                //treasure_icon_selected.image = #imageLiteral(resourceName: "times_two")
+                treasure_icon_selected.image = #imageLiteral(resourceName: "amplifier_down_sale")
                 treasure_text.image = #imageLiteral(resourceName: "amplifier_ch")
                 final_price_button.setImage(#imageLiteral(resourceName: "double_score_star_total"), for: .normal)
                 explaination_text.image = #imageLiteral(resourceName: "amplifier_explain_ch")
                 total_star_need_label.textColor = UIColor(red: 180.0/255, green: 134.0/255, blue: 161.0/255, alpha: 1)
-                star_base = 50
+                //star_base = 50
+                //sale
+                star_base = 25
             }else if(tool_selected == 4){
-                treasure_icon_selected.image =  #imageLiteral(resourceName: "three_triangle")
+                //treasure_icon_selected.image =  #imageLiteral(resourceName: "three_triangle")
+                treasure_icon_selected.image = #imageLiteral(resourceName: "trinity_down_sale")
                 treasure_text.image = #imageLiteral(resourceName: "trinity_ch")
                 final_price_button.setImage(#imageLiteral(resourceName: "three_triangles_star_total"), for: .normal)
                 explaination_text.image = #imageLiteral(resourceName: "trinity_explain_ch")
                 total_star_need_label.textColor = UIColor(red: 73.0/255, green: 159.0/255, blue: 192.0/255, alpha: 1)
-                star_base = 75
+                //star_base = 75
+                //sale
+                star_base = 40
             }else if(tool_selected == 5){
-                treasure_icon_selected.image = #imageLiteral(resourceName: "clear_all")
+                //treasure_icon_selected.image = #imageLiteral(resourceName: "clear_all")
+                treasure_icon_selected.image = #imageLiteral(resourceName: "doomday_down_sale")
                 treasure_text.image = #imageLiteral(resourceName: "doom_day_text_ch")
                 final_price_button.setImage(#imageLiteral(resourceName: "clear_all_star_total"), for: .normal)
                 explaination_text.image = #imageLiteral(resourceName: "doom_day_explain_ch")
                 total_star_need_label.textColor = UIColor(red: 56.0/255, green: 75.0/255, blue: 130.0/255, alpha: 1)
                 
-                star_base = 999
+                //star_base = 999
+                //sale
+                star_base = 500
             }
         }
         //fade in
