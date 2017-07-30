@@ -777,6 +777,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 pack_open = false
                 }
         if(green_drag_tri_orig_rec.contains(initialTouchLocation) && exist1){
+            position_in_use = 0
             self.green_drag_origin.y = self.green_drag_origin.y - self.pause_screen_y_transform(70)
             self.green_drag_origin.x = self.green_drag_origin.x - self.pause_screen_x_transform(10)
         UIView.animate(withDuration: 0.3, animations: {
@@ -785,6 +786,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
         })
         }else if(orange_drag_tri_orig_rec.contains(initialTouchLocation) && exist2){
+            position_in_use = 1
             self.orange_drag_origin.y = self.orange_drag_origin.y - self.pause_screen_y_transform(70)
             self.orange_drag_origin.x = self.orange_drag_origin.x - self.pause_screen_x_transform(10)
 
@@ -796,14 +798,16 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
         }else if(light_brown_drag_tri_orig_rec.contains(initialTouchLocation) && exist3){
              self.light_brown_drag_origin.y = self.light_brown_drag_origin.y - self.pause_screen_y_transform(70)
             self.light_brown_drag_origin.x = self.light_brown_drag_origin.x - self.pause_screen_x_transform(10)
-            
+            position_in_use = 2
             UIView.animate(withDuration: 0.3, animations: {
                
                 self.light_brown_drag_tri.frame.origin.y = self.light_brown_drag_tri.frame.origin.y - self.pause_screen_y_transform(70)
                 self.light_brown_drag_tri.frame.origin.x = self.light_brown_drag_tri.frame.origin.x - self.pause_screen_x_transform(10)
                 self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(1), y: CGFloat(1))
             })
-        }
+        }else{
+            position_in_use = 3
+                }
         }
             else{   //during holy nova
                 /*var contained_boxes: Array<CGRect> = []
@@ -942,6 +946,7 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             let finalTouchLocation = touches.first!.location(in: view)
         if(!paused){
             if (!during_holy_nova){
+                print("position in use is \(position_in_use)")
             if(green_drag_tri_orig_rec.contains(finalTouchLocation) && exist1){
                 self.green_drag_origin = self.green_drag_origin_backup
                 UIView.animate(withDuration: 0.3, animations: {
@@ -963,16 +968,36 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 })
             }else{
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.green_drag_tri.frame.origin = self.green_drag_origin
-                    
-                    self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
-                    
-                    self.orange_drag_tri.frame.origin = self.orange_drag_origin
-                    self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
-                    
-                    self.light_brown_drag_tri.frame.origin = self.light_brown_drag_origin
-                    self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                    if(self.position_in_use == 0){
+                        self.green_drag_tri.frame.origin = self.green_drag_tri_inital_point
+                    }
+                    if(self.position_in_use == 1){
+                        self.orange_drag_tri.frame.origin = self.orange_drag_tri_inital_point
+                    }
+                    if(self.position_in_use == 2){
+                        self.light_brown_drag_tri.frame.origin = self.lightbrown_drag_tri_inital_point
+                    }
+                }, completion: {
+                    (finished) -> Void in
+                    UIView.animate(withDuration: 0.3, animations: {
+                        if(self.position_in_use == 0){
+                            self.green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                        }
+                        if(self.position_in_use == 1){
+                       
+                            self.orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                        }
+                        if(self.position_in_use == 2){
+                  
+                            self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                        }
+                        
+                    },completion: {
+                        (finished) -> Void in
+                        self.position_in_use = 3
+                    })
                 })
+
                 
                 }
             }else {
@@ -10326,8 +10351,7 @@ number_of_lines_erased += 1
                         self.orange_drag_tri.frame.origin = self.orange_drag_tri_inital_point
                         }
                         if(self.position_in_use == 2){
-                        self.light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
-                        }
+                        self.light_brown_drag_tri.frame.origin = self.lightbrown_drag_tri_inital_point                        }
                     }, completion: {
                         (finished) -> Void in
                         UIView.animate(withDuration: 0.3, animations: {
@@ -10342,6 +10366,7 @@ number_of_lines_erased += 1
                             }
                         }, completion: {
                             (finished) -> Void in
+                            self.position_in_use = 3
                             self.takeBoardScreenShot()
                             self.resurrection_when_dead()
                         })
