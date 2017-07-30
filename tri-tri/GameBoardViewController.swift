@@ -1730,8 +1730,8 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                        // self.audioPlayer.play()   } )
         
             
-            NotificationCenter.default.addObserver(self, selector: #selector(GameBoardViewController.background_music_pause) , name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(GameBoardViewController.background_music_continue), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(GameBoardViewController.end_drag_if_enter_background) , name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        
         
         starBoard_width = starBoard.frame.width
         split_star_counter()
@@ -1761,6 +1761,23 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             
         })
         change_current_board_according_to_theme()
+    }
+    
+    
+    func end_drag_if_enter_background(){
+        if(position_in_use == 0){
+            green_drag_tri.frame.origin = green_drag_tri_inital_point
+            green_drag_tri.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }
+        else if(position_in_use == 1){
+            orange_drag_tri.frame.origin = orange_drag_tri_inital_point
+            orange_drag_tri.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }
+        else if(position_in_use == 2){
+            light_brown_drag_tri.frame.origin = lightbrown_drag_tri_inital_point
+            light_brown_drag_tri.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }
+        
     }
     
     
