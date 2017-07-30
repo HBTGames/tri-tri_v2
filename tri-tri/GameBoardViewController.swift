@@ -1767,14 +1767,17 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
     func end_drag_if_enter_background(){
         if(position_in_use == 0){
             green_drag_tri.frame.origin = green_drag_tri_inital_point
+            green_drag_origin = green_drag_tri_inital_point
             green_drag_tri.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         }
         else if(position_in_use == 1){
             orange_drag_tri.frame.origin = orange_drag_tri_inital_point
+            orange_drag_origin = orange_drag_tri_inital_point
             orange_drag_tri.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         }
         else if(position_in_use == 2){
             light_brown_drag_tri.frame.origin = lightbrown_drag_tri_inital_point
+            light_brown_drag_origin = lightbrown_drag_tri_inital_point
             light_brown_drag_tri.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         }
         
