@@ -3503,28 +3503,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             modify_counter_after_erase(before: cond_before_erase, after: cond_after_erase)
             current_score = score
             star_score_increment()
-            //if the triangles are fit
-            if (position_in_use == 0){
-                green_drag_tri.frame.origin = green_drag_origin
-                green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
-                exist1 = false
-            }else if (position_in_use == 1){
-                orange_drag_tri.frame.origin = orange_drag_origin
-                orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
-                exist2 = false
-            }else if (position_in_use == 2){
-                light_brown_drag_tri.frame.origin = light_brown_drag_origin
-                light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
-                exist3 = false
-            }
-            //now set exist
-            exist_array[0] = exist1
-            exist_array[1] = exist2
-            exist_array[2] = exist3
-            defaults.set(exist_array, forKey: "tritri_exist_array")
             
             
-            position_in_use = 3
+            
             
             defaults.set(self.single_tri_stored_type_index, forKey: "tritri_single_tri_stored_type")
             defaults.set(self.filled, forKey: "tritri_single_tri_filled")
@@ -3646,6 +3627,27 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
                 }
                 fit_in_player.play()
                 }
+                //if the triangles are fit
+                if (position_in_use == 0){
+                    green_drag_tri.frame.origin = green_drag_origin
+                    green_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                    exist1 = false
+                }else if (position_in_use == 1){
+                    orange_drag_tri.frame.origin = orange_drag_origin
+                    orange_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                    exist2 = false
+                }else if (position_in_use == 2){
+                    light_brown_drag_tri.frame.origin = light_brown_drag_origin
+                    light_brown_drag_tri.transform = CGAffineTransform(scaleX: CGFloat(0.8), y: CGFloat(0.8))
+                    exist3 = false
+                }
+                position_in_use = 3
+                //now set exist
+                exist_array[0] = exist1
+                exist_array[1] = exist2
+                exist_array[2] = exist3
+                defaults.set(exist_array, forKey: "tritri_exist_array")
+                //never fix exist in timer
                 exam_erase_animation_timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(GameBoardViewController.fit_after_erasre_handler), userInfo: nil, repeats: true)
                 /**
                 let cond_before_erase = filled
