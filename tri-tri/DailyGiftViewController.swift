@@ -459,8 +459,14 @@ class DailyGiftViewController: UIViewController {
                     self.rewards_count_down.fadeIn()
                     //add notification
                     let dailyGiftNotification = UNMutableNotificationContent()
-                    dailyGiftNotification.title = NSString.localizedUserNotificationString(forKey: "Spin the Wheel", arguments: nil)
-                    dailyGiftNotification.body = NSString.localizedUserNotificationString(forKey: "Time for Daily Gift", arguments: nil)
+                    if (self.defaults.value(forKey: "language") as! String == "English"){
+                        dailyGiftNotification.title = NSString.localizedUserNotificationString(forKey: "Spin the Wheel", arguments: nil)
+                        dailyGiftNotification.body = NSString.localizedUserNotificationString(forKey: "Time for Daily Gift", arguments: nil)
+                    }
+                    else {
+                        dailyGiftNotification.title = NSString.localizedUserNotificationString(forKey: "转动幸运转盘", arguments: nil)
+                        dailyGiftNotification.body = NSString.localizedUserNotificationString(forKey: "每日礼物放送时间到！", arguments: nil)
+                    }
                     dailyGiftNotification.sound = UNNotificationSound.default()
                     dailyGiftNotification.badge = 1
                     //deliver the notification

@@ -14204,7 +14204,6 @@ number_of_lines_erased += 1
     
     
     func close_pack() -> Void{
-        self.paused = true
         self.view.bringSubview(toFront: upper_half_pack_ring)
         UIView.transition(with: backpack_button,
                           duration: 0.3,
@@ -14263,7 +14262,6 @@ number_of_lines_erased += 1
                                                 self.trinity_circle_text.removeFromSuperview()
                                                 self.doom_day_circle_text.removeFromSuperview()
 
-                                                self.paused = false
                             },
                                               completion: nil)
         })
