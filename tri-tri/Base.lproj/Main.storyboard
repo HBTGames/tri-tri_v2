@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehd-xk-nWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,6 +13,9 @@
     <customFonts key="customFonts">
         <array key="Fresca-Regular.ttf">
             <string>Fresca-Regular</string>
+        </array>
+        <array key="TrebuchetMS.ttf">
+            <string>TrebuchetMS</string>
         </array>
     </customFonts>
     <scenes>
@@ -145,6 +148,14 @@
                                 <state key="normal" image="settings_day"/>
                                 <connections>
                                     <action selector="settings_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TQK-ry-Xhc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qh-5r-gU5">
+                                <rect key="frame" x="159" y="65" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="add star"/>
+                                <connections>
+                                    <action selector="addStar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zO6-9W-EAb"/>
                                 </connections>
                             </button>
                         </subviews>

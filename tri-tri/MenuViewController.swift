@@ -4050,6 +4050,11 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
     }
     
     
+    @IBAction func addStar(_ sender: UIButton) {
+        star_score += 1000
+        //update_current_star_length_according_to_string_length()
+        defaults.set(star_score, forKey: "tritri_star_score")
+    }
 }
 
 
@@ -4058,21 +4063,22 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
 public extension UIView{
     
 //only horizontal gap
+
 func generateFragmentsFrom(_ originView:UIView, with splitRatio:CGFloat, in containerView:UIView) -> [UIView] {
     
         let size = originView.frame.size
         let snapshots = originView.snapshotView(afterScreenUpdates: true)
+        print("we are screen shooting!!")
         var fragments = [UIView]()
         
         //let shortSide = min(size.width, size.height)
         let gap =  size.width/splitRatio
-        
+        let height = size.height
         for x in stride(from: 0.0, to: Double(size.width), by: Double(gap)) {
             
                 
-                let fragmentRect = CGRect(x: CGFloat(x), y: CGFloat(0.0), width: size.width/splitRatio, height: size.height)
-                let fragment = snapshots?.resizableSnapshotView(from: fragmentRect, afterScreenUpdates: false, withCapInsets: UIEdgeInsets.zero)
-                
+                let fragmentRect = CGRect(x: CGFloat(x), y: CGFloat(0.0), width: gap, height: height)
+                let fragment = snapshots?.resizableSnapshotView(from: fragmentRect, afterScreenUpdates: true, withCapInsets: UIEdgeInsets.zero)
                 fragment?.frame = originView.convert(fragmentRect, to: containerView)
                 containerView.addSubview(fragment!)
                 fragments.append(fragment!)
@@ -4258,7 +4264,7 @@ extension UIButton{
     CATransaction.commit()
     }
     
-    
+
     
     
     
