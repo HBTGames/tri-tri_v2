@@ -35,7 +35,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSb-Hu-EQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-807.20000000000005" y="-0.44977511244377816"/>
+            <point key="canvasLocation" x="-809" y="53"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -245,7 +245,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gpn-Rm-yBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="bQY-v5-YmM"/>
             </objects>
-            <point key="canvasLocation" x="776.79999999999995" y="0.44977511244377816"/>
+            <point key="canvasLocation" x="777" y="53"/>
         </scene>
         <!--Theme Menu View Controller-->
         <scene sceneID="4Ji-yD-aLf">
@@ -382,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BrS-Dl-5BN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1831.2" y="763.26836581709154"/>
+            <point key="canvasLocation" x="-1513" y="869"/>
         </scene>
         <!--Game Over View Controller-->
         <scene sceneID="Tov-tc-WGP">
@@ -519,7 +519,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2d-sK-tLb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-807.20000000000005" y="732.68365817091455"/>
+            <point key="canvasLocation" x="-808" y="869"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="4Ov-Xz-Ivd">
@@ -563,7 +563,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c22-OY-xVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1186.4000000000001" y="1518.8905547226389"/>
+            <point key="canvasLocation" x="-808" y="1696"/>
         </scene>
         <!--Game Board View Controller-->
         <scene sceneID="4ge-HZ-FD8">
@@ -1233,7 +1233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44c-a1-QJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.80000000000000004" y="732.68365817091455"/>
+            <point key="canvasLocation" x="-40" y="869"/>
         </scene>
         <!--Daily Gift View Controller-->
         <scene sceneID="Lat-xT-w57">
@@ -1280,7 +1280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xie-ts-n5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="776.79999999999995" y="732.68365817091455"/>
+            <point key="canvasLocation" x="777" y="869"/>
         </scene>
     </scenes>
     <resources>
@@ -12074,7 +12074,7 @@ zwAAAAAAAAQBAAAAAAAAAD4AAAAAAAAAAAAAAAAACdLRA
         <image name="棕色tri" width="610" height="542"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hkt-ax-Thn"/>
+        <segue reference="jOH-pV-lXR"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

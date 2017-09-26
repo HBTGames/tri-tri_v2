@@ -941,7 +941,7 @@ class MenuViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         BW_apply_origin = BW_apply_button.frame.origin
         BW_apply_button.whenButtonIsClicked(action:{
             if(self.theme_islocked_array[2]){
-                if(self.star_score >= 2000){
+                if(self.star_score >= 500){
                     if(!self.sound_is_muted){
                     do{self.cash_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "cash_register", ofType: "wav")!))
                         self.cash_player.prepareToPlay()
