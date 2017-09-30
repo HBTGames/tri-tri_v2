@@ -3391,7 +3391,9 @@ class GameBoardViewController: UIViewController, SKProductsRequestDelegate, SKPa
             change_theme_button.removeFromSuperview()
           self.pause_screen.fadeOutandRemove()
            
-            
+            self.star_store_button.isEnabled = true
+            self.backpack_button.isEnabled = true
+            self.pause.isEnabled = true
             //self.audioPlayer.play()
            
             self.remove_all_fragments()
