@@ -3619,6 +3619,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
     
     func add_1000_stars() -> Void{
         star_score += 1000
+        star_board.text = String(star_score)
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
         
