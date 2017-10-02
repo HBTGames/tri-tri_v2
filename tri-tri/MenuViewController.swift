@@ -3547,7 +3547,6 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
             }
         }
         
-        
         purchase_star_1000_button.fadeIn()
         
         
@@ -3580,6 +3579,7 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
     
     func add_500_stars() -> Void{
         star_score += 500
+        star_board.text = String(star_score)
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
         self.purchase_star_menu.fadeOutandRemove()
@@ -3682,10 +3682,10 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
             let productID = t.payment.productIdentifier as String
             
             switch productID{
-            case "tritri.add_500_stars":
+            case "tritri.test.add_500_stars":
                 print ("add 500 stars")
                 add_500_stars()
-            case "tritri.add_1000_stars":
+            case "tritri.test.add_1000_stars":
                 print ("add 1000 stars")
                 add_1000_stars()
             default:
@@ -3709,10 +3709,10 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
                 let productID = present_product.productIdentifier
                 
                 switch productID{
-                case "tritri.add_500_stars":
+                case "tritri.test.add_500_stars":
                     print ("add 500 stars")
                     add_500_stars()
-                case "tritri.add_1000_stars":
+                case "tritri.test.add_1000_stars":
                     print ("add 1000 stars")
                     add_1000_stars()
                 default:
