@@ -1471,7 +1471,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         purchase_star_1000_button.whenButtonIsClicked{
             for product in self.purchase_product_list{
                 let productID = product.productIdentifier
-                if productID == "tritri.add_1000_stars"{
+                if productID == "tritri.test.add_1000_stars"{
+                    print("find equality")
                     self.present_product = product
                     self.buyProduct()
                 }
@@ -1489,10 +1490,12 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         purchase_star_500_button.whenButtonIsClicked{
             for product in self.purchase_product_list{
                 let productID = product.productIdentifier
-                if productID == "tritri.add_500_stars"{
+                if (productID == "tritri.test.add_500_stars"){
+                    print("find equality")
                     self.present_product = product
                     self.buyProduct()
                 }
+                print(productID)
             }
         }
         
@@ -1566,10 +1569,10 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             let productID = t.payment.productIdentifier as String
             
             switch productID{
-            case "tritri.add_500_stars":
+            case "tritri.test.add_500_stars":
                 print ("add 500 stars")
                 add_500_stars()
-            case "tritri.add_1000_stars":
+            case "tritri.test.add_1000_stars":
                 print ("add 1000 stars")
                 add_1000_stars()
             default:
@@ -1593,10 +1596,10 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
                 let productID = present_product.productIdentifier
                 
                 switch productID{
-                case "tritri.add_500_stars":
+                case "tritri.test.add_500_stars":
                     print ("add 500 stars")
                     add_500_stars()
-                case "tritri.add_1000_stars":
+                case "tritri.test.add_1000_stars":
                     print ("add 1000 stars")
                     add_1000_stars()
                 default:

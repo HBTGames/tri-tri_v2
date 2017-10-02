@@ -3538,7 +3538,8 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         purchase_star_1000_button.whenButtonIsClicked{
             for product in self.purchase_product_list{
                 let productID = product.productIdentifier
-                if productID == "tritri.add_1000_stars"{
+                if productID == "tritri.test.add_1000_stars"{
+                    print("find equality")
                     self.present_product = product
                     self.buyProduct()
                 }
@@ -3556,10 +3557,12 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         purchase_star_500_button.whenButtonIsClicked{
             for product in self.purchase_product_list{
                 let productID = product.productIdentifier
-                if productID == "tritri.add_500_stars"{
+                if (productID == "tritri.test.add_500_stars"){
+                    print("find equality")
                     self.present_product = product
                     self.buyProduct()
                 }
+                print(productID)
             }
         }
         
