@@ -4049,12 +4049,6 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         }
     }
     
-    
-    @IBAction func addStar(_ sender: UIButton) {
-        star_score += 1000
-        //update_current_star_length_according_to_string_length()
-        defaults.set(star_score, forKey: "tritri_star_score")
-    }
 }
 
 
