@@ -18441,8 +18441,11 @@ func trinity_animation() -> Void {
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
         update_star_counter_length_according_to_string_length()
-        
-        
+        theme_star_board.text = String(star_score)
+        theme_star_board_width = theme_star_board.frame.width
+        split_theme_star_counter()
+        theme_menu_star_store_button.frame = theme_star_counter.frame
+        update_theme_star_length_according_to_string_length()
         if(gameover_star_purchase == "ingame"){
             if(!sound_is_muted){
                 do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))
@@ -18546,6 +18549,11 @@ func trinity_animation() -> Void {
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
         update_star_counter_length_according_to_string_length()
+        theme_star_board.text = String(star_score)
+        theme_star_board_width = theme_star_board.frame.width
+        split_theme_star_counter()
+        theme_menu_star_store_button.frame = theme_star_counter.frame
+        update_theme_star_length_according_to_string_length()
         if(gameover_star_purchase == "ingame"){
             if(!sound_is_muted){
             do{self.button_player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "general_button", ofType: "wav")!))

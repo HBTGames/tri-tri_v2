@@ -3583,6 +3583,11 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
         update_star_counter_length_according_to_string_length()
+        theme_star_board.text = String(star_score)
+        theme_star_board_width = theme_star_board.frame.width
+        split_theme_star_counter()
+        theme_menu_star_store_button.frame = theme_star_counter.frame
+        update_theme_star_length_according_to_string_length()
         self.purchase_star_menu.fadeOutandRemove()
         self.more_stars_label.fadeOutandRemove()
         self.close_button.fadeOutandRemove()
@@ -3624,6 +3629,11 @@ final_price_button = MyButton(frame: CGRect(x: explaination_text.frame.origin.x 
         defaults.set(star_score, forKey: "tritri_star_score")
         defaults.synchronize()
         update_star_counter_length_according_to_string_length()
+        theme_star_board.text = String(star_score)
+        theme_star_board_width = theme_star_board.frame.width
+        split_theme_star_counter()
+        theme_menu_star_store_button.frame = theme_star_counter.frame
+        update_theme_star_length_according_to_string_length()
         self.purchase_star_menu.fadeOutandRemove()
         self.more_stars_label.fadeOutandRemove()
         self.close_button.fadeOutandRemove()
